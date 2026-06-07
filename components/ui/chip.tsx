@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Route } from 'next';
 import { type ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 
@@ -32,7 +33,7 @@ export function Chip({ variant = 'filled', className, href, children }: ChipProp
   const classes = cn(base, variants[variant], className);
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href as Route} className={classes}>
         {children}
       </Link>
     );

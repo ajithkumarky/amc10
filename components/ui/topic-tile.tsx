@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Route } from 'next';
 import { cn } from '@/lib/cn';
 
 export interface TopicTileProps {
@@ -13,7 +14,7 @@ export function TopicTile({ slug, name, progress, accent, className }: TopicTile
   const safeProgress = Math.max(0, Math.min(100, Math.round(progress)));
   return (
     <Link
-      href={`/learn/${slug}`}
+      href={`/learn/${slug}` as Route}
       className={cn(
         'block rounded-[4px] border border-[#2a1a4a] bg-[rgba(20,8,40,0.5)] px-4 py-3',
         'transition-colors hover:border-cyber-cyan',

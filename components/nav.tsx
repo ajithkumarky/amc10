@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Route } from 'next';
 import { cn } from '@/lib/cn';
 
 export type NavSection = 'home' | 'learn' | 'practice' | 'papers' | 'stats';
@@ -24,7 +25,7 @@ export function Nav({ active }: { active?: NavSection }) {
         {LINKS.map((link) => (
           <Link
             key={link.section}
-            href={link.href}
+            href={link.href as Route}
             className={cn(
               'px-1 py-0.5 text-cyber-mute hover:text-cyber-cyan',
               active === link.section && 'border-b border-cyber-cyan text-cyber-cyan',
