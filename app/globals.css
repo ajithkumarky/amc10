@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply min-h-screen bg-cyber-bg text-cyber-ink antialiased;
+  }
+  body {
+    @apply bg-cyber-page bg-fixed font-body;
+  }
+  *:focus-visible {
+    @apply outline-none ring-2 ring-cyber-cyan ring-offset-2 ring-offset-cyber-bg;
+  }
+}
+
+@layer utilities {
+  .panel-clip {
+    clip-path: polygon(
+      10px 0,
+      100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%,
+      0 10px
+    );
+  }
+  .panel-clip-sm {
+    clip-path: polygon(
+      6px 0,
+      100% 0,
+      100% calc(100% - 6px),
+      calc(100% - 6px) 100%,
+      0 100%,
+      0 6px
+    );
+  }
+}
