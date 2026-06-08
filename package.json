@@ -9,9 +9,8 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat",
-    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static --compatibility-flag=nodejs_compat"
+    "preview": "wrangler pages dev out",
+    "deploy": "npm run build && wrangler pages deploy out --project-name=amc10"
   },
   "dependencies": {
     "clsx": "2.1.1",
