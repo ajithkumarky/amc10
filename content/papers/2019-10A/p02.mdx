@@ -1,0 +1,27 @@
+---
+year: 2019
+paper: 10A
+problem_number: 2
+topic: number-theory
+answer: A
+choices: ["0", "1", "2", "4", "5"]
+source: "AMC 10A 2019 Problem 2"
+---
+
+<Problem>
+What is the hundreds digit of $20! - 15!$?
+</Problem>
+
+<Solution>
+We only need the last four digits of $20! - 15!$.
+
+**$20! \pmod{10^4}$**: $20!$ contains the factors $5, 10, 15, 20$ (four multiples of $5$) and at least four factors of $2$, so $20!$ is divisible by $10^4$. Thus $20! \equiv 0 \pmod{10^4}$.
+
+**$15! \pmod{10^4}$**: $15!$ has three factors of $5$ (from $5, 10, 15$) and many factors of $2$, so it ends in exactly three zeros. Computing $15! = 1{,}307{,}674{,}368{,}000$, the last four digits are $8000$.
+
+So $20! - 15! \equiv 0 - 8000 \equiv -8000 \equiv 2000 \pmod{10^4}$.
+
+The last four digits of $20! - 15!$ are $\ldots 2000$. The hundreds digit (third from the right) is $\boxed{0}$.
+
+Answer: **A**.
+</Solution>

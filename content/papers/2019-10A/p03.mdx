@@ -1,0 +1,35 @@
+---
+year: 2019
+paper: 10A
+problem_number: 3
+topic: algebra
+answer: D
+choices: ["3", "5", "9", "12", "15"]
+source: "AMC 10A 2019 Problem 3"
+---
+
+<Problem>
+Ana and Bonita were born on the same date in different years, $n$ years apart. Last year Ana was $5$ times as old as Bonita. This year Ana's age is the square of Bonita's age. What is $n$?
+</Problem>
+
+<Solution>
+Let $A$ and $B$ be Ana's and Bonita's ages **this year**.
+
+From "this year Ana's age is the square of Bonita's age": $A = B^2$.
+
+From "last year Ana was $5$ times as old as Bonita": $A - 1 = 5(B - 1)$.
+
+Substitute $A = B^2$:
+
+$$B^2 - 1 = 5B - 5 \implies B^2 - 5B + 4 = 0 \implies (B - 1)(B - 4) = 0.$$
+
+So $B = 1$ or $B = 4$. If $B = 1$, then $A = 1$ and they'd be the same age, contradicting "different years." So $B = 4$ and $A = 16$.
+
+Thus $n = A - B = 12$.
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Test small ages">
+The relationship "$A = B^2$" gives small candidates: $(B, A) = (2, 4), (3, 9), (4, 16), (5, 25), \ldots$ For each, check whether "$A - 1 = 5(B - 1)$" holds. Only $(4, 16)$ works: $15 = 5 \cdot 3$. So $n = 12$.
+</AlternateMethod>
