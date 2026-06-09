@@ -1,0 +1,25 @@
+---
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: C
+choices: ["12", "13", "60/13", "65/12", "5"]
+---
+
+<Problem>
+A right triangle has legs of length $5$ and $12$. What is the length of the altitude from the right angle to the hypotenuse?
+</Problem>
+
+<Solution>
+The hypotenuse has length $\sqrt{5^2 + 12^2} = 13$.
+
+Compute the triangle's area two ways. Using the legs: area $= \tfrac{1}{2}(5)(12) = 30$. Using the hypotenuse and the altitude $h$: area $= \tfrac{1}{2}(13)(h)$.
+
+Setting them equal: $\tfrac{13h}{2} = 30 \implies h = \dfrac{60}{13}$.
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Similar triangles">
+The altitude from the right angle creates two smaller right triangles similar to the original. The ratio of the altitude to leg-12 equals leg-5 to hypotenuse-13. So $h/12 = 5/13$, giving $h = 60/13$.
+</AlternateMethod>

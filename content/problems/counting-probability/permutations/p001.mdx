@@ -1,0 +1,23 @@
+---
+topic: counting-probability
+subtopic: permutations
+difficulty: 2
+answer: D
+choices: ["120", "180", "200", "210", "252"]
+---
+
+<Problem>
+A $4$-person committee is chosen from a group of $10$ people. How many different committees are possible?
+</Problem>
+
+<Solution>
+Order doesn't matter when forming a committee, so this is $\dbinom{10}{4}$.
+
+$$\binom{10}{4} = \frac{10!}{4! \cdot 6!} = \frac{10 \cdot 9 \cdot 8 \cdot 7}{4 \cdot 3 \cdot 2 \cdot 1} = \frac{5040}{24} = 210.$$
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Building one row at a time">
+Pick four people one at a time: $10 \cdot 9 \cdot 8 \cdot 7 = 5040$ ordered selections. Then divide by $4! = 24$ to remove the $4!$ orderings of each committee. Result: $5040 / 24 = 210$.
+</AlternateMethod>

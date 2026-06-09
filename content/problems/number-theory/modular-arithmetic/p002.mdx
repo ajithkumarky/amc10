@@ -1,0 +1,23 @@
+---
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 2
+answer: E
+choices: ["0", "1", "2", "3", "4"]
+---
+
+<Problem>
+What is the remainder when $123 + 456$ is divided by $5$?
+</Problem>
+
+<Solution>
+Work modulo $5$. We have $123 = 5 \cdot 24 + 3$, so $123 \equiv 3 \pmod{5}$. And $456 = 5 \cdot 91 + 1$, so $456 \equiv 1 \pmod{5}$.
+
+Therefore $123 + 456 \equiv 3 + 1 \equiv 4 \pmod{5}$.
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Direct calculation">
+$123 + 456 = 579$. And $579 = 5 \cdot 115 + 4$, so the remainder is $4$.
+</AlternateMethod>

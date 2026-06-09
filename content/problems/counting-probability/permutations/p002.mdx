@@ -1,0 +1,23 @@
+---
+topic: counting-probability
+subtopic: permutations
+difficulty: 3
+answer: A
+choices: ["24", "30", "60", "120", "720"]
+---
+
+<Problem>
+In how many distinct ways can $5$ people be seated around a circular table, where rotations of a seating are considered the same?
+</Problem>
+
+<Solution>
+With $n$ people around a circle and rotations identified, the number of distinct seatings is $(n-1)!$.
+
+For $n = 5$, that's $(5-1)! = 4! = 24$.
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Fix one person, permute the rest">
+Pick any seat at the table and seat one specific person there -- this "uses up" the rotational symmetry. The remaining $4$ people can be arranged in the remaining $4$ seats in $4! = 24$ ways.
+</AlternateMethod>

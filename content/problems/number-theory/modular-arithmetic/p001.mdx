@@ -1,0 +1,21 @@
+---
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 3
+answer: A
+choices: ["1", "3", "7", "9", "0"]
+---
+
+<Problem>
+What is the units digit of $7^{2024}$?
+</Problem>
+
+<Solution>
+Work modulo $10$. The units digits of $7^k$ cycle through $7, 9, 3, 1$ for $k = 1, 2, 3, 4$, then repeat with period $4$.
+
+Since $2024 = 4 \cdot 506$, the exponent is a multiple of $4$, so $7^{2024}$ ends in the same digit as $7^4 = 2401$.
+
+The units digit is $\mathbf{1}$.
+
+Answer: **A**.
+</Solution>
