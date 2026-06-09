@@ -1,8 +1,10 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import type { MDXComponents } from 'mdx/types';
 import { cn } from '@/lib/cn';
+import { Problem } from './problem';
+import { Solution } from './solution';
+import { AlternateMethod } from './alternate-method';
 
 const proseClasses = cn(
   'prose prose-invert max-w-none',
@@ -15,7 +17,7 @@ const proseClasses = cn(
   'prose-li:text-cyber-mute',
 );
 
-const components: MDXComponents = {};
+const components = { Problem, Solution, AlternateMethod };
 
 export interface RenderMdxProps {
   source: string;
