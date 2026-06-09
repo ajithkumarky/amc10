@@ -42,3 +42,50 @@ describe('createContentIndex', () => {
     ]);
   });
 });
+
+describe('problem accessors', () => {
+  const index = createContentIndex(FIXTURE_ROOT);
+
+  it('lists problems under a subtopic', () => {
+    expect(index.listProblemSlugs('algebra', 'quadratics')).toEqual(['p001']);
+  });
+
+  it('returns a problem with frontmatter and body', () => {
+    const p = index.getProblem('algebra', 'quadratics', 'p001');
+    expect(p?.answer).toBe('B');
+    expect(p?.choices).toEqual(['-6', '-5', '0', '5', '6']);
+    expect(p?.difficulty).toBe(2);
+    expect(p?.body).toContain('<Problem>');
+  });
+
+  it('listAllProblems returns flat tuples for every problem', () => {
+    expect(index.listAllProblems()).toEqual([
+      { topic: 'algebra', subtopic: 'quadratics', slug: 'p001' },
+    ]);
+  });
+});
+
+describe('paper accessors', () => {
+  const index = createContentIndex(FIXTURE_ROOT);
+
+  it('listPaperKeys returns "<year>-<ab>" strings', () => {
+    expect(index.listPaperKeys()).toEqual(['2019-10A']);
+  });
+
+  it('getPaperMeta returns parsed meta.json', () => {
+    const m = index.getPaperMeta('2019', '10A');
+    expect(m?.year).toBe(2019);
+    expect(m?.ab).toBe('10A');
+    expect(m?.title).toContain('AMC 10A 2019');
+  });
+
+  it('listPaperProblems returns problem numbers in order', () => {
+    expect(index.listPaperProblems('2019', '10A')).toEqual([1]);
+  });
+
+  it('getPaperProblem returns problem entry', () => {
+    const p = index.getPaperProblem('2019', '10A', 1);
+    expect(p?.answer).toBe('E');
+    expect(p?.problem_number).toBe(1);
+  });
+});
