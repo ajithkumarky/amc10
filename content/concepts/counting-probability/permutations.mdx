@@ -1,0 +1,39 @@
+---
+title: Permutations & Combinations
+summary: Ordered and unordered counting — when to use which.
+difficulty: 2
+---
+
+## The two formulas
+
+- **Permutations** (order matters): the number of ways to arrange $r$ items
+  chosen from $n$ distinct items is
+$$P(n, r) = \frac{n!}{(n-r)!}.$$
+- **Combinations** (order doesn't matter): the number of ways to choose $r$
+  items from $n$ distinct items is
+$$\binom{n}{r} = \frac{n!}{r!\,(n-r)!}.$$
+
+The relationship: $\binom{n}{r} = \dfrac{P(n,r)}{r!}$ — divide out the orderings
+you're not distinguishing.
+
+## When to use which
+
+- "How many ways to arrange / line up / order?" → permutation.
+- "How many ways to **choose** / pick a team / a subset?" → combination.
+- "How many distinct seating arrangements around a round table?" → circular permutation,
+  which is $(n-1)!$ because rotations are equivalent.
+
+## Worked example
+
+> A 4-person committee is chosen from a group of 10. How many different
+> committees are possible?
+
+Order doesn't matter (committees are unordered), so the answer is
+$$\binom{10}{4} = \frac{10!}{4!\,6!} = 210.$$
+
+## Common trap
+
+If the problem says "the committee has a chair, a treasurer, and two members,"
+you are picking roles — that's an ordered situation in disguise. Use
+permutations (or pick the chair, then the treasurer, then a combination for
+the remaining two).

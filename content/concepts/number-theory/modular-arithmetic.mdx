@@ -1,0 +1,35 @@
+---
+title: Modular Arithmetic
+summary: Reasoning about remainders without doing the division.
+difficulty: 3
+---
+
+## The idea
+
+We write $a \equiv b \pmod{n}$ to mean "$a$ and $b$ have the same remainder
+when divided by $n$." Equivalently, $n$ divides $a - b$.
+
+For example, $17 \equiv 2 \pmod{5}$ because $17 = 3\cdot 5 + 2$.
+
+## Why it matters on AMC10
+
+Many problems ask for a units digit, a remainder, or a divisibility property.
+Working mod 10 (units digit) or mod 9 (digit sum) turns ugly arithmetic into
+small-number arithmetic.
+
+## Rules you can use
+
+Modular arithmetic respects addition, subtraction, and multiplication:
+
+$$a \equiv b \pmod n \;\text{and}\; c \equiv d \pmod n \implies a + c \equiv b + d \pmod n$$
+$$\text{and}\; a\cdot c \equiv b\cdot d \pmod n.$$
+
+Division is trickier and only works if $\gcd(\text{divisor}, n) = 1$.
+
+## Worked example
+
+> What is the units digit of $7^{2024}$?
+
+Work mod 10. The units digit of $7^k$ cycles: $7, 9, 3, 1, 7, 9, 3, 1, \ldots$,
+with period 4. Since $2024 = 4 \cdot 506$, we're at the end of a cycle, so
+$7^{2024} \equiv 1 \pmod{10}$. The units digit is $1$.

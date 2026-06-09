@@ -1,0 +1,37 @@
+---
+title: Quadratics
+summary: Solving and reasoning about quadratic equations on the AMC10.
+difficulty: 2
+---
+
+## The toolkit
+
+A quadratic equation is anything you can rewrite as
+
+$$ax^2 + bx + c = 0$$
+
+with $a \ne 0$. The three things you should be able to do quickly:
+
+1. **Factor**, when the roots are integer-ish: $x^2 + 5x + 6 = (x+2)(x+3) = 0$.
+2. **Use the quadratic formula** when factoring doesn't fall out:
+
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.$$
+
+3. **Use Vieta's formulas** — without solving:
+   - **Sum of roots:** $r_1 + r_2 = -\dfrac{b}{a}$
+   - **Product of roots:** $r_1 r_2 = \dfrac{c}{a}$
+
+Vieta is the single biggest time-saver on AMC10 quadratics. Most "find the
+sum/product of values of $x$" problems are one-liners with Vieta.
+
+## Worked example
+
+> If $x^2 + 5x + 6 = 0$, what is the sum of all distinct values of $x$?
+
+By Vieta, the sum of roots is $-\dfrac{5}{1} = -5$. Done — no factoring needed.
+
+## When to slow down
+
+If the problem asks for a specific root (not the sum/product), you usually need
+to factor or use the formula. If the discriminant $b^2 - 4ac$ is a perfect
+square, factoring will work.
