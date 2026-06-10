@@ -35,6 +35,8 @@ export interface PaperProblemEntry {
   ab: string;
   problem_number: number;
   topic: string;
+  subtopic: string | null;
+  difficulty: number | null;
   answer: 'A' | 'B' | 'C' | 'D' | 'E';
   choices: Choice[];
   source?: string;
@@ -47,6 +49,7 @@ export interface PaperMeta {
   title: string;
   date?: string;
   source?: string;
+  skipped?: { n: number; reason: string }[];
 }
 
 export interface ContentIndex {
@@ -231,6 +234,9 @@ export function createContentIndex(rootDir: string): ContentIndex {
         title: String(raw.title ?? ''),
         date: raw.date ? String(raw.date) : undefined,
         source: raw.source ? String(raw.source) : undefined,
+        skipped: Array.isArray(raw.skipped)
+          ? raw.skipped.map((s: { n: number; reason: string }) => ({ n: Number(s.n), reason: String(s.reason) }))
+          : undefined,
       };
     },
 
@@ -252,6 +258,8 @@ export function createContentIndex(rootDir: string): ContentIndex {
         ab: String(file.data.paper ?? ab),
         problem_number: n,
         topic: String(file.data.topic ?? 'unknown'),
+        subtopic: file.data.subtopic ? String(file.data.subtopic) : null,
+        difficulty: typeof file.data.difficulty === 'number' ? file.data.difficulty : null,
         answer: readAnswer(file.data.answer),
         choices: readChoices(file.data.choices),
         source: file.data.source ? String(file.data.source) : undefined,

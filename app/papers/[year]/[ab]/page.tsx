@@ -66,14 +66,36 @@ export default async function PaperPage({
       </Panel>
 
       <div className="space-y-6">
-        {problems.map((p) => (
-          <div key={p.problem_number} className="space-y-2">
-            <div className="font-mono text-[11px] uppercase tracking-widest text-cyber-cyan">
-              {`// PROBLEM ${p.problem_number} · ANSWER: ${p.answer}`}
-            </div>
-            <RenderMdx source={p.body} />
-          </div>
-        ))}
+        {(() => {
+          const skipped = meta.skipped ?? [];
+          const source = meta.source;
+          return [...problems.map((p) => ({ kind: 'p' as const, n: p.problem_number, p })),
+            ...skipped.map((s) => ({ kind: 's' as const, n: s.n, s }))]
+            .sort((a, b) => a.n - b.n)
+            .map((item) =>
+              item.kind === 'p' ? (
+                <div key={item.n} className="space-y-2">
+                  <div className="font-mono text-[11px] uppercase tracking-widest text-cyber-cyan">
+                    {`// PROBLEM ${item.n} · ANSWER: ${item.p.answer}`}
+                  </div>
+                  <RenderMdx source={item.p.body} />
+                </div>
+              ) : (
+                <div key={item.n} className="space-y-2">
+                  <div className="font-mono text-[11px] uppercase tracking-widest text-cyber-mute">
+                    {`// PROBLEM ${item.n} · NOT TRANSCRIBED (${item.s.reason})`}
+                  </div>
+                  {source && (
+                    <p className="text-sm">
+                      <a href={source} target="_blank" rel="noopener noreferrer" className="text-cyber-cyan hover:underline">
+                        View this problem on AoPS Wiki &uarr;
+                      </a>
+                    </p>
+                  )}
+                </div>
+              ),
+            );
+        })()}
       </div>
     </div>
   );
