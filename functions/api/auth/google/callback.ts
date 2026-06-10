@@ -40,14 +40,6 @@ function decodeIdToken(idToken: string): IdTokenClaims | null {
   }
 }
 
-function uuid(): string {
-  const a = crypto.getRandomValues(new Uint8Array(16));
-  a[6] = (a[6] & 0x0f) | 0x40;
-  a[8] = (a[8] & 0x3f) | 0x80;
-  const hex = Array.from(a, (b) => b.toString(16).padStart(2, '0')).join('');
-  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
-}
-
 function deniedHtml(siteUrl: string): Response {
   const body = `<!doctype html><html><head><meta charset="utf-8"><title>Sign-in not allowed</title>
   <style>body{background:#0c0d1a;color:#f0f4ff;font-family:system-ui;padding:60px;max-width:560px;margin:auto;}
@@ -83,7 +75,12 @@ export const onRequestGet = async (ctx: Context): Promise<Response> => {
   if (!tokenResp.ok) {
     return new Response('Google token exchange failed', { status: 500 });
   }
-  const tokens = (await tokenResp.json()) as GoogleTokenResponse;
+  let tokens: GoogleTokenResponse;
+  try {
+    tokens = (await tokenResp.json()) as GoogleTokenResponse;
+  } catch {
+    return new Response('Malformed response from Google', { status: 500 });
+  }
   const claims = decodeIdToken(tokens.id_token);
   if (!claims?.email || !claims.email_verified) {
     return new Response('No verified email from Google', { status: 400 });
@@ -98,7 +95,7 @@ export const onRequestGet = async (ctx: Context): Promise<Response> => {
   // Upsert user
   const now = Math.floor(Date.now() / 1000);
   const userId = await upsertUser(ctx.env.DB, {
-    id: uuid(),
+    id: crypto.randomUUID(),
     email: claims.email,
     name: claims.name ?? null,
     image_url: claims.picture ?? null,

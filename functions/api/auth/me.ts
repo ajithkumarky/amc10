@@ -21,12 +21,12 @@ export const onRequestGet = async (ctx: Context): Promise<Response> => {
   const token = readSessionCookie(ctx.request);
   if (!token) return new Response(JSON.stringify({ user: null }), {
     status: 200,
-    headers: { 'content-type': 'application/json' },
+    headers: { 'content-type': 'application/json; charset=utf-8' },
   });
   const claims = await verifyJwt<SessionClaims>(token, ctx.env.AUTH_SECRET);
   if (!claims) return new Response(JSON.stringify({ user: null }), {
     status: 200,
-    headers: { 'content-type': 'application/json' },
+    headers: { 'content-type': 'application/json; charset=utf-8' },
   });
   return new Response(
     JSON.stringify({
@@ -39,7 +39,7 @@ export const onRequestGet = async (ctx: Context): Promise<Response> => {
     }),
     {
       status: 200,
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json; charset=utf-8' },
     },
   );
 };
