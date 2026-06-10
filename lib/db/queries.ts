@@ -67,3 +67,40 @@ export async function touchUser(db: D1Database, userId: string, now: number): Pr
     .bind(now, userId)
     .run();
 }
+
+export interface AttemptInsert {
+  id: string;
+  user_id: string;
+  problem_slug: string;
+  topic: string;
+  subtopic: string | null;
+  selected_answer: string;
+  is_correct: number;
+  mode: string;
+  time_seconds: number | null;
+  created_at: number;
+}
+
+/**
+ * Insert a single attempt row. Caller is responsible for generating id and created_at.
+ */
+export async function insertAttempt(db: D1Database, a: AttemptInsert): Promise<void> {
+  await db
+    .prepare(
+      `INSERT INTO attempts (id, user_id, problem_slug, topic, subtopic, selected_answer, is_correct, mode, time_seconds, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    )
+    .bind(
+      a.id,
+      a.user_id,
+      a.problem_slug,
+      a.topic,
+      a.subtopic,
+      a.selected_answer,
+      a.is_correct,
+      a.mode,
+      a.time_seconds,
+      a.created_at,
+    )
+    .run();
+}
