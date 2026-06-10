@@ -52,4 +52,12 @@ describe('collectPoolRecords', () => {
     expect(r.problemHtml).toContain('katex');
     expect(r.solutionHtml.length).toBeGreaterThan(0);
   });
+
+  it('every collected record has non-empty problem and solution HTML', async () => {
+    const records = await collectPoolRecords(path.join(process.cwd(), 'content'));
+    for (const r of records) {
+      expect(r.problemHtml.trim().length, `${r.slug} problemHtml`).toBeGreaterThan(0);
+      expect(r.solutionHtml.trim().length, `${r.slug} solutionHtml`).toBeGreaterThan(0);
+    }
+  });
 });
