@@ -1,0 +1,14 @@
+{
+  "name": "amc10-cron-reminder",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260608.1",
+    "typescript": "5.6.3",
+    "wrangler": "3.86.1"
+  }
+}

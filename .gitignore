@@ -45,3 +45,6 @@ yarn-error.log*
 
 # development environment variables
 .dev.vars
+
+# workers
+workers/*/node_modules

@@ -1,0 +1,13 @@
+name = "amc10-cron-reminder"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Daily at 15:00 UTC (08:00 Pacific approximately during PDT, 07:00 during PST)
+[triggers]
+crons = ["0 15 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "amc10"
+database_id = "31209681-39cf-48af-8d7c-db672ebe9a94"
