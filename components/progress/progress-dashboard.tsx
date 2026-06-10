@@ -14,7 +14,7 @@ interface ProgressData {
   byDay: { date: string; count: number }[];
 }
 
-function computeStreak(byDay: { date: string; count: number }[]): number {
+export function computeStreak(byDay: { date: string; count: number }[]): number {
   if (byDay.length === 0) return 0;
   const set = new Set(byDay.map((d) => d.date));
   let streak = 0;
@@ -35,19 +35,33 @@ export function ProgressDashboard() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let aborted = false;
     fetch('/api/progress')
       .then(async (r) => {
-        if (r.status === 401) {
-          setError('signin');
+        if (!r.ok) {
+          if (r.status === 401) {
+            if (!aborted) setError('signin');
+          } else {
+            if (!aborted) setError('network');
+          }
           return null;
         }
         return r.json();
       })
       .then((d: unknown) => {
-        if (d) setData(d as ProgressData);
+        if (!aborted && d) setData(d as ProgressData);
       })
-      .catch(() => setError('network'));
+      .catch(() => { if (!aborted) setError('network'); });
+    return () => { aborted = true; };
   }, []);
+
+  if (error === 'network') {
+    return (
+      <Panel kicker="ERROR">
+        <p className="text-sm text-cyber-mute">Couldn&apos;t load progress data. Refresh to retry.</p>
+      </Panel>
+    );
+  }
 
   if (error === 'signin') {
     return (

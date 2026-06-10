@@ -127,7 +127,7 @@ export async function topicAccuracy(db: D1Database, userId: string): Promise<Top
   return (rs.results ?? []).map((r) => ({
     topic: r.topic,
     attempts: r.attempts,
-    correct: r.correct,
+    correct: r.correct ?? 0,
   }));
 }
 
@@ -151,7 +151,12 @@ export async function subtopicAccuracy(db: D1Database, userId: string): Promise<
     )
     .bind(userId)
     .all<{ topic: string; subtopic: string | null; attempts: number; correct: number }>();
-  return (rs.results ?? []).map((r) => r);
+  return (rs.results ?? []).map((r) => ({
+    topic: r.topic,
+    subtopic: r.subtopic,
+    attempts: r.attempts,
+    correct: r.correct ?? 0,
+  }));
 }
 
 /**
