@@ -50,14 +50,21 @@ export default {
       .all<DueUser>();
 
     const users: DueUser[] = rs.results ?? [];
+    let sent = 0;
     for (const u of users) {
-      const ok = await sendReminder(env, u);
-      if (ok) {
-        await env.DB
-          .prepare('UPDATE users SET last_reminder_sent_at = ? WHERE id = ?')
-          .bind(now, u.id)
-          .run();
+      try {
+        const ok = await sendReminder(env, u);
+        if (ok) {
+          await env.DB
+            .prepare('UPDATE users SET last_reminder_sent_at = ? WHERE id = ?')
+            .bind(now, u.id)
+            .run();
+          sent++;
+        }
+      } catch (err) {
+        console.error(`reminder failed for user ${u.id}:`, err);
       }
     }
+    console.log(`cron-reminder: ${users.length} due, ${sent} sent`);
   },
 };

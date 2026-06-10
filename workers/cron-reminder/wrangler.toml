@@ -3,6 +3,9 @@ main = "src/index.ts"
 compatibility_date = "2026-01-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Secrets (set with `npx wrangler secret put <NAME>`):
+#   RESEND_API_KEY, PARENT_EMAIL, SITE_URL
+
 # Daily at 15:00 UTC (08:00 Pacific approximately during PDT, 07:00 during PST)
 [triggers]
 crons = ["0 15 * * *"]
