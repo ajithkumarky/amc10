@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import type { Route } from 'next';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
 
 export type NavSection = 'home' | 'learn' | 'practice' | 'papers' | 'stats';
@@ -12,7 +15,33 @@ const LINKS: { section: NavSection; label: string; href: string }[] = [
   { section: 'stats', label: 'STATS', href: '/progress' },
 ];
 
+interface User {
+  id: string;
+  email: string;
+  name: string | null;
+  image: string | null;
+}
+
 export function Nav({ active }: { active?: NavSection }) {
+  const [user, setUser] = useState<User | null>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    let aborted = false;
+    fetch('/api/auth/me')
+      .then((r) => r.json() as Promise<{ user: User | null }>)
+      .then((data) => {
+        if (!aborted) {
+          setUser(data.user);
+          setLoaded(true);
+        }
+      })
+      .catch(() => setLoaded(true));
+    return () => {
+      aborted = true;
+    };
+  }, []);
+
   return (
     <header className="flex items-center justify-between border-b border-cyber-pink/80 px-6 py-3">
       <Link
@@ -36,8 +65,28 @@ export function Nav({ active }: { active?: NavSection }) {
         ))}
       </nav>
       <div className="flex items-center gap-2 font-mono text-[11px] text-cyber-mute">
-        <span className="inline-block h-6 w-6 rounded-full bg-cyber-chip" aria-hidden />
-        <span>GUEST</span>
+        {!loaded ? (
+          <span>…</span>
+        ) : user ? (
+          <>
+            {user.image ? (
+              <img src={user.image} alt="" className="h-6 w-6 rounded-full" />
+            ) : (
+              <span className="inline-block h-6 w-6 rounded-full bg-cyber-chip" />
+            )}
+            <span>{(user.name ?? user.email).split(' ')[0]?.toUpperCase()}</span>
+            <form action="/api/auth/logout" method="post" className="ml-2 inline">
+              <button className="text-cyber-mute hover:text-cyber-cyan" type="submit">
+                SIGN OUT
+              </button>
+            </form>
+          </>
+        ) : (
+          <>
+            <span className="inline-block h-6 w-6 rounded-full bg-cyber-chip" />
+            <Link href={'/signin' as Route} className="hover:text-cyber-cyan">SIGN IN</Link>
+          </>
+        )}
       </div>
     </header>
   );
