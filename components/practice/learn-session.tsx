@@ -7,6 +7,26 @@ import { Chip } from '@/components/ui/chip';
 import { Panel } from '@/components/ui/panel';
 import { ChoiceRow, type ChoiceLetter } from './choice-row';
 
+async function recordAttempt(payload: {
+  problem_slug: string;
+  topic: string;
+  subtopic?: string | null;
+  selected_answer: string;
+  is_correct: boolean;
+  mode: 'learn' | 'test';
+  time_seconds?: number;
+}) {
+  try {
+    await fetch('/api/attempts', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    // silent — anonymous or offline; the session continues.
+  }
+}
+
 export interface LearnSessionProblem {
   slug: string;
   topic: string;
@@ -90,6 +110,14 @@ export function LearnSession({ problems, bodies }: LearnSessionProps) {
 
   function submit() {
     setAttempts((prev) => prev.map((a, i) => (i === index ? { ...a, submitted: true } : a)));
+    void recordAttempt({
+      problem_slug: currentProblem.slug,
+      topic: currentProblem.topic,
+      subtopic: currentProblem.subtopic,
+      selected_answer: attempt.selected!,
+      is_correct: attempt.selected === currentProblem.answer,
+      mode: 'learn',
+    });
   }
 
   function next() {

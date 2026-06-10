@@ -7,6 +7,26 @@ import { Chip } from '@/components/ui/chip';
 import { Panel } from '@/components/ui/panel';
 import { ChoiceRow, type ChoiceLetter } from './choice-row';
 
+async function recordAttempt(payload: {
+  problem_slug: string;
+  topic: string;
+  subtopic?: string | null;
+  selected_answer: string;
+  is_correct: boolean;
+  mode: 'learn' | 'test';
+  time_seconds?: number;
+}) {
+  try {
+    await fetch('/api/attempts', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    // silent — anonymous or offline; the session continues.
+  }
+}
+
 export interface TestSessionProblem {
   slug: string;
   topic: string;
@@ -101,6 +121,25 @@ export function TestSession({ problems, bodies }: TestSessionProps) {
   const currentBody = bodies[currentOrigIdx];
   const allAnswered = picked.every((p) => p !== null);
 
+  function finishTest() {
+    setFinished(true);
+    void Promise.all(
+      order.map((origIdx, i) => {
+        const sel = picked[i];
+        if (!sel) return Promise.resolve();
+        const p = problems[origIdx];
+        return recordAttempt({
+          problem_slug: p.slug,
+          topic: p.topic,
+          subtopic: p.subtopic,
+          selected_answer: sel,
+          is_correct: sel === p.answer,
+          mode: 'test',
+        });
+      }),
+    );
+  }
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between font-mono text-[11px] text-cyber-mute">
@@ -141,7 +180,7 @@ export function TestSession({ problems, bodies }: TestSessionProps) {
             ) : (
               <button
                 type="button"
-                onClick={() => setFinished(true)}
+                onClick={finishTest}
                 disabled={!allAnswered}
                 className="inline-flex items-center rounded-[2px] bg-cyber-chip px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white disabled:opacity-50"
               >
