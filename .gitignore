@@ -48,3 +48,6 @@ yarn-error.log*
 
 # workers
 workers/*/node_modules
+
+# generated practice data
+public/practice-data/
