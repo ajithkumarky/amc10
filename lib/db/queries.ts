@@ -104,3 +104,74 @@ export async function insertAttempt(db: D1Database, a: AttemptInsert): Promise<v
     )
     .run();
 }
+
+export interface TopicAccuracy {
+  topic: string;
+  attempts: number;
+  correct: number;
+}
+
+/**
+ * Per-topic attempt counts and correct counts for a given user.
+ */
+export async function topicAccuracy(db: D1Database, userId: string): Promise<TopicAccuracy[]> {
+  const rs = await db
+    .prepare(
+      `SELECT topic, COUNT(*) AS attempts, SUM(is_correct) AS correct
+       FROM attempts
+       WHERE user_id = ?
+       GROUP BY topic`,
+    )
+    .bind(userId)
+    .all<{ topic: string; attempts: number; correct: number }>();
+  return (rs.results ?? []).map((r) => ({
+    topic: r.topic,
+    attempts: r.attempts,
+    correct: r.correct,
+  }));
+}
+
+export interface SubtopicAccuracy {
+  topic: string;
+  subtopic: string | null;
+  attempts: number;
+  correct: number;
+}
+
+/**
+ * Per-subtopic attempt counts and correct counts for a given user.
+ */
+export async function subtopicAccuracy(db: D1Database, userId: string): Promise<SubtopicAccuracy[]> {
+  const rs = await db
+    .prepare(
+      `SELECT topic, subtopic, COUNT(*) AS attempts, SUM(is_correct) AS correct
+       FROM attempts
+       WHERE user_id = ?
+       GROUP BY topic, subtopic`,
+    )
+    .bind(userId)
+    .all<{ topic: string; subtopic: string | null; attempts: number; correct: number }>();
+  return (rs.results ?? []).map((r) => r);
+}
+
+/**
+ * Daily attempt counts for the last N days for a given user, ordered by date.
+ */
+export async function recentDailyAttempts(
+  db: D1Database,
+  userId: string,
+  days: number,
+): Promise<{ date: string; count: number }[]> {
+  const since = Math.floor(Date.now() / 1000) - days * 86400;
+  const rs = await db
+    .prepare(
+      `SELECT date(created_at, 'unixepoch') AS date, COUNT(*) AS count
+       FROM attempts
+       WHERE user_id = ? AND created_at >= ?
+       GROUP BY date(created_at, 'unixepoch')
+       ORDER BY date`,
+    )
+    .bind(userId, since)
+    .all<{ date: string; count: number }>();
+  return rs.results ?? [];
+}
