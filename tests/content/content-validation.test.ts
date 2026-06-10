@@ -34,8 +34,8 @@ describe('original problems', () => {
     expect(data.difficulty).toBeLessThanOrEqual(5);
     expect(ANSWERS).toContain(data.answer);
     expect(Array.isArray(data.choices) && data.choices.length === 5).toBe(true);
-    expect(content).toMatch(/<Problem>[\s\S]*<\/Problem>/);
-    expect(content).toMatch(/<Solution>[\s\S]*<\/Solution>/);
+    expect(content).toMatch(/<Problem>[\s\S]*?\S[\s\S]*?<\/Problem>/);
+    expect(content).toMatch(/<Solution>[\s\S]*?\S[\s\S]*?<\/Solution>/);
     // path agrees with frontmatter
     const parts = path.relative(path.join(ROOT, 'problems'), file as string).split(path.sep);
     expect(parts[0]).toBe(data.topic);
@@ -51,8 +51,8 @@ describe('paper problems', () => {
     const { data, content } = matter(fs.readFileSync(file as string, 'utf8'));
     expect(ANSWERS).toContain(data.answer);
     expect(Array.isArray(data.choices) && data.choices.length === 5).toBe(true);
-    expect(content).toMatch(/<Problem>[\s\S]*<\/Problem>/);
-    expect(content).toMatch(/<Solution>[\s\S]*<\/Solution>/);
+    expect(content).toMatch(/<Problem>[\s\S]*?\S[\s\S]*?<\/Problem>/);
+    expect(content).toMatch(/<Solution>[\s\S]*?\S[\s\S]*?<\/Solution>/);
     if (data.topic !== undefined) expect(TOPIC_SLUGS).toContain(data.topic);
     if (data.difficulty !== undefined) {
       expect(Number.isInteger(data.difficulty)).toBe(true);
@@ -80,6 +80,16 @@ describe('paper problems', () => {
           expect(typeof s.reason).toBe('string');
         }
       }
+    }
+  });
+
+  it('every paper dir has at least one problem file', () => {
+    if (!fs.existsSync(papersRoot)) return;
+    for (const dir of fs.readdirSync(papersRoot)) {
+      const problemCount = fs
+        .readdirSync(path.join(papersRoot, dir))
+        .filter((f) => /^p\d+\.mdx$/.test(f)).length;
+      expect(problemCount, `${dir} has no problem files`).toBeGreaterThan(0);
     }
   });
 });
