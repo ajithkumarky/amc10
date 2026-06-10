@@ -7,7 +7,7 @@ import { cn } from '@/lib/cn';
 
 export type NavSection = 'home' | 'learn' | 'practice' | 'papers' | 'stats';
 
-const LINKS: { section: NavSection; label: string; href: string }[] = [
+const LINKS: { section: NavSection; label: string; href: Route }[] = [
   { section: 'home', label: 'HOME', href: '/' },
   { section: 'learn', label: 'LEARN', href: '/learn' },
   { section: 'practice', label: 'PRACTICE', href: '/practice' },
@@ -36,7 +36,7 @@ export function Nav({ active }: { active?: NavSection }) {
           setLoaded(true);
         }
       })
-      .catch(() => setLoaded(true));
+      .catch(() => { if (!aborted) setLoaded(true); });
     return () => {
       aborted = true;
     };
@@ -54,7 +54,7 @@ export function Nav({ active }: { active?: NavSection }) {
         {LINKS.map((link) => (
           <Link
             key={link.section}
-            href={link.href as Route}
+            href={link.href}
             className={cn(
               'px-1 py-0.5 text-cyber-mute hover:text-cyber-cyan',
               active === link.section && 'border-b border-cyber-cyan text-cyber-cyan',
@@ -84,7 +84,7 @@ export function Nav({ active }: { active?: NavSection }) {
         ) : (
           <>
             <span className="inline-block h-6 w-6 rounded-full bg-cyber-chip" />
-            <Link href={'/signin' as Route} className="hover:text-cyber-cyan">SIGN IN</Link>
+            <Link href="/signin" className="hover:text-cyber-cyan">SIGN IN</Link>
           </>
         )}
       </div>
