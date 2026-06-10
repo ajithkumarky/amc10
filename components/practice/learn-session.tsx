@@ -109,6 +109,7 @@ export function LearnSession({ problems, bodies }: LearnSessionProps) {
   }
 
   function submit() {
+    if (attempt.submitted) return;
     setAttempts((prev) => prev.map((a, i) => (i === index ? { ...a, submitted: true } : a)));
     void recordAttempt({
       problem_slug: currentProblem.slug,

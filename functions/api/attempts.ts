@@ -65,6 +65,8 @@ export const onRequestPost = async (ctx: Context): Promise<Response> => {
     topic: body.topic,
     subtopic: body.subtopic ?? null,
     selected_answer: body.selected_answer,
+    // is_correct is computed client-side; server cannot recompute without
+    // loading the problem catalogue. Acceptable for a personal practice log.
     is_correct: body.is_correct ? 1 : 0,
     mode: body.mode,
     time_seconds: typeof body.time_seconds === 'number' ? body.time_seconds : null,

@@ -122,6 +122,7 @@ export function TestSession({ problems, bodies }: TestSessionProps) {
   const allAnswered = picked.every((p) => p !== null);
 
   function finishTest() {
+    if (finished) return;
     setFinished(true);
     void Promise.all(
       order.map((origIdx, i) => {
