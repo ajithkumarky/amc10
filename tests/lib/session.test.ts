@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { signJwt, verifyJwt } from '@/lib/auth/session';
 
-const SECRET = 'a'.repeat(64); // 32 bytes hex
+const SECRET = 'a'.repeat(64); // 64-char secret; production uses a 64-char hex string from `openssl rand -hex 32`
 
 describe('signJwt / verifyJwt', () => {
   it('round-trips a payload', async () => {
@@ -19,5 +19,11 @@ describe('signJwt / verifyJwt', () => {
   it('rejects an expired token', async () => {
     const token = await signJwt({ sub: 'u_1' }, SECRET, -10); // already expired
     expect(await verifyJwt(token, SECRET)).toBeNull();
+  });
+
+  it('returns null for malformed tokens instead of throwing', async () => {
+    expect(await verifyJwt('not-a-jwt', SECRET)).toBeNull();
+    expect(await verifyJwt('!!!.@@@.###', SECRET)).toBeNull();
+    expect(await verifyJwt('', SECRET)).toBeNull();
   });
 });

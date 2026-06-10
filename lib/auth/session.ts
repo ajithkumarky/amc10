@@ -39,19 +39,23 @@ export async function signJwt<T extends object>(
 }
 
 export async function verifyJwt<T extends object>(token: string, secret: string): Promise<T | null> {
-  const parts = token.split('.');
-  if (parts.length !== 3) return null;
-  const [headB, bodyB, sigB] = parts;
-  const enc = new TextEncoder();
-  const signingInput = `${headB}.${bodyB}`;
-  const key = await importKey(secret);
-  const sig = base64UrlDecode(sigB);
-  const valid = await crypto.subtle.verify('HMAC', key, sig, enc.encode(signingInput));
-  if (!valid) return null;
-  const body = JSON.parse(new TextDecoder().decode(base64UrlDecode(bodyB))) as T & {
-    iat: number;
-    exp: number;
-  };
-  if (body.exp < Math.floor(Date.now() / 1000)) return null;
-  return body;
+  try {
+    const parts = token.split('.');
+    if (parts.length !== 3) return null;
+    const [headB, bodyB, sigB] = parts;
+    const enc = new TextEncoder();
+    const signingInput = `${headB}.${bodyB}`;
+    const key = await importKey(secret);
+    const sig = base64UrlDecode(sigB);
+    const valid = await crypto.subtle.verify('HMAC', key, sig, enc.encode(signingInput));
+    if (!valid) return null;
+    const body = JSON.parse(new TextDecoder().decode(base64UrlDecode(bodyB))) as T & {
+      iat: number;
+      exp: number;
+    };
+    if (body.exp < Math.floor(Date.now() / 1000)) return null;
+    return body;
+  } catch {
+    return null;
+  }
 }
