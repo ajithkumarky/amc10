@@ -1,0 +1,30 @@
+---
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: B
+choices: ["$2\\sqrt{21}$", "$4\\sqrt{6}$", "$8$", "$2\\sqrt{22}$", "$6\\sqrt{3}$"]
+---
+
+<Problem>
+Two circles have radii $5$ and $3$, and their centers are $10$ units apart. What is the length of a common external tangent to the two circles?
+</Problem>
+
+<Solution>
+**Setup.** Let $O_1$ and $O_2$ be the centers with radii $r_1 = 5$ and $r_2 = 3$, and let $d = O_1 O_2 = 10$. Let $\overline{PQ}$ be a common external tangent, tangent to the first circle at $P$ and the second at $Q$.
+
+**Key construction.** Draw $O_1 P \perp PQ$ and $O_2 Q \perp PQ$ (tangent-radius is perpendicular). Since both radii are perpendicular to the same line, $O_1 P \parallel O_2 Q$.
+
+Drop a perpendicular from $O_2$ to $O_1 P$, meeting $O_1 P$ at $R$. In rectangle $O_2 Q P R$ we have $PR = O_2 Q = 3$ and $O_2 R = PQ$, while $O_1 R = O_1 P - PR = 5 - 3 = 2$.
+
+Right triangle $O_1 R O_2$ has:
+- hypotenuse $O_1 O_2 = 10$
+- leg $O_1 R = 2$
+- leg $R O_2 = PQ$ (what we want)
+
+By the Pythagorean theorem:
+$$PQ^2 = O_1 O_2^2 - O_1 R^2 = 10^2 - 2^2 = 100 - 4 = 96$$
+$$PQ = \sqrt{96} = 4\sqrt{6}$$
+
+Answer: **B**.
+</Solution>

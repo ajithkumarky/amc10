@@ -1,0 +1,53 @@
+---
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: D
+choices: ["$\\frac{25\\pi}{3} - \\frac{25\\sqrt{3}}{2}$", "$\\frac{50\\pi}{3}$", "$\\frac{25\\pi}{2} - \\frac{25\\sqrt{3}}{4}$", "$\\frac{50\\pi}{3} - \\frac{25\\sqrt{3}}{2}$", "$25\\pi - 25\\sqrt{3}$"]
+---
+
+<Problem>
+Two circles, each with radius $5$, are positioned so that each circle passes through the center of the other. What is the area of the region inside both circles?
+</Problem>
+
+<Solution>
+**Step 1 — set up coordinates and find the intersection points.**
+
+Place the centers at $O_1 = (0, 0)$ and $O_2 = (5, 0)$, so the distance between them equals the radius $5$.
+
+The two circles have equations $x^2 + y^2 = 25$ and $(x-5)^2 + y^2 = 25$. Subtracting:
+$$x^2 - (x-5)^2 = 0 \implies 10x - 25 = 0 \implies x = \tfrac{5}{2}$$
+
+Substituting back: $y^2 = 25 - \tfrac{25}{4} = \tfrac{75}{4}$, so $y = \pm\tfrac{5\sqrt{3}}{2}$.
+
+The two intersection points are $I_1 = \!\left(\tfrac{5}{2},\, \tfrac{5\sqrt{3}}{2}\right)$ and $I_2 = \!\left(\tfrac{5}{2},\, {-\tfrac{5\sqrt{3}}{2}}\right)$.
+
+**Step 2 — find the central angle at each center.**
+
+Consider $O_1 = (0,0)$. The vectors from $O_1$ to $I_1$ and $I_2$ have angle $60°$ above and below the $x$-axis, since
+$$\tan(\angle) = \frac{5\sqrt{3}/2}{5/2} = \sqrt{3} \implies \angle = 60°.$$
+
+So the sector at $O_1$ that covers the lens region subtends a central angle of $2 \times 60° = 120°$. By symmetry the sector at $O_2$ also subtends $120°$.
+
+**Step 3 — compute the lens area as two circular segments.**
+
+The lens is the union of two congruent circular segments (one from each circle), each cut off by the chord $I_1 I_2$.
+
+For each segment:
+$$\text{Segment} = \text{Sector area} - \text{Triangle area}$$
+
+*Sector area* (angle $120°$, radius $5$):
+$$\frac{120}{360}\cdot \pi(5)^2 = \frac{1}{3}\cdot 25\pi = \frac{25\pi}{3}$$
+
+*Triangle area* (isoceles triangle with two sides $= 5$ and included angle $120°$):
+$$\frac{1}{2}(5)(5)\sin 120° = \frac{25}{2}\cdot\frac{\sqrt{3}}{2} = \frac{25\sqrt{3}}{4}$$
+
+*Each segment:*
+$$\frac{25\pi}{3} - \frac{25\sqrt{3}}{4}$$
+
+**Step 4 — add the two segments.**
+
+$$\text{Lens area} = 2\!\left(\frac{25\pi}{3} - \frac{25\sqrt{3}}{4}\right) = \frac{50\pi}{3} - \frac{25\sqrt{3}}{2}$$
+
+Answer: **D**.
+</Solution>

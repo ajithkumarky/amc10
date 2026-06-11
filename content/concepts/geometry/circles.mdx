@@ -1,0 +1,61 @@
+---
+title: Circles
+summary: Circumference, area, arcs, central and inscribed angles, tangent properties, power of a point, and the circle equation.
+---
+
+## Overview
+
+Circles are the most symmetric of all plane figures, and that symmetry gives rise to a remarkably tight collection of theorems. On the AMC 10, circle problems appear in roughly two flavors: pure circle questions (arc lengths, areas of sectors and segments, angle relationships) and mixed questions where a circle interacts with triangles, tangent lines, or other circles. Both flavors reward knowing a short list of facts cold.
+
+The central angle and inscribed angle theorems are the backbone of almost every angle-chasing problem involving circles. Once you see a chord or an arc, your first instinct should be to look for inscribed angles and central angles that subtend the same arc — that relationship (inscribed angle = half the central angle) cuts through complicated configurations quickly.
+
+Power of a point ties lengths together whenever two chords cross inside a circle or two secants (or a secant and a tangent) meet outside. It is the circle analogue of similar-triangle ratios and often turns what looks like a system of equations into a single multiplication.
+
+## Key facts
+
+- **Circumference:** $C = 2\pi r = \pi d$. *Use when you need the distance around a circle or an arc.*
+- **Area of a circle:** $A = \pi r^2$. *Use when you need the area of a full disk.*
+- **Arc length:** For a central angle $\theta$ (in degrees), arc length $= \dfrac{\theta}{360}\cdot 2\pi r$. *Proportion of the full circumference.*
+- **Sector area:** $A_{\text{sector}} = \dfrac{\theta}{360}\cdot \pi r^2$. *Same proportion, applied to area.*
+- **Segment area:** Area of a circular segment = sector area $-$ triangle area.
+- **Central angle theorem:** A central angle equals the arc it subtends (in degrees). *The central angle and its arc are numerically equal.*
+- **Inscribed angle theorem:** An inscribed angle equals **half** the central angle that subtends the same arc. Equivalently, an inscribed angle equals half the arc it intercepts. *An inscribed angle in a semicircle is always $90°$.*
+- **Thales' theorem:** Any angle inscribed in a semicircle is a right angle. *Whenever a right angle shows up in a circle, suspect that the hypotenuse is a diameter.*
+- **Chord–chord (power of a point, interior):** If two chords $\overline{AB}$ and $\overline{CD}$ intersect at $P$ inside a circle, then $PA \cdot PB = PC \cdot PD$.
+- **Secant–secant (power of a point, exterior):** From an external point $P$, if one secant hits the circle at distances $a$ and $b$ from $P$, and another hits at distances $c$ and $d$, then $a \cdot b = c \cdot d$.
+- **Tangent–secant:** From external point $P$, if a tangent touches the circle at $T$ and a secant hits at distances $a$ and $b$, then $PT^2 = a \cdot b$.
+- **Tangent–radius:** A tangent to a circle at point $T$ is perpendicular to the radius $OT$. *Draw $OT$ whenever you see a tangent — it creates a right angle to use.*
+- **Tangent lengths from an external point:** Both tangent segments from an external point to a circle have equal length. *This is a common setup for finding unknown lengths.*
+- **Circle equation:** A circle with center $(h, k)$ and radius $r$ has equation $(x - h)^2 + (y - k)^2 = r^2$. *To find the power of an external point $(x_0, y_0)$: compute $(x_0 - h)^2 + (y_0 - k)^2 - r^2$.*
+
+## Worked example 1
+
+> A circle has center $O$ and radius $10$. Chord $\overline{AB}$ subtends a central angle of $120°$. Find the length of $\overline{AB}$.
+
+**Approach:** Drop a perpendicular from $O$ to the midpoint $M$ of $\overline{AB}$. This creates two right triangles, each with hypotenuse $10$ and one angle equal to half of $120° = 60°$.
+
+In right triangle $OMA$: $\angle AOM = 60°$, so $AM = OA \cdot \sin 60° = 10 \cdot \dfrac{\sqrt{3}}{2} = 5\sqrt{3}$.
+
+Therefore $AB = 2 \cdot AM = 10\sqrt{3}$.
+
+*Why does this work?* The perpendicular from the center to a chord always bisects the chord. Splitting the isoceles triangle $OAB$ this way turns a two-variable problem into a straightforward right-triangle calculation.
+
+## Worked example 2
+
+> From an external point $P$, a secant passes through the circle and meets it at points $A$ and $B$ with $PA = 4$ and $PB = 9$. A second secant from $P$ meets the circle at $C$ and $D$ with $PC = 3$. Find $PD$.
+
+**Approach:** Apply the power-of-a-point theorem for an external point:
+
+$$PA \cdot PB = PC \cdot PD$$
+$$4 \cdot 9 = 3 \cdot PD$$
+$$PD = \frac{36}{3} = 12$$
+
+*Check:* The nearer intersection on the second secant ($PC = 3$) is closer to $P$ than the nearer intersection on the first secant ($PA = 4$), which is consistent with a longer far segment ($PD = 12 > PB = 9$). The product of distances stays constant across all secants through the same external point.
+
+## Common traps
+
+- **Confusing inscribed angle and arc measure.** The inscribed angle is *half* the arc, not equal to it. If an arc measures $140°$, the inscribed angle is $70°$ — not $140°$.
+- **Forgetting the right angle at a tangent point.** Whenever a line is tangent to a circle at $T$, the angle $\angle OTP = 90°$ where $O$ is the center. Missing this right angle is the most common setup error in tangent problems.
+- **Sector vs. segment.** A sector is the "pie slice" (two radii + arc); a segment is the region between a chord and its arc (sector minus the triangle). These are easy to confuse when the problem asks for a shaded region.
+- **Power of a point with signed vs. unsigned lengths.** The power-of-a-point formula $PA \cdot PB = PC \cdot PD$ uses the *unsigned* distances from $P$ to each intersection point. Do not accidentally subtract when the point is inside the circle.
+- **Using diameter instead of radius (or vice versa).** $A = \pi r^2$ and $C = 2\pi r$ use the radius. Writing $\pi d^2$ or $\pi d$ are very common errors under time pressure.

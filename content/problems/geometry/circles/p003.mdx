@@ -1,0 +1,34 @@
+---
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: C
+choices: ["$5$", "$5\\sqrt{2}$", "$5\\sqrt{3}$", "$10$", "$10\\sqrt{3}$"]
+---
+
+<Problem>
+In a circle with radius $5$, chord $\overline{AB}$ subtends a central angle of $120°$. What is the length of $\overline{AB}$?
+</Problem>
+
+<Solution>
+**Step 1 — split the isoceles triangle.**
+
+Triangle $OAB$ (with $O$ the center) is isoceles with $OA = OB = 5$ and $\angle AOB = 120°$. Drop a perpendicular from $O$ to the midpoint $M$ of $\overline{AB}$. This bisects the central angle, creating two right triangles each with $\angle AOM = 60°$ and hypotenuse $OA = 5$.
+
+**Step 2 — find the half-chord.**
+
+In right triangle $OMA$:
+$$AM = OA \cdot \sin(\angle AOM) = 5 \sin 60° = 5 \cdot \frac{\sqrt{3}}{2} = \frac{5\sqrt{3}}{2}$$
+
+**Step 3 — double to get the full chord.**
+
+$$AB = 2 \cdot AM = 2 \cdot \frac{5\sqrt{3}}{2} = 5\sqrt{3}$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Law of Cosines">
+Apply the Law of Cosines to triangle $OAB$ with sides $OA = OB = 5$ and included angle $120°$:
+$$AB^2 = 5^2 + 5^2 - 2(5)(5)\cos 120° = 25 + 25 - 50\left(-\tfrac{1}{2}\right) = 50 + 25 = 75$$
+$$AB = \sqrt{75} = 5\sqrt{3}$$
+</AlternateMethod>

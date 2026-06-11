@@ -1,0 +1,31 @@
+---
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: C
+choices: ["$6$", "$8$", "$12$", "$24$", "$\\sqrt{20}$"]
+---
+
+<Problem>
+A circle has equation $(x - 3)^2 + (y - 4)^2 = 25$. A line through the external point $P = (10, 4)$ intersects the circle at two points $A$ and $B$. If $PA = 2$, what is $PB$?
+</Problem>
+
+<Solution>
+**Step 1 — verify $P$ is outside the circle and find its power.**
+
+The circle has center $O = (3, 4)$ and radius $r = 5$. The distance from $P = (10, 4)$ to the center is:
+$$OP = \sqrt{(10-3)^2 + (4-4)^2} = \sqrt{49} = 7$$
+
+Since $OP = 7 > r = 5$, the point $P$ is indeed outside the circle. The **power of point $P$** is:
+$$\text{pow}(P) = OP^2 - r^2 = 49 - 25 = 24$$
+
+**Step 2 — apply the secant relation.**
+
+For any line through an external point $P$ that meets the circle at two points $A$ and $B$:
+$$PA \cdot PB = \text{pow}(P)$$
+
+Substituting $PA = 2$:
+$$2 \cdot PB = 24 \implies PB = 12$$
+
+Answer: **C**.
+</Solution>
