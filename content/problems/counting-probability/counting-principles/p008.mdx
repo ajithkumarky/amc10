@@ -1,0 +1,26 @@
+---
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: E
+choices: ["20", "24", "28", "32", "36"]
+---
+
+<Problem>
+Consider a grid of points with coordinates $(x, y)$ where $0 \le x \le 4$ and $0 \le y \le 4$ (so a $5 \times 5$ array of lattice points). A path travels from $(0,0)$ to $(4,4)$ by moving only right (increasing $x$ by $1$) or up (increasing $y$ by $1$) at each step. How many such paths pass through the point $(2, 2)$?
+</Problem>
+
+<Solution>
+Any path from $(0,0)$ to $(4,4)$ consists of exactly $4$ right-steps and $4$ up-steps in some order — $8$ steps total.
+
+A path passes through $(2,2)$ if and only if it goes from $(0,0)$ to $(2,2)$ and then from $(2,2)$ to $(4,4)$.
+
+**From $(0,0)$ to $(2,2)$:** $2$ right-steps and $2$ up-steps, so $\dbinom{4}{2} = 6$ paths.
+
+**From $(2,2)$ to $(4,4)$:** also $2$ right-steps and $2$ up-steps, so $\dbinom{4}{2} = 6$ paths.
+
+By the Multiplication Principle (the two segments are independent):
+$$6 \times 6 = 36.$$
+
+Answer: **E**.
+</Solution>

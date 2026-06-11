@@ -1,0 +1,63 @@
+---
+title: Counting Principles
+summary: The foundational rules — multiplication, addition, complementary counting, casework, and inclusion-exclusion — that let you count complex sets quickly and accurately.
+---
+
+## Overview
+
+Counting problems appear on nearly every AMC 10, and the secret to solving them is choosing the right *strategy* before you start computing. The core principles here are simple in isolation, but AMC problems are designed to require combining two or three of them — a student who knows each tool individually and also knows *when* to reach for it will outscore one who just tries to multiply everything in sight.
+
+The **Multiplication Principle** handles situations where you make a sequence of independent choices: if step 1 can be done in $a$ ways and step 2 in $b$ ways, the pair can be done in $a \times b$ ways. The **Addition Principle** handles *mutually exclusive* cases: if outcome A can happen in $a$ ways and outcome B (with no overlap) in $b$ ways, then A or B can happen in $a + b$ ways.
+
+When a direct count is awkward, **complementary counting** often saves the day: count everything, then subtract the cases you *don't* want. **Casework** breaks a problem into non-overlapping groups that are each easy to count. **Inclusion-exclusion** is the surgical tool for sets that *do* overlap.
+
+## Key facts
+
+- **Multiplication Principle.** For a sequence of $k$ independent choices with $n_1, n_2, \ldots, n_k$ options respectively, the total number of outcomes is $n_1 \cdot n_2 \cdots n_k$. *Use when:* choices are independent and you want every combination.
+
+- **Addition Principle.** For mutually exclusive cases $A_1, A_2, \ldots$ the total count is $|A_1| + |A_2| + \cdots$. *Use when:* you have cases that cannot overlap and want to count "A or B."
+
+- **Complementary Counting.** $\text{count(want)} = \text{total} - \text{count(don't want)}$. *Use when:* "at least one," "not all the same," or other negative conditions make the complement smaller.
+
+- **Casework.** Partition the outcome set into non-overlapping groups, count each group separately, add. *Use when:* a restriction makes some sub-cases easy while others are different in kind.
+
+- **Inclusion-Exclusion (2 sets).**
+$$|A \cup B| = |A| + |B| - |A \cap B|.$$
+*Use when:* two categories overlap and you need the union.
+
+- **Inclusion-Exclusion (3 sets).**
+$$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|.$$
+*Use when:* three overlapping categories are present; the alternating-sign pattern extends to any number of sets.
+
+- **Counting with restrictions.** Often combine complementary counting or casework with the multiplication principle: count freely, then impose restrictions one constraint at a time.
+
+## Worked example 1
+
+**Problem.** A sandwich shop offers 4 types of bread, 5 fillings, and 3 sauces. If every sandwich uses exactly one of each, how many distinct sandwiches are possible?
+
+**Solution.** The three choices (bread, filling, sauce) are independent, so the Multiplication Principle gives:
+$$4 \times 5 \times 3 = 60.$$
+
+That's it — no over-counting to worry about because each combination of one bread, one filling, and one sauce is distinct.
+
+## Worked example 2
+
+**Problem.** Of 40 students, 22 play soccer, 18 play basketball, and 7 play both. How many play *neither*?
+
+**Solution.** We want the students outside both groups. First find the union using inclusion-exclusion:
+$$|S \cup B| = 22 + 18 - 7 = 33.$$
+
+The 7 who play both were counted once in the 22 and once in the 18, so we subtracted them once to correct for the double-count. The number who play *neither* is:
+$$40 - 33 = 7.$$
+
+## Common traps
+
+- **Forgetting the overlap.** Adding $|A|$ and $|B|$ without subtracting $|A \cap B|$ double-counts everyone in both sets. Always ask: "Can something be in more than one category?"
+
+- **Using multiplication when cases are *not* independent.** If a later choice depends on an earlier one (e.g., forming a committee where order matters for some members but not others), reconsider before multiplying.
+
+- **Complementary counting with "at least one."** Students often try to count "at least one of X" directly using casework on 1, 2, 3, … occurrences. It's almost always faster to compute $\text{total} - \text{(none of X)}$.
+
+- **Missing cases in casework.** The cases must be *exhaustive* (every outcome is in some case) *and* *mutually exclusive* (no outcome is in two cases). Draw out the cases and double-check both conditions.
+
+- **Sign errors in inclusion-exclusion.** The pattern for $n$ sets alternates: add singles, subtract pairs, add triples, subtract quadruples, … A mnemonic: "add odd-sized intersections, subtract even-sized intersections."

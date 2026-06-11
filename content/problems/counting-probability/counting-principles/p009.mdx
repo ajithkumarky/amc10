@@ -1,0 +1,33 @@
+---
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: C
+choices: ["280", "315", "350", "378", "420"]
+---
+
+<Problem>
+A committee of $5$ people is to be chosen from a group of $6$ men and $5$ women. In how many ways can the committee be formed if it must contain at least $2$ men and at least $2$ women?
+</Problem>
+
+<Solution>
+The committee has $5$ people and must include at least $2$ men and at least $2$ women. Since $2 + 2 = 4$ and the committee has $5$ members, the only valid gender splits are:
+
+| Men | Women |
+|-----|-------|
+| 2   | 3     |
+| 3   | 2     |
+
+(A split of $4$ men and $1$ woman fails the "at least $2$ women" condition, and $1$ man and $4$ women fails the "at least $2$ men" condition.)
+
+**Case 1: 2 men, 3 women.**
+$$\binom{6}{2} \times \binom{5}{3} = 15 \times 10 = 150.$$
+
+**Case 2: 3 men, 2 women.**
+$$\binom{6}{3} \times \binom{5}{2} = 20 \times 10 = 200.$$
+
+Since the two cases are mutually exclusive, the total is:
+$$150 + 200 = 350.$$
+
+Answer: **C**.
+</Solution>

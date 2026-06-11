@@ -1,0 +1,22 @@
+---
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: E
+choices: ["2", "3", "5", "7", "4"]
+---
+
+<Problem>
+At a party of $30$ guests, $18$ guests like pizza, $15$ guests like tacos, and $7$ guests like both pizza and tacos. How many guests like neither pizza nor tacos?
+</Problem>
+
+<Solution>
+First find the number of guests who like pizza or tacos (or both) using inclusion-exclusion:
+
+$$|\text{Pizza} \cup \text{Tacos}| = |\text{Pizza}| + |\text{Tacos}| - |\text{Pizza} \cap \text{Tacos}| = 18 + 15 - 7 = 26.$$
+
+The guests who like *neither* are those outside this union:
+$$30 - 26 = 4.$$
+
+Answer: **E**.
+</Solution>

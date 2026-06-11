@@ -1,0 +1,37 @@
+---
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: D
+choices: ["20", "24", "28", "30", "36"]
+---
+
+<Problem>
+How many ways can the letters $A, A, B, B, C, C$ be arranged in a row so that no two identical letters are adjacent?
+</Problem>
+
+<Solution>
+**Total arrangements.** Without any restriction, the six letters (with two copies each of A, B, C) can be arranged in
+$$\frac{6!}{2!\,2!\,2!} = \frac{720}{8} = 90 \text{ ways.}$$
+
+**Complementary counting.** Let $\mathcal{A}$, $\mathcal{B}$, $\mathcal{C}$ be the sets of arrangements in which the two A's are adjacent, the two B's are adjacent, and the two C's are adjacent, respectively. We will compute $|\mathcal{A} \cup \mathcal{B} \cup \mathcal{C}|$ and subtract.
+
+*Single sets.* Treat AA as one block; arrange [AA], B, B, C, C:
+$$|\mathcal{A}| = \frac{5!}{2!\,2!} = 30.$$
+By symmetry, $|\mathcal{B}| = |\mathcal{C}| = 30$.
+
+*Pairs of sets.* Treat both AA and BB as blocks; arrange [AA], [BB], C, C:
+$$|\mathcal{A} \cap \mathcal{B}| = \frac{4!}{2!} = 12.$$
+By symmetry, $|\mathcal{A} \cap \mathcal{C}| = |\mathcal{B} \cap \mathcal{C}| = 12$.
+
+*All three.* Treat all three pairs as blocks; arrange [AA], [BB], [CC]:
+$$|\mathcal{A} \cap \mathcal{B} \cap \mathcal{C}| = 3! = 6.$$
+
+**Inclusion-exclusion:**
+$$|\mathcal{A} \cup \mathcal{B} \cup \mathcal{C}| = (30+30+30) - (12+12+12) + 6 = 90 - 36 + 6 = 60.$$
+
+**Answer:**
+$$90 - 60 = 30.$$
+
+Answer: **D**.
+</Solution>

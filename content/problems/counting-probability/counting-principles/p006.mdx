@@ -1,0 +1,25 @@
+---
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: B
+choices: ["4", "6", "8", "10", "12"]
+---
+
+<Problem>
+In a class of $50$ students, $24$ take math, $19$ take science, and $15$ take history. Among these, $7$ take both math and science, $5$ take both math and history, $4$ take both science and history, and $2$ take all three subjects. How many students take none of these three subjects?
+</Problem>
+
+<Solution>
+Apply inclusion-exclusion to find the number of students taking at least one subject:
+
+$$|M \cup S \cup H| = |M| + |S| + |H| - |M \cap S| - |M \cap H| - |S \cap H| + |M \cap S \cap H|.$$
+
+Substituting the given values:
+$$= 24 + 19 + 15 - 7 - 5 - 4 + 2 = 44.$$
+
+The number of students taking *none* of the three subjects is:
+$$50 - 44 = 6.$$
+
+Answer: **B**.
+</Solution>

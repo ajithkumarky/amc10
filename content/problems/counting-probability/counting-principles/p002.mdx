@@ -1,0 +1,33 @@
+---
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: C
+choices: ["18", "20", "22", "25", "27"]
+---
+
+<Problem>
+In a school club, $15$ students play chess and $12$ students play checkers. Exactly $5$ students play both games. How many students play chess or checkers (or both)?
+</Problem>
+
+<Solution>
+We want $|\text{Chess} \cup \text{Checkers}|$. Applying the inclusion-exclusion formula for two sets:
+
+$$|\text{Chess} \cup \text{Checkers}| = |\text{Chess}| + |\text{Checkers}| - |\text{Chess} \cap \text{Checkers}|.$$
+
+The $5$ students who play both are counted once in the $15$ and once in the $12$, so we subtract them once:
+
+$$15 + 12 - 5 = 22.$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Partitioning into disjoint groups">
+Split the players into three non-overlapping groups:
+
+- Chess only: $15 - 5 = 10$
+- Checkers only: $12 - 5 = 7$
+- Both: $5$
+
+By the Addition Principle: $10 + 7 + 5 = 22$.
+</AlternateMethod>
