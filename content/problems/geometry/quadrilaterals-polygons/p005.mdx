@@ -1,0 +1,26 @@
+---
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 3
+answer: E
+choices: ["$20$", "$25$", "$30$", "$32$", "$35$"]
+---
+
+<Problem>
+How many diagonals does a convex decagon (10-sided polygon) have?
+</Problem>
+
+<Solution>
+In an $n$-gon, each vertex can be connected to $n - 3$ other vertices by a diagonal (all vertices except itself and its two adjacent neighbors). With $n = 10$ vertices, each vertex contributes $7$ diagonals.
+
+Since each diagonal is counted twice (once from each endpoint), the total number of diagonals is:
+$$\frac{n(n-3)}{2} = \frac{10 \times 7}{2} = \frac{70}{2} = 35$$
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Combinations minus sides">
+The total number of line segments connecting any two of the $10$ vertices is $\dbinom{10}{2} = 45$. Of these, $10$ are sides of the decagon. The remaining $45 - 10 = 35$ are diagonals.
+
+Answer: **E**.
+</AlternateMethod>

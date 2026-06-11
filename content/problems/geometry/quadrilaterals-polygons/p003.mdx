@@ -1,0 +1,31 @@
+---
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 3
+answer: C
+choices: ["$48$", "$50$", "$52$", "$56$", "$60$"]
+---
+
+<Problem>
+A rhombus has diagonals of length $10$ and $24$. What is the perimeter of the rhombus?
+</Problem>
+
+<Solution>
+The diagonals of a rhombus bisect each other at right angles. Each half-diagonal has lengths $5$ and $12$, forming the legs of a right triangle whose hypotenuse is one side of the rhombus.
+
+By the Pythagorean theorem:
+$$\text{side} = \sqrt{5^2 + 12^2} = \sqrt{25 + 144} = \sqrt{169} = 13$$
+
+Since all four sides of a rhombus are equal, the perimeter is:
+$$4 \times 13 = 52$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Recognizing a 5-12-13 right triangle">
+The half-diagonals $5$ and $12$ are the two shorter legs of the well-known Pythagorean triple $(5, 12, 13)$. Recognizing this triple immediately gives the side length $13$ without computing $\sqrt{169}$.
+
+Perimeter $= 4 \times 13 = 52$.
+
+Answer: **C**.
+</AlternateMethod>

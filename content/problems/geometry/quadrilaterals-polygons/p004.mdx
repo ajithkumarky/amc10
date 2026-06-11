@@ -1,0 +1,29 @@
+---
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 3
+answer: D
+choices: ["$72$", "$80$", "$88$", "$96$", "$108$"]
+---
+
+<Problem>
+Trapezoid $ABCD$ has $AB \parallel CD$ with $AB = 15$ and $CD = 9$. Angle $A$ is a right angle, and $BC = 10$. What is the area of the trapezoid?
+</Problem>
+
+<Solution>
+Since $\angle A = 90°$, side $AD$ is perpendicular to the parallel bases $AB$ and $CD$, making $AD$ the height of the trapezoid.
+
+Drop a perpendicular from $C$ to a point $E$ on $AB$. Because $CD \parallel AB$ and $\angle A = 90°$, the segment $AD$ is perpendicular to both bases, so $AD = CE$ and $CE$ is also the height.
+
+Since $CD = 9$ and $AB = 15$, the horizontal distance from $D$ to $C$ along the top is $9$, and from $A$ to $E$ along the bottom is also $9$ (since $AECD$ is a rectangle with $AE = CD = 9$). Therefore the remaining portion $EB = 15 - 9 = 6$.
+
+In right triangle $CEB$:
+$$CE^2 + EB^2 = BC^2$$
+$$CE^2 + 6^2 = 10^2$$
+$$CE^2 = 100 - 36 = 64 \implies CE = 8$$
+
+So the height of the trapezoid is $h = 8$. The area is:
+$$\text{Area} = \frac{(AB + CD)}{2} \times h = \frac{(15 + 9)}{2} \times 8 = \frac{24}{2} \times 8 = 12 \times 8 = 96$$
+
+Answer: **D**.
+</Solution>

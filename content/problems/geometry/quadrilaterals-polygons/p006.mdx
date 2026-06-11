@@ -1,0 +1,27 @@
+---
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 3
+answer: A
+choices: ["$37$", "$34$", "$40$", "$32$", "$42$"]
+---
+
+<Problem>
+Quadrilateral $ABCD$ has vertices $A = (0, 0)$, $B = (7, 0)$, $C = (9, 4)$, and $D = (2, 6)$. What is the area of $ABCD$?
+</Problem>
+
+<Solution>
+Apply the Shoelace formula with vertices listed in order: $(x_1, y_1) = (0,0)$, $(x_2, y_2) = (7,0)$, $(x_3, y_3) = (9,4)$, $(x_4, y_4) = (2,6)$.
+
+$$\text{Area} = \frac{1}{2}\bigl|(x_1 y_2 - x_2 y_1) + (x_2 y_3 - x_3 y_2) + (x_3 y_4 - x_4 y_3) + (x_4 y_1 - x_1 y_4)\bigr|$$
+
+Compute each term:
+$$x_1 y_2 - x_2 y_1 = 0\cdot 0 - 7\cdot 0 = 0$$
+$$x_2 y_3 - x_3 y_2 = 7\cdot 4 - 9\cdot 0 = 28$$
+$$x_3 y_4 - x_4 y_3 = 9\cdot 6 - 2\cdot 4 = 54 - 8 = 46$$
+$$x_4 y_1 - x_1 y_4 = 2\cdot 0 - 0\cdot 6 = 0$$
+
+$$\text{Area} = \frac{1}{2}|0 + 28 + 46 + 0| = \frac{1}{2}(74) = 37$$
+
+Answer: **A**.
+</Solution>

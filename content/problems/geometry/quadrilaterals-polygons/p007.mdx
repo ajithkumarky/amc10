@@ -1,0 +1,31 @@
+---
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 4
+answer: B
+choices: ["$6 + 6\\sqrt{2}$", "$8 + 8\\sqrt{2}$", "$8 + 4\\sqrt{2}$", "$16 + 8\\sqrt{2}$", "$4 + 8\\sqrt{2}$"]
+---
+
+<Problem>
+A regular octagon has side length $2$. What is its area?
+</Problem>
+
+<Solution>
+Place the regular octagon inside the smallest square that contains it. Each corner of the square is cut off as a right isosceles triangle to produce the octagon.
+
+If the octagon has side length $s = 2$, then each cut-off triangle has legs of length $a$, where the hypotenuse equals the octagon's side:
+$$a\sqrt{2} = 2 \implies a = \sqrt{2}$$
+
+The outer square has side length:
+$$s + 2a = 2 + 2\sqrt{2}$$
+
+Area of the outer square:
+$$(2 + 2\sqrt{2})^2 = 4 + 8\sqrt{2} + 8 = 12 + 8\sqrt{2}$$
+
+Each corner triangle has area $\dfrac{1}{2}a^2 = \dfrac{1}{2}(\sqrt{2})^2 = 1$. There are four such triangles, so their total area is $4$.
+
+Area of the octagon:
+$$(12 + 8\sqrt{2}) - 4 = 8 + 8\sqrt{2}$$
+
+Answer: **B**.
+</Solution>

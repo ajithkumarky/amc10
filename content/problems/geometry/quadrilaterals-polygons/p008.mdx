@@ -1,0 +1,38 @@
+---
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 4
+answer: C
+choices: ["$7$", "$8$", "$9$", "$10$", "$11$"]
+---
+
+<Problem>
+The interior angles of a convex polygon form an arithmetic sequence. The smallest interior angle is $120°$ and the common difference between consecutive angles is $5°$. How many sides does the polygon have?
+</Problem>
+
+<Solution>
+Let the polygon have $n$ sides. The angles are $120°, 125°, 130°, \ldots$ with common difference $5°$.
+
+The sum of an arithmetic sequence of $n$ terms with first term $a = 120°$ and common difference $d = 5°$ is:
+$$S = \frac{n}{2}\bigl(2a + (n-1)d\bigr) = \frac{n}{2}\bigl(240 + 5(n-1)\bigr) = \frac{n}{2}(235 + 5n)$$
+
+This sum must equal the interior angle sum of an $n$-gon:
+$$\frac{n}{2}(235 + 5n) = (n-2) \times 180$$
+
+Multiply both sides by $2$:
+$$n(235 + 5n) = 360n - 720$$
+$$235n + 5n^2 = 360n - 720$$
+$$5n^2 - 125n + 720 = 0$$
+$$n^2 - 25n + 144 = 0$$
+$$(n - 9)(n - 16) = 0$$
+
+So $n = 9$ or $n = 16$.
+
+Check convexity (all interior angles must be less than $180°$):
+- For $n = 9$: largest angle $= 120 + 8(5) = 160° < 180°$ ✓
+- For $n = 16$: largest angle $= 120 + 15(5) = 195° > 180°$ ✗ (not convex)
+
+The polygon has $\boxed{9}$ sides.
+
+Answer: **C**.
+</Solution>

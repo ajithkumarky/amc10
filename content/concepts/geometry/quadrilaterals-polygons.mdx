@@ -1,0 +1,72 @@
+---
+title: Quadrilaterals & Polygons
+summary: Special quadrilaterals and their properties, angle sums, regular polygons, diagonal counts, and area techniques including the Shoelace formula.
+---
+
+## Overview
+
+Polygons are closed figures made entirely of straight sides, and quadrilaterals — four-sided polygons — are the richest family in AMC 10 competition geometry. Problems range from straightforward angle sums in regular polygons to multi-step area calculations in trapezoids and rhombuses. The unifying thread is that every polygon, however complicated, can be decomposed into triangles — and triangles are the atoms of all planar geometry.
+
+Special quadrilaterals (parallelograms, rectangles, rhombuses, squares, trapezoids, and kites) each carry a set of distinguishing properties that appear repeatedly on AMC problems. Knowing which properties belong to which figure — and which do *not* — lets you extract information quickly and avoid assuming too much. A parallelogram has equal opposite sides and bisecting diagonals, but its diagonals are not generally equal in length; a rectangle has equal diagonals; a rhombus has perpendicular diagonals; only the square has all four of these at once.
+
+Regular polygons reward students who know the interior and exterior angle formulas cold. Counting diagonals, computing areas of regular $n$-gons, and working with inscribed or circumscribed circles around regular polygons are all high-frequency AMC topics. The Shoelace (surveyor's) formula is the Swiss-army tool for polygons whose vertices are given as coordinates: it converts any polygon area problem into straightforward arithmetic.
+
+## Key facts
+
+- **Interior angle sum of an $n$-gon:** $(n-2) \times 180°$. *Memorize the first few: triangle 180°, quadrilateral 360°, pentagon 540°, hexagon 720°, octagon 1080°.*
+- **Each interior angle of a regular $n$-gon:** $\dfrac{(n-2)\times 180°}{n}$. *Use when all angles are equal.*
+- **Each exterior angle of a regular $n$-gon:** $\dfrac{360°}{n}$. *Exterior angles of any convex polygon always sum to 360°.*
+- **Number of diagonals of an $n$-gon:** $\dfrac{n(n-3)}{2}$. *Each vertex connects to $n-3$ non-adjacent vertices; divide by 2 to avoid double-counting.*
+- **Parallelogram:** opposite sides parallel and equal; opposite angles equal; diagonals bisect each other. *Area = base $\times$ height* (height is perpendicular, not the slant side).
+- **Rectangle:** parallelogram with four right angles; diagonals are equal.
+- **Rhombus:** parallelogram with four equal sides; diagonals are perpendicular bisectors of each other. *Area = $\dfrac{d_1 d_2}{2}$ where $d_1, d_2$ are diagonal lengths.*
+- **Square:** rectangle and rhombus simultaneously; diagonal $= s\sqrt{2}$ where $s$ is the side length.
+- **Trapezoid:** exactly one pair of parallel sides (bases $b_1$, $b_2$). *Area = $\dfrac{(b_1+b_2)}{2} \times h$* where $h$ is the perpendicular height.
+- **Kite:** two pairs of consecutive equal sides; one diagonal perpendicularly bisects the other. *Area = $\dfrac{d_1 d_2}{2}$.*
+- **Shoelace formula:** For a polygon with vertices $(x_1,y_1),(x_2,y_2),\ldots,(x_n,y_n)$ listed in order (either direction):
+$$\text{Area} = \frac{1}{2}\bigl|\,(x_1 y_2 - x_2 y_1) + (x_2 y_3 - x_3 y_2) + \cdots + (x_n y_1 - x_1 y_n)\,\bigr|$$
+  *This works for any simple (non-self-intersecting) polygon given coordinates.*
+
+## Worked example 1
+
+> A rhombus has diagonals of length $16$ and $12$. Find its perimeter.
+
+**Approach:** The diagonals of a rhombus bisect each other at right angles. Each half-diagonal has length $8$ and $6$, forming the legs of a right triangle whose hypotenuse is one side of the rhombus.
+
+By the Pythagorean theorem:
+$$\text{side} = \sqrt{8^2 + 6^2} = \sqrt{64 + 36} = \sqrt{100} = 10$$
+
+Since all four sides are equal, the perimeter is $4 \times 10 = 40$.
+
+*Why does this work?* The diagonals of any rhombus are perpendicular bisectors of each other, so they cut the rhombus into four congruent right triangles. Finding one leg of those triangles immediately gives the side length.
+
+## Worked example 2
+
+> A convex polygon has interior angles in arithmetic progression. The smallest angle is $100°$ and the common difference is $10°$. Find the number of sides.
+
+**Approach:** Let the polygon have $n$ sides. The angles are $100°, 110°, 120°, \ldots$ with common difference $10°$. Their sum equals the interior angle sum formula:
+
+$$\frac{n}{2}\bigl(2(100) + (n-1)(10)\bigr) = (n-2) \times 180$$
+
+Simplify the left side:
+$$\frac{n}{2}(200 + 10n - 10) = \frac{n}{2}(190 + 10n) = n(95 + 5n)$$
+
+Set equal to the right side:
+$$5n^2 + 95n = 180n - 360$$
+$$5n^2 - 85n + 360 = 0$$
+$$n^2 - 17n + 72 = 0$$
+$$(n-8)(n-9) = 0$$
+
+So $n = 8$ or $n = 9$. Check convexity (all angles $< 180°$):
+- $n = 8$: largest angle $= 100 + 7(10) = 170° < 180°$ ✓
+- $n = 9$: largest angle $= 100 + 8(10) = 180°$, which is not strictly convex. ✗
+
+The answer is $n = \boxed{8}$.
+
+## Common traps
+
+- **Using the slant side as height in a parallelogram or trapezoid.** The height must be the *perpendicular* distance between the parallel sides, not the length of a non-perpendicular leg. Always check whether the given side is truly the altitude.
+- **Off-by-one in the diagonal formula.** Each vertex has $n - 3$ diagonals from it (excluding itself and its two neighbors), giving $\frac{n(n-3)}{2}$ total. A common error is using $n-2$ (forgetting to exclude both neighbors) or forgetting the factor of $\frac{1}{2}$.
+- **Assuming a parallelogram when only two sides are equal.** Two pairs of equal sides alone does not guarantee a parallelogram — a kite also has two pairs of equal sides (but consecutive, not opposite). Check which sides are equal.
+- **Forgetting that angle sum formulas give the total, not each angle.** For irregular polygons, the formula $(n-2)\times 180°$ gives the *sum* of all interior angles, not each individual angle. Only for regular polygons can you divide by $n$ to get each angle.
+- **Shoelace sign errors.** When applying the Shoelace formula, list vertices consistently (all clockwise or all counterclockwise) and take the absolute value at the end. Mixing order midway through produces a wrong result.

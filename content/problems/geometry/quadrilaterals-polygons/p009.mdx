@@ -1,0 +1,42 @@
+---
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: D
+choices: ["$54$", "$63$", "$70$", "$75$", "$80$"]
+---
+
+<Problem>
+In trapezoid $ABCD$, $AB \parallel CD$ with $AB = 4$ and $CD = 6$. The diagonals $AC$ and $BD$ intersect at point $P$. If the area of triangle $APB$ is $12$, what is the area of trapezoid $ABCD$?
+</Problem>
+
+<Solution>
+Since $AB \parallel CD$, triangles $APB$ and $CPD$ are similar (by AA: $\angle PAB = \angle PCD$ and $\angle PBA = \angle PDC$ as alternate interior angles).
+
+The ratio of similarity is $AB : CD = 4 : 6 = 2 : 3$, so the ratio of areas is $(2/3)^2 = 4/9$.
+
+$$[APB] : [CPD] = 4 : 9$$
+
+Given $[APB] = 12$:
+$$[CPD] = 12 \cdot \frac{9}{4} = 27$$
+
+Next, find $[APD]$ and $[BPC]$. Triangles $ACD$ and $BCD$ share the same base $CD$ and have their opposite vertices $A$ and $B$ on the line $AB \parallel CD$, so they are between the same pair of parallel lines and have equal heights. Therefore:
+$$[ACD] = [BCD]$$
+
+Subtracting the common triangle $CPD$ from each:
+$$[APD] + [CPD] = [BPC] + [CPD] \implies [APD] = [BPC]$$
+
+Now use the fact that $[APB] \cdot [CPD] = [APD]^2$ (a standard result for trapezoids, derived from the proportional heights). With heights $h_1$ from $AB$ to $P$ and $h_2$ from $P$ to $CD$:
+$$\frac{h_1}{h_2} = \frac{AB}{CD} = \frac{2}{3}$$
+
+Let $h = h_1 + h_2$ be the total height of the trapezoid. Since $[APB] = \frac{1}{2} \cdot AB \cdot h_1 = 2h_1 = 12$, we get $h_1 = 6$.
+
+From the ratio: $h_1/h_2 = 2/3$, so $h_2 = 9$, giving $h = h_1 + h_2 = 15$.
+
+The area of the trapezoid is:
+$$\frac{(AB + CD)}{2} \cdot h = \frac{(4 + 6)}{2} \cdot 15 = 5 \cdot 15 = 75$$
+
+**Verification:** $[CPD] = \frac{1}{2} \cdot 6 \cdot 9 = 27$ ✓, and $[APD] = [BPC] = \frac{75 - 12 - 27}{2} = \frac{36}{2} = 18$ ✓.
+
+Answer: **D**.
+</Solution>
