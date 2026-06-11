@@ -1,0 +1,36 @@
+---
+topic: geometry
+subtopic: trigonometry-basics
+difficulty: 5
+answer: D
+choices: ['$\dfrac{5}{12}$', '$\dfrac{12}{13}$', '$\dfrac{5}{14}$', '$\dfrac{5}{13}$', '$\dfrac{7}{13}$']
+---
+
+<Problem>
+Triangle $PQR$ has side lengths $PQ = 13$, $QR = 14$, and $PR = 15$. What is $\cos(\angle PQR)$?
+</Problem>
+
+<Solution>
+$\angle PQR$ is the angle at vertex $Q$, which lies between sides $PQ = 13$ and $QR = 14$. The side opposite $\angle PQR$ is $PR = 15$.
+
+By the Law of Cosines:
+$$PR^2 = PQ^2 + QR^2 - 2 \cdot PQ \cdot QR \cdot \cos(\angle PQR)$$
+$$225 = 169 + 196 - 2(13)(14)\cos(\angle PQR)$$
+$$225 = 365 - 364\cos(\angle PQR)$$
+$$364\cos(\angle PQR) = 365 - 225 = 140$$
+$$\cos(\angle PQR) = \frac{140}{364}.$$
+
+Simplify: $\gcd(140, 364) = 28$, so $\dfrac{140}{364} = \dfrac{5}{13}$.
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Area verification">
+The 13-14-15 triangle has a well-known area. The semi-perimeter is $s = \dfrac{13+14+15}{2} = 21$. By Heron's formula:
+$$\text{Area} = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = \sqrt{7056} = 84.$$
+
+We can double-check $\sin(\angle PQR)$ using $\text{Area} = \tfrac{1}{2} \cdot PQ \cdot QR \cdot \sin(\angle PQR)$:
+$$84 = \frac{1}{2}(13)(14)\sin(\angle PQR) = 91\sin(\angle PQR) \implies \sin(\angle PQR) = \frac{84}{91} = \frac{12}{13}.$$
+
+Consistency check: $\sin^2 + \cos^2 = \left(\dfrac{12}{13}\right)^2 + \left(\dfrac{5}{13}\right)^2 = \dfrac{144 + 25}{169} = \dfrac{169}{169} = 1.$ ✓
+</AlternateMethod>

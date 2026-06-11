@@ -1,0 +1,27 @@
+---
+topic: geometry
+subtopic: trigonometry-basics
+difficulty: 3
+answer: D
+choices: ['$11$', '$12$', '$\sqrt{113}$', '$13$', '$14$']
+---
+
+<Problem>
+In triangle $ABC$, $AB = 7$, $BC = 8$, and $\angle B = 120°$. What is the length of side $AC$?
+</Problem>
+
+<Solution>
+We apply the Law of Cosines. Side $AC$ is opposite $\angle B$, so:
+$$AC^2 = AB^2 + BC^2 - 2 \cdot AB \cdot BC \cdot \cos(\angle B).$$
+
+Substituting $AB = 7$, $BC = 8$, and $\cos 120° = -\dfrac{1}{2}$:
+$$AC^2 = 49 + 64 - 2(7)(8)\!\left(-\frac{1}{2}\right) = 113 + 56 = 169.$$
+
+Therefore $AC = \sqrt{169} = 13$.
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Why the obtuse angle increases the side">
+With $\angle B = 120°$ the two sides $AB$ and $BC$ "open up" beyond a right angle, pushing $A$ and $C$ farther apart. Contrast with $\angle B = 90°$: then $AC = \sqrt{49+64} = \sqrt{113} \approx 10.6$. The obtuse angle adds $56$ under the radical, raising $AC$ to $13$ — a clean answer signaling a Pythagorean-type structure.
+</AlternateMethod>

@@ -1,0 +1,28 @@
+---
+topic: geometry
+subtopic: trigonometry-basics
+difficulty: 1
+answer: A
+choices: ['$\dfrac{4}{5}$', '$\dfrac{3}{5}$', '$\dfrac{3}{4}$', '$\dfrac{4}{3}$', '$\dfrac{5}{4}$']
+---
+
+<Problem>
+In right triangle $ABC$ with the right angle at $C$, leg $AC = 3$ and leg $BC = 4$. What is $\sin(\angle BAC)$?
+</Problem>
+
+<Solution>
+First find the hypotenuse using the Pythagorean theorem:
+$$AB = \sqrt{AC^2 + BC^2} = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5.$$
+
+For $\angle BAC$ (the angle at vertex $A$), by SOH-CAH-TOA:
+- **Opposite** side: $BC = 4$
+- **Hypotenuse**: $AB = 5$
+
+$$\sin(\angle BAC) = \frac{\text{opposite}}{\text{hypotenuse}} = \frac{BC}{AB} = \frac{4}{5}.$$
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Pythagorean triple recognition">
+The sides $3$, $4$, $5$ form the classic Pythagorean triple. The sine of the angle opposite the leg of length $4$ is $\dfrac{4}{5}$ directly.
+</AlternateMethod>

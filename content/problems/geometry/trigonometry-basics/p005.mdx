@@ -1,0 +1,24 @@
+---
+topic: geometry
+subtopic: trigonometry-basics
+difficulty: 3
+answer: E
+choices: ['$6\sqrt{2}$', '$6\sqrt{3}$', '$3\sqrt{2}$', '$3\sqrt{3}$', '$3\sqrt{6}$']
+---
+
+<Problem>
+In triangle $PQR$, $\angle P = 45°$, $\angle Q = 60°$, and $QR = 6$. What is the length of $PR$?
+</Problem>
+
+<Solution>
+First find the third angle: $\angle R = 180° - 45° - 60° = 75°$.
+
+In triangle $PQR$, side $QR$ is opposite $\angle P = 45°$, and side $PR$ is opposite $\angle Q = 60°$. By the Law of Sines:
+$$\frac{PR}{\sin Q} = \frac{QR}{\sin P}$$
+$$\frac{PR}{\sin 60°} = \frac{6}{\sin 45°}.$$
+
+Substituting $\sin 60° = \dfrac{\sqrt{3}}{2}$ and $\sin 45° = \dfrac{\sqrt{2}}{2}$:
+$$PR = 6 \cdot \frac{\sin 60°}{\sin 45°} = 6 \cdot \frac{\dfrac{\sqrt{3}}{2}}{\dfrac{\sqrt{2}}{2}} = 6 \cdot \frac{\sqrt{3}}{\sqrt{2}} = \frac{6\sqrt{3}}{\sqrt{2}} = \frac{6\sqrt{3} \cdot \sqrt{2}}{2} = 3\sqrt{6}.$$
+
+Answer: **E**.
+</Solution>

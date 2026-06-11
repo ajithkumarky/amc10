@@ -1,0 +1,78 @@
+---
+title: Trigonometry Basics
+summary: SOH-CAH-TOA in right triangles, exact trig values at 30/45/60, the area formula (1/2)ab sin C, and the Law of Sines and Law of Cosines for general triangles.
+---
+
+## Overview
+
+Trigonometry connects angles to side ratios. At the AMC 10 level you need exactly three ideas: the right-triangle definitions (SOH-CAH-TOA), the exact values at $30°$, $45°$, and $60°$, and the two big theorems — Law of Sines and Law of Cosines — that let you work with any triangle, not just right triangles.
+
+Right-triangle trig is where everything starts. The three main ratios — sine, cosine, and tangent — describe how the sides of a right triangle scale relative to a chosen acute angle. Once you know two pieces of information (one side and one angle, or two sides), you can recover all six measurements of the triangle.
+
+The AMC loves problems that mix the area formula $\tfrac{1}{2}ab\sin C$ with the Law of Cosines or Law of Sines. A single triangle may look hard to solve directly but becomes tractable as soon as you realize that the same quantity (area, or the missing side) can be expressed in two different ways. That "express the same thing two ways" strategy is the single most powerful move in AMC trig.
+
+## Key facts
+
+- **SOH-CAH-TOA** (right triangle, angle $\theta$, hypotenuse $h$, opposite side $o$, adjacent side $a$):
+  $$\sin\theta = \frac{o}{h}, \qquad \cos\theta = \frac{a}{h}, \qquad \tan\theta = \frac{o}{a}$$
+  *Use when the triangle has a right angle and you know one side plus one acute angle.*
+
+- **Exact values table:**
+
+  | Angle | $\sin$ | $\cos$ | $\tan$ |
+  |-------|--------|--------|--------|
+  | $30°$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{1}{\sqrt{3}} = \dfrac{\sqrt{3}}{3}$ |
+  | $45°$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $1$ |
+  | $60°$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{1}{2}$ | $\sqrt{3}$ |
+
+  *These come up in virtually every AMC trig problem. Memorize them.*
+
+- **Pythagorean identity:** $\sin^2\theta + \cos^2\theta = 1$. *Useful when you know $\sin$ and need $\cos$, or vice versa.*
+
+- **Area with two sides and included angle:** For triangle $ABC$ with sides $a = BC$, $b = CA$ and included angle $C$:
+  $$\text{Area} = \frac{1}{2}ab\sin C$$
+  *Use when two sides and the angle between them are given, or when you're hunting for an angle and the area is known.*
+
+- **Law of Sines:** In any triangle $ABC$:
+  $$\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}$$
+  where $a$ is the side opposite $\angle A$, etc. *Use when you know two angles (and hence the third) plus one side — AAS or ASA configurations.*
+
+- **Law of Cosines:** In any triangle $ABC$:
+  $$c^2 = a^2 + b^2 - 2ab\cos C$$
+  *Use for SAS (find the missing side) or SSS (find an unknown angle). Reduces to the Pythagorean theorem when $C = 90°$.*
+
+- **Angle sum reminder:** $A + B + C = 180°$, so knowing two angles gives the third for free before applying Law of Sines.
+
+## Worked example 1
+
+> In right triangle $PQR$ with the right angle at $R$, legs $PR = 5$ and $QR = 12$. Find $\sin(\angle QPR)$.
+
+**Step 1 — find the hypotenuse.** $PQ = \sqrt{PR^2 + QR^2} = \sqrt{25 + 144} = \sqrt{169} = 13$.
+
+**Step 2 — identify opposite and hypotenuse.** For $\angle QPR$ (the angle at $P$), the opposite side is $QR = 12$ and the hypotenuse is $PQ = 13$.
+
+**Step 3 — apply SOH.** $\sin(\angle QPR) = \dfrac{12}{13}$.
+
+*Why does this work?* SOH-CAH-TOA is valid for any acute angle in any right triangle. The key is always to identify the opposite and adjacent sides *relative to the chosen angle*.
+
+## Worked example 2
+
+> Triangle $ABC$ has $AB = 7$, $AC = 8$, and $\angle A = 60°$. Find the length of $BC$.
+
+**Step 1 — recognize SAS.** We know two sides and the included angle, so Law of Cosines applies.
+
+**Step 2 — set up.** Label $c = BC$ (opposite $\angle A$), $b = AC = 8$, $a = AB = 7$. Wait — in standard notation $a$ is the side opposite $A$, which is $BC$. So:
+$$BC^2 = AB^2 + AC^2 - 2 \cdot AB \cdot AC \cdot \cos(\angle A)$$
+$$= 49 + 64 - 2(7)(8)\cos 60° = 113 - 112 \cdot \frac{1}{2} = 113 - 56 = 57$$
+
+**Step 3 — conclude.** $BC = \sqrt{57}$.
+
+*Sanity check:* $57$ is between $49 = 7^2$ and $64 = 8^2$, so $BC$ is between 7 and 8, which is reasonable for a triangle with those two sides and a $60°$ angle between them.
+
+## Common traps
+
+- **Swapping opposite and adjacent.** SOH uses the side *opposite* the angle over the hypotenuse. The side next to the angle (but not the hypotenuse) is *adjacent*, used in CAH. Label sides carefully before writing a ratio.
+- **Using exact values from the wrong angle.** $\sin 30° = \frac{1}{2}$ but $\sin 60° = \frac{\sqrt{3}}{2}$. They are partners, not the same. When in doubt, redraw a 30-60-90 triangle and re-derive.
+- **Forgetting the $2ab$ coefficient in Law of Cosines.** The full formula is $c^2 = a^2 + b^2 - 2ab\cos C$. Dropping the $2$ is among the most common algebraic slips on AMC tests.
+- **Applying Law of Sines to the wrong pair.** Each fraction is (side)/(sine of *opposite* angle). Using an adjacent angle in the denominator gives a wrong answer with no obvious warning sign.
+- **Neglecting the area formula's angle.** In $\tfrac{1}{2}ab\sin C$, the angle $C$ must be *between* sides $a$ and $b$ (the included angle). Using the wrong angle — even with the right two sides — gives a different area.

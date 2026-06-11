@@ -1,0 +1,28 @@
+---
+topic: geometry
+subtopic: trigonometry-basics
+difficulty: 4
+answer: B
+choices: ['$-\dfrac{1}{4}$', '$\dfrac{1}{4}$', '$\dfrac{3}{4}$', '$\dfrac{\sqrt{7}}{4}$', '$\dfrac{\sqrt{21}}{4}$']
+---
+
+<Problem>
+A triangle has side lengths $6$, $7$, and $8$. What is the cosine of the largest angle?
+</Problem>
+
+<Solution>
+The largest angle is opposite the longest side, which is $8$. Call this angle $C$, with $c = 8$, $a = 6$, $b = 7$.
+
+By the Law of Cosines:
+$$c^2 = a^2 + b^2 - 2ab\cos C$$
+$$64 = 36 + 49 - 2(6)(7)\cos C$$
+$$64 = 85 - 84\cos C$$
+$$84\cos C = 85 - 64 = 21$$
+$$\cos C = \frac{21}{84} = \frac{1}{4}.$$
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Checking the sign">
+Since $\cos C = \dfrac{1}{4} > 0$, angle $C$ is acute. This is consistent: a triangle with sides $6$, $7$, $8$ satisfies $6^2 + 7^2 = 85 > 64 = 8^2$, which confirms the triangle is acute. (Distractor A, $-\tfrac{1}{4}$, would correspond to an obtuse triangle.)
+</AlternateMethod>
