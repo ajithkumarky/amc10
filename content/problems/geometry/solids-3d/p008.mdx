@@ -1,0 +1,39 @@
+---
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: C
+choices: ["$9\\pi$", "$18\\pi$", "$36\\pi$", "$48\\pi$", "$72\\pi$"]
+---
+
+<Problem>
+A sphere is inscribed in a right circular cone — meaning the sphere is tangent to the base and to the lateral surface. The cone has base radius $6$ and height $8$. What is the volume of the inscribed sphere?
+</Problem>
+
+<Solution>
+**Step 1 — find the slant height of the cone.**
+
+$$l = \sqrt{r^2 + h^2} = \sqrt{36 + 64} = \sqrt{100} = 10$$
+
+**Step 2 — find the radius of the inscribed sphere.**
+
+Consider a cross-section through the axis of the cone. In this cross-section the cone becomes an isoceles triangle with base $2r = 12$ and height $h = 8$, and the inscribed sphere becomes an inscribed circle of radius $\rho$.
+
+The area of this triangle is $\tfrac{1}{2} \cdot 12 \cdot 8 = 48$.
+
+The semi-perimeter of the triangle uses the two equal slant sides (each of length $l = 10$) and the base ($12$):
+$$s = \frac{10 + 10 + 12}{2} = 16$$
+
+The inradius of a triangle equals $\text{Area}/s$:
+$$\rho = \frac{48}{16} = 3$$
+
+**Step 3 — compute the volume of the sphere.**
+
+$$V = \frac{4}{3}\pi \rho^3 = \frac{4}{3}\pi (3)^3 = \frac{4}{3}\pi \cdot 27 = 36\pi$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Direct formula">
+For a cone with base radius $r$, height $h$, and slant height $l$, the inscribed sphere radius is $\rho = rh/(r+l)$. Here: $\rho = (6)(8)/(6+10) = 48/16 = 3$, giving $V = \tfrac{4}{3}\pi(27) = 36\pi$.
+</AlternateMethod>

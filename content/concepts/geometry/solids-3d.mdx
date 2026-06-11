@@ -1,0 +1,57 @@
+---
+title: 3D / Solids
+summary: Volume and surface area of prisms, cylinders, cones, spheres, and pyramids; space diagonals; cross-sections; and the effect of scaling on three-dimensional figures.
+---
+
+## Overview
+
+Three-dimensional geometry on the AMC 10 asks you to reason about objects that cannot be drawn on a flat page — yet almost every problem reduces to a small collection of volume and surface-area formulas plus one key insight about scaling or cross-sections. The good news is that the formulas are few and the problem types are predictable: if you know them cold, 3-D problems become reliable point-scorers.
+
+The most important structural idea is that **volume scales as the cube of the linear scale factor**. When two solids are similar and one is $k$ times as large in every linear dimension, its volume is $k^3$ times as large and its surface area is $k^2$ times as large. This single fact underlies a surprising fraction of AMC 3-D problems, especially those that give you one dimension of a scaled solid and ask for a volume or surface area.
+
+Cross-sections also appear regularly. When a plane slices a sphere, cone, cylinder, or pyramid, the resulting shape is almost always a circle or a polygon whose dimensions you can find with the Pythagorean theorem or similar triangles. Identifying the right right triangle is usually the key move.
+
+## Key facts
+
+- **Rectangular prism (box):** $V = lwh$, $SA = 2(lw + lh + wh)$. *Draw all six faces when computing SA.*
+- **Space diagonal of a box:** $d = \sqrt{l^2 + w^2 + h^2}$. *Extend the Pythagorean theorem to three dimensions in two steps.*
+- **Cylinder:** $V = \pi r^2 h$, lateral $SA = 2\pi r h$, total $SA = 2\pi r^2 + 2\pi r h$. *The lateral surface unrolls into a rectangle of width $2\pi r$ and height $h$.*
+- **Cone:** $V = \tfrac{1}{3}\pi r^2 h$, lateral $SA = \pi r l$ where $l = \sqrt{r^2 + h^2}$ is the slant height, total $SA = \pi r^2 + \pi r l$. *Volume is one-third of the enclosing cylinder.*
+- **Sphere:** $V = \tfrac{4}{3}\pi r^3$, $SA = 4\pi r^2$. *Memorize both — AMC often gives SA and asks for V, or vice versa.*
+- **Pyramid (any base):** $V = \tfrac{1}{3} \cdot (\text{base area}) \cdot h$. *Height is the perpendicular distance from apex to base.*
+- **Square pyramid lateral SA:** Sum of four triangular faces $= 4 \cdot \tfrac{1}{2} \cdot (\text{base edge}) \cdot l$, where $l$ is the slant height (from midpoint of base edge to apex).
+- **Cross-section of a sphere:** A plane at distance $d$ from the center of a sphere of radius $r$ cuts out a circle of radius $\sqrt{r^2 - d^2}$. *Use the Pythagorean theorem: radius, distance from center, and cross-section radius form a right triangle.*
+- **Similar solids:** If two solids are similar with linear scale factor $k$, then surface areas scale as $k^2$ and volumes scale as $k^3$. *"Twice as tall" means eight times the volume.*
+- **Inscribed sphere in a cone:** For a cone with base radius $r$, height $h$, and slant height $l$, the radius of the inscribed sphere is $\rho = \dfrac{r h}{r + l}$. *Derive by equating the cone's volume to $\tfrac{1}{3}\rho \cdot SA_{\text{total}}$.*
+
+## Worked example 1
+
+> A rectangular box has dimensions $3 \times 4 \times 12$. Find the length of its space diagonal.
+
+**Approach:** The space diagonal connects two opposite vertices. Apply the 3-D Pythagorean theorem:
+
+$$d = \sqrt{3^2 + 4^2 + 12^2} = \sqrt{9 + 16 + 144} = \sqrt{169} = 13$$
+
+*Why does this work?* First find the diagonal of the $3 \times 4$ base: $\sqrt{9 + 16} = 5$. Now the space diagonal is the hypotenuse of a right triangle with legs $5$ (the base diagonal) and $12$ (the height): $\sqrt{25 + 144} = \sqrt{169} = 13$. The two-step approach shows why the formula is just the Pythagorean theorem applied twice.
+
+## Worked example 2
+
+> Two cones are similar. The smaller cone has base radius $4$ and height $6$. The larger cone has base radius $6$. What is the volume of the larger cone?
+
+**Approach:** Identify the scale factor from the base radii: $k = 6/4 = 3/2$.
+
+Compute the volume of the smaller cone first:
+$$V_{\text{small}} = \tfrac{1}{3}\pi r^2 h = \tfrac{1}{3}\pi (16)(6) = 32\pi$$
+
+Since volumes scale as $k^3$:
+$$V_{\text{large}} = k^3 \cdot V_{\text{small}} = \left(\frac{3}{2}\right)^3 \cdot 32\pi = \frac{27}{8} \cdot 32\pi = 108\pi$$
+
+*Check:* The larger cone has height $6 \cdot (3/2) = 9$. Directly: $V = \tfrac{1}{3}\pi(36)(9) = 108\pi$. ✓
+
+## Common traps
+
+- **Forgetting the factor of $\tfrac{1}{3}$ in cone and pyramid volumes.** These formulas are easy to misremember as $\pi r^2 h$ or $Bh$. Always include the $\tfrac{1}{3}$.
+- **Using height instead of slant height for cone lateral SA.** The lateral surface area of a cone is $\pi r l$ where $l = \sqrt{r^2 + h^2}$ is the *slant* height, not the perpendicular height $h$.
+- **Confusing total SA and lateral SA.** Problems sometimes ask for "total surface area" (including the base(s)) and sometimes for the "lateral surface area" (sides only). Read carefully.
+- **Scaling volume linearly.** If a solid is scaled by factor $k$ in all directions, volume scales by $k^3$ — not $k$, not $k^2$. A common error is multiplying volume by $k$ instead of $k^3$.
+- **Space diagonal vs. face diagonal.** The face diagonal of a box with dimensions $l \times w \times h$ is $\sqrt{l^2 + w^2}$ (for the $l \times w$ face), while the space diagonal is $\sqrt{l^2 + w^2 + h^2}$. Do not stop at the face diagonal.

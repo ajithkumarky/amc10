@@ -1,0 +1,28 @@
+---
+topic: geometry
+subtopic: solids-3d
+difficulty: 3
+answer: A
+choices: ["$64\\pi$", "$36\\pi$", "$100\\pi$", "$48\\pi$", "$84\\pi$"]
+---
+
+<Problem>
+A sphere has radius $10$. A plane cuts through the sphere at a distance of $6$ from the center. What is the area of the circular cross-section?
+</Problem>
+
+<Solution>
+When a plane cuts a sphere of radius $R$ at distance $d$ from the center, the cross-section is a circle. The radius $\rho$ of that circle satisfies the Pythagorean theorem in the right triangle formed by:
+- the sphere's radius $R$ (hypotenuse, from center of sphere to a point on the cross-section circle),
+- the distance $d$ from the center of the sphere to the plane (one leg),
+- the radius $\rho$ of the cross-section (other leg).
+
+So $\rho^2 = R^2 - d^2$.
+
+Substituting $R = 10$ and $d = 6$:
+$$\rho^2 = 10^2 - 6^2 = 100 - 36 = 64 \implies \rho = 8$$
+
+The area of the cross-section is:
+$$A = \pi \rho^2 = 64\pi$$
+
+Answer: **A**.
+</Solution>

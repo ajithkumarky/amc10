@@ -2,6 +2,7 @@
 
 All content is MDX with KaTeX math ($...$ inline, $$...$$ display). House rules:
 - Choices are exactly 5 strings, frontmatter `answer` is the correct letter A–E.
+- YAML gotcha: when a choice contains LaTeX backslashes (`\sqrt`, `\dfrac`, …), use SINGLE-quoted YAML strings (`'$\sqrt{5}$'`). Double quotes make YAML treat `\s` etc. as escape sequences and the file fails to parse.
 - LaTeX: plain KaTeX syntax. No Asymptote. No \begin{tikzpicture}. Tables in markdown.
 - Diagrams: simple figures as inline SVG inside the <Problem> block (viewBox, stroke="#00e5ff", fill="none", max-width 360px). If a faithful figure is impractical, augment the problem text with a precise textual description instead. If the problem is unusable without a complex diagram, skip it (papers only — record in meta.json "skipped").
 - Voice: clear, friendly, aimed at a strong middle-schooler. Solutions explain WHY, not just compute.

@@ -1,0 +1,37 @@
+---
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: D
+choices: ["$3\\sqrt{3}$", "$3\\sqrt{3}+1$", "$2\\sqrt{3}-1$", "$3\\sqrt{3}-1$", "$\\sqrt{3}-1$"]
+---
+
+<Problem>
+A cube has side length $4$. A sphere is circumscribed about the cube (passing through all $8$ vertices), and a second sphere is inscribed in the cube (tangent to all $6$ faces). What is the ratio of the volume of the region inside the circumscribed sphere but outside the inscribed sphere to the volume of the inscribed sphere?
+</Problem>
+
+<Solution>
+**Step 1 — radius of the inscribed sphere.**
+
+The inscribed sphere is tangent to each face. Its center is at the center of the cube and its radius equals half the side length:
+$$r_{\text{in}} = \frac{4}{2} = 2$$
+
+**Step 2 — radius of the circumscribed sphere.**
+
+The circumscribed sphere passes through all vertices. The space diagonal of the cube has length $4\sqrt{3}$, so the circumradius is half of that:
+$$r_{\text{circ}} = \frac{4\sqrt{3}}{2} = 2\sqrt{3}$$
+
+**Step 3 — compute both volumes.**
+
+$$V_{\text{in}} = \frac{4}{3}\pi r_{\text{in}}^3 = \frac{4}{3}\pi(2)^3 = \frac{32\pi}{3}$$
+
+$$V_{\text{circ}} = \frac{4}{3}\pi r_{\text{circ}}^3 = \frac{4}{3}\pi(2\sqrt{3})^3 = \frac{4}{3}\pi \cdot 8 \cdot 3\sqrt{3} = \frac{4}{3}\pi \cdot 24\sqrt{3} = 32\pi\sqrt{3}$$
+
+**Step 4 — form the ratio.**
+
+The region inside the circumscribed sphere but outside the inscribed sphere has volume $V_{\text{circ}} - V_{\text{in}}$. The requested ratio is:
+
+$$\frac{V_{\text{circ}} - V_{\text{in}}}{V_{\text{in}}} = \frac{32\pi\sqrt{3} - \dfrac{32\pi}{3}}{\dfrac{32\pi}{3}} = \frac{32\pi\!\left(\sqrt{3} - \dfrac{1}{3}\right)}{\dfrac{32\pi}{3}} = 3\!\left(\sqrt{3} - \frac{1}{3}\right) = 3\sqrt{3} - 1$$
+
+Answer: **D**.
+</Solution>
