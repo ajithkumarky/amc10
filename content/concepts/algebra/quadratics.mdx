@@ -1,37 +1,65 @@
 ---
 title: Quadratics
 summary: Solving and reasoning about quadratic equations on the AMC10.
-difficulty: 2
 ---
 
-## The toolkit
+## Overview
 
-A quadratic equation is anything you can rewrite as
+A quadratic equation is any equation you can write as $ax^2 + bx + c = 0$ with $a \neq 0$. Quadratics appear constantly on the AMC10 — sometimes as the main event, sometimes hiding inside a word problem or a system of equations. The key insight is that you rarely need to *find* the roots explicitly; most AMC questions ask for sums, products, or expressions *in terms of* the roots, which Vieta's formulas deliver in a single step.
 
-$$ax^2 + bx + c = 0$$
+Quadratics also connect to parabolas ($y = ax^2 + bx + c$), where completing the square reveals the vertex and minimum/maximum value instantly. Knowing when to factor, when to use the quadratic formula, and when to reach for Vieta's or the vertex form is the art of quadratic fluency.
 
-with $a \ne 0$. The three things you should be able to do quickly:
+The discriminant $\Delta = b^2 - 4ac$ controls the number of real roots: positive means two distinct real roots, zero means one repeated root, negative means no real roots. AMC problems often hinge on setting $\Delta$ equal to zero or asking how many values of a parameter give real solutions.
 
-1. **Factor**, when the roots are integer-ish: $x^2 + 5x + 6 = (x+2)(x+3) = 0$.
-2. **Use the quadratic formula** when factoring doesn't fall out:
+## Key facts
 
-$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.$$
+- **Standard form:** $ax^2 + bx + c = 0$, $a \neq 0$.
+- **Quadratic formula:** $x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ — use when factoring isn't obvious.
+- **Vieta's sum of roots:** $r_1 + r_2 = -\dfrac{b}{a}$ — reaches the answer without finding individual roots.
+- **Vieta's product of roots:** $r_1 r_2 = \dfrac{c}{a}$ — same idea for products.
+- **Discriminant:** $\Delta = b^2 - 4ac$. $\Delta > 0$ → two real roots; $\Delta = 0$ → one repeated real root; $\Delta < 0$ → no real roots.
+- **Vertex form:** $y = a(x - h)^2 + k$, vertex at $(h, k)$. Minimum value $k$ when $a > 0$; maximum when $a < 0$.
+- **Completing the square:** $ax^2 + bx + c = a\!\left(x + \dfrac{b}{2a}\right)^{\!2} + c - \dfrac{b^2}{4a}$.
+- **Identity toolkit:** $r_1^2 + r_2^2 = (r_1 + r_2)^2 - 2r_1 r_2$ — express symmetric functions of roots using Vieta values alone.
 
-3. **Use Vieta's formulas** — without solving:
-   - **Sum of roots:** $r_1 + r_2 = -\dfrac{b}{a}$
-   - **Product of roots:** $r_1 r_2 = \dfrac{c}{a}$
+## Worked example 1
 
-Vieta is the single biggest time-saver on AMC10 quadratics. Most "find the
-sum/product of values of $x$" problems are one-liners with Vieta.
+> The roots of $x^2 - 8x + 7 = 0$ are $r$ and $s$. Find $r^2 + s^2$.
 
-## Worked example
+We want $r^2 + s^2$, but we don't need to find $r$ and $s$ individually. By Vieta's formulas:
 
-> If $x^2 + 5x + 6 = 0$, what is the sum of all distinct values of $x$?
+$$r + s = \frac{-(-8)}{1} = 8, \qquad rs = \frac{7}{1} = 7.$$
 
-By Vieta, the sum of roots is $-\dfrac{5}{1} = -5$. Done — no factoring needed.
+Now use the identity $r^2 + s^2 = (r+s)^2 - 2rs$:
 
-## When to slow down
+$$r^2 + s^2 = 8^2 - 2(7) = 64 - 14 = 50.$$
 
-If the problem asks for a specific root (not the sum/product), you usually need
-to factor or use the formula. If the discriminant $b^2 - 4ac$ is a perfect
-square, factoring will work.
+*(Quick check: the roots are $1$ and $7$, so $r^2 + s^2 = 1 + 49 = 50$. ✓)*
+
+## Worked example 2
+
+> Find all values of $m$ such that $x^2 - (2m-1)x + (m^2 - m - 2) = 0$ has a repeated real root. What is the sum of all such values of $m$?
+
+A repeated root occurs when the discriminant equals zero:
+
+$$\Delta = (2m-1)^2 - 4(m^2 - m - 2) = 0.$$
+
+Expand:
+
+$$4m^2 - 4m + 1 - 4m^2 + 4m + 8 = 0 \implies 9 = 0.$$
+
+That's a contradiction — there is no value of $m$ giving a repeated root for this particular equation. This illustrates that setting $\Delta = 0$ can produce zero, one, or two solutions depending on how the coefficients depend on the parameter.
+
+For a version that does have solutions, consider $x^2 - (m+3)x + (3m + 4) = 0$. Setting $\Delta = 0$:
+
+$$(m+3)^2 - 4(3m+4) = 0 \implies m^2 - 6m - 7 = 0 \implies (m-7)(m+1) = 0.$$
+
+So $m = 7$ or $m = -1$, and their sum is $\boxed{6}$.
+
+## Common traps
+
+- **Forgetting the sign in Vieta's sum.** The sum of roots is $-b/a$, not $+b/a$. If $x^2 + 5x + 6 = 0$, the sum is $-5$, not $5$.
+- **Confusing "equal roots" with "integer roots."** Equal roots means $\Delta = 0$. Integer roots means $\Delta$ is a perfect square *and* the formula gives whole numbers — a stricter condition.
+- **Dropping the leading coefficient.** Vieta gives $r_1 + r_2 = -b/a$ and $r_1 r_2 = c/a$. When $a \neq 1$, students often forget to divide by $a$.
+- **Vertex vs. root.** The vertex $x = -b/(2a)$ is *not* a root (unless the vertex touches the $x$-axis). Don't mix up the vertex formula with the quadratic formula.
+- **Assuming two solutions always exist.** Check $\Delta$ before claiming roots. A problem may intend the "no real solution" case as a trap answer.

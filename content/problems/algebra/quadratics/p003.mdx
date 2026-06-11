@@ -1,0 +1,29 @@
+---
+topic: algebra
+subtopic: quadratics
+difficulty: 3
+answer: A
+choices: ["3", "4", "5", "6", "7"]
+---
+
+<Problem>
+How many positive integer values of $k$ make both roots of $x^2 - kx + 12 = 0$ positive integers?
+</Problem>
+
+<Solution>
+If both roots are positive integers $r$ and $s$, then by Vieta's formulas $r + s = k$ and $rs = 12$.
+
+We need every pair of positive integers whose product is 12:
+
+| $(r, s)$ | $k = r + s$ |
+|---|---|
+| $(1, 12)$ | $13$ |
+| $(2, 6)$ | $8$ |
+| $(3, 4)$ | $7$ |
+
+(The pair $(4,3)$ is the same as $(3,4)$, and similarly for the others.)
+
+Each pair gives a distinct value of $k$, so there are **3** valid values.
+
+Answer: **A**.
+</Solution>

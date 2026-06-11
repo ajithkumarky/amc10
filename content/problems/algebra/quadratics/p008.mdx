@@ -1,0 +1,33 @@
+---
+topic: algebra
+subtopic: quadratics
+difficulty: 5
+answer: A
+choices: ["11", "12", "14", "15", "16"]
+---
+
+<Problem>
+The equation $x^2 - px + q = 0$ has two positive integer roots, and so does $x^2 - qx + p = 0$. If $p \neq q$, what is $p + q$?
+</Problem>
+
+<Solution>
+Let the roots of $x^2 - px + q = 0$ be positive integers $a$ and $b$, and let the roots of $x^2 - qx + p = 0$ be positive integers $c$ and $d$.
+
+By Vieta's formulas:
+
+$$a + b = p, \quad ab = q, \quad c + d = q, \quad cd = p.$$
+
+So $p = a + b = cd$ and $q = ab = c + d$.
+
+We need $a + b = cd$ and $ab = c + d$ with $p \neq q$, i.e., $a + b \neq ab$.
+
+**Search over small positive integers.** For positive integers with $ab = c + d$ and $cd = a + b$:
+
+- Try $a = 2, b = 3$: $p = 5$, $q = 6$. Check the second equation: does $x^2 - 6x + 5 = 0$ have positive integer roots? Factor: $(x-1)(x-5) = 0$, roots $1$ and $5$. Check: $1 + 5 = 6 = q$ ✓ and $1 \cdot 5 = 5 = p$ ✓.
+
+This works with $p = 5, q = 6$, and indeed $p \neq q$.
+
+Therefore $p + q = 5 + 6 = \mathbf{11}$.
+
+Answer: **A**.
+</Solution>

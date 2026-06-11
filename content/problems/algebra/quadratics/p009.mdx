@@ -1,0 +1,32 @@
+---
+topic: algebra
+subtopic: quadratics
+difficulty: 5
+answer: C
+choices: ["-8", "0", "6", "8", "14"]
+---
+
+<Problem>
+Find the sum of all real values of $m$ for which $x^2 - (m+3)x + (3m+4) = 0$ has exactly one real solution (counting multiplicity).
+</Problem>
+
+<Solution>
+A quadratic has exactly one real solution when its discriminant equals zero:
+
+$$\Delta = \bigl[-(m+3)\bigr]^2 - 4(3m+4) = 0.$$
+
+Expand:
+
+$$m^2 + 6m + 9 - 12m - 16 = 0 \implies m^2 - 6m - 7 = 0.$$
+
+Factor:
+
+$$(m - 7)(m + 1) = 0 \implies m = 7 \text{ or } m = -1.$$
+
+Both values are real, so the sum of all such values is $7 + (-1) = \mathbf{6}$.
+
+*(Check $m = 7$: equation becomes $x^2 - 10x + 25 = (x-5)^2 = 0$, one root $x = 5$. ✓  
+Check $m = -1$: equation becomes $x^2 - 2x + 1 = (x-1)^2 = 0$, one root $x = 1$. ✓)*
+
+Answer: **C**.
+</Solution>
