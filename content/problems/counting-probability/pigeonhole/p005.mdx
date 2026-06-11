@@ -1,0 +1,27 @@
+---
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 3
+answer: E
+choices: ["13", "23", "24", "26", "25"]
+---
+
+<Problem>
+Birthdays are recorded only by **month** (ignoring day and year). What is the minimum number of people needed in a room to **guarantee** that at least $3$ of them share the same birth month?
+</Problem>
+
+<Solution>
+There are $12$ months, which serve as our $12$ containers.
+
+We use the generalized Pigeonhole Principle: if $n$ people are distributed among $12$ months, at least one month contains $\lceil n/12 \rceil$ people.
+
+We need $\lceil n/12 \rceil \geq 3$, which requires $n > 24$, giving $n \geq 25$.
+
+**Adversarial check:**
+- $n = 24$: The adversary can distribute $2$ people to each of the $12$ months ($2 \times 12 = 24$). Every month has exactly $2$ people — nobody forced to have $3$. So $24$ is not enough.
+- $n = 25$: The adversary again tries to spread birthdays as evenly as possible. At best they get $2$ people in each of $12$ months, accounting for $24$ people. The $25$th person must go into one of those months, giving that month $3$ people.
+
+The minimum number of people is $\boxed{25}$.
+
+Answer: **E**.
+</Solution>

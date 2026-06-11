@@ -1,0 +1,63 @@
+---
+title: Pigeonhole
+summary: If more objects than containers exist, at least one container must hold more than one object — a simple idea with powerful consequences.
+---
+
+## Overview
+
+The **Pigeonhole Principle** says: if you distribute $n$ objects into $k$ containers and $n > k$, then at least one container must contain **at least two** objects. The name comes from pigeons flying into holes — if 5 pigeons share 4 holes, one hole holds at least 2 pigeons.
+
+Despite sounding trivial, the pigeonhole principle is one of the AMC's favorite tools for "guarantee" questions. The key phrase to watch for is *"what is the minimum number you must pick to be certain that…"* These are worst-case problems: you are not asking what usually happens, but what the adversary can force. Always imagine someone handing you items in the worst possible order before you "win."
+
+The principle extends beautifully to structured settings. By choosing clever containers — residue classes, sums to a target, geometric regions — you can prove that collisions must occur even when the numbers look sparse.
+
+## Key facts
+
+- **Basic pigeonhole:** Distribute $n$ objects into $k$ containers. If $n > k$, at least one container contains $\geq 2$ objects.
+  *Use when: proving existence, worst-case minimum-picks.*
+
+- **Generalized pigeonhole:** If $n$ objects go into $k$ containers, at least one container holds $\geq \lceil n/k \rceil$ objects.
+  *Use when: guaranteeing that some container holds many objects.*
+
+- **Worst-case formula for socks/gloves:**
+  - Matching pair from $k$ colors: pick $k + 1$ socks.
+  - Matching pair from $k$ colors of gloves (left + right): pick $2k + 1$ gloves (worst case is all $k$ left-hand or all $k$ right-hand first).
+  *Use when: drawing from a mixed pile, need a guaranteed match.*
+
+- **Remainders as pigeonholes:** Among any $k + 1$ integers, two must share the same remainder when divided by $k$. Their difference is divisible by $k$.
+  *Use when: divisibility or difference-divisible-by-$n$ arguments.*
+
+- **Pairs summing to a fixed value:** To guarantee two numbers from $\{1, 2, \ldots, n\}$ that sum to $n+1$, note the pairs $\{i, n+1-i\}$, i.e. $\{1,n\}, \{2,n-1\}, \ldots$ If $n$ is even there are $n/2$ clean pairs and choosing $n/2 + 1$ numbers forces a pair; if $n$ is odd, the middle element $(n+1)/2$ is unpaired, and choosing $(n+1)/2 + 1$ numbers forces a pair.
+  *Use when: sum-to-$S$ guarantee problems.*
+
+## Worked example 1
+
+**Problem.** A drawer contains socks in 6 different colors. You grab socks in the dark, one at a time. What is the minimum number of socks you must grab to guarantee a matching pair?
+
+**Solution.** The 6 colors act as containers. In the worst case you could pick one sock of each color before getting a repeat: 6 socks with no match. The next sock (the 7th) must match one of the 6 colors already in your hand.
+
+Answer: $6 + 1 = \boxed{7}$ socks.
+
+*Why the formula works:* You need $k + 1$ picks to guarantee a pair from $k$ containers. The adversary tries to delay your win by always giving you a new color; after $k$ picks they are forced to repeat.
+
+## Worked example 2
+
+**Problem.** Seven distinct integers are chosen from the set $\{1, 2, 3, \ldots, 12\}$. Prove that two of them must sum to $13$.
+
+**Solution.** Partition $\{1, \ldots, 12\}$ into six pairs that each sum to $13$:
+$$\{1,12\},\ \{2,11\},\ \{3,10\},\ \{4,9\},\ \{5,8\},\ \{6,7\}.$$
+These six pairs are the *containers*. When you choose 7 integers, you place 7 objects into 6 containers (choosing a number "enters" its pair). By pigeonhole, at least one container holds both members — meaning both integers of some pair were chosen. Those two integers sum to $13$.
+
+*Key insight:* building the right containers (here, complementary pairs) is the creative step; once you have them the pigeonhole logic is automatic.
+
+## Common traps
+
+- **Off-by-one on "guarantee" problems.** If there are $k$ types, the minimum guarantee is $k+1$, *not* $k$. It is always possible (if unlikely) to be unlucky $k$ times in a row.
+
+- **Confusing "could happen" with "must happen."** Pigeonhole gives an existence guarantee — something *must* be true — but it doesn't tell you which container is overloaded or how to find it.
+
+- **Gloves vs socks.** For gloves (handed), one left and one right of the same color is a pair. Picking $k+1$ from $k$ colors gives a repeated *color*, but both could be left-hand gloves. The correct worst case is: take all $k$ left gloves, then all $k$ right gloves — that's $2k$ with no complete pair. The $(2k+1)$-th glove must complete a pair: $2k + 1$ is the answer.
+
+- **Forgetting to define the containers.** The hard part of pigeonhole problems is identifying *what* plays the role of the holes. If you jump straight to a formula without constructing the partition, you may use the wrong $k$.
+
+- **Applying generalized pigeonhole incorrectly.** $\lceil n/k \rceil$ guarantees *at least one* container holds that many — not that *every* container does.

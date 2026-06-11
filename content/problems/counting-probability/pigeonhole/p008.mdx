@@ -1,0 +1,31 @@
+---
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 4
+answer: C
+choices: ["6", "7", "8", "9", "10"]
+---
+
+<Problem>
+What is the size of the **largest** subset $S$ of $\{1, 2, 3, \ldots, 15\}$ such that no two elements of $S$ sum to $16$?
+</Problem>
+
+<Solution>
+First, identify all pairs $\{a, b\}$ with $a + b = 16$ and $a, b \in \{1, \ldots, 15\}$:
+$$\{1,15\},\quad\{2,14\},\quad\{3,13\},\quad\{4,12\},\quad\{5,11\},\quad\{6,10\},\quad\{7,9\}.$$
+That gives $7$ pairs, covering $14$ of the $15$ elements. The remaining element is $8$ (since $8 + 8 = 16$ requires two copies of $8$, which we don't have).
+
+**Choosing $S$:** From each of the $7$ pairs, we may include **at most one** element (including both forces a sum of $16$). We may always include $8$.
+
+- Maximum contribution from pairs: $1$ element per pair $\times 7$ pairs $= 7$.
+- Plus the singleton $\{8\}$: $1$.
+- Total: $7 + 1 = 8$.
+
+**Explicit example:** $S = \{1, 2, 3, 4, 5, 6, 7, 8\}$. Check: the largest sum of two elements is $7 + 8 = 15 \neq 16$, and no two elements sum to $16$. $|S| = 8$.
+
+**Why we cannot do better:** Any $9$-element subset must contain both elements of at least one pair (by pigeonhole: $9$ elements, $7$ pairs + $1$ singleton = $8$ "slots"), forcing a sum of $16$.
+
+The largest such subset has $\boxed{8}$ elements.
+
+Answer: **C**.
+</Solution>

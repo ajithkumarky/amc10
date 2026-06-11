@@ -1,0 +1,27 @@
+---
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 3
+answer: C
+choices: ["9", "10", "11", "12", "20"]
+---
+
+<Problem>
+Integers are chosen one at a time from the set $\{1, 2, 3, \ldots, 20\}$ without replacement. What is the minimum number of integers that must be chosen to **guarantee** that two of the chosen integers sum to $21$?
+</Problem>
+
+<Solution>
+First, identify all pairs of distinct elements from $\{1, \ldots, 20\}$ that sum to $21$:
+$$\{1,20\},\ \{2,19\},\ \{3,18\},\ \{4,17\},\ \{5,16\},\ \{6,15\},\ \{7,14\},\ \{8,13\},\ \{9,12\},\ \{10,11\}.$$
+There are exactly $10$ such pairs. These $10$ pairs partition all $20$ integers; treat each pair as a "container."
+
+**Adversarial scenario:** An adversary hands you integers trying to avoid giving you a complete pair. The worst case is to give you exactly one integer from each pair. After $10$ choices, you hold one element from each of the $10$ pairs — still no complete pair.
+
+The $11$th integer must come from a pair that already has one representative in your hand, completing that pair and giving a sum of $21$.
+
+**Check:** Is $10$ enough? No — the adversary can give you $\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$, one from each pair, with no sum equaling $21$.
+
+The minimum number of integers to guarantee a sum-$21$ pair is $\boxed{11}$.
+
+Answer: **C**.
+</Solution>

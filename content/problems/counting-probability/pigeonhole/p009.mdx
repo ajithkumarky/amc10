@@ -1,0 +1,56 @@
+---
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 5
+answer: D
+choices: ["16", "18", "19", "20", "21"]
+---
+
+<Problem>
+Call a set of positive integers **triple-free** if it contains no two elements $a$ and $b$ with $b = 3a$. What is the size of the largest triple-free subset of $\{1, 2, 3, \ldots, 27\}$?
+</Problem>
+
+<Solution>
+**Step 1: Build chains under tripling.**
+
+Partition $\{1, \ldots, 27\}$ into chains where each chain connects an integer to its multiples of $3$. Every integer belongs to exactly one chain (start from the unique element in the chain not divisible by $3$, or that equals $27$).
+
+The chains are:
+
+| Chain | Elements | Length |
+|-------|----------|--------|
+| $1 \to 3 \to 9 \to 27$ | $\{1, 3, 9, 27\}$ | 4 |
+| $2 \to 6 \to 18$ | $\{2, 6, 18\}$ | 3 |
+| $4 \to 12$ | $\{4, 12\}$ | 2 |
+| $5 \to 15$ | $\{5, 15\}$ | 2 |
+| $7 \to 21$ | $\{7, 21\}$ | 2 |
+| $8 \to 24$ | $\{8, 24\}$ | 2 |
+| Singletons | $\{10,11,13,14,16,17,19,20,22,23,25,26\}$ | 1 each |
+
+**Verify the count:** $4 + 3 + 2 + 2 + 2 + 2 + 12 = 27$. ✓
+
+The $12$ singletons are integers in $(9, 27]$ that are not divisible by $3$ and whose one-third is not an integer in $\{1,\ldots,27\}$ — specifically, the integers from $10$ to $26$ that are not multiples of $3$: that is $\{10,11,13,14,16,17,19,20,22,23,25,26\}$.
+
+**Step 2: Maximize the triple-free subset within each chain.**
+
+A triple-free subset cannot contain two consecutive elements $a, 3a$ of a chain. This is equivalent to choosing an **independent set** in a path graph.
+
+- **Length-4 chain** $\{1,3,9,27\}$: The independent sets of a 4-vertex path have maximum size $2$. Choose $\{1, 9\}$ or $\{3, 27\}$ (skip every other). Contribution: $2$.
+- **Length-3 chain** $\{2,6,18\}$: Maximum independent set of a 3-vertex path has size $2$. Choose $\{2, 18\}$. Contribution: $2$.
+- **Length-2 chains** ($\{4,12\}$, $\{5,15\}$, $\{7,21\}$, $\{8,24\}$): Each allows at most $1$. Contribution: $1 \times 4 = 4$.
+- **Singletons** (12 elements): Include all. Contribution: $12$.
+
+**Step 3: Total.**
+
+$$2 + 2 + 4 + 12 = 20.$$
+
+**Explicit example:** $S = \{1, 9\} \cup \{2, 18\} \cup \{4\} \cup \{5\} \cup \{7\} \cup \{8\} \cup \{10,11,13,14,16,17,19,20,22,23,25,26\}$.
+
+Check: $|S| = 2+2+1+1+1+1+12 = 20$. No element of $S$ is three times another element of $S$. ✓
+
+**Why $21$ is impossible:** Any $21$-element subset must take at least $21 - 18 = 3$ elements from the non-singleton chains (total $4+3+2+2+2+2=15$ chain elements; singletons only provide $12$). The maximum from chains is $2+2+1+1+1+1=8$; $12+8=20$, so $21$ is impossible.
+
+The largest triple-free subset of $\{1,\ldots,27\}$ has $\boxed{20}$ elements.
+
+Answer: **D**.
+</Solution>

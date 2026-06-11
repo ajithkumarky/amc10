@@ -1,0 +1,25 @@
+---
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 2
+answer: B
+choices: ["20", "22", "21", "23", "24"]
+---
+
+<Problem>
+A school club has members in grades $9$, $10$, and $11$. Members are randomly assigned to one of three advisory groups labeled $X$, $Y$, and $Z$. What is the minimum number of club members needed to **guarantee** that at least $8$ members are assigned to the same advisory group?
+</Problem>
+
+<Solution>
+We use the generalized Pigeonhole Principle: if $n$ objects are placed into $3$ containers, at least one container holds at least $\lceil n/3 \rceil$ objects.
+
+We need $\lceil n/3 \rceil \geq 8$, which means $n/3 > 7$, so $n > 21$, giving $n \geq 22$.
+
+**Verify the boundary:**
+- With $21$ members, the groups could be split $7$-$7$-$7$ — no group has $8$. So $21$ is not enough.
+- With $22$ members, even if the adversary tries to spread them as evenly as possible, the best they can do is $8$-$7$-$7$ — one group must have at least $8$.
+
+The minimum number of members is $22$.
+
+Answer: **B**.
+</Solution>

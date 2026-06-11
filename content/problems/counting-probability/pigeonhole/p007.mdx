@@ -1,0 +1,29 @@
+---
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 4
+answer: B
+choices: ['$\sqrt{3}$', '$1$', '$\sqrt{2}$', '$2$', '$\dfrac{1}{2}$']
+---
+
+<Problem>
+Ten points are placed inside or on an equilateral triangle with side length $3$. What is the smallest value $d$ such that some two of the ten points are guaranteed to be within distance $d$ of each other (i.e., the distance between them is at most $d$)?
+</Problem>
+
+<Solution>
+**Divide and conquer with pigeonhole.**
+
+Subdivide the equilateral triangle of side $3$ into $9$ smaller equilateral triangles, each with side length $1$. (This is a standard triangular grid: draw lines parallel to each side at distances $1, 2$ from each vertex, creating $3^2 = 9$ unit triangles.)
+
+These $9$ small triangles are the containers.
+
+**Applying pigeonhole:** We have $10$ points placed into $9$ containers. At least one small triangle contains $2$ (or more) of the ten points.
+
+**Maximum distance inside a unit equilateral triangle:** Any two points inside or on an equilateral triangle of side $1$ are at most distance $1$ apart (the longest distance between two points of an equilateral triangle equals its side length).
+
+Therefore, some two of the ten points lie in the same unit triangle and are at distance at most $1$.
+
+**Tightness:** With exactly $9$ points (one per small triangle), we can place them at vertices of the triangular grid, where adjacent points are exactly distance $1$ apart and non-adjacent points are farther. So $9$ points do not guarantee distance $\leq d$ for any $d < 1$, confirming $d = 1$ is tight.
+
+Answer: **B**.
+</Solution>

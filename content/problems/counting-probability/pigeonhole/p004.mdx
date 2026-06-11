@@ -1,0 +1,27 @@
+---
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 3
+answer: D
+choices: ["8", "9", "11", "10", "12"]
+---
+
+<Problem>
+What is the smallest integer $n$ such that among any $n$ integers chosen from $\{1, 2, 3, \ldots, 30\}$, there must exist two whose **difference** is divisible by $9$?
+</Problem>
+
+<Solution>
+Two integers have a difference divisible by $9$ exactly when they share the same remainder (residue) when divided by $9$.
+
+The possible remainders mod $9$ are $0, 1, 2, 3, 4, 5, 6, 7, 8$ — that is, $9$ residue classes. These act as our $9$ containers.
+
+**Pigeonhole:** If we choose $n > 9$ integers, by the Pigeonhole Principle at least two share the same residue mod $9$, so their difference is divisible by $9$.
+
+**Boundary check:**
+- $n = 9$: We can choose one integer from each residue class, e.g., $\{1, 2, 3, 4, 5, 6, 7, 8, 9\}$ (residues $1,2,3,4,5,6,7,8,0$). No two share a residue, so no difference is divisible by $9$.
+- $n = 10$: With $10$ integers and only $9$ residue classes, two must share a residue, so their difference is divisible by $9$.
+
+The smallest such $n$ is $\boxed{10}$.
+
+Answer: **D**.
+</Solution>

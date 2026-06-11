@@ -1,0 +1,23 @@
+---
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 1
+answer: A
+choices: ["9", "8", "10", "16", "17"]
+---
+
+<Problem>
+A dresser drawer contains socks in $8$ different colors, with many socks of each color. If you reach in without looking, what is the minimum number of socks you must pull out to **guarantee** you have a matching pair?
+</Problem>
+
+<Solution>
+Think of the $8$ colors as $8$ "containers." In the worst case, each of the first $8$ socks you pull out is a different color — one of each color. At this point you have no match, but the next sock must repeat one of the $8$ colors already in your hand.
+
+Therefore, $8 + 1 = 9$ socks are needed.
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Pigeonhole directly">
+With $8$ containers (colors) and $9$ objects (socks), the Pigeonhole Principle guarantees at least one container holds $\geq 2$ socks — that is, a matching pair. Fewer than $9$ socks can all be different colors, so $9$ is the exact minimum.
+</AlternateMethod>
