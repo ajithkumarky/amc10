@@ -1,0 +1,28 @@
+---
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 3
+answer: C
+choices: ["$4$", "$6$", "$8$", "$10$", "$12$"]
+---
+
+<Problem>
+Rectangle $ABCD$ has $AB = 8$ and $BC = 10$, with vertices labeled in order so that $AB \parallel DC$. Point $M$ is the midpoint of $\overline{BC}$. Segment $\overline{AM}$ is extended beyond $M$ until it meets line $DC$ extended at point $E$ (outside the rectangle). What is the length $CE$?
+</Problem>
+
+<Solution>
+Set up coordinates: place $B$ at the origin, $C$ at $(10, 0)$, $A$ at $(0, 8)$, $D$ at $(10, 8)$. Then $M$, the midpoint of $\overline{BC}$, is at $(5, 0)$.
+
+**Identify the congruent triangles.** Consider $\triangle ABM$ and $\triangle ECM$:
+- $\angle ABM = \angle ECM = 90°$ (both are right angles — $AB \perp BC$ and $E$ lies on line $DC$ which is parallel to $AB$, so $EC \perp BC$).
+- $BM = CM = 5$ (since $M$ is the midpoint of $BC$).
+- $\angle AMB = \angle EMC$ (vertical angles at $M$).
+
+By **ASA**, $\triangle ABM \cong \triangle ECM$.
+
+Therefore $CE = AB = 8$.
+
+**Coordinate check:** Line $AM$ passes through $A = (0, 8)$ and $M = (5, 0)$. Its slope is $\dfrac{0-8}{5-0} = -\dfrac{8}{5}$. Parametrically, beyond $M$: at $x = 10$, $y = 0 + (-\tfrac{8}{5})(10 - 5) = -8$. So $E = (10, -8)$, giving $CE = |0 - (-8)| = 8$ ✓.
+
+Answer: **C**.
+</Solution>

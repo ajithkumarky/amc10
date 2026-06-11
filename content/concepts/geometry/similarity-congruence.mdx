@@ -1,0 +1,60 @@
+---
+title: Similarity & Congruence
+summary: Congruence criteria (SSS/SAS/ASA/AAS/HL), similarity criteria (AA/SAS/SSS), ratio chasing, and the k² area rule for similar figures.
+---
+
+## Overview
+
+Two triangles are **congruent** when they are identical in shape and size — every pair of corresponding sides and angles matches exactly. On the AMC, congruence mostly appears as a tool to transfer lengths or angles from one part of a figure to another, letting you "move" information you already have to a place where you need it.
+
+Two triangles are **similar** when they have the same shape but possibly different sizes. Corresponding angles are equal and corresponding sides are proportional. Similarity is one of the most powerful tools on the AMC because it converts hard length-chasing into clean ratio equations. Whenever you see parallel lines, a common angle, or a right angle shared by nested triangles, suspect similarity and look for which criterion applies.
+
+The AMC's favorite similarity setup is a pair of triangles that share a vertex angle and have a second angle forced equal by parallel lines or a right-angle condition. Once you identify the ratio of corresponding sides, you can find any unknown length — and the area ratio follows automatically as the square of that length ratio.
+
+## Key facts
+
+- **SSS congruence:** If three sides of one triangle equal the three sides of another, the triangles are congruent. *Use when all three side lengths are known.*
+- **SAS congruence:** Two sides and the included angle. *The angle must be between the two sides.*
+- **ASA congruence:** Two angles and the included side. *Side is between the two angles.*
+- **AAS congruence:** Two angles and a non-included side. *Since angle sums force the third angle, this follows from ASA.*
+- **HL congruence:** In right triangles only — hypotenuse and one leg. *A special case of SSS that's faster to check.*
+- **AA similarity:** If two pairs of angles are equal, the triangles are similar. *The third pair is automatic (angle sum = 180°).* This is the most commonly used criterion.
+- **SAS similarity:** Two pairs of sides in proportion **and** the included angles equal.
+- **SSS similarity:** All three pairs of sides in the same ratio.
+- **Ratio chasing:** If $\triangle ABC \sim \triangle DEF$ with ratio $k = AB/DE$, then every pair of corresponding lengths (sides, altitudes, medians) has ratio $k$.
+- **Area ratio:** If two similar figures have linear scale factor $k$, their areas are in ratio $k^2$. *Always square the length ratio to get the area ratio.*
+- **Parallel lines and similarity:** A line parallel to one side of a triangle cuts the other two sides proportionally (Basic Proportionality / Thales' theorem), creating a smaller similar triangle.
+- **Angle bisector theorem:** The angle bisector from vertex $A$ in $\triangle ABC$ divides the opposite side $BC$ in the ratio $AB : AC$. *Often appears paired with similarity setups.*
+- **Altitude on hypotenuse:** In a right triangle, the altitude from the right angle to the hypotenuse creates two smaller triangles, each similar to the original and to each other.
+
+## Worked example 1
+
+> In $\triangle ABC$, $DE \parallel BC$ where $D$ is on $\overline{AB}$ and $E$ is on $\overline{AC}$. If $AD = 4$, $DB = 6$, and $BC = 15$, find $DE$.
+
+Since $DE \parallel BC$, by the Basic Proportionality Theorem $\triangle ADE \sim \triangle ABC$ (AA: both share angle $A$, and $\angle ADE = \angle ABC$ as corresponding angles).
+
+The ratio of similarity is $\dfrac{AD}{AB} = \dfrac{4}{4+6} = \dfrac{4}{10} = \dfrac{2}{5}$.
+
+Therefore $DE = \dfrac{2}{5} \cdot BC = \dfrac{2}{5} \cdot 15 = 6$.
+
+*Key move:* parallel lines force the AA condition, and then proportionality gives the side immediately.
+
+## Worked example 2
+
+> Right triangle $PQR$ has the right angle at $Q$, with $PQ = 9$ and $QR = 12$. The altitude from $Q$ meets $\overline{PR}$ at $S$. Find the length $QS$.
+
+**Step 1 — find the hypotenuse.** $PR = \sqrt{9^2 + 12^2} = \sqrt{225} = 15$.
+
+**Step 2 — use the altitude formula.** The altitude from the right angle to the hypotenuse satisfies $QS = \dfrac{PQ \cdot QR}{PR}$, derived by equating two area expressions for $\triangle PQR$:
+
+$$\tfrac{1}{2} \cdot PQ \cdot QR = \tfrac{1}{2} \cdot PR \cdot QS \implies QS = \frac{9 \cdot 12}{15} = \frac{108}{15} = \frac{36}{5}$$
+
+**Why similarity explains this:** $\triangle PQS \sim \triangle PQR \sim \triangle QRS$ (all three share angle pairs). The altitude $QS$ is the geometric mean of the two segments $PS$ and $SR$. Each sub-triangle is similar to the whole.
+
+## Common traps
+
+- **Confusing the included vs. non-included side.** SAS (congruence and similarity) requires the angle to be *between* the two sides. SSA is **not** a valid congruence criterion — it can produce two distinct triangles.
+- **Applying the ratio directly to area.** If similar triangles have sides in ratio $3:5$, their areas are in ratio $9:25$, not $3:5$. Always square the linear scale factor.
+- **Mis-identifying corresponding vertices.** When writing $\triangle ABC \sim \triangle DEF$, the correspondence is $A \leftrightarrow D$, $B \leftrightarrow E$, $C \leftrightarrow F$. Getting the correspondence wrong gives reciprocal or meaningless ratios.
+- **Forgetting HL requires a right angle.** HL is not a valid criterion for non-right triangles. Always confirm the right angle before invoking it.
+- **Angle bisector theorem direction.** The bisector from $A$ divides $BC$ in ratio $AB : AC$ — the side adjacent to $B$ corresponds to $AB$, not $AC$. Swapping these gives the reciprocal ratio.

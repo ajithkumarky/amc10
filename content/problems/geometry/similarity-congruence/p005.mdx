@@ -1,0 +1,23 @@
+---
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 3
+answer: E
+choices: ["$6$", "$8$", "$9$", "$12$", "$10$"]
+---
+
+<Problem>
+Trapezoid $ABCD$ has $\overline{AB} \parallel \overline{CD}$ with $AB = 15$ and $CD = 9$. The diagonals $\overline{AC}$ and $\overline{BD}$ intersect at point $E$. If $DE = 6$, what is the length $BE$?
+</Problem>
+
+<Solution>
+Since $AB \parallel CD$, angles $\angle EAB$ and $\angle ECD$ are alternate interior angles (equal), and angles $\angle EBA$ and $\angle EDC$ are alternate interior angles (equal). Together with the shared vertex angle at $E$ (vertical angles), we get $\triangle ABE \sim \triangle CDE$ by AA similarity.
+
+The scale factor from $\triangle CDE$ to $\triangle ABE$ is
+$$k = \frac{AB}{CD} = \frac{15}{9} = \frac{5}{3}.$$
+
+Corresponding sides scale by $k$, so
+$$\frac{BE}{DE} = \frac{5}{3} \implies BE = \frac{5}{3} \cdot 6 = 10.$$
+
+Answer: **E**.
+</Solution>

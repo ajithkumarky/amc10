@@ -1,0 +1,30 @@
+---
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 3
+answer: B
+choices: ['$\dfrac{120}{17}$', '$\dfrac{225}{17}$', '$\dfrac{64}{17}$', '$\dfrac{15}{17}$', '$\dfrac{240}{17}$']
+---
+
+<Problem>
+Right triangle $ABC$ has a right angle at $C$, with legs $AC = 8$ and $BC = 15$. The altitude from $C$ meets the hypotenuse $\overline{AB}$ at point $D$. What is the length of the longer segment, $DB$?
+</Problem>
+
+<Solution>
+**Step 1 — find the hypotenuse.**
+
+$$AB = \sqrt{AC^2 + BC^2} = \sqrt{64 + 225} = \sqrt{289} = 17.$$
+
+**Step 2 — identify the similar triangles.**
+
+The altitude from the right angle creates $\triangle ACD \sim \triangle ACB$ and $\triangle CBD \sim \triangle CAB$. In particular, $\triangle CBD \sim \triangle CAB$ (both have a right angle and share angle $B$).
+
+**Step 3 — set up the proportion for $DB$.**
+
+From $\triangle CBD \sim \triangle CAB$:
+$$\frac{DB}{CB} = \frac{CB}{AB} \implies DB = \frac{CB^2}{AB} = \frac{15^2}{17} = \frac{225}{17}.$$
+
+We can verify $AD = \dfrac{AC^2}{AB} = \dfrac{64}{17}$, and indeed $AD + DB = \dfrac{64}{17} + \dfrac{225}{17} = \dfrac{289}{17} = 17$ ✓.
+
+Answer: **B**.
+</Solution>

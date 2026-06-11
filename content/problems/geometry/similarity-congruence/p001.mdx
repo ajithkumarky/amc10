@@ -1,0 +1,23 @@
+---
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 1
+answer: C
+choices: ["$3$", "$4$", "$5$", "$6$", "$7$"]
+---
+
+<Problem>
+In triangle $ABC$, point $D$ lies on $\overline{AB}$ and point $E$ lies on $\overline{AC}$ such that $\overline{DE} \parallel \overline{BC}$. If $AD = 3$, $DB = 3$, and $BC = 10$, what is the length of $DE$?
+</Problem>
+
+<Solution>
+Since $DE \parallel BC$, the Basic Proportionality Theorem tells us that $\triangle ADE \sim \triangle ABC$ by AA similarity (they share angle $A$, and $\angle ADE = \angle ABC$ as corresponding angles).
+
+The scale factor is
+$$k = \frac{AD}{AB} = \frac{3}{3 + 3} = \frac{3}{6} = \frac{1}{2}.$$
+
+Therefore
+$$DE = k \cdot BC = \frac{1}{2} \cdot 10 = 5.$$
+
+Answer: **C**.
+</Solution>

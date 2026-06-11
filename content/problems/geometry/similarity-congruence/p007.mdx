@@ -1,0 +1,29 @@
+---
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 4
+answer: B
+choices: ["$\\dfrac{1}{2}$", "$\\dfrac{3}{2}$", "$\\dfrac{2}{3}$", "$2$", "$3$"]
+---
+
+<Problem>
+In triangle $ABC$, point $D$ lies on $\overline{AB}$ and point $E$ lies on $\overline{AC}$ with $\overline{DE} \parallel \overline{BC}$. The area of triangle $ADE$ is $9$ and the area of trapezoid $BCED$ is $16$. What is the ratio $AD : DB$?
+</Problem>
+
+<Solution>
+**Step 1 — relate the areas.**
+
+Since $DE \parallel BC$, triangle $ADE$ is similar to triangle $ABC$ with linear scale factor $k = AD/AB$. The area ratio equals $k^2$, so:
+$$\frac{[ADE]}{[ABC]} = k^2.$$
+
+The total area is $[ABC] = [ADE] + [BCED] = 9 + 16 = 25$, so:
+$$k^2 = \frac{[ADE]}{[ABC]} = \frac{9}{25} \implies k = \frac{3}{5}.$$
+
+**Step 2 — find $AD : DB$.**
+
+We have $k = AD/AB = 3/5$, so $AD = 3$ parts and $AB = 5$ parts, giving $DB = AB - AD = 2$ parts.
+
+$$AD : DB = 3 : 2 = \frac{3}{2}.$$
+
+Answer: **B**.
+</Solution>

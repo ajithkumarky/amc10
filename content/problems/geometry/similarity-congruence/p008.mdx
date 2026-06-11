@@ -1,0 +1,32 @@
+---
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 4
+answer: A
+choices: ['$2\sqrt{13}$', '$3\sqrt{13}$', '$6$', '$2\sqrt{5}$', '$\sqrt{39}$']
+---
+
+<Problem>
+Right triangle $ABC$ has its right angle at $C$. Point $D$ lies on the hypotenuse $\overline{AB}$ with $CD \perp AB$. If $AD = 4$ and $DB = 9$, what is the length $AC$?
+</Problem>
+
+<Solution>
+**Step 1 — recognize the similar triangles.**
+
+The altitude $CD$ from the right angle to the hypotenuse creates three similar right triangles: $\triangle ACD \sim \triangle CBD \sim \triangle ACB$ (each pair shares a right angle and one acute angle).
+
+**Step 2 — find $AB$.**
+
+$$AB = AD + DB = 4 + 9 = 13.$$
+
+**Step 3 — use the geometric mean relation for $AC$.**
+
+From $\triangle ACD \sim \triangle ACB$ (both right triangles sharing angle $A$):
+$$\frac{AC}{AB} = \frac{AD}{AC} \implies AC^2 = AD \cdot AB = 4 \cdot 13 = 52.$$
+
+Therefore $AC = \sqrt{52} = 2\sqrt{13}$.
+
+**Verification:** $BC^2 = DB \cdot AB = 9 \cdot 13 = 117$, so $BC = 3\sqrt{13}$. Check: $AC^2 + BC^2 = 52 + 117 = 169 = 13^2 = AB^2$ ✓.
+
+Answer: **A**.
+</Solution>
