@@ -1,0 +1,29 @@
+---
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 3
+answer: D
+choices: ["2", "4", "6", "0", "8"]
+---
+
+<Problem>
+What is the units digit of $3^{2025} + 7^{2025}$?
+</Problem>
+
+<Solution>
+Work modulo $10$, finding the units digit of each term separately.
+
+**Units digit of $3^{2025}$:** The powers of $3$ cycle through units digits $3, 9, 7, 1$ with period $4$.
+
+$$2025 = 4 \cdot 506 + 1, \text{ so } 2025 \equiv 1 \pmod{4}.$$
+
+Thus $3^{2025}$ has the same units digit as $3^1 = 3$.
+
+**Units digit of $7^{2025}$:** The powers of $7$ cycle through units digits $7, 9, 3, 1$ with period $4$.
+
+Since $2025 \equiv 1 \pmod{4}$, the units digit of $7^{2025}$ equals that of $7^1 = 7$.
+
+**Sum:** The units digit of $3^{2025} + 7^{2025}$ is the units digit of $3 + 7 = 10$, which is $\mathbf{0}$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,40 @@
+---
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 3
+answer: B
+choices: ["3", "4", "5", "6", "7"]
+---
+
+<Problem>
+A two-digit positive integer $n$ leaves a remainder of $3$ when divided by $7$ and a remainder of $1$ when divided by $5$. What is the sum of the digits of the smallest such $n$?
+</Problem>
+
+<Solution>
+We need $n \equiv 3 \pmod{7}$ and $n \equiv 1 \pmod{5}$.
+
+List multiples of $7$ plus $3$ (i.e., numbers $\equiv 3 \pmod 7$), starting from the smallest two-digit value:
+
+$$10, 17, 24, 31, 38, 45, \ldots$$
+
+Now check each for $n \equiv 1 \pmod{5}$:
+
+- $10 \equiv 0 \pmod{5}$ — no
+- $17 \equiv 2 \pmod{5}$ — no
+- $24 \equiv 4 \pmod{5}$ — no
+- $31 \equiv 1 \pmod{5}$ — **yes**
+
+The smallest such two-digit integer is $n = 31$.
+
+The sum of its digits is $3 + 1 = \mathbf{4}$.
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="CRT approach">
+By CRT the system $n \equiv 3 \pmod 7$, $n \equiv 1 \pmod 5$ has a unique solution mod $35$.
+
+Write $n = 7k + 3$. Substituting: $7k + 3 \equiv 1 \pmod{5}$, so $2k \equiv -2 \equiv 3 \pmod{5}$. The inverse of $2$ mod $5$ is $3$ (since $2 \cdot 3 = 6 \equiv 1$), so $k \equiv 9 \equiv 4 \pmod{5}$.
+
+Thus $k = 5m + 4$ and $n = 7(5m+4)+3 = 35m + 31$. The smallest two-digit value is $n = 31$ (at $m = 0$).
+</AlternateMethod>

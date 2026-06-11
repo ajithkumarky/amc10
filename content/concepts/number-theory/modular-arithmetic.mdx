@@ -1,35 +1,65 @@
 ---
 title: Modular Arithmetic
-summary: Reasoning about remainders without doing the division.
-difficulty: 3
+summary: Reasoning about remainders to solve divisibility, units-digit, and large-exponent problems without heavy computation.
 ---
 
-## The idea
+## Overview
 
-We write $a \equiv b \pmod{n}$ to mean "$a$ and $b$ have the same remainder
-when divided by $n$." Equivalently, $n$ divides $a - b$.
+We write $a \equiv b \pmod{n}$ to mean "$a$ and $b$ have the same remainder when divided by $n$," or equivalently, $n$ divides $a - b$. For example, $17 \equiv 2 \pmod{5}$ because $17 - 2 = 15 = 3 \cdot 5$.
 
-For example, $17 \equiv 2 \pmod{5}$ because $17 = 3\cdot 5 + 2$.
+Modular arithmetic turns problems about huge numbers into problems about small residues. Instead of computing $7^{2024}$ exactly, you only track what it looks like mod 10, shrinking billions of digits down to a single digit.
 
-## Why it matters on AMC10
+AMC 10 problems love modular arithmetic because it appears in at least three guises: **units-digit questions** (work mod 10), **remainder questions** (work mod the given divisor), and **divisibility tests** (mod 9 for digit sums, mod 4 for last two digits, etc.). Recognizing which modulus to use is often the key step.
 
-Many problems ask for a units digit, a remainder, or a divisibility property.
-Working mod 10 (units digit) or mod 9 (digit sum) turns ugly arithmetic into
-small-number arithmetic.
+## Key facts
 
-## Rules you can use
+- **Congruence rule:** $a \equiv b \pmod{n}$ if and only if $n \mid (a - b)$.
+- **Addition and multiplication:** If $a \equiv b$ and $c \equiv d \pmod{n}$, then $a + c \equiv b + d$ and $a \cdot c \equiv b \cdot d \pmod{n}$. You can reduce before multiplying.
+- **Powers cycle:** The residues of $a^1, a^2, a^3, \ldots$ mod $n$ eventually repeat. Find the period and reduce the exponent by that period.  
+  Common cycles mod 10 (units digits):  
+  | base mod 10 | cycle | period |
+  |------------|-------|--------|
+  | 1 | 1 | 1 |
+  | 2 | 2, 4, 8, 6 | 4 |
+  | 3 | 3, 9, 7, 1 | 4 |
+  | 4 | 4, 6 | 2 |
+  | 5 | 5 | 1 |
+  | 6 | 6 | 1 |
+  | 7 | 7, 9, 3, 1 | 4 |
+  | 8 | 8, 4, 2, 6 | 4 |
+  | 9 | 9, 1 | 2 |
+- **Euler's theorem:** If $\gcd(a, n) = 1$ then $a^{\phi(n)} \equiv 1 \pmod{n}$, where $\phi(n)$ is Euler's totient. For $n = p$ prime, this reduces to Fermat's little theorem: $a^{p-1} \equiv 1 \pmod{p}$.
+- **Chinese Remainder Theorem (CRT) — light version:** If $m$ and $n$ are coprime, then knowing $x \pmod{m}$ and $x \pmod{n}$ uniquely determines $x \pmod{mn}$. Use this when a problem gives two separate remainder conditions.
+- **Division warning:** You can divide both sides by $k$ only if $\gcd(k, n) = 1$. Dividing $6 \equiv 0 \pmod{6}$ by 2 gives $3 \equiv 0 \pmod{6}$, which is false.
 
-Modular arithmetic respects addition, subtraction, and multiplication:
+## Worked example 1
 
-$$a \equiv b \pmod n \;\text{and}\; c \equiv d \pmod n \implies a + c \equiv b + d \pmod n$$
-$$\text{and}\; a\cdot c \equiv b\cdot d \pmod n.$$
+> What is the units digit of $7^{2025}$?
 
-Division is trickier and only works if $\gcd(\text{divisor}, n) = 1$.
+Work mod 10. The powers of 7 cycle through units digits $7, 9, 3, 1$ with period 4.
 
-## Worked example
+Divide the exponent: $2025 = 4 \cdot 506 + 1$, so $2025 \equiv 1 \pmod{4}$.
 
-> What is the units digit of $7^{2024}$?
+Therefore $7^{2025}$ has the same units digit as $7^1$, which is $\mathbf{7}$.
 
-Work mod 10. The units digit of $7^k$ cycles: $7, 9, 3, 1, 7, 9, 3, 1, \ldots$,
-with period 4. Since $2024 = 4 \cdot 506$, we're at the end of a cycle, so
-$7^{2024} \equiv 1 \pmod{10}$. The units digit is $1$.
+## Worked example 2
+
+> Find the remainder when $5^{40} + 3^{40}$ is divided by 8.
+
+Work mod 8. Note $5 \equiv 5 \pmod{8}$. Compute the cycle of $5^k \pmod{8}$:
+$$5^1 \equiv 5,\quad 5^2 = 25 \equiv 1,\quad 5^3 \equiv 5,\ldots$$
+The cycle has period 2. Since 40 is even, $5^{40} \equiv 1 \pmod{8}$.
+
+Now for $3^k \pmod{8}$:
+$$3^1 \equiv 3,\quad 3^2 = 9 \equiv 1,\quad 3^3 \equiv 3,\ldots$$
+Period 2 again. Since 40 is even, $3^{40} \equiv 1 \pmod{8}$.
+
+So $5^{40} + 3^{40} \equiv 1 + 1 = 2 \pmod{8}$. The remainder is $\mathbf{2}$.
+
+## Common traps
+
+- **Forgetting to reduce the base first.** Always reduce each factor mod $n$ before multiplying; e.g., to work with $97 \cdot 103 \pmod{10}$, use $7 \cdot 3 = 21 \equiv 1$.
+- **Off-by-one in cycle position.** When the exponent is a multiple of the period, the answer is the *last* element of the cycle, not the first. E.g., $7^4 \equiv 1 \pmod{10}$, not 7.
+- **Dividing without checking $\gcd$.** You cannot cancel a common factor unless it is coprime to the modulus.
+- **Mixing up "remainder" and "residue".** Remainders are always non-negative. If you compute $a \equiv -1 \pmod{n}$, the remainder is $n - 1$, not $-1$.
+- **Applying CRT when moduli share a factor.** CRT requires the moduli to be pairwise coprime. If they are not, check consistency and adjust.

@@ -1,0 +1,34 @@
+---
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: E
+choices: ["10", "20", "30", "35", "40"]
+---
+
+<Problem>
+How many integers $n$ with $1 \leq n \leq 100$ satisfy $n^2 \equiv n \pmod{10}$?
+</Problem>
+
+<Solution>
+The condition $n^2 \equiv n \pmod{10}$ is equivalent to $10 \mid n(n-1)$.
+
+Since $n$ and $n-1$ are consecutive integers, they are coprime, so no prime can divide both. Thus we need:
+$$2 \mid n(n-1) \quad \text{and} \quad 5 \mid n(n-1).$$
+
+The first condition holds automatically for every integer, since one of any two consecutive integers is even.
+
+For the second condition, $5 \mid n(n-1)$ requires $5 \mid n$ or $5 \mid (n-1)$, i.e., $n \equiv 0$ or $n \equiv 1 \pmod{5}$.
+
+So the solutions are exactly those $n$ with $n \equiv 0, 1 \pmod{5}$.
+
+We can also verify by checking all residues mod $10$: among $n = 0, 1, \ldots, 9$, only $n \equiv 0, 1, 5, 6 \pmod{10}$ satisfy $n^2 \equiv n \pmod{10}$ (these are the "automorphic" residues). Each residue class appears exactly $10$ times in $\{1, 2, \ldots, 100\}$ (since $100 = 10 \cdot 10$).
+
+Count: $4$ residue classes $\times$ $10$ integers each $= \mathbf{40}$.
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Direct residue check">
+Check all $n$ from $0$ to $9$ modulo $10$: $n^2 - n \pmod{10}$ equals $0$ for $n = 0, 1, 5, 6$ and is nonzero for $n = 2, 3, 4, 7, 8, 9$. In $\{1, \ldots, 100\}$ each residue class mod $10$ contains exactly $10$ integers, giving $4 \times 10 = 40$.
+</AlternateMethod>

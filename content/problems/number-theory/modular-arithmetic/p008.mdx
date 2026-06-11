@@ -1,0 +1,32 @@
+---
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 4
+answer: D
+choices: ["13", "29", "43", "61", "89"]
+---
+
+<Problem>
+What are the last two digits of $13^{2024}$? (That is, what is $13^{2024} \pmod{100}$?)
+</Problem>
+
+<Solution>
+We need $13^{2024} \pmod{100}$.
+
+Since $\gcd(13, 100) = 1$, Euler's theorem applies: $\phi(100) = \phi(4)\cdot\phi(25) = 2 \cdot 20 = 40$, so $13^{40} \equiv 1 \pmod{100}$.
+
+Reduce the exponent: $2024 = 40 \cdot 50 + 24$, so $13^{2024} \equiv 13^{24} \pmod{100}$.
+
+Compute $13^{24}$ by repeated squaring:
+
+$$13^2 = 169 \equiv 69 \pmod{100}$$
+$$13^4 \equiv 69^2 = 4761 \equiv 61 \pmod{100}$$
+$$13^8 \equiv 61^2 = 3721 \equiv 21 \pmod{100}$$
+$$13^{16} \equiv 21^2 = 441 \equiv 41 \pmod{100}$$
+
+Now combine: $13^{24} = 13^{16} \cdot 13^8 \equiv 41 \cdot 21 = 861 \equiv 61 \pmod{100}$.
+
+The last two digits are $\mathbf{61}$.
+
+Answer: **D**.
+</Solution>

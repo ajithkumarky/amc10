@@ -1,0 +1,27 @@
+---
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 4
+answer: C
+choices: ["3", "6", "9", "0", "1"]
+---
+
+<Problem>
+What is the remainder when $1! + 2! + 3! + 4! + \cdots + 100!$ is divided by $12$?
+</Problem>
+
+<Solution>
+For any $n \geq 4$, the factorial $n!$ contains the factors $3$ and $4$ (since both are $\leq n$), so $12 \mid n!$, meaning $n! \equiv 0 \pmod{12}$.
+
+Therefore the sum satisfies
+
+$$1! + 2! + 3! + 4! + \cdots + 100! \equiv 1! + 2! + 3! \pmod{12}.$$
+
+Compute: $1! = 1$, $2! = 2$, $3! = 6$.
+
+$$1 + 2 + 6 = 9.$$
+
+Since $9 < 12$, the remainder is $\mathbf{9}$.
+
+Answer: **C**.
+</Solution>
