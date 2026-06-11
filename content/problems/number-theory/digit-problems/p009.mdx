@@ -1,0 +1,43 @@
+---
+topic: number-theory
+subtopic: digit-problems
+difficulty: 5
+answer: D
+choices: ["90", "96", "99", "100", "108"]
+---
+
+<Problem>
+How many five-digit palindromes are divisible by $9$?
+
+(A five-digit palindrome reads the same forwards and backwards, such as $12321$.)
+</Problem>
+
+<Solution>
+A five-digit palindrome has the form $\overline{abcba}$ where $a \in \{1, \ldots, 9\}$ and $b, c \in \{0, \ldots, 9\}$.
+
+Its digit sum is $a + b + c + b + a = 2a + 2b + c$.
+
+**Divisibility condition:** $2a + 2b + c \equiv 0 \pmod{9}$, i.e., $c \equiv -2(a+b) \pmod{9}$.
+
+**Counting valid $c$ for each $(a, b)$:** Since $c \in \{0, 1, \ldots, 9\}$, each residue class mod $9$ is hit by either one or two values in $\{0,\ldots,9\}$:
+- Residue $0$: $c \in \{0, 9\}$ — **2 choices**
+- Residues $1$ through $8$: exactly one value in $\{1,\ldots,8\}$ — **1 choice**
+
+So the count of valid $c$ is $2$ if $-2(a+b) \equiv 0 \pmod{9}$, and $1$ otherwise.
+
+Since $\gcd(2,9)=1$, the condition $2(a+b)\equiv 0\pmod{9}$ is equivalent to $a+b\equiv 0\pmod{9}$.
+
+**Count pairs $(a,b)$ with $a+b \equiv 0 \pmod 9$:**
+- $a+b = 9$: $(a,b)$ with $a\in\{1,\ldots,9\}$, $b = 9-a\in\{0,\ldots,9\}$. All $9$ choices $a=1,\ldots,9$ work. Count: $9$.
+- $a+b = 18$: $a = 9, b = 9$. Count: $1$.
+- $a+b = 0$: requires $a = 0$, invalid.
+
+Total pairs with $a+b\equiv 0\pmod{9}$: $9 + 1 = 10$.
+
+Remaining pairs: $9 \times 10 - 10 = 80$.
+
+**Total palindromes divisible by $9$:**
+$$10 \times 2 + 80 \times 1 = 20 + 80 = \mathbf{100}.$$
+
+Answer: **D**.
+</Solution>

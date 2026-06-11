@@ -1,0 +1,27 @@
+---
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: C
+choices: ["21", "24", "28", "30", "36"]
+---
+
+<Problem>
+How many three-digit positive integers have digits that sum to exactly $7$?
+</Problem>
+
+<Solution>
+We need the count of triples $(d_1, d_2, d_3)$ with $d_1 \in \{1, \ldots, 9\}$, $d_2, d_3 \in \{0, \ldots, 9\}$, and $d_1 + d_2 + d_3 = 7$.
+
+**Shift the leading digit:** let $d_1' = d_1 - 1 \in \{0, \ldots, 8\}$. Then we need
+$$d_1' + d_2 + d_3 = 6, \quad d_1', d_2, d_3 \geq 0.$$
+
+**Unrestricted count (stars-and-bars):**
+$$\binom{6 + 2}{2} = \binom{8}{2} = 28.$$
+
+**Check upper-bound violations:** Any variable exceeding $9$ would force the other two to sum to at most $-4$, which is impossible. So no solutions violate the upper bounds.
+
+There are $\mathbf{28}$ such three-digit integers.
+
+Answer: **C**.
+</Solution>

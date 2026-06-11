@@ -1,0 +1,29 @@
+---
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: B
+choices: ["24", "36", "48", "63", "12"]
+---
+
+<Problem>
+A two-digit number equals $4$ times the sum of its digits. When the digits are reversed, the new number exceeds the original by $27$. What is the original two-digit number?
+</Problem>
+
+<Solution>
+Let the original number be $\overline{ab} = 10a + b$ with $a \geq 1$.
+
+**Condition 1:** The number equals 4 times its digit sum.
+$$10a + b = 4(a + b) \implies 6a = 3b \implies b = 2a.$$
+
+**Condition 2:** The reversed number exceeds the original by 27.
+$$\overline{ba} - \overline{ab} = (10b + a) - (10a + b) = 9(b - a) = 27 \implies b - a = 3.$$
+
+From $b = 2a$ and $b - a = 3$: substituting gives $2a - a = 3$, so $a = 3$ and $b = 6$.
+
+The original number is $\mathbf{36}$.
+
+**Check:** $36 = 4(3 + 6) = 4 \cdot 9 = 36$ ✓. Reversed: $63 - 36 = 27$ ✓.
+
+Answer: **B**.
+</Solution>

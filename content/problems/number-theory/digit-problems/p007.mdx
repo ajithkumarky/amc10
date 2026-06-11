@@ -1,0 +1,37 @@
+---
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: C
+choices: ["57", "60", "63", "66", "72"]
+---
+
+<Problem>
+How many integers from $1$ to $1000$ inclusive have a digit sum equal to $10$?
+</Problem>
+
+<Solution>
+We count separately by number of digits.
+
+**1-digit integers (1–9):** Maximum digit sum is $9 < 10$. Count: $0$.
+
+**2-digit integers $\overline{ab}$, $a \geq 1$:** $a + b = 10$, $a \in \{1,\ldots,9\}$, $b \in \{0,\ldots,9\}$.
+
+For each $a$, $b = 10 - a$. We need $0 \leq 10 - a \leq 9$, i.e., $1 \leq a \leq 10$. Combined with $a \leq 9$, this gives $a \in \{1, 2, \ldots, 9\}$. Count: $9$.
+
+**3-digit integers $\overline{abc}$, $a \geq 1$:** $a + b + c = 10$, $a \in \{1,\ldots,9\}$, $b, c \in \{0,\ldots,9\}$.
+
+Shift: let $a' = a - 1 \in \{0, \ldots, 8\}$. Then $a' + b + c = 9$.
+
+Unrestricted count: $\dbinom{9+2}{2} = \dbinom{11}{2} = 55$.
+
+Subtract violations: $a' \geq 9$ means $a' \geq 9 \Rightarrow b + c = 9 - a' \leq 0$, so only $a' = 9, b = c = 0$. That is $1$ solution. For $b \geq 10$: $a' + c = 9 - b \leq -1 < 0$, impossible. Similarly for $c \geq 10$.
+
+Valid 3-digit count: $55 - 1 = 54$.
+
+**The integer 1000:** digit sum $= 1 \neq 10$. Count: $0$.
+
+**Total:** $0 + 9 + 54 = \mathbf{63}$.
+
+Answer: **C**.
+</Solution>

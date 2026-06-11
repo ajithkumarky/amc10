@@ -1,0 +1,29 @@
+---
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: B
+choices: ["1", "3", "7", "9", "4"]
+---
+
+<Problem>
+What is the units digit of $7^{7^7}$?
+</Problem>
+
+<Solution>
+The units digits of powers of $7$ cycle with period $4$: $7, 9, 3, 1, 7, 9, 3, 1, \ldots$
+
+So the units digit of $7^n$ is determined by $n \pmod{4}$:
+- $n \equiv 1$: units digit $7$
+- $n \equiv 2$: units digit $9$
+- $n \equiv 3$: units digit $3$
+- $n \equiv 0$: units digit $1$
+
+We need $7^7 \pmod{4}$. Since $7 \equiv 3 \pmod{4}$, we have $7^7 \equiv 3^7 \pmod{4}$.
+
+The powers of $3$ mod $4$ alternate: $3^1 \equiv 3$, $3^2 \equiv 1$, $3^3 \equiv 3$, $\ldots$ The pattern is $3$ for odd exponents and $1$ for even exponents. Since $7$ is odd, $3^7 \equiv 3 \pmod{4}$.
+
+Therefore $7^7 \equiv 3 \pmod{4}$, and so the units digit of $7^{7^7}$ equals the units digit of $7^3 = 343$, which is $\mathbf{3}$.
+
+Answer: **B**.
+</Solution>

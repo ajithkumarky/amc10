@@ -1,0 +1,27 @@
+---
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: E
+choices: ["36", "45", "63", "27", "54"]
+---
+
+<Problem>
+What is the sum of the digits of $999{,}999 \times 7$?
+</Problem>
+
+<Solution>
+Compute the product directly:
+$$999{,}999 \times 7 = 7{,}000{,}000 - 7 = 6{,}999{,}993.$$
+
+Now sum the digits of $6{,}999{,}993$:
+$$6 + 9 + 9 + 9 + 9 + 9 + 3 = 54.$$
+
+The digit sum is $\mathbf{54}$.
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Mod 9 sanity check">
+Since $999{,}999 \equiv 0 \pmod{9}$ (digit sum $= 54$, divisible by $9$), we know $999{,}999 \times 7 \equiv 0 \pmod{9}$, so its digit sum must be divisible by $9$. Among the choices, $54 = 6 \times 9$ is the only one consistent with the exact computation above.
+</AlternateMethod>

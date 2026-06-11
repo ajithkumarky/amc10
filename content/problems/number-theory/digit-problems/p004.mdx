@@ -1,0 +1,25 @@
+---
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: D
+choices: ["15", "17", "18", "19", "20"]
+---
+
+<Problem>
+How many trailing zeros does $80!$ have?
+</Problem>
+
+<Solution>
+A trailing zero is produced by a factor of $10 = 2 \times 5$. Since factors of $2$ always outnumber factors of $5$ in a factorial, we count only the factors of $5$ in $80!$ using Legendre's formula:
+
+$$\left\lfloor \frac{80}{5} \right\rfloor + \left\lfloor \frac{80}{25} \right\rfloor + \left\lfloor \frac{80}{125} \right\rfloor + \cdots = 16 + 3 + 0 + \cdots = 19.$$
+
+Therefore $80!$ ends in $\mathbf{19}$ zeros.
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Listing multiples of 5">
+Every multiple of $5$ up to $80$ contributes at least one factor of $5$. There are $\lfloor 80/5 \rfloor = 16$ such multiples. Of these, the multiples of $25$ (namely $25, 50, 75$) each contribute an extra factor of $5$, giving $3$ more. No multiple of $125$ is $\leq 80$. Total: $16 + 3 = 19$.
+</AlternateMethod>

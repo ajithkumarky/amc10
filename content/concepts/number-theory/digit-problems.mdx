@@ -1,0 +1,60 @@
+---
+title: Digit Problems
+summary: Techniques for exploiting the decimal representation of integers — digit sums, reversals, counting digit-constrained numbers, trailing zeros, and units-digit patterns.
+---
+
+## Overview
+
+Every positive integer has a **decimal representation** — a sequence of digits from 0 to 9. Many AMC 10 problems hide their key insight inside that representation: two numbers whose digits are swapped, a factorial whose last few digits are all zero, or a huge expression whose units digit cycles. Learning to think about digits as separate objects — not just pieces of a number — unlocks these problems quickly.
+
+The central bridge between digits and divisibility is the **mod 9 connection**: a number's digit sum is congruent to the number itself modulo 9 (and modulo 3). This turns questions about large numbers into tiny arithmetic. A second recurring theme is **digit reversal**: swapping the tens and units digits of $\overline{ab}$ changes the value by $9(a-b)$, giving a clean linear equation.
+
+AMC 10 problems use digit ideas in four main ways: (1) digit-sum divisibility tests, (2) "the number minus its reversal" style algebra, (3) counting integers satisfying digit constraints (stars-and-bars), and (4) trailing-zero and units-digit pattern problems. Mastering each pattern as a template lets you identify which tool fits in under 30 seconds.
+
+## Key facts
+
+- **Digit sum and mod 9:** For any non-negative integer $n$, $n \equiv S(n) \pmod{9}$ and $n \equiv S(n) \pmod{3}$, where $S(n)$ is the sum of digits. Use: quickly test divisibility by 3 or 9 without dividing.
+- **Digit sum and mod 11 (alternating):** $n \equiv d_k - d_{k-1} + \cdots \pmod{11}$ (alternate signs from right). Use: divisibility-by-11 test.
+- **Reversal formula:** For a two-digit number $\overline{ab} = 10a + b$, reversing gives $\overline{ba} = 10b + a$, so the difference is $\overline{ab} - \overline{ba} = 9(a-b)$. Use: set up an equation when a problem mentions "the reversed number."
+- **Trailing zeros of $n!$:** Equal $\displaystyle\sum_{k=1}^{\infty} \left\lfloor \dfrac{n}{5^k} \right\rfloor$ (count factors of 5, since factors of 2 are always more plentiful). Use: "how many zeros at the end of $n!$" questions.
+- **Units-digit patterns:** The units digit of $a^k$ depends only on the units digit of $a$ and on $k \pmod{p}$, where $p$ is the period of that base's units-digit cycle. Periods mod 10: digits 0,1,5,6 → period 1; digit 4 → period 2; digit 9 → period 2; digits 2,3,7,8 → period 4. Use: $a^{k}$ units-digit questions with large $k$.
+- **Counting integers with a digit-sum constraint:** Use stars-and-bars on the digits, remembering to enforce upper bounds ($\leq 9$ per digit) with inclusion-exclusion. Use: "how many $d$-digit numbers have digit sum $s$" questions.
+
+## Worked example 1
+
+> A two-digit number is 4 less than 5 times the sum of its digits. Find all such numbers.
+
+Let the number be $\overline{ab} = 10a + b$ with $a \geq 1$.
+
+The condition is $10a + b = 5(a + b) - 4$, which simplifies to
+$$5a - 4b = -4.$$
+
+Rearranging: $5a = 4b - 4$, so $4b - 4$ must be a positive multiple of 5. Since $a \geq 1$ we need $4b - 4 \geq 5$, i.e., $b \geq 3$. Testing multiples of 5: $4b - 4 = 20$ gives $b = 6$, $a = 4$. No other value of $b \in \{0,\ldots,9\}$ makes $4b-4$ a positive multiple of 5. The number is $\mathbf{46}$.
+
+Check: digit sum $4 + 6 = 10$; $5 \times 10 - 4 = 46$. ✓
+
+*Takeaway:* Translate the English condition into a linear equation in the digits, then scan small integer values.
+
+## Worked example 2
+
+> How many three-digit positive integers have a digit sum equal to 8?
+
+We need $d_1 + d_2 + d_3 = 8$ with $d_1 \in \{1, \ldots, 9\}$ and $d_2, d_3 \in \{0, \ldots, 9\}$.
+
+**Substitute $d_1' = d_1 - 1 \in \{0, \ldots, 8\}$:** the equation becomes $d_1' + d_2 + d_3 = 7$ with each variable in $\{0, \ldots, 9\}$.
+
+**Unrestricted stars-and-bars:** $\dbinom{7+2}{2} = \dbinom{9}{2} = 36$ solutions.
+
+**Subtract violations:** any variable $\geq 10$ would require the sum of the other two to be $\leq -3$, impossible. So no subtraction needed.
+
+**Answer:** $\mathbf{36}$ three-digit integers.
+
+*Takeaway:* Shift so all lower bounds are 0, apply $\binom{n+k-1}{k-1}$, then use inclusion-exclusion to remove any solutions exceeding the upper bound of 9.
+
+## Common traps
+
+- **Forgetting that the leading digit is at least 1.** Always shift $d_1 \to d_1 - 1$ so the new variable starts at 0; failure to do so overcounts numbers with leading digit 0.
+- **Applying the mod-9 rule to compute exact values.** Knowing $n \equiv r \pmod{9}$ tells you only the remainder, not $n$ itself. Combine with other constraints to pin down the value.
+- **Off-by-one in trailing-zero count.** Use Legendre's formula: $\lfloor n/5 \rfloor + \lfloor n/25 \rfloor + \cdots$ — don't stop after the first term if $n \geq 25$.
+- **Assuming the reversal difference is always positive.** The formula $9(a - b)$ can be negative if $a < b$; set up $|reversal - original| = \ldots$ or track the sign carefully.
+- **Including 0 as a leading digit when counting multi-digit numbers.** A "three-digit number" has its hundreds digit from 1 to 9, not 0 to 9.

@@ -1,0 +1,21 @@
+---
+topic: number-theory
+subtopic: digit-problems
+difficulty: 1
+answer: C
+choices: ["3", "9", "1", "7", "0"]
+---
+
+<Problem>
+What is the units digit of $3^{100}$?
+</Problem>
+
+<Solution>
+The units digits of powers of $3$ cycle with period $4$:
+$$3^1 = 3,\quad 3^2 = 9,\quad 3^3 = 27,\quad 3^4 = 81,\quad 3^5 = 243,\ldots$$
+The cycle is $3, 9, 7, 1$ and then repeats.
+
+Since $100 = 4 \times 25$, the exponent $100$ is a multiple of $4$. Therefore $3^{100}$ has the same units digit as $3^4 = 81$, which ends in $\mathbf{1}$.
+
+Answer: **C**.
+</Solution>
