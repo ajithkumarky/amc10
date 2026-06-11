@@ -1,0 +1,35 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 4
+answer: A
+choices: ['$\frac{49}{4}$', "12", "13", '$\frac{49}{6}$', "7"]
+---
+
+<Problem>
+Two fair six-sided dice are rolled independently. What is the expected value of the **product** of the two numbers rolled?
+</Problem>
+
+<Solution>
+Let $X$ be the result of the first die and $Y$ the result of the second die.
+
+Since the two dice are rolled **independently**, we can use the product rule for expectation:
+
+$$E[XY] = E[X] \cdot E[Y].$$
+
+For a single fair die:
+
+$$E[X] = E[Y] = \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = \frac{7}{2}.$$
+
+Therefore:
+
+$$E[XY] = \frac{7}{2} \cdot \frac{7}{2} = \frac{49}{4}.$$
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Direct computation">
+There are $36$ equally likely pairs $(i, j)$ with $i, j \in \{1,\ldots,6\}$. The expected product is
+
+$$E[XY] = \frac{1}{36} \sum_{i=1}^{6} \sum_{j=1}^{6} ij = \frac{1}{36} \left(\sum_{i=1}^{6} i\right)\left(\sum_{j=1}^{6} j\right) = \frac{1}{36} \cdot 21 \cdot 21 = \frac{441}{36} = \frac{49}{4}.$$
+</AlternateMethod>

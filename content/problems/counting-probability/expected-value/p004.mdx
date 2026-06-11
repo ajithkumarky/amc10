@@ -1,0 +1,35 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 3
+answer: C
+choices: ["3", "5", "6", "7", "8"]
+---
+
+<Problem>
+Maya repeatedly rolls a fair six-sided die until she rolls a $6$ for the first time. What is the expected number of rolls she makes?
+</Problem>
+
+<Solution>
+Each roll is an independent trial with probability $p = \dfrac{1}{6}$ of success (rolling a 6).
+
+The number of rolls until the first success follows a **geometric distribution**. If each trial succeeds with probability $p$, the expected number of trials is $\dfrac{1}{p}$.
+
+Here $p = \dfrac{1}{6}$, so
+
+$$E[\text{rolls}] = \frac{1}{p} = \frac{1}{1/6} = 6.$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Self-referential equation">
+Let $E$ be the expected number of rolls.
+
+- With probability $\dfrac{1}{6}$, the first roll is a 6, and we are done in 1 roll.
+- With probability $\dfrac{5}{6}$, the first roll is not a 6, and by the memoryless property we still need $E$ more rolls on average.
+
+This gives:
+$$E = \frac{1}{6} \cdot 1 + \frac{5}{6} \cdot (1 + E).$$
+
+Solving: $E = \dfrac{1}{6} + \dfrac{5}{6} + \dfrac{5}{6}E = 1 + \dfrac{5}{6}E$, so $\dfrac{1}{6}E = 1$, giving $E = 6$.
+</AlternateMethod>

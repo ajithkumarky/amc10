@@ -1,0 +1,29 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 3
+answer: A
+choices: ["1", '$\frac{6}{5}$', '$\frac{4}{5}$', '$\frac{5}{4}$', '$\frac{3}{2}$']
+---
+
+<Problem>
+Five students — Alex, Blake, Casey, Drew, and Emery — each write their name on a slip of paper. The five slips are shuffled and randomly handed back, one to each student. What is the expected number of students who receive their own slip?
+</Problem>
+
+<Solution>
+For each student $k$, define the indicator random variable
+
+$$I_k = \begin{cases} 1 & \text{if student } k \text{ receives their own slip,} \\ 0 & \text{otherwise.} \end{cases}$$
+
+The total number of students who receive their own slip is $X = I_1 + I_2 + I_3 + I_4 + I_5$.
+
+By symmetry, the probability that any particular student gets their own slip is $\dfrac{1}{5}$ (each student is equally likely to receive any of the $5$ slips). Thus
+
+$$E[I_k] = P(I_k = 1) = \frac{1}{5}.$$
+
+By **linearity of expectation** (which holds regardless of whether the $I_k$ are independent):
+
+$$E[X] = E[I_1] + E[I_2] + E[I_3] + E[I_4] + E[I_5] = 5 \cdot \frac{1}{5} = 1.$$
+
+Answer: **A**.
+</Solution>

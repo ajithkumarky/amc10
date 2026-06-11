@@ -1,0 +1,34 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 4
+answer: D
+choices: ['$\frac{1}{5}$', '$\frac{4}{19}$', '$\frac{5}{19}$', '$\frac{6}{19}$', '$\frac{3}{8}$']
+---
+
+<Problem>
+Ten married couples (20 people total) are seated randomly — 4 people are chosen at random from the group of 20. What is the expected number of **complete couples** among the 4 chosen people? (A complete couple means both members of a married pair are chosen.)
+</Problem>
+
+<Solution>
+For each of the $10$ couples, define the indicator variable
+
+$$I_k = \begin{cases} 1 & \text{if both members of couple } k \text{ are among the 4 chosen,} \\ 0 & \text{otherwise.} \end{cases}$$
+
+The total number of complete couples is $X = I_1 + \cdots + I_{10}$.
+
+By linearity of expectation, $E[X] = 10 \cdot P(I_k = 1)$.
+
+To find $P(I_k = 1)$: the number of ways to choose 4 people from 20 is $\dbinom{20}{4}$. The number of ways to choose 4 people that include both members of couple $k$ is the number of ways to choose the remaining 2 people from the other 18: $\dbinom{18}{2}$.
+
+$$P(I_k = 1) = \frac{\dbinom{18}{2}}{\dbinom{20}{4}} = \frac{153}{4845}.$$
+
+Simplify: $\gcd(153, 4845)$. Note $153 = 9 \cdot 17$ and $4845 = 3 \cdot 5 \cdot 17 \cdot 19$, so $\gcd = 3 \cdot 17 = 51$.
+
+$$\frac{153}{4845} = \frac{3}{95}.$$
+
+Therefore:
+$$E[X] = 10 \cdot \frac{3}{95} = \frac{30}{95} = \frac{6}{19}.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,44 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 5
+answer: C
+choices: ["3", '$\frac{155}{36}$', '$\frac{161}{36}$', '$\frac{167}{36}$', "5"]
+---
+
+<Problem>
+Two fair six-sided dice are rolled independently. What is the expected value of the **larger** of the two numbers rolled? (If both dice show the same number, that number is the "larger" value.)
+</Problem>
+
+<Solution>
+Let $M = \max(X, Y)$ where $X$ and $Y$ are the results of the two dice.
+
+**Find the distribution of $M$.** Since the dice are independent:
+
+$$P(M \le k) = P(X \le k) \cdot P(Y \le k) = \left(\frac{k}{6}\right)^2 = \frac{k^2}{36}.$$
+
+So the probability mass function of $M$ is:
+
+$$P(M = k) = P(M \le k) - P(M \le k-1) = \frac{k^2}{36} - \frac{(k-1)^2}{36} = \frac{2k - 1}{36}, \quad k = 1, 2, \ldots, 6.$$
+
+**Compute the expectation.**
+
+$$E[M] = \sum_{k=1}^{6} k \cdot \frac{2k-1}{36} = \frac{1}{36} \sum_{k=1}^{6} k(2k-1).$$
+
+Compute each term:
+
+| $k$ | $2k-1$ | $k(2k-1)$ |
+|-----|--------|-----------|
+| 1 | 1 | 1 |
+| 2 | 3 | 6 |
+| 3 | 5 | 15 |
+| 4 | 7 | 28 |
+| 5 | 9 | 45 |
+| 6 | 11 | 66 |
+
+Sum $= 1 + 6 + 15 + 28 + 45 + 66 = 161$.
+
+$$E[M] = \frac{161}{36}.$$
+
+Answer: **C**.
+</Solution>

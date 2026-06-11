@@ -1,0 +1,34 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 3
+answer: E
+choices: ["5", '$\frac{11}{2}$', "6", '$\frac{13}{2}$', "7"]
+---
+
+<Problem>
+Six cards are labeled $1, 2, 3, 4, 5, 6$. Two cards are drawn at random without replacement. What is the expected value of the sum of the two numbers drawn?
+</Problem>
+
+<Solution>
+Let $X_1$ and $X_2$ be the values on the first and second cards drawn.
+
+By **linearity of expectation**, $E[X_1 + X_2] = E[X_1] + E[X_2]$.
+
+Since all $6$ cards are equally likely to be drawn in either position (by symmetry of the random draw), each of $X_1$ and $X_2$ is uniformly distributed over $\{1, 2, 3, 4, 5, 6\}$.
+
+$$E[X_1] = E[X_2] = \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = \frac{7}{2}.$$
+
+Therefore:
+$$E[X_1 + X_2] = \frac{7}{2} + \frac{7}{2} = 7.$$
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Sum over all pairs">
+There are $\binom{6}{2} = 15$ equally likely pairs. The sum of all $15$ pair-sums equals the sum of all terms of the form $i + j$ for $i < j$.
+
+Each value $k \in \{1,\ldots,6\}$ appears in exactly $5$ pairs (paired with each of the other $5$ values), so the total of all pair-sums is $5(1+2+3+4+5+6) = 5 \cdot 21 = 105$.
+
+Expected pair-sum $= \dfrac{105}{15} = 7$.
+</AlternateMethod>

@@ -1,0 +1,90 @@
+---
+title: Expected Value
+summary: The probability-weighted average of all outcomes; linearity of expectation turns hard problems into sums of simple indicator variables.
+---
+
+## Overview
+
+The **expected value** (or expectation) of a random variable $X$ is the long-run average outcome if the experiment were repeated many times. It is defined as
+
+$$E[X] = \sum_{\text{all outcomes}} (\text{value}) \cdot P(\text{outcome}).$$
+
+You can think of it as a weighted average where each possible value is weighted by its probability. If you roll a fair die many thousands of times, the average result will get closer and closer to $E[X] = 3.5$ — that is what "expected value" means in practice.
+
+AMC10 loves expected value because it appears in games, random walks, and counting problems that would be nearly impossible to solve by brute force. The most powerful tool is **linearity of expectation**, which lets you compute complex expectations by breaking them into tiny, easy pieces — each piece being an **indicator variable** that equals 1 when some event happens and 0 otherwise.
+
+## Key facts
+
+- **Basic formula:**
+$$E[X] = \sum_{k} k \cdot P(X = k)$$
+*Use when* you can list all values $X$ can take with their probabilities.
+
+- **Linearity of expectation** (the star tool):
+$$E[X + Y] = E[X] + E[Y]$$
+This holds for **any** random variables $X$ and $Y$ — they do not need to be independent.
+
+- **Scaling:**
+$$E[aX + b] = a\,E[X] + b$$
+for constants $a$ and $b$.
+
+- **Indicator variable trick:** For any event $A$, define the indicator $\mathbf{1}_A$ which equals 1 if $A$ occurs and 0 otherwise. Then
+$$E[\mathbf{1}_A] = P(A).$$
+To find the expected *number* of objects satisfying a property, write the count as a sum of indicators and apply linearity:
+$$E\!\left[\sum_i \mathbf{1}_{A_i}\right] = \sum_i P(A_i).$$
+
+- **Independent variables:** When $X$ and $Y$ are independent,
+$$E[XY] = E[X]\cdot E[Y].$$
+Note: this requires independence; linearity holds without it.
+
+- **Expected value in a game / fair price:** A game is **fair** if its expected payout equals the cost to play. The fair price to pay for a game with payout $V$ is $E[V]$.
+
+- **Geometric expectation:** If each trial succeeds independently with probability $p$, the expected number of trials until the first success is $1/p$.
+
+- **Expected counts via indicators:** The expected number of "good" objects among $n$ is $n \cdot p$ where $p$ is the probability that any single object is "good" — even if the objects are not independent.
+
+## Worked example 1
+
+> A bag contains 4 red and 6 blue marbles. A marble is drawn at random. Red pays $\$5$, blue pays $\$2$. What is the expected payout?
+
+List the outcomes:
+
+| Outcome | Value | Probability |
+|---------|-------|-------------|
+| Red | $\$5$ | $\dfrac{4}{10} = \dfrac{2}{5}$ |
+| Blue | $\$2$ | $\dfrac{6}{10} = \dfrac{3}{5}$ |
+
+$$E = 5 \cdot \frac{2}{5} + 2 \cdot \frac{3}{5} = 2 + \frac{6}{5} = \frac{16}{5} = 3.2.$$
+
+The expected payout is $\$\dfrac{16}{5}$.
+
+## Worked example 2
+
+> Five students line up at random. What is the expected number of students standing in their original position (i.e., student $k$ is in spot $k$)?
+
+It would be painful to count all derangement-related cases. Instead, use **linearity of expectation with indicators**.
+
+For each student $k$ (where $1 \le k \le 5$), define:
+$$I_k = \begin{cases} 1 & \text{if student } k \text{ stands in spot } k \\ 0 & \text{otherwise.}\end{cases}$$
+
+The total number of "fixed" students is $X = I_1 + I_2 + I_3 + I_4 + I_5$.
+
+By symmetry, $P(I_k = 1) = \dfrac{1}{5}$ for each $k$ (student $k$ is equally likely to occupy any of the 5 spots).
+
+By linearity:
+$$E[X] = E[I_1] + \cdots + E[I_5] = 5 \cdot \frac{1}{5} = 1.$$
+
+The expected number of students in their original position is $\boxed{1}$ — regardless of how many students there are! The same calculation works for any $n$ students: $E = n \cdot \frac{1}{n} = 1$.
+
+*Key insight:* We never needed to worry about whether $I_j$ and $I_k$ are independent — linearity works anyway.
+
+## Common traps
+
+- **Confusing $E[X^2]$ with $(E[X])^2$.** These are equal only when $X$ is constant. In general $E[X^2] \ge (E[X])^2$ (Jensen's inequality). For a fair die: $E[X] = 7/2$ so $(E[X])^2 = 49/4 = 12.25$, but $E[X^2] = (1+4+9+16+25+36)/6 = 91/6 \approx 15.2$.
+
+- **Requiring independence for linearity.** Linearity of expectation $E[X+Y]=E[X]+E[Y]$ holds always. Only the product rule $E[XY]=E[X]E[Y]$ requires independence.
+
+- **Forgetting to include all outcomes.** If a game can end with "no payout," that $\$0$ outcome still contributes to the average — just with a coefficient of $0$. You must account for all outcomes summing to probability 1.
+
+- **Mixing up "expected value" and "most likely value."** The expected value of a die roll is $3.5$, which is not even a possible outcome. "Expected" means the long-run average, not the mode.
+
+- **Double-counting with indicators.** When setting up indicator variables, make sure each object gets exactly one indicator — do not define $I_{ij}$ for both an ordered pair $(i,j)$ and the reversed pair $(j,i)$ if they represent the same event.

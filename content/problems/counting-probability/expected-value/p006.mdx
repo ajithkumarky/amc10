@@ -1,0 +1,23 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 3
+answer: B
+choices: ['$\frac{85}{6}$', '$\frac{91}{6}$', '$\frac{49}{4}$', "16", '$\frac{49}{2}$']
+---
+
+<Problem>
+A fair six-sided die is rolled once. What is the expected value of the **square** of the number rolled?
+</Problem>
+
+<Solution>
+Let $X$ be the number rolled. We need $E[X^2]$.
+
+$$E[X^2] = \frac{1^2 + 2^2 + 3^2 + 4^2 + 5^2 + 6^2}{6} = \frac{1 + 4 + 9 + 16 + 25 + 36}{6} = \frac{91}{6}.$$
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Why E[X^2] ≠ (E[X])^2">
+A common mistake is to compute $(E[X])^2 = \left(\dfrac{7}{2}\right)^2 = \dfrac{49}{4} = 12.25$ (choice C). This is wrong because squaring a random variable is not the same as squaring its average. The correct answer $\dfrac{91}{6} \approx 15.17$ is larger, as expected by Jensen's inequality since $x^2$ is convex.
+</AlternateMethod>

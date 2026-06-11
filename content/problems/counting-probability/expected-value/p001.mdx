@@ -1,0 +1,25 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 1
+answer: B
+choices: ["2", '$\frac{5}{2}$', "3", '$\frac{7}{2}$', "4"]
+---
+
+<Problem>
+A spinner is divided into $4$ equal sections labeled $1$, $2$, $3$, and $4$. If the spinner is spun once, what is the expected value of the number it lands on?
+</Problem>
+
+<Solution>
+Each section is equally likely, so each outcome has probability $\dfrac{1}{4}$.
+
+$$E[X] = 1 \cdot \frac{1}{4} + 2 \cdot \frac{1}{4} + 3 \cdot \frac{1}{4} + 4 \cdot \frac{1}{4} = \frac{1 + 2 + 3 + 4}{4} = \frac{10}{4} = \frac{5}{2}.$$
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Average of an arithmetic sequence">
+The values $1, 2, 3, 4$ form an arithmetic sequence. The expected value of a uniform distribution over an arithmetic sequence is simply the average of the first and last terms:
+
+$$E[X] = \frac{1 + 4}{2} = \frac{5}{2}.$$
+</AlternateMethod>

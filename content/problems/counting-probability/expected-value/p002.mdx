@@ -1,0 +1,36 @@
+---
+topic: counting-probability
+subtopic: expected-value
+difficulty: 2
+answer: D
+choices: ["$0", "$1", "$2", "$3", "$4"]
+---
+
+<Problem>
+A fair coin is flipped twice. For each head that appears you win $\$5$, and for each tail that appears you lose $\$2$. What is the expected value of your net winnings?
+</Problem>
+
+<Solution>
+Let $H$ be the number of heads and $T$ the number of tails after two flips. Since $H + T = 2$, we have $T = 2 - H$.
+
+Net winnings $= 5H - 2T = 5H - 2(2 - H) = 7H - 4.$
+
+By linearity of expectation and the fact that $E[H] = 2 \cdot \dfrac{1}{2} = 1$:
+
+$$E[\text{winnings}] = 7 \cdot E[H] - 4 = 7 \cdot 1 - 4 = 3.$$
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Direct enumeration">
+List all four equally likely outcomes (each with probability $\frac{1}{4}$):
+
+| Outcome | H | T | Winnings |
+|---------|---|---|----------|
+| HH | 2 | 0 | $10 |
+| HT | 1 | 1 | $3 |
+| TH | 1 | 1 | $3 |
+| TT | 0 | 2 | $-4 |
+
+$$E = \frac{1}{4}(10 + 3 + 3 + (-4)) = \frac{12}{4} = 3.$$
+</AlternateMethod>
