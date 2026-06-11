@@ -1,0 +1,33 @@
+---
+topic: algebra
+subtopic: functions
+difficulty: 3
+answer: E
+choices: ["3", "7", "9", "12", "15"]
+---
+
+<Problem>
+A function $f$ satisfies $f(2x + 1) = 4x^2 - 1$ for all real numbers $x$. What is $f(5)$?
+</Problem>
+
+<Solution>
+We need to find the input $x$ that makes $2x + 1 = 5$:
+
+$$2x + 1 = 5 \implies x = 2.$$
+
+Now substitute $x = 2$ into the right-hand side:
+
+$$f(5) = f(2 \cdot 2 + 1) = 4(2)^2 - 1 = 16 - 1 = 15.$$
+
+A useful check: factor the right side. $4x^2 - 1 = (2x+1)(2x-1)$. Since $2x+1$ is the argument of $f$, we can write $f(t) = t \cdot (t-2)$ for any $t = 2x+1$. Then $f(5) = 5 \cdot 3 = 15$. ✓
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Recognize the factored form">
+Notice $4x^2 - 1 = (2x+1)(2x-1)$. If we let $u = 2x+1$, then $2x - 1 = u - 2$, so
+
+$$f(u) = u(u-2) = u^2 - 2u.$$
+
+Then $f(5) = 5^2 - 2(5) = 25 - 10 = 15$.
+</AlternateMethod>

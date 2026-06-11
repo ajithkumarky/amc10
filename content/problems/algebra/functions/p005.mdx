@@ -1,0 +1,29 @@
+---
+topic: algebra
+subtopic: functions
+difficulty: 3
+answer: D
+choices: ["5", "6", "$\\dfrac{13}{2}$", "$\\dfrac{15}{2}$", "8"]
+---
+
+<Problem>
+A function $f$ satisfies $f(x) + f(1 - x) = 5$ for all real numbers $x$. What is $f(0.3) + f(0.7) + f(0.5)$?
+</Problem>
+
+<Solution>
+The functional equation pairs any input $x$ with its "complement" $1 - x$.
+
+**Pair 1:** Set $x = 0.3$. Then $1 - x = 0.7$, so
+
+$$f(0.3) + f(0.7) = 5.$$
+
+**Finding $f(0.5)$:** Set $x = 0.5$. Then $1 - x = 0.5$ as well, so the equation becomes
+
+$$f(0.5) + f(0.5) = 5 \implies 2f(0.5) = 5 \implies f(0.5) = \frac{5}{2}.$$
+
+**Combining:**
+
+$$f(0.3) + f(0.7) + f(0.5) = 5 + \frac{5}{2} = \frac{15}{2}.$$
+
+Answer: **D**.
+</Solution>

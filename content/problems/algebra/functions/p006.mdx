@@ -1,0 +1,29 @@
+---
+topic: algebra
+subtopic: functions
+difficulty: 3
+answer: A
+choices: ["4", "5", "6", "7", "10"]
+---
+
+<Problem>
+What is the minimum value of $f(x) = |x - 3| + |x - 7|$?
+</Problem>
+
+<Solution>
+The expression $|x - 3| + |x - 7|$ measures the sum of distances from a point $x$ on the number line to the two fixed points $3$ and $7$.
+
+The sum of distances from $x$ to two points on a number line is minimized when $x$ lies *between* the two points. For any $x \in [3, 7]$:
+
+$$f(x) = (x - 3) + (7 - x) = 4.$$
+
+For $x$ outside this interval, at least one absolute value grows, making the sum larger than $4$.
+
+Therefore the minimum value is $4$, achieved for all $x \in [3, 7]$.
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Triangle inequality">
+By the triangle inequality, $|x - 3| + |x - 7| \geq |(x-3) - (x-7)| = |4| = 4$, with equality when $(x-3)$ and $(x-7)$ have opposite signs, i.e., $3 \leq x \leq 7$.
+</AlternateMethod>

@@ -1,0 +1,25 @@
+---
+topic: algebra
+subtopic: functions
+difficulty: 3
+answer: B
+choices: ["1", "2", "3", "4", "5"]
+---
+
+<Problem>
+Let $f(x) = \dfrac{x+1}{x-1}$ for $x \neq 1$. What is $f(f(f(3)))$?
+</Problem>
+
+<Solution>
+Apply $f$ three times in sequence.
+
+**First application:** $f(3) = \dfrac{3+1}{3-1} = \dfrac{4}{2} = 2.$
+
+**Second application:** $f(f(3)) = f(2) = \dfrac{2+1}{2-1} = \dfrac{3}{1} = 3.$
+
+**Third application:** $f(f(f(3))) = f(3) = 2.$
+
+Notice the pattern: $f$ maps $3 \to 2 \to 3 \to 2 \to \cdots$, so the sequence of outputs alternates between $2$ and $3$. After an odd number of applications starting from $3$, the result is $2$.
+
+Answer: **B**.
+</Solution>

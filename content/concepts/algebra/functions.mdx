@@ -1,0 +1,57 @@
+---
+title: Functions
+summary: Understanding function notation, composition, inverses, and graph transformations for AMC10 success.
+---
+
+## Overview
+
+A function $f$ is a rule that assigns exactly one output to each input. On the AMC10, functions appear in three main flavors: explicit rules like $f(x) = 2x^2 - 3$, recursive or relational rules like $f(x+1) = f(x) + 5$, and functional equations that constrain $f$ without writing it down explicitly. In every case, the key skill is careful substitution — replacing $x$ with whatever expression the problem hands you.
+
+Composition and inverses are the two operations that link functions together. $f(g(x))$ means "apply $g$ first, then $f$"; it's not the same as $g(f(x))$ unless $f$ and $g$ happen to commute. The inverse $f^{-1}$ "undoes" $f$: if $f(a) = b$ then $f^{-1}(b) = a$. Recognizing when a problem is really asking you to invert or compose — rather than evaluate from scratch — often cuts the work in half.
+
+Graph transformations round out the AMC10 toolkit. When you replace $x$ with $x - h$, the graph slides right by $h$. Multiplying the whole expression by $-1$ flips it over the $x$-axis. These rules feel arbitrary until you see them as consequences of substitution: the graph of $y = f(x-3)$ hits the same $y$-values as $y = f(x)$, just shifted so the "action" happens 3 units to the right.
+
+## Key facts
+
+- **Evaluation:** to find $f(a)$, substitute $a$ everywhere $x$ appears in the rule.
+- **Composition:** $(f \circ g)(x) = f(g(x))$. Evaluate $g$ first, feed the result to $f$.
+- **Inverse exists when:** $f$ is one-to-one (passes the horizontal-line test). Then $f^{-1}(b) = a \iff f(a) = b$.
+- **Finding the inverse algebraically:** write $y = f(x)$, swap $x \leftrightarrow y$, solve for $y$.
+- **Composition of inverses:** $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$ for all $x$ in the domain.
+- **Functional equations:** if $f(x) + f(1-x) = k$, pair up inputs that sum to $1$ to evaluate $f$ at specific points without knowing $f$ explicitly.
+- **Graph shifts:** $y = f(x - h)$ shifts the graph right by $h$; $y = f(x + h)$ shifts left by $h$.
+- **Graph stretches/reflections:** $y = -f(x)$ reflects over the $x$-axis; $y = f(-x)$ reflects over the $y$-axis; $y = cf(x)$ stretches vertically by factor $c$.
+
+## Worked example 1
+
+> If $f(x) = \dfrac{2x + 3}{x - 1}$, find $f^{-1}(7)$.
+
+We could find the full formula for $f^{-1}$, but it's faster to ask: "What input gives output 7?"
+
+Set $f(a) = 7$:
+
+$$\frac{2a + 3}{a - 1} = 7 \implies 2a + 3 = 7(a - 1) = 7a - 7 \implies 10 = 5a \implies a = 2.$$
+
+So $f^{-1}(7) = 2$. Check: $f(2) = \frac{7}{1} = 7$. ✓
+
+## Worked example 2
+
+> Let $f(x) = x^2 + 2x$ and $g(x) = x + 3$. Find all values of $x$ for which $f(g(x)) = 0$.
+
+First, compute $f(g(x))$:
+
+$$f(g(x)) = f(x + 3) = (x+3)^2 + 2(x+3) = x^2 + 6x + 9 + 2x + 6 = x^2 + 8x + 15.$$
+
+Set this equal to zero:
+
+$$x^2 + 8x + 15 = 0 \implies (x+3)(x+5) = 0 \implies x = -3 \text{ or } x = -5.$$
+
+The answer is $x \in \{-5, -3\}$.
+
+## Common traps
+
+- **Reversing composition order.** $f(g(x))$ means apply $g$ first. Writing $g(f(x))$ instead is the single most common function error on the AMC10.
+- **Confusing $f^{-1}(x)$ with $\frac{1}{f(x)}$.** The $-1$ in $f^{-1}$ denotes the inverse function, not a reciprocal. $f^{-1}(x) \neq \frac{1}{f(x)}$.
+- **Forgetting to check one-to-oneness.** A function like $f(x) = x^2$ has no inverse over all reals because it's not one-to-one. AMC problems that ask for "the inverse" always implicitly assume the domain is restricted so the function is one-to-one.
+- **Direction of horizontal shifts.** $y = f(x - 3)$ shifts the graph RIGHT (not left) by 3. Substituting $x = 3$ into $x - 3$ gives $0$, so the old behavior at $x = 0$ now appears at $x = 3$.
+- **Misreading functional equations.** When $f(2x+1) = \text{something}$, to find $f(5)$ you must solve $2x+1 = 5$ first, then plug that $x$ into the right side — don't substitute $5$ directly into the right side.
