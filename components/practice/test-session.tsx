@@ -30,7 +30,7 @@ async function recordAttempt(payload: {
 export interface TestSessionProblem {
   slug: string;
   topic: string;
-  subtopic: string;
+  subtopic: string | null;
   answer: 'A' | 'B' | 'C' | 'D' | 'E';
   choices: string[];
 }
@@ -38,6 +38,7 @@ export interface TestSessionProblem {
 export interface TestSessionProps {
   problems: TestSessionProblem[];
   bodies: ReactNode[];
+  solutions?: ReactNode[];
 }
 
 function shuffleIndices(n: number): number[] {
@@ -49,7 +50,7 @@ function shuffleIndices(n: number): number[] {
   return a;
 }
 
-export function TestSession({ problems, bodies }: TestSessionProps) {
+export function TestSession({ problems, bodies, solutions }: TestSessionProps) {
   const searchParams = useSearchParams();
   const topic = searchParams.get('topic') ?? undefined;
   const requestedCount = Math.max(1, Math.min(25, Number(searchParams.get('count')) || 10));
@@ -100,9 +101,10 @@ export function TestSession({ problems, bodies }: TestSessionProps) {
                     <span className={ok ? 'text-cyber-cyan' : 'text-cyber-pink'}>
                       {ok ? '✓' : '✗'}
                     </span>{' '}
-                    Q {i + 1} &middot; {p.topic} &middot; {p.subtopic} (your answer: {picked[i] ?? '—'}; correct: {p.answer})
+                    Q {i + 1} &middot; {p.topic} &middot; {p.subtopic ?? 'mixed'} (your answer: {picked[i] ?? '—'}; correct: {p.answer})
                   </summary>
                   <div className="mt-3">{bodies[origIdx]}</div>
+                  {solutions?.[origIdx]}
                 </details>
               </li>
             );

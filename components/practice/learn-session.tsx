@@ -30,7 +30,7 @@ async function recordAttempt(payload: {
 export interface LearnSessionProblem {
   slug: string;
   topic: string;
-  subtopic: string;
+  subtopic: string | null;
   answer: 'A' | 'B' | 'C' | 'D' | 'E';
   choices: string[];
 }
@@ -38,6 +38,7 @@ export interface LearnSessionProblem {
 export interface LearnSessionProps {
   problems: LearnSessionProblem[];
   bodies: ReactNode[];
+  solutions?: ReactNode[];
 }
 
 interface AttemptState {
@@ -54,7 +55,7 @@ function shuffleIndices(n: number): number[] {
   return a;
 }
 
-export function LearnSession({ problems, bodies }: LearnSessionProps) {
+export function LearnSession({ problems, bodies, solutions }: LearnSessionProps) {
   const searchParams = useSearchParams();
   const topic = searchParams.get('topic') ?? undefined;
   const count = Math.max(1, Math.min(20, Number(searchParams.get('count')) || 10));
@@ -138,7 +139,7 @@ export function LearnSession({ problems, bodies }: LearnSessionProps) {
             const ok = attempts[i].selected === p.answer;
             return (
               <li key={p.slug}>
-                {ok ? '✓' : '✗'} {p.topic} / {p.subtopic} / {p.slug.split('/').pop()}
+                {ok ? '✓' : '✗'} {p.topic} / {p.subtopic ?? 'mixed'} / {p.slug.split('/').pop()}
               </li>
             );
           })}
@@ -156,13 +157,14 @@ export function LearnSession({ problems, bodies }: LearnSessionProps) {
       <div className="flex items-center justify-between font-mono text-[11px] text-cyber-mute">
         <span>Q {index + 1} / {sessionLen}</span>
         <span className="text-cyber-cyan">
-          {currentProblem.topic.toUpperCase()} / {currentProblem.subtopic.toUpperCase()}
+          {currentProblem.topic.toUpperCase()} / {(currentProblem.subtopic ?? 'mixed').toUpperCase()}
         </span>
         <span>{correctCount} correct</span>
       </div>
 
       <Panel kicker={`MISSION_${String(index + 1).padStart(2, '0')}`}>
         <div>{currentBody}</div>
+        {attempt.submitted && solutions?.[currentProblemIdx]}
         <ChoiceRow
           choices={currentProblem.choices}
           selected={attempt.selected}
