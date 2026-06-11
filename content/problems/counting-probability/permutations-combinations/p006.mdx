@@ -1,0 +1,29 @@
+---
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 3
+answer: C
+choices: ["56", "112", "168", "224", "336"]
+---
+
+<Problem>
+From a group of $8$ people, one person is chosen as president and $2$ different people (from the remaining $7$) are chosen as vice-presidents. The two vice-president positions are identical (neither is ranked above the other). In how many ways can this selection be made?
+</Problem>
+
+<Solution>
+Since the two vice-president positions are **identical** (unordered), we handle the selection in two independent steps.
+
+**Step 1 — Choose the president:** Any of the 8 people may be chosen. That gives $8$ options.
+
+**Step 2 — Choose 2 vice-presidents from the remaining 7:** Because the two VP roles are the same, this is a combination:
+$$\binom{7}{2} = \frac{7 \cdot 6}{2} = 21.$$
+
+**Total:**
+$$8 \times 21 = 168.$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Overcounting correction">
+If we temporarily treat both VP positions as distinct, the count would be $8 \times 7 \times 6 = 336$ (ordered choices for president, VP1, VP2). But swapping the two VPs gives the same outcome, so divide by $2! = 2$: $336 / 2 = 168$.
+</AlternateMethod>

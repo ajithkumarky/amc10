@@ -1,0 +1,25 @@
+---
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 2
+answer: B
+choices: ["6", "12", "24", "48", "96"]
+---
+
+<Problem>
+How many distinct arrangements of the letters in the word $\text{BOOK}$ are there?
+</Problem>
+
+<Solution>
+The word BOOK has 4 letters: B, O, O, K. The letter O appears **twice**; all other letters appear once.
+
+If all four letters were distinct, there would be $4! = 24$ arrangements. However, swapping the two O's produces the same word, so we divide by $2!$ to remove this over-counting:
+
+$$\frac{4!}{2!} = \frac{24}{2} = 12.$$
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Direct slot-filling">
+Place the letters one position at a time. First choose which 2 of the 4 positions hold the O's: $\binom{4}{2} = 6$ ways. The remaining 2 positions are filled by B and K in $2! = 2$ ways. Total: $6 \times 2 = 12$.
+</AlternateMethod>

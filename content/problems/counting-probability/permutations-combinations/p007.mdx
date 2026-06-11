@@ -1,0 +1,29 @@
+---
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: A
+choices: ["1260", "2520", "3360", "5040", "7560"]
+---
+
+<Problem>
+How many distinct arrangements of the letters in the word $\text{ARRANGE}$ are there?
+</Problem>
+
+<Solution>
+First, identify the letters and their frequencies.
+
+$$\text{A R R A N G E}$$
+
+- A appears **2** times
+- R appears **2** times
+- N, G, E each appear **1** time
+
+Total: $2 + 2 + 1 + 1 + 1 = 7$ letters.
+
+If all 7 letters were distinct, there would be $7! = 5040$ arrangements. We divide by the factorials of each repeated group to remove identical rearrangements:
+
+$$\frac{7!}{2! \cdot 2!} = \frac{5040}{2 \cdot 2} = \frac{5040}{4} = 1260.$$
+
+Answer: **A**.
+</Solution>

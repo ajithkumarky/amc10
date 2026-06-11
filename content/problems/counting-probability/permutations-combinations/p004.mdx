@@ -1,0 +1,23 @@
+---
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 3
+answer: C
+choices: ["24", "36", "45", "56", "84"]
+---
+
+<Problem>
+In how many ways can $8$ identical cookies be distributed among $3$ children so that each child receives at least $0$ cookies?
+</Problem>
+
+<Solution>
+The cookies are **identical** and each child can receive any non-negative integer number. This is a classic stars-and-bars problem.
+
+Think of the 8 cookies as 8 stars ($\star\star\star\star\star\star\star\star$) and the 3 children as 3 bins separated by 2 dividers ($|$). Any arrangement of 8 stars and 2 dividers gives a valid distribution; for example, $\star\star|\star\star\star|\star\star\star$ means child 1 gets 2, child 2 gets 3, child 3 gets 3.
+
+The number of arrangements of 8 stars and 2 dividers in a row of 10 symbols is the number of ways to choose which 2 positions are dividers:
+
+$$\binom{8 + 3 - 1}{3 - 1} = \binom{10}{2} = \frac{10 \cdot 9}{2} = 45.$$
+
+Answer: **C**.
+</Solution>

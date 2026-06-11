@@ -1,39 +1,78 @@
 ---
 title: Permutations & Combinations
-summary: Ordered and unordered counting — when to use which.
-difficulty: 2
+summary: Ordered and unordered counting, circular arrangements, repeated elements, and distributing identical objects.
 ---
 
-## The two formulas
+## Overview
 
-- **Permutations** (order matters): the number of ways to arrange $r$ items
-  chosen from $n$ distinct items is
-$$P(n, r) = \frac{n!}{(n-r)!}.$$
-- **Combinations** (order doesn't matter): the number of ways to choose $r$
-  items from $n$ distinct items is
-$$\binom{n}{r} = \frac{n!}{r!\,(n-r)!}.$$
+Counting problems ask "in how many ways can something happen?" The key split is whether **order matters**. When order matters (arranging, ordering, lining up) we use **permutations**; when order does not matter (choosing, picking a subset, forming a committee) we use **combinations**.
 
-The relationship: $\binom{n}{r} = \dfrac{P(n,r)}{r!}$ — divide out the orderings
-you're not distinguishing.
+AMC10 loves these topics because the same situation can be counted two different ways — and picking the wrong one is a classic error. Circular arrangements and problems with repeated elements are recurring AMC favorites, as are "stars and bars" distribution problems that disguise themselves as word problems.
 
-## When to use which
+A fluent AMC solver has all six techniques in this guide automatic, and can quickly identify which one a problem is testing based on keywords like "arrange," "choose," "distribute," or "committee."
 
-- "How many ways to arrange / line up / order?" → permutation.
-- "How many ways to **choose** / pick a team / a subset?" → combination.
-- "How many distinct seating arrangements around a round table?" → circular permutation,
-  which is $(n-1)!$ because rotations are equivalent.
+## Key facts
 
-## Worked example
+- **Permutation** (order matters): arrange $r$ items from $n$ distinct items.
+$$P(n,r) = \frac{n!}{(n-r)!}$$
+*Use when* the problem asks for sequences, codes, or ordered arrangements.
 
-> A 4-person committee is chosen from a group of 10. How many different
-> committees are possible?
+- **Combination** (order doesn't matter): choose $r$ items from $n$ distinct items.
+$$\binom{n}{r} = \frac{n!}{r!\,(n-r)!}$$
+*Use when* the problem asks for subsets, teams, or unordered groups.
 
-Order doesn't matter (committees are unordered), so the answer is
-$$\binom{10}{4} = \frac{10!}{4!\,6!} = 210.$$
+- **Relationship**: $\dbinom{n}{r} = \dfrac{P(n,r)}{r!}$  — divide out the $r!$ orderings you don't care about.
 
-## Common trap
+- **Circular arrangements** of $n$ distinct objects (rotations equivalent):
+$$(n-1)!$$
+*Use when* objects sit around a table, ring, or necklace and no seat is labeled. Fix one object to break rotational symmetry, then arrange the rest linearly.
 
-If the problem says "the committee has a chair, a treasurer, and two members,"
-you are picking roles — that's an ordered situation in disguise. Use
-permutations (or pick the chair, then the treasurer, then a combination for
-the remaining two).
+- **Arrangements with repeats** (multinomial): arrange $n$ objects where group 1 has $k_1$ identical copies, group 2 has $k_2$, etc.
+$$\frac{n!}{k_1!\,k_2!\cdots}$$
+*Use when* some objects are identical (repeated letters, identical tiles, same color balls).
+
+- **Stars and bars** (distributing identical objects): number of ways to distribute $n$ identical objects into $k$ distinct bins with each bin receiving $\ge 0$ objects:
+$$\binom{n+k-1}{k-1}$$
+*Use when* objects are indistinguishable and you just care how many go to each recipient.
+
+- **Committee with roles**: if some positions are distinct (e.g., president, treasurer), multiply combinations by the ways to assign roles. E.g., choose 1 chair from $n$ people *then* a committee of $r$ from the remaining $n-1$: $n \cdot \binom{n-1}{r}$.
+
+## Worked example 1
+
+> How many distinct arrangements are there of the letters in the word **LEVEL**?
+
+The letters are L, E, V, E, L — 5 total with L repeated **twice** and E repeated **twice**.
+
+If all five were distinct we'd have $5! = 120$ arrangements. But swapping the two L's produces the same word, as does swapping the two E's. So we divide:
+
+$$\frac{5!}{2!\cdot 2!} = \frac{120}{4} = 30.$$
+
+There are **30** distinct arrangements.
+
+*Sanity check (small case):* For the word "AAB" the formula gives $3!/2! = 3$: {AAB, ABA, BAA} — three arrangements. ✓
+
+## Worked example 2
+
+> A club has 7 members. They want to elect a president and then form a 3-person advisory board (from the remaining 6 members, unordered). How many ways can this be done?
+
+**Step 1 — Choose president:** 7 options.
+
+**Step 2 — Choose the board:** After the president is chosen, 6 members remain. We pick an *unordered* group of 3:
+$$\binom{6}{3} = 20.$$
+
+**Total:**
+$$7 \times 20 = 140.$$
+
+*Why not just $\binom{7}{4}$?* Because the president is a **labeled** role — swapping the president with a board member gives a different outcome. Labeled roles force you to treat that selection as ordered (or multiply it in separately).
+
+## Common traps
+
+- **Forgetting to divide by symmetry.** Arranging 5 people in a circle is *not* $5!$ but $(5-1)! = 24$ — rotations are identical.
+
+- **Treating identical objects as distinct.** The letters in MISSISSIPPI are not all different. Always check for repeated elements before applying $n!$.
+
+- **Stars and bars miscount.** The formula $\binom{n+k-1}{k-1}$ counts distributions where bins can be empty. If each bin needs *at least 1*, give each bin 1 first (reducing to $n-k$ objects) and then apply stars and bars: $\binom{(n-k)+k-1}{k-1} = \binom{n-1}{k-1}$.
+
+- **Roles vs. membership.** A "committee of 5" is a combination. A "committee of 5 with a president and secretary" is a combination for 3 regular members *times* a permutation (or separate choices) for the 2 roles.
+
+- **Double-counting complementary events.** When you use complementary counting ("total minus bad cases"), make sure your "bad" cases are correctly enumerated and do not overlap.

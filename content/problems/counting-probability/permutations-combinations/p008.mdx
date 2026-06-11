@@ -1,0 +1,26 @@
+---
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: C
+choices: ["100", "150", "200", "250", "300"]
+---
+
+<Problem>
+A sports team is to be formed with exactly $3$ men and $2$ women chosen from a pool of $6$ men and $5$ women. How many different teams are possible?
+</Problem>
+
+<Solution>
+The men's selection and women's selection are **independent** choices, so we multiply.
+
+**Choose 3 men from 6** (order doesn't matter):
+$$\binom{6}{3} = \frac{6 \cdot 5 \cdot 4}{3 \cdot 2 \cdot 1} = 20.$$
+
+**Choose 2 women from 5** (order doesn't matter):
+$$\binom{5}{2} = \frac{5 \cdot 4}{2 \cdot 1} = 10.$$
+
+**Total teams:**
+$$20 \times 10 = 200.$$
+
+Answer: **C**.
+</Solution>

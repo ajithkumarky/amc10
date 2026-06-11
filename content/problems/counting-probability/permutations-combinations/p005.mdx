@@ -1,0 +1,23 @@
+---
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 3
+answer: E
+choices: ["120", "210", "420", "720", "840"]
+---
+
+<Problem>
+A lock uses a $4$-digit code where each digit is chosen from $\{1, 2, 3, 4, 5, 6, 7\}$ and no digit may be repeated. How many distinct codes are possible?
+</Problem>
+
+<Solution>
+We are forming an **ordered** sequence of 4 distinct digits from a set of 7. Order matters because, for example, the code $1234$ is different from $2134$.
+
+This is the permutation $P(7, 4)$:
+
+$$P(7, 4) = 7 \times 6 \times 5 \times 4 = 840.$$
+
+Alternatively, $P(7,4) = \dfrac{7!}{(7-4)!} = \dfrac{5040}{6} = 840$.
+
+Answer: **E**.
+</Solution>

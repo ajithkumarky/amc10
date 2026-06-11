@@ -1,0 +1,32 @@
+---
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 5
+answer: B
+choices: ["24", "144", "288", "576", "1152"]
+---
+
+<Problem>
+Four boys and four girls are seated around a circular table (rotations of a seating arrangement are considered identical). In how many ways can they be arranged so that no two boys sit in adjacent seats?
+</Problem>
+
+<Solution>
+For no two boys to be adjacent among 8 people at a circular table, the boys and girls must **alternate** — the only way to seat 4 boys among 4 girls in a circle with no two boys adjacent is in the pattern B-G-B-G-B-G-B-G.
+
+**Step 1 — Fix the girls' circular arrangement.**
+
+To handle the rotational symmetry, fix one girl in a seat. This removes all 8 rotations. The remaining 3 girls fill the other 3 "girl" seats in:
+$$3! = 6 \text{ ways.}$$
+
+**Step 2 — Place the boys in the alternating seats.**
+
+Once the girls are seated, the 4 gaps between consecutive girls are determined. The 4 boys can be arranged in these 4 seats in:
+$$4! = 24 \text{ ways.}$$
+
+**Step 3 — Multiply.**
+$$3! \times 4! = 6 \times 24 = 144.$$
+
+*Why must boys and girls alternate?* In a cycle of 8 seats, the only way to choose 4 seats so that no two are adjacent (cyclically) is to pick every other seat — the two alternating sets $\{1,3,5,7\}$ and $\{2,4,6,8\}$. Once the girls fix one of these patterns (via the fixed-girl convention), the boys automatically occupy the other alternating set.
+
+Answer: **B**.
+</Solution>
