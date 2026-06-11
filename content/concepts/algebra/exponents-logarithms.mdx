@@ -1,0 +1,67 @@
+---
+title: Exponents & Logarithms
+summary: Mastering exponent laws, fractional and negative exponents, and the definition and basic laws of logarithms for the AMC10.
+---
+
+## Overview
+
+Exponents describe repeated multiplication: $b^n$ means multiply $b$ by itself $n$ times. The AMC10 regularly tests whether you can rewrite expressions in a common base, simplify products and quotients of powers, and handle negative or fractional exponents without reaching for a calculator. The key skill is **base conversion** — recognizing that $8 = 2^3$, $27 = 3^3$, $\frac{1}{4} = 2^{-2}$, and so on, so that both sides of an equation live on the same base and exponents can be compared directly.
+
+Fractional exponents unlock roots: $b^{1/n} = \sqrt[n]{b}$ and $b^{m/n} = \left(\sqrt[n]{b}\right)^m$. Negative exponents flip the base to its reciprocal: $b^{-k} = 1/b^k$. Together, these two ideas let you rewrite almost any power expression in a cleaner form — and AMC problems are designed so that the "right" rewriting collapses what looks complicated into something elementary.
+
+Logarithms appear lightly on the AMC10, but when they do appear the definition and the three core log laws are all you need. The logarithm $\log_b x = k$ means exactly $b^k = x$ — every log question can be translated back to an exponential question. The laws for sums, differences, and powers of logs mirror the exponent laws, so learning them in parallel reinforces both topics at once.
+
+## Key facts
+
+- **Product rule:** $b^m \cdot b^n = b^{m+n}$ — add exponents when multiplying same base.
+- **Quotient rule:** $b^m / b^n = b^{m-n}$ — subtract exponents when dividing same base.
+- **Power rule:** $(b^m)^n = b^{mn}$ — multiply exponents when raising a power to a power.
+- **Negative exponent:** $b^{-n} = 1/b^n$ — flip to reciprocal; $b \neq 0$.
+- **Fractional exponent:** $b^{1/n} = \sqrt[n]{b}$ and $b^{m/n} = \left(\sqrt[n]{b}\right)^m$ — denominator is the root index.
+- **Zero exponent:** $b^0 = 1$ for any $b \neq 0$.
+- **Comparing powers in different bases:** convert everything to a single prime base, then equate exponents.
+- **Log definition:** $\log_b x = k \iff b^k = x$ — always translate back to exponential form.
+- **Log product rule:** $\log_b(xy) = \log_b x + \log_b y$.
+- **Log quotient rule:** $\log_b(x/y) = \log_b x - \log_b y$.
+- **Log power rule:** $\log_b(x^r) = r \log_b x$ — pull the exponent out front.
+- **Log of 1 and base:** $\log_b 1 = 0$ and $\log_b b = 1$ — memorize as anchor values.
+
+## Worked example 1
+
+> Simplify $\dfrac{6^5 \cdot 4^3}{12^4}$.
+
+Rewrite every factor in terms of $2$ and $3$:
+
+$$6^5 = 2^5 \cdot 3^5, \quad 4^3 = 2^6, \quad 12^4 = (4 \cdot 3)^4 = 2^8 \cdot 3^4.$$
+
+Combine:
+
+$$\frac{2^5 \cdot 3^5 \cdot 2^6}{2^8 \cdot 3^4} = \frac{2^{11} \cdot 3^5}{2^8 \cdot 3^4} = 2^{11-8} \cdot 3^{5-4} = 2^3 \cdot 3 = 8 \cdot 3 = 24.$$
+
+*(Quick check: $6^5 = 7776$, $4^3 = 64$, $12^4 = 20736$. $7776 \times 64 / 20736 = 497664/20736 = 24$. ✓)*
+
+## Worked example 2
+
+> If $\log_3 27 + \log_3 \tfrac{1}{9} = k$, find $k$.
+
+Translate each logarithm back to an exponential using $\log_b x = k \iff b^k = x$:
+
+$$\log_3 27 = \log_3 3^3 = 3, \qquad \log_3 \tfrac{1}{9} = \log_3 3^{-2} = -2.$$
+
+*(We used $\log_b b^r = r$ directly.)*
+
+Therefore $k = 3 + (-2) = 1$.
+
+Alternatively, use the product rule first:
+
+$$\log_3 27 + \log_3 \tfrac{1}{9} = \log_3\!\left(27 \cdot \tfrac{1}{9}\right) = \log_3 3 = 1.$$
+
+Both routes give $k = 1$.
+
+## Common traps
+
+- **Adding bases instead of exponents.** $2^3 \cdot 2^4 = 2^7$, not $4^7$ or $2^{12}$. The product rule adds *exponents*; the base stays the same.
+- **Misapplying the power rule to a sum.** $(a + b)^n \neq a^n + b^n$ in general. The power rule $(b^m)^n = b^{mn}$ only applies when the base is a single term raised to a power.
+- **Forgetting the reciprocal for negative exponents.** $4^{-3} = 1/64$, not $-64$. Negative exponents flip, they don't negate.
+- **Confusing $\log_b b^k = k$ with $\log_b k$.** The first is always $k$ by definition; the second is a completely different value. For example, $\log_3 3^5 = 5$ but $\log_3 5 \approx 1.46$.
+- **Ignoring domain restrictions in log equations.** When solving $\log_b(\text{expression}) = \text{something}$, always verify that the expression inside the log is positive. Extraneous solutions that make the argument $\leq 0$ must be discarded.

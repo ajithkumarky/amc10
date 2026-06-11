@@ -1,0 +1,29 @@
+---
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 5
+answer: D
+choices: ["12", "6", "$\\dfrac{1}{6}$", "$\\dfrac{1}{12}$", "$\\dfrac{1}{144}$"]
+---
+
+<Problem>
+What is $\left(\dfrac{1}{2}\right)^{\!\log_2 12}$?
+</Problem>
+
+<Solution>
+Let $k = \log_2 12$, so by definition $2^k = 12$.
+
+Rewrite the base $\frac{1}{2}$ as a power of $2$:
+
+$$\left(\frac{1}{2}\right)^k = (2^{-1})^k = 2^{-k}.$$
+
+Now express $2^{-k}$ in terms of $2^k = 12$:
+
+$$2^{-k} = \frac{1}{2^k} = \frac{1}{12}.$$
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Substitution with exponent identity">
+Write $\left(\frac{1}{2}\right)^{\log_2 12} = \frac{1}{2^{\log_2 12}}$. The denominator equals $2^{\log_2 12} = 12$ (by the fundamental identity $b^{\log_b x} = x$). So the expression equals $\frac{1}{12}$.
+</AlternateMethod>

@@ -1,0 +1,34 @@
+---
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 4
+answer: A
+choices: ["5", "-1", "5 and -1", "1", "no real solution"]
+---
+
+<Problem>
+Find all real values of $x$ that satisfy $\log_5 x + \log_5(x - 4) = 1$.
+</Problem>
+
+<Solution>
+Use the log product rule to combine the left side:
+
+$$\log_5\bigl[x(x-4)\bigr] = 1.$$
+
+Convert to exponential form:
+
+$$x(x - 4) = 5^1 = 5 \implies x^2 - 4x - 5 = 0.$$
+
+Factor the quadratic:
+
+$$(x - 5)(x + 1) = 0 \implies x = 5 \text{ or } x = -1.$$
+
+**Domain check:** both arguments of the logarithms must be positive. For $\log_5 x$ we need $x > 0$, and for $\log_5(x-4)$ we need $x > 4$. So we require $x > 4$.
+
+- $x = 5$: satisfies $x > 4$. ✓  
+- $x = -1$: fails $x > 4$ (extraneous). ✗
+
+The only valid solution is $x = 5$.
+
+Answer: **A**.
+</Solution>
