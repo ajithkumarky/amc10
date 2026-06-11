@@ -1,0 +1,53 @@
+---
+title: Area & Perimeter
+summary: Techniques for computing areas and perimeters of composite, shaded, and lattice regions.
+---
+
+## Overview
+
+Area and perimeter problems are among the most frequent geometry topics on the AMC 10. Most of these problems do not require exotic theorems — they reward students who can decompose a complicated figure into simpler pieces, identify cancellations, and reason carefully about what is being measured.
+
+A **composite region** is built by adding or subtracting simpler shapes. For example, an L-shaped floor plan is a large rectangle minus a smaller rectangle. Always ask: *can I get the answer by addition and subtraction of areas I already know?* For perimeters, trace the boundary carefully — interior edges never appear on the boundary, and a circular arc replaces a straight edge when a semicircle is appended.
+
+**Shaded regions** often involve a circle inside or outside a polygon. The key insight is that the shaded area equals (larger shape) $-$ (unshaded shape), so you compute two separate areas and subtract. The AMC loves setups where unexpected cancellations — like the Lune of Hippocrates — let you avoid computing $\pi$ at all.
+
+## Key facts
+
+- **Rectangle:** $A = \ell w$, $P = 2(\ell + w)$.
+- **Triangle:** $A = \tfrac{1}{2} b h$. For a right triangle with legs $a,b$ and hypotenuse $c$: $a^2+b^2=c^2$.
+- **Circle:** $A = \pi r^2$, circumference $= 2\pi r$. A sector with central angle $\theta$ (radians) has area $\tfrac{1}{2}r^2\theta$.
+- **Trapezoid:** $A = \tfrac{1}{2}(b_1+b_2)h$.
+- **Composite area:** $A_{\text{composite}} = A_1 \pm A_2 \pm \cdots$ (add the parts you include, subtract holes/cutouts).
+- **Pick's theorem** (lattice polygons): $A = I + \tfrac{B}{2} - 1$, where $I$ = number of **interior** lattice points and $B$ = number of **boundary** lattice points. Useful when a coordinate grid is given.
+- **Area-preserving dissection:** cutting and rearranging a region without overlap preserves total area. Use this to equate areas that look different.
+- **Similar figures:** if two similar figures have linear scale factor $k$, their areas are in ratio $k^2$.
+
+## Worked example 1
+
+**Problem.** A 12 by 8 rectangle has a 3 by 4 rectangle removed from one corner. What is the area of the remaining region?
+
+**Solution.** The large rectangle has area $12 \times 8 = 96$. The removed piece has area $3 \times 4 = 12$. The remaining area is $96 - 12 = \boxed{84}$.
+
+This is a one-step composite: large region $-$ cutout. Note the perimeter of the remaining L-shaped figure includes the *two new edges* created by the cut (of lengths 3 and 4), replacing the single corner, so the perimeter is the same as the original rectangle's perimeter: $2(12+8) = 40$. (The 3 and 4 edges substitute for the corner, not adding new length.) Actually trace it: $12 + 8 + 3 + 4 + (12-3) + (8-4) = 12+8+3+4+9+4 = 40$ — yes, equal!
+
+## Worked example 2
+
+**Problem.** A 6-by-6 square has its inscribed circle drawn (the circle just touches all four sides). Inside the square, the region *outside* the circle is shaded. What is the shaded area?
+
+**Solution.** The inscribed circle has diameter equal to the side length 6, so radius $r = 3$.
+
+$$A_{\text{circle}} = \pi(3)^2 = 9\pi.$$
+
+$$A_{\text{square}} = 36.$$
+
+$$A_{\text{shaded}} = 36 - 9\pi.$$
+
+Numerically this is about $36 - 28.27 = 7.73$. The answer $36 - 9\pi$ is exact and in simplified form. This "subtract the circle" template appears repeatedly on the AMC.
+
+## Common traps
+
+- **Perimeter of a composite figure**: students often add or subtract edge lengths the same way they add/subtract areas. Be careful — when a rectangle is cut from a corner, the new boundary has *two* new edges that replace the corner, so the total perimeter can stay the same, increase, or decrease depending on the shape.
+- **Diameter vs. radius**: the most common arithmetic slip. Always re-read whether the problem gives the diameter or the radius before squaring.
+- **Pick's theorem prerequisite**: the theorem applies only to **simple polygons with vertices at lattice points**. It does not apply to curved boundaries or non-lattice vertices.
+- **Area-preserving dissection confusion**: moving a piece preserves area but *not* perimeter. Never equate perimeters of a figure and its rearrangement.
+- **Shaded region sign**: when subtracting a circular sector from a triangle (or vice versa), decide at the start which region is larger and subtract the smaller from the larger to avoid negative areas.

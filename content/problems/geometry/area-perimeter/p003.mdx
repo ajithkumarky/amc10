@@ -1,0 +1,29 @@
+---
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: D
+choices: ['$3\pi$', '$6\pi$', '$6\sqrt{2}\,\pi$', '$9\pi$', '$12\pi$']
+---
+
+<Problem>
+A square has side length $6$. A circle is circumscribed about the square (passes through all four vertices), and a second circle is inscribed in the square (tangent to all four sides). What is the area of the region inside the circumscribed circle but outside the inscribed circle?
+</Problem>
+
+<Solution>
+**Inscribed circle:** The inscribed circle is tangent to all four sides of the square, so its diameter equals the side length. With side $6$, the inscribed circle has radius $r_{\text{in}} = 3$.
+
+$$A_{\text{in}} = \pi(3)^2 = 9\pi.$$
+
+**Circumscribed circle:** The circumscribed circle passes through all four vertices. Its radius equals half the diagonal of the square.
+
+$$\text{Diagonal} = 6\sqrt{2}, \quad r_{\text{out}} = 3\sqrt{2}.$$
+
+$$A_{\text{out}} = \pi(3\sqrt{2})^2 = \pi \cdot 18 = 18\pi.$$
+
+**Annular region:**
+
+$$A = A_{\text{out}} - A_{\text{in}} = 18\pi - 9\pi = 9\pi.$$
+
+Answer: **D**.
+</Solution>

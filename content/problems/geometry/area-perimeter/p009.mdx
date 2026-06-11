@@ -1,0 +1,35 @@
+---
+topic: geometry
+subtopic: area-perimeter
+difficulty: 5
+answer: A
+choices: ['$24\pi-18\sqrt{3}$', '$12\pi-9\sqrt{3}$', '$24\pi-12\sqrt{3}$', '$18\pi-24\sqrt{3}$', '$36\pi-18\sqrt{3}$']
+---
+
+<Problem>
+Two circles, each of radius $6$, have their centers exactly $6$ units apart. What is the area of the region that lies inside **both** circles?
+</Problem>
+
+<Solution>
+Let the two centers be $O_1$ and $O_2$ with $|O_1O_2|=6$ and both radii $r=6$.
+
+**Set up the lens shape.** The intersection region is a symmetric lens bounded by two circular arcs. By symmetry, it suffices to find the area of one circular segment and double it.
+
+**Half-angle at each center.** Draw the triangle $O_1 P O_2$, where $P$ is one of the two intersection points of the circles. We have $O_1P = O_2P = 6$ (radii) and $O_1O_2 = 6$, so triangle $O_1PO_2$ is equilateral. The angle at $O_1$ is $60°$, so the arc of circle $O_1$ spanning the lens has central angle $2 \times 60° = 120° = \dfrac{2\pi}{3}$.
+
+**One circular segment** (from circle $O_1$, central angle $\tfrac{2\pi}{3}$):
+
+$$A_{\text{sector}} = \tfrac{1}{2}r^2\theta = \tfrac{1}{2}(36)\!\left(\tfrac{2\pi}{3}\right) = 12\pi.$$
+
+$$A_{\text{triangle}\,O_1PQ} = \tfrac{1}{2}r^2\sin\theta = \tfrac{1}{2}(36)\sin\!\left(\tfrac{2\pi}{3}\right) = 18\cdot\frac{\sqrt{3}}{2} = 9\sqrt{3},$$
+
+where $Q$ is the second intersection point.
+
+$$A_{\text{segment}} = 12\pi - 9\sqrt{3}.$$
+
+**Total intersection area** (two congruent segments):
+
+$$A = 2(12\pi - 9\sqrt{3}) = 24\pi - 18\sqrt{3}.$$
+
+Answer: **A**.
+</Solution>

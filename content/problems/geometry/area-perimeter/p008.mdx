@@ -1,0 +1,35 @@
+---
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: B
+choices: ["$2$", "$3$", '$2\sqrt{3}$', "$4$", '$3\sqrt{2}$']
+---
+
+<Problem>
+Triangle $ABC$ has vertices $A=(0,0)$, $B=(8,0)$, $C=(2,6)$. A line parallel to $\overline{AB}$ intersects the two legs of the triangle and cuts off a smaller triangle at the top (containing vertex $C$) whose area is exactly $\tfrac{1}{4}$ of the area of triangle $ABC$. At what height $y = h$ does this line cross the $y$-axis?
+</Problem>
+
+<Solution>
+**Area of triangle $ABC$:**
+
+$$[\triangle ABC] = \tfrac{1}{2}|AB|\cdot\text{height} = \tfrac{1}{2}(8)(6) = 24.$$
+
+The top smaller triangle (containing $C$) is cut off by a line parallel to $AB$. This smaller triangle is **similar** to $\triangle ABC$ (same angles, parallel cut), with area $\tfrac{1}{4} \times 24 = 6$.
+
+**Linear scale factor:** If two similar figures have area ratio $k^2$, their linear dimensions are in ratio $k$.
+
+$$\frac{[\text{small}]}{[\triangle ABC]} = \frac{6}{24} = \frac{1}{4} = k^2 \implies k = \frac{1}{2}.$$
+
+The small triangle is $\tfrac{1}{2}$ the height of $\triangle ABC$. The full triangle has its apex at $C=(2,6)$ and base on $y=0$, so its total height is $6$.
+
+The small triangle's height $= \tfrac{1}{2}\times 6 = 3$.
+
+The cutting line is $3$ units below the apex $C$:
+
+$$y = 6 - 3 = 3.$$
+
+So the line $y=3$ cuts the triangle, and $h=3$.
+
+Answer: **B**.
+</Solution>

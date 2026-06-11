@@ -1,0 +1,49 @@
+---
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: D
+choices: ['$\pi - 2$', '$4\pi - 8\sqrt{3}$', '$8 - 4\sqrt{3}$', '$4\!\left(\dfrac{\pi}{3}+1-\sqrt{3}\right)$', '$4(\sqrt{3}-1)$']
+---
+
+<Problem>
+A square has side length $2$. From each of its four corners, a quarter-circle of radius $2$ is drawn inside the square. What is the area of the region that lies inside **all four** quarter-circles simultaneously?
+</Problem>
+
+<Solution>
+Place the square with corners at $(0,0)$, $(2,0)$, $(2,2)$, $(0,2)$.
+
+The four quarter-circles (each of radius $2$) are:
+- From $(0,0)$: $x^2+y^2 \le 4$
+- From $(2,0)$: $(x-2)^2+y^2 \le 4$
+- From $(2,2)$: $(x-2)^2+(y-2)^2 \le 4$
+- From $(0,2)$: $x^2+(y-2)^2 \le 4$
+
+**Find the four vertices of the inner region.** Adjacent circles cross inside the square:
+
+*Circles from $(0,0)$ and $(2,0)$:* subtract to get $x = 1$; substitute: $1 + y^2 = 4$, so $y = \sqrt{3}$. Vertex $P_1 = (1,\sqrt{3})$.
+
+By the fourfold symmetry about the center $(1,1)$, the four vertices are:
+
+$$P_1=(1,\sqrt{3}),\quad P_2=(2-\sqrt{3},1),\quad P_3=(1,2-\sqrt{3}),\quad P_4=(\sqrt{3},1).$$
+
+**Area of the inner quadrilateral $P_1P_2P_3P_4$:** This is a square (a rhombus with equal diagonals). The diagonal $P_1P_3$ has length $\sqrt{3}-(2-\sqrt{3})= 2\sqrt{3}-2$, and similarly for $P_2P_4$.
+
+$$A_{\text{quad}} = \tfrac{1}{2}(2\sqrt{3}-2)^2 = \tfrac{1}{2}\cdot 4(\sqrt{3}-1)^2 = 2(4-2\sqrt{3}) = 8-4\sqrt{3}.$$
+
+**Add four circular segments.** Each segment is bounded by one arc (say from $(0,0)$) between $P_1$ and $P_4$.
+
+The angle at $(0,0)$ to $P_1=(1,\sqrt{3})$ is $\arctan(\sqrt{3}/1)=60°$, and to $P_4=(\sqrt{3},1)$ is $\arctan(1/\sqrt{3})=30°$. The arc spans $60°-30°=30°=\tfrac{\pi}{6}$.
+
+Sector area $= \tfrac{1}{2}r^2\theta = \tfrac{1}{2}(4)\!\left(\tfrac{\pi}{6}\right) = \tfrac{\pi}{3}$.
+
+Triangle $(0,0),P_1,P_4$ area $= \tfrac{1}{2}|\det[(1,\sqrt{3}),(\sqrt{3},1)]| = \tfrac{1}{2}|1\cdot1-\sqrt{3}\cdot\sqrt{3}|=\tfrac{1}{2}|1-3|=1$.
+
+Segment area $= \tfrac{\pi}{3} - 1$.
+
+**Total:**
+
+$$A = (8-4\sqrt{3}) + 4\!\left(\frac{\pi}{3}-1\right) = 8-4\sqrt{3}+\frac{4\pi}{3}-4 = 4+\frac{4\pi}{3}-4\sqrt{3} = 4\!\left(\frac{\pi}{3}+1-\sqrt{3}\right).$$
+
+Answer: **D**.
+</Solution>

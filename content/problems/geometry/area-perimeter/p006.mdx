@@ -1,0 +1,33 @@
+---
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: C
+choices: ["$16$", "$18$", "$20$", "$22$", "$24$"]
+---
+
+<Problem>
+A polygon on a coordinate grid has vertices $(0,0)$, $(6,0)$, $(6,2)$, $(4,4)$, $(2,4)$, and $(0,2)$, in order. It has $16$ lattice points on its boundary and $13$ lattice points strictly inside it. Using Pick's theorem, find the area of the polygon.
+</Problem>
+
+<Solution>
+**Pick's theorem** states that for a simple polygon with vertices at lattice points,
+
+$$A = I + \frac{B}{2} - 1,$$
+
+where $I$ is the number of interior lattice points and $B$ is the number of boundary lattice points.
+
+Here $I = 13$ and $B = 16$, so
+
+$$A = 13 + \frac{16}{2} - 1 = 13 + 8 - 1 = 20.$$
+
+**Verification by the Shoelace formula:**
+
+$$A = \frac{1}{2}|x_1(y_2-y_6)+x_2(y_3-y_1)+x_3(y_4-y_2)+x_4(y_5-y_3)+x_5(y_6-y_4)+x_6(y_1-y_5)|$$
+
+$$= \frac{1}{2}|0(0-2)+6(2-0)+6(4-0)+4(4-2)+2(2-4)+0(0-4)|$$
+
+$$= \frac{1}{2}|0+12+24+8-4+0| = \frac{1}{2}(40) = 20. \checkmark$$
+
+Answer: **C**.
+</Solution>

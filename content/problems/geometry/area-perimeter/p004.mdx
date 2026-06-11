@@ -1,0 +1,47 @@
+---
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: B
+choices: ["$20$", "$24$", "$26$", "$28$", "$30$"]
+---
+
+<Problem>
+Right triangle $ABC$ has a right angle at $C$, with legs $AC = 6$ and $BC = 8$ (so the hypotenuse $AB = 10$). Semicircles are drawn **outward** on all three sides, using each side as a diameter. The two **lune-shaped** regions are defined as follows: each lune is the part of a leg-semicircle that lies **outside** the hypotenuse-semicircle. What is the combined area of the two lunes?
+</Problem>
+
+<Solution>
+Label the three semicircles:
+
+- $S_a$: semicircle on leg $AC$ (diameter $6$, radius $3$), area $= \dfrac{1}{2}\pi(3)^2 = \dfrac{9\pi}{2}$.
+- $S_b$: semicircle on leg $BC$ (diameter $8$, radius $4$), area $= \dfrac{1}{2}\pi(4)^2 = 8\pi$.
+- $S_c$: semicircle on hypotenuse $AB$ (diameter $10$, radius $5$), area $= \dfrac{1}{2}\pi(5)^2 = \dfrac{25\pi}{2}$.
+
+Notice:
+
+$$S_a + S_b = \frac{9\pi}{2} + 8\pi = \frac{9\pi + 16\pi}{2} = \frac{25\pi}{2} = S_c.$$
+
+This is the Pythagorean theorem in disguise: $\dfrac{\pi}{2}(a^2 + b^2) = \dfrac{\pi}{2}c^2$.
+
+Now write the combined area of the two lunes. Each lune equals the leg-semicircle minus the part of the leg-semicircle that overlaps the hypotenuse-semicircle. Letting $O$ denote the overlap of the two leg-semicircles with the hypotenuse-semicircle:
+
+$$\text{Lune area} = (S_a + S_b) - O.$$
+
+But also, the hypotenuse-semicircle $S_c$ covers the triangle $ABC$ plus the overlap regions:
+
+$$S_c = \triangle_{ABC} + O \implies O = S_c - \triangle_{ABC}.$$
+
+Therefore:
+
+$$\text{Lune area} = (S_a + S_b) - (S_c - \triangle_{ABC}) = S_c - S_c + \triangle_{ABC} = \triangle_{ABC}.$$
+
+The area of triangle $ABC$ is $\dfrac{1}{2}(6)(8) = 24$.
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Direct computation">
+The overlap $O$ equals the part of the hypotenuse-semicircle not covered by the triangle, computed as $S_c - \triangle_{ABC} = \tfrac{25\pi}{2} - 24$. Then:
+$$\text{Lune area} = (S_a+S_b) - O = \tfrac{25\pi}{2} - \left(\tfrac{25\pi}{2}-24\right) = 24.$$
+The $\pi$ terms cancel perfectly.
+</AlternateMethod>

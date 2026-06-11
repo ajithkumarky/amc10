@@ -1,0 +1,31 @@
+---
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: E
+choices: ['$14+4\pi$', '$22+4\pi$', '$14+6\sqrt{5}$', '$22+6\sqrt{5}+4\pi$', '$14+6\sqrt{5}+4\pi$']
+---
+
+<Problem>
+An isosceles trapezoid has parallel sides of length $8$ (top) and $14$ (bottom), and a height of $6$. A semicircle with diameter equal to the top side is attached to the outside of the top edge. What is the perimeter of the resulting composite figure? (The top edge of the trapezoid is interior to the figure and is not counted.)
+</Problem>
+
+<Solution>
+**Legs of the trapezoid:** The trapezoid is isosceles with parallel sides $8$ and $14$ and height $6$. Each leg spans a horizontal distance of $\dfrac{14-8}{2} = 3$ and a vertical distance of $6$, so each leg has length
+
+$$\ell = \sqrt{3^2 + 6^2} = \sqrt{9+36} = \sqrt{45} = 3\sqrt{5}.$$
+
+**Semicircle arc:** The semicircle has diameter $8$, so radius $4$. Its arc length (half-circumference) is
+
+$$\frac{1}{2}(2\pi \cdot 4) = 4\pi.$$
+
+**Perimeter of composite figure:** The boundary consists of:
+- The bottom side: length $14$.
+- Two legs: $3\sqrt{5}$ each, total $6\sqrt{5}$.
+- The semicircular arc: $4\pi$.
+- The top edge is **not** on the boundary (it is interior, shared between the trapezoid and the semicircle).
+
+$$P = 14 + 6\sqrt{5} + 4\pi.$$
+
+Answer: **E**.
+</Solution>
