@@ -1,0 +1,37 @@
+---
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: E
+choices: ['$\frac{1}{7}$', '$\frac{3}{14}$', '$\frac{4}{21}$', '$\frac{1}{4}$', '$\frac{2}{7}$']
+---
+
+<Problem>
+A bag contains $4$ red marbles and $3$ blue marbles. Two marbles are drawn at random without replacement. What is the probability that both drawn marbles are red?
+</Problem>
+
+<Solution>
+There are $4 + 3 = 7$ marbles total. The number of ways to choose $2$ marbles from $7$ is
+
+$$\binom{7}{2} = \frac{7 \cdot 6}{2} = 21.$$
+
+The number of ways to choose $2$ red marbles from the $4$ available is
+
+$$\binom{4}{2} = \frac{4 \cdot 3}{2} = 6.$$
+
+Therefore,
+
+$$P(\text{both red}) = \frac{6}{21} = \frac{2}{7}.$$
+
+**Check using sequential probability:** $P(\text{1st red}) = \dfrac{4}{7}$. Given the first is red, $3$ red and $3$ blue remain, so $P(\text{2nd red} \mid \text{1st red}) = \dfrac{3}{6} = \dfrac{1}{2}$.
+
+$$P(\text{both red}) = \frac{4}{7} \cdot \frac{1}{2} = \frac{4}{14} = \frac{2}{7}. \checkmark$$
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Sequential multiplication">
+Draw marbles one at a time. The probability the first is red is $\dfrac{4}{7}$. After removing one red marble, the bag has $3$ red and $3$ blue ($6$ total), so the probability the second is also red is $\dfrac{3}{6} = \dfrac{1}{2}$.
+
+$$P = \frac{4}{7} \times \frac{1}{2} = \frac{2}{7}.$$
+</AlternateMethod>

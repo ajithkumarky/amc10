@@ -1,0 +1,29 @@
+---
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: A
+choices: ['$\frac{4}{7}$', '$\frac{1}{2}$', '$\frac{4}{9}$', '$\frac{5}{9}$', '$\frac{2}{3}$']
+---
+
+<Problem>
+A bag contains $4$ red marbles, $3$ blue marbles, and $2$ green marbles. One marble is drawn at random. Given that the marble drawn is **not** green, what is the probability that it is red?
+</Problem>
+
+<Solution>
+We are asked for the conditional probability $P(\text{red} \mid \text{not green})$.
+
+Using the conditional probability formula:
+
+$$P(\text{red} \mid \text{not green}) = \frac{P(\text{red and not green})}{P(\text{not green})}.$$
+
+Since a red marble is automatically not green, $P(\text{red and not green}) = P(\text{red}) = \dfrac{4}{9}$.
+
+There are $4 + 3 = 7$ non-green marbles out of $9$ total, so $P(\text{not green}) = \dfrac{7}{9}$.
+
+$$P(\text{red} \mid \text{not green}) = \frac{4/9}{7/9} = \frac{4}{9} \cdot \frac{9}{7} = \frac{4}{7}.$$
+
+**Intuitive check:** Once we know the marble is not green, we can forget the green marbles entirely. We have $4$ red and $3$ blue remaining — $7$ equally likely outcomes — so $P(\text{red}) = \dfrac{4}{7}$. ✓
+
+Answer: **A**.
+</Solution>

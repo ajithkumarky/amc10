@@ -1,0 +1,87 @@
+---
+title: Probability Basics
+summary: Probability as favorable outcomes over total outcomes, complementary counting, independent and dependent events, conditional probability, and probability with combinatorics.
+---
+
+## Overview
+
+Probability measures how likely an event is to occur. For a **uniform sample space** (all outcomes equally likely), the probability of event $E$ is
+
+$$P(E) = \frac{\text{number of favorable outcomes}}{\text{total number of outcomes}}.$$
+
+Probabilities always satisfy $0 \le P(E) \le 1$: impossible events have probability $0$, certain events have probability $1$.
+
+AMC10 problems test probability in two ways. First, they give small sample spaces where you can list every outcome. Second — and more often at harder levels — they combine probability with combinatorics, so you compute favorable and total counts using $\binom{n}{r}$ or $P(n,r)$ before dividing. Recognizing which tool to reach for, and when to use the complement, are the two most time-saving habits.
+
+Understanding the difference between **independent** and **dependent** events is essential. When events share no information (two separate coin flips), multiply their individual probabilities. When the second event depends on the outcome of the first (drawing cards without replacing them), the probabilities change — you must condition on what has already happened.
+
+## Key facts
+
+- **Basic probability formula:**
+$$P(E) = \frac{|\text{favorable outcomes}|}{|\text{sample space}|}$$
+*Use when* all outcomes are equally likely; count carefully using combinatorics if the sample space is large.
+
+- **Complement rule:**
+$$P(E) = 1 - P(\text{not } E)$$
+*Use when* it is easier to count the cases where $E$ does NOT happen. Classic trigger: "at least one."
+
+- **Multiplication rule for independent events:** Events $A$ and $B$ are independent when knowing $A$ occurred gives no information about $B$.
+$$P(A \text{ and } B) = P(A) \cdot P(B)$$
+*Use when* the trials are separate (two dice rolls, two coin flips, sampling with replacement).
+
+- **Multiplication rule for dependent events:** When the outcome of the first trial affects the second,
+$$P(A \text{ and } B) = P(A) \cdot P(B \mid A)$$
+where $P(B \mid A)$ is the probability of $B$ given that $A$ occurred. *Use when* drawing without replacement.
+
+- **Conditional probability:**
+$$P(B \mid A) = \frac{P(A \text{ and } B)}{P(A)}$$
+*Use when* you are told some event $A$ has already occurred and need to update the probability of $B$.
+
+- **Probability with combinations (drawing without replacement):**
+$$P(\text{all } r \text{ draws are favorable}) = \frac{\dbinom{f}{r}}{\dbinom{n}{r}}$$
+where $n$ is the total number of objects and $f$ is the number of favorable ones. *Use when* the order of drawing does not matter and every subset of size $r$ is equally likely.
+
+- **Addition rule (mutually exclusive events):** If $A$ and $B$ cannot both occur,
+$$P(A \text{ or } B) = P(A) + P(B).$$
+
+## Worked example 1
+
+> A bag contains 4 red marbles and 6 blue marbles. One marble is drawn at random. What is the probability that it is red?
+
+There are $4 + 6 = 10$ marbles total, all equally likely to be drawn. There are 4 favorable outcomes (the red marbles).
+
+$$P(\text{red}) = \frac{4}{10} = \frac{2}{5}.$$
+
+*Sanity check:* $P(\text{blue}) = 6/10 = 3/5$, and $2/5 + 3/5 = 1$. ✓
+
+## Worked example 2
+
+> A bag contains 5 red marbles and 3 blue marbles. Two marbles are drawn at random **without replacement**. What is the probability that both marbles are red?
+
+**Method 1 — Combinatorics.**
+
+Total ways to choose 2 marbles from 8: $\dbinom{8}{2} = 28$.
+
+Ways to choose 2 red marbles from 5: $\dbinom{5}{2} = 10$.
+
+$$P(\text{both red}) = \frac{10}{28} = \frac{5}{14}.$$
+
+**Method 2 — Sequential multiplication.**
+
+$P(\text{1st is red}) = \dfrac{5}{8}$. Given the first is red, 4 red and 3 blue remain (7 total), so $P(\text{2nd is red} \mid \text{1st is red}) = \dfrac{4}{7}$.
+
+$$P(\text{both red}) = \frac{5}{8} \cdot \frac{4}{7} = \frac{20}{56} = \frac{5}{14}.$$
+
+Both methods agree. ✓ The combinatorics method is faster when drawing more than 2 objects.
+
+## Common traps
+
+- **Forgetting "without replacement" changes the probabilities.** Each draw from a finite pool reduces the remaining count. If the problem says "without replacement," the draws are dependent — do not just multiply the same fraction repeatedly.
+
+- **Misidentifying the sample space.** Always clarify: is it "rolls of a die," "pairs of dice," or "sums"? Rolling two dice has $6 \times 6 = 36$ equally likely outcomes, not 11 equally likely sums (sums are not equally likely!).
+
+- **Applying the complement rule carelessly.** "At least one" means "one or more." Its complement is "zero," which is usually easy to compute. Make sure you subtract from 1 only after correctly computing the complement probability.
+
+- **Multiplying independent probabilities when the events are actually dependent.** Drawing two cards from a deck without replacement: the second draw depends on the first. Check whether the problem says "with replacement" or "without replacement."
+
+- **Confusing $P(A \mid B)$ with $P(B \mid A)$.** These are rarely equal. Write out the conditional probability formula and substitute carefully: $P(B \mid A) = P(A \text{ and } B)/P(A)$.

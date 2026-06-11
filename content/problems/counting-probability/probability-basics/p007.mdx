@@ -1,0 +1,31 @@
+---
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: C
+choices: ['$\frac{1}{40}$', '$\frac{1}{36}$', '$\frac{1}{30}$', '$\frac{1}{20}$', '$\frac{1}{15}$']
+---
+
+<Problem>
+Cards are labeled $1$ through $10$ and placed in a box. Three cards are drawn at random without replacement. What is the probability that all three drawn cards are labeled with prime numbers?
+</Problem>
+
+<Solution>
+First, identify the prime numbers in $\{1, 2, 3, \ldots, 10\}$.
+
+Recall that $1$ is **not** prime. The primes are $2, 3, 5, 7$ — exactly $4$ prime numbers.
+
+The total number of ways to choose $3$ cards from $10$ is
+
+$$\binom{10}{3} = \frac{10 \cdot 9 \cdot 8}{3 \cdot 2 \cdot 1} = 120.$$
+
+The number of ways to choose $3$ cards all from the $4$ primes is
+
+$$\binom{4}{3} = 4.$$
+
+Therefore,
+
+$$P(\text{all three prime}) = \frac{4}{120} = \frac{1}{30}.$$
+
+Answer: **C**.
+</Solution>

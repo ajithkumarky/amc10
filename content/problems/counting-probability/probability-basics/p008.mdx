@@ -1,0 +1,41 @@
+---
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: E
+choices: ['$\frac{5}{18}$', '$\frac{1}{3}$', '$\frac{7}{18}$', '$\frac{5}{12}$', '$\frac{4}{9}$']
+---
+
+<Problem>
+Three fair six-sided dice are rolled simultaneously. What is the probability that at least two of the three dice show the same number?
+</Problem>
+
+<Solution>
+Use the complement: it is easier to count the outcomes where **all three dice show different numbers**.
+
+The total number of outcomes is $6^3 = 216$.
+
+For all three dice to show different numbers: choose distinct values for dice 1, 2, 3 in order. There are $6$ choices for die 1, $5$ remaining choices for die 2, and $4$ remaining choices for die 3:
+
+$$6 \times 5 \times 4 = 120 \text{ outcomes where all three differ.}$$
+
+$$P(\text{all different}) = \frac{120}{216} = \frac{5}{9}.$$
+
+Therefore,
+
+$$P(\text{at least two the same}) = 1 - \frac{5}{9} = \frac{4}{9}.$$
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Direct count">
+Count outcomes by cases:
+
+- **Exactly two dice match (a pair):** Choose the matching value: $6$ ways. Choose which two dice form the pair: $\binom{3}{2} = 3$ ways. Choose a different value for the third die: $5$ ways. Total: $6 \times 3 \times 5 = 90$.
+
+- **All three dice match (a triple):** Choose the common value: $6$ ways. Total: $6$.
+
+Favorable outcomes: $90 + 6 = 96$.
+
+$$P = \frac{96}{216} = \frac{4}{9}. \checkmark$$
+</AlternateMethod>

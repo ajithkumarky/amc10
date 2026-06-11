@@ -1,0 +1,37 @@
+---
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: D
+choices: ['$\frac{5}{14}$', '$\frac{10}{21}$', '$\frac{6}{37}$', '$\frac{15}{37}$', '$\frac{20}{37}$']
+---
+
+<Problem>
+A team of $3$ is chosen at random from a group of $5$ boys and $4$ girls. Given that the team contains **at least one girl**, what is the probability that the team contains **exactly two girls**?
+</Problem>
+
+<Solution>
+We need $P(\text{exactly 2 girls} \mid \text{at least 1 girl})$.
+
+**Step 1 — Count all teams of 3 from 9 people:**
+
+$$\binom{9}{3} = \frac{9 \cdot 8 \cdot 7}{6} = 84.$$
+
+**Step 2 — Count teams with NO girls (all boys):**
+
+$$\binom{5}{3} = 10.$$
+
+**Step 3 — Count teams with at least 1 girl:**
+
+$$84 - 10 = 74.$$
+
+**Step 4 — Count teams with exactly 2 girls (and 1 boy):**
+
+$$\binom{4}{2} \cdot \binom{5}{1} = 6 \cdot 5 = 30.$$
+
+**Step 5 — Apply the conditional probability formula:**
+
+$$P(\text{exactly 2 girls} \mid \text{at least 1 girl}) = \frac{30}{74} = \frac{15}{37}.$$
+
+Answer: **D**.
+</Solution>
