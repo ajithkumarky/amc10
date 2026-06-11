@@ -1,0 +1,29 @@
+---
+topic: number-theory
+subtopic: number-bases
+difficulty: 3
+answer: E
+choices: ["5", "6", "8", "9", "7"]
+---
+
+<Problem>
+In base $b$, the equation $34_b \times 2 = 101_b$ holds. What is $b$?
+</Problem>
+
+<Solution>
+Translate each side into base 10 and set them equal.
+
+$$34_b = 3b + 4, \qquad 101_b = b^2 + 0 \cdot b + 1 = b^2 + 1.$$
+
+The equation becomes:
+$$2(3b + 4) = b^2 + 1 \implies 6b + 8 = b^2 + 1 \implies b^2 - 6b - 7 = 0.$$
+
+Factor:
+$$(b - 7)(b + 1) = 0.$$
+
+So $b = 7$ or $b = -1$. Since $b$ must be a positive integer, $b = 7$.
+
+**Digit check:** The digits used are 0, 1, 2, 3, 4. All are less than 7. ✓
+
+Answer: **E**.
+</Solution>

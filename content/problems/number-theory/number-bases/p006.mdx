@@ -1,0 +1,26 @@
+---
+topic: number-theory
+subtopic: number-bases
+difficulty: 3
+answer: B
+choices: ["18", "22", "20", "24", "26"]
+---
+
+<Problem>
+How many 3-digit base-6 numbers are divisible by 8?
+</Problem>
+
+<Solution>
+A 3-digit base-6 number has the form $\overline{abc}_6$ where $a \in \{1, 2, 3, 4, 5\}$ and $b, c \in \{0, 1, 2, 3, 4, 5\}$.
+
+The smallest 3-digit base-6 number is $100_6 = 36$ and the largest is $555_6 = 5 \cdot 36 + 5 \cdot 6 + 5 = 215$.
+
+So we count integers in $[36, 215]$ that are divisible by 8.
+
+- Smallest multiple of 8 that is $\ge 36$: $\lceil 36/8 \rceil = 5$, so $5 \times 8 = 40$.
+- Largest multiple of 8 that is $\le 215$: $\lfloor 215/8 \rfloor = 26$, so $26 \times 8 = 208$.
+
+The multiples of 8 in this range are $8 \times 5, 8 \times 6, \ldots, 8 \times 26$, giving $26 - 5 + 1 = \mathbf{22}$ numbers.
+
+Answer: **B**.
+</Solution>

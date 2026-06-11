@@ -1,0 +1,38 @@
+---
+topic: number-theory
+subtopic: number-bases
+difficulty: 3
+answer: C
+choices: ["16", "18", "20", "22", "24"]
+---
+
+<Problem>
+How many integers from 1 to 100 inclusive are palindromes in base 4? (A number is a base-4 palindrome if its base-4 representation reads the same forwards and backwards.)
+</Problem>
+
+<Solution>
+We count base-4 palindromes by number of digits.
+
+**1-digit palindromes** ($1_4$ through $3_4$, i.e., 1 through 3): Every 1-digit number is trivially a palindrome. That gives **3** integers.
+
+**2-digit palindromes** $\overline{aa}_4$ where $a \in \{1, 2, 3\}$: Value $= 4a + a = 5a$. These are $5, 10, 15$ — all $\le 100$. That gives **3** integers.
+
+**3-digit palindromes** $\overline{aba}_4$ where $a \in \{1, 2, 3\}$, $b \in \{0, 1, 2, 3\}$: Value $= 16a + 4b + a = 17a + 4b$.
+- $a = 1$: values $17, 21, 25, 29$
+- $a = 2$: values $34, 38, 42, 46$
+- $a = 3$: values $51, 55, 59, 63$
+
+All 12 values lie between 17 and 63, so all are $\le 100$. That gives **12** integers.
+
+**4-digit palindromes** $\overline{abba}_4$ where $a \in \{1, 2, 3\}$, $b \in \{0, 1, 2, 3\}$: Value $= 64a + 16b + 4b + a = 65a + 20b$.
+- $a = 1, b = 0$: $65$ ✓
+- $a = 1, b = 1$: $85$ ✓
+- $a = 1, b = 2$: $105 > 100$ ✗
+- $a \ge 2$: $65 \cdot 2 = 130 > 100$ ✗
+
+That gives **2** integers: 65 and 85.
+
+**Total:** $3 + 3 + 12 + 2 = \mathbf{20}$.
+
+Answer: **C**.
+</Solution>

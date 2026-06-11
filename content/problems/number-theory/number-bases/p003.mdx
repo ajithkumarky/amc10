@@ -1,0 +1,29 @@
+---
+topic: number-theory
+subtopic: number-bases
+difficulty: 2
+answer: A
+choices: ['$1042_6$', '$1040_6$', '$1100_6$', '$1032_6$', '$1044_6$']
+---
+
+<Problem>
+Compute $345_6 + 253_6$. Express your answer in base 6.
+</Problem>
+
+<Solution>
+Add column by column from right to left, carrying whenever a column sum reaches 6.
+
+**Ones column:** $5 + 3 = 8 = 1 \cdot 6 + 2$. Write 2, carry 1.
+
+**Sixes column:** $4 + 5 + 1\text{ (carry)} = 10 = 1 \cdot 6 + 4$. Write 4, carry 1.
+
+**Thirty-sixes column:** $3 + 2 + 1\text{ (carry)} = 6 = 1 \cdot 6 + 0$. Write 0, carry 1.
+
+**New column:** Write the remaining carry 1.
+
+Result: $1042_6$.
+
+**Verification (base 10):** $345_6 = 3 \cdot 36 + 4 \cdot 6 + 5 = 108 + 24 + 5 = 137$ and $253_6 = 2 \cdot 36 + 5 \cdot 6 + 3 = 72 + 30 + 3 = 105$. Sum $= 242$. Check: $1042_6 = 216 + 0 + 24 + 2 = 242$. ✓
+
+Answer: **A**.
+</Solution>

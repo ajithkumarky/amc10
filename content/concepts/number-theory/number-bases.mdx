@@ -1,0 +1,60 @@
+---
+title: Number Bases
+summary: Understanding place value in any base b, converting numbers between bases, and solving equations where the base itself is unknown.
+---
+
+## Overview
+
+Our everyday number system is **base 10**: the digit in each position represents a power of ten. A number like $347$ means $3 \cdot 10^2 + 4 \cdot 10^1 + 7 \cdot 10^0$. Any integer $b \ge 2$ can serve as a base just as well. In base $b$, the available digits are $0, 1, 2, \ldots, b-1$, and the place values are powers of $b$.
+
+We write $\overline{d_k d_{k-1} \cdots d_1 d_0}_b$ to mean $d_k \cdot b^k + d_{k-1} \cdot b^{k-1} + \cdots + d_1 \cdot b + d_0$. The leading digit $d_k$ must satisfy $1 \le d_k \le b-1$ (no leading zeros). A key constraint: every digit must be strictly less than the base. If you see a "digit" equal to or larger than $b$, something has gone wrong.
+
+AMC 10 problems love number bases for two reasons. First, they test whether you truly understand place value — a concept that looks obvious in base 10 but requires conscious thought in base 5 or base 7. Second, "unknown base" equations (e.g., $\overline{23}_b = 17$) create neat one-variable algebra problems. Recognizing this algebraic framing is often the entire key.
+
+## Key facts
+
+- **Place-value expansion:** $\overline{d_n d_{n-1} \cdots d_0}_b = \sum_{i=0}^{n} d_i \cdot b^i$. Always expand from right to left, starting at $b^0$.
+- **Digit constraint:** In base $b$, every digit $d$ satisfies $0 \le d \le b-1$. This constraint rules out many candidate bases in unknown-base problems.
+- **Converting to base 10:** Expand using the formula above and evaluate arithmetically.
+- **Converting from base 10 to base $b$:** Repeatedly divide by $b$ and record remainders from last to first. ($n = qb + r$ gives the last digit $r$; apply to $q$ next.)
+- **Powers of the base:** $3^1=3$, $3^2=9$, $3^3=27$, $3^4=81$; $5^1=5$, $5^2=25$, $5^3=125$; $6^1=6$, $6^2=36$, $6^3=216$; $7^1=7$, $7^2=49$, $7^3=343$; $8^1=8$, $8^2=64$, $8^3=512$. Memorize these to speed up conversions.
+- **Base-$b$ arithmetic:** Add, subtract, and multiply digit by digit exactly as in base 10, but carry when a column sum reaches $b$ (not 10). A column sum of $s$ contributes $s \bmod b$ and carries $\lfloor s/b \rfloor$.
+- **Related bases:** Since $9 = 3^2$, every two consecutive base-3 digits correspond to one base-9 digit. Similarly $8 = 2^3$ links base 2 and base 8 (groups of 3 binary digits = one octal digit). This shortcut avoids full base-10 round trips.
+- **Unknown-base equations:** If a problem states $\overline{ab}_b = N$ (with $a, b$ literal digits), substitute and solve: $(a)b + b_{\text{digit}} = N$ becomes a linear or quadratic in $b$. Then verify the digit constraint.
+
+## Worked example 1
+
+> Convert $2134_5$ to base 10.
+
+Expand by place value:
+$$2134_5 = 2 \cdot 5^3 + 1 \cdot 5^2 + 3 \cdot 5 + 4 = 2 \cdot 125 + 1 \cdot 25 + 15 + 4 = 250 + 25 + 15 + 4 = \mathbf{294}.$$
+
+Quick check: all digits (2, 1, 3, 4) are less than 5. ✓
+
+## Worked example 2
+
+> In base $b$, the equation $\overline{32}_b + \overline{14}_b = \overline{51}_b$ holds. Find $b$.
+
+Expand each number:
+$$\overline{32}_b = 3b + 2, \quad \overline{14}_b = b + 4, \quad \overline{51}_b = 5b + 1.$$
+
+Set up the equation:
+$$(3b + 2) + (b + 4) = 5b + 1 \implies 4b + 6 = 5b + 1 \implies b = 5.$$
+
+Digit check: digits used are 1, 2, 3, 4, 5. But in base 5 the digit 5 is **not allowed** (digits go 0–4). So there is **no valid base** — the equation is inconsistent.
+
+This illustrates the trap: always verify the digit constraint after solving for $b$. If any digit $\ge b$ appears, discard that solution.
+
+> **Corrected version:** $\overline{32}_b + \overline{14}_b = \overline{101}_b$.
+
+$$(3b + 2) + (b + 4) = b^2 + 1 \implies 4b + 6 = b^2 + 1 \implies b^2 - 4b - 5 = 0 \implies (b-5)(b+1) = 0.$$
+
+Since $b > 0$, we get $b = 5$. Digit check: digits 1, 2, 3, 4 all satisfy $d < 5$. ✓ Answer: $b = \mathbf{5}$.
+
+## Common traps
+
+- **Digit $\ge$ base.** If $b = 6$ but you write the digit 6 somewhere, the representation is invalid. Check after every computation.
+- **Forgetting $b^0 = 1$.** Students sometimes multiply the rightmost digit by $b$ instead of 1. Write out the full power-of-$b$ list before expanding.
+- **Carrying to base 10 by mistake.** When doing arithmetic in base $b$, carry when the column total reaches $b$, not 10. Getting a column sum of 7 in base 6 means writing 1 and carrying 1.
+- **Off-by-one in the power list.** An $n$-digit base-$b$ number uses powers $b^0$ through $b^{n-1}$, not $b^1$ through $b^n$.
+- **Missing the related-base shortcut.** When converting between bases that are powers of each other (e.g., base 3 ↔ base 9, base 2 ↔ base 8), grouping digits is much faster than going through base 10.

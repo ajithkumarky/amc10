@@ -1,0 +1,73 @@
+---
+topic: number-theory
+subtopic: number-bases
+difficulty: 5
+answer: E
+choices: ["4", "5", "6", "8", "7"]
+---
+
+<Problem>
+A positive integer $n < 500$ has the property that its base-5 representation is the reverse of its base-7 representation. How many such integers $n$ exist?
+
+(Note: a 1-digit representation is its own reverse.)
+</Problem>
+
+<Solution>
+We search by the common number of digits in the two representations.
+
+**1-digit in both bases** ($n \in \{1, \ldots, 4\}$): A 1-digit base-5 number satisfies $n \le 4$, and a 1-digit base-7 number satisfies $n \le 6$, so the overlap is $n \in \{1, 2, 3, 4\}$. A single digit reverses to itself, so both representations already agree. All **4** values work.
+
+**2-digit in base 5 and 2-digit in base 7** (ranges $[5,24]$ and $[7,48]$; overlap $[7, 24]$):
+
+Let the base-5 form be $(a, b)$ and the base-7 form be $(b, a)$ (reversed). Then:
+$$n = 5a + b \quad \text{and} \quad n = 7b + a,$$
+where $a \in \{1,2,3,4\}$ and $b \in \{0,1,2,3,4\}$, and additionally $b \ge 1$ (leading digit in base 7).
+
+Subtracting: $5a + b = 7b + a \implies 4a = 6b \implies 2a = 3b$.
+
+The only solution with $a \in \{1,2,3,4\}$ and $b \in \{1,2,3,4\}$ is $b = 2, a = 3$, giving $n = 5(3) + 2 = 17$.
+
+Check: $17 = 32_5$ and $17 = 23_7$. Reversed ✓. And $17 \in [7, 24]$ ✓. That is **1** value.
+
+**3-digit in base 5 and 3-digit in base 7** (ranges $[25, 124]$ and $[49, 342]$; overlap $[49, 124]$):
+
+Let the base-5 form be $(a, b, c)$ and the base-7 form be $(c, b, a)$. Then:
+$$n = 25a + 5b + c \quad \text{and} \quad n = 49c + 7b + a,$$
+with $a \in \{1,2,3,4\}$, $b,c \in \{0,1,2,3,4\}$, and $c \ge 1$.
+
+Setting equal:
+$$25a + 5b + c = 49c + 7b + a \implies 24a - 2b - 48c = 0 \implies 12a - b - 24c = 0 \implies b = 12(a - 2c).$$
+
+Since $0 \le b \le 4$ and $12 \ge 5$, we need $a - 2c = 0$, hence $b = 0$ and $a = 2c$.
+
+With $c \in \{1,2\}$ (so that $a = 2c \le 4$):
+- $c = 1, a = 2, b = 0$: $n = 25(2) + 0 + 1 = 51$. Check: $51 = 201_5$, $51 = 102_7$. Reversed ✓.
+- $c = 2, a = 4, b = 0$: $n = 25(4) + 0 + 2 = 102$. Check: $102 = 402_5$, $102 = 204_7$. Reversed ✓.
+
+Both lie in $[49, 124]$ ✓. That is **2** values.
+
+**4-digit in base 5 and 4-digit in base 7** with $n < 500$ (ranges $[125, 499]$ and $[343, 2400]$; overlap $[343, 499]$):
+
+Let base-5 form be $(a,b,c,d)$ and base-7 form be $(d,c,b,a)$. Then:
+$$125a + 25b + 5c + d = 343d + 49c + 7b + a \implies 124a + 18b - 44c - 342d = 0.$$
+
+Since $d \ge 1$, the right side forces $342d \le 124(4) + 18(4) = 496 + 72 = 568$, so $d = 1$.
+
+With $d = 1$: $124a + 18b - 44c = 342$.
+
+The maximum of the left side is $124(4) + 18(4) - 44(0) = 568$, and we need it to equal 342. Testing $a \in \{1,2,3,4\}$ modulo 2: $124a + 18b - 44c$ is always even, but $342$ is even, so parity is consistent.
+
+Checking $a = 3$: $372 + 18b - 44c = 342 \implies 18b - 44c = -30 \implies 9b - 22c = -15$. With $b \in \{0,\ldots,4\}$ and $c \in \{0,\ldots,4\}$: $9b = 22c - 15$. For $c = 3$: $9b = 51$, not integer. For $c = 4$: $9b = 73$, not integer. No solutions.
+
+Checking $a = 2$: $248 + 18b - 44c = 342 \implies 18b - 44c = 94 \implies 9b - 22c = 47$. Maximum of $9b$ is 36, so $9b - 22c \le 36 < 47$. No solutions.
+
+Checking $a = 4$: $496 + 18b - 44c = 342 \implies 18b - 44c = -154 \implies 9b - 22c = -77$. Minimum of $9b - 22c$ is $0 - 88 = -88$. For $c = 4$: $9b = 88 - 77 = 11$, not integer. For $c = 3$: $9b = 66-77 < 0$. No solutions.
+
+Checking $a = 1$: $124 + 18b - 44c = 342 \implies 18b - 44c = 218$. Maximum is 72, so impossible.
+
+No 4-digit solutions.
+
+**Grand total:** $4 + 1 + 2 = \mathbf{7}$.
+
+Answer: **E**.
+</Solution>

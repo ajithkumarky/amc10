@@ -1,0 +1,27 @@
+---
+topic: number-theory
+subtopic: number-bases
+difficulty: 2
+answer: C
+choices: ['$13312_6$', '$12313_6$', '$13213_6$', '$12133_6$', '$13231_6$']
+---
+
+<Problem>
+What is 2025 written in base 6?
+</Problem>
+
+<Solution>
+Convert by repeatedly dividing by 6 and recording remainders:
+
+$$2025 \div 6 = 337 \text{ remainder } 3$$
+$$337 \div 6 = 56 \text{ remainder } 1$$
+$$56 \div 6 = 9 \text{ remainder } 2$$
+$$9 \div 6 = 1 \text{ remainder } 3$$
+$$1 \div 6 = 0 \text{ remainder } 1$$
+
+Reading the remainders from bottom to top gives $13213_6$.
+
+**Verification:** $1 \cdot 1296 + 3 \cdot 216 + 2 \cdot 36 + 1 \cdot 6 + 3 = 1296 + 648 + 72 + 6 + 3 = 2025$. ✓
+
+Answer: **C**.
+</Solution>
