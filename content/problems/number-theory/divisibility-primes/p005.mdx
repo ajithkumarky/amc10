@@ -1,0 +1,28 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: D
+choices: ["2", "3", "5", "4", "6"]
+---
+
+<Problem>
+How many integers from $1$ to $100$ inclusive have exactly $3$ positive divisors?
+</Problem>
+
+<Solution>
+A positive integer $n$ has exactly $3$ divisors if and only if $n = p^2$ for some prime $p$.
+
+**Why?** If $n = p_1^{a_1} p_2^{a_2} \cdots$, then $\tau(n) = (a_1+1)(a_2+1)\cdots = 3$. Since $3$ is prime, the only factorization is $3 = 3$, meaning there is exactly one prime factor $p$ and $a_1 = 2$. So $n = p^2$.
+
+The divisors of $p^2$ are exactly $1, p, p^2$ — confirming there are $3$.
+
+Now find all primes $p$ with $p^2 \le 100$, i.e., $p \le 10$:
+$$p \in \{2, 3, 5, 7\}, \quad p^2 \in \{4, 9, 25, 49\}.$$
+
+(The next prime is $11$, and $11^2 = 121 > 100$.)
+
+There are $\mathbf{4}$ such integers.
+
+Answer: **D**.
+</Solution>

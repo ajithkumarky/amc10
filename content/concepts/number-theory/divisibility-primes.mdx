@@ -1,0 +1,79 @@
+---
+title: Divisibility & Primes
+summary: Quick tests for divisibility, prime factorization, and counting divisors.
+---
+
+## Overview
+
+Divisibility and primes are the foundation of number theory on the AMC10. A positive
+integer $n$ is **divisible** by $d$ if dividing $n$ by $d$ leaves remainder zero —
+equivalently, $d \mid n$ means $n = d \cdot k$ for some integer $k$.
+
+**Why the AMC10 loves this topic:** Many competition problems reduce to asking whether
+a number has a special form (prime, perfect square, highly composite) or asking you
+to count divisors or factor an expression. Recognizing 720 as $2^4 \cdot 3^2 \cdot 5$
+in two seconds is a real skill.
+
+**Prime factorization** (the Fundamental Theorem of Arithmetic) says every integer
+greater than 1 can be written uniquely as a product of prime powers:
+$$n = p_1^{a_1} \cdot p_2^{a_2} \cdots p_k^{a_k}.$$
+From this one expression you can read off the number of divisors, the sum of divisors,
+GCD, LCM, and more.
+
+## Key facts
+
+- **Divisibility by 2:** last digit is even.
+- **Divisibility by 4:** last two digits form a number divisible by 4.
+- **Divisibility by 8:** last three digits form a number divisible by 8.
+- **Divisibility by 3 or 9:** digit sum divisible by 3 (or 9). *Use when: checking large numbers by hand.*
+- **Divisibility by 5:** last digit is 0 or 5.
+- **Divisibility by 11:** alternating digit sum $(d_1 - d_2 + d_3 - \cdots)$ is divisible by 11.
+  *Use when: the answer choices hint at a near-11 structure.*
+- **Counting divisors:** if $n = p_1^{a_1} \cdots p_k^{a_k}$ then the number of positive
+  divisors is $\tau(n) = (a_1+1)(a_2+1)\cdots(a_k+1)$.
+- **Sum of divisors:** $\sigma(n) = \dfrac{p_1^{a_1+1}-1}{p_1-1} \cdot \dfrac{p_2^{a_2+1}-1}{p_2-1} \cdots$
+  *Use when: the problem asks for the sum of all divisors.*
+- **Perfect squares:** a divisor $d$ of $n = p_1^{a_1}\cdots p_k^{a_k}$ is a perfect square
+  iff all its prime exponents are even. Count them as $\bigl(\lfloor a_1/2\rfloor+1\bigr)\cdots\bigl(\lfloor a_k/2\rfloor+1\bigr)$.
+- **Primality testing:** trial-divide by all primes $\leq \sqrt{n}$. If none divide $n$, it's prime.
+  *The first 10 primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29.*
+- **Prime gaps / distribution:** primes thin out as numbers grow, but there is no largest prime.
+  **Bertrand's postulate:** for every $n > 1$ there is always a prime $p$ with $n < p < 2n$.
+
+## Worked example 1
+
+> How many positive divisors does $180$ have?
+
+**Factor:** $180 = 4 \cdot 45 = 2^2 \cdot 3^2 \cdot 5$.
+
+**Apply the formula:** $\tau(180) = (2+1)(2+1)(1+1) = 3 \cdot 3 \cdot 2 = 18$.
+
+You can also list them systematically: multiply each combination of $\{1,2,4\}$,
+$\{1,3,9\}$, $\{1,5\}$ — but the formula is faster and less error-prone.
+
+## Worked example 2
+
+> Find the number of positive integers $n \leq 50$ such that $n^2$ has exactly $9$ positive divisors.
+
+$\tau(n^2) = 9$ requires $n^2$'s prime-exponent list to satisfy $\prod(e_i+1)=9$.
+
+$9$ factors as $9 = 9$ or $9 = 3 \times 3$.
+
+- **Case $9$:** $n^2 = p^8$, so $n = p^4$. For $n \leq 50$: $n = 2^4 = 16$ only ($3^4 = 81 > 50$).
+- **Case $3 \times 3$:** $n^2 = p^2 q^2$, so $n = pq$ with $p < q$ distinct primes.
+  Count pairs $(p,q)$ with $pq \leq 50$:
+  - $p = 2$: $q \in \{3,5,7,11,13,17,19,23\}$ → 8 values
+  - $p = 3$: $q \in \{5,7,11,13\}$ → 4 values
+  - $p = 5$: $q \in \{7\}$ → 1 value ($5 \times 11 = 55 > 50$)
+
+Total: $1 + 8 + 4 + 1 = \mathbf{14}$.
+
+## Common traps
+
+- **Forgetting $p = 1$ in exponent counts:** The exponents in $\tau(n) = (a_1+1)\cdots(a_k+1)$
+  start at $a_i = 0$, which corresponds to **not** including $p_i$ at all. Always add 1.
+- **Divisibility by 9 vs. 3:** digit sum divisible by 3 is *not* the same as divisible by 9.
+  For 9, the digit sum itself must be divisible by 9.
+- **Confusing $\tau$ with $\sigma$:** $\tau$ counts divisors, $\sigma$ sums them. Read the question.
+- **Overlooking 1 and $n$ as divisors:** both are always divisors; a prime $p$ has exactly 2.
+- **Assuming a number is prime without checking:** always trial-divide up to $\sqrt{n}$ before declaring primality.

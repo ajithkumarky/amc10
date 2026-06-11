@@ -1,0 +1,24 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: E
+choices: ["8", "9", "10", "11", "12"]
+---
+
+<Problem>
+How many positive divisors does $72$ have?
+</Problem>
+
+<Solution>
+First, write the prime factorization of $72$:
+$$72 = 8 \times 9 = 2^3 \times 3^2.$$
+
+The number of positive divisors of $p_1^{a_1} p_2^{a_2} \cdots$ equals $(a_1+1)(a_2+1)\cdots$, because each divisor independently chooses an exponent for each prime from $0$ up to the maximum.
+
+$$\tau(72) = (3+1)(2+1) = 4 \times 3 = 12.$$
+
+To double-check, list them: $1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72$ — exactly $12$ divisors. $\checkmark$
+
+Answer: **E**.
+</Solution>

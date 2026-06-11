@@ -1,0 +1,28 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: C
+choices: ["1234", "2345", "3456", "4567", "5678"]
+---
+
+<Problem>
+Which of the following integers is divisible by $9$?
+
+$$\text{(A)}\ 1234 \qquad \text{(B)}\ 2345 \qquad \text{(C)}\ 3456 \qquad \text{(D)}\ 4567 \qquad \text{(E)}\ 5678$$
+</Problem>
+
+<Solution>
+A number is divisible by $9$ exactly when its **digit sum** is divisible by $9$.
+
+Compute the digit sums:
+- $1+2+3+4 = 10$ — not divisible by $9$
+- $2+3+4+5 = 14$ — not divisible by $9$
+- $3+4+5+6 = 18 = 2 \times 9$ — **divisible by $9$** ✓
+- $4+5+6+7 = 22$ — not divisible by $9$
+- $5+6+7+8 = 26$ — not divisible by $9$
+
+We can verify: $3456 \div 9 = 384$. $\checkmark$
+
+Answer: **C**.
+</Solution>

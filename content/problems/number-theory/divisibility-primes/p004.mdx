@@ -1,0 +1,28 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: B
+choices: ["28", "56", "60", "64", "84"]
+---
+
+<Problem>
+What is the sum of all positive divisors of $28$?
+</Problem>
+
+<Solution>
+Factor: $28 = 2^2 \times 7$.
+
+The sum-of-divisors formula for $n = p_1^{a_1} p_2^{a_2} \cdots$ is:
+$$\sigma(n) = \left(\sum_{i=0}^{a_1} p_1^i\right)\!\left(\sum_{j=0}^{a_2} p_2^j\right)\cdots$$
+
+Apply it to $28$:
+$$\sigma(28) = (1 + 2 + 4)(1 + 7) = 7 \times 8 = 56.$$
+
+Verify by listing all divisors of $28$: $1, 2, 4, 7, 14, 28$.
+$$1 + 2 + 4 + 7 + 14 + 28 = 56. \checkmark$$
+
+(As a bonus: since $\sigma(28) = 2 \times 28$, the number $28$ is a **perfect number** — a fun number-theory fact!)
+
+Answer: **B**.
+</Solution>

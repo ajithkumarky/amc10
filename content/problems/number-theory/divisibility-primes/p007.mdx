@@ -1,0 +1,40 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: C
+choices: ["12", "13", "14", "15", "16"]
+---
+
+<Problem>
+How many positive integers $n \le 50$ have the property that $n^2$ has exactly $9$ positive divisors?
+</Problem>
+
+<Solution>
+We need $\tau(n^2) = 9$. Write the prime factorization $n = p_1^{e_1} p_2^{e_2} \cdots$, so $n^2 = p_1^{2e_1} p_2^{2e_2} \cdots$ and:
+$$\tau(n^2) = (2e_1+1)(2e_2+1)\cdots = 9.$$
+
+Since each factor $2e_i + 1$ is **odd** and at least $1$, we factor $9$ as a product of odd integers:
+- $9 = 9$: one prime, $2e_1 + 1 = 9 \Rightarrow e_1 = 4$. So $n = p^4$.
+- $9 = 3 \times 3$: two primes, $2e_1+1 = 3$ and $2e_2+1 = 3$, giving $e_1 = e_2 = 1$. So $n = pq$ with $p < q$ distinct primes.
+
+**Case 1 ($n = p^4$, $n \le 50$):**
+$p = 2$: $n = 16 \le 50$ ✓.
+$p = 3$: $n = 81 > 50$ ✗.
+Count: $1$.
+
+**Case 2 ($n = pq$, $p < q$ primes, $pq \le 50$):**
+
+| $p$ | valid $q$ values | count |
+|-----|-----------------|-------|
+| $2$ | $3,5,7,11,13,17,19,23$ | $8$ |
+| $3$ | $5,7,11,13$ | $4$ |
+| $5$ | $7$ ($5\times 11=55>50$) | $1$ |
+| $7$ | none ($7\times 11=77>50$) | $0$ |
+
+Count: $8 + 4 + 1 = 13$.
+
+**Total:** $1 + 13 = 14$.
+
+Answer: **C**.
+</Solution>

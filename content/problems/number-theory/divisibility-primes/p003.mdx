@@ -1,0 +1,29 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: A
+choices: ["4", "5", "6", "8", "9"]
+---
+
+<Problem>
+How many positive divisors of $360$ are perfect squares?
+</Problem>
+
+<Solution>
+First, factor $360$:
+$$360 = 8 \times 45 = 2^3 \times 3^2 \times 5^1.$$
+
+A divisor of $360$ has the form $2^a \cdot 3^b \cdot 5^c$ where $0 \le a \le 3$, $0 \le b \le 2$, $0 \le c \le 1$.
+
+A positive integer is a **perfect square** exactly when every prime in its factorization appears to an **even** exponent. So we need $a$, $b$, and $c$ all even:
+- $a \in \{0, 2\}$ (even values in $\{0,1,2,3\}$) — $2$ choices
+- $b \in \{0, 2\}$ (even values in $\{0,1,2\}$) — $2$ choices
+- $c \in \{0\}$ (even values in $\{0,1\}$) — $1$ choice
+
+Total: $2 \times 2 \times 1 = 4$.
+
+The four divisors are $1,\ 4,\ 9,\ 36$ — all perfect squares. $\checkmark$
+
+Answer: **A**.
+</Solution>

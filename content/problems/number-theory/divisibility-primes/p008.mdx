@@ -1,0 +1,26 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: B
+choices: ["3", "7", "11", "13", "2021"]
+---
+
+<Problem>
+What is the largest prime factor of $2^{2023} + 2^{2022} + 2^{2021}$?
+</Problem>
+
+<Solution>
+Factor out the smallest power of $2$:
+$$2^{2023} + 2^{2022} + 2^{2021} = 2^{2021}(2^2 + 2^1 + 2^0) = 2^{2021}(4 + 2 + 1) = 2^{2021} \times 7.$$
+
+The prime factorization is $2^{2021} \times 7$, so the only prime factors are $2$ and $7$.
+
+The largest prime factor is $\mathbf{7}$.
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Check divisibility by small primes">
+The expression $2^{2023}+2^{2022}+2^{2021}$ is clearly even (divisible by $2^{2021}$). After removing all factors of $2$, we're left with $4+2+1=7$, which is prime. So the prime factors are $2$ and $7$, and the largest is $7$.
+</AlternateMethod>

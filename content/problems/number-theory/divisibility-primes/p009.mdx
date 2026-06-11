@@ -1,0 +1,39 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: E
+choices: ["32", "35", "36", "37", "38"]
+---
+
+<Problem>
+How many ordered pairs $(a, b)$ of positive integers with $a \le b$ satisfy $\text{lcm}(a, b) = 180$?
+</Problem>
+
+<Solution>
+Factor: $180 = 2^2 \times 3^2 \times 5$.
+
+Write $a = 2^{x_1} 3^{x_2} 5^{x_3}$ and $b = 2^{y_1} 3^{y_2} 5^{y_3}$. The condition $\text{lcm}(a,b) = 180$ means:
+$$\max(x_i, y_i) = e_i \quad \text{for each prime } p_i,$$
+where $e_1 = 2$, $e_2 = 2$, $e_3 = 1$.
+
+**Count all ordered pairs $(a, b)$ (without the $a \le b$ constraint):**
+
+For each prime $p_i$ with maximum exponent $e_i$, the number of pairs $(x_i, y_i)$ of non-negative integers with $\max(x_i, y_i) = e_i$ is $(e_i + 1)^2 - e_i^2 = 2e_i + 1$.
+
+- $p = 2$, $e = 2$: $2(2)+1 = 5$ pairs
+- $p = 3$, $e = 2$: $2(2)+1 = 5$ pairs
+- $p = 5$, $e = 1$: $2(1)+1 = 3$ pairs
+
+Total ordered pairs: $5 \times 5 \times 3 = 75$.
+
+**Apply $a \le b$:**
+
+Among the $75$ pairs, how many have $a = b$? That requires $a = b$, so $\text{lcm}(a,a) = a = 180$. There is exactly one such pair: $(180, 180)$.
+
+The remaining $75 - 1 = 74$ pairs have $a \ne b$. By symmetry, exactly half have $a < b$: that's $37$ pairs.
+
+Total with $a \le b$: $37 + 1 = \mathbf{38}$.
+
+Answer: **E**.
+</Solution>

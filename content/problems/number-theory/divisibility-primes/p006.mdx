@@ -1,0 +1,29 @@
+---
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: A
+choices: ["11", "12", "13", "22", "33"]
+---
+
+<Problem>
+How many integers from $1$ to $200$ inclusive are divisible by both $6$ and $9$?
+</Problem>
+
+<Solution>
+An integer divisible by both $6$ and $9$ must be divisible by their **least common multiple**.
+
+Factor each: $6 = 2 \times 3$ and $9 = 3^2$. Therefore:
+$$\text{lcm}(6, 9) = 2 \times 3^2 = 18.$$
+
+Now count multiples of $18$ from $1$ to $200$:
+$$\left\lfloor \frac{200}{18} \right\rfloor = \left\lfloor 11.11\ldots \right\rfloor = 11.$$
+
+The multiples are $18, 36, 54, \ldots, 198$. The largest is $18 \times 11 = 198 \le 200$ and $18 \times 12 = 216 > 200$, confirming $11$ values. $\checkmark$
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Direct check">
+List: $18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198$ — that is $11$ numbers, all $\leq 200$.
+</AlternateMethod>
