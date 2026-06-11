@@ -1,0 +1,73 @@
+---
+title: Diophantine Equations
+summary: Finding integer solutions to equations using divisibility, factoring tricks, and bounding arguments.
+---
+
+## Overview
+
+A **Diophantine equation** is an equation (usually polynomial) where we require the solutions to be integers. The name honors the ancient Greek mathematician Diophantus of Alexandria, but the ideas appear throughout AMC 10 problems whenever a question asks "in how many ways" or "find all positive integer pairs."
+
+The simplest type is the **linear Diophantine equation** $ax + by = c$. It has integer solutions if and only if $\gcd(a, b)$ divides $c$. When solutions exist there are infinitely many — they form an arithmetic progression — and you only need to find one particular solution by inspection or the extended Euclidean algorithm, then write the general form.
+
+Beyond linear equations, AMC problems frequently feature **factoring tricks**: rearrange the equation so the left side factors as a product of two integer expressions, then list all factor-pair cases. Simon's Favorite Factoring Trick (SFFT) is the most common version. A third family uses **bounding**: show one variable must lie in a small range, then check each case by hand.
+
+## Key facts
+
+- **Linear solvability:** $ax + by = c$ has integer solutions $\iff \gcd(a,b) \mid c$.
+- **General solution of $ax + by = c$:** If $(x_0, y_0)$ is one solution, all solutions are
+  $$x = x_0 + \frac{b}{d}\,t, \quad y = y_0 - \frac{a}{d}\,t, \quad t \in \mathbb{Z},$$
+  where $d = \gcd(a,b)$.
+- **Simon's Favorite Factoring Trick (SFFT):** For an equation of the form $xy + ax + by = c$, add $ab$ to both sides to factor:
+  $$(x + b)(y + a) = c + ab.$$
+  Then each factorization of $c + ab$ gives a candidate integer pair $(x, y)$.
+- **Difference of squares / sum trick:** $x^2 - y^2 = (x-y)(x+y) = n$. Write $n$ as a product of two integers of the same parity (both even or both odd if $n$ is even; both odd if $n$ is odd).
+- **Chicken McNugget Theorem (Frobenius, two coprime values):** If $\gcd(a, b) = 1$, then the largest integer that *cannot* be represented as $xa + yb$ with $x, y \geq 0$ is $ab - a - b$.
+- **Bounding:** If one factor must be positive and the product is fixed, each factor is at most the product itself. Use this to reduce the search to finitely many cases.
+- **Parity / mod checks:** Before hunting for solutions, a quick mod-2 or mod-$p$ check can prove no solutions exist (e.g., $x^2 + y^2 = 3$ has no solutions since squares are $0$ or $1$ mod $4$, so $x^2 + y^2 \leq 2$ mod $4 \neq 3$).
+
+## Worked example 1
+
+> Find all positive integer solutions to $3x + 5y = 47$.
+
+First check solvability: $\gcd(3, 5) = 1$ divides 47, so solutions exist.
+
+Find one solution by inspection. Try $y = 1$: $3x = 42$, so $x = 14$. That works: $(x_0, y_0) = (14, 1)$.
+
+General solution:
+$$x = 14 + 5t, \quad y = 1 - 3t, \quad t \in \mathbb{Z}.$$
+
+For positive solutions we need $x > 0$ and $y > 0$:
+- $y = 1 - 3t > 0 \Rightarrow t < \tfrac{1}{3}$, so $t \leq 0$.
+- $x = 14 + 5t > 0 \Rightarrow t > -\tfrac{14}{5}$, so $t \geq -2$.
+
+Values: $t = 0 \Rightarrow (14, 1)$; $t = -1 \Rightarrow (9, 4)$; $t = -2 \Rightarrow (4, 7)$.
+
+There are **3** positive integer solutions.
+
+## Worked example 2
+
+> How many ordered pairs of positive integers $(x, y)$ satisfy $xy - 2x - 3y = 5$?
+
+Apply SFFT. Rewrite:
+$$xy - 2x - 3y = 5.$$
+Add $2 \cdot 3 = 6$ to both sides:
+$$xy - 2x - 3y + 6 = 11.$$
+Factor:
+$$(x - 3)(y - 2) = 11.$$
+
+Since $x$ and $y$ are positive integers, $x - 3 \geq -2$ and $y - 2 \geq -1$. The product equals 11 (prime), so the integer factor pairs of 11 are $(1, 11)$, $(11, 1)$, $(-1, -11)$, $(-11, -1)$.
+
+- $(x-3, y-2) = (1, 11) \Rightarrow (x,y) = (4, 13)$. Both positive. ✓
+- $(x-3, y-2) = (11, 1) \Rightarrow (x,y) = (14, 3)$. Both positive. ✓
+- $(x-3, y-2) = (-1, -11) \Rightarrow (x,y) = (2, -9)$. $y$ negative. ✗
+- $(x-3, y-2) = (-11, -1) \Rightarrow (x,y) = (-8, 1)$. $x$ negative. ✗
+
+There are **2** ordered pairs.
+
+## Common traps
+
+- **Forgetting $\gcd(a,b) \mid c$.** Before solving $ax + by = c$, check this condition; if it fails, stop — there are no integer solutions.
+- **Missing negative factor pairs.** When factoring $AB = n$, list *all* integer factor pairs, including negative ones. Restricting to positive factors loses valid solutions.
+- **SFFT sign errors.** The trick adds $ab$ to both sides where $a$ and $b$ are the *coefficients of $x$ and $y$ after one variable is factored*. Mis-identifying these gives the wrong constant on the right.
+- **Not checking the positivity / naturality constraint.** After writing down all algebraic solutions, discard those where $x$ or $y$ is not a positive integer (or not an integer at all).
+- **Chicken McNugget off-by-one.** The formula $ab - a - b$ gives the *largest* non-representable number; every integer strictly larger *is* representable. Don't apply the formula when $\gcd(a,b) > 1$ — it only works for coprime pairs.

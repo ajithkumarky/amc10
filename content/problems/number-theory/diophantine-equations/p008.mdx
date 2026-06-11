@@ -1,0 +1,53 @@
+---
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 4
+answer: B
+choices: ["8", "10", "12", "6", "14"]
+---
+
+<Problem>
+How many ordered triples of positive integers $(a, b, c)$ with $a \leq b \leq c$ satisfy
+$$\frac{1}{a} + \frac{1}{b} + \frac{1}{c} = \frac{1}{2}?$$
+</Problem>
+
+<Solution>
+Since $a \leq b \leq c$, we have $\frac{1}{a} \geq \frac{1}{b} \geq \frac{1}{c}$, so $\frac{3}{a} \geq \frac{1}{2}$, giving $a \leq 6$. Also $\frac{1}{a} < \frac{1}{2}$, so $a \geq 3$.
+
+**Case $a = 3$:** $\frac{1}{b} + \frac{1}{c} = \frac{1}{2} - \frac{1}{3} = \frac{1}{6}$. With $b \geq 3$ and $\frac{2}{b} \geq \frac{1}{6}$, so $b \leq 12$. Check $b = 7$ to $12$:
+- $b = 7$: $\frac{1}{c} = \frac{1}{6} - \frac{1}{7} = \frac{1}{42}$, $c = 42$. ✓
+- $b = 8$: $\frac{1}{c} = \frac{1}{6} - \frac{1}{8} = \frac{1}{24}$, $c = 24$. ✓
+- $b = 9$: $\frac{1}{c} = \frac{1}{6} - \frac{1}{9} = \frac{1}{18}$, $c = 18$. ✓
+- $b = 10$: $\frac{1}{c} = \frac{1}{6} - \frac{1}{10} = \frac{1}{15}$, $c = 15$. ✓
+- $b = 11$: $\frac{1}{c} = \frac{1}{6} - \frac{1}{11} = \frac{5}{66}$, $c = \frac{66}{5}$. Not an integer. ✗
+- $b = 12$: $\frac{1}{c} = \frac{1}{6} - \frac{1}{12} = \frac{1}{12}$, $c = 12$. ✓
+
+(Values $b \leq 6$ give $\frac{1}{c} \leq 0$, which is impossible.)
+
+Subtotal: **5** triples.
+
+**Case $a = 4$:** $\frac{1}{b} + \frac{1}{c} = \frac{1}{2} - \frac{1}{4} = \frac{1}{4}$. With $b \geq 4$ and $b \leq 8$:
+- $b = 5$: $\frac{1}{c} = \frac{1}{4} - \frac{1}{5} = \frac{1}{20}$, $c = 20$. ✓
+- $b = 6$: $\frac{1}{c} = \frac{1}{4} - \frac{1}{6} = \frac{1}{12}$, $c = 12$. ✓
+- $b = 7$: $\frac{1}{c} = \frac{1}{4} - \frac{1}{7} = \frac{3}{28}$, $c = \frac{28}{3}$. Not an integer. ✗
+- $b = 8$: $\frac{1}{c} = \frac{1}{4} - \frac{1}{8} = \frac{1}{8}$, $c = 8$. ✓
+
+($b = 4$ gives $\frac{1}{c} = 0$. ✗)
+
+Subtotal: **3** triples.
+
+**Case $a = 5$:** $\frac{1}{b} + \frac{1}{c} = \frac{1}{2} - \frac{1}{5} = \frac{3}{10}$. With $b \geq 5$ and $b \leq \frac{20}{3} \approx 6.67$, so $b \in \{5, 6\}$:
+- $b = 5$: $\frac{1}{c} = \frac{3}{10} - \frac{1}{5} = \frac{1}{10}$, $c = 10$. ✓
+- $b = 6$: $\frac{1}{c} = \frac{3}{10} - \frac{1}{6} = \frac{2}{15}$, $c = \frac{15}{2}$. Not an integer. ✗
+
+Subtotal: **1** triple.
+
+**Case $a = 6$:** $\frac{1}{b} + \frac{1}{c} = \frac{1}{2} - \frac{1}{6} = \frac{1}{3}$. With $b \geq 6$ and $b \leq 6$, so $b = 6$:
+- $b = 6$: $\frac{1}{c} = \frac{1}{3} - \frac{1}{6} = \frac{1}{6}$, $c = 6$. ✓
+
+Subtotal: **1** triple.
+
+**Total:** $5 + 3 + 1 + 1 = \mathbf{10}$.
+
+Answer: **B**.
+</Solution>

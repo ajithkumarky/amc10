@@ -1,0 +1,46 @@
+---
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 5
+answer: D
+choices: ["192", "194", "195", "196", "197"]
+---
+
+<Problem>
+How many positive integers $n \leq 200$ can be expressed in the form $n = 3a + 5b$ for some non-negative integers $a$ and $b$?
+</Problem>
+
+<Solution>
+Since $\gcd(3, 5) = 1$, the Chicken McNugget Theorem tells us the largest integer that **cannot** be expressed as $3a + 5b$ (with $a, b \geq 0$) is:
+$$3 \cdot 5 - 3 - 5 = 7.$$
+
+So every integer $n \geq 8$ is representable. We just need to count the representable integers in $\{1, 2, \ldots, 7\}$ and add them to the count of integers in $\{8, 9, \ldots, 200\}$.
+
+**Checking $n = 1$ through $7$:**
+
+| $n$ | Representable? | Example |
+|-----|---------------|---------|
+| 1 | No | — |
+| 2 | No | — |
+| 3 | Yes | $3 \cdot 1 + 5 \cdot 0$ |
+| 4 | No | — |
+| 5 | Yes | $3 \cdot 0 + 5 \cdot 1$ |
+| 6 | Yes | $3 \cdot 2 + 5 \cdot 0$ |
+| 7 | No | — |
+
+There are **3** representable values in $\{1, \ldots, 7\}$.
+
+**From $8$ to $200$:** Every integer in this range is representable. That is $200 - 8 + 1 = 193$ values.
+
+**Total:** $3 + 193 = \mathbf{196}$.
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Direct count via residues mod 3">
+Every non-negative integer $n$ is representable as $3a + 5b$ if and only if $n \not\in \{1, 2, 4, 7\}$ (the four non-representable positive integers, since the largest gap is 7).
+
+Among $1$ through $200$, the non-representable values are $\{1, 2, 4, 7\}$, a set of size 4.
+
+Therefore the number of representable values is $200 - 4 = \mathbf{196}$.
+</AlternateMethod>

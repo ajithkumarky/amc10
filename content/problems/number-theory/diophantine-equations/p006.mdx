@@ -1,0 +1,25 @@
+---
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 3
+answer: A
+choices: ["59", "60", "58", "65", "77"]
+---
+
+<Problem>
+A postal machine can print stamps worth $7$ cents or $11$ cents each. What is the largest postage amount (in cents) that **cannot** be achieved using any combination of these stamp denominations? (You may use as many stamps of each type as you like, including zero.)
+</Problem>
+
+<Solution>
+We want the largest integer that cannot be written as $7a + 11b$ with $a, b \geq 0$.
+
+Since $\gcd(7, 11) = 1$, the **Chicken McNugget Theorem** (Frobenius theorem for two coprime values) applies directly:
+
+$$\text{Largest non-representable value} = 7 \cdot 11 - 7 - 11 = 77 - 18 = 59.$$
+
+Let's verify:
+- $59$ cannot be expressed as $7a + 11b$: $7a \leq 59$ gives $a \leq 8$. Checking $a = 0, 1, \ldots, 8$, the values $59 - 7a$ are $59, 52, 45, 38, 31, 24, 17, 10, 3$ — none divisible by 11. ✓
+- $60 = 7 \cdot 4 + 11 \cdot 4$. ✓ (So 60 is representable, confirming 59 is the last gap.)
+
+Answer: **A**.
+</Solution>

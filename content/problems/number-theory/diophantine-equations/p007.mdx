@@ -1,0 +1,46 @@
+---
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 4
+answer: C
+choices: ["4", "6", "8", "10", "12"]
+---
+
+<Problem>
+How many ordered pairs of positive integers $(x, y)$ with $x \leq y$ satisfy
+$$\frac{1}{x} + \frac{1}{y} = \frac{1}{12}?$$
+</Problem>
+
+<Solution>
+Multiply both sides by $12xy$:
+$$12y + 12x = xy.$$
+Rearrange:
+$$xy - 12x - 12y = 0.$$
+Apply Simon's Favorite Factoring Trick — add $144$ to both sides:
+$$(x - 12)(y - 12) = 144.$$
+
+Since $x$ and $y$ are positive integers and $\frac{1}{x} + \frac{1}{y} = \frac{1}{12}$, both $x$ and $y$ must be greater than 12. (If $x \leq 12$, then $\frac{1}{x} \geq \frac{1}{12}$, leaving no room for the positive $\frac{1}{y}$.) So $x - 12 \geq 1$ and $y - 12 \geq 1$.
+
+We need factor pairs $(a, b)$ with $a \cdot b = 144$, $a \leq b$ (from $x \leq y$), and $a, b \geq 1$.
+
+The number of such pairs equals the number of divisors $a$ of $144$ with $a \leq \sqrt{144} = 12$.
+
+$144 = 2^4 \cdot 3^2$ has $(4+1)(2+1) = 15$ positive divisors. Divisors $\leq 12$: $1, 2, 3, 4, 6, 8, 9, 12$. That's **8** divisors.
+
+Explicitly:
+
+| $a$ | $b = 144/a$ | $(x, y)$ |
+|-----|-------------|----------|
+| $1$ | $144$ | $(13, 156)$ |
+| $2$ | $72$ | $(14, 84)$ |
+| $3$ | $48$ | $(15, 60)$ |
+| $4$ | $36$ | $(16, 48)$ |
+| $6$ | $24$ | $(18, 36)$ |
+| $8$ | $18$ | $(20, 30)$ |
+| $9$ | $16$ | $(21, 28)$ |
+| $12$ | $12$ | $(24, 24)$ |
+
+There are $\mathbf{8}$ pairs.
+
+Answer: **C**.
+</Solution>

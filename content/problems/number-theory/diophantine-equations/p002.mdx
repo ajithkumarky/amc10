@@ -1,0 +1,32 @@
+---
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 2
+answer: A
+choices: ["2", "3", "4", "5", "1"]
+---
+
+<Problem>
+How many ordered pairs of positive integers $(x, y)$ satisfy $5x + 7y = 52$?
+</Problem>
+
+<Solution>
+First check that solutions exist: $\gcd(5, 7) = 1$, which divides 52. ✓
+
+Find one solution by inspection. Try $y = 1$: $5x = 45$, so $x = 9$. The pair $(9, 1)$ works.
+
+The general solution is:
+$$x = 9 + 7t, \quad y = 1 - 5t, \quad t \in \mathbb{Z}.$$
+
+For positive integers we need $x > 0$ and $y > 0$:
+- $y = 1 - 5t > 0 \Rightarrow t < \dfrac{1}{5}$, so $t \leq 0$.
+- $x = 9 + 7t > 0 \Rightarrow t > -\dfrac{9}{7}$, so $t \geq -1$.
+
+The allowed values are $t = 0$ and $t = -1$:
+- $t = 0$: $(x, y) = (9, 1)$. ✓
+- $t = -1$: $(x, y) = (2, 6)$. ✓
+
+There are exactly **2** positive integer solutions.
+
+Answer: **A**.
+</Solution>

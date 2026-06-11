@@ -1,0 +1,33 @@
+---
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 3
+answer: D
+choices: ["4", "6", "8", "12", "16"]
+---
+
+<Problem>
+How many ordered pairs of integers $(x, y)$ satisfy $x^2 - y^2 = 45$?
+</Problem>
+
+<Solution>
+Factor: $x^2 - y^2 = (x - y)(x + y) = 45$.
+
+Let $a = x - y$ and $b = x + y$. Then $ab = 45$, and notice:
+- $a + b = 2x$ and $b - a = 2y$, so $a$ and $b$ must have the **same parity** for $x$ and $y$ to be integers.
+- Since $45$ is odd, any factor pair $(a, b)$ has both $a$ and $b$ odd. ✓ (An odd number has no mixed-parity factor pairs.)
+
+Count all ordered integer factor pairs of $45$: since $45 = 3^2 \cdot 5$, it has $(2+1)(1+1) = 6$ positive divisors, giving 6 positive factor pairs and 6 negative factor pairs (where both factors are negative), for a total of **12** integer factor pairs:
+
+$$(1,45),\ (3,15),\ (5,9),\ (9,5),\ (15,3),\ (45,1),$$
+$$(-1,-45),\ (-3,-15),\ (-5,-9),\ (-9,-5),\ (-15,-3),\ (-45,-1).$$
+
+Each pair $(a, b)$ yields a unique integer solution:
+$$x = \frac{a+b}{2}, \quad y = \frac{b-a}{2}.$$
+
+Since every pair has both entries odd, $a + b$ and $b - a$ are both even, so $x$ and $y$ are always integers.
+
+There are $\mathbf{12}$ ordered pairs.
+
+Answer: **D**.
+</Solution>
