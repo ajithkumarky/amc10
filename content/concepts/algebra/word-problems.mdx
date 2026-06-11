@@ -1,0 +1,62 @@
+---
+title: Word Problems
+summary: Translating real-world scenarios into equations and solving them with systematic algebra at AMC10 level.
+---
+
+## Overview
+
+Word problems are the AMC10's way of testing whether you can *read mathematics* hidden inside everyday language. The core skill is translation: identifying what quantity each phrase represents, writing an equation (or system) that captures every constraint, and then solving that equation efficiently. Almost every algebra topic — linear equations, ratios, rates, percentages — shows up wrapped in a word-problem costume.
+
+The AMC10 favors several recurring word-problem types: **rate and work problems** (two workers or pipes finishing a job together), **mixture problems** (blending two solutions or combining items at different unit costs), and **age problems** (relating ages now and at some past or future time). For each type a single organizing equation template handles most variants, so recognizing the type is half the battle.
+
+**Weighted averages** complete the picture. Whenever a problem asks for an overall average of groups with different sizes or weights, you must weight each sub-average by its count or fraction — never simply average the averages. This single mistake is responsible for a large share of wrong answers on AMC word problems.
+
+## Key facts
+
+- **Rate formula:** $d = rt$ (distance = rate × time), rearranged as $r = d/t$ or $t = d/r$. For opposite-direction problems add rates; for same-direction problems subtract them.
+- **Combined work rate:** if worker A takes $a$ hours alone and worker B takes $b$ hours alone, together their rate is $\tfrac{1}{a} + \tfrac{1}{b}$ jobs per hour, so the combined time is $\dfrac{ab}{a+b}$.
+- **Mixture equation:** (amount of substance in solution 1) + (amount in solution 2) = (amount in final mixture). In symbols: $c_1 V_1 + c_2 V_2 = c_f (V_1 + V_2)$.
+- **Age problems:** define a variable for someone's current age, express all other ages in terms of it, then translate the future or past relationship into a single equation.
+- **Weighted average:** $\bar{x} = \dfrac{w_1 x_1 + w_2 x_2 + \cdots + w_n x_n}{w_1 + w_2 + \cdots + w_n}$. Weights can be counts, volumes, or any meaningful measure of size.
+- **Round-trip average speed:** for equal distances at speeds $u$ and $v$, the average speed is the *harmonic mean* $\dfrac{2uv}{u+v}$, not the arithmetic mean.
+
+## Worked example 1
+
+> A faucet fills a bathtub in 24 minutes. The drain empties it in 40 minutes. If both are open, how long does it take to fill the tub?
+
+Identify rates: the faucet adds $\tfrac{1}{24}$ of the tub per minute; the drain removes $\tfrac{1}{40}$ per minute. With both open, the net fill rate is
+
+$$\frac{1}{24} - \frac{1}{40} = \frac{5}{120} - \frac{3}{120} = \frac{2}{120} = \frac{1}{60}.$$
+
+So the tub fills at $\tfrac{1}{60}$ per minute, meaning it takes **60 minutes**.
+
+*Why this works:* we treat "fraction of job completed" as the quantity, so rates simply add (or subtract). The time is just the reciprocal of the net rate.
+
+## Worked example 2
+
+> A chemist has 12 liters of a 20% acid solution. She wants to create a 30% acid solution by adding pure acid. How many liters of pure acid must she add?
+
+Let $x$ = liters of pure acid added. Pure acid is a 100% acid solution.
+
+Before mixing: $0.20 \times 12 = 2.4$ liters of acid.  
+After mixing: total volume is $12 + x$, and the acid amount is $2.4 + x$.
+
+Setting up the concentration equation:
+
+$$\frac{2.4 + x}{12 + x} = 0.30.$$
+
+Cross-multiply: $2.4 + x = 0.30(12 + x) = 3.6 + 0.30x$.
+
+$$0.70x = 1.2 \implies x = \frac{1.2}{0.70} = \frac{12}{7}.$$
+
+So she must add $\dfrac{12}{7} \approx 1.71$ liters of pure acid.
+
+*Check:* acid in final mix = $2.4 + \tfrac{12}{7} = \tfrac{16.8 + 12}{7} = \tfrac{28.8}{7}$. Total volume = $12 + \tfrac{12}{7} = \tfrac{96}{7}$. Concentration = $\tfrac{28.8/7}{96/7} = \tfrac{28.8}{96} = 0.30$. ✓
+
+## Common traps
+
+- **Averaging the averages.** If Group 1 averages 70 and Group 2 averages 90, the combined average is NOT 80 unless both groups are the same size. Always weight by group size.
+- **Mixing up "together" and "alone" rates.** The combined time $ab/(a+b)$ is always *less* than either individual time. If your answer is larger than the smaller of the two individual times, you made an error.
+- **Forgetting the drain (or opposing force).** In work problems, re-read carefully for phrases like "the drain is open" or "one machine undoes part of the work." Subtract opposing rates.
+- **Setting up the age equation in the wrong time frame.** If a problem says "in 5 years, the father will be twice the son's age," write $(f + 5) = 2(s + 5)$, not $f = 2s + 5$ or $f + 5 = 2s$.
+- **Using arithmetic mean for round-trip speed.** If you drive from A to B at 60 mph and return at 40 mph, the average speed is $2(60)(40)/(60+40) = 48$ mph, not $50$ mph.

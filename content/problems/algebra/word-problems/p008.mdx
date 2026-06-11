@@ -1,0 +1,47 @@
+---
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: B
+choices: ["$6$", "$8$", "$10$", "$12$", "$14$"]
+---
+
+<Problem>
+A store sells two types of nuts: cashews at $\$8$ per pound and peanuts at $\$3$ per pound. A customer wants to buy a 20-pound mixture that costs exactly $\$5$ per pound. How many pounds of cashews should be included in the mixture?
+</Problem>
+
+<Solution>
+Let $c$ = pounds of cashews and $p$ = pounds of peanuts.
+
+**Weight equation:** $c + p = 20$.
+
+**Cost equation:** The total cost of 20 pounds at \$5/lb is $20 \times 5 = \$100$, so
+
+$$8c + 3p = 100.$$
+
+Substitute $p = 20 - c$ into the cost equation:
+
+$$8c + 3(20 - c) = 100$$
+$$8c + 60 - 3c = 100$$
+$$5c = 40$$
+$$c = 8.$$
+
+**Check:** 8 lb cashews + 12 lb peanuts = 20 lb. Cost = $8(8) + 3(12) = 64 + 36 = \$100$. Price per pound = $100/20 = \$5$. ✓
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Alligation">
+Using the alligation method, the two prices are \$8 and \$3, and the target is \$5.
+
+The "pulls" toward each ingredient are:
+
+- Cashews must be offset by: $5 - 3 = 2$ parts peanuts for every cashew.
+- Peanuts must be offset by: $8 - 5 = 3$ parts cashews for every peanut... 
+
+More precisely, the ratio of cashews to peanuts is $(5-3):(8-5) = 2:3$... 
+
+Wait — alligation gives cashews : peanuts = $(5-3):(8-5) = 2:3$? Let me verify: 2 parts cashews and 3 parts peanuts in a 5-part total, so cashews fraction = $2/5$ and peanuts fraction = $3/5$.
+
+With 20 pounds: cashews = $(2/5)(20) = 8$ lb, peanuts = $(3/5)(20) = 12$ lb. ✓
+</AlternateMethod>
