@@ -1,0 +1,33 @@
+---
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: A
+choices: ["18", "20", "24", "30", "36"]
+---
+
+<Problem>
+Triangle $ABC$ has area $60$. Point $D$ lies on $\overline{BC}$ with $BD : DC = 2 : 3$, and point $E$ lies on $\overline{AD}$ with $AE : ED = 3 : 1$. What is the area of triangle $ABE$?
+</Problem>
+
+<Solution>
+**Step 1 — find the area of $\triangle ABD$.**
+
+Triangles $ABD$ and $ACD$ share the same height from $A$ to line $BC$. Their areas are therefore proportional to their bases $BD$ and $DC$:
+
+$$\frac{[\triangle ABD]}{[\triangle ABC]} = \frac{BD}{BC} = \frac{2}{5}$$
+
+$$[\triangle ABD] = \frac{2}{5} \cdot 60 = 24$$
+
+**Step 2 — find the area of $\triangle ABE$.**
+
+Place $A$ at the origin. Then $E = A + \tfrac{3}{4}(D - A) = \tfrac{3}{4}\overrightarrow{D}$ (since $AE : ED = 3:1$ means $E$ is $\tfrac{3}{4}$ of the way from $A$ to $D$).
+
+Triangles $ABE$ and $ABD$ share vertex $B$. Their areas equal $\tfrac{1}{2}|AB \times AE|$ and $\tfrac{1}{2}|AB \times AD|$ respectively. Since $AE = \tfrac{3}{4} AD$:
+
+$$\frac{[\triangle ABE]}{[\triangle ABD]} = \frac{AE}{AD} = \frac{3}{4}$$
+
+$$[\triangle ABE] = \frac{3}{4} \cdot 24 = 18$$
+
+Answer: **A**.
+</Solution>

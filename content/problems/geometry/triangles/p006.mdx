@@ -1,0 +1,30 @@
+---
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: E
+choices: ["16", "18", "20", "22", "24"]
+---
+
+<Problem>
+Triangle $ABC$ has vertices $A = (0, 0)$, $B = (8, 0)$, and $C = (2, 6)$. What is the area of triangle $ABC$?
+</Problem>
+
+<Solution>
+Use the shoelace formula. For a triangle with vertices $(x_1, y_1)$, $(x_2, y_2)$, $(x_3, y_3)$:
+
+$$\text{Area} = \tfrac{1}{2} \left| x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2) \right|$$
+
+Substituting $A = (0,0)$, $B = (8,0)$, $C = (2,6)$:
+
+$$\text{Area} = \tfrac{1}{2} \left| 0(0 - 6) + 8(6 - 0) + 2(0 - 0) \right|$$
+$$= \tfrac{1}{2} \left| 0 + 48 + 0 \right| = \tfrac{1}{2} \cdot 48 = 24$$
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Base and height">
+The base $AB$ lies along the $x$-axis with length $8$. The height is the perpendicular distance from $C = (2, 6)$ to the $x$-axis, which is simply the $y$-coordinate of $C$: height $= 6$.
+
+$$\text{Area} = \tfrac{1}{2} \cdot 8 \cdot 6 = 24$$
+</AlternateMethod>

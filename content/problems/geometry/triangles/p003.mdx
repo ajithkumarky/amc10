@@ -1,0 +1,37 @@
+---
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: A
+choices: ["5\\sqrt{13}", "\\sqrt{156}", "13", "15", "17"]
+---
+
+<Problem>
+In right triangle $ABC$ with the right angle at $C$, the altitude from $C$ to the hypotenuse $\overline{AB}$ has length $6$, and the hypotenuse $AB = 13$. Find $AC + BC$.
+</Problem>
+
+<Solution>
+**Find the area two ways.** Using the hypotenuse and the altitude $h = 6$:
+
+$$\text{Area} = \tfrac{1}{2} \cdot AB \cdot h = \tfrac{1}{2} \cdot 13 \cdot 6 = 39$$
+
+Using the two legs:
+
+$$\text{Area} = \tfrac{1}{2} \cdot AC \cdot BC = 39 \implies AC \cdot BC = 78$$
+
+**Use the Pythagorean theorem.** Since the right angle is at $C$:
+
+$$AC^2 + BC^2 = AB^2 = 169$$
+
+**Combine with the identity** $(AC + BC)^2 = AC^2 + BC^2 + 2 \cdot AC \cdot BC$:
+
+$$(AC + BC)^2 = 169 + 2(78) = 169 + 156 = 325$$
+
+$$AC + BC = \sqrt{325} = \sqrt{25 \cdot 13} = 5\sqrt{13}$$
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Check feasibility">
+We can verify a valid triangle exists: from $AC + BC = 5\sqrt{13}$ and $AC \cdot BC = 78$, the legs satisfy $t^2 - 5\sqrt{13}\,t + 78 = 0$. The discriminant is $325 - 312 = 13 > 0$, confirming two distinct positive legs.
+</AlternateMethod>

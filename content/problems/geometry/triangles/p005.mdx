@@ -1,0 +1,33 @@
+---
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: D
+choices: ["36", "40", "44", "48", "52"]
+---
+
+<Problem>
+The two legs of a right triangle are in the ratio $3 : 4$, and the hypotenuse has length $20$. What is the perimeter of the triangle?
+</Problem>
+
+<Solution>
+Let the two legs be $3k$ and $4k$ for some positive constant $k$.
+
+By the Pythagorean theorem:
+
+$$(3k)^2 + (4k)^2 = 20^2$$
+$$9k^2 + 16k^2 = 400$$
+$$25k^2 = 400 \implies k^2 = 16 \implies k = 4$$
+
+So the legs are $3(4) = 12$ and $4(4) = 16$.
+
+The perimeter is:
+
+$$12 + 16 + 20 = 48$$
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Recognizing the Pythagorean triple">
+Legs in ratio $3:4$ with hypotenuse in ratio $5$ means the triangle is a scaled $3$-$4$-$5$ right triangle. Since the hypotenuse $5k = 20$, we get $k = 4$. The perimeter is $(3 + 4 + 5) \cdot k = 12 \cdot 4 = 48$.
+</AlternateMethod>

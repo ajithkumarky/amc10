@@ -1,31 +1,60 @@
 ---
 title: Triangles
-summary: Congruence, similarity, the Pythagorean theorem, and special right triangles.
-difficulty: 2
+summary: Triangle inequality, special right triangles, the Pythagorean theorem and triples, area formulas, and medians/altitudes.
 ---
 
-## What you should know cold
+## Overview
 
-- **Triangle inequality:** the sum of any two sides exceeds the third.
-- **Angle sum:** $180°$ for every triangle.
-- **Pythagorean theorem:** for a right triangle with legs $a$, $b$ and hypotenuse $c$,
-  $a^2 + b^2 = c^2$.
-- **Special right triangles** — memorize the side ratios:
-  - **45–45–90:** $1 : 1 : \sqrt{2}$
-  - **30–60–90:** $1 : \sqrt{3} : 2$
-- **Similar triangles:** when two triangles have the same angles, their sides are
-  in proportion. This is the *single most useful tool* on AMC10 geometry.
+Triangles are the most fundamental polygon, and they appear in nearly every AMC 10 geometry problem — either directly or hiding inside a more complex figure. Mastering the core toolkit here lets you attack circles, quadrilaterals, and 3-D solids because every polygon can be cut into triangles.
 
-## Worked example
+The AMC especially loves the interplay between area, similarity, and the Pythagorean theorem. A single triangle can have its area computed three different ways, and whichever computation is easiest to set up is usually the one that unlocks the problem. Getting comfortable switching between those representations is the most important habit to build here.
 
-> A right triangle has legs 5 and 12. Find the length of the altitude from the
-> right angle to the hypotenuse.
+Similarity is the other great workhorse. When two triangles share angles, their sides are proportional — and that proportionality turns hard length problems into clean ratio problems. Look for parallel lines, shared angles, and angle bisectors as triggers for similarity or the angle bisector theorem.
 
-The hypotenuse is $\sqrt{5^2 + 12^2} = 13$. Use the area two ways: the area is
-$\tfrac{1}{2}\cdot 5\cdot 12 = 30$, and it is also $\tfrac{1}{2}\cdot 13\cdot h$
-where $h$ is the altitude. So $h = \dfrac{60}{13}$.
+## Key facts
 
-## Habit to build
+- **Angle sum:** The interior angles of any triangle sum to $180°$.
+- **Triangle inequality:** For sides $a$, $b$, $c$: each side is strictly less than the sum of the other two. Equivalently, $|a - b| < c < a + b$.  *Use when counting possible integer side lengths.*
+- **Pythagorean theorem:** For a right triangle with legs $a$, $b$ and hypotenuse $c$: $a^2 + b^2 = c^2$.
+- **Common Pythagorean triples:** $(3,4,5)$, $(5,12,13)$, $(8,15,17)$, $(7,24,25)$ and all multiples. *Recognizing these saves enormous computation.*
+- **45–45–90 triangle:** Side ratios $1 : 1 : \sqrt{2}$.  Leg $= \dfrac{\text{hypotenuse}}{\sqrt{2}}$. *Appears whenever a square's diagonal is drawn.*
+- **30–60–90 triangle:** Side ratios $1 : \sqrt{3} : 2$ (opposite $30°$, $60°$, $90°$ respectively). *Appears whenever an equilateral triangle is bisected.*
+- **Area formulas:**
+  - Base-height: $\text{Area} = \tfrac{1}{2} \cdot b \cdot h$
+  - Two sides and included angle: $\text{Area} = \tfrac{1}{2} ab \sin C$
+  - Heron's formula: $\text{Area} = \sqrt{s(s-a)(s-b)(s-c)}$ where $s = \tfrac{a+b+c}{2}$
+- **Altitude from the right angle:** In a right triangle with legs $a$, $b$ and hypotenuse $c$, the altitude to the hypotenuse has length $h = \dfrac{ab}{c}$. *Derive it by computing area two ways: $\tfrac{1}{2}ab = \tfrac{1}{2}ch$.*
+- **Median length formula:** The length of the median from vertex $A$ to the midpoint of side $a = BC$ is
+  $$m_a = \frac{1}{2}\sqrt{2b^2 + 2c^2 - a^2}$$
+  where $b = CA$ and $c = AB$. *In a right triangle the median to the hypotenuse equals half the hypotenuse.*
+- **Similar triangles:** Two triangles are similar when their angles match. Corresponding sides are proportional; corresponding areas are proportional to the *square* of the scale factor.
 
-On every triangle problem, look for a similar triangle before reaching for the
-Law of Cosines or coordinate bashing. Nine times out of ten, similarity wins.
+## Worked example 1
+
+> A right triangle has legs of length $5$ and $12$. Find the length of the altitude from the right angle to the hypotenuse.
+
+**Step 1 — find the hypotenuse.** $c = \sqrt{5^2 + 12^2} = \sqrt{169} = 13$.
+
+**Step 2 — use area two ways.** Using the legs: Area $= \tfrac{1}{2}(5)(12) = 30$. Using the hypotenuse and altitude $h$: Area $= \tfrac{1}{2}(13)(h)$.
+
+**Step 3 — solve.** $\dfrac{13h}{2} = 30 \implies h = \dfrac{60}{13}$.
+
+*Why does this work?* The two area expressions describe the same triangle, so they must be equal. This "area two ways" trick appears constantly on AMC problems.
+
+## Worked example 2
+
+> Triangle $ABC$ has $AB = 9$, $BC = 10$, $CA = 11$. Find its area.
+
+Use Heron's formula. The semi-perimeter is $s = \dfrac{9 + 10 + 11}{2} = 15$.
+
+$$\text{Area} = \sqrt{s(s-a)(s-b)(s-c)} = \sqrt{15 \cdot 6 \cdot 5 \cdot 4} = \sqrt{1800} = 30\sqrt{2}$$
+
+*Sanity check:* A $10 \times 10$ base with height roughly $6$ would give area roughly $30$, and $30\sqrt{2} \approx 42.4$. That's consistent with a triangle that is slightly taller than the $10$-base estimate.
+
+## Common traps
+
+- **Forgetting the strict inequality.** The triangle inequality says $c < a + b$, not $c \leq a + b$. A "triangle" with sides $3, 4, 7$ is degenerate (collinear) and does not count.
+- **Mixing up 30-60-90 ratios.** The side *opposite* $30°$ is the *shortest* side (ratio $1$), not the one adjacent to the $30°$ angle. Draw and label a sample triangle if unsure.
+- **Area scale vs. length scale.** If two similar triangles have a length scale factor of $k$, their areas differ by a factor of $k^2$. Applying $k$ directly to areas is a very common error.
+- **Median ≠ altitude ≠ angle bisector.** These three cevians coincide only in equilateral triangles. In a general triangle they are distinct segments with different lengths and different endpoints.
+- **Ignoring the Pythagorean triple shortcut.** Reaching for the quadratic formula on $a^2 + b^2 = c^2$ before checking whether the numbers are a scaled $(3,4,5)$ or $(5,12,13)$ wastes time and introduces arithmetic errors.

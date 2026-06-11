@@ -1,0 +1,37 @@
+---
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: B
+choices: ["5", "7", "8", "9", "10"]
+---
+
+<Problem>
+In triangle $ABC$, the side lengths are $AB = 7$, $BC = 8$, and $CA = 9$. What is the length of the median from vertex $A$ to the midpoint of $\overline{BC}$?
+</Problem>
+
+<Solution>
+Let $M$ be the midpoint of $\overline{BC}$. The median length formula states:
+
+$$AM^2 = \frac{2 \cdot CA^2 + 2 \cdot AB^2 - BC^2}{4}$$
+
+Substituting $AB = 7$, $BC = 8$, $CA = 9$:
+
+$$AM^2 = \frac{2(9^2) + 2(7^2) - 8^2}{4} = \frac{2(81) + 2(49) - 64}{4} = \frac{162 + 98 - 64}{4} = \frac{196}{4} = 49$$
+
+$$AM = 7$$
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Coordinate geometry">
+Place $B = (-4, 0)$ and $C = (4, 0)$, so $M = (0, 0)$ is the midpoint of $BC$. We need $A = (x, y)$ satisfying $AB = 7$ and $CA = 9$.
+
+From $AB^2 = (x+4)^2 + y^2 = 49$ and $CA^2 = (x-4)^2 + y^2 = 81$:
+
+Subtracting: $(x+4)^2 - (x-4)^2 = 49 - 81 = -32 \implies 16x = -32 \implies x = -2$.
+
+Then $(-2+4)^2 + y^2 = 49 \implies 4 + y^2 = 49 \implies y^2 = 45 \implies y = 3\sqrt{5}$.
+
+$AM = \sqrt{(-2)^2 + (3\sqrt{5})^2} = \sqrt{4 + 45} = \sqrt{49} = 7$.
+</AlternateMethod>
