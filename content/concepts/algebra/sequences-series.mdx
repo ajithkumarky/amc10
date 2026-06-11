@@ -1,0 +1,60 @@
+---
+title: Sequences & Series
+summary: Arithmetic and geometric sequences, series formulas, telescoping sums, and recursive patterns at AMC10 level.
+---
+
+## Overview
+
+A **sequence** is an ordered list of numbers following a rule; a **series** is the sum of the terms of a sequence. On the AMC10, sequence and series problems appear at almost every difficulty level — from "find the 10th term of 3, 7, 11, …" to "find a parameter that forces a recursive sequence into a given pattern." Learning to recognize which type of sequence you're looking at is the first and most important step.
+
+The two workhorses are **arithmetic sequences** (each term is obtained by adding a fixed number $d$, the common difference) and **geometric sequences** (each term is obtained by multiplying by a fixed number $r$, the common ratio). Most AMC problems either ask for a specific term, a partial sum, an infinite sum, or a hidden parameter — all of which follow from two or three formulas. Speed matters, so internalize those formulas deeply enough to apply them without hesitation.
+
+Beyond the standard types, the AMC10 loves **telescoping sums** and **recursive sequences**. Telescoping exploits cancellation when each term can be written as a difference $f(k) - f(k+1)$. Recursive sequences reward pattern-finding: compute the first several terms and look for periodicity or a closed form before attempting algebra.
+
+## Key facts
+
+- **Arithmetic sequence — $n$th term:** $a_n = a_1 + (n-1)d$ — use to find any term directly.
+- **Arithmetic series — partial sum:** $S_n = \dfrac{n}{2}(a_1 + a_n) = \dfrac{n}{2}(2a_1 + (n-1)d)$ — sum the first $n$ terms without adding them one by one.
+- **Geometric sequence — $n$th term:** $a_n = a_1 \cdot r^{n-1}$ — multiply the first term by the ratio raised to the $(n-1)$ power.
+- **Geometric series — partial sum:** $S_n = a_1 \cdot \dfrac{1 - r^n}{1 - r}$ for $r \neq 1$ — use when $r$ is a simple fraction or integer.
+- **Infinite geometric series:** $S = \dfrac{a_1}{1 - r}$, valid only when $|r| < 1$ — the series converges to a finite value.
+- **Telescoping:** if $f(k) - f(k+1)$ can be factored out of each term, $\displaystyle\sum_{k=1}^{n} (f(k) - f(k+1)) = f(1) - f(n+1)$ — the middle terms cancel.
+- **Arithmetic mean:** the middle term of three consecutive terms of an arithmetic sequence equals their average. For terms $a$, $b$, $c$ in arithmetic progression: $b - a = c - b$, i.e., $2b = a + c$.
+- **Geometric mean:** for three terms $a$, $b$, $c$ in geometric progression: $b^2 = ac$.
+- **Recursive to closed form:** compute several terms, look for a pattern, then verify with the recurrence. Common patterns include linear growth ($a_n = an + b$), exponential growth ($a_n = A \cdot r^n + C$), and periodicity.
+
+## Worked example 1
+
+> The first term of an arithmetic sequence is $5$ and the common difference is $3$. What is the sum of the first $10$ terms?
+
+We use the partial-sum formula. With $a_1 = 5$, $d = 3$, and $n = 10$:
+
+$$S_{10} = \frac{10}{2}\bigl(2(5) + (10-1)(3)\bigr) = 5(10 + 27) = 5 \cdot 37 = 185.$$
+
+*Why does this formula work?* Write the sum forwards and backwards, then add:
+
+$$S = 5 + 8 + \cdots + 32, \qquad S = 32 + 29 + \cdots + 5.$$
+
+Each pair adds to $5 + 32 = 37$, and there are $10$ pairs, so $2S = 370$, giving $S = 185$. The general formula is just this "pair-up" idea made algebraic.
+
+## Worked example 2
+
+> The fractions $\dfrac{1}{1 \cdot 2},\ \dfrac{1}{2 \cdot 3},\ \dfrac{1}{3 \cdot 4},\ \ldots,\ \dfrac{1}{99 \cdot 100}$ are added together. What is their sum?
+
+Each fraction telescopes via partial fractions:
+
+$$\frac{1}{k(k+1)} = \frac{1}{k} - \frac{1}{k+1}.$$
+
+So the sum becomes:
+
+$$\sum_{k=1}^{99}\left(\frac{1}{k} - \frac{1}{k+1}\right) = \frac{1}{1} - \frac{1}{100} = \frac{99}{100}.$$
+
+Everything between the first $\dfrac{1}{1}$ and the last $-\dfrac{1}{100}$ cancels in pairs — that is the "telescope" collapsing. The trick is recognizing the partial-fraction split; once you see it, the sum writes itself.
+
+## Common traps
+
+- **Off-by-one in the $n$th term.** The $n$th term is $a_1 + (n-1)d$, not $a_1 + nd$. The first term is $n = 1$, so there are only $n - 1$ steps of size $d$.
+- **Forgetting $|r| < 1$ for the infinite series.** The formula $\dfrac{a_1}{1-r}$ only applies when the series converges. If $|r| \geq 1$, the sum is infinite (or undefined).
+- **Confusing ratio and difference.** Checking whether a sequence is arithmetic or geometric is step one. If the *differences* of consecutive terms are equal, it's arithmetic; if the *ratios* are equal, it's geometric.
+- **Misidentifying the first term in a partial sum.** When a problem gives you the 3rd and 7th terms, convert to $a_1$ first before plugging into the sum formula.
+- **Stopping the telescope too early.** The telescoping sum collapses to $f(1) - f(n+1)$, not $f(1) - f(n)$. Use $f(n+1)$ at the last step.

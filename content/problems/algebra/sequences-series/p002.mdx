@@ -1,0 +1,27 @@
+---
+topic: algebra
+subtopic: sequences-series
+difficulty: 2
+answer: B
+choices: ["590", "610", "630", "570", "650"]
+---
+
+<Problem>
+What is the sum of the first $20$ terms of the arithmetic sequence $2, 5, 8, 11, \ldots$?
+</Problem>
+
+<Solution>
+The first term is $a_1 = 2$ and the common difference is $d = 3$. Using the partial-sum formula:
+
+$$S_n = \frac{n}{2}\bigl(2a_1 + (n-1)d\bigr).$$
+
+With $n = 20$:
+
+$$S_{20} = \frac{20}{2}\bigl(2(2) + (19)(3)\bigr) = 10(4 + 57) = 10 \cdot 61 = 610.$$
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="First-plus-last formula">
+The 20th term is $a_{20} = 2 + 19 \cdot 3 = 59$. Then $S_{20} = \dfrac{20}{2}(2 + 59) = 10 \cdot 61 = 610$.
+</AlternateMethod>

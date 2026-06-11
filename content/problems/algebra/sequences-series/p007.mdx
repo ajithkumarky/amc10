@@ -1,0 +1,29 @@
+---
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: B
+choices: ["7", "8", "9", "10", "6"]
+---
+
+<Problem>
+The first term of an arithmetic sequence is $3$ and the common difference is $2$. For how many terms must the sequence be summed so that the total equals $80$?
+</Problem>
+
+<Solution>
+The partial sum of $n$ terms is:
+
+$$S_n = \frac{n}{2}(2a_1 + (n-1)d) = \frac{n}{2}(6 + 2(n-1)) = \frac{n}{2}(2n + 4) = n(n+2).$$
+
+Set this equal to $80$:
+
+$$n(n+2) = 80 \implies n^2 + 2n - 80 = 0.$$
+
+Using the quadratic formula:
+
+$$n = \frac{-2 \pm \sqrt{4 + 320}}{2} = \frac{-2 \pm \sqrt{324}}{2} = \frac{-2 \pm 18}{2}.$$
+
+Taking the positive root: $n = \dfrac{16}{2} = 8$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,29 @@
+---
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: E
+choices: ["$\\dfrac{49}{50}$", "$\\dfrac{1}{51}$", "$\\dfrac{1}{50}$", "$\\dfrac{51}{52}$", "$\\dfrac{50}{51}$"]
+---
+
+<Problem>
+Compute the sum
+
+$$\frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \frac{1}{3 \cdot 4} + \cdots + \frac{1}{50 \cdot 51}.$$
+</Problem>
+
+<Solution>
+Use partial fractions. For each term:
+
+$$\frac{1}{k(k+1)} = \frac{1}{k} - \frac{1}{k+1}.$$
+
+So the sum telescopes:
+
+$$\sum_{k=1}^{50}\left(\frac{1}{k} - \frac{1}{k+1}\right) = \left(\frac{1}{1} - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \cdots + \left(\frac{1}{50} - \frac{1}{51}\right).$$
+
+Every interior term cancels, leaving:
+
+$$1 - \frac{1}{51} = \frac{51 - 1}{51} = \frac{50}{51}.$$
+
+Answer: **E**.
+</Solution>

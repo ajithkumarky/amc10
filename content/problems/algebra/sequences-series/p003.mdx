@@ -1,0 +1,33 @@
+---
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: C
+choices: ["486", "729", "1458", "972", "2187"]
+---
+
+<Problem>
+In a geometric sequence, the $2$nd term is $6$ and the $5$th term is $162$. What is the $7$th term?
+</Problem>
+
+<Solution>
+Let the first term be $a$ and the common ratio be $r$. Then:
+
+$$a_2 = ar = 6 \qquad \text{and} \qquad a_5 = ar^4 = 162.$$
+
+Dividing the second equation by the first:
+
+$$\frac{ar^4}{ar} = r^3 = \frac{162}{6} = 27 \implies r = 3.$$
+
+From $ar = 6$: $a = 6/3 = 2$.
+
+The 7th term is:
+
+$$a_7 = ar^6 = 2 \cdot 3^6 = 2 \cdot 729 = 1458.$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Stepping from the 5th term">
+From the 5th term, multiply by $r = 3$ twice: $a_6 = 162 \cdot 3 = 486$ and $a_7 = 486 \cdot 3 = 1458$.
+</AlternateMethod>
