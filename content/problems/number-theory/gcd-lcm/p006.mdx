@@ -1,0 +1,25 @@
+---
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 3
+answer: E
+choices: ["15", "16", "18", "24", "20"]
+---
+
+<Problem>
+How many integers from $1$ to $50$, inclusive, are relatively prime to $50$?
+</Problem>
+
+<Solution>
+Two integers are **relatively prime** when their GCD equals $1$. We need to count integers in $\{1, 2, \ldots, 50\}$ with $\gcd(n, 50) = 1$.
+
+This count is Euler's totient $\phi(50)$.
+
+Factor $50 = 2^1 \cdot 5^2$. The totient formula gives:
+$$\phi(50) = 50 \cdot \left(1 - \frac{1}{2}\right)\left(1 - \frac{1}{5}\right) = 50 \cdot \frac{1}{2} \cdot \frac{4}{5} = 50 \cdot \frac{4}{10} = 20.$$
+
+In plain terms: among $1$ to $50$, we exclude multiples of $2$ (there are $25$) and multiples of $5$ (there are $10$), but add back multiples of $10$ (there are $5$, counted twice). By inclusion-exclusion:
+$$50 - 25 - 10 + 5 = 20.$$
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,27 @@
+---
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 1
+answer: E
+choices: ["4", "6", "8", "16", "12"]
+---
+
+<Problem>
+What is $\gcd(36, 48)$?
+</Problem>
+
+<Solution>
+Use the Euclidean algorithm:
+$$\gcd(36, 48) = \gcd(36, 12) = \gcd(12, 0) = 12.$$
+
+(Since $48 = 1 \cdot 36 + 12$ and $36 = 3 \cdot 12 + 0$.)
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Prime factorization">
+Write $36 = 2^2 \cdot 3^2$ and $48 = 2^4 \cdot 3^1$. Take the minimum exponent for each prime:
+$$\gcd(36, 48) = 2^{\min(2,4)} \cdot 3^{\min(2,1)} = 2^2 \cdot 3^1 = 4 \cdot 3 = 12.$$
+
+Answer: **E**.
+</AlternateMethod>

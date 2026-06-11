@@ -1,0 +1,24 @@
+---
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 3
+answer: A
+choices: ["3", "4", "6", "8", "12"]
+---
+
+<Problem>
+Gear $A$ has $24$ teeth and meshes with Gear $B$, which has $36$ teeth. The gears start with a marked tooth on each gear at the contact point. After how many complete rotations of Gear $A$ will both marked teeth first return to the contact point simultaneously?
+</Problem>
+
+<Solution>
+Each time a tooth passes the contact point, one tooth from each gear is counted. For both marked teeth to be at the contact point at the same moment, the total number of teeth that have passed the contact point must be a multiple of **both** $24$ and $36$.
+
+The smallest such number is $\text{lcm}(24, 36)$.
+
+Factor: $24 = 2^3 \cdot 3$ and $36 = 2^2 \cdot 3^2$, so
+$$\text{lcm}(24, 36) = 2^3 \cdot 3^2 = 8 \cdot 9 = 72.$$
+
+Gear $A$ has $24$ teeth, so $72$ teeth corresponds to $72 \div 24 = 3$ complete rotations of Gear $A$.
+
+Answer: **A**.
+</Solution>

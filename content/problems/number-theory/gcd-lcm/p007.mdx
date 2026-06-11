@@ -1,0 +1,27 @@
+---
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 4
+answer: B
+choices: ["15", "30", "60", "90", "180"]
+---
+
+<Problem>
+Three buses depart from a terminal at exactly the same time. Bus $A$ returns to the terminal every $6$ minutes, Bus $B$ every $10$ minutes, and Bus $C$ every $15$ minutes. After how many minutes will all three buses first return to the terminal simultaneously?
+</Problem>
+
+<Solution>
+The three buses return together when the elapsed time is a multiple of each of $6$, $10$, and $15$. The **smallest** such time is $\text{lcm}(6, 10, 15)$.
+
+Compute the LCM using prime factorizations:
+$$6 = 2 \cdot 3, \qquad 10 = 2 \cdot 5, \qquad 15 = 3 \cdot 5.$$
+
+Taking the maximum exponent for each prime:
+$$\text{lcm}(6, 10, 15) = 2^1 \cdot 3^1 \cdot 5^1 = 30.$$
+
+**Check:** $30 / 6 = 5$ ✓, $30 / 10 = 3$ ✓, $30 / 15 = 2$ ✓. All three return at $t = 30$ minutes.
+
+No smaller multiple of all three exists because $15$ divides $30$ and $30 < 60$.
+
+Answer: **B**.
+</Solution>

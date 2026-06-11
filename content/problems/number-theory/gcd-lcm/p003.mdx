@@ -1,0 +1,32 @@
+---
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 3
+answer: C
+choices: ["1", "2", "3", "4", "6"]
+---
+
+<Problem>
+How many positive integers $n$ satisfy $\text{lcm}(n, 18) = 36$?
+</Problem>
+
+<Solution>
+Since $\text{lcm}(n, 18) = 36$, the integer $n$ must be a **divisor of 36** (otherwise the LCM would exceed 36).
+
+The divisors of $36$ are: $1, 2, 3, 4, 6, 9, 12, 18, 36$.
+
+Now check which of these gives $\text{lcm}(n, 18) = 36$.
+
+Factor: $18 = 2^1 \cdot 3^2$ and $36 = 2^2 \cdot 3^2$. For $\text{lcm}(n, 18) = 36$, we need the maximum exponent of $2$ over $n$ and $18$ to equal $2$. Since $18$ contributes only $2^1$, we need $n$ to contain $2^2 = 4$ as a factor — otherwise the exponent of $2$ in the LCM stays at $1$, giving LCM $\leq 18$, not $36$.
+
+The divisors of $36$ that are divisible by $4$ are: $4, 12, 36$.
+
+Verify each:
+- $\text{lcm}(4, 18) = \text{lcm}(2^2, 2 \cdot 3^2) = 2^2 \cdot 3^2 = 36$ ✓
+- $\text{lcm}(12, 18) = \text{lcm}(2^2 \cdot 3, 2 \cdot 3^2) = 2^2 \cdot 3^2 = 36$ ✓
+- $\text{lcm}(36, 18) = 36$ ✓
+
+There are exactly $3$ such values of $n$.
+
+Answer: **C**.
+</Solution>

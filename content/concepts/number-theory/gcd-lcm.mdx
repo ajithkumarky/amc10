@@ -1,0 +1,62 @@
+---
+title: GCD / LCM
+summary: Greatest common divisor and least common multiple — tools for divisibility, cycles, and scheduling problems on the AMC10.
+---
+
+## Overview
+
+The **greatest common divisor** (GCD) of two positive integers $a$ and $b$ is the largest integer that divides both. The **least common multiple** (LCM) is the smallest positive integer that both $a$ and $b$ divide. Together, GCD and LCM control when two repeating processes first "line up," how to simplify fractions, and whether a system of equations has integer solutions.
+
+AMC10 problems love GCD/LCM because a single elegant identity connects them: for any two positive integers $a$ and $b$,
+$$\gcd(a, b) \cdot \text{lcm}(a, b) = a \cdot b.$$
+This means you can find one if you know the other, without ever factoring. Many problems are solved in two lines using this identity alone.
+
+The Euclidean algorithm makes GCD computation fast and elegant — no prime factorization required. For larger or more structural problems (like "how many integers below $n$ are coprime to $n$?"), prime factorizations and Euler's totient function $\phi(n)$ take over. Knowing which tool fits which situation is the core skill here.
+
+## Key facts
+
+- **Euclidean algorithm:** $\gcd(a, b) = \gcd(b, a \bmod b)$, repeating until the remainder is $0$. The last nonzero remainder is the GCD. Fast, no factoring needed.
+- **GCD via prime factorization:** write $a = \prod p_i^{a_i}$ and $b = \prod p_i^{b_i}$; then $\gcd(a, b) = \prod p_i^{\min(a_i, b_i)}$ — take the **minimum** exponent for each prime.
+- **LCM via prime factorization:** $\text{lcm}(a, b) = \prod p_i^{\max(a_i, b_i)}$ — take the **maximum** exponent for each prime.
+- **Product identity:** $\gcd(a,b) \cdot \text{lcm}(a,b) = a \cdot b$ — the single most-used identity. Works for two integers only (not three or more).
+- **Relatively prime (coprime):** $a$ and $b$ are relatively prime when $\gcd(a, b) = 1$. Their LCM equals their product: $\text{lcm}(a, b) = ab$.
+- **Euler's totient:** $\phi(n)$ counts integers from $1$ to $n$ coprime to $n$. For $n = p_1^{a_1} \cdots p_k^{a_k}$: $\phi(n) = n \prod_{p \mid n}\!\left(1 - \dfrac{1}{p}\right)$.
+- **Cycle / gear problems:** two events with periods $a$ and $b$ first coincide after $\text{lcm}(a, b)$ time units — find LCM, then divide by the period of whichever quantity the question asks about.
+
+## Worked example 1
+
+> Find $\gcd(252, 180)$ using the Euclidean algorithm, then find $\text{lcm}(252, 180)$.
+
+Apply the algorithm step by step:
+$$\gcd(252, 180) = \gcd(180, 72) = \gcd(72, 36) = \gcd(36, 0) = 36.$$
+
+(Each step: $252 = 1 \cdot 180 + 72$; $180 = 2 \cdot 72 + 36$; $72 = 2 \cdot 36 + 0$.)
+
+Now use the product identity:
+$$\text{lcm}(252, 180) = \frac{252 \cdot 180}{\gcd(252, 180)} = \frac{252 \cdot 180}{36} = 7 \cdot 180 = 1260.$$
+
+*Quick check via factorization: $252 = 2^2 \cdot 3^2 \cdot 7$ and $180 = 2^2 \cdot 3^2 \cdot 5$. GCD $= 2^2 \cdot 3^2 = 36$ ✓; LCM $= 2^2 \cdot 3^2 \cdot 5 \cdot 7 = 1260$ ✓.*
+
+## Worked example 2
+
+> Three lights flash at a traffic intersection. Light A flashes every 8 seconds, Light B every 12 seconds, and Light C every 20 seconds. They all flash together at time $t = 0$. After how many seconds do they next all flash together? How many times does Light A flash in that interval (not counting $t = 0$)?
+
+**Step 1 — find LCM(8, 12, 20).**
+
+Factorize: $8 = 2^3$, $12 = 2^2 \cdot 3$, $20 = 2^2 \cdot 5$.
+
+$$\text{lcm}(8, 12, 20) = 2^3 \cdot 3 \cdot 5 = 120.$$
+
+The lights next coincide at $t = 120$ seconds.
+
+**Step 2 — count flashes of Light A.**
+
+Light A flashes at $t = 8, 16, 24, \ldots, 120$. That's $120 / 8 = 15$ flashes (not counting $t = 0$).
+
+## Common traps
+
+- **Using the product formula for three or more numbers.** The identity $\gcd \cdot \text{lcm} = a \cdot b$ holds for exactly **two** integers. For three integers, compute pairwise: $\text{lcm}(a, b, c) = \text{lcm}(\text{lcm}(a, b), c)$.
+- **Min vs. max for GCD/LCM.** GCD uses **min** exponents (the overlap), LCM uses **max** exponents (the union). Swapping them is the single most common error in factorization problems.
+- **Forgetting that gcd(a, b) divides both a and b.** If the problem says $\gcd(a, b) = d$, write $a = dm$, $b = dn$ with $\gcd(m, n) = 1$. This parametrization unlocks many otherwise hard problems.
+- **Counting rotations vs. teeth in gear problems.** When two gears mesh, the number of teeth that pass the contact point is the same for both. The first alignment repeats after $\text{lcm}(\text{teeth}_A, \text{teeth}_B)$ teeth, which equals $\text{lcm} / \text{teeth}_A$ full rotations of Gear A.
+- **Confusing "relatively prime to $n$" with "prime."** The integers $8$ and $9$ are relatively prime ($\gcd = 1$) even though neither is prime. On the other hand, $4$ and $6$ are not relatively prime even though $6$ is not a multiple of $4$.

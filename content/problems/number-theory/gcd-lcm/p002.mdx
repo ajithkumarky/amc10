@@ -1,0 +1,30 @@
+---
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 2
+answer: B
+choices: ["60", "90", "120", "180", "540"]
+---
+
+<Problem>
+What is $\text{lcm}(18, 30)$?
+</Problem>
+
+<Solution>
+Factor each number into primes:
+$$18 = 2^1 \cdot 3^2, \qquad 30 = 2^1 \cdot 3^1 \cdot 5^1.$$
+
+The LCM takes the **maximum** exponent for each prime:
+$$\text{lcm}(18, 30) = 2^1 \cdot 3^2 \cdot 5^1 = 2 \cdot 9 \cdot 5 = 90.$$
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Product identity">
+First find $\gcd(18, 30)$ with the Euclidean algorithm: $\gcd(18, 30) = \gcd(18, 12) = \gcd(12, 6) = 6$.
+
+Then
+$$\text{lcm}(18, 30) = \frac{18 \cdot 30}{\gcd(18, 30)} = \frac{540}{6} = 90.$$
+
+Answer: **B**.
+</AlternateMethod>

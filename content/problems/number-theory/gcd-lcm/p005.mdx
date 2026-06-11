@@ -1,0 +1,27 @@
+---
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 3
+answer: D
+choices: ["16", "24", "32", "40", "48"]
+---
+
+<Problem>
+Two positive integers have $\gcd$ equal to $8$ and $\text{lcm}$ equal to $120$. One of the integers is $24$. What is the other integer?
+</Problem>
+
+<Solution>
+For any two positive integers $a$ and $b$,
+$$\gcd(a, b) \cdot \text{lcm}(a, b) = a \cdot b.$$
+
+With $\gcd = 8$, $\text{lcm} = 120$, and $a = 24$:
+$$8 \cdot 120 = 24 \cdot b \implies b = \frac{960}{24} = 40.$$
+
+**Verify:** $24 = 2^3 \cdot 3$ and $40 = 2^3 \cdot 5$.
+- $\gcd(24, 40) = 2^3 = 8$ ✓
+- $\text{lcm}(24, 40) = 2^3 \cdot 3 \cdot 5 = 120$ ✓
+
+The other integer is $40$.
+
+Answer: **D**.
+</Solution>
