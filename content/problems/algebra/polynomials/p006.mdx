@@ -1,0 +1,29 @@
+---
+topic: algebra
+subtopic: polynomials
+difficulty: 3
+answer: A
+choices: ["$5x - 4$", "$5x + 4$", "$3x - 4$", "$3x + 4$", "$x - 4$"]
+---
+
+<Problem>
+What is the remainder when $p(x) = x^4 + 2x^3 + 3x - 5$ is divided by $x^2 - 1$?
+</Problem>
+
+<Solution>
+When a polynomial is divided by a degree-$2$ divisor, the remainder has degree at most $1$, so we can write
+
+$$p(x) = (x^2 - 1) \cdot q(x) + (ax + b)$$
+
+for some polynomial $q(x)$ and constants $a, b$. Since $x^2 - 1 = (x-1)(x+1)$, we evaluate $p$ at both roots of the divisor.
+
+**At $x = 1$:** $p(1) = 1 + 2 + 3 - 5 = 1$, so $a(1) + b = 1$, giving $a + b = 1$.
+
+**At $x = -1$:** $p(-1) = 1 - 2 - 3 - 5 = -9$, so $a(-1) + b = -9$, giving $-a + b = -9$.
+
+Adding the two equations: $2b = -8$, so $b = -4$. Then $a = 1 - b = 5$.
+
+The remainder is $5x - 4$.
+
+Answer: **A**.
+</Solution>

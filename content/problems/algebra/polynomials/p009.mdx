@@ -1,0 +1,49 @@
+---
+topic: algebra
+subtopic: polynomials
+difficulty: 5
+answer: C
+choices: ["34", "36", "38", "40", "42"]
+---
+
+<Problem>
+A monic cubic polynomial $p(x)$ satisfies $p(1) = 5$, $p(2) = 11$, and $p(3) = 21$. What is $p(0) + p(4)$?
+</Problem>
+
+<Solution>
+Write $p(x) = x^3 + ax^2 + bx + c$. The three conditions give a $3 \times 3$ linear system:
+
+$$p(1): \quad a + b + c = 4, \tag{1}$$
+$$p(2): \quad 4a + 2b + c = 3, \tag{2}$$
+$$p(3): \quad 9a + 3b + c = -6. \tag{3}$$
+
+Subtract (1) from (2): $3a + b = -1$. Subtract (2) from (3): $5a + b = -9$.
+
+Subtracting the first result from the second: $2a = -8$, so $a = -4$.
+
+Then $b = -1 - 3(-4) = 11$, and $c = 4 - (-4) - 11 = -3$.
+
+So $p(x) = x^3 - 4x^2 + 11x - 3$.
+
+**Verify:** $p(1) = 1 - 4 + 11 - 3 = 5$ ✓; $p(2) = 8 - 16 + 22 - 3 = 11$ ✓; $p(3) = 27 - 36 + 33 - 3 = 21$ ✓.
+
+Now compute the two needed values:
+
+$$p(0) = -3, \qquad p(4) = 64 - 64 + 44 - 3 = 41.$$
+
+$$p(0) + p(4) = -3 + 41 = 38.$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Finite differences shortcut">
+For any monic cubic, the **third** finite differences are constant and equal $3! = 6$. So we can extend the table of values $p(1), p(2), p(3) = 5, 11, 21$ in both directions without ever solving for the coefficients.
+
+The known first differences are $11 - 5 = 6$ and $21 - 11 = 10$, giving a single known second difference of $10 - 6 = 4$.
+
+**Forward to $p(4)$:** the next second difference is $4 + 6 = 10$, so the next first difference is $10 + 10 = 20$, and $p(4) = 21 + 20 = 41$.
+
+**Backward to $p(0)$:** the second difference just before the $4$ is $4 - 6 = -2$, so the first difference just before the $6$ is $6 - (-2) = 8$, and $p(0) = 5 - 8 = -3$.
+
+Therefore $p(0) + p(4) = -3 + 41 = 38$.
+</AlternateMethod>

@@ -1,0 +1,23 @@
+---
+topic: algebra
+subtopic: polynomials
+difficulty: 1
+answer: A
+choices: ["10", "12", "14", "16", "18"]
+---
+
+<Problem>
+If $p(x) = 2x^2 - 3x + 1$, what is the value of $p(3)$?
+</Problem>
+
+<Solution>
+Substitute $x = 3$ directly:
+
+$$p(3) = 2(3)^2 - 3(3) + 1 = 2 \cdot 9 - 9 + 1 = 18 - 9 + 1 = 10.$$
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Horner's method">
+Rewrite $p(x) = (2x - 3)x + 1$. At $x = 3$: first compute $2(3) - 3 = 3$, then $3 \cdot 3 + 1 = 10$.
+</AlternateMethod>

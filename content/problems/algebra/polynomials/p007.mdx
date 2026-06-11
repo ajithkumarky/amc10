@@ -1,0 +1,41 @@
+---
+topic: algebra
+subtopic: polynomials
+difficulty: 4
+answer: B
+choices: ["30", "38", "42", "50", "65"]
+---
+
+<Problem>
+Let $r$, $s$, and $t$ be the roots of $x^3 - 5x^2 + 6x - 1 = 0$. What is the value of $r^3 + s^3 + t^3$?
+</Problem>
+
+<Solution>
+Label the elementary symmetric polynomials using Vieta's formulas:
+
+$$e_1 = r+s+t = 5, \qquad e_2 = rs+rt+st = 6, \qquad e_3 = rst = 1.$$
+
+Let $p_k = r^k + s^k + t^k$. Newton's power-sum recurrence for a cubic is:
+
+$$p_k = e_1 p_{k-1} - e_2 p_{k-2} + e_3 p_{k-3}.$$
+
+We have $p_1 = e_1 = 5$ and $p_2 = e_1 p_1 - 2e_2 = 5 \cdot 5 - 2 \cdot 6 = 25 - 12 = 13$.
+
+Applying the recurrence for $k = 3$:
+
+$$p_3 = e_1 p_2 - e_2 p_1 + e_3 p_0 = 5(13) - 6(5) + 1(3) = 65 - 30 + 3 = 38.$$
+
+(Here $p_0 = 3$ because each root contributes $r^0 = 1$.)
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Using the fact that each root satisfies the equation">
+Since $r$ is a root of $x^3 - 5x^2 + 6x - 1 = 0$, we have $r^3 = 5r^2 - 6r + 1$. Similarly for $s$ and $t$. Summing:
+
+$$r^3 + s^3 + t^3 = 5(r^2+s^2+t^2) - 6(r+s+t) + 3.$$
+
+From Vieta's: $r^2+s^2+t^2 = e_1^2 - 2e_2 = 25 - 12 = 13$, so
+
+$$r^3+s^3+t^3 = 5(13) - 6(5) + 3 = 65 - 30 + 3 = 38.$$
+</AlternateMethod>

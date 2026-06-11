@@ -1,0 +1,57 @@
+---
+title: Polynomials
+summary: Master polynomial arithmetic, the Factor and Remainder Theorems, Vieta's formulas for cubics, and evaluation tricks used throughout AMC 10.
+---
+
+## Overview
+
+A **polynomial** in $x$ is an expression of the form $a_n x^n + a_{n-1}x^{n-1} + \cdots + a_1 x + a_0$ where the $a_i$ are real (or complex) numbers and $n$ is a non-negative integer. The **degree** is the highest power with a nonzero coefficient. Polynomials are the backbone of algebra: every AMC 10 problem about roots, factors, or "what is $p(k)$?" lives in this world.
+
+The AMC loves polynomials because a single compact expression can hide several independent ideas at once — the relationship between coefficients and roots (Vieta's formulas), the behavior at special inputs (the Remainder Theorem), and the factoring insight that turns an ugly expression into a product of linear pieces. Mastering these three lenses lets you crack most polynomial AMC questions in under two minutes.
+
+Polynomial arithmetic is straightforward: add/subtract by collecting like terms, multiply by distributing every term of one factor across the other, and divide using long division or synthetic division. The one trap students hit is sign errors when subtracting; writing each subtraction as adding the negative helps.
+
+## Key facts
+
+- **Degree of a product:** $\deg(p \cdot q) = \deg p + \deg q$. Useful when you only need the leading term of an expansion.
+- **Remainder Theorem:** When $p(x)$ is divided by $(x - c)$, the remainder equals $p(c)$. So if you only need the remainder, just evaluate the polynomial at $c$.
+- **Factor Theorem:** $(x - c)$ is a factor of $p(x)$ if and only if $p(c) = 0$. Use this to test whether a suspected root actually works.
+- **Vieta's formulas — quadratic** $ax^2 + bx + c = 0$ with roots $r, s$:
+  $$r + s = -\frac{b}{a}, \qquad rs = \frac{c}{a}.$$
+- **Vieta's formulas — cubic** $ax^3 + bx^2 + cx + d = 0$ with roots $r, s, t$:
+  $$r+s+t = -\frac{b}{a}, \quad rs+rt+st = \frac{c}{a}, \quad rst = -\frac{d}{a}.$$
+  Memorize the pattern: the elementary symmetric polynomials cycle through signs $-, +, -$.
+- **Fundamental Theorem of Algebra:** A degree-$n$ polynomial (over $\mathbb{C}$) has exactly $n$ roots counted with multiplicity. A real odd-degree polynomial always has at least one real root.
+- **Difference of cubes / sum of cubes:**
+  $$a^3 - b^3 = (a-b)(a^2+ab+b^2), \qquad a^3 + b^3 = (a+b)(a^2-ab+b^2).$$
+- **Polynomial evaluation trick:** To evaluate $p(x)$ at $x = c$, Horner's method rewrites $a_n x^n + \cdots + a_0$ as $(\cdots((a_n \cdot x + a_{n-1})\cdot x + a_{n-2})\cdots)\cdot x + a_0$, requiring only $n$ multiplications and $n$ additions — great for mental math.
+
+## Worked example 1
+
+**Problem.** Suppose $p(x) = x^3 - 6x^2 + 11x - 6$. Without fully factoring, find the remainder when $p(x)$ is divided by $(x - 4)$.
+
+**Solution.** By the Remainder Theorem, the remainder is $p(4)$.
+
+$$p(4) = 4^3 - 6(4^2) + 11(4) - 6 = 64 - 96 + 44 - 6 = 6.$$
+
+So the remainder is $6$. (Notice we didn't need long division at all — the theorem converts a division question into a simple substitution.)
+
+## Worked example 2
+
+**Problem.** The three roots of $x^3 + px + q = 0$ satisfy $r + s + t = 0$, $rs + rt + st = p$, and $rst = -q$. Given that the roots also satisfy $r^2 + s^2 + t^2 = 10$ and $r^3 + s^3 + t^3 = 15$, find $p$ and $q$.
+
+**Solution.**
+
+**Step 1 — find $p$.** Use the identity $(r+s+t)^2 = r^2+s^2+t^2 + 2(rs+rt+st)$. Since $r+s+t = 0$ (the coefficient of $x^2$ is 0), we get $0 = 10 + 2p$, so $p = -5$.
+
+**Step 2 — find $q$.** Use Newton's identity $r^3+s^3+t^3 - 3rst = (r+s+t)(r^2+s^2+t^2 - rs - rt - st)$. The right side is $0$ (because $r+s+t=0$), so $r^3+s^3+t^3 = 3rst$. Thus $15 = 3(-q)$, giving $-q = 5$, i.e. $q = -5$.
+
+**Answer:** $p = -5$, $q = -5$. We can verify: $x^3 - 5x - 5 = 0$ has the right symmetric sums.
+
+## Common traps
+
+- **Forgetting the sign in Vieta's sum.** The sum of the roots is $-b/a$, not $+b/a$. A misplaced sign here flips every subsequent answer.
+- **Confusing "root" with "factor."** If $r$ is a root then $(x - r)$ is the factor — students sometimes write $(x + r)$ by reflex.
+- **Applying the Remainder Theorem to the wrong linear factor.** Dividing by $(x - c)$ gives remainder $p(c)$; dividing by $(2x - 1)$ — a non-monic factor — gives remainder $p(1/2)$, not $p(2)$.
+- **Off-by-one in degree counting.** A degree-$n$ polynomial has at most $n$ roots; more than $n$ roots means the polynomial is identically zero.
+- **Dropping repeated roots.** A factor $(x - r)^2$ means $r$ is a root of multiplicity 2; Vieta's formulas still count it twice when summing or multiplying roots.

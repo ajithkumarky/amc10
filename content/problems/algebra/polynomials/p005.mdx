@@ -1,0 +1,30 @@
+---
+topic: algebra
+subtopic: polynomials
+difficulty: 3
+answer: E
+choices: ["5", "7", "9", "10", "11"]
+---
+
+<Problem>
+The three roots of $p(x) = x^3 - ax^2 + bx - 12$ are positive integers that multiply to $12$. If the three roots are distinct and their sum is as small as possible, what is $b - a$?
+</Problem>
+
+<Solution>
+We need three distinct positive integers whose product is $12$. List all such triples $\{r, s, t\}$ with $rst = 12$:
+
+- $\{1, 2, 6\}$: sum $= 9$
+- $\{1, 3, 4\}$: sum $= 8$
+
+(Other factorizations like $\{2, 2, 3\}$ repeat a value, so they are not distinct.)
+
+The smallest sum is $8$, achieved by the roots $1, 3, 4$.
+
+By Vieta's formulas:
+$$a = r + s + t = 1 + 3 + 4 = 8,$$
+$$b = rs + rt + st = (1)(3) + (1)(4) + (3)(4) = 3 + 4 + 12 = 19.$$
+
+Therefore $b - a = 19 - 8 = 11$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,33 @@
+---
+topic: algebra
+subtopic: polynomials
+difficulty: 4
+answer: C
+choices: ["$x - 2$", "$x + 2$", "$-x - 2$", "$-x + 2$", "$2x - 1$"]
+---
+
+<Problem>
+What is the remainder when $x^5 - 1$ is divided by $x^2 + x + 1$?
+</Problem>
+
+<Solution>
+The remainder of dividing a degree-$5$ polynomial by a degree-$2$ divisor has degree at most $1$, so write
+
+$$x^5 - 1 = (x^2+x+1)\,q(x) + (ax + b).$$
+
+Let $\omega$ be a root of $x^2 + x + 1 = 0$. Such a root satisfies $\omega^3 = 1$ (it is a primitive cube root of unity, since $x^3 - 1 = (x-1)(x^2+x+1)$).
+
+**Evaluate at $x = \omega$:** Since $(x^2+x+1)\,q(\omega) = 0$,
+
+$$\omega^5 - 1 = a\omega + b.$$
+
+Reduce the exponent: $\omega^5 = \omega^{3+2} = \omega^2$. Also, from $\omega^2 + \omega + 1 = 0$ we get $\omega^2 = -\omega - 1$. So
+
+$$\omega^5 - 1 = \omega^2 - 1 = (-\omega - 1) - 1 = -\omega - 2.$$
+
+Matching coefficients of $\omega$ and the constant: $a = -1$, $b = -2$.
+
+The remainder is $\boxed{-x - 2}$.
+
+Answer: **C**.
+</Solution>
