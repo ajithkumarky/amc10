@@ -1,0 +1,46 @@
+---
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 3
+answer: A
+choices: ['$\dfrac{17}{50}$', '$\dfrac{1}{5}$', '$\dfrac{9}{25}$', '$\dfrac{2}{5}$', '$\dfrac{9}{50}$']
+---
+
+<Problem>
+A point $(x, y)$ is chosen uniformly at random inside the square $[0,5] \times [0,5]$. What is the probability that $y > x$ and $x + y < 6$?
+</Problem>
+
+<Solution>
+The sample space is the square with area $5^2 = 25$.
+
+We need the region satisfying both $y > x$ (above the main diagonal) and $x + y < 6$ (below the line from $(1,5)$ to $(5,1)$).
+
+**Finding the boundary vertices.** The line $y = x$ meets the line $x + y = 6$ when $2x = 6$, i.e., at $(3,3)$. The line $x + y = 6$ exits through the top of the square at $(1,5)$ (set $y=5$: $x=1$). The left edge $x = 0$ and top edge $y = 5$ complete the boundary.
+
+The favorable region is the quadrilateral with vertices $(0,0)$, $(3,3)$, $(1,5)$, $(0,5)$.
+
+**Area by the Shoelace Formula** (vertices listed in order):
+
+$$A = \frac{1}{2}|x_1(y_2 - y_4) + x_2(y_3 - y_1) + x_3(y_4 - y_2) + x_4(y_1 - y_3)|$$
+
+$$= \frac{1}{2}|0(3-5) + 3(5-0) + 1(5-3) + 0(0-5)|$$
+
+$$= \frac{1}{2}|0 + 15 + 2 + 0| = \frac{17}{2}.$$
+
+$$P = \frac{17/2}{25} = \frac{17}{50}.$$
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Integration by horizontal strips">
+Split the region by the $y$-value where the two boundaries swap roles.
+
+- For $y \in [0,3]$: $x$ must satisfy $x < y$ (from $y > x$) and $x > 6 - y$ would violate $x+y<6$... since $y<3$ we have $6-y>3>y$, so $x<y$ is the binding constraint and $x$ ranges over $[0, y)$. Width $= y$.
+- For $y \in [3,5]$: $x$ must satisfy $x < y$ and $x < 6-y$. Since $y \ge 3$, we have $6-y \le y$, so $6-y$ is the tighter bound. Width $= 6 - y$.
+
+$$A = \int_0^3 y\, dy + \int_3^5 (6-y)\, dy = \left[\frac{y^2}{2}\right]_0^3 + \left[6y - \frac{y^2}{2}\right]_3^5$$
+
+$$= \frac{9}{2} + \left[\left(30 - \frac{25}{2}\right) - \left(18 - \frac{9}{2}\right)\right] = \frac{9}{2} + \left[\frac{35}{2} - \frac{27}{2}\right] = \frac{9}{2} + 4 = \frac{17}{2}.$$
+
+Same area, confirming $P = \dfrac{17}{50}$.
+</AlternateMethod>

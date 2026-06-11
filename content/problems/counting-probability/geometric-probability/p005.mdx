@@ -1,0 +1,24 @@
+---
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 3
+answer: E
+choices: ['$\dfrac{4}{25}$', '$\dfrac{6}{25}$', '$\dfrac{1}{5}$', '$\dfrac{4}{5}$', '$\dfrac{8}{25}$']
+---
+
+<Problem>
+A dart is thrown uniformly at random at a circular board of radius $5$. Two additional concentric circles divide the board into three regions: an inner disk of radius $1$, a middle ring between radii $1$ and $3$, and an outer ring between radii $3$ and $5$. What is the probability that the dart lands in the middle ring?
+</Problem>
+
+<Solution>
+All areas involve the same $\pi$, so we can work with $r^2$ values only.
+
+- Area of inner disk: $\pi \cdot 1^2 = \pi$.
+- Area of disk of radius $3$: $\pi \cdot 3^2 = 9\pi$.
+- Area of middle ring: $9\pi - \pi = 8\pi$.
+- Total area of board: $\pi \cdot 5^2 = 25\pi$.
+
+$$P(\text{middle ring}) = \frac{8\pi}{25\pi} = \frac{8}{25}.$$
+
+Answer: **E**.
+</Solution>

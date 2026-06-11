@@ -1,0 +1,29 @@
+---
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 4
+answer: C
+choices: ['$\dfrac{4}{9}$', '$\dfrac{7}{18}$', '$\dfrac{5}{9}$', '$\dfrac{2}{3}$', '$\dfrac{7}{9}$']
+---
+
+<Problem>
+Two numbers $x$ and $y$ are chosen independently and uniformly at random from the interval $[0, 1]$. What is the probability that $|x - y| < \dfrac{1}{3}$?
+</Problem>
+
+<Solution>
+Place $x$ on the horizontal axis and $y$ on the vertical axis. The sample space is the unit square with area $1$.
+
+The condition $|x - y| < \dfrac{1}{3}$ is satisfied in the diagonal band between the lines $y = x + \dfrac{1}{3}$ and $y = x - \dfrac{1}{3}$.
+
+It is easier to compute the **complement**: $|x - y| \ge \dfrac{1}{3}$.
+
+The unfavorable region consists of two right triangles:
+- Upper-left: $y > x + \dfrac{1}{3}$, a triangle with legs $1 - \dfrac{1}{3} = \dfrac{2}{3}$.
+- Lower-right: $y < x - \dfrac{1}{3}$, a triangle with legs $\dfrac{2}{3}$.
+
+$$\text{Unfavorable area} = 2 \times \frac{1}{2} \times \left(\frac{2}{3}\right)^2 = \left(\frac{2}{3}\right)^2 = \frac{4}{9}.$$
+
+$$P\!\left(|x-y| < \frac{1}{3}\right) = 1 - \frac{4}{9} = \frac{5}{9}.$$
+
+Answer: **C**.
+</Solution>

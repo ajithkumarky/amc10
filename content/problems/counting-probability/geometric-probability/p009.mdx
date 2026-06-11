@@ -1,0 +1,36 @@
+---
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 5
+answer: D
+choices: ['$\frac{8}{27}$', '$\frac{11}{36}$', '$\frac{31}{108}$', '$\frac{35}{108}$', '$\frac{1}{3}$']
+---
+
+<Problem>
+Alice arrives at a coffee shop at a uniformly random time during a $60$-minute window, and Bob arrives at a uniformly random time during a $90$-minute window (the two windows start at the same moment). Alice will wait up to $20$ minutes for Bob; Bob will wait up to $10$ minutes for Alice. Their arrivals are independent. What is the probability that they meet?
+</Problem>
+
+<Solution>
+Let $A \in [0,60]$ be Alice's arrival time and $B \in [0,90]$ be Bob's. The sample space is the rectangle $[0,60]\times[0,90]$ with area $60 \times 90 = 5400$.
+
+**Meeting condition.** Alice is at the shop during $[A,\, A+20]$; Bob during $[B,\, B+10]$. The two intervals overlap exactly when each starts before the other ends:
+$$A \le B + 10 \quad\text{and}\quad B \le A + 20,$$
+which rearranges to
+$$A - 10 \le B \le A + 20.$$
+
+**Bounding $B$.** Since $A \le 60$, the upper bound $A + 20 \le 80 < 90$, so the cap at $90$ never bites and the upper limit is always $A+20$. The lower bound $A - 10$ is negative when $A < 10$, where it must be clipped up to $0$.
+
+- For $A \in [0,10)$: $B$ ranges over $[0,\, A+20]$, width $= A + 20$.
+- For $A \in [10,60]$: $B$ ranges over $[A-10,\, A+20]$, width $= 30$.
+
+**Favorable area:**
+$$\int_0^{10}(A+20)\,dA \;+\; \int_{10}^{60} 30\,dA$$
+
+$$= \left[\frac{A^2}{2}+20A\right]_0^{10} + 30\cdot 50 = (50+200) + 1500 = 1750.$$
+
+$$P = \frac{1750}{5400} = \frac{35}{108}.$$
+
+A common slip is to use width $30$ for *all* of $A\in[0,60]$, giving $\frac{1800}{5400}=\frac13$; that forgets to clip the band where it pokes below $B=0$, overcounting by the little triangle near $A=0$. Another is to swap the two wait windows ($A-20 \le B \le A+10$), which gives $\frac{1600}{5400}=\frac{8}{27}$ — but Alice waits the *longer* $20$ minutes, so $B$ may exceed $A$ by up to $20$.
+
+Answer: **D**.
+</Solution>

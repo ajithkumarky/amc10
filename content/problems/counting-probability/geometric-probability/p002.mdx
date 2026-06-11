@@ -1,0 +1,27 @@
+---
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 2
+answer: B
+choices: ['$\dfrac{1}{2}$', '$\dfrac{5}{8}$', '$\dfrac{3}{4}$', '$\dfrac{7}{12}$', '$\dfrac{2}{3}$']
+---
+
+<Problem>
+A point $(x, y)$ is chosen uniformly at random inside the rectangle with $0 \le x \le 3$ and $0 \le y \le 4$. What is the probability that $x + y \le 4$?
+</Problem>
+
+<Solution>
+The rectangle has area $3 \times 4 = 12$.
+
+The line $x + y = 4$ passes through $(0, 4)$ and $(4, 0)$. Inside our rectangle, it runs from $(0, 4)$ (the top-left corner) down to $(3, 1)$.
+
+The region where $x + y > 4$ is the triangle above this line with vertices $(0, 4)$, $(3, 4)$, and $(3, 1)$. Its base is $3$ and its height is $4 - 1 = 3$, so its area is
+$$\frac{1}{2} \cdot 3 \cdot 3 = \frac{9}{2}.$$
+
+The favorable area (where $x + y \le 4$) is
+$$12 - \frac{9}{2} = \frac{15}{2}.$$
+
+$$P = \frac{15/2}{12} = \frac{15}{24} = \frac{5}{8}.$$
+
+Answer: **B**.
+</Solution>

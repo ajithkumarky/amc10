@@ -1,0 +1,27 @@
+---
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 4
+answer: B
+choices: ['$\dfrac{\pi}{8}$', '$\dfrac{\pi}{4}$', '$\dfrac{\pi}{3}$', '$\dfrac{3\pi}{8}$', '$\dfrac{\pi}{2}$']
+---
+
+<Problem>
+A point is chosen uniformly at random inside the unit square $[0,1]\times[0,1]$. What is the probability that the point is closer to at least one corner of the square than $\dfrac{1}{2}$?
+</Problem>
+
+<Solution>
+A point is within distance $\dfrac{1}{2}$ of a given corner if and only if it lies inside the quarter-disk of radius $\dfrac{1}{2}$ centered at that corner. There are four such quarter-disks, one at each corner.
+
+**Do any two quarter-disks overlap?** Adjacent corners are distance $1$ apart; the sum of the two radii equals $\tfrac{1}{2} + \tfrac{1}{2} = 1$, so the quarter-disks are tangent (they touch only at the midpoint of the shared edge) and have no interior overlap. Opposite corners are distance $\sqrt{2} > 1$ apart, so those quarter-disks don't even touch.
+
+Because there is no overlap, the areas add directly.
+
+$$\text{Total favorable area} = 4 \times \frac{1}{4}\pi\left(\frac{1}{2}\right)^2 = 4 \times \frac{\pi}{16} = \frac{\pi}{4}.$$
+
+The unit square has area $1$, so
+
+$$P = \frac{\pi/4}{1} = \frac{\pi}{4}.$$
+
+Answer: **B**.
+</Solution>

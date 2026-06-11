@@ -1,0 +1,37 @@
+---
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 3
+answer: C
+choices: ['$\dfrac{3}{16}$', '$\dfrac{5}{16}$', '$\dfrac{7}{16}$', '$\dfrac{9}{16}$', '$\dfrac{11}{16}$']
+---
+
+<Problem>
+Alice and Bob each arrive independently and uniformly at random during a $60$-minute window. Each person waits exactly $15$ minutes for the other before leaving. What is the probability that they meet?
+</Problem>
+
+<Solution>
+Let $A$ and $B$ be Alice's and Bob's arrival times (in minutes), each chosen uniformly from $[0, 60]$. The sample space is the $60 \times 60$ square with area $3600$.
+
+They meet when their waiting periods overlap, which happens exactly when $|A - B| \le 15$.
+
+The **unfavorable** region is $|A - B| > 15$, which consists of two right triangles in opposite corners of the square. Each triangle has legs of length $60 - 15 = 45$.
+
+$$\text{Unfavorable area} = 2 \cdot \frac{1}{2} \cdot 45^2 = 45^2 = 2025.$$
+
+$$P(\text{meet}) = \frac{3600 - 2025}{3600} = \frac{1575}{3600} = \frac{7}{16}.$$
+
+*Quick check:* $\dfrac{1575}{3600}$. Divide both by $225$: $\dfrac{7}{16}$. ✓
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Using the formula directly">
+For a meeting problem where both arrivals are uniform on $[0, T]$ and the wait time is $w$,
+
+$$P(\text{meet}) = 1 - \left(\frac{T - w}{T}\right)^2.$$
+
+With $T = 60$ and $w = 15$:
+
+$$P = 1 - \left(\frac{45}{60}\right)^2 = 1 - \left(\frac{3}{4}\right)^2 = 1 - \frac{9}{16} = \frac{7}{16}.$$
+</AlternateMethod>

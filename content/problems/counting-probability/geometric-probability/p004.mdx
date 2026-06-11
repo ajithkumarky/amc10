@@ -1,0 +1,27 @@
+---
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 3
+answer: D
+choices: ['$\dfrac{\pi}{12}$', '$\dfrac{\pi}{6}$', '$\dfrac{\pi}{5}$', '$\dfrac{\pi}{8}$', '$\dfrac{\pi}{4}$']
+---
+
+<Problem>
+A point $(x, y)$ is chosen uniformly at random inside the unit square $[0,1] \times [0,1]$. What is the probability that $x^2 + y^2 \le \dfrac{1}{2}$?
+</Problem>
+
+<Solution>
+The condition $x^2 + y^2 \le \dfrac{1}{2}$ describes a disk centered at the origin with radius $r = \dfrac{1}{\sqrt{2}}$.
+
+Since $\dfrac{1}{\sqrt{2}} \approx 0.707 < 1$, the entire quarter of this disk that lies in the first quadrant fits inside the unit square (the arc stays below and to the left of the square's edges).
+
+The favorable region is that quarter-disk, with area
+
+$$\frac{1}{4} \pi r^2 = \frac{1}{4} \cdot \pi \cdot \frac{1}{2} = \frac{\pi}{8}.$$
+
+The unit square has area $1$, so
+
+$$P = \frac{\pi/8}{1} = \frac{\pi}{8}.$$
+
+Answer: **D**.
+</Solution>

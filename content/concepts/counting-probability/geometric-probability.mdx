@@ -1,0 +1,62 @@
+---
+title: Geometric Probability
+summary: Probability computed as a ratio of lengths, areas, or volumes — turning "pick a random point" questions into geometry problems.
+---
+
+## Overview
+
+Geometric probability replaces the classic "count favorable outcomes / count total outcomes" formula with a continuous version: **probability = (measure of favorable region) / (measure of total region)**, where "measure" means length for intervals, area for 2-D regions, and volume for 3-D regions. Instead of counting discrete outcomes, you sketch a region, shade the favorable part, and compute the ratio.
+
+The AMC loves this topic because problems look algebraic but are actually geometry puzzles. A typical question says "two numbers are chosen at random in $[0, 1]$" — that's a random point in the unit square — and then asks for a probability that translates into the area of some shaded polygon or curved region. Pairing geometric probability with coordinate geometry (finding where two lines meet, computing triangle area from vertices) is the key combination.
+
+The most famous template is the **meeting problem**: two people each arrive at a random time in some interval, wait a fixed time, and you want the probability they overlap. Drawing arrival times as coordinates on a square immediately converts the question into an area calculation.
+
+## Key facts
+
+- **Length ratio (1-D).** If a point is chosen uniformly on a segment of length $L$, the probability it falls in a sub-segment of length $\ell$ is $\dfrac{\ell}{L}$. *Use when:* a single number is chosen from an interval.
+
+- **Area ratio (2-D).** If a point is chosen uniformly inside a region of area $S$, the probability it falls in a sub-region of area $s$ is $\dfrac{s}{S}$. *Use when:* two independent numbers are chosen (place them as $(x,y)$ coordinates), or a dart is thrown at a board.
+
+- **Meeting problem setup.** Alice arrives at time $A \in [0, T]$, Bob at time $B \in [0, T]$. They meet if $|A - B| \le w$ (wait time). Plot $(A, B)$ in the $T \times T$ square; the favorable band $|A-B| \le w$ has area $T^2 - 2 \cdot \tfrac{1}{2}(T-w)^2$, so
+$$P(\text{meet}) = 1 - \left(\frac{T-w}{T}\right)^2.$$
+*Use when:* two people arrive independently and each waits a fixed time.
+
+- **Complementary area.** $P(\text{favorable}) = 1 - P(\text{unfavorable})$. Shading the complement is often simpler — two right-triangle corners appear frequently. *Use when:* the unfavorable region is made of clean triangles.
+
+- **Circles inside rectangles.** If a circle of radius $r$ is inscribed in or overlaid on a rectangle of area $A$, the probability a random point hits the circle is $\dfrac{\pi r^2}{A}$ (or the appropriate sector fraction). *Use when:* "bull's-eye" or concentric-circle problems appear.
+
+## Worked example 1
+
+**Problem.** A number $x$ is chosen uniformly at random from $[0, 10]$. What is the probability that $x$ is within $3$ units of $8$?
+
+**Solution.** "Within 3 units of 8" means $|x - 8| \le 3$, i.e., $x \in [5, 11]$. Intersecting with our interval $[0, 10]$ gives $x \in [5, 10]$, a segment of length $5$.
+
+$$P = \frac{5}{10} = \frac{1}{2}.$$
+
+The key step is clipping the favorable segment to the actual interval before computing the ratio.
+
+## Worked example 2
+
+**Problem.** Alice and Bob each arrive uniformly at random during a 1-hour window $[0, 60]$ minutes. Each waits exactly $10$ minutes. What is the probability they meet?
+
+**Solution.** Plot Alice's arrival time $A$ on the horizontal axis and Bob's $B$ on the vertical axis. The sample space is the $60 \times 60$ square with area $3600$.
+
+They meet when $|A - B| \le 10$, i.e., the shaded band around the main diagonal. The unfavorable region consists of two right triangles, each with legs $60 - 10 = 50$.
+
+$$\text{Unfavorable area} = 2 \times \frac{1}{2} \times 50^2 = 2500.$$
+
+$$P(\text{meet}) = \frac{3600 - 2500}{3600} = \frac{1100}{3600} = \frac{11}{36}.$$
+
+*Check via formula:* $1 - (50/60)^2 = 1 - 25/36 = 11/36$. ✓
+
+## Common traps
+
+- **Forgetting to clip.** When the favorable condition extends past the boundary of the total region, intersect with the boundary first. For "within $5$ of $9$" on $[0, 10]$, the raw interval is $[4, 14]$, but it must be clipped to $[4, 10]$, giving length $6$ and probability $\tfrac{6}{10}=\tfrac35$. Using the full unclipped length $14-4=10$ would give $\tfrac{10}{10}=1$, which is plainly wrong.
+
+- **Mixing up which region to shade.** Sketch first, shade second. Labeling the favorable region before calculating its area prevents computing the complementary area by mistake.
+
+- **Missing the factor of 2 in the meeting problem.** The two corner triangles are mirror images of each other; both must be subtracted. Writing $2 \times \tfrac{1}{2}(T-w)^2$ explicitly reminds you of this.
+
+- **Treating a 2-D problem as 1-D.** "Two numbers chosen independently" means a point in a 2-D square, not a point on a line. The sample space has area $T^2$, not length $T$.
+
+- **Curved-region errors.** When the favorable region is bounded by a circle or parabola, don't estimate — compute the area with the correct formula ($\pi r^2$ for circles). Approximating $\pi \approx 3$ then simplifying can give a wrong fraction answer.
