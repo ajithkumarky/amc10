@@ -1,0 +1,32 @@
+---
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 3
+answer: D
+choices: ["6", "7", "9", "8", "10"]
+---
+
+<Problem>
+How many integers satisfy $|2x - 3| < 9$?
+</Problem>
+
+<Solution>
+Unpack the absolute value into a compound inequality:
+$$-9 < 2x - 3 < 9.$$
+
+Add 3 to all three parts:
+$$-6 < 2x < 12.$$
+
+Divide by 2:
+$$-3 < x < 6.$$
+
+We need integers **strictly** between $-3$ and $6$, so the endpoints are excluded. Those integers are
+$$-2,\,-1,\,0,\,1,\,2,\,3,\,4,\,5,$$
+which is $\mathbf{8}$ integers.
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Listing carefully">
+The boundary condition $x = -3$ gives $|2(-3)-3| = |-9| = 9$, which is not strictly less than 9 (it equals 9), so $x = -3$ is excluded. Similarly $x = 6$ gives $|12-3| = 9$, also excluded. Listing $-2$ through $5$ gives 8 values.
+</AlternateMethod>

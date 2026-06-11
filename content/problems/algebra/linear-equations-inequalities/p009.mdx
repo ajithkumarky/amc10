@@ -1,0 +1,34 @@
+---
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 5
+answer: D
+choices: ["9", "10", "12", "11", "13"]
+---
+
+<Problem>
+Suppose $a$ and $b$ are real numbers satisfying
+$$2a + b = 17 \quad \text{and} \quad a + 2b = 16.$$
+What is the value of $a + b$?
+</Problem>
+
+<Solution>
+A direct approach (solve for $a$ and $b$ separately) works but takes time. The key insight is to add the two equations:
+$$(2a + b) + (a + 2b) = 17 + 16$$
+$$3a + 3b = 33$$
+$$3(a + b) = 33$$
+$$a + b = 11.$$
+
+No individual values of $a$ or $b$ are needed.
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Solving individually to verify">
+From $2a + b = 17$: $b = 17 - 2a$. Substitute into $a + 2b = 16$:
+$$a + 2(17 - 2a) = 16 \implies a + 34 - 4a = 16 \implies -3a = -18 \implies a = 6.$$
+
+Then $b = 17 - 12 = 5$. So $a + b = 11$. ✓
+
+The "add the equations" shortcut is crucial at AMC speed — looking for a clever combination that yields the target expression directly is a hallmark of difficulty-5 thinking.
+</AlternateMethod>

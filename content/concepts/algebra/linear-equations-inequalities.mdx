@@ -1,0 +1,80 @@
+---
+title: "Linear Equations & Inequalities"
+summary: Techniques for solving equations and inequalities that involve variables to the first power, including systems of two equations and absolute-value conditions.
+---
+
+## Overview
+
+A **linear equation** is any equation that can be written in the form $ax + b = c$, where $a \neq 0$. The variable appears only to the first power — no squares, no square roots, no products of two unknowns. Because there is exactly one unknown and the relationship is a straight line, there is always exactly one solution (unless the equation is a contradiction or an identity). On the AMC, linear equations show up as warm-up problems and also as hidden sub-problems inside harder questions about systems, word problems, or parameter problems.
+
+A **linear inequality** follows the same algebra but with a twist: when you multiply or divide both sides by a **negative number**, the inequality sign flips. Forgetting this flip is one of the most common errors on the AMC. Absolute-value inequalities $|ax + b| < c$ and $|ax + b| > c$ each unpack into a simple two-sided compound inequality, giving you a clean integer-counting or interval problem.
+
+**Why the AMC loves this topic:** the difficulty ramps not by making the algebra harder, but by disguising the linear structure — inside a system of two equations, behind an absolute value, or with a parameter that you must tune so the system has no solution, one solution, or infinitely many. Recognizing "this is secretly a linear system" is the key insight at difficulty 4–5 level.
+
+## Key facts
+
+- **Isolate the variable:** Legal moves are adding/subtracting the same quantity on both sides and multiplying/dividing by any non-zero constant. Always simplify fully (expand parentheses, combine like terms) before isolating.
+
+- **Substitution for 2×2 systems:** Solve one equation for one variable, substitute into the other. Best when one coefficient is already 1 or -1.
+
+- **Elimination for 2×2 systems:** Multiply each equation by a chosen constant so one variable's coefficients become additive inverses, then add the equations. Best when no coefficient is ±1.
+
+- **Inequality flip rule:** $ax < b \Rightarrow x > b/a$ when $a < 0$. Applies equally to $\leq,\geq,>$.
+
+- **Absolute-value inequality unpacking:**
+  - $|E| < c \iff -c < E < c$ (one interval, finite solutions)
+  - $|E| > c \iff E < -c \text{ or } E > c$ (two rays, infinite solutions)
+
+- **Consistent / inconsistent / dependent systems:** For the system $ax + by = e$, $cx + dy = f$, compute $\Delta = ad - bc$.
+  - $\Delta \neq 0$: unique solution.
+  - $\Delta = 0$ and the equations are proportional: infinitely many solutions (dependent).
+  - $\Delta = 0$ and the equations are not proportional: no solution (inconsistent).
+
+- **Parameter problems:** If the problem says "the equation has no solution" or "the system has infinitely many solutions," set up the condition on $\Delta$ and check consistency.
+
+## Worked example 1
+
+**Problem.** Solve $4(x - 2) + 3 = 2x + 5$.
+
+**Solution.** Expand the left side:
+$$4x - 8 + 3 = 2x + 5$$
+$$4x - 5 = 2x + 5$$
+
+Subtract $2x$ from both sides:
+$$2x - 5 = 5$$
+
+Add 5:
+$$2x = 10 \implies x = 5.$$
+
+**Check:** $4(5-2)+3 = 12+3 = 15$ and $2(5)+5 = 15$. ✓
+
+The key step is expanding parentheses *before* moving terms across the equals sign — rushing to move $2x$ first can cause sign errors.
+
+## Worked example 2
+
+**Problem.** Find all real numbers $x$ satisfying $|3x - 6| \leq 9$, and count the integers in the solution set.
+
+**Solution.** Unpack the absolute value:
+$$-9 \leq 3x - 6 \leq 9.$$
+
+Add 6 to all three parts:
+$$-3 \leq 3x \leq 15.$$
+
+Divide by 3 (positive, so no flip):
+$$-1 \leq x \leq 5.$$
+
+The integers in the closed interval $[-1, 5]$ are $-1, 0, 1, 2, 3, 4, 5$ — that is **7 integers**.
+
+**Why this matters on AMC:** the problem often asks for the *count* of integer solutions, not the interval itself. Carefully include the endpoints when the inequality is $\leq$ (not strict $<$).
+
+## Common traps
+
+- **Forgetting to flip the inequality sign.** When dividing both sides of $-3x < 12$ by $-3$, you get $x > -4$, not $x < -4$.
+
+- **Mishandling absolute value.** $|2x - 1| < 5$ does NOT become $2x - 1 < 5$; you must write $-5 < 2x - 1 < 5$ and solve the compound inequality.
+
+- **Off-by-one in integer counting.** The integers strictly between $-3$ and $6$ (i.e., in $(-3, 6)$) are $-2, -1, \ldots, 5$ — eight integers, not nine. Always double-check whether endpoints are included.
+
+- **Sign errors when clearing fractions.** Multiplying $\frac{x-1}{2} = \frac{x+3}{4}$ by 4 gives $2(x-1) = x+3$, *not* $2x - 1 = x + 3$. Distribute carefully.
+
+- **Assuming a parameter system always has a solution.** When a parameter makes $\Delta = 0$, you must check the right-hand side separately to decide between infinitely many solutions and no solution — the two cases look the same in the determinant but behave differently.

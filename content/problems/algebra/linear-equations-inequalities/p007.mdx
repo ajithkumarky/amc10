@@ -1,0 +1,39 @@
+---
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 4
+answer: A
+choices: ["2", "3", "4", "6", "9"]
+---
+
+<Problem>
+For what positive value of $m$ does the system of equations
+$$3x + my = 12$$
+$$9x + 6y = m$$
+have no solution?
+</Problem>
+
+<Solution>
+A 2×2 linear system has no solution when the two lines are parallel — same slope (so same ratio of coefficients) but different right-hand sides.
+
+Write both equations in the form $ax + by = c$:
+- Equation 1: $3x + my = 12$
+- Equation 2: $9x + 6y = m$
+
+The coefficient ratio condition (parallel lines) requires:
+$$\frac{3}{9} = \frac{m}{6} \implies \frac{1}{3} = \frac{m}{6} \implies m = 2.$$
+
+Now check that the system is actually **inconsistent** (not just dependent) when $m = 2$: multiply Equation 1 by 3 to get $9x + 6y = 36$, but Equation 2 says $9x + 6y = 2$. Since $36 \neq 2$, the system is inconsistent and has **no solution**.
+
+The positive value is $m = 2$.
+
+Answer: **A**.
+</Solution>
+
+<AlternateMethod title="Determinant approach">
+The system $ax + by = e$, $cx + dy = f$ has no unique solution when the determinant $\Delta = ad - bc = 0$.
+
+Here $\Delta = 3 \cdot 6 - m \cdot 9 = 18 - 9m = 0 \implies m = 2$.
+
+Since the augmented-matrix check shows $36 \neq 2$ (as above), the system is inconsistent, not dependent. So $m = 2$.
+</AlternateMethod>

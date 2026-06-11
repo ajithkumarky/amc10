@@ -1,0 +1,37 @@
+---
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 4
+answer: B
+choices: ["2", "3", "4", "5", "6"]
+---
+
+<Problem>
+How many integers $x$ satisfy both of the following conditions simultaneously?
+$$3 < 2x + 1 < 11 \quad \text{and} \quad x^2 < 20$$
+</Problem>
+
+<Solution>
+**Step 1 — Solve the linear inequality.**
+$$3 < 2x + 1 < 11$$
+
+Subtract 1 from all parts:
+$$2 < 2x < 10 \implies 1 < x < 5.$$
+
+Integer solutions from the first condition: $x \in \{2, 3, 4\}$.
+
+**Step 2 — Apply the second condition.**
+
+Check each candidate against $x^2 < 20$ (i.e., $|x| < \sqrt{20} \approx 4.47$):
+- $x = 2$: $4 < 20$ ✓
+- $x = 3$: $9 < 20$ ✓
+- $x = 4$: $16 < 20$ ✓
+
+All three pass. The answer is $\mathbf{3}$.
+
+Answer: **B**.
+</Solution>
+
+<AlternateMethod title="Note on the constraint interplay">
+The second condition $x^2 < 20$ on its own gives $-4 < x < 4.47...$, so integers $-4$ through $4$. Combined with $1 < x < 5$ from the first condition, the intersection of integer sets is $\{2, 3, 4\}$ — count 3.
+</AlternateMethod>
