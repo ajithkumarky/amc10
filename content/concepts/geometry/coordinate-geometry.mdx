@@ -1,0 +1,90 @@
+---
+title: Coordinate Geometry
+summary: Distance, midpoint, slopes, line equations, area by shoelace, reflections, and point-to-line distance — the toolkit for placing geometry on the $xy$-plane.
+---
+
+## Overview
+
+Coordinate geometry translates geometric objects — points, lines, triangles, polygons — into algebra on the $xy$-plane. Many AMC 10 problems that look impossible to approach purely with classical geometry become routine once you assign coordinates wisely and apply a small set of formulas. The key skill is choosing coordinates that simplify the arithmetic: place one vertex at the origin, align a side along the $x$-axis, or center a figure at the origin when the problem has symmetry.
+
+The AMC 10 draws on four main coordinate topics: distance and midpoints, slope and line equations (especially parallel/perpendicular relationships), area by the shoelace formula, and reflections. A fifth topic — the distance from a point to a line — appears less often but is worth knowing, especially for problems about altitudes of triangles or minimum distances.
+
+Understanding these tools deeply means knowing not just the formula but also *when* to reach for each one. Distance answers "how far?", midpoint answers "where is the middle?", slope answers "how steep or which direction?", and shoelace turns a list of vertices into an area with no geometry needed.
+
+## Key facts
+
+- **Distance formula:** The distance between points $(x_1, y_1)$ and $(x_2, y_2)$ is
+  $$d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}.$$
+  *Use whenever two coordinates are given and a length is needed.*
+
+- **Midpoint formula:** The midpoint of the segment from $(x_1, y_1)$ to $(x_2, y_2)$ is
+  $$M = \left(\frac{x_1 + x_2}{2},\; \frac{y_1 + y_2}{2}\right).$$
+  *Use to find a center, bisect a segment, or exploit symmetry.*
+
+- **Slope:** The slope of a line through $(x_1, y_1)$ and $(x_2, y_2)$ is
+  $$m = \frac{y_2 - y_1}{x_2 - x_1}.$$
+  Slope measures rise over run; a horizontal line has slope $0$; a vertical line has undefined slope.
+
+- **Parallel lines:** Two lines are parallel if and only if they have equal slopes ($m_1 = m_2$). *Or both are vertical.*
+
+- **Perpendicular lines:** Two non-vertical lines are perpendicular if and only if their slopes are negative reciprocals: $m_1 \cdot m_2 = -1$. *Flip and negate one slope to get the other.*
+
+- **Slope-intercept form:** $y = mx + b$, where $m$ is the slope and $b$ is the $y$-intercept.
+
+- **Point-slope form:** $y - y_1 = m(x - x_1)$, the line of slope $m$ through $(x_1, y_1)$. *Fastest way to write a line equation from a point and a slope.*
+
+- **Standard (general) form:** $ax + by + c = 0$. The slope is $-a/b$ (for $b \neq 0$).
+
+- **Shoelace formula (area of polygon):** For a polygon with vertices $(x_1,y_1), (x_2,y_2), \ldots, (x_n,y_n)$ listed in order (clockwise or counter-clockwise),
+  $$\text{Area} = \frac{1}{2}\left|\sum_{i=1}^{n}\bigl(x_i y_{i+1} - x_{i+1} y_i\bigr)\right|,$$
+  where indices wrap around so $(x_{n+1}, y_{n+1}) = (x_1, y_1)$. *Works for any polygon; no base-height needed.*
+
+- **Reflection over $y = x$:** The reflection of $(a, b)$ over the line $y = x$ is $(b, a)$. *Swap the coordinates.*
+
+- **Reflection over a vertical line $x = h$:** The reflection of $(a, b)$ is $(2h - a,\; b)$. *The $y$-coordinate is unchanged; the $x$-coordinate is "mirrored" around $h$.*
+
+- **Reflection over a horizontal line $y = k$:** The reflection of $(a, b)$ is $(a,\; 2k - b)$.
+
+- **Rotation by $90°$ counter-clockwise about the origin:** $(a, b) \mapsto (-b, a)$.
+
+- **Rotation by $180°$ about the origin:** $(a, b) \mapsto (-a, -b)$.
+
+- **Distance from a point to a line:** The distance from point $(x_0, y_0)$ to the line $ax + by + c = 0$ is
+  $$d = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}.$$
+  *The absolute value and the $\sqrt{a^2+b^2}$ denominator are both easy to forget — write them first.*
+
+## Worked example 1
+
+> Points $A = (1, 3)$ and $B = (7, 11)$. Find the length of $\overline{AB}$, the midpoint $M$, and the equation of the perpendicular bisector of $\overline{AB}$.
+
+**Length:** $AB = \sqrt{(7-1)^2 + (11-3)^2} = \sqrt{36 + 64} = \sqrt{100} = 10$.
+
+**Midpoint:** $M = \left(\dfrac{1+7}{2}, \dfrac{3+11}{2}\right) = (4, 7)$.
+
+**Perpendicular bisector:** The slope of $\overline{AB}$ is $\dfrac{11-3}{7-1} = \dfrac{8}{6} = \dfrac{4}{3}$. The perpendicular bisector passes through $M = (4,7)$ with slope $-\dfrac{3}{4}$ (negative reciprocal).
+
+Using point-slope form:
+$$y - 7 = -\frac{3}{4}(x - 4) \implies y = -\frac{3}{4}x + 10.$$
+
+*Why does this work?* Every point on the perpendicular bisector of $\overline{AB}$ is equidistant from $A$ and $B$. The two conditions "passes through the midpoint" and "slope is the negative reciprocal" encode exactly that requirement.
+
+## Worked example 2
+
+> A triangle has vertices $P = (0, 0)$, $Q = (8, 0)$, $R = (3, 6)$. Find its area using the shoelace formula, and find the equation of the altitude from $R$ to $\overline{PQ}$.
+
+**Area by shoelace:** List the vertices in order and apply the formula:
+
+$$\text{Area} = \frac{1}{2}|x_P(y_Q - y_R) + x_Q(y_R - y_P) + x_R(y_P - y_Q)|$$
+$$= \frac{1}{2}|0(0-6) + 8(6-0) + 3(0-0)| = \frac{1}{2}|0 + 48 + 0| = 24.$$
+
+**Altitude from $R$:** $\overline{PQ}$ lies on the $x$-axis and has slope $0$. The altitude from $R$ is perpendicular to $\overline{PQ}$, so it is a vertical line passing through $R = (3, 6)$: the equation is $x = 3$.
+
+*Check:* The altitude has length equal to the $y$-coordinate of $R$, which is $6$. Using $\text{Area} = \frac{1}{2} \cdot \text{base} \cdot \text{height} = \frac{1}{2} \cdot 8 \cdot 6 = 24$. This matches the shoelace result.
+
+## Common traps
+
+- **Forgetting the $\frac{1}{2}$ in the shoelace formula.** The "shoelace sum" before dividing is twice the area. Forgetting the factor of $\frac{1}{2}$ is the single most common shoelace error.
+- **Using slope = run/rise instead of rise/run.** Slope is always $\Delta y / \Delta x$, not $\Delta x / \Delta y$. When in doubt, write it out as (change in output)/(change in input).
+- **Perpendicular slope: flipping without negating (or negating without flipping).** If $m = 2/3$, the perpendicular slope is $-3/2$, not $3/2$ or $-2/3$. Both operations (reciprocal AND sign change) are required.
+- **Reflection formula sign errors.** Reflecting $(a,b)$ over the line $x = h$ gives $x' = 2h - a$, not $2h + a$. Sketch a one-dimensional number line — the image is as far to the right of $h$ as $a$ is to the left.
+- **Plugging the wrong sign into the point-to-line distance.** The formula requires the line in the form $ax + by + c = 0$. If you write $3x - 4y = 5$, rewrite it as $3x - 4y - 5 = 0$ before substituting; $c = -5$, not $+5$.

@@ -1,0 +1,45 @@
+---
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 5
+answer: E
+choices: ["$6$", "$7$", "$8$", "$9$", "$10$"]
+---
+
+<Problem>
+How many lattice points $(a, b)$ with $a > 0$ and $b > 0$ lie on the circle $(x - 5)^2 + (y - 5)^2 = 25$?
+</Problem>
+
+<Solution>
+A lattice point satisfies $(a - 5)^2 + (b - 5)^2 = 25$ with $a, b$ positive integers. Let $u = a - 5$ and $v = b - 5$; we need $u^2 + v^2 = 25$ where $a = u + 5 > 0$ and $b = v + 5 > 0$, i.e., $u > -5$ and $v > -5$.
+
+**Find all integer pairs $(u, v)$ with $u^2 + v^2 = 25$:**
+
+The ways to write $25$ as a sum of two integer squares are:
+
+$$25 = 0^2 + 5^2 = 5^2 + 0^2 = 3^2 + 4^2 = 4^2 + 3^2,$$
+
+with all sign combinations. The full list of pairs $(u, v)$:
+
+$$(0, \pm 5),\quad (\pm 5, 0),\quad (\pm 3, \pm 4),\quad (\pm 4, \pm 3).$$
+
+That is $2 + 2 + 4 + 4 = 12$ pairs total.
+
+**Apply the constraint $u > -5$ and $v > -5$:**
+
+We need to exclude pairs where $u \leq -5$ or $v \leq -5$.
+
+- $u = -5$: pair $(-5, 0)$ gives $a = 0$, excluded ($a > 0$ requires $a \geq 1$, and $a = 0$ fails).
+- $v = -5$: pair $(0, -5)$ gives $b = 0$, excluded.
+
+No other pair has $|u| = 5$ or $|v| = 5$ except those two. All pairs with $|u|, |v| \in \{3, 4\}$ satisfy $u, v \in \{-4, -3, 3, 4\}$, so $u > -5$ and $v > -5$ automatically. Similarly, $(\pm 3, \pm 4)$ and $(\pm 4, \pm 3)$ all satisfy both inequalities, giving $a, b \geq 1$.
+
+Check $(5, 0)$: $a = 10 > 0$, $b = 5 > 0$. Included. $\checkmark$
+Check $(0, 5)$: $a = 5 > 0$, $b = 10 > 0$. Included. $\checkmark$
+
+So we exclude exactly 2 pairs ($(-5, 0)$ and $(0, -5)$), leaving $12 - 2 = 10$ valid lattice points.
+
+**The 10 points:** $(10,5),\,(5,10),\,(8,9),\,(8,1),\,(2,9),\,(2,1),\,(9,8),\,(9,2),\,(1,8),\,(1,2)$.
+
+Answer: **E**.
+</Solution>

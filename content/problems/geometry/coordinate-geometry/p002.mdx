@@ -1,0 +1,39 @@
+---
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 2
+answer: D
+choices: ["$y = x - 2$", "$y = -x + 2$", "$y = x + 4$", "$y = x + 2$", "$y = -x - 2$"]
+---
+
+<Problem>
+Let $M$ be the midpoint of the segment joining $A = (-3, 7)$ and $B = (5, -1)$. Find the equation of the line that passes through $M$ and is perpendicular to $\overline{AB}$.
+</Problem>
+
+<Solution>
+**Step 1: Find the midpoint.**
+
+$$M = \left(\frac{-3 + 5}{2},\; \frac{7 + (-1)}{2}\right) = \left(1,\; 3\right).$$
+
+**Step 2: Find the slope of $\overline{AB}$.**
+
+$$m_{AB} = \frac{-1 - 7}{5 - (-3)} = \frac{-8}{8} = -1.$$
+
+**Step 3: Find the perpendicular slope.**
+
+The perpendicular slope is the negative reciprocal of $-1$:
+
+$$m_\perp = -\frac{1}{-1} = 1.$$
+
+**Step 4: Write the line equation.**
+
+Using point-slope form through $M = (1, 3)$ with slope $1$:
+
+$$y - 3 = 1 \cdot (x - 1) \implies y = x + 2.$$
+
+Answer: **D**.
+</Solution>
+
+<AlternateMethod title="Symmetry check">
+The perpendicular bisector of a segment is the set of all points equidistant from both endpoints. To verify, check that $M = (1,3)$ satisfies $y = x + 2$: indeed $3 = 1 + 2$. Also confirm the slope $1 \neq -1 = m_{AB}$ and that $1 \cdot (-1) = -1$, confirming perpendicularity.
+</AlternateMethod>

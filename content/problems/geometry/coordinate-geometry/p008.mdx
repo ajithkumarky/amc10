@@ -1,0 +1,35 @@
+---
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: C
+choices: ['$4$', '$2\sqrt{5}$', '$4\sqrt{2}$', '$6$', '$\sqrt{34}$']
+---
+
+<Problem>
+Point $P = (3, 4)$ is first reflected over the vertical line $x = 1$ to get point $P'$, and then $P'$ is reflected over the horizontal line $y = 2$ to get point $P''$. What is the distance $PP''$?
+</Problem>
+
+<Solution>
+**Step 1: Reflect $P = (3, 4)$ over the line $x = 1$.**
+
+To reflect $(a, b)$ over the vertical line $x = h$, use $x' = 2h - a$, $y' = b$.
+
+$$P' = (2(1) - 3,\; 4) = (-1,\; 4).$$
+
+**Step 2: Reflect $P' = (-1, 4)$ over the line $y = 2$.**
+
+To reflect $(a, b)$ over the horizontal line $y = k$, use $x' = a$, $y' = 2k - b$.
+
+$$P'' = (-1,\; 2(2) - 4) = (-1,\; 0).$$
+
+**Step 3: Compute $PP''$.**
+
+$$PP'' = \sqrt{(3 - (-1))^2 + (4 - 0)^2} = \sqrt{4^2 + 4^2} = \sqrt{16 + 16} = \sqrt{32} = 4\sqrt{2}.$$
+
+Answer: **C**.
+</Solution>
+
+<AlternateMethod title="Component-wise shifts">
+The reflection over $x=1$ moves $P$ from $x=3$ to $x=-1$, a horizontal shift of $-4$. The reflection over $y=2$ moves from $y=4$ to $y=0$, a vertical shift of $-4$. So $P''$ is $4$ units left and $4$ units below $P$, giving distance $\sqrt{4^2+4^2} = 4\sqrt{2}$.
+</AlternateMethod>

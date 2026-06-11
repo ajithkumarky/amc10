@@ -1,0 +1,29 @@
+---
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 3
+answer: E
+choices: ['$\sqrt{5}$', '$2$', '$\sqrt{5}+1$', '$3$', '$\sqrt{10}$']
+---
+
+<Problem>
+Point $T = (3, -1)$ is reflected over the line $y = x$ to obtain point $T'$. What is the distance from $T'$ to the origin?
+</Problem>
+
+<Solution>
+**Step 1: Reflect $T$ over $y = x$.**
+
+Reflecting a point $(a, b)$ over the line $y = x$ swaps its coordinates: $(a, b) \mapsto (b, a)$.
+
+So $T = (3, -1)$ maps to $T' = (-1, 3)$.
+
+**Step 2: Compute the distance from $T'$ to the origin.**
+
+$$d = \sqrt{(-1)^2 + 3^2} = \sqrt{1 + 9} = \sqrt{10}.$$
+
+Answer: **E**.
+</Solution>
+
+<AlternateMethod title="Distance preserved check">
+Note that $T = (3,-1)$ is at distance $\sqrt{9+1} = \sqrt{10}$ from the origin as well. This is expected: reflecting over any line through the origin preserves all distances from the origin. Both $T$ and $T'$ lie on a circle of radius $\sqrt{10}$ centered at the origin.
+</AlternateMethod>

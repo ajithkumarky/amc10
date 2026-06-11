@@ -1,0 +1,30 @@
+---
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 3
+answer: B
+choices: ["$10$", "$12$", "$14$", "$15$", "$16$"]
+---
+
+<Problem>
+A quadrilateral has vertices $A = (0, 0)$, $B = (4, 0)$, $C = (5, 3)$, and $D = (1, 3)$, listed in order. What is the area of the quadrilateral?
+</Problem>
+
+<Solution>
+Apply the shoelace formula to the four vertices in order $A \to B \to C \to D$:
+
+$$\text{Area} = \frac{1}{2}\left|(x_A y_B - x_B y_A) + (x_B y_C - x_C y_B) + (x_C y_D - x_D y_C) + (x_D y_A - x_A y_D)\right|$$
+
+Compute each cross-product term:
+
+$$x_A y_B - x_B y_A = 0 \cdot 0 - 4 \cdot 0 = 0$$
+$$x_B y_C - x_C y_B = 4 \cdot 3 - 5 \cdot 0 = 12$$
+$$x_C y_D - x_D y_C = 5 \cdot 3 - 1 \cdot 3 = 15 - 3 = 12$$
+$$x_D y_A - x_A y_D = 1 \cdot 0 - 0 \cdot 3 = 0$$
+
+$$\text{Area} = \frac{1}{2}\left|0 + 12 + 12 + 0\right| = \frac{1}{2} \cdot 24 = 12.$$
+
+*Sanity check:* The shape $ABCD$ is a trapezoid with parallel sides $\overline{AB}$ (length $4$, along $y=0$) and $\overline{DC}$ (from $(1,3)$ to $(5,3)$, length $4$). Wait — both parallel sides have length $4$ and height $3$, so this is actually a parallelogram. Area $=$ base $\times$ height $= 4 \times 3 = 12$. $\checkmark$
+
+Answer: **B**.
+</Solution>
