@@ -1,0 +1,134 @@
+---
+year: 2022
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: D
+choices: ['$110$', '$111$', '$112$', '$113$', '$114$']
+---
+
+<Problem>
+Let $ABCD$ be a rhombus with $\angle{ADC} = 46^{\circ}$. Let $E$ be the midpoint of $\overline{CD}$, and let $F$ be the point on $\overline{BE}$ such that $\overline{AF}$ is perpendicular to $\overline{BE}$. What is the degree measure of $\angle{BFC}$?
+</Problem>
+
+<Solution>
+In rhombus $ABCD$, all sides are equal. Let each side have length 2 (so $CE = 1$ since $E$ is the midpoint of $CD$).
+
+**Setting up angles.** In a rhombus, consecutive angles are supplementary. Since $\angle ADC = 46°$, we have $\angle DAB = 180° - 46° = 134°$. Also $\angle ABC = 46°$ and $\angle BCD = 134°$.
+
+**Coordinate approach.** Place $C$ at the origin, $D$ at $(2, 0)$. Since $\angle BCD = 134°$:
+$$B = 2(\cos 134°, \sin 134°) = 2(-\cos 46°, \sin 46°).$$
+
+$A = D + B - C = (2 - 2\cos 46°, 2\sin 46°)$ (using the parallelogram law).
+
+$E$ = midpoint of $CD$ = $(1, 0)$.
+
+Let $c = \cos 46°$ and $s = \sin 46°$.
+
+$B = (-2c, 2s)$, $C = (0,0)$, $E = (1,0)$.
+
+**Line $BE$:** Direction vector $E - B = (1+2c, -2s)$.
+
+**Point $F$ on $BE$ with $AF \perp BE$:** 
+
+$A = (2-2c, 2s)$.
+
+Parameterize $BE$: $P(t) = B + t(E-B) = (-2c + t(1+2c),\ 2s - 2st) = (-2c + t(1+2c),\ 2s(1-t))$.
+
+$\overrightarrow{AP} = P(t) - A = (-2c + t(1+2c) - (2-2c),\ 2s(1-t) - 2s)$
+$= (t(1+2c) - 2,\ -2st)$.
+
+For $AF \perp BE$: $\overrightarrow{AP} \cdot (E-B) = 0$.
+
+$(E-B) = (1+2c, -2s)$.
+
+$(t(1+2c)-2)(1+2c) + (-2st)(-2s) = 0$
+
+$t(1+2c)^2 - 2(1+2c) + 4s^2 t = 0$
+
+$t[(1+2c)^2 + 4s^2] = 2(1+2c)$
+
+$t = \frac{2(1+2c)}{(1+2c)^2 + 4s^2}$.
+
+Expand $(1+2c)^2 + 4s^2 = 1 + 4c + 4c^2 + 4s^2 = 1 + 4c + 4 = 5 + 4c$.
+
+So $t = \dfrac{2(1+2c)}{5+4c}$.
+
+**Coordinates of $F$:**
+
+$F_x = -2c + t(1+2c) = -2c + \dfrac{2(1+2c)^2}{5+4c}$.
+
+$F_y = 2s(1-t) = 2s\left(1 - \dfrac{2(1+2c)}{5+4c}\right) = 2s \cdot \dfrac{5+4c - 2 - 4c}{5+4c} = 2s \cdot \dfrac{3}{5+4c} = \dfrac{6s}{5+4c}$.
+
+$F_x = \dfrac{-2c(5+4c) + 2(1+2c)^2}{5+4c} = \dfrac{-10c - 8c^2 + 2 + 8c + 8c^2}{5+4c} = \dfrac{2 - 2c}{5+4c} = \dfrac{2(1-c)}{5+4c}$.
+
+So $F = \left(\dfrac{2(1-c)}{5+4c},\ \dfrac{6s}{5+4c}\right)$.
+
+**Finding $\angle BFC$.** We need the angle at $F$ in triangle $BFC$.
+
+$\overrightarrow{FB} = B - F = \left(-2c - \dfrac{2(1-c)}{5+4c},\ 2s - \dfrac{6s}{5+4c}\right)$.
+
+$\overrightarrow{FB}_x = \dfrac{-2c(5+4c) - 2(1-c)}{5+4c} = \dfrac{-10c - 8c^2 - 2 + 2c}{5+4c} = \dfrac{-8c - 8c^2 - 2}{5+4c} = \dfrac{-2(4c + 4c^2 + 1)}{5+4c} = \dfrac{-2(2c+1)^2}{5+4c}$.
+
+$\overrightarrow{FB}_y = 2s - \dfrac{6s}{5+4c} = s\left(2 - \dfrac{6}{5+4c}\right) = s \cdot \dfrac{10+8c-6}{5+4c} = \dfrac{s(4+8c)}{5+4c} = \dfrac{4s(1+2c)}{5+4c}$.
+
+$\overrightarrow{FC} = C - F = \left(-\dfrac{2(1-c)}{5+4c},\ -\dfrac{6s}{5+4c}\right)$.
+
+The angle $\angle BFC$ satisfies:
+$$\cos(\angle BFC) = \dfrac{\overrightarrow{FB} \cdot \overrightarrow{FC}}{|\overrightarrow{FB}||\overrightarrow{FC}|}.$$
+
+The $(5+4c)^2$ cancels from numerator and denominator, so work with numerators:
+
+$\overrightarrow{FB}' = (-2(2c+1)^2,\ 4s(1+2c))$, $\overrightarrow{FC}' = (-2(1-c),\ -6s)$.
+
+Dot product:
+$(-2(2c+1)^2)(-2(1-c)) + (4s(1+2c))(-6s)$
+$= 4(1+2c)^2(1-c) - 24s^2(1+2c)$
+$= 4(1+2c)[(1+2c)(1-c) - 6s^2]$.
+
+$(1+2c)(1-c) = 1 - c + 2c - 2c^2 = 1 + c - 2c^2$.
+
+$6s^2 = 6(1-c^2) = 6 - 6c^2$.
+
+$(1+c-2c^2) - (6-6c^2) = 1 + c - 2c^2 - 6 + 6c^2 = 4c^2 + c - 5 = (4c+5)(c-1)$.
+
+So dot product $= 4(1+2c)(4c+5)(c-1)$.
+
+Since $c = \cos 46° \approx 0.6947$: $c < 1$, so $(c-1) < 0$.
+$(1+2c) > 0$, $(4c+5) > 0$.
+
+The dot product is **negative**, which means $\angle BFC > 90°$.
+
+Now compute numerically with $c = \cos 46° \approx 0.6947$, $s = \sin 46° \approx 0.7193$:
+
+$4c+5 \approx 7.779$, $1+2c \approx 2.389$, $c-1 \approx -0.305$.
+
+Dot product numerator: $4 \times 2.389 \times 7.779 \times (-0.305) \approx 4 \times 2.389 \times 7.779 \times (-0.305) \approx -22.77$.
+
+$|\overrightarrow{FB}'|^2 = [2(2c+1)^2]^2 + [4s(1+2c)]^2 = 4(1+2c)^2[(2c+1)^2 + 4s^2]$... 
+
+Actually let me just compute the angle numerically.
+
+$F \approx \left(\dfrac{2(1-0.6947)}{5+4(0.6947)},\ \dfrac{6(0.7193)}{5+4(0.6947)}\right) = \left(\dfrac{2(0.3053)}{7.779},\ \dfrac{4.316}{7.779}\right) \approx (0.0785, 0.5548)$.
+
+$B = (-2(0.6947), 2(0.7193)) \approx (-1.3894, 1.4386)$.
+
+$C = (0, 0)$.
+
+$\overrightarrow{FB} = B - F \approx (-1.468, 0.884)$.
+$\overrightarrow{FC} = C - F \approx (-0.0785, -0.5548)$.
+
+$\cos(\angle BFC) = \dfrac{(-1.468)(-0.0785) + (0.884)(-0.5548)}{|FB||FC|}$
+
+Numerator $= 0.1152 - 0.4904 = -0.3752$.
+
+$|FB| = \sqrt{1.468^2 + 0.884^2} = \sqrt{2.155 + 0.781} = \sqrt{2.936} \approx 1.713$.
+$|FC| = \sqrt{0.0785^2 + 0.5548^2} = \sqrt{0.00616 + 0.3078} = \sqrt{0.3140} \approx 0.5603$.
+
+$\cos(\angle BFC) \approx \dfrac{-0.3752}{1.713 \times 0.5603} \approx \dfrac{-0.3752}{0.9597} \approx -0.391$.
+
+$\angle BFC \approx \arccos(-0.391) \approx 113°$.
+
+Answer: **D**.
+</Solution>

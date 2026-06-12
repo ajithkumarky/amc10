@@ -1,0 +1,28 @@
+---
+year: 2022
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 1
+answer: D
+choices: ['$3\sqrt{5}$', '$10$', '$6\sqrt{5}$', '$20$', '$25$']
+---
+
+<Problem>
+In rhombus $ABCD$, point $P$ lies on segment $\overline{AD}$ so that $\overline{BP} \perp \overline{AD}$, $AP = 3$, and $PD = 2$. What is the area of $ABCD$? (Note: The figure is not drawn to scale.)
+</Problem>
+
+<Solution>
+Since $\overline{BP} \perp \overline{AD}$, triangle $ABP$ is a right triangle with legs $AP = 3$ and $BP$, and hypotenuse $AB$ (a side of the rhombus).
+
+All sides of a rhombus are equal, so $AB = AD = AP + PD = 3 + 2 = 5$.
+
+By the Pythagorean theorem in triangle $ABP$:
+$$BP^2 + AP^2 = AB^2 \implies BP^2 + 9 = 25 \implies BP^2 = 16 \implies BP = 4.$$
+
+Since $BP$ is perpendicular to $AD$, $BP$ is the height of the rhombus with base $AD = 5$.
+
+$$\text{Area} = \text{base} \times \text{height} = 5 \times 4 = 20.$$
+
+Answer: **D**.
+</Solution>

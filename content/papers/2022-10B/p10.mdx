@@ -1,0 +1,40 @@
+---
+year: 2022
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: D
+choices: ["$5$", "$7$", "$9$", "$11$", "$13$"]
+---
+
+<Problem>
+Camila writes down five positive integers. The unique mode of these integers is $2$ greater than their median, and the median is $2$ greater than their arithmetic mean. What is the least possible value for the mode?
+</Problem>
+
+<Solution>
+Let the median be $m$, so the mode is $m + 2$ and the mean is $m - 2$.
+
+Since the mode is unique and equals $m + 2$, the value $m + 2$ appears at least twice (and more than any other value). Since the median of five sorted values $a_1 \leq a_2 \leq a_3 \leq a_4 \leq a_5$ is $a_3 = m$, and the mode $m+2 > m$, the values $m + 2$ must appear among $a_4$ and $a_5$, so $a_4 = a_5 = m + 2$.
+
+The mean equals $m - 2$, so the total sum is $5(m-2) = 5m - 10$. We know $a_3 + a_4 + a_5 = m + (m+2) + (m+2) = 3m + 4$. Thus:
+$$a_1 + a_2 = (5m - 10) - (3m + 4) = 2m - 14.$$
+
+For $a_1, a_2$ to be positive integers with $a_1 \leq a_2 \leq a_3 = m$:
+- $a_1 + a_2 = 2m - 14 \geq 2$ (both positive), so $m \geq 8$.
+- $a_2 \leq m$, and $a_1 \geq 1$.
+- The mode must be unique: $m+2$ appears exactly twice ($a_4 = a_5$), and no other value appears twice. So $a_1 \neq a_2$ or neither equals $m$, and none equal $m+2$.
+
+We want to minimize $m+2$, i.e., minimize $m$. Try $m = 9$ (mode $= 11$):
+$a_1 + a_2 = 18 - 14 = 4$, with $a_1 \leq a_2 \leq 9$.
+Take $a_1 = 1, a_2 = 3$: the five integers are $1, 3, 9, 11, 11$.
+- Median: $a_3 = 9$ ✓
+- Mode: $11$ (appears twice, all others once) ✓
+- Mean: $(1+3+9+11+11)/5 = 35/5 = 7 = 9 - 2$ ✓
+
+Check $m = 8$ (mode $= 10$): $a_1 + a_2 = 2$, so $a_1 = a_2 = 1$. The five integers would be $1, 1, 8, 10, 10$. But now both $1$ and $10$ appear twice — the mode is not unique. No other split of $a_1 + a_2 = 2$ with positive integers avoids $a_1 = a_2 = 1$.
+
+So the minimum mode is $\mathbf{11}$.
+
+Answer: **D**.
+</Solution>

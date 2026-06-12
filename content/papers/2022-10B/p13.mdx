@@ -1,0 +1,35 @@
+---
+year: 2022
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: E
+choices: ["$8$", "$10$", "$11$", "$13$", "$16$"]
+---
+
+<Problem>
+The positive difference between a pair of primes is equal to $2$, and the positive difference between the cubes of the two primes is $31106$. What is the sum of the digits of the least prime that is greater than those two primes?
+</Problem>
+
+<Solution>
+Let the two primes be $p$ and $p+2$ (twin primes). Their difference of cubes is:
+$$(p+2)^3 - p^3 = 3p^2 \cdot 2 + 3p \cdot 4 + 8 = 6p^2 + 12p + 8.$$
+
+Wait — expand properly:
+$$(p+2)^3 - p^3 = p^3 + 6p^2 + 12p + 8 - p^3 = 6p^2 + 12p + 8.$$
+
+Set this equal to 31106:
+$$6p^2 + 12p + 8 = 31106 \implies 6p^2 + 12p = 31098 \implies p^2 + 2p = 5183 \implies p^2 + 2p - 5183 = 0.$$
+
+Using the quadratic formula:
+$$p = \frac{-2 + \sqrt{4 + 4 \cdot 5183}}{2} = \frac{-2 + \sqrt{20736}}{2} = \frac{-2 + 144}{2} = \frac{142}{2} = 71.$$
+
+So $p = 71$ and the twin primes are $71$ and $73$.
+
+The least prime greater than $73$ is $79$.
+
+Sum of digits of $79$: $7 + 9 = 16$.
+
+Answer: **E**.
+</Solution>

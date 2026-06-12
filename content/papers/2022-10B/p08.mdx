@@ -1,0 +1,30 @@
+---
+year: 2022
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: B
+choices: ["$40$", "$42$", "$43$", "$49$", "$50$"]
+---
+
+<Problem>
+Consider the following $100$ sets of $10$ elements each:
+$$\{1,2,3,\ldots,10\},\ \{11,12,13,\ldots,20\},\ \{21,22,23,\ldots,30\},\ \ldots,\ \{991,992,993,\ldots,1000\}.$$
+How many of these sets contain exactly two multiples of $7$?
+</Problem>
+
+<Solution>
+The $i$th set (for $i = 1, 2, \ldots, 100$) contains the integers from $10(i-1)+1$ to $10i$. A set contains exactly two multiples of 7 when exactly two integers in a block of 10 consecutive integers are divisible by 7.
+
+Since 7 does not divide 10, consecutive multiples of 7 are spaced 7 apart. A window of 10 consecutive integers contains either 1 or 2 multiples of 7: it contains 2 when the window "straddles" two multiples, i.e., when the first multiple of 7 in the window leaves room for a second one within the next 9 positions.
+
+Specifically, the set $\{10(i-1)+1, \ldots, 10i\}$ contains exactly 2 multiples of 7 if and only if the smallest multiple of 7 that is $\geq 10(i-1)+1$ is at position $10(i-1) + r$ where $r \leq 4$ (so that the next multiple, 7 positions later, is still $\leq 10i$, i.e., $r + 7 \leq 10$, meaning $r \leq 3$). Actually: the set contains 2 multiples of 7 iff the smallest multiple of 7 in the window is within the first 3 positions of the window (positions 1, 2, or 3 out of 10), because then the next multiple (7 later) is within positions 8, 9, or 10.
+
+How many of the 100 sets have a multiple of 7 in positions 1, 2, or 3? Since multiples of 7 are uniformly distributed modulo 10 (gcd(7,10)=1), in every 7 consecutive sets there are exactly 7 multiples of 7. The multiples of 7 land in each residue position (mod 10) of the block start equally often over a long stretch.
+
+More directly: multiples of 7 from 7 to 700 fall within the range 1–1000. Among 1000 integers, there are $\lfloor 1000/7 \rfloor = 142$ multiples of 7 (namely $7, 14, \ldots, 994$). Each set contains either 1 or 2 multiples. If $x$ sets contain 2 multiples and $100 - x$ sets contain 1 multiple, then:
+$$2x + (100 - x) = 142 \implies x + 100 = 142 \implies x = 42.$$
+
+Answer: **B**.
+</Solution>

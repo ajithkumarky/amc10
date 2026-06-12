@@ -1,0 +1,181 @@
+---
+year: 2022
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 5
+answer: B
+choices: ['$25$', '$50$', '$100$', '$150$', '$200$']
+---
+
+<Problem>
+Consider functions $f$ that satisfy
+$$|f(x)-f(y)|\leq \frac{1}{2}|x-y|$$
+for all real numbers $x$ and $y$. Of all such functions that also satisfy the equation $f(300) = f(900)$, what is the greatest possible value of
+$$f(f(800))-f(f(400))?$$
+</Problem>
+
+<Solution>
+The condition $|f(x)-f(y)| \leq \frac{1}{2}|x-y|$ says $f$ is a contraction mapping with Lipschitz constant $\frac{1}{2}$.
+
+**Step 1: Bound $|f(800) - f(400)|$.**
+
+From the Lipschitz condition:
+$$|f(800)-f(400)| \leq \frac{1}{2}|800-400| = 200.$$
+
+**Step 2: Use $f(300) = f(900)$.**
+
+Let $c = f(300) = f(900)$.
+
+Using the Lipschitz condition from 400 and 300:
+$$|f(400) - c| = |f(400)-f(300)| \leq \frac{1}{2}(100) = 50.$$
+
+Using from 800 and 900:
+$$|f(800) - c| = |f(800)-f(900)| \leq \frac{1}{2}(100) = 50.$$
+
+So $f(400) \in [c-50, c+50]$ and $f(800) \in [c-50, c+50]$.
+
+**Step 3: Bound $|f(f(800)) - f(f(400))|$.**
+
+By Lipschitz:
+$$|f(f(800)) - f(f(400))| \leq \frac{1}{2}|f(800)-f(400)|.$$
+
+And from Steps 1 and 2: $|f(800)-f(400)| \leq |f(800)-c| + |c-f(400)| \leq 50 + 50 = 100$.
+
+So $|f(f(800))-f(f(400))| \leq \frac{1}{2} \cdot 100 = 50$.
+
+**Step 4: Check achievability.**
+
+Can we achieve $f(f(800)) - f(f(400)) = 50$?
+
+We need $f(800) - f(400) = 100$ and $f$ maps $[f(400), f(800)]$ with full derivative... Let's construct such an $f$.
+
+We need $f(800) = c + 50$ and $f(400) = c - 50$ (maximizing $f(800)-f(400)$).
+
+Also: $f(300) = f(900) = c$, $f(400) = c-50$, $f(800) = c+50$.
+
+From $f(400) = c-50$: consistent with $|f(400)-f(300)| = 50 = \frac{1}{2}(100)$ ✓.
+From $f(800) = c+50$: consistent with $|f(800)-f(900)| = 50 = \frac{1}{2}(100)$ ✓.
+
+Also check $|f(400)-f(800)| = 100 \leq \frac{1}{2}(400) = 200$ ✓.
+
+Now, $f(f(800)) = f(c+50)$ and $f(f(400)) = f(c-50)$.
+
+To maximize $f(c+50) - f(c-50)$, use Lipschitz: $|f(c+50)-f(c-50)| \leq \frac{1}{2}(100) = 50$.
+
+Can we achieve $f(c+50) - f(c-50) = 50$? Yes — define $f(x) = \frac{1}{2}x + A$ (a linear function with slope $\frac{1}{2}$). Then $|f(x)-f(y)| = \frac{1}{2}|x-y|$ ✓.
+
+Check $f(300) = f(900)$: $\frac{1}{2}(300)+A = \frac{1}{2}(900)+A$ → $150+A = 450+A$ → $150 = 450$. Contradiction! A linear function with slope $\frac{1}{2}$ can never have $f(300)=f(900)$.
+
+So we need $f$ to be nonlinear. Let's construct $f$ piecewise.
+
+Let $c = 0$ for simplicity. We want $f(300) = f(900) = 0$, $f(400) = -50$, $f(800) = 50$, and $f(-50) - f(50)$... wait, we need $f(f(800)) - f(f(400)) = f(50) - f(-50) = 50$.
+
+Define $f$ on a relevant range. We need $f(50) - f(-50) = 50$ (maximum by Lipschitz). And $f(x) = \frac{1}{2}(x - 50) + 25 = \frac{x}{2}$ near $x = 50$... but we need the Lipschitz constant globally to be $\leq \frac{1}{2}$.
+
+Let me define:
+$$f(x) = \begin{cases} -\frac{1}{2}(x-300) & \text{if } 300 \leq x \leq 500 \\ \frac{1}{2}(x-900) & \text{if } 700 \leq x \leq 900 \\ \text{interpolation} & \text{otherwise} \end{cases}$$
+
+At $x=300$: $f(300) = 0$ ✓.
+At $x=400$: $f(400) = -50$ ✓.
+At $x=800$: $f(800) = \frac{1}{2}(-100) = -50$... that gives $f(800) = -50$, same as $f(400)$.
+
+Let me try $f(x) = \frac{1}{2}(x-900)$ for $700 \leq x \leq 900$: $f(800)=\frac{1}{2}(-100)=-50$, $f(900)=0$ ✓.
+
+That makes $f(400)=f(800)=-50$, so $f(f(800))-f(f(400)) = 0$. Not helpful.
+
+Instead, let $f$ be tent-shaped. Define $f(600) = 50$ (peak), linear with slope $\frac{1}{2}$ going down on each side... Actually, let's try:
+
+$f(300)=0$, $f(600)=150$, $f(900)=0$. This is a tent with slopes $\frac{1}{2}$ going up and down. ✓ Lipschitz constant $= \frac{1}{2}$.
+
+$f(400) = \frac{1}{2}(400-300) = 50$.
+$f(800) = \frac{1}{2}(900-800) = 50$.
+
+$f(400) = f(800) = 50$. Then $f(f(800))-f(f(400)) = f(50)-f(50) = 0$.
+
+Hmm. Need $f(800) \neq f(400)$.
+
+Let me try: $f(300)=f(900)=0$ and instead of symmetric tent, an asymmetric one.
+
+$f$ linear with slope $+\frac{1}{2}$ on $[300,900]$: $f(x) = \frac{1}{2}(x-300)$. $f(900) = 300 \neq 0$.
+
+How about: $f(x) = -\frac{1}{2}|x-600| + 150$ (symmetric tent)? Slope $= \pm \frac{1}{2}$ ✓. $f(300) = -150+150 = 0$, $f(900) = -150+150 = 0$ ✓.
+
+$f(400) = -100+150 = 50$. $f(800) = -100+150 = 50$. Again equal.
+
+The issue: since $f(300)=f(900)$ and both 400 and 800 are equidistant from the midpoint 600, a symmetric function gives $f(400)=f(800)$.
+
+To get $f(800)-f(400)=100$, we need an asymmetric function. Let's place the "peak" of the tent not at 600.
+
+Let the tent peak be at $x = p$, $f(p) = M$, with slopes $\frac{1}{2}$ on each side:
+$f(x) = M - \frac{1}{2}|x-p|$.
+
+$f(300) = M - \frac{1}{2}(p-300) = 0$ (assuming $p > 300$): $M = \frac{1}{2}(p-300)$.
+$f(900) = M - \frac{1}{2}(900-p) = 0$ (assuming $p < 900$): $M = \frac{1}{2}(900-p)$.
+
+From both: $p-300 = 900-p$, so $p = 600$. The tent must be symmetric!
+
+So with a simple tent, $f(400)=f(800)$. We need a more complex function.
+
+**Better construction:** Let $f$ not be a tent. Use:
+$f(x) = \frac{1}{2}x + A$ for $x \leq x_0$ and some other behavior for $x > x_0$.
+
+Actually, the maximum of $|f(f(800))-f(f(400))|$ is $50$, achieved by the following construction:
+
+Take $c = 600$ as the common value. Define:
+$$f(x) = 600 - \frac{1}{2}|x - 600|$$
+
+restricted appropriately. Then $f(300) = 600 - 150 = 450$ and $f(900) = 450$ — but that's $f(300)=f(900)=450$. Let $c=450$.
+
+$f(400) = 600-100 = 500$, $f(800) = 600-100 = 500$. Still equal.
+
+The key issue is getting $f(800) - f(400) = 100$. Let me use a different function.
+
+Try $f(x) = \frac{1}{2}(x - 600) \cdot \mathbf{1}_{x > 600} - \frac{1}{2}(600-x) \cdot \mathbf{1}_{x \leq 600}$, i.e., $f(x) = \frac{1}{2}(x-600)$ (linear, slope $\frac{1}{2}$). Then $f(300) = -150$, $f(900) = 150$: not equal.
+
+We need $f(300)=f(900)$ AND $f(800)-f(400)$ as large as possible. 
+
+Consider $f$ constant: $f \equiv c$. Then $f(800)-f(400) = 0$.
+
+Consider a "W"-shaped function. Let me parameterize differently.
+
+Since $|f(300)-f(400)| \leq 50$ and $|f(800)-f(900)| \leq 50$, and $f(300)=f(900)$, we have:
+$f(400) \in [c-50, c+50]$, $f(800) \in [c-50, c+50]$.
+
+To maximize $f(800)-f(400)$: take $f(800) = c+50$ and $f(400) = c-50$.
+
+Now, is there a Lipschitz-$\frac{1}{2}$ function with $f(300)=f(900)=c$, $f(400)=c-50$, $f(800)=c+50$?
+
+Check: $|f(400)-f(300)| = 50 = \frac{1}{2}|400-300|$ ✓ (equality holds).
+$|f(800)-f(900)| = 50 = \frac{1}{2}|800-900|$ ✓.
+$|f(800)-f(400)| = 100 \leq \frac{1}{2}|800-400| = 200$ ✓.
+
+We also need to check other pairs, e.g., $|f(800)-f(300)|$: $|c+50-c| = 50 \leq \frac{1}{2}(500) = 250$ ✓.
+$|f(400)-f(900)| = 50 \leq \frac{1}{2}(500) = 250$ ✓.
+
+Such a function exists (e.g., linear between prescribed points, extended appropriately). ✓
+
+Now, given $f(800) = c+50$ and $f(400) = c-50$, we need $f(c+50)$ and $f(c-50)$.
+
+$f(f(800)) - f(f(400)) = f(c+50) - f(c-50)$.
+
+By Lipschitz: $|f(c+50)-f(c-50)| \leq \frac{1}{2}|100| = 50$.
+
+Can we achieve $f(c+50) - f(c-50) = 50$? We need a Lipschitz-$\frac{1}{2}$ function satisfying all the constraints where $f(c+50)-f(c-50) = 50$.
+
+Yes — define $f$ on $[c-50, c+50]$ to be linear with slope $\frac{1}{2}$: $f(x) = \frac{1}{2}(x-(c-50)) + f(c-50) = \frac{1}{2}(x-c+50) + (c-50)$.
+
+Then $f(c+50) = \frac{1}{2}(100) + (c-50) = 50 + c - 50 = c$ and $f(c-50) = c - 50$.
+
+$f(c+50) - f(c-50) = c - (c-50) = 50$ ✓.
+
+But we need to reconcile: above I set $f(400) = c-50$, and now $f(c-50)$ has a value. With $c=0$: $f(400) = -50$, $f(800) = 50$. Then $f(f(800)) = f(50)$ and $f(f(400)) = f(-50)$.
+
+$f(50) - f(-50)$: using linear on $[-50,50]$ with slope $\frac{1}{2}$: $f(50)-f(-50) = \frac{1}{2}(100) = 50$ ✓.
+
+We just need to verify that the entire function is consistently Lipschitz-$\frac{1}{2}$. This can be arranged.
+
+**Therefore, the maximum value is $\boxed{50}$.**
+
+Answer: **B**.
+</Solution>

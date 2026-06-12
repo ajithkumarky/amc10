@@ -1,0 +1,32 @@
+---
+year: 2022
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 1
+answer: A
+choices: ["$-2$", "$-1$", "$0$", "$1$", "$2$"]
+---
+
+<Problem>
+Define $x \diamond y$ to be $|x - y|$ for all real numbers $x$ and $y$. What is the value of
+
+$$(1 \diamond (2 \diamond 3)) - ((1 \diamond 2) \diamond 3)?$$
+</Problem>
+
+<Solution>
+Work from the inside out.
+
+First, compute the inner operations:
+- $2 \diamond 3 = |2 - 3| = 1$
+- $1 \diamond 2 = |1 - 2| = 1$
+
+Now compute each group:
+- $1 \diamond (2 \diamond 3) = 1 \diamond 1 = |1 - 1| = 0$
+- $(1 \diamond 2) \diamond 3 = 1 \diamond 3 = |1 - 3| = 2$
+
+Finally:
+$$0 - 2 = -2.$$
+
+Answer: **A**.
+</Solution>

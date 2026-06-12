@@ -1,0 +1,117 @@
+---
+year: 2022
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: A
+choices: ['$6$', '$7$', '$12$', '$14$', '$15$']
+---
+
+<Problem>
+Let $x_0,x_1,x_2,\dotsc$ be a sequence of numbers, where each $x_k$ is either $0$ or $1$. For each positive integer $n$, define
+$$S_n = \sum_{k=0}^{n-1} x_k 2^k$$
+Suppose $7S_n \equiv 1 \pmod{2^n}$ for all $n \geq 1$. What is the value of the sum
+$$x_{2019} + 2x_{2020} + 4x_{2021} + 8x_{2022}?$$
+</Problem>
+
+<Solution>
+The condition $7S_n \equiv 1 \pmod{2^n}$ means $S_n$ is the multiplicative inverse of $7$ modulo $2^n$.
+
+In other words, $S_n = 7^{-1} \pmod{2^n}$, and since $S_n = \sum_{k=0}^{n-1} x_k 2^k$ is a partial sum with $0 \leq S_n < 2^n$, the sequence $x_0, x_1, x_2, \ldots$ gives the binary expansion of the 2-adic integer $7^{-1}$.
+
+**Finding $7^{-1} \pmod{2^n}$:**
+
+We need $7 \cdot S \equiv 1 \pmod{2^n}$.
+
+Start small:
+- $n=1$: $7S_1 \equiv 1 \pmod{2}$, and $S_1 = x_0$. Since $7 \equiv 1 \pmod{2}$, need $x_0 = 1$. So $x_0 = 1$.
+- $n=2$: $S_2 = x_0 + 2x_1 = 1 + 2x_1$. $7(1+2x_1) = 7+14x_1 \equiv 1 \pmod{4}$. $7 \equiv 3 \pmod 4$, so $3(1+2x_1) \equiv 1 \pmod 4$. $3 + 6x_1 \equiv 1 \pmod 4$. $6x_1 \equiv -2 \equiv 2 \pmod 4$. $2x_1 \equiv 2 \pmod 4$ (dividing by... wait, $6 \equiv 2 \pmod 4$). $2x_1 \equiv 2 \pmod 4$, so $x_1 \equiv 1 \pmod 2$, meaning $x_1 = 1$.
+
+Actually, let's compute $7^{-1} \pmod{2^n}$ by finding the 2-adic expansion of $1/7$.
+
+We know $\frac{1}{7} = \frac{1}{7}$. In binary (2-adic), $7 = (111)_2$, and its 2-adic inverse satisfies $7 \cdot (1/7) = 1$.
+
+**The 2-adic expansion of $7^{-1}$** can be found by the following:
+
+$7 \cdot x \equiv 1 \pmod{2^n}$ for increasing $n$. Use the lifting method:
+
+$7^{-1} \pmod{2} = 1$ (since $7 \equiv 1 \pmod 2$).
+$7^{-1} \pmod{4}$: need $7a \equiv 1 \pmod 4$. $7 \equiv 3 \pmod 4$, $3 \cdot 3 = 9 \equiv 1 \pmod 4$. So $7^{-1} \equiv 3 \pmod 4$. Binary: $11$.
+$7^{-1} \pmod{8}$: $7 \equiv 7 \pmod 8$, $7 \cdot 7 = 49 \equiv 1 \pmod 8$. So $7^{-1} \equiv 7 \pmod 8$. Binary: $111$.
+$7^{-1} \pmod{16}$: need $7a \equiv 1 \pmod{16}$. $7 \cdot 7 = 49 = 48 + 1 \equiv 1 \pmod{16}$. So $7^{-1} \equiv 7 \pmod{16}$. Binary: $0111$.
+$7^{-1} \pmod{32}$: $7 \cdot 7 = 49$. $49 \pmod{32} = 17 \neq 1$. Try $7 \cdot 23 = 161 = 160+1 \equiv 1 \pmod{32}$. So $7^{-1} \equiv 23 \pmod{32}$. Binary: $10111$.
+$7^{-1} \pmod{64}$: $7 \cdot 55 = 385 = 384+1 = 6\cdot 64 + 1 \equiv 1 \pmod{64}$. So $7^{-1} \equiv 55 \pmod{64}$. Binary: $110111$.
+$7^{-1} \pmod{128}$: $7 \cdot 55 = 385$. $385 = 3\cdot128+1 \equiv 1 \pmod{128}$. So $7^{-1} \equiv 55 \pmod{128}$. Binary: $0110111$.
+$7^{-1} \pmod{256}$: $7\cdot 183 = 1281 = 5\cdot256+1 \equiv 1 \pmod{256}$. So $7^{-1}\equiv 183\pmod{256}$. Binary: $10110111$.
+
+The pattern in binary of $7^{-1}$ (2-adic): $1,1,1,0,1,1,0,1,1,1,0,1,1,0,\ldots$
+
+Let me verify by computing $7^{-1} \pmod{2^n}$ more carefully.
+
+$7^{-1} = \sum_{k=0}^{\infty} x_k 2^k$ in 2-adic integers, with $7 \cdot \sum x_k 2^k = 1$.
+
+Since $7 = 8 - 1 = 2^3 - 1$:
+$$\frac{1}{7} = \frac{1}{2^3-1} = -\frac{1}{1-2^3} = -\sum_{k=0}^{\infty} 2^{3k} = \sum_{k=0}^{\infty} (-1) \cdot 2^{3k}.$$
+
+But this is over the 2-adics where $-1 = \sum_{k=0}^{\infty} 2^k = (1+2+4+\cdots)_{2\text{-adic}}$.
+
+So $\frac{1}{7} = -\sum_{k=0}^{\infty} 2^{3k} = -(1 + 2^3 + 2^6 + 2^9 + \cdots)$.
+
+In 2-adic arithmetic, $-1 = \sum_{j=0}^{\infty} 2^j$, so:
+
+$$-1 \cdot 2^{3k} = \sum_{j=0}^{\infty} 2^{j+3k}.$$
+
+$$\frac{1}{7} = \sum_{k=0}^{\infty} \sum_{j=0}^{\infty} 2^{j+3k} \pmod{?}$$
+
+This is a bit involved. Let's instead just compute the binary digits directly.
+
+$7^{-1}$ mod $2^n$ for $n = 1$ to $12$:
+- $n=1$: $1 = (1)_2$
+- $n=2$: $3 = (11)_2$
+- $n=3$: $7 = (111)_2$
+- $n=4$: $7 = (0111)_2$
+- $n=5$: $23 = (10111)_2$
+- $n=6$: $55 = (110111)_2$
+- $n=7$: $55 = (0110111)_2$
+- $n=8$: $183 = (10110111)_2$
+- $n=9$: $439 = (110110111)_2$
+- $n=10$: $439 = (0110110111)_2$
+- $n=11$: $1463 = (10110110111)_2$
+- $n=12$: $3511 = (110110110111)_2$
+
+The binary digits $x_0, x_1, x_2, \ldots$ (reading from the right in the binary representations):
+$x_0=1, x_1=1, x_2=1, x_3=0, x_4=1, x_5=1, x_6=0, x_7=1, x_8=1, x_9=0, x_{10}=1, x_{11}=1, \ldots$
+
+The pattern is periodic with period 3: $1,1,1,0,1,1,0,1,1,0,1,1,\ldots$
+
+Wait, let me read more carefully. From $n=12$: $3511 = 2048+1024+256+128+64+0+16+4+2+1$? Let me compute: $3511$ in binary.
+
+$3511 = 2048 + 1463$. $1463 = 1024 + 439$. $439 = 256 + 183$. $183 = 128 + 55$. $55 = 32 + 23$. $23 = 16 + 7$. $7 = 4+2+1$. So $3511 = (110110110111)_2$ — that's 12 bits:
+$x_{11}x_{10}x_9x_8x_7x_6x_5x_4x_3x_2x_1x_0 = 1,1,0,1,1,0,1,1,0,1,1,1$.
+
+So $x_0=1, x_1=1, x_2=1, x_3=0, x_4=1, x_5=1, x_6=0, x_7=1, x_8=1, x_9=0, x_{10}=1, x_{11}=1$.
+
+The repeating pattern starting from $x_0$: $1,1,1,\overline{0,1,1}$. The period-3 block $0,1,1$ repeats for $k \geq 3$.
+
+Actually: $x_0=1, x_1=1, x_2=1$, then for $k \geq 3$: $x_k$ follows period 3 with $x_3=0, x_4=1, x_5=1, x_6=0, x_7=1, x_8=1, \ldots$
+
+In general for $k \geq 3$: $x_k = 0$ if $k \equiv 0 \pmod 3$, else $x_k = 1$.
+
+Let's verify: $k=3$: $3 \equiv 0 \pmod 3$, $x_3 = 0$ ✓. $k=6$: $6 \equiv 0$, $x_6=0$ ✓. $k=9$: $9\equiv 0$, $x_9=0$ ✓.
+
+**Finding $x_{2019}, x_{2020}, x_{2021}, x_{2022}$:**
+
+For large $k$ (all $\geq 3$), $x_k = 0$ if $k \equiv 0 \pmod 3$, else $x_k = 1$.
+
+- $k=2019$: $2019 = 3 \times 673$, so $2019 \equiv 0 \pmod 3$. $x_{2019} = 0$.
+- $k=2020$: $2020 = 3\times 673 + 1$, so $2020 \equiv 1 \pmod 3$. $x_{2020} = 1$.
+- $k=2021$: $2021 \equiv 2 \pmod 3$. $x_{2021} = 1$.
+- $k=2022$: $2022 = 3\times 674$, so $2022 \equiv 0 \pmod 3$. $x_{2022} = 0$.
+
+**The sum:**
+
+$$x_{2019} + 2x_{2020} + 4x_{2021} + 8x_{2022} = 0 + 2(1) + 4(1) + 8(0) = 0 + 2 + 4 + 0 = 6.$$
+
+Answer: **A**.
+</Solution>

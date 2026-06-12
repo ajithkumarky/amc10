@@ -1,0 +1,35 @@
+---
+year: 2022
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: A
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+How many of the first ten numbers of the sequence $121, 11211, 1112111, \ldots$ are prime numbers?
+</Problem>
+
+<Solution>
+The $n$th term of the sequence consists of $n$ ones, then a two, then $n$ ones. So:
+- Term 1: $121 = 11 \times 11$
+- Term 2: $11211 = 3 \times 3737 = 3 \times 37 \times 101$
+
+Let's find a general factoring pattern. The $n$th term can be written as:
+$$a_n = \underbrace{11\cdots1}_{n} \cdot 10^{n+1} + 2 \cdot 10^n + \underbrace{11\cdots1}_{n} = \underbrace{11\cdots1}_{n}(10^{n+1} + 1) + 2 \cdot 10^n.$$
+
+A cleaner approach: notice that
+$$a_n = \underbrace{11\cdots1}_{n+1} \cdot 10^n + \underbrace{11\cdots1}_{n+1} - \underbrace{11\cdots1}_{n+1} + \underbrace{11\cdots1}_{n} \cdot 10^n + 2 \cdot 10^n + \underbrace{11\cdots1}_{n}.$$
+
+Actually, observe that $a_n = \underbrace{11\cdots1}_{2n+1} + 10^n = R_{2n+1} + 10^n$, where $R_k = \dfrac{10^k - 1}{9}$ is the repunit with $k$ ones.
+
+We can also write $a_n = (10^n + 1) \cdot \underbrace{11\cdots1}_{n+1}$. Check: for $n=1$, $(10+1)(11) = 11 \times 11 = 121$. For $n=2$, $(100+1)(111) = 101 \times 111 = 11211$. Yes!
+
+So $a_n = (10^n + 1) \cdot R_{n+1}$, where $R_{n+1} \geq 11 > 1$ and $10^n + 1 \geq 11 > 1$ for all $n \geq 1$.
+
+This means every term is a product of two integers both greater than 1, so none of the first ten terms (or any term) is prime.
+
+Answer: **A**.
+</Solution>

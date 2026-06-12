@@ -1,0 +1,29 @@
+---
+year: 2022
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 2
+answer: D
+choices: ["$2020$", "$2021$", "$2022$", "$2023$", "$2024$"]
+---
+
+<Problem>
+The sum
+$$\frac{1}{2!}+\frac{2}{3!}+\frac{3}{4!}+\cdots+\frac{2021}{2022!}$$
+can be expressed as $a-\dfrac{1}{b!}$, where $a$ and $b$ are positive integers. What is $a+b$?
+</Problem>
+
+<Solution>
+The key is to rewrite each term using the telescoping trick:
+$$\frac{n}{(n+1)!} = \frac{(n+1)-1}{(n+1)!} = \frac{1}{n!} - \frac{1}{(n+1)!}.$$
+
+So each term $\dfrac{k}{(k+1)!} = \dfrac{1}{k!} - \dfrac{1}{(k+1)!}$ for $k = 1, 2, \ldots, 2021$.
+
+The sum telescopes:
+$$\sum_{k=1}^{2021} \frac{k}{(k+1)!} = \sum_{k=1}^{2021}\left(\frac{1}{k!} - \frac{1}{(k+1)!}\right) = \frac{1}{1!} - \frac{1}{2022!} = 1 - \frac{1}{2022!}.$$
+
+So $a = 1$ and $b = 2022$, giving $a + b = 1 + 2022 = 2023$.
+
+Answer: **D**.
+</Solution>

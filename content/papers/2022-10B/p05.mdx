@@ -1,0 +1,34 @@
+---
+year: 2022
+paper: "10B"
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 2
+answer: B
+choices: ['$\sqrt{3}$', '$2$', '$\sqrt{15}$', '$4$', '$\sqrt{105}$']
+---
+
+<Problem>
+What is the value of
+
+$$\frac{\left(1+\dfrac{1}{3}\right)\left(1+\dfrac{1}{5}\right)\left(1+\dfrac{1}{7}\right)}{\sqrt{\left(1-\dfrac{1}{3^2}\right)\left(1-\dfrac{1}{5^2}\right)\left(1-\dfrac{1}{7^2}\right)}}?$$
+</Problem>
+
+<Solution>
+Use the difference-of-squares factoring: $1 - \dfrac{1}{n^2} = \left(1 - \dfrac{1}{n}\right)\left(1 + \dfrac{1}{n}\right)$.
+
+So the expression under the square root becomes:
+$$\left(1-\frac{1}{3^2}\right)\left(1-\frac{1}{5^2}\right)\left(1-\frac{1}{7^2}\right) = \left(1-\frac{1}{3}\right)\left(1+\frac{1}{3}\right)\cdot\left(1-\frac{1}{5}\right)\left(1+\frac{1}{5}\right)\cdot\left(1-\frac{1}{7}\right)\left(1+\frac{1}{7}\right).$$
+
+Let $N = \left(1+\dfrac{1}{3}\right)\left(1+\dfrac{1}{5}\right)\left(1+\dfrac{1}{7}\right)$ (the numerator). Then the denominator is:
+$$\sqrt{N \cdot \left(1-\frac{1}{3}\right)\left(1-\frac{1}{5}\right)\left(1-\frac{1}{7}\right)}.$$
+
+The whole expression equals:
+$$\frac{N}{\sqrt{N \cdot M}} = \frac{N}{\sqrt{N}\cdot\sqrt{M}} = \sqrt{\frac{N}{M}},$$
+where $M = \left(1-\dfrac{1}{3}\right)\left(1-\dfrac{1}{5}\right)\left(1-\dfrac{1}{7}\right) = \dfrac{2}{3}\cdot\dfrac{4}{5}\cdot\dfrac{6}{7} = \dfrac{48}{105}$ and $N = \dfrac{4}{3}\cdot\dfrac{6}{5}\cdot\dfrac{8}{7} = \dfrac{192}{105}$.
+
+Thus:
+$$\sqrt{\frac{N}{M}} = \sqrt{\frac{192/105}{48/105}} = \sqrt{\frac{192}{48}} = \sqrt{4} = 2.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,42 @@
+---
+year: 2022
+paper: "10B"
+topic: algebra
+subtopic: quadratics
+difficulty: 2
+answer: B
+choices: ["$6$", "$8$", "$9$", "$14$", "$16$"]
+---
+
+<Problem>
+For how many values of the constant $k$ will the polynomial $x^2 + kx + 36$ have two distinct integer roots?
+</Problem>
+
+<Solution>
+If the polynomial $x^2 + kx + 36$ has integer roots $r$ and $s$, then by Vieta's formulas:
+$$r + s = -k \quad \text{and} \quad rs = 36.$$
+
+We need $r \neq s$ and both $r, s$ are integers with $rs = 36$.
+
+List all pairs of distinct integers whose product is 36:
+
+| $r$ | $s$ | $rs$ |
+|-----|-----|------|
+| 1 | 36 | 36 |
+| 2 | 18 | 36 |
+| 3 | 12 | 36 |
+| 4 | 9 | 36 |
+| 6 | — | (would need $s=6$, but then $r=s$, not distinct) |
+| $-1$ | $-36$ | 36 |
+| $-2$ | $-18$ | 36 |
+| $-3$ | $-12$ | 36 |
+| $-4$ | $-9$ | 36 |
+
+Each of these 8 unordered pairs gives a distinct value of $k = -(r+s)$:
+$$k = -(1+36) = -37, \quad -(2+18) = -20, \quad -(3+12) = -15, \quad -(4+9) = -13,$$
+$$k = -(-1-36) = 37, \quad -(-2-18) = 20, \quad -(-3-12) = 15, \quad -(-4-9) = 13.$$
+
+That's $8$ distinct values of $k$.
+
+Answer: **B**.
+</Solution>

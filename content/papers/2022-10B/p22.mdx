@@ -1,0 +1,226 @@
+---
+year: 2022
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: E
+choices: ['$48\pi$', '$68\pi$', '$96\pi$', '$102\pi$', '$136\pi$']
+---
+
+<Problem>
+Let $S$ be the set of circles in the coordinate plane that are tangent to each of the three circles with equations $x^{2}+y^{2}=4$, $x^{2}+y^{2}=64$, and $(x-5)^{2}+y^{2}=3$. What is the sum of the areas of all circles in $S$?
+</Problem>
+
+<Solution>
+Label the three given circles:
+- $\omega_1$: center $O_1 = (0,0)$, radius $r_1 = 2$.
+- $\omega_2$: center $O_2 = (0,0)$, radius $r_2 = 8$.
+- $\omega_3$: center $O_3 = (5,0)$, radius $r_3 = \sqrt{3}$.
+
+Note $\omega_1$ and $\omega_2$ are concentric, and $\omega_3$ is inside $\omega_2$ (since $5 + \sqrt{3} < 8$) and outside $\omega_1$ (since $5 - \sqrt{3} > 2$, as $5 - 1.73 \approx 3.27 > 2$).
+
+Let the unknown circle in $S$ have center $(h,k)$ and radius $\rho > 0$.
+
+**Tangency with $\omega_1$ and $\omega_2$ (concentric circles):**
+
+A circle tangent to both $\omega_1$ and $\omega_2$ has its center on the $x$-axis... actually not necessarily. Let's think about this more carefully.
+
+For a circle to be internally or externally tangent to $\omega_1$ (radius 2, center $O$) and also tangent to $\omega_2$ (radius 8, center $O$):
+
+Distance from $(h,k)$ to origin: let $d = \sqrt{h^2+k^2}$.
+
+The circle is tangent to $\omega_1$: $d = \rho + 2$ (external) or $d = |\rho - 2|$ (internal). 
+The circle is tangent to $\omega_2$: $d = \rho + 8$ (external) or $d = |\rho - 8|$ (internal).
+
+**Case analysis on types of tangency with $\omega_1$ and $\omega_2$:**
+
+Since $\omega_1 \subset \omega_2$ (they're concentric with $r_1 < r_2$), and a circle tangent to both:
+
+**Sub-case A: Externally tangent to $\omega_1$, internally tangent to $\omega_2$ (inside $\omega_2$):**
+$d = \rho + 2$ and $\rho + d = 8$ (the unknown circle is inside $\omega_2$, so $d + \rho = 8$).
+$d = 8 - \rho$ and $d = \rho + 2$: $8 - \rho = \rho + 2 \Rightarrow \rho = 3$, $d = 5$.
+So all such circles have $\rho = 3$ and center at distance 5 from origin.
+
+**Sub-case B: Internally tangent to $\omega_1$ (surrounds $\omega_1$), internally tangent to $\omega_2$ (inside $\omega_2$):**
+$d = \rho - 2$ (unknown circle surrounds $\omega_1$) and $d = 8 - \rho$ (inside $\omega_2$).
+$\rho - 2 = 8 - \rho \Rightarrow \rho = 5$, $d = 3$.
+So all such circles have $\rho = 5$, center at distance 3 from origin.
+
+**Sub-case C: Internally tangent to $\omega_2$ from outside (unknown circle surrounds $\omega_2$):**
+$d = \rho - 8$ and either $d = \rho + 2$ (ext. tangent to $\omega_1$) or $d = \rho - 2$ (surrounds $\omega_1$).
+- $\rho - 8 = \rho + 2$: $-8 = 2$, impossible.
+- $\rho - 8 = \rho - 2$: $-8 = -2$, impossible.
+
+**Sub-case D: Externally tangent to $\omega_2$ (outside both):**
+$d = \rho + 8$ and $d = \rho + 2$ or $d = \rho - 2$.
+- $\rho + 8 = \rho + 2$: impossible.
+- $\rho + 8 = \rho - 2$: impossible.
+
+So circles tangent to both $\omega_1$ and $\omega_2$ must be in sub-case A ($\rho=3$, $d=5$) or sub-case B ($\rho=5$, $d=3$).
+
+**Now apply tangency with $\omega_3$:** center $(5,0)$, radius $\sqrt{3}$.
+
+Distance from $(h,k)$ to $(5,0)$: $\delta = \sqrt{(h-5)^2 + k^2}$.
+
+**Sub-case A: $\rho = 3$, $h^2+k^2 = 25$.** Need $\delta = 3 + \sqrt{3}$ (external) or $\delta = |3 - \sqrt{3}| = 3 - \sqrt{3}$ (internal, since $\rho > r_3$).
+
+- $\delta = 3 + \sqrt{3}$: $\sqrt{(h-5)^2+k^2} = 3+\sqrt{3}$.
+
+Using $h^2+k^2 = 25$: $(h-5)^2+k^2 = h^2-10h+25+k^2 = 50-10h$.
+
+$50 - 10h = (3+\sqrt{3})^2 = 9 + 6\sqrt{3} + 3 = 12 + 6\sqrt{3}$.
+
+$10h = 50 - 12 - 6\sqrt{3} = 38 - 6\sqrt{3}$, so $h = \dfrac{38-6\sqrt{3}}{10} = \dfrac{19-3\sqrt{3}}{5}$.
+
+$k^2 = 25 - h^2$. We need $k^2 \geq 0$. $h \approx \dfrac{19 - 5.196}{5} \approx \dfrac{13.804}{5} \approx 2.76$. $h^2 \approx 7.62 < 25$ ✓. Two solutions (with $k = \pm\sqrt{25-h^2}$).
+
+- $\delta = 3 - \sqrt{3}$: $50 - 10h = (3-\sqrt{3})^2 = 9 - 6\sqrt{3} + 3 = 12 - 6\sqrt{3}$.
+
+$10h = 38 + 6\sqrt{3}$, $h = \dfrac{19+3\sqrt{3}}{5} \approx \dfrac{19+5.196}{5} \approx 4.84$. $h^2 \approx 23.4 < 25$ ✓. Two solutions.
+
+So sub-case A yields **4 circles** total (2 from each tangency type), all with $\rho = 3$.
+
+**Sub-case B: $\rho = 5$, $h^2+k^2 = 9$.** Need $\delta = 5 + \sqrt{3}$ or $\delta = 5 - \sqrt{3}$.
+
+$\delta^2 = 50 - 10h$.
+
+- $\delta = 5+\sqrt{3}$: $(5+\sqrt{3})^2 = 25+10\sqrt{3}+3 = 28+10\sqrt{3}$.
+
+$50-10h = 28+10\sqrt{3}$, $h = \dfrac{22-10\sqrt{3}}{10} = \dfrac{11-5\sqrt{3}}{5} \approx \dfrac{11-8.66}{5} \approx 0.47$. $h^2 \approx 0.22 < 9$ ✓. Two solutions.
+
+- $\delta = 5-\sqrt{3}$: $(5-\sqrt{3})^2 = 25-10\sqrt{3}+3 = 28-10\sqrt{3}$.
+
+$50-10h = 28-10\sqrt{3}$, $h = \dfrac{22+10\sqrt{3}}{10} = \dfrac{11+5\sqrt{3}}{5} \approx \dfrac{11+8.66}{5} \approx 3.93$. $h^2 \approx 15.4 > 9$. $k^2 = 9 - h^2 < 0$: impossible.
+
+So sub-case B yields **2 circles** with $\rho = 5$, and **1 possibility** with $\delta = 5+\sqrt{3}$ giving 2 circles. Wait: 2 circles (from the one valid $\delta$).
+
+Actually, let me re-examine. When $h = (11+5\sqrt{3})/5 \approx 3.93$ and we need $h^2 + k^2 = 9$, since $h \approx 3.93 > 3$, $h^2 > 9$, so $k^2 < 0$: no real solution. So only $\delta = 5+\sqrt{3}$ gives valid circles in sub-case B.
+
+Sub-case B yields $\boxed{2}$ circles (with $k = \pm\sqrt{9-h^2}$), all with $\rho = 5$.
+
+**Total: 4 + 2 = 6 circles in $S$.**
+
+**Sum of areas:**
+- 4 circles with $\rho = 3$: area $= 9\pi$ each, total $= 36\pi$.
+- 2 circles with $\rho = 5$: area $= 25\pi$ each, total $= 50\pi$.
+
+Sum $= 36\pi + 50\pi = 86\pi$.
+
+That doesn't match any answer. Let me recheck sub-case A.
+
+In sub-case A, I need to verify that the circles with $\delta = 3-\sqrt{3}$ are internally tangent to $\omega_3$ — meaning the unknown circle (radius 3) contains $\omega_3$ (radius $\sqrt{3}$): $\delta = 3-\sqrt{3}$, and the unknown circle surrounds $\omega_3$? The unknown circle has center at distance $\delta = 3-\sqrt{3} \approx 1.27$ from $O_3 = (5,0)$. Since $\delta + r_3 = (3-\sqrt{3})+\sqrt{3} = 3 = \rho$: yes, $\omega_3$ is internally tangent (inside the unknown circle). ✓
+
+Let me recheck the total. The answer should be E ($136\pi$). Let me reconsider whether I've missed some cases.
+
+Actually, I think I need to recheck sub-case B more carefully. Let me also check: could $\omega_3$ be internally tangent to the unknown circle with $\rho = 5$ meaning the unknown (radius 5) contains $\omega_3$ (radius $\sqrt{3}$): $\delta = \rho - r_3 = 5-\sqrt{3}$.
+
+$50-10h = (5-\sqrt{3})^2 = 28-10\sqrt{3}$, so $h = (22+10\sqrt{3})/10 \approx 3.93$. $h^2 \approx 15.4 > 9$: no solution. Already checked.
+
+Or $\omega_3$ externally tangent to unknown: $\delta = \rho + r_3 = 5 + \sqrt{3}$. This gives 2 solutions. Already counted.
+
+Hmm, let me reconsider sub-case A more carefully.
+
+For sub-case A: $\rho = 3$, $d = 5$. The unknown circle (radius 3) is inside $\omega_2$ (radius 8) and outside $\omega_1$ (radius 2).
+
+$\omega_3$ has center $(5,0)$, radius $\sqrt{3}$, and is between $\omega_1$ and $\omega_2$.
+
+For tangency with $\omega_3$:
+- External ($\omega_3$ and unknown circle don't overlap): $\delta = 3 + \sqrt{3}$.
+- Unknown contains $\omega_3$: $\delta = 3 - \sqrt{3}$ (unknown surrounds $\omega_3$ since $\rho > r_3$).
+- $\omega_3$ contains unknown: $\delta = \sqrt{3} - 3 < 0$: impossible (since $r_3 = \sqrt{3} < 3 = \rho$).
+
+So 2 types × 2 solutions each = 4 circles. ✓
+
+For sub-case B: $\rho = 5$, $d = 3$. The unknown circle (radius 5) surrounds $\omega_1$ and is inside $\omega_2$.
+
+- External tangency with $\omega_3$: $\delta = 5 + \sqrt{3}$. Gives 2 circles ✓.
+- Unknown contains $\omega_3$: $\delta = 5 - \sqrt{3}$. No real solution as computed.
+
+Hmm. So I get only 6 circles with total area $36\pi + 50\pi = 86\pi$. But the answer is E ($136\pi$).
+
+Let me reconsider: maybe I missed some tangency types. For $\omega_2$ (radius 8, center origin), a circle could also be externally tangent to $\omega_2$ (surrounding $\omega_2$), or internally tangent from the inside (already covered).
+
+Let me redo the case analysis.
+
+Two circles are tangent: if centers are distance $D$ apart and radii $r, R$:
+- Externally tangent: $D = r + R$.
+- Internally tangent (smaller inside larger): $D = |r - R|$.
+
+For circles tangent to $\omega_1$ (radius 2) and $\omega_2$ (radius 8), both centered at origin, with unknown circle center at distance $d$, radius $\rho$:
+
+$\omega_1$: $d = \rho + 2$ (ext.) or $d = |\rho - 2|$ (int.).
+$\omega_2$: $d = \rho + 8$ (ext.) or $d = |\rho - 8|$ (int.).
+
+Cases:
+1. Ext($\omega_1$), Ext($\omega_2$): $\rho+2 = \rho+8$: impossible.
+2. Ext($\omega_1$), Int($\omega_2$) [unknown inside $\omega_2$, outside $\omega_1$]: $\rho+2 = 8-\rho$ (for $\rho<8$) → $\rho=3, d=5$. ✓ Sub-case A.
+3. Int($\omega_1$) with unknown inside $\omega_1$ ($d = 2-\rho$, $\rho<2$), Ext($\omega_2$): $2-\rho = \rho+8$: $-2\rho=6$, impossible.
+4. Int($\omega_1$) with unknown inside $\omega_1$ ($d=2-\rho$), Int($\omega_2$) [$d=8-\rho$]: $2-\rho=8-\rho$: impossible.
+5. Int($\omega_1$) with unknown surrounds $\omega_1$ ($d=\rho-2$), Ext($\omega_2$) [$d=\rho+8$]: $\rho-2=\rho+8$: impossible.
+6. Int($\omega_1$) with unknown surrounds $\omega_1$ ($d=\rho-2$), Int($\omega_2$) [unknown inside $\omega_2$, $d=8-\rho$]: $\rho-2=8-\rho$ → $\rho=5, d=3$. ✓ Sub-case B.
+7. Int($\omega_1$) surr., Int($\omega_2$) [unknown surrounds $\omega_2$, $d=\rho-8$]: $\rho-2=\rho-8$: impossible.
+8. Ext($\omega_1$), Int($\omega_2$) [unknown surrounds $\omega_2$, $d=\rho-8$]: $\rho+2=\rho-8$: impossible.
+
+So indeed only sub-cases A and B exist.
+
+Wait — I think I need to recount the number of valid circles per case. Let me check sub-case B's $\delta = 5-\sqrt{3}$ again.
+
+$\delta^2 = (5-\sqrt{3})^2 = 28 - 10\sqrt{3} \approx 28 - 17.32 = 10.68$.
+
+$(h-5)^2 + k^2 = 10.68$ and $h^2+k^2 = 9$.
+
+$(h-5)^2+k^2 - (h^2+k^2) = 10.68 - 9 = 1.68$.
+
+$(h-5)^2 - h^2 = 1.68$, i.e., $-10h + 25 = 1.68$, $h = (25-1.68)/10 = 2.332$.
+
+$k^2 = 9 - h^2 = 9 - 5.44 = 3.56 > 0$. ✓ So $k = \pm\sqrt{3.56}$: two solutions!
+
+I made an arithmetic error earlier. Let me redo:
+
+$h = (11 + 5\sqrt{3})/5$. $\sqrt{3} \approx 1.732$. $5\sqrt{3} \approx 8.66$. $11 + 8.66 = 19.66$. $h = 19.66/5 = 3.932$.
+
+But now from the circle equation $h^2+k^2=9$: $h \approx 3.932$, $h^2 \approx 15.46 > 9$. So $k^2 < 0$. Still no real solution.
+
+But above I computed differently... Let me recompute $\delta=5-\sqrt{3}$ properly:
+
+$(h-5)^2 + k^2 = (5-\sqrt{3})^2 = 28 - 10\sqrt{3}$.
+
+And $h^2+k^2=9$:
+
+$(h-5)^2+k^2 = h^2 - 10h + 25 + k^2 = 9 - 10h + 25 = 34-10h$.
+
+Set $34-10h = 28-10\sqrt{3}$: $10h = 34 - 28 + 10\sqrt{3} = 6 + 10\sqrt{3}$. $h = (6+10\sqrt{3})/10 = (3+5\sqrt{3})/5$.
+
+$(3+5\sqrt{3})/5 \approx (3+8.66)/5 \approx 2.33$. $h^2 \approx 5.43 < 9$. $k^2 = 9-5.43 = 3.57 > 0$ ✓!
+
+I made an algebraic error before. Let me redo:
+
+$10h = 50 - \delta^2$ where $50 = 2d^2 = 2 \cdot 9 + 2\cdot 25$... Wait. Let me redo cleanly.
+
+$d = \sqrt{h^2+k^2}$, so $d^2 = h^2+k^2$. For sub-case B, $d^2 = 9$.
+
+$\delta^2 = (h-5)^2+k^2 = h^2-10h+25+k^2 = d^2 - 10h + 25 = 9 - 10h + 25 = 34 - 10h$.
+
+For $\delta = 5-\sqrt{3}$: $34-10h = (5-\sqrt{3})^2 = 28-10\sqrt{3}$, so $10h = 6+10\sqrt{3}$, $h = (3+5\sqrt{3})/5 \approx 2.33$. $k^2 = 9 - h^2 \approx 9 - 5.43 = 3.57 > 0$. ✓ **Two solutions!**
+
+So I had an error earlier. Sub-case B gives 2 + 2 = **4 circles** (2 for each tangency type).
+
+**Corrected total: 4 + 4 = 8 circles.**
+
+Wait: Sub-case A also: $\delta^2 = 50-10h$ (since $d^2=25$). I get $\delta^2 = (h-5)^2+k^2 = h^2-10h+25+k^2 = 25-10h+25 = 50-10h$. ✓
+
+Sub-case A, $\delta = 3+\sqrt{3}$: $50-10h = 12+6\sqrt{3}$, $h = (38-6\sqrt{3})/10 = (19-3\sqrt{3})/5 \approx (19-5.196)/5 \approx 2.76$. $k^2 = 25-h^2 \approx 25-7.62 = 17.38 > 0$ ✓. Two solutions.
+
+Sub-case A, $\delta = 3-\sqrt{3}$: $50-10h = 12-6\sqrt{3}$, $h = (38+6\sqrt{3})/10 = (19+3\sqrt{3})/5 \approx (19+5.196)/5 \approx 4.84$. $k^2 = 25-h^2 \approx 25-23.43 = 1.57 > 0$ ✓. Two solutions.
+
+So sub-case A: **4 circles** with $\rho = 3$, sub-case B: **4 circles** with $\rho = 5$.
+
+**Sum of areas:**
+- 4 circles with $\rho = 3$: $4 \times 9\pi = 36\pi$.
+- 4 circles with $\rho = 5$: $4 \times 25\pi = 100\pi$.
+
+Total $= 36\pi + 100\pi = 136\pi$.
+
+Answer: **E**.
+</Solution>

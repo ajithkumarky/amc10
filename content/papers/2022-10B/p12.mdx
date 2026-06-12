@@ -1,0 +1,32 @@
+---
+year: 2022
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: C
+choices: ["$2$", "$3$", "$4$", "$5$", "$6$"]
+---
+
+<Problem>
+A pair of fair $6$-sided dice is rolled $n$ times. What is the least value of $n$ such that the probability that the sum of the numbers face up on a roll equals $7$ at least once is greater than $\dfrac{1}{2}$?
+</Problem>
+
+<Solution>
+The probability that a single roll of two dice gives a sum of 7 is $\dfrac{6}{36} = \dfrac{1}{6}$ (the six pairs are $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$).
+
+It's easier to compute the complement: the probability that no roll gives a sum of 7 in $n$ rolls is $\left(\dfrac{5}{6}\right)^n$.
+
+We want:
+$$1 - \left(\frac{5}{6}\right)^n > \frac{1}{2} \implies \left(\frac{5}{6}\right)^n < \frac{1}{2}.$$
+
+Compute:
+- $n=1$: $(5/6)^1 = 0.833 > 1/2$
+- $n=2$: $(5/6)^2 = 25/36 \approx 0.694 > 1/2$
+- $n=3$: $(5/6)^3 = 125/216 \approx 0.579 > 1/2$
+- $n=4$: $(5/6)^4 = 625/1296 \approx 0.482 < 1/2$ ✓
+
+The smallest $n$ for which $(5/6)^n < 1/2$ is $n = 4$.
+
+Answer: **C**.
+</Solution>

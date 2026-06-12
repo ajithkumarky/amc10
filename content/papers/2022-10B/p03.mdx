@@ -1,0 +1,44 @@
+---
+year: 2022
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 1
+answer: D
+choices: ["$150$", "$250$", "$350$", "$450$", "$550$"]
+---
+
+<Problem>
+How many three-digit positive integers have an odd number of even digits?
+</Problem>
+
+<Solution>
+A three-digit number has digits in the hundreds, tens, and ones places. An odd number of even digits means exactly 1 or exactly 3 even digits.
+
+The even digits are $\{0, 2, 4, 6, 8\}$ (5 choices) and the odd digits are $\{1, 3, 5, 7, 9\}$ (5 choices). The hundreds digit cannot be 0.
+
+**Case 1: Exactly 1 even digit.**
+
+Sub-case 1a: The even digit is in the hundreds place.
+The hundreds digit has 4 choices (2, 4, 6, 8 — not 0), and each of the other two digits is odd: $5 \times 5 = 25$ choices for tens and ones.
+Count: $4 \times 25 = 100$.
+
+Sub-case 1b: The even digit is in the tens place.
+Hundreds digit is odd (5 choices), tens digit is even (5 choices), ones digit is odd (5 choices).
+Count: $5 \times 5 \times 5 = 125$.
+
+Sub-case 1c: The even digit is in the ones place.
+Hundreds digit is odd (5 choices), tens digit is odd (5 choices), ones digit is even (5 choices).
+Count: $5 \times 5 \times 5 = 125$.
+
+Case 1 total: $100 + 125 + 125 = 350$.
+
+**Case 2: Exactly 3 even digits.**
+
+Hundreds digit is even and nonzero (4 choices), tens digit is even (5 choices), ones digit is even (5 choices).
+Count: $4 \times 5 \times 5 = 100$.
+
+**Grand total:** $350 + 100 = 450$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,47 @@
+---
+year: 2022
+paper: "10B"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: D
+choices: ['$15\dfrac{1}{8}$', '$15\dfrac{3}{8}$', '$15\dfrac{1}{2}$', '$15\dfrac{5}{8}$', '$15\dfrac{7}{8}$']
+---
+
+<Problem>
+The diagram below shows a rectangle with side lengths $4$ and $8$ and a square with side length $5$. Three vertices of the square lie on three different sides of the rectangle as shown. What is the area of the region inside both the square and the rectangle?
+
+(The square has vertex $A=(1,0)$ on the bottom side, vertex $B=(4,4)$ on the top side, and vertex $C=(8,1)$ on the right side, with the fourth vertex $D=(5,-3)$ outside the rectangle below the bottom edge. A right-angle mark is shown at $A$.)
+</Problem>
+
+<Solution>
+Set up coordinates with the rectangle having corners at $(0,0)$, $(8,0)$, $(8,4)$, $(0,4)$.
+
+**Finding the square's vertices.** The square has vertices $A=(1,0)$, $B=(4,4)$, $C=(8,1)$, $D=(5,-3)$.
+
+**Verify it's a square with side 5:**
+- $AB$: $(4-1, 4-0) = (3,4)$, length $= \sqrt{9+16} = 5$ ✓
+- $BC$: $(8-4, 1-4) = (4,-3)$, length $= \sqrt{16+9} = 5$ ✓
+- $(3,4) \cdot (4,-3) = 12 - 12 = 0$ ✓ (right angle)
+
+The three vertices on the rectangle are: $A=(1,0)$ on the bottom side ($y=0$), $B=(4,4)$ on the top side ($y=4$), and $C=(8,1)$ on the right side ($x=8$). Vertex $D=(5,-3)$ is outside the rectangle below the bottom edge.
+
+**Finding the overlap region.** The intersection of the square with the rectangle is the square minus the triangular piece that dips below $y=0$.
+
+The side $CD$: from $(8,1)$ to $(5,-3)$. Parameterize: $(8,1)+t(-3,-4)$. It crosses $y=0$ when $1-4t=0$, so $t=1/4$, giving $x = 8 - 3/4 = 29/4$.
+
+The side $DA$: from $(5,-3)$ to $(1,0)$. It ends at $A=(1,0)$, which lies exactly on $y=0$.
+
+So the part of the square below $y=0$ is the triangle with vertices $D=(5,-3)$, $A=(1,0)$, and $(29/4,\, 0)$.
+
+**Area of this triangle:**
+Base along $y=0$: from $(1,0)$ to $(29/4,0)$, length $= 29/4 - 1 = 25/4$.
+Height: from $y=0$ down to $D=(5,-3)$, height $= 3$.
+
+$$\text{Area of triangle} = \frac{1}{2} \cdot \frac{25}{4} \cdot 3 = \frac{75}{8}.$$
+
+**Area of overlap:**
+$$\text{Area} = \text{Area of square} - \text{Area below rectangle} = 25 - \frac{75}{8} = \frac{200}{8} - \frac{75}{8} = \frac{125}{8} = 15\frac{5}{8}.$$
+
+Answer: **D**.
+</Solution>
