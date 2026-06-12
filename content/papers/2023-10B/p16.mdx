@@ -1,0 +1,30 @@
+---
+year: 2023
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: E
+choices: ['$512$', '$10$', '$0$', '$9$', '$511$']
+---
+
+<Problem>
+Define an $upno$ to be a positive integer of $2$ or more digits where the digits are strictly increasing moving left to right. Similarly, define a $downno$ to be a positive integer of $2$ or more digits where the digits are strictly decreasing moving left to right. For instance, the number $258$ is an upno and $8620$ is a downno. Let $U$ equal the total number of $upnos$ and let $D$ equal the total number of $downnos$. What is $|U - D|$?
+</Problem>
+
+<Solution>
+**Counting upnos.** An upno is determined by choosing its set of digits, since once we fix which digits appear (with no repeats, strictly increasing), the number is completely determined. Because the digits are strictly increasing from left to right, the leading digit is the smallest digit in the number, which must be at least $1$ (no leading zeros). So every digit in an upno is from $\{1, 2, \ldots, 9\}$.
+
+Any subset of $\{1, 2, \ldots, 9\}$ of size $\geq 2$ gives a valid upno (arrange in increasing order). Therefore:
+$$U = \sum_{k=2}^{9}\binom{9}{k} = 2^9 - \binom{9}{0} - \binom{9}{1} = 512 - 1 - 9 = 502.$$
+
+**Counting downnos.** A downno has strictly decreasing digits left to right, so the leading digit is the largest, which is automatically $\geq 1$ for any set with at least one nonzero digit. Since the set has size $\geq 2$, at least one digit is positive, so there is no leading-zero issue.
+
+Any subset of $\{0, 1, \ldots, 9\}$ of size $\geq 2$ gives a valid downno (arrange in decreasing order). For example, $\{0, 3\} \to 30$, which is valid. Therefore:
+$$D = \sum_{k=2}^{10}\binom{10}{k} = 2^{10} - \binom{10}{0} - \binom{10}{1} = 1024 - 1 - 10 = 1013.$$
+
+**Final answer.**
+$$|U - D| = |502 - 1013| = 511.$$
+
+Answer: **E**.
+</Solution>

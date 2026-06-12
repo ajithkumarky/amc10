@@ -1,0 +1,31 @@
+---
+year: 2023
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: E
+choices: ["$673$", "$1011$", "$675$", "$1010$", "$674$"]
+---
+
+<Problem>
+Let $L_1 = 1$, $L_2 = 3$, and $L_{n+2} = L_{n+1} + L_n$ for $n \ge 1$. How many terms in the sequence $L_1, L_2, L_3, \ldots, L_{2023}$ are even?
+</Problem>
+
+<Solution>
+We track the parity (odd/even) of consecutive terms using O for odd and E for even:
+
+$$L_1 = 1 \text{ (O)}, \quad L_2 = 3 \text{ (O)}, \quad L_3 = 4 \text{ (E)}, \quad L_4 = 7 \text{ (O)}, \quad L_5 = 11 \text{ (O)}, \quad L_6 = 18 \text{ (E)}, \ldots$$
+
+The parity pattern is: O, O, E, O, O, E, O, O, E, $\ldots$ — repeating with period $3$.
+
+In each group of $3$ consecutive terms, exactly $1$ is even (the third in each group).
+
+$2023 = 3 \times 674 + 1$, so there are $674$ complete groups of $3$ (accounting for positions $1$ through $2022$), each contributing one even term, plus one leftover term at position $2023$.
+
+Position $2023 \equiv 1 \pmod{3}$, which corresponds to the first position in the pattern (odd). So $L_{2023}$ is odd.
+
+Total even terms $= 674$.
+
+Answer: **E**.
+</Solution>

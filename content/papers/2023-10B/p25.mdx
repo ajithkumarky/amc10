@@ -1,0 +1,46 @@
+---
+year: 2023
+paper: "10B"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 5
+answer: B
+choices: ['$4-\sqrt{5}$', '$\sqrt{5}-1$', '$8-3\sqrt{5}$', '$\dfrac{\sqrt{5}+1}{2}$', '$\dfrac{2+\sqrt{5}}{3}$']
+---
+
+<Problem>
+A regular pentagon with area $1 + \sqrt{5}$ is printed on paper and cut out. All five vertices are folded to the center of the pentagon, creating a smaller pentagon. What is the area of the new pentagon?
+</Problem>
+
+<Solution>
+**Setting up coordinates.** Let the original regular pentagon have circumradius $R$ (center-to-vertex distance). Its area is
+$$A_{\text{orig}} = \frac{5}{2}R^2 \sin 72° = 1 + \sqrt{5}.$$
+
+**What folding a vertex does.** When vertex $V$ is folded to the center $O$, the fold line is the perpendicular bisector of segment $VO$, located at distance $R/2$ from $O$. The triangular flap of the pentagon beyond this fold line (the region closer to $V$ than to $O$) gets folded inward.
+
+**Identifying the new pentagon.** The five fold lines are each at distance $R/2$ from the center, perpendicular to the five radii. These five lines form a smaller regular pentagon whose **apothem** (center-to-side distance) is $R/2$.
+
+For a regular pentagon with apothem $r$, the circumradius is $R' = r / \cos 36°$ and the area is
+$$A = \frac{5r^2}{\tan 36°} = 5r^2 \cot 36°.$$
+
+Alternatively, the area scales as the square of any linear dimension. The original pentagon has apothem $r_{\text{orig}} = R \cos 36°$. The new pentagon has apothem $r_{\text{new}} = R/2$.
+
+**Area ratio:**
+$$\frac{A_{\text{new}}}{A_{\text{orig}}} = \left(\frac{r_{\text{new}}}{r_{\text{orig}}}\right)^2 = \left(\frac{R/2}{R\cos 36°}\right)^2 = \frac{1}{4\cos^2 36°}.$$
+
+**Using exact values.** We know $\cos 36° = \dfrac{1+\sqrt{5}}{4}$... let's be precise:
+
+$$\cos 36° = \frac{\sqrt{5}+1}{4}.$$
+
+Wait — actually $\cos 36° = \dfrac{\sqrt{5}+1}{4}$ is incorrect. The exact value is $\cos 36° = \dfrac{1+\sqrt{5}}{4}$... Let me use $\cos 36° = \dfrac{\sqrt{5}+1}{4}$. No — the standard exact value is:
+$$\cos 36° = \frac{1+\sqrt{5}}{4}.$$
+
+This gives $\cos^2 36° = \dfrac{(1+\sqrt{5})^2}{16} = \dfrac{6+2\sqrt{5}}{16} = \dfrac{3+\sqrt{5}}{8}$.
+
+$$A_{\text{new}} = \frac{1+\sqrt{5}}{4\cdot\frac{3+\sqrt{5}}{8}} = \frac{(1+\sqrt{5})\cdot 8}{4(3+\sqrt{5})} = \frac{2(1+\sqrt{5})}{3+\sqrt{5}}.$$
+
+Rationalize by multiplying by $\dfrac{3-\sqrt{5}}{3-\sqrt{5}}$:
+$$= \frac{2(1+\sqrt{5})(3-\sqrt{5})}{(3)^2-(\sqrt{5})^2} = \frac{2(3-\sqrt{5}+3\sqrt{5}-5)}{9-5} = \frac{2(2\sqrt{5}-2)}{4} = \frac{4(\sqrt{5}-1)}{4} = \sqrt{5}-1.$$
+
+Answer: **B**.
+</Solution>

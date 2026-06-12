@@ -1,0 +1,73 @@
+---
+year: 2023
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: E
+choices: ['I, II, and III', 'I only', 'I and II only', 'III only', 'II and III only']
+---
+
+<Problem>
+Suppose $a$, $b$, and $c$ are positive integers such that
+$$\frac{a}{14} + \frac{b}{15} = \frac{c}{210}.$$
+Which of the following statements are necessarily true?
+
+I. If $\gcd(a, 14) = 1$ or $\gcd(b, 15) = 1$ or both, then $\gcd(c, 210) = 1$.
+
+II. If $\gcd(c, 210) = 1$, then $\gcd(a, 14) = 1$ or $\gcd(b, 15) = 1$ or both.
+
+III. $\gcd(c, 210) = 1$ if and only if $\gcd(a, 14) = \gcd(b, 15) = 1$.
+</Problem>
+
+<Solution>
+Since $210 = 14 \times 15$, the equation $\dfrac{a}{14} + \dfrac{b}{15} = \dfrac{c}{210}$ gives:
+$$15a + 14b = c.$$
+
+Note $210 = 2 \times 3 \times 5 \times 7$.
+
+**Statement I is FALSE.**
+
+We need: "if $\gcd(a,14)=1$ or $\gcd(b,15)=1$, then $\gcd(c,210)=1$."
+
+Counterexample: let $a = 1$ (so $\gcd(a,14) = 1$) and $b = 3$. Then $c = 15(1) + 14(3) = 57 = 3 \times 19$. We have $\gcd(57, 210) = 3 \neq 1$. So I fails.
+
+**Statement II is TRUE.**
+
+We prove the contrapositive: if $\gcd(a,14) > 1$ AND $\gcd(b,15) > 1$, then $\gcd(c,210) > 1$.
+
+The prime factors of $14$ are $2$ and $7$; those of $15$ are $3$ and $5$. If $\gcd(a,14)>1$, then $2 \mid a$ or $7 \mid a$.
+
+- If $2 \mid a$: then $2 \mid 15a$ and $2 \mid 14b$, so $2 \mid c$.
+- If $7 \mid a$: then $7 \mid 15a$ and $7 \mid 14b$, so $7 \mid c$.
+
+Either way, $\gcd(c,210) > 1$.
+
+Similarly if $\gcd(b,15)>1$, then $3 \mid b$ or $5 \mid b$, which forces $3 \mid c$ or $5 \mid c$ (since $3 \mid 15a$ always and $3 \mid 14b$, or $5 \mid 15a$ and $5 \mid 14b$). So $\gcd(c,210)>1$.
+
+Thus if both $\gcd(a,14)>1$ and $\gcd(b,15)>1$, then $\gcd(c,210)>1$. Taking the contrapositive: if $\gcd(c,210)=1$, then $\gcd(a,14)=1$ or $\gcd(b,15)=1$. Statement II is true.
+
+**Statement III is TRUE.**
+
+We show $\gcd(c,210) = 1$ if and only if $\gcd(a,14)=1$ AND $\gcd(b,15)=1$.
+
+$(\Rightarrow)$ If $\gcd(c,210)=1$, then no prime among $2,3,5,7$ divides $c = 15a+14b$.
+
+- $2 \nmid c$: Since $14b$ is always even, we need $15a$ to be odd, so $a$ is odd, meaning $2 \nmid a$, so $\gcd(a,2)=1$.
+- $7 \nmid c$: Since $7 \mid 14b$ always, we need $7 \nmid 15a$, so $7 \nmid a$ (as $\gcd(15,7)=1$). Thus $\gcd(a,7)=1$.
+
+Combining: $\gcd(a,14)=1$. Similarly $3 \nmid c$ forces $3 \nmid 14b$ (since $3 \mid 15a$ always), so $3 \nmid b$; and $5 \nmid c$ forces $5 \nmid 14b$, so $5 \nmid b$. Hence $\gcd(b,15)=1$.
+
+$(\Leftarrow)$ Suppose $\gcd(a,14)=1$ and $\gcd(b,15)=1$.
+
+- $2 \nmid a$ (from $\gcd(a,14)=1$), so $15a$ is odd; $14b$ is even; $c = \text{odd}+\text{even}$ is odd, so $2 \nmid c$.
+- $3 \nmid b$, so $3 \nmid 14b$; $3 \mid 15a$; thus $3 \nmid c$ iff $3 \nmid (15a + 14b)$. Since $3\mid 15a$ and $3\nmid 14b$, we get $3\nmid c$.
+- $5 \nmid b$, so $5 \nmid 14b$; $5\mid 15a$; thus $5\nmid c$.
+- $7 \nmid a$, so $7\nmid 15a$; $7\mid 14b$; thus $7\nmid c$.
+
+So $\gcd(c,210)=1$. Statement III is true.
+
+Since only II and III are necessarily true, the answer is **E**.
+
+Answer: **E**.
+</Solution>

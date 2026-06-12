@@ -1,0 +1,45 @@
+---
+year: 2023
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: B
+choices: ['$24$', '$20$', '$22$', '$28$', '$26$']
+---
+
+<Problem>
+An arithmetic sequence of positive integers has $n \geq 3$ terms, initial term $a$, and common difference $d > 1$. Carl wrote down all the terms in this sequence correctly except for one term, which was off by $1$. The sum of the terms he wrote down was $222$. What is $a + d + n$?
+</Problem>
+
+<Solution>
+The true sum of the arithmetic sequence is:
+$$S = na + d\cdot\frac{n(n-1)}{2} = \frac{n(2a + d(n-1))}{2}.$$
+
+Carl made exactly one error: one term is off by $\pm 1$, so his recorded sum is $222 = S \pm 1$, meaning $S = 221$ or $S = 223$.
+
+**Finding $n$, $a$, $d$.**
+
+We need $S = \frac{n(2a + d(n-1))}{2}$ to equal $221$ or $223$, with $a \geq 1$, $d \geq 2$ (integer, $d > 1$), $n \geq 3$ integers.
+
+Let $q = 2a + d(n-1)$. Then $S = nq/2$, so $nq = 2S \in \{442, 446\}$.
+
+**For $S = 221$:** $nq = 442 = 2 \times 13 \times 17$. With $n \geq 3$ and $q = 2a + d(n-1) \geq 2 + 2(n-1) = 2n$, we need $q \geq 2n$, so $nq \geq 2n^2$, meaning $n^2 \leq 221$, so $n \leq 14$.
+
+Factor pairs of $442$ with $n \geq 3$: $(n, q) \in \{(13, 34), (17, 26), (2, 221), \ldots\}$ — but also $n | 442$.
+$442 = 2 \times 13 \times 17$. Divisors $\geq 3$: $13, 17, 26, 34, \ldots$ (but $n \leq 14$, so $n = 13$).
+
+For $n = 13$, $q = 34$: $2a + 12d = 34 \implies a + 6d = 17$. With $a \geq 1$ and $d \geq 2$: $a = 17 - 6d \geq 1 \implies d \leq 2.67$, so $d = 2$, giving $a = 5$.
+
+Check: sequence is $5, 7, 9, \ldots, 5 + 12\times 2 = 29$. True sum $= 13 \times 17 = 221$ ✓. With Carl off by $1$: his sum is $222$ ✓.
+
+$a + d + n = 5 + 2 + 13 = 20$.
+
+**For $S = 223$:** $nq = 446 = 2 \times 223$. Since $223$ is prime, factor pairs with $n \geq 3$: none have $n \leq 14$ that give valid $a, d$. (For $n = 2$: excluded; $n = 223$: gives $q = 2$, but $q \geq 2n = 446 > 2$, contradiction.)
+
+The unique solution is $a = 5$, $d = 2$, $n = 13$.
+
+$$a + d + n = 5 + 2 + 13 = 20.$$
+
+Answer: **B**.
+</Solution>

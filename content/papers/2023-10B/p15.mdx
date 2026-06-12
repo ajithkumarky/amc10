@@ -1,0 +1,59 @@
+---
+year: 2023
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: C
+choices: ['$30$', '$30030$', '$70$', '$1430$', '$1001$']
+---
+
+<Problem>
+What is the least positive integer $m$ such that $m \cdot 2! \cdot 3! \cdot 4! \cdot 5! \cdots 16!$ is a perfect square?
+</Problem>
+
+<Solution>
+For the product $P = m \cdot 2! \cdot 3! \cdots 16!$ to be a perfect square, every prime in its factorization must appear to an even power. We need to find which primes appear to an odd power in $Q = 2! \cdot 3! \cdots 16!$, and then $m$ must supply exactly those primes (each to the first power).
+
+**Finding the exponent of prime $p$ in $Q$.**
+
+The exponent of $p$ in $k!$ equals $\sum_{j \geq 1} \lfloor k/p^j \rfloor$. The total exponent of $p$ in $Q$ is
+$$e_p = \sum_{k=2}^{16} v_p(k!),$$
+where $v_p(k!)$ is the $p$-adic valuation of $k!$.
+
+We also note $v_p(k!) = v_p((k-1)!) + v_p(k)$, so the contribution added when moving from $(k-1)!$ to $k!$ is $v_p(k)$. Thus:
+$$e_p = \sum_{k=2}^{16} v_p(k!) = \sum_{k=2}^{16} \sum_{j=1}^{k} v_p(j) = \sum_{j=1}^{16} (17 - j) \cdot v_p(j).$$
+
+**Prime $p = 2$:**
+
+$v_2(j)$ for $j = 1,\ldots,16$: $j=2\to1$, $4\to2$, $6\to1$, $8\to3$, $10\to1$, $12\to2$, $14\to1$, $16\to4$.
+
+$e_2 = 15\cdot1 + 13\cdot2 + 11\cdot1 + 9\cdot3 + 7\cdot1 + 5\cdot2 + 3\cdot1 + 1\cdot4 = 15+26+11+27+7+10+3+4 = 103$. Odd.
+
+**Prime $p = 3$:**
+
+$v_3(j)$: $j=3\to1$, $6\to1$, $9\to2$, $12\to1$, $15\to1$.
+
+$e_3 = 14\cdot1 + 11\cdot1 + 8\cdot2 + 5\cdot1 + 2\cdot1 = 14+11+16+5+2 = 48$. Even.
+
+**Prime $p = 5$:**
+
+$v_5(j)$: $j=5\to1$, $10\to1$, $15\to1$.
+
+$e_5 = 12\cdot1 + 7\cdot1 + 2\cdot1 = 21$. Odd.
+
+**Prime $p = 7$:**
+
+$v_7(j)$: $j=7\to1$, $14\to1$.
+
+$e_7 = 10\cdot1 + 3\cdot1 = 13$. Odd.
+
+**Primes $p = 11, 13$:**
+
+$v_{11}(j)$: only $j=11$ contributes: $e_{11} = 6$. Even.
+$v_{13}(j)$: only $j=13$ contributes: $e_{13} = 4$. Even.
+
+The odd-exponent primes are $2$, $5$, and $7$. The least $m$ that makes all exponents even is $m = 2 \cdot 5 \cdot 7 = 70$.
+
+Answer: **C**.
+</Solution>

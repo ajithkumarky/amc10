@@ -1,0 +1,32 @@
+---
+year: 2023
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: B
+choices: ["$45$", "$21$", "$36$", "$28$", "$32$"]
+---
+
+<Problem>
+Suzanne went to the bank and withdrew $\$800$. The teller gave her this amount using $\$20$ bills, $\$50$ bills, and $\$100$ bills, with at least one of each denomination. How many different collections of bills could Suzanne have received?
+</Problem>
+
+<Solution>
+Let $a$, $b$, $c$ be the numbers of $\$20$, $\$50$, and $\$100$ bills, each at least $1$.
+
+The equation is $20a + 50b + 100c = 800$. Dividing by $10$: $2a + 5b + 10c = 80$.
+
+Since $2a + 10c$ is always even, we need $5b$ to be even, so $b$ must be even. Let $b = 2k$ with $k \ge 1$.
+
+Substituting: $2a + 10k + 10c = 80$, so $a + 5k + 5c = 40$, giving $a = 40 - 5k - 5c = 5(8 - k - c)$.
+
+For $a \ge 1$: we need $5(8 - k - c) \ge 1$, so $8 - k - c \ge 1$, i.e., $k + c \le 7$.
+
+With $k \ge 1$ and $c \ge 1$, let $k' = k - 1 \ge 0$ and $c' = c - 1 \ge 0$:
+$$k' + c' \le 5, \quad k', c' \ge 0.$$
+
+The number of non-negative integer solutions to $k' + c' \le 5$ equals the number of solutions to $k' + c' + s = 5$ (introducing slack $s \ge 0$), which is $\binom{5+2}{2} = \binom{7}{2} = 21$.
+
+Answer: **B**.
+</Solution>

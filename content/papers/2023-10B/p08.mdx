@@ -1,0 +1,25 @@
+---
+year: 2023
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 2
+answer: A
+choices: ["$7$", "$1$", "$9$", "$5$", "$3$"]
+---
+
+<Problem>
+What is the units digit of $2022^{2023} + 2023^{2022}$?
+</Problem>
+
+<Solution>
+The units digit of a power depends only on the units digit of the base.
+
+**Units digit of $2022^{2023}$:** The units digit of $2022$ is $2$. Powers of $2$ cycle through units digits $2, 4, 8, 6, 2, 4, 8, 6, \ldots$ with period $4$. We need $2023 \pmod{4}$: $2023 = 4 \times 505 + 3$, so the remainder is $3$. The units digit of $2^3 = 8$, so $2022^{2023}$ has units digit $8$.
+
+**Units digit of $2023^{2022}$:** The units digit of $2023$ is $3$. Powers of $3$ cycle through units digits $3, 9, 7, 1, 3, 9, 7, 1, \ldots$ with period $4$. We need $2022 \pmod{4}$: $2022 = 4 \times 505 + 2$, so the remainder is $2$. The units digit of $3^2 = 9$, so $2023^{2022}$ has units digit $9$.
+
+**Sum:** The units digit of $8 + 9 = 17$ is $7$.
+
+Answer: **A**.
+</Solution>

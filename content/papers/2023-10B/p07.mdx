@@ -1,0 +1,46 @@
+---
+year: 2023
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 2
+answer: B
+choices: ['$24^\circ$', '$35^\circ$', '$30^\circ$', '$32^\circ$', '$20^\circ$']
+---
+
+<Problem>
+Square $ABCD$ is rotated $20^\circ$ clockwise about its center to obtain square $EFGH$, as shown below. What is the degree measure of $\angle EAB$?
+
+<svg viewBox="-130 -130 260 260" width="260" height="260" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="-100,0 0,-100 100,0 0,100" fill="none" stroke="#00e5ff" strokeWidth="1.5"/>
+  <polygon points="-94,-34 34,-94 94,34 -34,94" fill="none" stroke="#00e5ff" strokeWidth="1.5" strokeDasharray="5,3"/>
+  <circle cx="-100" cy="0" r="3" fill="#00e5ff"/>
+  <circle cx="0" cy="-100" r="3" fill="#00e5ff"/>
+  <circle cx="-94" cy="-34" r="3" fill="#00e5ff"/>
+  <text x="-122" y="5" fill="#00e5ff" fontSize="14">A</text>
+  <text x="5" y="-104" fill="#00e5ff" fontSize="14">B</text>
+  <text x="105" y="5" fill="#00e5ff" fontSize="14">C</text>
+  <text x="-15" y="118" fill="#00e5ff" fontSize="14">D</text>
+  <text x="-112" y="-36" fill="#00e5ff" fontSize="14">E</text>
+  <text x="38" y="-98" fill="#00e5ff" fontSize="14">F</text>
+  <text x="98" y="48" fill="#00e5ff" fontSize="14">G</text>
+  <text x="-50" y="108" fill="#00e5ff" fontSize="14">H</text>
+</svg>
+</Problem>
+
+<Solution>
+Let $O$ be the shared center of both squares. All four vertices of each square lie on the same circumscribed circle of radius $r$ centered at $O$.
+
+**Step 1: Locate the key points.** With $A$ at angle $180°$ from the positive $x$-axis and $B$ at $90°$ (adjacent vertices of $ABCD$), rotating $ABCD$ clockwise by $20°$ places $E$ at $180° - 20° = 160°$. Going counterclockwise: $B$ is at $90°$, $E$ at $160°$, $A$ at $180°$, so $E$ lies between $B$ and $A$ on the circumcircle.
+
+**Step 2: Find $\angle OAE$.** Triangle $OAE$ is isosceles with $OA = OE = r$ and central angle $\angle AOE = 20°$. Therefore:
+$$\angle OAE = \frac{180° - 20°}{2} = 80°.$$
+
+**Step 3: Find $\angle OAB$.** Triangle $OAB$ is isosceles with $OA = OB = r$ and central angle $\angle AOB = 90°$ (adjacent vertices of a square). Therefore:
+$$\angle OAB = \frac{180° - 90°}{2} = 45°.$$
+
+**Step 4: Compute $\angle EAB$.** Ray $AO$, ray $AE$, and ray $AB$ all emanate from $A$. Since $E$ is between $B$ and $A$ on the arc, ray $AE$ lies between rays $AO$ and $AB$, and:
+$$\angle EAB = \angle OAE - \angle OAB = 80° - 45° = 35°.$$
+
+Answer: **B**.
+</Solution>

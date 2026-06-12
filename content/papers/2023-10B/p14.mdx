@@ -1,0 +1,43 @@
+---
+year: 2023
+paper: "10B"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 3
+answer: C
+choices: ['$7$', '$1$', '$3$', '$6$', '$5$']
+---
+
+<Problem>
+How many ordered pairs of integers $(m, n)$ satisfy the equation $m^2 + mn + n^2 = m^2 n^2$?
+</Problem>
+
+<Solution>
+We look for all integer solutions to $m^2 + mn + n^2 = m^2 n^2$.
+
+**Case 1: $m = 0$ or $n = 0$.**
+
+If $m = 0$: the equation becomes $n^2 = 0$, so $n = 0$. This gives the solution $(0, 0)$.
+
+If $n = 0$: symmetrically, $m = 0$, giving the same solution.
+
+**Case 2: Both $m \neq 0$ and $n \neq 0$.**
+
+Rewrite as $m^2 n^2 - m^2 - mn - n^2 = 0$. Divide through by $m^2 n^2$ (valid since both are nonzero):
+$$1 - \frac{1}{n^2} - \frac{1}{mn} - \frac{1}{m^2} = 0.$$
+
+Let $a = \tfrac{1}{m}$ and $b = \tfrac{1}{n}$ (rational numbers). Then $1 - b^2 - ab - a^2 = 0$, i.e., $a^2 + ab + b^2 = 1$.
+
+Since $m$ and $n$ are nonzero integers, $|a| \leq 1$ and $|b| \leq 1$, so $|a|, |b| \in \{1\}$ (only $m, n = \pm 1$ give $|a| = 1$).
+
+Try $(m, n) = (1, 1)$: $1 + 1 + 1 = 3 \neq 1$. No.
+Try $(m, n) = (1, -1)$: $1 - 1 + 1 = 1$ and $m^2 n^2 = 1$. Yes!
+Try $(m, n) = (-1, 1)$: $1 - 1 + 1 = 1 = 1$. Yes!
+Try $(m, n) = (-1, -1)$: $1 + 1 + 1 = 3 \neq 1$. No.
+
+For $|m| \geq 2$ or $|n| \geq 2$, we can show no solutions exist. If both $|m|, |n| \geq 2$, then $m^2 n^2 \geq 4\max(m^2, n^2) > m^2 + |mn| + n^2$ since $4\max(m^2,n^2) \geq 4m^2/2 + 4n^2/2 > m^2+n^2+|mn|$ for $|m|,|n|\geq 2$. If exactly one of $|m|=1$, say $m=\pm 1$, then $m^2=1$ and the equation becomes $1 + n + n^2 = n^2$ (if $m=1$), giving $n = -1$ (already found), or $1 - n + n^2 = n^2$ (if $m=-1$), giving $n = 1$ (already found).
+
+**Summary:** The three solutions are $(0, 0)$, $(1, -1)$, and $(-1, 1)$.
+
+Answer: **C**.
+</Solution>

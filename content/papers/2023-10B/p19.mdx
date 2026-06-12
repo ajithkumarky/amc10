@@ -1,0 +1,35 @@
+---
+year: 2023
+paper: "10B"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 4
+answer: B
+choices: ['$\dfrac{1}{6}$', '$\dfrac{1}{12}$', '$\dfrac{1}{4}$', '$\dfrac{1}{10}$', '$\dfrac{1}{9}$']
+---
+
+<Problem>
+Sonya the frog chooses a point uniformly at random lying within the square $[0, 6] \times [0, 6]$ in the coordinate plane and hops to that point. She then randomly chooses a distance uniformly at random from $[0, 1]$ and a direction uniformly at random from the set north, south, east, west. All her choices are independent. She now hops the distance in the chosen direction. What is the probability that she lands outside the square?
+</Problem>
+
+<Solution>
+Let her initial position be $(X, Y)$, chosen uniformly in $[0,6]\times[0,6]$. She hops distance $D$ (uniform on $[0,1]$) in a direction chosen uniformly from the four compass directions.
+
+**By symmetry**, each direction contributes equally, so:
+$$P(\text{outside}) = 4 \times \frac{1}{4} \times P(\text{outside} \mid \text{north}).$$
+
+**Computing $P(\text{outside} \mid \text{north})$.**
+
+Going north, her new $y$-coordinate is $Y + D$. She leaves the square when $Y + D > 6$, i.e., $D > 6 - Y$. Since $D \in [0,1]$, this requires $6 - Y < 1$, i.e., $Y > 5$. When $Y \in (5, 6]$, the probability that $D > 6 - Y$ is $\frac{1 - (6-Y)}{1} = Y - 5$ (fraction of the unit interval above $6-Y$).
+
+$$P(\text{outside} \mid \text{north}) = \frac{1}{36} \int_0^6 \int_0^6 \mathbf{1}[Y > 5] \cdot (Y - 5)\, dX\, dY.$$
+
+The $X$-integral contributes a factor of $6$:
+$$= \frac{6}{36} \int_5^6 (Y - 5)\, dY = \frac{1}{6} \cdot \left[\frac{(Y-5)^2}{2}\right]_5^6 = \frac{1}{6} \cdot \frac{1}{2} = \frac{1}{12}.$$
+
+**Total probability.**
+
+$$P(\text{outside}) = 4 \times \frac{1}{4} \times \frac{1}{12} = \frac{1}{12}.$$
+
+Answer: **B**.
+</Solution>

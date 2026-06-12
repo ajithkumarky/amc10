@@ -1,0 +1,26 @@
+---
+year: 2023
+paper: "10B"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: B
+choices: ["$2$", "$8$", "$4$", "$15$", "$12$"]
+---
+
+<Problem>
+What is the area of the region in the coordinate plane defined by
+$$\big| |x| - 1 \big| + \big| |y| - 1 \big| \le 1?$$
+</Problem>
+
+<Solution>
+By symmetry across both axes, the region is symmetric about both coordinate axes. We work in the first quadrant ($x \ge 0$, $y \ge 0$) where $|x| = x$ and $|y| = y$, then multiply by $4$.
+
+In the first quadrant, the condition becomes $|x - 1| + |y - 1| \le 1$. This is a square (diamond) centered at $(1, 1)$ with "radius" $1$ in the $L^1$ (taxicab) metric. Its vertices are at $(0,1)$, $(2,1)$, $(1,0)$, $(1,2)$, forming a square with diagonal $2$, so area $= \frac{1}{2}(2)(2) = 2$.
+
+However, we must consider the first quadrant only (the region $x \ge 0$, $y \ge 0$). The diamond is centered at $(1,1)$ and its leftmost vertex is $(0,1)$ and lowest vertex is $(1,0)$, both on the boundary of the first quadrant. So the entire diamond lies within the first quadrant ($x \ge 0$, $y \ge 0$). The first-quadrant area is $2$.
+
+Multiplying by $4$ for all four quadrants: total area $= 4 \times 2 = 8$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,39 @@
+---
+year: 2023
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: A
+choices: ['$32$', '$12$', '$48$', '$36$', '$27$']
+---
+
+<Problem>
+Four congruent semicircles are drawn on the surface of a sphere with radius $2$, creating a closed curve that divides the surface into two congruent regions. The length of the curve is $\pi\sqrt{n}$. What is $n$?
+
+(The curve consists of four semicircular arcs, each lying in a plane that intersects the sphere. Adjacent arcs meet at right angles at four junction points symmetrically placed on the sphere, and the overall curve resembles a tennis-ball seam.)
+</Problem>
+
+<Solution>
+Let the sphere have center $O$ and radius $R = 2$. The four semicircles meet at four junction points; by the symmetry of the configuration these points lie on a great circle and are spaced $90°$ apart. Label them $A$, $B$, $C$, $D$ arranged at the "equator" at angles $0°$, $90°$, $180°$, $270°$.
+
+**Finding the radius of each semicircular arc.**
+
+Each semicircle connects two adjacent junction points, say $A$ and $B$. The arc lies in a plane $\Pi$ that cuts the sphere. This plane contains $A$ and $B$ but is tilted so that the arc bulges up (or down) from the equatorial plane, creating the seam effect.
+
+For the configuration to produce two congruent regions, the plane $\Pi$ of each arc must be at $45°$ to the equatorial plane. Specifically, each plane passes through the midpoint of the chord $AB$ and is perpendicular to the equatorial great circle in the direction of $AB$, but tilted $45°$ out of the equatorial plane.
+
+The distance from $O$ to the plane of each semicircle is $d$. By the symmetry of the tennis-ball seam, $d = R\cos 45° = \frac{R}{\sqrt{2}} = \frac{2}{\sqrt{2}} = \sqrt{2}$.
+
+The radius of the circle cut by the plane from the sphere is:
+$$r = \sqrt{R^2 - d^2} = \sqrt{4 - 2} = \sqrt{2}.$$
+
+**Total curve length.**
+
+Each semicircle has length $\pi r = \pi\sqrt{2}$. The four semicircles give:
+$$\text{Total length} = 4 \cdot \pi\sqrt{2} = \pi \cdot 4\sqrt{2} = \pi\sqrt{32}.$$
+
+So $n = 32$.
+
+Answer: **A**.
+</Solution>

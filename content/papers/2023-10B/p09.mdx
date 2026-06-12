@@ -1,0 +1,26 @@
+---
+year: 2023
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: B
+choices: ["$674$", "$1011$", "$1010$", "$2019$", "$2017$"]
+---
+
+<Problem>
+The numbers $16$ and $25$ are a pair of consecutive positive perfect squares whose difference is $9$. How many pairs of consecutive positive perfect squares have a difference of less than or equal to $2023$?
+</Problem>
+
+<Solution>
+Consecutive perfect squares $(n)^2$ and $(n+1)^2$ have difference:
+$$(n+1)^2 - n^2 = 2n + 1.$$
+
+We need $2n + 1 \le 2023$, which gives $2n \le 2022$, so $n \le 1011$.
+
+Since $n$ must be a positive integer ($n \ge 1$), the valid values are $n = 1, 2, 3, \ldots, 1011$, giving $1011$ pairs.
+
+(Check: the pair $16, 25$ corresponds to $n = 4$, and $2(4) + 1 = 9$ ✓.)
+
+Answer: **B**.
+</Solution>

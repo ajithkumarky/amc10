@@ -1,0 +1,38 @@
+---
+year: 2023
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 5
+answer: B
+choices: ['an infinite number', '$4$', '$2$', '$3$', '$0$']
+---
+
+<Problem>
+How many distinct values of $x$ satisfy $\lfloor x \rfloor^2 - 3x + 2 = 0$, where $\lfloor x \rfloor$ denotes the largest integer less than or equal to $x$?
+</Problem>
+
+<Solution>
+Let $\lfloor x \rfloor = n$, an integer. The equation becomes:
+$$n^2 - 3x + 2 = 0 \implies x = \frac{n^2 + 2}{3}.$$
+
+For this to be valid, we need $n \leq x < n+1$, i.e.:
+$$n \leq \frac{n^2+2}{3} < n+1.$$
+
+**Left inequality:** $3n \leq n^2 + 2$, so $n^2 - 3n + 2 \geq 0$, meaning $(n-1)(n-2) \geq 0$. This holds when $n \leq 1$ or $n \geq 2$, i.e., all integers except none (it holds for all integers since $n=1$ gives $0 \geq 0$ and $n=2$ gives $0 \geq 0$, both valid). So the left inequality holds for all integers $n$.
+
+**Right inequality:** $n^2 + 2 < 3n + 3$, so $n^2 - 3n - 1 < 0$. The roots of $n^2 - 3n - 1 = 0$ are $n = \frac{3 \pm \sqrt{13}}{2}$. Since $\sqrt{13} \approx 3.606$, the roots are approximately $-0.303$ and $3.303$. So the inequality holds for $-0.303 < n < 3.303$.
+
+The integers in this range are $n \in \{0, 1, 2, 3\}$.
+
+**Checking each:**
+
+- $n = 0$: $x = \frac{0+2}{3} = \frac{2}{3}$. Check: $\lfloor \frac{2}{3} \rfloor = 0$ ✓. Verify: $0 - 2 + 2 = 0$ ✓.
+- $n = 1$: $x = \frac{1+2}{3} = 1$. Check: $\lfloor 1 \rfloor = 1$ ✓. Verify: $1 - 3 + 2 = 0$ ✓.
+- $n = 2$: $x = \frac{4+2}{3} = 2$. Check: $\lfloor 2 \rfloor = 2$ ✓. Verify: $4 - 6 + 2 = 0$ ✓.
+- $n = 3$: $x = \frac{9+2}{3} = \frac{11}{3} \approx 3.667$. Check: $\lfloor \frac{11}{3} \rfloor = 3$ ✓. Verify: $9 - 11 + 2 = 0$ ✓.
+
+There are exactly $4$ solutions: $x = \frac{2}{3},\ 1,\ 2,\ \frac{11}{3}$.
+
+Answer: **B**.
+</Solution>

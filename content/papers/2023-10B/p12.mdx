@@ -1,0 +1,48 @@
+---
+year: 2023
+paper: "10B"
+topic: algebra
+subtopic: polynomials
+difficulty: 3
+answer: C
+choices: ["$3$", "$7$", "$6$", "$4$", "$5$"]
+---
+
+<Problem>
+When the roots of the polynomial
+$$P(x) = (x-1)^1(x-2)^2(x-3)^3 \cdots (x-10)^{10}$$
+are removed from the number line, what remains is the union of $11$ disjoint open intervals. On how many of these intervals is $P(x)$ positive?
+</Problem>
+
+<Solution>
+The roots are $x = 1, 2, 3, \ldots, 10$, dividing the number line into $11$ intervals:
+$$(-\infty, 1),\ (1,2),\ (2,3),\ \ldots,\ (9,10),\ (10, +\infty).$$
+
+We need to determine the sign of $P(x)$ on each interval.
+
+**Sign of $P(x)$:** As $x \to +\infty$, all factors $(x-k)^k$ are positive, so $P(x) > 0$ on $(10, +\infty)$.
+
+Moving left across each root $x = k$, the sign of $P(x)$ changes if and only if the multiplicity $k$ is **odd**. (An even-multiplicity factor doesn't change sign.)
+
+The multiplicities are $1, 2, 3, 4, 5, 6, 7, 8, 9, 10$ for roots $1$ through $10$. The odd-multiplicity roots are $1, 3, 5, 7, 9$ (five roots).
+
+Starting from the rightmost interval $(10, +\infty)$ where $P > 0$, and moving left:
+
+| Interval | Root crossed | Multiplicity | Sign change? | Sign |
+|---|---|---|---|---|
+| $(10, +\infty)$ | — | — | — | $+$ |
+| $(9, 10)$ | $10$ | even | No | $+$ |
+| $(8, 9)$ | $9$ | odd | Yes | $-$ |
+| $(7, 8)$ | $8$ | even | No | $-$ |
+| $(6, 7)$ | $7$ | odd | Yes | $+$ |
+| $(5, 6)$ | $6$ | even | No | $+$ |
+| $(4, 5)$ | $5$ | odd | Yes | $-$ |
+| $(3, 4)$ | $4$ | even | No | $-$ |
+| $(2, 3)$ | $3$ | odd | Yes | $+$ |
+| $(1, 2)$ | $2$ | even | No | $+$ |
+| $(-\infty, 1)$ | $1$ | odd | Yes | $-$ |
+
+Counting the intervals where $P(x) > 0$: $(10,+\infty)$, $(9,10)$, $(6,7)$, $(5,6)$, $(2,3)$, $(1,2)$ — that is $6$ intervals.
+
+Answer: **C**.
+</Solution>

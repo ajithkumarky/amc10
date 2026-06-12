@@ -1,0 +1,41 @@
+---
+year: 2023
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: D
+choices: ['$2$', '$\dfrac{3}{8}$', '$\dfrac{9}{8}$', '$\dfrac{9}{4}$', '$\dfrac{3}{2}$']
+---
+
+<Problem>
+A rectangular box $P$ has distinct edge lengths $a$, $b$, and $c$. The sum of the lengths of all $12$ edges of $P$ is $13$, the sum of the areas of all $6$ faces of $P$ is $\dfrac{11}{2}$, and the volume of $P$ is $\dfrac{1}{2}$. What is the length of the longest interior diagonal connecting two vertices of $P$?
+</Problem>
+
+<Solution>
+A rectangular box with edge lengths $a$, $b$, $c$ has:
+- $12$ edges: four of each length, so total edge length $= 4(a + b + c)$.
+- $6$ faces: two of each pair, so total face area $= 2(ab + bc + ca)$.
+- Volume $= abc$.
+- Space diagonal $= \sqrt{a^2 + b^2 + c^2}$.
+
+**Setting up the equations.**
+
+$$4(a + b + c) = 13 \implies a + b + c = \frac{13}{4}.$$
+
+$$2(ab + bc + ca) = \frac{11}{2} \implies ab + bc + ca = \frac{11}{4}.$$
+
+$$abc = \frac{1}{2}.$$
+
+**Finding the diagonal.**
+
+We use the identity:
+$$a^2 + b^2 + c^2 = (a + b + c)^2 - 2(ab + bc + ca).$$
+
+$$a^2 + b^2 + c^2 = \left(\frac{13}{4}\right)^2 - 2 \cdot \frac{11}{4} = \frac{169}{16} - \frac{22}{4} = \frac{169}{16} - \frac{88}{16} = \frac{81}{16}.$$
+
+The space diagonal is:
+$$\sqrt{a^2 + b^2 + c^2} = \sqrt{\frac{81}{16}} = \frac{9}{4}.$$
+
+Answer: **D**.
+</Solution>
