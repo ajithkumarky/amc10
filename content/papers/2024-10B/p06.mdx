@@ -1,0 +1,31 @@
+---
+year: 2024
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: B
+choices: ["$160$", "$180$", "$222$", "$228$", "$390$"]
+---
+
+<Problem>
+A rectangle has integer side lengths and an area of $2024$. What is the least possible perimeter of the rectangle?
+</Problem>
+
+<Solution>
+We need to factor $2024$ as $\ell \times w$ with $\ell, w$ positive integers, and minimize the perimeter $2(\ell + w)$, which means maximizing $\min(\ell, w)$.
+
+First, factor $2024$:
+
+$$2024 = 2^3 \times 11 \times 23.$$
+
+The factor pairs $(\ell, w)$ with $\ell \le w$ and $\ell \cdot w = 2024$ include: $(1, 2024)$, $(2, 1012)$, $(4, 506)$, $(8, 253)$, $(11, 184)$, $(22, 92)$, $(23, 88)$, $(44, 46)$.
+
+The pair closest to $\sqrt{2024} \approx 44.99$ is $(44, 46)$.
+
+Check: $44 \times 46 = 2024$. ✓
+
+Perimeter $= 2(44+46) = 2 \times 90 = 180$.
+
+Answer: **B**.
+</Solution>

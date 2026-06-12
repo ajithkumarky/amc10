@@ -1,0 +1,31 @@
+---
+year: 2024
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: D
+choices: ["$0$", "$2$", "$4$", "$6$", "$8$"]
+---
+
+<Problem>
+Let $N$ be the product of all the positive integer divisors of $42$. What is the units digit of $N$?
+</Problem>
+
+<Solution>
+The prime factorization of $42$ is $2 \times 3 \times 7$, which has $(1+1)(1+1)(1+1) = 8$ divisors:
+
+$$1,\; 2,\; 3,\; 6,\; 7,\; 14,\; 21,\; 42.$$
+
+A useful trick: divisors of $n$ pair up as $(d, n/d)$, each pair multiplying to $n$. With 8 divisors, we get 4 pairs:
+
+$$1 \times 42 = 42, \quad 2 \times 21 = 42, \quad 3 \times 14 = 42, \quad 6 \times 7 = 42.$$
+
+So $N = 42^4$.
+
+To find the units digit of $42^4$: the units digit of powers of $42$ equals the units digit of powers of $2$, which cycles $2, 4, 8, 6, 2, 4, \ldots$ with period 4. Since $4 \equiv 0 \pmod{4}$, we use the 4th value in the cycle: $6$.
+
+The units digit of $N$ is $6$.
+
+Answer: **D**.
+</Solution>

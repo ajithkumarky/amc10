@@ -1,0 +1,28 @@
+---
+year: 2024
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: A
+choices: ["$9$", "$10$", "$12$", "$51$", "$100$"]
+---
+
+<Problem>
+A group of $100$ students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students $A$ and $B$, student $A$ speaks some language that student $B$ does not speak, and student $B$ speaks some language that student $A$ does not speak. What is the least possible total number of languages spoken by all the students?
+</Problem>
+
+<Solution>
+Let each student speak $k$ languages chosen from a pool of $L$ total languages. The condition says: for any two students, neither one's language set is a subset of the other's. Since all students speak exactly $k$ languages, any two students with *different* sets automatically satisfy this — no $k$-element set can contain another $k$-element set (unless they're equal). So we just need 100 distinct $k$-subsets of an $L$-element pool, which requires $\binom{L}{k} \ge 100$.
+
+To minimize $L$, choose $k = \lfloor L/2 \rfloor$ (the middle binomial coefficient is largest):
+
+- $L = 8$: $\binom{8}{4} = 70 < 100$. Not enough.
+- $L = 9$: $\binom{9}{4} = 126 \ge 100$. Works with $k=4$.
+
+So $L = 9$ languages suffice: assign each of 100 students a distinct 4-subset of $\{1,2,\ldots,9\}$. For any two students, their 4-element language sets differ, so each has a language the other lacks.
+
+The least possible total number of languages is $9$.
+
+Answer: **A**.
+</Solution>

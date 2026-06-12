@@ -1,0 +1,45 @@
+---
+year: 2024
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: D
+choices: ['$180$', '$361$', '$420$', '$431$', '$720$']
+---
+
+<Problem>
+In a race among $5$ snails, there is at most one tie, but that tie can involve any number of snails. For example, the result of the race might be that Dazzler is first; Abby, Cyrus, and Elroy are tied for second; and Bruna is fifth. How many different results of the race are possible?
+
+$\textbf{(A)}\ 180 \qquad \textbf{(B)}\ 361 \qquad \textbf{(C)}\ 420 \qquad \textbf{(D)}\ 431 \qquad \textbf{(E)}\ 720$
+</Problem>
+
+<Solution>
+We count by the size of the tied group ($0$ means no tie, i.e., all finish in distinct places).
+
+**Case 1: No tie (all 5 finish in distinct positions).**
+
+All 5 snails have different finishing positions. That's $5! = 120$ arrangements.
+
+**Case 2: Exactly 2 snails tie.**
+
+Choose which 2 snails tie: $\binom{5}{2} = 10$ ways. The remaining 3 snails all have distinct positions (no second tie allowed). The tied pair occupies one "slot," and together with the other 3 snails we have 4 entities to rank in order: the pair and the 3 individuals — that's $4!$ orderings, but we divide by nothing (the pair is unordered internally). So $\binom{5}{2} \cdot 4! = 10 \cdot 24 = 240$.
+
+**Case 3: Exactly 3 snails tie.**
+
+Choose which 3 tie: $\binom{5}{3} = 10$ ways. Now we have 3 entities: the triple and the 2 remaining individuals. These rank in $3! = 6$ ways. Total: $10 \cdot 6 = 60$.
+
+**Case 4: Exactly 4 snails tie.**
+
+Choose which 4 tie: $\binom{5}{4} = 5$ ways. We have 2 entities: the group of 4 and the 1 remaining snail. These rank in $2! = 2$ ways. Total: $5 \cdot 2 = 10$.
+
+**Case 5: All 5 snails tie.**
+
+Just 1 way (everyone ties for first).
+
+**Total:**
+
+$$120 + 240 + 60 + 10 + 1 = 431.$$
+
+Answer: **D**.
+</Solution>

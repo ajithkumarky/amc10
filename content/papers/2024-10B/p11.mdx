@@ -1,0 +1,55 @@
+---
+year: 2024
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: C
+choices: ["$13$", "$14$", "$15$", "$16$", "$17$"]
+---
+
+<Problem>
+In the figure below $WXYZ$ is a rectangle with $WX = 4$ and $WZ = 8$. Point $M$ lies on $\overline{XY}$, point $A$ lies on $\overline{YZ}$, and $\angle WMA$ is a right angle. The areas of $\triangle WXM$ and $\triangle WAZ$ are equal. What is the area of $\triangle WMA$?
+
+The rectangle has $W$ at top-left, $Z$ at top-right, $X$ at bottom-left, $Y$ at bottom-right; $M$ is on the bottom side $\overline{XY}$ and $A$ is on the right side $\overline{YZ}$.
+</Problem>
+
+<Solution>
+Set up coordinates: $W=(0,4)$, $X=(0,0)$, $Y=(8,0)$, $Z=(8,4)$.
+
+Let $M=(m,0)$ on $\overline{XY}$ and $A=(8,a)$ on $\overline{YZ}$.
+
+**Equal areas condition:**
+
+$$[\triangle WXM] = \tfrac{1}{2} \cdot WX \cdot XM = \tfrac{1}{2}\cdot 4 \cdot m = 2m.$$
+
+$$[\triangle WAZ] = \tfrac{1}{2} \cdot WZ \cdot AZ = \tfrac{1}{2}\cdot 8\cdot(4-a) = 4(4-a).$$
+
+Setting equal: $2m = 4(4-a)$, so $m = 8-2a$.
+
+**Right angle condition** ($\angle WMA = 90°$):
+
+$$\overrightarrow{MW} = (0-m,\; 4-0) = (-m,4), \qquad \overrightarrow{MA} = (8-m,\; a).$$
+
+Dot product equals zero:
+
+$$-m(8-m) + 4a = 0 \implies m^2 - 8m + 4a = 0.$$
+
+Substitute $m = 8-2a$:
+
+$$(8-2a)^2 - 8(8-2a) + 4a = 0$$
+$$64-32a+4a^2-64+16a+4a = 0$$
+$$4a^2 - 12a = 0 \implies 4a(a-3) = 0.$$
+
+So $a=0$ (degenerate, $A=Y$) or $a=3$. Take $a=3$, giving $m = 8-6=2$.
+
+Thus $M=(2,0)$, $A=(8,3)$, $W=(0,4)$.
+
+**Area of $\triangle WMA$** by the shoelace formula:
+
+$$[\triangle WMA] = \tfrac{1}{2}|x_W(y_M-y_A)+x_M(y_A-y_W)+x_A(y_W-y_M)|$$
+$$= \tfrac{1}{2}|0(0-3)+2(3-4)+8(4-0)|$$
+$$= \tfrac{1}{2}|0-2+32| = \tfrac{30}{2} = 15.$$
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,35 @@
+---
+year: 2024
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 4
+answer: B
+choices: ['$1$', '$2$', '$5$', '$25$', '$125$']
+---
+
+<Problem>
+How many different remainders can result when the $100$th power of an integer is divided by $125$?
+
+$\textbf{(A)}\ 1 \qquad \textbf{(B)}\ 2 \qquad \textbf{(C)}\ 5 \qquad \textbf{(D)}\ 25 \qquad \textbf{(E)}\ 125$
+</Problem>
+
+<Solution>
+We want to find the number of distinct values of $n^{100} \pmod{125}$ as $n$ ranges over all integers.
+
+**Case 1: $5 \mid n$.**
+
+Write $n = 5k$. Then $n^{100} = 5^{100} k^{100}$. Since $5^{100}$ is divisible by $5^3 = 125$, we get $n^{100} \equiv 0 \pmod{125}$.
+
+**Case 2: $\gcd(n, 5) = 1$ (i.e., $5 \nmid n$).**
+
+By Euler's theorem, $\phi(125) = 125\left(1 - \frac{1}{5}\right) = 100$. So for $\gcd(n, 125) = 1$:
+
+$$n^{100} \equiv n^{\phi(125)} \equiv 1 \pmod{125}.$$
+
+**Conclusion.**
+
+The only possible remainders are $0$ (when $5 \mid n$) and $1$ (when $5 \nmid n$). That's exactly $2$ distinct remainders.
+
+Answer: **B**.
+</Solution>

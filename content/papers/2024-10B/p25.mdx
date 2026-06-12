@@ -1,0 +1,121 @@
+---
+year: 2024
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: E
+choices: ['$88$', '$89$', '$90$', '$91$', '$92$']
+---
+
+<Problem>
+Each of $27$ bricks (right rectangular prisms) has dimensions $a \times b \times c$, where $a$, $b$, and $c$ are pairwise relatively prime positive integers. These bricks are arranged to form a $3 \times 3 \times 3$ block. A $28$th brick with the same dimensions is introduced, and these $28$ bricks are reconfigured into a $2 \times 2 \times 7$ block. The new block is $1$ unit taller, $1$ unit wider, and $1$ unit deeper than the old one. What is $a + b + c$?
+
+$\textbf{(A)}\ 88 \qquad \textbf{(B)}\ 89 \qquad \textbf{(C)}\ 90 \qquad \textbf{(D)}\ 91 \qquad \textbf{(E)}\ 92$
+</Problem>
+
+<Solution>
+**Setting up the equations.**
+
+The $3 \times 3 \times 3$ block has dimensions $(3a) \times (3b) \times (3c)$ (in some assignment of $a,b,c$ to the three axes). The $2 \times 2 \times 7$ block has dimensions $(2a) \times (2b) \times (7c)$ (in some assignment).
+
+The new block is 1 unit larger in each dimension than the old block. In some permutation of axes:
+
+$$2a = 3a + 1, \quad 2b = 3b + 1, \quad 7c = 3c + 1.$$
+
+But $2a = 3a + 1 \Rightarrow -a = 1$, which is impossible for positive $a$.
+
+We need to allow different permutations of $\{a,b,c\}$ for each block. Let's say the old block has dimensions $3x \times 3y \times 3z$ and the new block has dimensions $2x' \times 2y' \times 7z'$, where $(x,y,z)$ and $(x',y',z')$ are both permutations of $(a,b,c)$.
+
+The new block is 1 unit taller, wider, and deeper in each dimension:
+
+$$2x' = 3x + 1, \quad 2y' = 3y + 1, \quad 7z' = 3z + 1.$$
+
+Since $(x,y,z)$ and $(x',y',z')$ are both permutations of $(a,b,c)$, we need to find which assignment works.
+
+Also, the volumes must satisfy: $28 \cdot abc = 2 \cdot 2 \cdot 7 \cdot abc = 28abc$ ✓ (automatically satisfied).
+
+**Finding the pairing.** The three equations pair up the dimensions. The "2x" side increases one old-block dimension by 1, and "7z" does another. Let's try all pairings.
+
+Each of the three new-block sides $\{2, 2, 7\}$ is matched with an old-block side multiplier $\{3, 3, 3\}$. So we have three equations of the form:
+
+$$n_i \cdot a_i = 3 b_i + 1$$
+
+where $(n_1, n_2, n_3)$ is a permutation of $(2, 2, 7)$ and $(a_1, a_2, a_3)$, $(b_1, b_2, b_3)$ are permutations of $(a, b, c)$.
+
+The two $2$'s correspond to: $2a_i = 3b_i + 1$, i.e., $a_i = \dfrac{3b_i + 1}{2}$. For $a_i$ to be a positive integer, we need $b_i$ to be odd.
+
+The $7$ corresponds to: $7a_j = 3b_j + 1$, i.e., $a_j = \dfrac{3b_j + 1}{7}$. For $a_j$ to be a positive integer, we need $3b_j \equiv -1 \equiv 6 \pmod{7}$, i.e., $b_j \equiv 2 \pmod 7$.
+
+**Volume constraint.** Since both configurations use bricks of dimension $a \times b \times c$, the volume is already matched. But let's also use the fact that $(a_1, a_2, a_3)$ and $(b_1, b_2, b_3)$ are both permutations of $(a,b,c)$ — so each of $a, b, c$ appears exactly once on each side.
+
+Let's say $a_3 = b_j$ (the dimension matched with 7 on the new side) is the brick dimension matched with the $7$, and the two dimensions matched with $2$'s are the others.
+
+Write $c_1, c_2, c_3$ for the values of $a, b, c$ in increasing order. We need:
+- Two of $\{a,b,c\}$ are odd (for the $2$-multiplier equations).
+- One of $\{a,b,c\}$ satisfies $\equiv 2 \pmod 7$ (for the $7$-multiplier equation).
+
+Also, the values on the left side of each equation are also a permutation of $\{a,b,c\}$.
+
+Let's call the three brick dimensions $p, q, r$ (pairwise coprime). Assign:
+- $p$ and $q$ appear with multiplier $2$ on the new side; $r$ appears with multiplier $7$:
+
+$$2p = 3s + 1, \quad 2q = 3t + 1, \quad 7r = 3u + 1,$$
+
+where $\{s,t,u\} = \{p,q,r\}$.
+
+Since all dimensions must be positive integers and pairwise coprime, and the left sides $(2p, 2q, 7r)$ are the new-block dimensions, while $(3s, 3t, 3u) = (3p, 3q, 3r)$ (in some order) are the old-block dimensions.
+
+The equations $2p = 3s+1$, $2q = 3t+1$, $7r = 3u+1$ with $\{s,t,u\}=\{p,q,r\}$ give six sub-cases based on how $(s,t,u)$ maps to $(p,q,r)$.
+
+**Sub-case: $s=p, t=q, u=r$** (identity permutation):
+$2p = 3p+1 \Rightarrow p = -1$ — impossible.
+
+**Sub-case: $s=p, t=r, u=q$:**
+$2p = 3p+1 \Rightarrow$ impossible.
+
+**Sub-case: $s=q, t=p, u=r$:**
+$2p = 3q+1$ and $2q = 3p+1$ and $7r = 3r+1$.
+From third: $4r = 1$ — not integer.
+
+**Sub-case: $s=q, t=r, u=p$:**
+$2p = 3q+1$, $2q = 3r+1$, $7r = 3p+1$.
+
+From these: $p = \dfrac{3q+1}{2}$, $q = \dfrac{3r+1}{2}$, $r = \dfrac{3p+1}{7}$.
+
+Substitute: $q = \dfrac{3r+1}{2} = \dfrac{3\cdot\frac{3p+1}{7}+1}{2} = \dfrac{\frac{9p+3+7}{7}}{2} = \dfrac{9p+10}{14}$.
+
+Then $p = \dfrac{3q+1}{2} = \dfrac{3\cdot\frac{9p+10}{14}+1}{2} = \dfrac{\frac{27p+30+14}{14}}{2} = \dfrac{27p+44}{28}$.
+
+So $28p = 27p + 44 \Rightarrow p = 44$.
+
+Then $q = \dfrac{9(44)+10}{14} = \dfrac{396+10}{14} = \dfrac{406}{14} = 29$.
+
+Then $r = \dfrac{3(44)+1}{7} = \dfrac{133}{7} = 19$.
+
+**Check pairwise coprimality:** $\gcd(44, 29) = \gcd(44,29)$: $44 = 1\cdot29+15$, $29=1\cdot15+14$, $15=1\cdot14+1$ → $\gcd=1$ ✓. $\gcd(44,19)$: $44=2\cdot19+6$, $19=3\cdot6+1$ → $\gcd=1$ ✓. $\gcd(29,19)$: $29=1\cdot19+10$, $19=1\cdot10+9$, $10=1\cdot9+1$ → $\gcd=1$ ✓.
+
+**Verify equations:**
+- $2(44) = 88 = 3(29)+1 = 88$ ✓
+- $2(29) = 58 = 3(19)+1 = 58$ ✓
+- $7(19) = 133 = 3(44)+1 = 133$ ✓
+
+**Check remaining sub-cases** (for completeness):
+
+**Sub-case: $s=r, t=p, u=q$:**
+$2p=3r+1$, $2q=3p+1$, $7r=3q+1$.
+$p=\frac{3r+1}{2}$, $q=\frac{3p+1}{2}=\frac{3\cdot\frac{3r+1}{2}+1}{2}=\frac{9r+5}{4}$.
+$7r=3q+1=\frac{3(9r+5)}{4}+1=\frac{27r+15+4}{4}=\frac{27r+19}{4}$.
+$28r=27r+19 \Rightarrow r=19$.
+$p=\frac{57+1}{2}=29$, $q=\frac{171+5}{4}=44$.
+Same solution $\{19,29,44\}$ ✓.
+
+**Sub-case: $s=r, t=q, u=p$:**
+$2p=3r+1$, $2q=3q+1\Rightarrow q=-1$ — impossible.
+
+So the unique solution (up to permutation) is $\{a,b,c\} = \{19, 29, 44\}$.
+
+$$a + b + c = 19 + 29 + 44 = 92.$$
+
+Answer: **E**.
+</Solution>

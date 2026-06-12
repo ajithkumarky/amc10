@@ -1,0 +1,55 @@
+---
+year: 2024
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 5
+answer: A
+choices: ['$5$', '$6$', '$7$', '$8$', '$9$']
+---
+
+<Problem>
+A group of $16$ people will be partitioned into $4$ indistinguishable $4$-person committees. Each committee will have one chairperson and one secretary. The number of different ways to make these assignments can be written as $3^r M$, where $r$ and $M$ are positive integers and $M$ is not divisible by $3$. What is $r$?
+
+$\textbf{(A)}\ 5 \qquad \textbf{(B)}\ 6 \qquad \textbf{(C)}\ 7 \qquad \textbf{(D)}\ 8 \qquad \textbf{(E)}\ 9$
+</Problem>
+
+<Solution>
+**Step 1: Count ways to partition 16 people into 4 indistinguishable groups of 4.**
+
+The number of ways to divide $16$ people into $4$ unordered groups of $4$ is:
+
+$$\frac{1}{4!}\binom{16}{4}\binom{12}{4}\binom{8}{4}\binom{4}{4} = \frac{16!}{(4!)^4 \cdot 4!}.$$
+
+**Step 2: For each committee, assign a chairperson and secretary.**
+
+Each committee of 4 has $4$ choices for chair and $3$ choices for secretary (must be a different person): $4 \times 3 = 12$ ways per committee.
+
+For 4 committees: $12^4$ ways.
+
+But the committees are indistinguishable as committees — they're only distinguishable by their role assignments (chair and secretary make each committee unique once assigned). Actually, the problem says "4 indistinguishable committees," meaning we don't label the committees 1–4; they're distinguished only by their membership and officer assignments.
+
+Wait — once each committee has a chairperson and secretary, the committees become distinguishable (each has unique people). So the count is:
+
+$$N = \frac{16!}{(4!)^4 \cdot 4!} \times 12^4.$$
+
+**Step 3: Find the power of 3 dividing $N$.**
+
+We need $v_3(N)$, the 3-adic valuation of $N$.
+
+$v_3(16!) = \lfloor 16/3 \rfloor + \lfloor 16/9 \rfloor + \lfloor 16/27 \rfloor = 5 + 1 + 0 = 6$.
+
+$v_3(4!) = v_3(24) = v_3(4 \cdot 3 \cdot 2 \cdot 1) = 1$. So $v_3((4!)^4) = 4$.
+
+$v_3(4!) = 1$ (the denominator's $4!$).
+
+$v_3(12^4) = v_3((4 \cdot 3)^4) = 4 \cdot v_3(12) = 4 \cdot 1 = 4$.
+
+Therefore:
+
+$$v_3(N) = v_3(16!) - v_3((4!)^4) - v_3(4!) + v_3(12^4) = 6 - 4 - 1 + 4 = 5.$$
+
+So $r = \mathbf{5}$.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,60 @@
+---
+year: 2024
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: C
+choices: ['$4$', '$5$', '$6$', '$7$', '$9$']
+---
+
+<Problem>
+In the following table, each question mark is to be replaced by "Possible" or "Not Possible" to indicate whether a nonvertical line with the given slope can contain the given number of lattice points (points both of whose coordinates are integers). How many of the $12$ entries will be "Possible"?
+
+|  | zero | exactly one | exactly two | more than two |
+|---|---|---|---|---|
+| zero slope | ? | ? | ? | ? |
+| nonzero rational slope | ? | ? | ? | ? |
+| irrational slope | ? | ? | ? | ? |
+
+$\textbf{(A)}\ 4 \qquad \textbf{(B)}\ 5 \qquad \textbf{(C)}\ 6 \qquad \textbf{(D)}\ 7 \qquad \textbf{(E)}\ 9$
+</Problem>
+
+<Solution>
+A nonvertical line has equation $y = mx + b$. A lattice point on the line satisfies $m \cdot x_0 + b = y_0$ with $x_0, y_0$ integers.
+
+**Zero slope (horizontal lines, $y = b$):**
+
+- **Zero lattice points:** If $b$ is irrational, then $y = b$ contains no lattice points. **Possible.**
+- **Exactly one lattice point:** If a horizontal line passes through one lattice point, it passes through all points $(x, b)$ where $b$ is an integer — but then every integer $x$ gives a lattice point $(x, b)$. So a horizontal line either has $0$ or infinitely many lattice points. **Not Possible.**
+- **Exactly two:** Same reasoning — impossible. **Not Possible.**
+- **More than two:** $y = 0$ passes through $(0,0), (1,0), (2,0), \ldots$ **Possible.**
+
+Zero slope row: Possible, Not, Not, Possible — **2 Possible**.
+
+**Nonzero rational slope ($m = p/q$ in lowest terms, $p \ne 0$, $q \ge 1$):**
+
+A line $y = \frac{p}{q}x + b$ passes through a lattice point $(x_0, y_0)$ iff $y_0 = \frac{p}{q}x_0 + b$, i.e., $b = y_0 - \frac{p}{q}x_0$. If the line passes through one lattice point $(x_0, y_0)$, then the next lattice point comes when $x = x_0 + q$, giving $y = y_0 + p$ (an integer). So lattice points occur every $q$ steps in $x$: the line passes through infinitely many or zero lattice points.
+
+- **Zero lattice points:** Choose $b$ irrational. E.g., $y = x + \sqrt{2}$. **Possible.**
+- **Exactly one:** Impossible (if one lattice point exists, infinitely many do). **Not Possible.**
+- **Exactly two:** Impossible. **Not Possible.**
+- **More than two:** $y = x$ passes through all $(n, n)$. **Possible.**
+
+Nonzero rational slope row: Possible, Not, Not, Possible — **2 Possible**.
+
+**Irrational slope:**
+
+If $m$ is irrational and the line $y = mx + b$ passes through two lattice points $(x_1, y_1)$ and $(x_2, y_2)$ with $x_1 \ne x_2$, then $m = \frac{y_2 - y_1}{x_2 - x_1}$, which is rational — a contradiction. So an irrational-slope line can contain **at most one** lattice point.
+
+- **Zero lattice points:** $y = \sqrt{2} \cdot x + \sqrt{2}$. Suppose $\sqrt{2}(x+1) = y$ with $y$ an integer; then $\sqrt{2} = y/(x+1)$ would be rational, contradiction. **Possible.**
+- **Exactly one lattice point:** $y = \sqrt{2} \cdot x$ passes through $(0, 0)$ only. **Possible.**
+- **Exactly two:** Impossible (shown above). **Not Possible.**
+- **More than two:** Impossible. **Not Possible.**
+
+Irrational slope row: Possible, Possible, Not, Not — **2 Possible**.
+
+**Total "Possible" entries:** $2 + 2 + 2 = 6$.
+
+Answer: **C**.
+</Solution>

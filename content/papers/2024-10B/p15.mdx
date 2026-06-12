@@ -1,0 +1,106 @@
+---
+year: 2024
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: C
+choices: ['$1$', '$2$', '$3$', '$4$', 'infinitely many']
+---
+
+<Problem>
+A list of $9$ real numbers consists of $1$, $2.2$, $3.2$, $5.2$, $6.2$, $7$, as well as $x, y, z$ with $x \le y \le z$. The range of the list is $7$, and the mean and median are both positive integers. How many ordered triples $(x, y, z)$ are possible?
+
+$\textbf{(A)}\ 1 \qquad \textbf{(B)}\ 2 \qquad \textbf{(C)}\ 3 \qquad \textbf{(D)}\ 4 \qquad \textbf{(E)}\ \text{infinitely many}$
+</Problem>
+
+<Solution>
+**Setting up constraints.**
+
+The six fixed values are $1, 2.2, 3.2, 5.2, 6.2, 7$. We also have $x \le y \le z$.
+
+**Range = 7.** The range is $\max - \min = 7$. The current fixed max is $7$ and fixed min is $1$. So the overall max of all 9 numbers is $\max(7, z) = z$ if $z > 7$, or $7$ if $z \le 7$. The overall min is $\min(1, x) = x$ if $x < 1$, or $1$ if $x \ge 1$.
+
+Case analysis:
+- If $x \ge 1$ and $z \le 7$: range $= 7 - 1 = 6 \ne 7$. Impossible.
+- If $x < 1$ and $z \le 7$: range $= 7 - x = 7$, so $x = 0$.
+- If $x \ge 1$ and $z > 7$: range $= z - 1 = 7$, so $z = 8$.
+- If $x < 1$ and $z > 7$: range $= z - x = 7$.
+
+**Case A: $x = 0$, $z \le 7$, $0 \le y \le z$.**
+
+The 9 numbers sorted include $0$ at the bottom. With $x = 0$ and $y, z$ to be determined, we need to find median and mean.
+
+The 9 values in order depend on where $y$ and $z$ fall. The median is the 5th value.
+
+Sum of fixed six: $1 + 2.2 + 3.2 + 5.2 + 6.2 + 7 = 24.8$. Total sum $= 24.8 + x + y + z = 24.8 + 0 + y + z$. Mean $= \dfrac{24.8 + y + z}{9}$ must be a positive integer.
+
+Since $0 \le y \le z \le 7$, we have $24.8 \le 24.8 + y + z \le 24.8 + 14 = 38.8$. So mean $\in \{3, 4\}$ (positive integers in that range divisible to give integers when divided by 9).
+
+- Mean $= 3$: $24.8 + y + z = 27$, so $y + z = 2.2$.
+- Mean $= 4$: $24.8 + y + z = 36$, so $y + z = 11.2$.
+
+For mean $= 3$: $y + z = 2.2$ with $0 \le y \le z \le 7$. The sorted list has $0, \ldots$ at position 1. With $y + z = 2.2$ and both $\le 7$, values $y, z$ are small. The sorted order of all 9 is $0, y, z, 1, 2.2, 3.2, 5.2, 6.2, 7$ (approximately, depending on exact values). The 5th value is $2.2$ (since $y \le z \le 2.2$ with $y+z=2.2$ means $z \le 2.2$). So median $= 2.2$, not an integer. This fails.
+
+Actually let's be careful: if $z \le 1$, the sorted list starts $0, y, z, 1, \ldots$ — 5th element is $2.2$. If $1 < z \le 2.2$, the 5th element shifts. With $y + z = 2.2$ and $y \le z$, we get $z \ge 1.1$ and $z \le 2.2$. If $z > 1$, sorted order is $0, y, 1, z, 2.2, 3.2, 5.2, 6.2, 7$ — 5th element is $2.2$. Still not integer. Mean $= 3$ fails.
+
+For mean $= 4$: $y + z = 11.2$ with $0 \le y \le z \le 7$. So $z \ge 5.6$ and $z \le 7$, giving $y = 11.2 - z \in [4.2, 5.6]$.
+
+Sorted list: $0, 1, 2.2, 3.2, y, z, 5.2, 6.2, 7$... wait, need to place $y$ and $z$ correctly. With $y \in [4.2, 5.6]$ and $z \in [5.6, 7]$:
+
+- $y \in [4.2, 5.2)$: sorted order is $0, 1, 2.2, 3.2, y, 5.2, z, 6.2, 7$ — 5th element is $y$. Need $y$ = positive integer, so $y = 5$. Then $z = 6.2$, and $z \le 7$ ✓. Median $= 5$ ✓. This gives triple $(0, 5, 6.2)$.
+- $y = 5.2$: $z = 6$, sorted order is $0,1,2.2,3.2,5.2,5.2,6,6.2,7$ — 5th element is $5.2$, not integer.
+- $y \in (5.2, 5.6]$: sorted order is $0,1,2.2,3.2,5.2,y,z,6.2,7$ — 5th element is $5.2$, not integer.
+
+So Case A gives **one** triple: $(0, 5, 6.2)$.
+
+**Case B: $z = 8$, $x \ge 1$, $x \le y \le 8$.**
+
+Sum $= 24.8 + x + y + 8 = 32.8 + x + y$. With $1 \le x \le y \le 8$: sum ranges $[32.8+2, 32.8+16] = [34.8, 48.8]$. Mean must be integer: possible values $4, 5$.
+
+- Mean $= 4$: $32.8 + x + y = 36$, $x + y = 3.2$. With $x \ge 1$: $x \in [1, 1.6]$, $y = 3.2 - x$.
+
+  Median (5th of 9 sorted values). Sorted list has $1, 2.2, 3.2, 5.2, 6.2, 7, 8$ fixed plus $x \in [1, 1.6]$ and $y = 3.2-x \in [1.6, 2.2]$.
+
+  Order: $1, x, y, 2.2, 3.2, 5.2, 6.2, 7, 8$ (approximately). The 5th element is $3.2$, not a positive integer. Unless $y = 2.2$, then $x = 1$: list is $1, 1, 2.2, 2.2, 3.2, 5.2, 6.2, 7, 8$ — 5th element is $3.2$, not integer.
+
+- Mean $= 5$: $32.8 + x + y = 45$, $x + y = 12.2$. With $x \le y \le 8$: $x \ge 4.2$, $x \le 6.1$.
+
+  Sorted positions of $x$ and $y$: both are $\ge 4.2$, so they fit among/after $5.2$. Sorted list: $1, 2.2, 3.2, 5.2, x, y, 6.2, 7, 8$ or similar.
+
+  - $x \in [4.2, 5.2)$: order is $1, 2.2, 3.2, x, 5.2, y, 6.2, 7, 8$ — 5th element is $5.2$, not integer.
+  - $x = 5.2$: $y = 7$, order is $1, 2.2, 3.2, 5.2, 5.2, 7, 6.2, 7, 8$ — reorder: $1,2.2,3.2,5.2,5.2,6.2,7,7,8$ — 5th element is $5.2$, not integer.
+  - $x \in (5.2, 6.1]$: order is $1, 2.2, 3.2, 5.2, x, y, 6.2, 7, 8$ — 5th element is $x$. Need $x$ = positive integer, so $x = 6$. Then $y = 6.2$, and $y \le 8$ ✓. Check: $x \le y$: $6 \le 6.2$ ✓. Sorted: $1,2.2,3.2,5.2,6,6.2,6.2,7,8$ — 5th element $= 6$ ✓. Triple $(6, 6.2, 8)$.
+
+So Case B gives **one** triple: $(6, 6.2, 8)$.
+
+**Case C: $x < 1$, $z > 7$, $z - x = 7$.**
+
+So $z = x + 7$ with $x < 1$ and $z > 7$ (i.e., $x > 0$), giving $x \in (0, 1)$ and $z = x + 7 \in (7, 8)$.
+
+Sum $= 24.8 + x + y + (x+7) = 31.8 + 2x + y$. Mean $= \dfrac{31.8 + 2x + y}{9}$ must be a positive integer.
+
+For mean $= 4$: $31.8 + 2x + y = 36$, $2x + y = 4.2$. With $x \in (0,1)$ and $x \le y \le z = x+7$:
+
+$y = 4.2 - 2x$. Need $x \le y$: $x \le 4.2 - 2x \Rightarrow 3x \le 4.2 \Rightarrow x \le 1.4$ ✓. Need $y \le z = x+7$: $4.2 - 2x \le x + 7$ always true for $x > 0$.
+
+Median: sorted list. $x \in (0,1)$, $y = 4.2 - 2x \in (2.2, 4.2)$, $z = x + 7 \in (7, 8)$.
+
+Sorted order: $x, 1, 2.2, 3.2, y, 5.2, 6.2, 7, z$ (since $y \in (2.2, 4.2)$, it falls between $3.2$ and $5.2$). The 5th element is $y$. Need $y$ = positive integer, so $y = 3$. Then $2x = 4.2 - 3 = 1.2$, $x = 0.6$, $z = 7.6$.
+
+Check: $x = 0.6 \in (0,1)$ ✓, $y = 3$, $z = 7.6 \in (7,8)$ ✓. $x \le y \le z$ ✓. Sorted list: $0.6, 1, 2.2, 3.2, 3, 5.2, 6.2, 7, 7.6$... wait, $3 < 3.2$, so sorted: $0.6, 1, 2.2, 3, 3.2, 5.2, 6.2, 7, 7.6$ — 5th element is $3.2$, not $3$!
+
+Let me recheck. $y = 3 < 3.2$, so it goes before $3.2$: $x, 1, 2.2, y, 3.2, 5.2, 6.2, 7, z$ — 5th element is $3.2$, not integer. Fails.
+
+Try $y = 4$: then $2x = 0.2$, $x = 0.1$, $z = 7.1$. $y = 4 \in (3.2, 5.2)$: sorted $0.1, 1, 2.2, 3.2, 4, 5.2, 6.2, 7, 7.1$ — 5th element $= 4$ ✓. Mean check: $(31.8 + 0.2 + 4)/9 = 36/9 = 4$ ✓. Triple $(0.1, 4, 7.1)$.
+
+Any other integer $y$? $y \in (2.2, 4.2)$ gives integer $y = 3$ or $y = 4$. $y=3$ failed. $y=4$ works.
+
+For mean $= 5$: $31.8 + 2x + y = 45$, $2x + y = 13.2$. With $x \in (0,1)$: $y = 13.2 - 2x \in (11.2, 13.2)$. But $y \le z = x + 7 < 8$, so $y < 8$. Contradiction. Fails.
+
+So Case C gives **one** triple: $(0.1, 4, 7.1)$.
+
+**Total:** $1 + 1 + 1 = 3$ triples.
+
+Answer: **C**.
+</Solution>

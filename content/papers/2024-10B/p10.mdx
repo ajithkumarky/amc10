@@ -1,0 +1,42 @@
+---
+year: 2024
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 2
+answer: A
+choices: ["$5:4$", "$4:3$", "$3:2$", "$5:3$", "$2:1$"]
+---
+
+<Problem>
+Quadrilateral $ABCD$ is a parallelogram, and $E$ is the midpoint of the side $\overline{AD}$. Let $F$ be the intersection of lines $EB$ and $AC$. What is the ratio of the area of quadrilateral $CDEF$ to the area of triangle $CFB$?
+</Problem>
+
+<Solution>
+Place coordinates: $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$. Then $E$ is the midpoint of $\overline{AD}$, so $E=(0,\tfrac{1}{2})$.
+
+Find $F$, the intersection of lines $EB$ and $AC$.
+
+Line $AC$: from $(0,0)$ to $(1,1)$, parametrized as $(s,s)$.
+
+Line $EB$: from $E=(0,\tfrac{1}{2})$ to $B=(1,0)$. Direction $(1,-\tfrac{1}{2})$, so points are $(t,\tfrac{1}{2}-\tfrac{t}{2})$.
+
+Set equal: $s=t$ and $s = \tfrac{1}{2}-\tfrac{s}{2}$, giving $\tfrac{3s}{2}=\tfrac{1}{2}$, so $s=\tfrac{1}{3}$.
+
+Thus $F=\bigl(\tfrac{1}{3},\tfrac{1}{3}\bigr)$.
+
+Area of quadrilateral $CDEF$ (vertices $C=(1,1)$, $D=(0,1)$, $E=(0,\tfrac{1}{2})$, $F=(\tfrac{1}{3},\tfrac{1}{3})$) by shoelace:
+
+$$\text{Area} = \tfrac{1}{2}\bigl|(1\cdot1 - 0\cdot1)+(0\cdot\tfrac{1}{2}-0\cdot1)+(0\cdot\tfrac{1}{3}-\tfrac{1}{3}\cdot\tfrac{1}{2})+(\tfrac{1}{3}\cdot1-1\cdot\tfrac{1}{3})\bigr|$$
+$$= \tfrac{1}{2}\bigl|1 + 0 - \tfrac{1}{6} + 0\bigr| = \tfrac{5}{12}.$$
+
+Area of triangle $CFB$ (vertices $C=(1,1)$, $F=(\tfrac{1}{3},\tfrac{1}{3})$, $B=(1,0)$):
+
+$$\text{Area} = \tfrac{1}{2}\bigl|1(\tfrac{1}{3}-0)+\tfrac{1}{3}(0-1)+1(1-\tfrac{1}{3})\bigr| = \tfrac{1}{2}\bigl|\tfrac{1}{3}-\tfrac{1}{3}+\tfrac{2}{3}\bigr| = \tfrac{1}{3}.$$
+
+Ratio:
+
+$$\frac{\tfrac{5}{12}}{\tfrac{1}{3}} = \frac{5}{12}\cdot 3 = \frac{5}{4}.$$
+
+Answer: **A**.
+</Solution>

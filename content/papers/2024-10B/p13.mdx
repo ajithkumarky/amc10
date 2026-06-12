@@ -1,0 +1,39 @@
+---
+year: 2024
+paper: "10B"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 3
+answer: B
+choices: ["$585$", "$595$", "$623$", "$700$", "$791$"]
+---
+
+<Problem>
+Positive integers $x$ and $y$ satisfy the equation $\sqrt{x} + \sqrt{y} = \sqrt{1183}$. What is the minimum possible value of $x+y$?
+</Problem>
+
+<Solution>
+Factor $1183$: note $1183 = 7 \times 169 = 7 \times 13^2$.
+
+So $\sqrt{1183} = 13\sqrt{7}$. The equation becomes $\sqrt{x} + \sqrt{y} = 13\sqrt{7}$.
+
+For $\sqrt{x}$ and $\sqrt{y}$ to combine to a rational multiple of $\sqrt{7}$, write $\sqrt{x} = p\sqrt{7}$ and $\sqrt{y} = q\sqrt{7}$ for positive rationals $p, q$ with $p+q=13$.
+
+For $x = 7p^2$ to be a positive integer, $p^2$ must be rational with $7p^2 \in \mathbb{Z}^+$, meaning $p = t$ for positive integer $t$ (since $7t^2$ must be an integer). Similarly $q = 13-t$.
+
+So $x = 7t^2$ and $y = 7(13-t)^2$ for positive integer $t$ with $1 \le t \le 12$.
+
+$$x + y = 7t^2 + 7(13-t)^2 = 7\bigl[t^2 + (13-t)^2\bigr] = 7\bigl[2t^2 - 26t + 169\bigr].$$
+
+Minimize $f(t) = 2t^2 - 26t + 169$. The vertex is at $t = \tfrac{26}{4} = 6.5$, so check $t=6$ and $t=7$:
+
+- $t=6$: $f(6) = 72 - 156 + 169 = 85$. So $x+y = 7 \times 85 = 595$.
+- $t=7$: $f(7) = 98 - 182 + 169 = 85$. So $x+y = 595$.
+
+**Verification** ($t=6$): $x=7\cdot36=252$, $y=7\cdot49=343$.
+$$\sqrt{252}+\sqrt{343} = 6\sqrt{7}+7\sqrt{7} = 13\sqrt{7} = \sqrt{1183}.\checkmark$$
+
+The minimum value of $x+y$ is $595$.
+
+Answer: **B**.
+</Solution>

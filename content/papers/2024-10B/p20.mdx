@@ -1,0 +1,60 @@
+---
+year: 2024
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: A
+choices: ['$60$', '$72$', '$90$', '$108$', '$120$']
+---
+
+<Problem>
+Three different pairs of shoes are placed in a row so that no left shoe is next to a right shoe from a different pair. In how many ways can these six shoes be lined up?
+
+$\textbf{(A)}\ 60 \qquad \textbf{(B)}\ 72 \qquad \textbf{(C)}\ 90 \qquad \textbf{(D)}\ 108 \qquad \textbf{(E)}\ 120$
+</Problem>
+
+<Solution>
+Label the pairs $(L_1,R_1),(L_2,R_2),(L_3,R_3)$. The rule: $L_i$ may **not** be placed immediately next to $R_j$ when $i \ne j$.
+
+**What the constraint allows at each adjacency:** Two neighboring shoes are fine when they are both left shoes, both right shoes, or a matched pair ($L_iR_i$ or $R_iL_i$). The only forbidden configuration is a left shoe next to a right shoe from a *different* pair.
+
+**Finding all valid L/R patterns.** Think of each arrangement as a sequence of $L$'s and $R$'s (ignoring which pair for now). Whenever the sequence switches from $L$ to $R$ or from $R$ to $L$, those two adjacent shoes must be a matched pair.
+
+The 8 possible L/R patterns for 3 $L$'s and 3 $R$'s (with their valid counts) are:
+
+| Pattern | Boundaries | Count |
+|---------|-----------|-------|
+| $LLLRRR$ | 1 | 12 |
+| $RRRLLL$ | 1 | 12 |
+| $LLRRRL$ | 2 | 6 |
+| $LRRRLL$ | 2 | 6 |
+| $RLLLRR$ | 2 | 6 |
+| $RRLLLR$ | 2 | 6 |
+| $LRRLLR$ | 3 | 6 |
+| $RLLRRL$ | 3 | 6 |
+
+**Counting each pattern type.**
+
+**1-boundary patterns** ($LLLRRR$ and $RRRLLL$):
+There is exactly one L-R switch. The shoe at the end of the $L$-block and the shoe at the start of the $R$-block must be a matched pair. Choose which pair is the boundary pair: 3 ways. The remaining 2 $L$'s fill the other $L$ positions in $2! = 2$ ways; the remaining 2 $R$'s fill the other $R$ positions in $2! = 2$ ways.
+Each of the 2 patterns: $3 \times 2 \times 2 = 12$ arrangements.
+
+**2-boundary patterns** (e.g., $LLRRRL$):
+Two L-R or R-L switches. Two different pairs are used as boundary pairs (one pair at each switch). Choose which 2 pairs serve as boundary pairs: $\binom{3}{2} = 3$ ways; assign them to the 2 boundary positions: $2! = 2$ ways (which pair goes where). The remaining 1 pair has both shoes as "interior" shoes in their blocks — but in a 2-boundary pattern, there are two blocks of one type and one block of the other. The interior positions in the larger block are filled by the non-boundary shoe; the interior position in the single-shoe block is the boundary shoe from the other side. Since each boundary determines both the $L$ and $R$ shoe at that switch, and the remaining (non-boundary) pair fills the interior of the large block:
+
+The remaining $L$ and $R$ from the third (non-boundary) pair each go to an interior slot, but these slots are fixed by the pattern (only 1 remaining $L$ slot and 1 remaining $R$ slot). So no additional choices: $1$ way.
+
+Each of the 4 two-boundary patterns: $3 \times 2 \times 1 = 6$ arrangements.
+
+**3-boundary patterns** ($LRRLLR$ and $RLLRRL$):
+Three switches, using all 3 pairs as boundary pairs. Assign the 3 pairs to the 3 boundary positions: $3! = 6$ ways. Each assignment completely determines all 6 shoe positions (every shoe is a boundary shoe).
+
+Each of the 2 three-boundary patterns: $3! = 6$ arrangements.
+
+**Grand total:**
+
+$$2 \times 12 + 4 \times 6 + 2 \times 6 = 24 + 24 + 12 = 60.$$
+
+Answer: **A**.
+</Solution>

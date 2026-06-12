@@ -1,0 +1,49 @@
+---
+year: 2024
+paper: "10B"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 3
+answer: B
+choices: ['$39$', '$71$', '$73$', '$75$', '$135$']
+---
+
+<Problem>
+A dartboard is the region $B$ in the coordinate plane consisting of all points $(x, y)$ such that $|x| + |y| \le 8$. A target $T$ is the region where $(x^2 + y^2 - 25)^2 \le 49$. A dart is thrown at a random point in $B$. The probability that the dart lands in $T$ can be expressed as $\dfrac{m}{n}\pi$, where $m$ and $n$ are relatively prime positive integers. What is $m + n$?
+
+$\textbf{(A)}\ 39 \qquad \textbf{(B)}\ 71 \qquad \textbf{(C)}\ 73 \qquad \textbf{(D)}\ 75 \qquad \textbf{(E)}\ 135$
+</Problem>
+
+<Solution>
+**Step 1: Find the area of B.**
+
+$B$ is the set $|x|+|y|\le 8$, which is a square (rotated 45°) with vertices at $(\pm 8, 0)$ and $(0, \pm 8)$. Its diagonal has length $16$, so its area is $\dfrac{16 \cdot 16}{2} = 128$.
+
+**Step 2: Understand the target T.**
+
+The condition $(x^2+y^2-25)^2 \le 49$ means $|x^2+y^2-25| \le 7$, i.e.
+
+$$18 \le x^2+y^2 \le 32.$$
+
+So $T$ is an annulus centered at the origin with inner radius $r_1 = \sqrt{18} = 3\sqrt{2}$ and outer radius $r_2 = \sqrt{32} = 4\sqrt{2}$.
+
+**Step 3: Find the part of T inside B.**
+
+We need to check whether the annulus is fully inside $B$ or gets cut off. The boundary of $B$ is $|x|+|y|=8$. The farthest a point on the outer circle $x^2+y^2=32$ can be from the origin in the $\ell^1$ norm is at $(\pm 4\sqrt{2}, 0)$ or $(0, \pm 4\sqrt{2})$, giving $|x|+|y|=4\sqrt{2}\approx 5.66 < 8$. So the entire annulus lies inside $B$.
+
+Similarly for the inner circle: $3\sqrt{2} \approx 4.24 < 8$, also fine.
+
+Therefore the area of $T \cap B$ equals the full annulus area:
+
+$$\pi r_2^2 - \pi r_1^2 = \pi(32) - \pi(18) = 14\pi.$$
+
+**Step 4: Compute the probability.**
+
+$$P = \frac{14\pi}{128} = \frac{7\pi}{64}.$$
+
+So $m = 7$ and $n = 64$. Check: $\gcd(7, 64) = 1$ ✓.
+
+$$m + n = 7 + 64 = 71.$$
+
+Answer: **B**.
+</Solution>

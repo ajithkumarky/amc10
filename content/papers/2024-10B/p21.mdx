@@ -1,0 +1,52 @@
+---
+year: 2024
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: C
+choices: ['$\dfrac{1}{9}$', '$1$', '$\dfrac{10}{9}$', '$\dfrac{11}{9}$', '$\dfrac{19}{9}$']
+---
+
+<Problem>
+Two straight pipes (circular cylinders), with radii $1$ and $\dfrac{1}{4}$, lie parallel and in contact on a flat floor. A third parallel pipe lies on the same floor and is in contact with both. What is the sum of the possible radii of the third pipe?
+
+(The head-on view shows one large circle of radius $1$ and one small circle of radius $\tfrac{1}{4}$, both resting on a flat line, tangent to each other and to the line.)
+
+$\textbf{(A)}\ \dfrac{1}{9} \qquad \textbf{(B)}\ 1 \qquad \textbf{(C)}\ \dfrac{10}{9} \qquad \textbf{(D)}\ \dfrac{11}{9} \qquad \textbf{(E)}\ \dfrac{19}{9}$
+</Problem>
+
+<Solution>
+Work in the head-on cross-section view: two circles of radii $R=1$ and $r=\tfrac14$ resting on a horizontal line (the floor), mutually externally tangent. We seek a third circle of radius $\rho>0$ that also rests on the floor and is externally tangent to both.
+
+**Setting up coordinates.** Place the floor along the $x$-axis. The center of the large circle is at $(0, 1)$ and the center of the small circle is at $(d, \tfrac14)$ where the circles are tangent: the distance between centers equals $1 + \tfrac14 = \tfrac54$.
+
+$$d^2 + \left(1 - \tfrac14\right)^2 = \left(\tfrac54\right)^2 \implies d^2 + \tfrac{9}{16} = \tfrac{25}{16} \implies d^2 = 1 \implies d = 1.$$
+
+So center of large circle: $A = (0,1)$, center of small circle: $B = (1, \tfrac14)$.
+
+**Third circle of radius $\rho$** has center at $(x, \rho)$ (resting on the floor). Tangency conditions:
+
+- Externally tangent to large circle: $x^2 + (\rho-1)^2 = (1+\rho)^2$.
+  $$x^2 = (1+\rho)^2 - (\rho-1)^2 = 4\rho \implies x^2 = 4\rho.$$
+
+- Externally tangent to small circle: $(x-1)^2 + (\rho - \tfrac14)^2 = (\rho + \tfrac14)^2$.
+  $$(x-1)^2 = (\rho+\tfrac14)^2 - (\rho-\tfrac14)^2 = \rho \implies (x-1)^2 = \rho.$$
+
+From the first equation: $x^2 = 4\rho$, so $\rho = x^2/4$.
+Substitute into the second: $(x-1)^2 = x^2/4$.
+
+$$x^2 - 2x + 1 = \frac{x^2}{4} \implies \frac{3x^2}{4} - 2x + 1 = 0 \implies 3x^2 - 8x + 4 = 0.$$
+
+$$x = \frac{8 \pm \sqrt{64 - 48}}{6} = \frac{8 \pm 4}{6}.$$
+
+So $x = 2$ or $x = \dfrac{2}{3}$.
+
+**Corresponding radii:**
+- $x = 2$: $\rho = 4/4 = 1$.
+- $x = 2/3$: $\rho = (4/9)/4 = 1/9$.
+
+**Sum of possible radii:** $1 + \dfrac{1}{9} = \dfrac{10}{9}$.
+
+Answer: **C**.
+</Solution>

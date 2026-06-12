@@ -1,0 +1,61 @@
+---
+year: 2024
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: A
+choices: ['$1010$', '$1011$', '$1012$', '$1013$', '$1014$']
+---
+
+<Problem>
+Jerry likes to play with numbers. One day, he wrote all the integers from $1$ to $2024$ on the whiteboard. Then he repeatedly chose four numbers on the whiteboard, erased them, and replaced them with either their sum or their product. (For example, Jerry's first step might have been to erase $1, 2, 3$, and $5$, and then write either $11$, their sum, or $30$, their product, on the whiteboard.) After repeatedly performing this operation, Jerry noticed that all the remaining numbers on the board were odd. What is the maximum possible number of integers on the board at that time?
+
+$\textbf{(A)}\ 1010 \qquad \textbf{(B)}\ 1011 \qquad \textbf{(C)}\ 1012 \qquad \textbf{(D)}\ 1013 \qquad \textbf{(E)}\ 1014$
+</Problem>
+
+<Solution>
+**Key observation about even numbers.**
+
+Among $1$ to $2024$, there are $1012$ even numbers and $1012$ odd numbers.
+
+Each operation takes 4 numbers and replaces them with 1, so the count decreases by 3 per operation.
+
+For the board to have only odd numbers, all even numbers must be "eliminated." We need to understand how to use the operations to turn even numbers into odd results.
+
+**When does the operation produce an odd result?**
+
+- **Sum of 4 numbers is odd** when exactly 1 or exactly 3 of the four numbers are odd (i.e., the four have an odd number of odd terms). This means an odd number of the four chosen numbers are odd, which requires an odd number of even numbers among them: 1 or 3 even numbers.
+- **Product of 4 numbers is odd** when all 4 numbers are odd.
+
+To eliminate even numbers, we want each operation to consume even numbers and produce an odd result.
+
+**Optimal strategy: use sum of 3 evens and 1 odd.**
+
+Take 3 even numbers and 1 odd number, and replace with their sum. The sum of 3 even numbers is even, and adding an odd number gives an odd result. So we consume 3 even numbers and 1 odd number, and produce 1 odd number. Net change: $-3$ even, $-1$ odd, $+1$ odd. So this operation eliminates 3 even numbers and the count drops by 3.
+
+**How many such operations do we need?**
+
+We start with 1012 even numbers. Each operation eliminates 3 even numbers. After $k$ operations of this type, we eliminate $3k$ even numbers. We need $3k \ge 1012$, so $k \ge \lceil 1012/3 \rceil$.
+
+$1012 = 3 \cdot 337 + 1$, so we need at least $338$ operations to clear all even numbers (337 operations eliminate $1011$ evens, leaving 1 even; one more is needed).
+
+But wait — for the last even number, we need to combine it with others. If only 1 even remains, we must include it in a group of 4; to get an odd product we'd need all 4 odd, but that misses the even number. To get an odd sum with 1 even number, we need an odd number of odd numbers among the four, which with 1 even means we need 1 or 3 odds:
+- 1 even + 3 odds → sum = odd. This works! Consumes 1 even and 3 odds, produces 1 odd.
+
+So after 337 operations (each consuming 3 evens, 1 odd), we have:
+- Evens remaining: $1012 - 3(337) = 1012 - 1011 = 1$
+- Odds remaining: $1012 - 337 + 337 = 1012$ (each operation takes 1 odd and produces 1 odd, net zero change to odd count)
+- Total numbers: $2024 - 3(337) = 2024 - 1011 = 1013$
+
+Now we do 1 final operation: take the 1 even + 3 odds, sum them (odd total). This gives:
+- Evens: $1 - 1 = 0$ ✓
+- Odds: $1012 - 3 + 1 = 1010$
+- Total: $1013 - 3 = 1010$
+
+So the maximum number of integers remaining is $\mathbf{1010}$.
+
+**Why can't we do better?** Any operation that eliminates at least one even number uses at least 1 even and reduces the count by 3. Since we cannot keep any even numbers, we must do operations to clear all 1012 evens. The analysis shows we need exactly $337 + 1 = 338$ operations, each reducing the count by 3, for a total reduction of $1014$. Final count: $2024 - 1014 = 1010$.
+
+Answer: **A**.
+</Solution>

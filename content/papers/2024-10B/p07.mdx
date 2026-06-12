@@ -1,0 +1,23 @@
+---
+year: 2024
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 2
+answer: A
+choices: ["$0$", "$1$", "$7$", "$11$", "$18$"]
+---
+
+<Problem>
+What is the remainder when $7^{2024} + 7^{2025} + 7^{2026}$ is divided by $19$?
+</Problem>
+
+<Solution>
+Factor out the smallest power:
+
+$$7^{2024} + 7^{2025} + 7^{2026} = 7^{2024}(1 + 7 + 49) = 7^{2024} \cdot 57.$$
+
+Notice that $57 = 3 \times 19$, so $57$ is divisible by $19$. Therefore the entire expression is divisible by $19$, and the remainder is $0$.
+
+Answer: **A**.
+</Solution>
