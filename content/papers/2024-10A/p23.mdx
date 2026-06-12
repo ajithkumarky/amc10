@@ -1,0 +1,146 @@
+---
+year: 2024
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 5
+answer: D
+choices: ["$212$", "$247$", "$258$", "$276$", "$284$"]
+---
+
+<Problem>
+Integers $a$, $b$, and $c$ satisfy $ab + c = 100$, $bc + a = 87$, and $ca + b = 60$. What is $ab + bc + ca$?
+</Problem>
+
+<Solution>
+**Add all three equations:**
+$$(ab + c) + (bc + a) + (ca + b) = 100 + 87 + 60 = 247.$$
+$$ab + bc + ca + a + b + c = 247. \quad (*)$$
+
+**Subtract pairs to find relationships.**
+
+$(ab + c) - (bc + a) = 13$:
+$$ab - bc + c - a = 13 \implies b(a-c) - (a-c) = 13 \implies (b-1)(a-c) = 13.$$
+
+$(bc + a) - (ca + b) = 27$:
+$$bc - ca + a - b = 27 \implies c(b-a) + (a-b) = 27 \implies (c-1)(b-a) = 27.$$
+
+$(ab + c) - (ca + b) = 40$:
+$$ab - ca + c - b = 40 \implies a(b-c) - (b-c) = 40 \implies (a-1)(b-c) = 40.$$
+
+So:
+- $(b-1)(a-c) = 13$
+- $(c-1)(b-a) = 27$
+- $(a-1)(b-c) = 40$
+
+Since $13$ is prime and $a, b, c$ are integers:
+
+**Case: $(b-1)(a-c) = 13$.** Either $b-1 = 1, a-c = 13$ or $b-1 = 13, a-c = 1$ or negatives.
+
+**Case 1**: $b-1 = 1, a-c = 13 \Rightarrow b = 2, a = c + 13$.
+
+Substitute into $(c-1)(b-a) = 27$:
+$(c-1)(2 - (c+13)) = 27$
+$(c-1)(-c - 11) = 27$
+$-(c-1)(c+11) = 27$
+$(c-1)(c+11) = -27$
+$c^2 + 10c - 11 = -27$
+$c^2 + 10c + 16 = 0$
+$(c+2)(c+8) = 0$
+$c = -2$ or $c = -8$.
+
+**Sub-case $c = -2$, $b = 2$, $a = -2 + 13 = 11$:**
+
+Check $(a-1)(b-c) = 40$: $(11-1)(2-(-2)) = 10 \cdot 4 = 40$ ✓.
+
+Verify original equations:
+- $ab + c = 11 \cdot 2 + (-2) = 22 - 2 = 20 \neq 100$. ✗
+
+**Sub-case $c = -8$, $b = 2$, $a = -8 + 13 = 5$:**
+
+Check $(a-1)(b-c) = 40$: $(5-1)(2-(-8)) = 4 \cdot 10 = 40$ ✓.
+
+Verify:
+- $ab + c = 5 \cdot 2 + (-8) = 10 - 8 = 2 \neq 100$. ✗
+
+**Case 2**: $b-1 = 13, a-c = 1 \Rightarrow b = 14, a = c + 1$.
+
+$(c-1)(14 - (c+1)) = 27$
+$(c-1)(13 - c) = 27$
+$13c - c^2 - 13 + c = 27$
+$-c^2 + 14c - 40 = 0$
+$c^2 - 14c + 40 = 0$
+$(c-4)(c-10) = 0$
+$c = 4$ or $c = 10$.
+
+**Sub-case $c = 4$, $b = 14$, $a = 5$:**
+
+Check $(a-1)(b-c) = 40$: $(5-1)(14-4) = 4 \cdot 10 = 40$ ✓.
+
+Verify:
+- $ab + c = 5 \cdot 14 + 4 = 70 + 4 = 74 \neq 100$. ✗
+
+**Sub-case $c = 10$, $b = 14$, $a = 11$:**
+
+Check $(a-1)(b-c) = 40$: $(11-1)(14-10) = 10 \cdot 4 = 40$ ✓.
+
+Verify:
+- $ab + c = 11 \cdot 14 + 10 = 154 + 10 = 164 \neq 100$. ✗
+
+**Try negative factors of 13.**
+
+**Case 3**: $b-1 = -1, a-c = -13 \Rightarrow b = 0, a = c - 13$.
+
+$(c-1)(0 - (c-13)) = 27$
+$(c-1)(13 - c) = 27$
+$13c - c^2 - 13 + c = 27$
+$-c^2 + 14c - 40 = 0$
+$c^2 - 14c + 40 = 0$
+$c = 4$ or $c = 10$.
+
+**Sub-case $c = 4$, $b = 0$, $a = 4 - 13 = -9$:**
+
+Check $(a-1)(b-c) = 40$: $(-9-1)(0-4) = (-10)(-4) = 40$ ✓.
+
+Verify:
+- $ab + c = (-9)(0) + 4 = 4 \neq 100$. ✗
+
+**Sub-case $c = 10$, $b = 0$, $a = -3$:**
+
+Check $(a-1)(b-c) = 40$: $(-3-1)(0-10) = (-4)(-10) = 40$ ✓.
+
+Verify:
+- $ab + c = (-3)(0) + 10 = 10 \neq 100$. ✗
+
+**Case 4**: $b-1 = -13, a-c = -1 \Rightarrow b = -12, a = c - 1$.
+
+$(c-1)(-12 - (c-1)) = 27$
+$(c-1)(-11-c) = 27$
+$-11c - c^2 + 11 + c = 27$
+$-c^2 - 10c + 11 = 27$
+$c^2 + 10c + 16 = 0$
+$(c+2)(c+8) = 0$
+$c = -2$ or $c = -8$.
+
+**Sub-case $c = -2$, $b = -12$, $a = -3$:**
+
+Check $(a-1)(b-c) = 40$: $(-4)(-12-(-2)) = (-4)(-10) = 40$ ✓.
+
+Verify:
+- $ab + c = (-3)(-12) + (-2) = 36 - 2 = 34 \neq 100$. ✗
+
+**Sub-case $c = -8$, $b = -12$, $a = -9$:**
+
+Check $(a-1)(b-c) = 40$: $(-9-1)(-12-(-8)) = (-10)(-4) = 40$ ✓.
+
+Verify:
+- $ab + c = (-9)(-12) + (-8) = 108 - 8 = 100$ ✓
+- $bc + a = (-12)(-8) + (-9) = 96 - 9 = 87$ ✓
+- $ca + b = (-8)(-9) + (-12) = 72 - 12 = 60$ ✓
+
+So $a = -9$, $b = -12$, $c = -8$.
+
+$$ab + bc + ca = (-9)(-12) + (-12)(-8) + (-8)(-9) = 108 + 96 + 72 = 276.$$
+
+Answer: **D**.
+</Solution>

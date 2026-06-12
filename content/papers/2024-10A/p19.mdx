@@ -1,0 +1,109 @@
+---
+year: 2024
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: E
+choices: ["$9$", "$12$", "$16$", "$18$", "$21$"]
+---
+
+<Problem>
+The first three terms of a geometric sequence are the integers $a$, $720$, and $b$, where $a < 720 < b$. What is the sum of the digits of the least possible value of $b$?
+</Problem>
+
+<Solution>
+For a geometric sequence $a, 720, b$, the middle term squared equals the product of the outer terms:
+$$720^2 = ab.$$
+
+So $ab = 518400$. Since the sequence is geometric with ratio $r = \frac{720}{a} = \frac{b}{720}$, we have $b = \frac{720^2}{a}$.
+
+**We need $a$ and $b$ to be integers** with $a < 720 < b$. Since $b = \frac{518400}{a}$ and $b > 720$, we need $a < 720$ (which is given) and $a \mid 518400$.
+
+We want to **minimize** $b = \frac{518400}{a}$, which means **maximizing** $a$ subject to $a < 720$ and $a \mid 518400$.
+
+Additionally, we need the common ratio $r = \frac{720}{a}$ to satisfy: since $a, 720, b$ are integers in a geometric sequence, $r$ must be rational, say $r = p/q$ in lowest terms. Then $a = \frac{720q}{p}$ and $b = \frac{720p}{q}$ must both be integers, so $q \mid 720$ and $p \mid 720$.
+
+**Find the largest integer divisor of $518400$ that is less than $720$.**
+
+$518400 = 720^2 = (720)^2$.
+
+$720 = 2^4 \times 3^2 \times 5$, so $720^2 = 2^8 \times 3^4 \times 5^2$.
+
+We want the largest divisor of $2^8 \times 3^4 \times 5^2$ that is less than $720$.
+
+Note $720 = 2^4 \cdot 3^2 \cdot 5$. Try $a = 719$? $719$ is prime, and $719 \nmid 518400$. 
+
+Try $a = 648 = 2^3 \times 3^4$: does $648 \mid 518400$? $518400 / 648 = 800$. Yes! $b = 800 > 720$ ✓. And $648 < 720$ ✓.
+
+Can we do better? Try values between 648 and 720:
+- $a = 720$: not allowed ($a < 720$).
+- $a = 675 = 3^3 \times 5^2 = 27 \times 25$: $518400 / 675 = 768$. Check: $675 \mid 518400$? $518400 = 2^8 \times 3^4 \times 5^2$ and $675 = 3^3 \times 5^2$. But $518400$ has $3^4$ and $5^2$, and $675 = 3^3 \times 5^2$ divides $518400$. Yes! $a = 675 < 720$, $b = 768 > 720$. 
+
+Now $b = 768 < 800$, so this is better.
+
+Can we find $a$ with $675 < a < 720$ and $a \mid 518400$?
+
+Try $a = 720/1 = 720$: not allowed. 
+$a = 576 = 2^6 \times 3^2$: $518400/576 = 900$. Too low (we found 675 already).
+$a = 480 = 2^5 \times 3 \times 5$: $518400/480 = 1080$.
+
+Let's look more carefully between 675 and 720. Divisors of $2^8 \times 3^4 \times 5^2 = 518400$ in range $(675, 720)$:
+- $a = 700 = 2^2 \times 5^2 \times 7$: 7 doesn't divide $518400$. No.
+- $a = 720$: excluded.
+- $a = 720 - d$ for small $d$: $a = 718, 716, ...$ — check if these divide $518400$.
+  - $a = 2^1 \times 359$: 359 is prime and $359 \nmid 518400$. No.
+  - Divisors of $518400$ in the range: systematically, $518400 = 2^8 \cdot 3^4 \cdot 5^2$.
+
+Let me list divisors near 720 by looking at which products are in $(675, 720)$:
+- $2^1 \cdot 3^4 \cdot 5^0 = 2 \times 81 = 162$: too small.
+- $2^4 \cdot 3^2 \cdot 5^0 = 16 \times 9 = 144$: too small.
+- $2^7 \cdot 3^0 \cdot 5^1 = 128 \times 5 = 640$: this is in range! $518400/640 = 810$. But $640 < 675$, so $b = 810 > 768$.
+- $2^3 \cdot 3^4 \cdot 5^0 = 8 \times 81 = 648$: $b = 800$.
+- $2^4 \cdot 3^0 \cdot 5^2 = 16 \times 25 = 400$: too small.
+- $2^2 \cdot 3^3 \cdot 5^1 = 4 \times 27 \times 5 = 540$: $b = 518400/540 = 960$.
+- $2^5 \cdot 3^2 \cdot 5^0 = 32 \times 9 = 288$.
+- $2^5 \cdot 3^0 \cdot 5^2 = 32 \times 25 = 800 > 720$: too big.
+- $2^3 \cdot 3^2 \cdot 5^2 = 8 \times 9 \times 25 = 1800 > 720$: too big.
+- $2^4 \cdot 3^1 \cdot 5^2 = 16 \times 3 \times 25 = 1200$: too big.
+- $2^6 \cdot 3^1 \cdot 5^0 = 64 \times 3 = 192$.
+- $2^0 \cdot 3^4 \cdot 5^2 = 81 \times 25 = 2025 > 720$: too big.
+- $2^2 \cdot 3^4 \cdot 5^0 = 4 \times 81 = 324$.
+- $2^6 \cdot 3^0 \cdot 5^1 = 64 \times 5 = 320$.
+- $2^3 \cdot 3^3 \cdot 5^1 = 8 \times 27 \times 5 = 1080 > 720$.
+- $2^0 \cdot 3^4 \cdot 5^1 = 81 \times 5 = 405$.
+- $2^2 \cdot 3^3 \cdot 5^0 = 4 \times 27 = 108$.
+- $2^6 \cdot 3^2 \cdot 5^0 = 64 \times 9 = 576$.
+- $2^7 \cdot 3^1 \cdot 5^0 = 128 \times 3 = 384$.
+- $2^8 \cdot 3^0 \cdot 5^0 = 256$.
+- $2^0 \cdot 3^3 \cdot 5^2 = 27 \times 25 = 675$: this gives $b = 518400/675 = 768$.
+- $2^1 \cdot 3^3 \cdot 5^2 = 2 \times 675 = 1350 > 720$: too big.
+- $2^5 \cdot 3^2 \cdot 5^1 = 32 \times 9 \times 5 = 1440 > 720$: too big.
+- $2^4 \cdot 3^1 \cdot 5^1 = 16 \times 15 = 240$.
+- $2^1 \cdot 3^4 \cdot 5^1 = 2 \times 405 = 810 > 720$: too big.
+- $2^5 \cdot 3^1 \cdot 5^1 = 32 \times 15 = 480$.
+- $2^7 \cdot 3^0 \cdot 5^0 = 128$.
+- $2^6 \cdot 3^1 \cdot 5^1 = 64 \times 15 = 960 > 720$: too big.
+- $2^4 \cdot 3^2 \cdot 5^1 = 16 \times 45 = 720$: equals 720, excluded.
+- $2^3 \cdot 3^2 \cdot 5^1 = 8 \times 45 = 360$.
+- $2^1 \cdot 3^2 \cdot 5^2 = 2 \times 9 \times 25 = 450$.
+- $2^3 \cdot 3^1 \cdot 5^2 = 8 \times 75 = 600$.
+- $2^4 \cdot 3^3 \cdot 5^0 = 16 \times 27 = 432$.
+- $2^4 \cdot 3^0 \cdot 5^2 = 400$.
+- $2^5 \cdot 3^3 \cdot 5^0 = 32 \times 27 = 864 > 720$: too big.
+- $2^4 \cdot 3^4 \cdot 5^0 = 16 \times 81 = 1296$: too big.
+- $2^6 \cdot 3^2 \cdot 5^1 = 64 \times 45 = 2880$: too big.
+- $2^2 \cdot 3^2 \cdot 5^2 = 4 \times 225 = 900 > 720$: too big.
+- $2^0 \cdot 3^2 \cdot 5^2 = 225$.
+- $2^2 \cdot 3^1 \cdot 5^2 = 300$.
+- $2^2 \cdot 3^4 \cdot 5^1 = 4 \times 405 = 1620$: too big.
+
+So the divisors of $518400$ in the range $(675, 720)$: there are none! The largest divisor $< 720$ is $675$.
+
+Therefore the maximum $a < 720$ with $a \mid 518400$ is $a = 675$, giving:
+$$b = \frac{518400}{675} = 768.$$
+
+**Sum of digits of $768$**: $7 + 6 + 8 = 21$.
+
+Answer: **E**.
+</Solution>

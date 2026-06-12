@@ -51,3 +51,5 @@ workers/*/node_modules
 
 # generated practice data
 public/practice-data/
+
+.blind/

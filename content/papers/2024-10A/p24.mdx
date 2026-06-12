@@ -1,0 +1,370 @@
+---
+year: 2024
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: B
+choices: ['$\dfrac{1}{54}$', '$\dfrac{7}{54}$', '$\dfrac{1}{6}$', '$\dfrac{5}{18}$', '$\dfrac{2}{5}$']
+---
+
+<Problem>
+A bee is moving in three-dimensional space. A fair six-sided die with faces labeled $A^+$, $A^-$, $B^+$, $B^-$, $C^+$, and $C^-$ is rolled. Suppose the bee occupies the point $(a, b, c)$. If the die shows $A^+$, then the bee moves to the point $(a+1, b, c)$ and if the die shows $A^-$, then the bee moves to the point $(a-1, b, c)$. Analogous moves are made with the other four outcomes. Suppose the bee starts at the point $(0, 0, 0)$ and the die is rolled four times. What is the probability that the bee traverses four distinct edges of some unit cube?
+</Problem>
+
+<Solution>
+The bee makes 4 moves, each along one of the 6 axis directions ($\pm x, \pm y, \pm z$). The bee traverses four distinct edges of a single unit cube if and only if the four moves form a path along 4 edges of some unit cube, with no repeated edges.
+
+**What does "four distinct edges of some unit cube" mean?** A unit cube has 12 edges. The bee must visit 5 distinct lattice points $P_0, P_1, P_2, P_3, P_4$ (its starting position and after each move) such that each consecutive pair $P_{i-1} P_i$ is an edge of a single unit cube.
+
+For four consecutive moves to lie on one unit cube, all four edges must belong to the same unit cube. A unit cube at position $(x_0, y_0, z_0)$ (lower-left-front corner) has its 12 edges. A path of 4 distinct edges within one cube forms a Hamiltonian path on 4 edges of the cube starting from a vertex.
+
+**Structure of the path.** The bee starts at $(0,0,0)$. After 4 unit moves (each $\pm 1$ along one axis), the bee visits 5 points. For all 4 edges to lie on one unit cube, all 5 points must be vertices of that cube, so all coordinates must lie in $\{x_0, x_0+1\} \times \{y_0, y_0+1\} \times \{z_0, z_0+1\}$ for some integers $x_0, y_0, z_0$.
+
+Starting at $(0,0,0)$: all 5 points have coordinates in $\{0, 1\}^3$ (since the cube must contain $(0,0,0)$ and each coordinate change is $\pm 1$). So $x_0 \in \{-1, 0\}$, $y_0 \in \{-1, 0\}$, $z_0 \in \{-1, 0\}$. But since all 5 points stay in $\{0,1\}^3$, we have $x_0 = y_0 = z_0 = 0$.
+
+**Constraint**: The bee's 4 moves must use each of the 3 coordinate axes, and specifically must use all 3 axes (otherwise the path lies in a 2D face or 1D edge, not 4 distinct edges of a 3D cube). Also:
+- Each move is exactly $+1$ or $-1$ in one coordinate.
+- The path stays in $\{0,1\}^3$.
+- All 4 edges are distinct.
+
+Since the bee starts at $(0,0,0)$ and stays in $\{0,1\}^3$, each coordinate can only go $0 \to 1$ (move $+$) or $1 \to 0$ (move $-$) — never $0 \to -1$ or $1 \to 2$.
+
+**Valid move sequences**: The 4 moves form a path on the unit cube starting from $(0,0,0)$, visiting 5 vertices, with no repeated edge. The cube has 8 vertices and 12 edges. A path of 4 distinct edges starting from a vertex uses 5 vertices.
+
+**Count valid sequences by axis usage:**
+
+The 4 moves use 3 axes. Since there are only 3 axes and 4 moves, by pigeonhole one axis is used twice. An axis used twice must go $+$ then $-$ (or vice versa) to stay in $\{0,1\}$.
+
+Let the repeated axis be $A$. The two moves on $A$ are:
+- Either $A^+ A^-$ (in some order): net effect $0$ on $A$-coordinate.
+- The moves on $A$ must alternate between 0 and 1.
+
+Also, the moves on the other two axes ($B$ and $C$) are each used exactly once: $B^\pm$ and $C^\pm$, and they must stay in $\{0,1\}$.
+
+**Starting at $(0,0,0)$:**
+- Any first move is valid (it goes to a coordinate of 1 in one axis).
+- Moves on axis $A$: if the first move on $A$ is $A^+$ (from 0 to 1), the second must be $A^-$ (from 1 to 0). Similarly for $A^-$ first.
+- Single move on $B$: if $B$-coordinate is 0, must move $B^+$; if 1, must move $B^-$.
+
+So the coordinate values determine the valid move at each step — there's no choice once we know the current position and which axis to use.
+
+**Count by choosing the axis sequence:**
+
+4 moves, 3 axes, one axis repeated. Choose which axis is repeated: 3 ways. Choose where the 2 repeated-axis moves appear among 4 positions: $\binom{4}{2} = 6$ ways. But the pair of moves on the repeated axis must be one $+$ and one $-$ (to return to original coordinate), and the remaining 2 positions have the other 2 axes (each used once). The order of the single-use axes matters: 2 ways.
+
+Total sequences of axis labels: $3 \times 6 \times 2 = 36$ ... but we also need to fix the direction ($+$ or $-$) for the single-use axis moves.
+
+Actually let me think more carefully. Given the starting point $(0,0,0)$:
+- For any axis move, if the current coordinate is 0, we must move $+$; if 1, we must move $-$.
+- The direction is forced by the current position.
+
+So we just need to count valid sequences of axes (each axis named, not direction) that produce paths staying in $\{0,1\}^3$ with 4 distinct edges.
+
+With starting point $(0,0,0)$, all coordinates start at 0. The first move on any axis goes from 0 to 1. The second move on any axis (if the coordinate is currently 1) goes back to 0, or if a different axis and its coordinate is 0, it goes to 1.
+
+**Valid paths**: We need to count 4-tuples $(m_1, m_2, m_3, m_4)$ where each $m_i \in \{A^+, A^-, B^+, B^-, C^+, C^-\}$ (each equally likely, probability $\frac{1}{6}$), such that the path stays in $\{0,1\}^3$ and uses 4 distinct edges.
+
+**Counting valid sequences:**
+
+Since the direction is forced by position, valid sequences are determined by the axis sequence. Let's denote the axes as $X, Y, Z$.
+
+For a 4-step sequence with axes $(a_1, a_2, a_3, a_4)$:
+- All coordinates must stay in $\{0,1\}$.
+- All 4 edges must be distinct.
+
+If we use an axis for the first time, the move is $+$ (from 0 to 1). If we use it a second time (when at 1), the move is $-$ (from 1 to 0). A third use would be $+$ again, etc.
+
+Using one axis 3 times creates repeated edges (the edge is traversed $+$ once and $-$ once = 2 uses, but then the $3^{rd}$ repeats one), which violates distinctness. Using one axis $\geq 3$ times always repeats an edge.
+
+So: one axis used exactly twice, two axes used exactly once (total $= 2+1+1 = 4$). ✓
+
+For the twice-used axis (say $X$): moves alternate $+, -$ or $-, +$... but starting at $x=0$, the sequence must be $+$ first ($x: 0\to1$), then $-$ ($x: 1\to0$). If the first $X$-move is $-$, that would take $x$ from 0 to $-1$, which is outside $\{0,1\}$. So the twice-used axis always goes $X^+$ then $X^-$.
+
+For the once-used axes ($Y, Z$): each starts at 0, so must move $+$. Moves are $Y^+$ and $Z^+$.
+
+So the valid sequence (of specific moves, not just axes) is determined by the axis sequence, and the moves are always: $X^+, X^-$ (for $X$ used twice) and $Y^+, Z^+$ (for $Y, Z$ used once).
+
+**Count valid axis sequences:**
+
+Choose which axis is repeated: 3 choices ($X$, $Y$, or $Z$).
+
+Choose positions for the two repeated-axis moves among positions 1, 2, 3, 4: $\binom{4}{2} = 6$ ways.
+
+The remaining 2 positions get the other two axes, one each: $2! = 2$ orderings.
+
+Total: $3 \times 6 \times 2 = 36$ valid sequences of moves.
+
+**But wait**: we need to ensure all 4 edges are distinct. Are any of these 36 sequences invalid (repeated edge)?
+
+Each sequence has exactly one $X^+$, one $X^-$, one $Y^+$, one $Z^+$. Since the six move types are all different among these (we use each label at most once), all 4 edges are automatically distinct.
+
+Actually, we use $X^+$ once and $X^-$ once — these are two different edges (they go in opposite directions along different segments). So yes, all 4 edges are distinct.
+
+**Total valid sequences**: 36 out of $6^4 = 1296$ total.
+
+$$P = \frac{36}{1296} = \frac{1}{36}.$$
+
+Hmm, this doesn't match any answer choice. Let me reconsider.
+
+**Reconsideration**: The problem asks that the 4 edges belong to "some unit cube," not necessarily anchored at the origin. The bee might step to negative coordinates if its path uses $A^-$ first.
+
+I assumed the cube is anchored at the origin, but the cube could be any unit cube. Let me reconsider.
+
+The path $P_0, P_1, P_2, P_3, P_4$ must all be vertices of some unit cube. $P_0 = (0,0,0)$. The cube containing $(0,0,0)$ as a vertex: there are $2^3 = 8$ possible unit cubes (choosing whether $(0,0,0)$ is the corner with each coordinate $+$ or $-$).
+
+The 8 cubes have opposite corner at $(\pm 1, \pm 1, \pm 1)$. For a cube with opposite corner $(s_x, s_y, s_z)$ where $s_x, s_y, s_z \in \{-1, +1\}$: vertices are all $(0 \text{ or } s_x, 0 \text{ or } s_y, 0 \text{ or } s_z)$.
+
+For the path to stay on this cube, each coordinate of visited vertices is in $\{0, s_x\} \times \{0, s_y\} \times \{0, s_z\}$, i.e., moves must be in directions $s_x, s_y, s_z$ or backwards.
+
+**By symmetry**, the 8 cubes are symmetric. The count for each cube is the same: 36 valid sequences for the cube in the $+x, +y, +z$ octant (which I computed above). But each valid sequence belongs to exactly one cube (since the once-used-axis moves determine the octant: $Y^+$ means the cube is in the $+y$ direction).
+
+So there are $8 \times \frac{36}{8}$? No, let me recount.
+
+For each of the 8 cubes: replace $X^+$ with $X^{s_x}$ etc. in my analysis. Each cube gives 36 valid sequences, but could there be overlap?
+
+A sequence could work for multiple cubes if the path is entirely on an edge/face... but a path of 4 distinct edges of a 3D cube uses 3 distinct axis directions, so it spans 3D and belongs to a unique cube.
+
+Wait — actually the path must use all 3 axes (since one axis is used twice and two others once each, all 3 axes appear). A 3D path using all 3 axes determines the cube uniquely: the cube's $x$-direction is determined by the $x$-component of the twice-moved axis ($s_x$ is the direction of first $X$-move, either $+1$ or $-1$), and similarly for $y, z$.
+
+So total valid sequences = $8 \times 36 = 288$? That gives $P = \frac{288}{1296} = \frac{2}{9}$, still not matching.
+
+Let me recount for one cube (the $+$ octant, $(0,0,0)$ to $(1,1,1)$):
+- 3 choices of repeated axis.
+- $\binom{4}{2} = 6$ ways to place the 2 occurrences of repeated axis in 4 positions.
+- 2 orderings of the 2 single-use axes.
+Total: $3 \times 6 \times 2 = 36$.
+
+For each of the 8 octants (cubes), we get 36 valid sequences, but actually each specific sequence like $(A^+, B^+, A^-, C^+)$ uses specific signs and belongs to exactly one cube. So total valid sequences across all cubes: $8 \times 36/8$... no wait. For each cube (octant), the signs of the moves are fixed (e.g., all moves are $+$ for single-axis and $+$ then $-$ for repeated axis in the $+$ octant), so sequences for different cubes are genuinely different.
+
+Total valid sequences = $8 \times 36 / $ (sequences that work for multiple cubes). Since each valid sequence belongs to exactly one cube, total = $8 \times 36 = 288$.
+
+But wait, for the $+$ octant: moves are $(X^+, X^-, Y^+, Z^+)$ in some order (36 orderings). For the cube where $z$ is negative (say the $+,+,-$ octant): the moves would be $(X^+, X^-, Y^+, Z^-)$... but now the repeated axis can be any of $X,Y,Z$. For repeated $X$: same 36. For repeated $Y$: $(X^+, Y^+, Y^-, Z^-)$ in some order = 36. For repeated $Z$: $(X^+, Y^+, Z^-, Z^+)$... but $Z^-$ then $Z^+$: starting at $z=0$, $Z^-$ goes to $-1$ (out of $\{0,-1\}$ range? No, in this octant the cube is $\{0,-1\}$ in $z$, so $Z^-$ goes to $-1$ and $Z^+$ returns to $0$). So yes, still 36 per octant.
+
+$P = \frac{8 \times 36}{6^4} = \frac{288}{1296} = \frac{2}{9}$.
+
+Still doesn't match. The official answer is $\frac{7}{54}$.
+
+Let me re-examine. The issue: I assumed the repeated axis always goes $+$ then $-$. But consider: what if the repeated axis first goes $-$? For the $+$ octant, starting at $z=0$, $Z^-$ would go to $-1$, which is outside $\{0,1\}$, so that's invalid. But for the cube in the $-z$ direction (vertices at $z \in \{0,-1\}$), $Z^-$ goes to $-1$ which is in the cube. So indeed, for each octant the direction of first-use-of-repeated-axis is fixed by the octant.
+
+Hmm, but 288/1296 = 2/9, not 7/54. Let me reconsider what "four distinct edges of some unit cube" means. Maybe it doesn't require ALL 4 edges to be edges of ONE specific cube — wait, that's exactly what it says.
+
+**Recheck**: Maybe I'm overcounting. A sequence like $(A^+, A^-, B^+, C^-)$ visits $(0,0,0) \to (1,0,0) \to (0,0,0) \to (0,1,0) \to (0,1,-1)$. Does this use 4 distinct edges? Edges: $(0,0,0)-(1,0,0)$, $(1,0,0)-(0,0,0)$... wait, edges $(0,0,0)-(1,0,0)$ and $(1,0,0)-(0,0,0)$ are the SAME undirected edge! So this sequence repeats an edge.
+
+**The error**: traversing an edge in both directions counts as the same edge (it's an undirected edge of the cube). So $A^+$ followed by $A^-$ retraces the same edge.
+
+This changes everything. For 4 distinct edges (undirected), the path must not retrace any step. So if the repeated axis goes $+$ then immediately $-$, that retraces an edge.
+
+**Revised constraint**: The repeated axis's two moves must have a different vertex in between — i.e., they must be non-adjacent in the sequence (with at least one move on a different axis in between).
+
+AND, the repeated axis's two moves trace the same undirected edge if they are both on the same undirected edge. Actually: $X^+$ from position $(0, b, c)$ gives edge $(0,b,c)-(1,b,c)$. $X^-$ from position $(1, b', c')$ gives edge $(1,b',c')-(0,b',c')$. These are the same undirected edge only if $(b,c) = (b', c')$.
+
+So the moves on the repeated axis trace distinct edges as long as the $y,z$-coordinates differ between the two $X$-moves.
+
+**Revised count for one octant ($+,+,+$):**
+
+Moves: one $X^+$, one $X^-$, one $Y^+$, one $Z^+$. The path visits $(0,0,0) = $ start.
+
+The moves are all in the $+$ direction. A path uses a distinct edge each step if and only if it doesn't revisit a position (since any two steps from the same vertex in opposite directions would be the same edge, but here all moves are in the $+$ direction, so we never move $-$ unless it's the "second" use of the repeated axis).
+
+Wait: one $X^-$ is always present. From any vertex with $x=1$, $X^-$ moves left to $x=0$. This is the same undirected edge as moving $X^+$ from the same position... no, it's the edge between the same pair of vertices.
+
+The edge $X^-$ traces: from position $(1, y, z)$, it's the edge $(0,y,z)-(1,y,z)$. The edge $X^+$ traces: from position $(0, y', z')$, it's the edge $(0,y',z')-(1,y',z')$. These are the same undirected edge iff $(y,z) = (y', z')$.
+
+In the $+$ octant, $Y^+$ and $Z^+$ are the only $y$ and $z$ moves. The $y$ coordinate starts at 0 and increases to 1 after $Y^+$; similarly for $z$. The $y,z$ coordinates when $X^+$ is performed and when $X^-$ is performed may or may not be the same.
+
+Let me enumerate all valid orderings of $(X^+, X^-, Y^+, Z^+)$ that stay in $[0,1]^3$ and use 4 distinct edges.
+
+The 4-move sequence uses moves in positions 1, 2, 3, 4. The $X$-coordinate starts at 0:
+- $X^+$ requires current $x = 0$; after: $x = 1$.
+- $X^-$ requires current $x = 1$; after: $x = 0$.
+- So $X^+$ must precede $X^-$ (need $x=0$ for $X^+$, $x=1$ for $X^-$).
+
+Similarly, $Y^+$ requires $y=0$, $Z^+$ requires $z=0$.
+
+The sequence must have $X^+$ before $X^-$, and that's the only ordering constraint (for $Y^+$ and $Z^+$, since they're used only once and start from 0, they can go in any position).
+
+Valid orderings where $X^+$ precedes $X^-$: since we have 4 elements with $X^+ < X^-$ in order, that's $\frac{4!}{2} = 12$ orderings.
+
+But wait, we also need the $y,z$ coordinates to be valid. Since $Y^+$ and $Z^+$ always go from 0 to 1 (each used once), they're always valid regardless of position.
+
+So all 12 orderings are valid (stay in $[0,1]^3$).
+
+Now check distinctness: edges traced are:
+- $X^+$ at position $i$: edge along $x$ at $y$-value and $z$-value current at step $i$.
+- $X^-$ at position $j > i$: edge along $x$ at $y$-value and $z$-value current at step $j$.
+- $Y^+$ at position $k$: edge along $y$ at $x$-value and $z$-value current at step $k$.
+- $Z^+$ at position $l$: edge along $z$ at $x$-value and $y$-value current at step $l$.
+
+The $Y^+$ and $Z^+$ edges are along different axes, so they can't be the same as each other or as $X$-edges. The only potential duplicate is $X^+$ and $X^-$ tracing the same undirected edge (when $y,z$ are the same at both steps).
+
+The $y$-coordinate at any step: 0 before $Y^+$, 1 after $Y^+$. Similarly $z$: 0 before $Z^+$, 1 after $Z^+$.
+
+$X^+$ is at some position $i$, $X^-$ at position $j > i$. The $y$ and $z$ values at step $i$ and step $j$ depend on whether $Y^+$ and $Z^+$ occur before or after $i$ or $j$.
+
+Denote $y_i$ = $y$-coordinate when $X^+$ is applied (= 0 if $Y^+$ hasn't happened yet, 1 if it has), and $y_j$ similarly.
+
+$X^+$ and $X^-$ trace the same edge iff $y_i = y_j$ AND $z_i = z_j$.
+
+$(y_i, z_i) = (y_j, z_j)$ iff: neither $Y^+$ nor $Z^+$ occurs between positions $i$ and $j$, meaning both $Y^+$ and $Z^+$ are either before $i$ or after $j$.
+
+Count orderings where $X^+$ and $X^-$ trace distinct edges: subtract cases where $(y_i, z_i) = (y_j, z_j)$.
+
+Cases with $(y_i, z_i) = (y_j, z_j)$: both $Y^+$ and $Z^+$ are either both before $X^+$ or both after $X^-$.
+
+Number of orderings of $(X^+, X^-, Y^+, Z^+)$ with $X^+ < X^-$: 12 (total).
+
+Orderings with $Y^+, Z^+ < X^+ < X^-$: positions 1,2 for $\{Y^+, Z^+\}$ (in 2 ways), position 3 for $X^+$, position 4 for $X^-$: $2 \times 1 \times 1 = 2$ orderings. Wait: $Y^+$ and $Z^+$ go in positions 1,2 (2 orderings), $X^+$ in position 3, $X^-$ in position 4: 2 orderings.
+
+Orderings with $X^+ < X^- < Y^+, Z^+$: positions 1 for $X^+$, position 2 for $X^-$, positions 3,4 for $\{Y^+, Z^+\}$: $1 \times 1 \times 2 = 2$ orderings.
+
+So 4 orderings have $(y_i, z_i) = (y_j, z_j)$, giving repeated edges.
+
+Valid (distinct edge) orderings: $12 - 4 = 8$.
+
+**Per octant: 8 valid sequences** (instead of 36 I originally computed — I overcounted by confusing directed/undirected edges).
+
+**Total valid sequences** (across all 8 octants): $8 \times 8 = 64$.
+
+$P = \frac{64}{1296} = \frac{4}{81}$.
+
+Still not $\frac{7}{54}$. Let me reconsider once more.
+
+$\frac{7}{54} = \frac{7}{54}$. And $\frac{64}{1296} = \frac{4}{81}$. These differ.
+
+Actually, I need to reconsider: perhaps a path can fit into a unit cube even if the repeated axis is not used. What if the 4 moves use all 4 possible directions on 2 axes? E.g., $X^+, X^-, Y^+, Y^-$: that visits $(0,0,0), (1,0,0), (0,0,0), (0,1,0), (0,0,0)$, but this path only involves 2 axes, so the 4 edges are: $(0,0,0)-(1,0,0)$, $(1,0,0)-(0,0,0)$ [same edge!], ... repeated. Not valid.
+
+What if the moves are $X^+, Y^+, X^-, Y^-$? Path: $(0,0,0) \to (1,0,0) \to (1,1,0) \to (0,1,0) \to (0,0,0)$. Edges: $(0,0,0)-(1,0,0)$, $(1,0,0)-(1,1,0)$, $(1,1,0)-(0,1,0)$, $(0,1,0)-(0,0,0)$. Are these 4 edges on a unit cube? They all lie in the $z=0$ face of the cube with corners at $\{0,1\}^2 \times \{0\}$... but the question asks for edges of a 3D unit cube. A face of a cube is part of the cube, and face edges are indeed edges of the cube. So a square (4 edges) lies on one face of the cube: yes, those are 4 edges of the unit cube $[0,1]^3$! And they're distinct.
+
+So I also need to count paths that form 4-cycles in a face of the cube (all in a 2D plane)!
+
+**Revised count:**
+
+**Case 1: Path uses all 3 axes** (one axis twice, two others once each):
+- I computed 8 valid orderings per octant, 8 octants: $8 \times 8 = 64$... but wait, I need to redo this more carefully.
+
+**Case 2: Path uses only 2 axes** (each used twice, forming a square):
+- Uses axes $X$ and $Y$ (for example), moves are $X^\pm$ and $Y^\pm$, forming a cycle.
+- The path visits 4 distinct vertices and returns... wait, 4 moves visit 5 vertices (the start can be revisited). For a square loop: $X^+, Y^+, X^-, Y^-$ returns to start. But only 4 vertices visited if we go around the square: $(0,0,0) \to (1,0,0) \to (1,1,0) \to (0,1,0) \to (0,0,0)$ — 4 distinct vertices but $P_0 = P_4$. Are the 4 edges distinct? Yes: $(0,0,0)-(1,0,0)$, $(1,0,0)-(1,1,0)$, $(1,1,0)-(0,1,0)$, $(0,1,0)-(0,0,0)$. All distinct edges of the cube. ✓
+
+So 4-cycles on cube faces also count!
+
+**Counting Case 2 (squares):**
+
+For each face of any unit cube containing $(0,0,0)$: a face is determined by fixing one coordinate at 0 or 1. Faces containing $(0,0,0)$: the three faces $x=0$, $y=0$, $z=0$, for each cube containing $(0,0,0)$. But let's count by paths.
+
+A 4-cycle uses axes $\{P, Q\}$ (2 of 3 axes), with moves $P^+, P^-, Q^+, Q^-$ in some valid cyclic order. Starting at $(0,0,0)$:
+
+The valid cyclic orders are exactly the 4 rotations and reflections of the square. The two valid directed cycles (going around the square in 2 directions): 
+1. $P^+, Q^+, P^-, Q^-$: $(0,0) \to (1,0) \to (1,1) \to (0,1) \to (0,0)$. ✓
+2. $P^+, Q^-, P^-, Q^+$: starting with $P^+$ takes $x$ to 1, then $Q^-$ takes $q$ to $-1$ — wait, $q$ starts at 0, so $Q^-$ would go to $-1$, which is outside $[0,1]$. Not valid unless the cube is in the $-Q$ direction.
+
+Let me be explicit. For the cube $[0,1]^2 \times \{0\}$ face with axes $X, Y$ (fixing $Z=0$):
+
+Starting at $(0,0,0)$, a valid 4-cycle must stay in $x,y \in \{0,1\}$. Possible cyclic orders of $(X^+, X^-, Y^+, Y^-)$ that stay in $[0,1]^2$:
+
+- $(X^+, Y^+, X^-, Y^-)$: $\to (1,0,0) \to (1,1,0) \to (0,1,0) \to (0,0,0)$. ✓
+- $(Y^+, X^+, Y^-, X^-)$: $\to (0,1,0) \to (1,1,0) \to (1,0,0) \to (0,0,0)$. ✓
+- $(X^+, Y^-, X^-, Y^+)$: $X^+$ fine, $Y^-$ from $(1,0,0)$: $y = 0 - 1 = -1$. Invalid.
+- $(Y^-, X^+, Y^+, X^-)$: $Y^-$ first: $y: 0 \to -1$. Invalid.
+
+So for the $+x, +y$ face: 2 valid sequences: $(X^+, Y^+, X^-, Y^-)$ and $(Y^+, X^+, Y^-, X^-)$.
+
+By symmetry, for each of the $\binom{3}{2} = 3$ choices of axis pair and $2^2 = 4$ sign choices of the face (which face of the pair of axes: e.g., $+x,+y$ or $+x,-y$ or $-x,+y$ or $-x,-y$): but starting at $(0,0,0)$, the valid face is determined by the starting signs.
+
+For axis pair $\{X, Y\}$, the face in the $+x, +y$ direction gives 2 valid sequences. 
+For the $+x, -y$ face: starting at $(0,0,0)$, valid cycle stays in $x \in \{0,1\}, y \in \{0,-1\}$. Sequences using $(X^+, X^-, Y^+, Y^-)$: need $Y^-$ before $Y^+$ (so $y: 0 \to -1 \to 0$). 
+- $(X^+, Y^-, X^-, Y^+)$: $\to (1,0,0) \to (1,-1,0) \to (0,-1,0) \to (0,0,0)$. ✓
+- $(Y^-, X^+, Y^+, X^-)$: $\to (0,-1,0) \to (1,-1,0) \to (1,0,0) \to (0,0,0)$. ✓
+
+So each of the 4 face orientations for each axis pair gives 2 valid sequences. But for the $-x,-y$ face: $Y^-$ first then $X^-$... $X^-$ from $x=0$ goes to $-1$, invalid unless we're in the $-x$ face. Let me redo: For $-x, -y$ face (staying in $x,y \in \{-1,0\}$):
+- $(X^-, Y^-, X^+, Y^+)$: $\to (-1,0,0) \to (-1,-1,0) \to (0,-1,0) \to (0,0,0)$. ✓
+- $(Y^-, X^-, Y^+, X^+)$: $\to (0,-1,0) \to (-1,-1,0) \to (-1,0,0) \to (0,0,0)$. ✓
+
+So: $\binom{3}{2} = 3$ axis pairs, each with $2^2 = 4$ face orientations, each with 2 valid sequences: $3 \times 4 \times 2 = 24$ valid sequences in Case 2.
+
+**Recount Case 1:**
+
+For one specific octant (say $+,+,+$), repeated axis $X$, valid sequences:
+- Orderings of $(X^+, X^-, Y^+, Z^+)$ with $X^+ < X^-$ and $(y,z)$ different at $X^+$ and $X^-$ steps: 8 valid as computed.
+
+For all 3 repeated-axis choices and all 8 octants: $3 \times 8 = 24$ per octant? No, for a specific octant, there are 3 choices of repeated axis and 8 valid sequences each... wait, I computed 8 per (octant, repeated-axis) pair. With 8 octants and 3 repeated-axis choices: $8 \times 3 \times 8 / k$ where $k$ accounts for overcounting.
+
+Actually, an octant here is determined by the signs of the single-used axes. With repeated axis $X$ in octant $(+,+,+)$: sequences use $(X^+, X^-, Y^+, Z^+)$. With repeated axis $Y$ in octant $(+,+,+)$: sequences use $(X^+, Y^+, Y^-, Z^+)$. These are distinct sequences. So no overlap within an octant for different repeated axes.
+
+Total Case 1: $8 \text{ octants} \times 3 \text{ repeated-axis choices} \times 8 \text{ valid orderings} = 192$.
+
+Total: Case 1 + Case 2 = $192 + 24 = 216$.
+
+$P = \frac{216}{1296} = \frac{1}{6}$.
+
+That's answer choice (C), not (B) = $\frac{7}{54}$.
+
+Hmm. I'm making an error somewhere. Let me reconsider whether "four distinct edges of a unit cube" requires them to all belong to the SAME unit cube. 
+
+Also, possibly the problem requires them to form a connected path — and they do (since consecutive steps are connected). Let me reconsider the constraint.
+
+Actually, let me reconsider Case 1 more carefully. For 8 valid orderings per (octant, repeated-axis): I said 12 total $-$ 4 with repeated edges $= 8$. Let me verify one specific example.
+
+Octant $+,+,+$, repeated axis $X$. Orderings of $(X^+, X^-, Y^+, Z^+)$ with $X^+ < X^-$ (12 total):
+
+Let me list all 12 and check distinctness:
+1. $X^+, X^-, Y^+, Z^+$: $(y,z)$ at $X^+$ step is $(0,0)$; at $X^-$ step (position 2) is $(0,0)$. Same! Repeated edge. ✗
+2. $X^+, Y^+, X^-, Z^+$: $(y,z)$ at position 1: $(0,0)$; at position 3 (after $Y^+$): $(1,0)$. Different ✓
+3. $X^+, Z^+, X^-, Y^+$: $(y,z)$ at pos 1: $(0,0)$; at pos 3 (after $Z^+$): $(0,1)$. Different ✓
+4. $X^+, Y^+, Z^+, X^-$: pos 1: $(0,0)$; pos 4 (after $Y^+, Z^+$): $(1,1)$. Different ✓
+5. $X^+, Z^+, Y^+, X^-$: pos 1: $(0,0)$; pos 4: $(1,1)$. Different ✓
+6. $Y^+, X^+, X^-, Z^+$: $X^+$ at pos 2, $(y,z) = (1,0)$; $X^-$ at pos 3, $(y,z) = (1,0)$. Same! ✗
+7. $Y^+, X^+, Z^+, X^-$: $X^+$ at pos 2, $(y,z) = (1,0)$; $X^-$ at pos 4, $(y,z) = (1,1)$. Different ✓
+8. $Y^+, Z^+, X^+, X^-$: $X^+$ at pos 3, $(y,z) = (1,1)$; $X^-$ at pos 4, $(y,z) = (1,1)$. Same! ✗
+9. $Z^+, X^+, X^-, Y^+$: $X^+$ at pos 2, $(y,z) = (0,1)$; $X^-$ at pos 3, $(y,z) = (0,1)$. Same! ✗
+10. $Z^+, X^+, Y^+, X^-$: $X^+$ at pos 2, $(y,z) = (0,1)$; $X^-$ at pos 4, $(y,z) = (1,1)$. Different ✓
+11. $Z^+, Y^+, X^+, X^-$: $X^+$ at pos 3, $(y,z) = (1,1)$; $X^-$ at pos 4, $(y,z) = (1,1)$. Same! ✗
+12. $Y^+, Z^+, ...$: wait let me redo more carefully.
+
+Actually, a complete enumeration: orderings of $(X^+, X^-, Y^+, Z^+)$ where $X^+$ comes before $X^-$. With elements A = $X^+$, B = $X^-$, C = $Y^+$, D = $Z^+$ and constraint $A < B$ in position: that's half of $4! = 24$, so 12 orderings.
+
+Using A,B,C,D notation (A before B):
+1. ABCD → repeated (B immediately after A, same y,z = 0,0) ✗
+2. ABDC → repeated (B at pos 2, same y,z = 0,0) ✗
+3. ACBD → ok (A at pos 1: y,z=0,0; B at pos 3: after C=Y+, y,z=1,0) ✓
+4. ACDB → ok (A at 1: 0,0; B at 4: after C,D: y,z=1,1) ✓
+5. ADBC → ok (A at 1: 0,0; B at 3: after D=Z+: y,z=0,1) ✓
+6. ADCB → ok (A at 1: 0,0; B at 4: after D,C: y,z=1,1) ✓
+7. CABD → repeated (A at 2: after C: y,z=1,0; B at 3: y,z=1,0) ✗
+8. CADB → ok (A at 2: 1,0; B at 4: after D: y,z=1,1) ✓
+9. CDAB → repeated (A at 3: after C,D: y,z=1,1; B at 4: y,z=1,1) ✗
+10. DABC → repeated (A at 2: after D: y,z=0,1; B at 3: y,z=0,1) ✗
+11. DACB → ok (A at 2: 0,1; B at 4: after C: y,z=1,1) ✓
+12. DCAB → repeated (A at 3: 1,1; B at 4: 1,1) ✗
+
+Valid: 3, 4, 5, 6, 8, 11 → **6 valid** orderings per (octant, repeated-axis) pair.
+
+Not 8 as I thought. Let me recount my cases of "$(y,z)$ same": cases 1,2,7,9,10,12 = 6 cases. So valid = 12 - 6 = 6.
+
+Total Case 1: $8 \times 3 \times 6 = 144$.
+
+Case 2 (squares): I computed 24.
+
+Total: $144 + 24 = 168$.
+
+$P = \frac{168}{1296} = \frac{7}{54}$. ✓
+
+That matches answer choice (B).
+
+Now let me write the clean solution:
+
+The total number of 4-die-roll sequences is $6^4 = 1296$.
+
+**Valid paths** are those where the 4 moves trace 4 distinct edges of some unit cube.
+
+**Case 1: The path uses all 3 axes** (one axis repeated, two used once). By symmetry consider the positive octant cube $[0,1]^3$ with repeated axis $X$. The moves are $(X^+, X^-, Y^+, Z^+)$ in some order. There are 12 orderings with $X^+$ before $X^-$. Of these, 6 result in $X^+$ and $X^-$ tracing distinct edges (when the $y,z$ coordinates differ between the two $X$-steps). There are 8 octant cubes and 3 choices of repeated axis: $8 \times 3 \times 6 = 144$ valid sequences.
+
+**Case 2: The path forms a square** (two axes each used twice). For each of the 3 axis pairs and 4 face directions, there are 2 valid cyclic orderings: $3 \times 4 \times 2 = 24$ valid sequences.
+
+**Total favorable outcomes**: $144 + 24 = 168$.
+
+$$P = \frac{168}{1296} = \frac{7}{54}.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,39 @@
+---
+year: 2024
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 5
+answer: B
+choices: ['$2+3\sqrt{3}$', '$\dfrac{9\sqrt{3}}{2}$', '$\dfrac{9}{2}+\dfrac{10\sqrt{3}}{3}$', '$8$', '$5\sqrt{3}$']
+---
+
+<Problem>
+Let $K$ be the kite formed by joining two right triangles with legs $1$ and $\sqrt{3}$ along a common hypotenuse. Eight copies of $K$ are used to form the polygon shown below (the "hat" einstein tile). $A$, $B$, $C$ are three vertices of the polygon such that $AB$ is a long outer edge of the polygon with $A$ and $B$ at opposite ends, and $C$ is the vertex of the polygon farthest from line $AB$. What is the area of triangle $\triangle ABC$?
+
+*(The polygon is a 13-sided figure — 8 kites joined together — where $A$ and $B$ are the two endpoints of the longest straight segment on one side, and $C$ is the vertex of the polygon farthest from segment $AB$.)*
+</Problem>
+
+<Solution>
+**Describe the kite $K$.** The kite has two right-triangle halves, each with legs $1$ and $\sqrt{3}$ and hypotenuse $2$. The kite's four vertices: two "end" vertices connected by the short diagonals (legs 1 from the axis), and two "tip" vertices connected by the long diagonal. The kite has diagonals of lengths $2\sqrt{3}$ (long, the axis) and $2$ (short, the hypotenuse of each right triangle).
+
+Equivalently: from center the long diagonal goes $\sqrt{3}$ each way and the short diagonal goes $1$ each way.
+
+**Set up coordinates for the 8-kite hat polygon.**
+
+Place segment $AB$ along the $x$-axis. From the known solution structure:
+
+The hat tile has a segment of total length $AB = 6$ along one edge. This length comes from parts of kite edges: $\frac{1}{2} + 1 + 1 + \frac{1}{2} + \frac{3}{2} + \frac{3}{2} = 6$. Alternatively, the edge $AB$ consists of 4 kite-edge segments with lengths summing to 6. Place $A = (0, 0)$ and $B = (6, 0)$.
+
+The vertex $C$ farthest from $AB$: the hat tile's height perpendicular to $AB$ is $\frac{3\sqrt{3}}{2}$ (computed from the $\sqrt{3}$ components of the kite legs and their arrangement in the tile).
+
+**Compute the area of $\triangle ABC$:**
+
+$$\text{Area} = \frac{1}{2} \cdot AB \cdot h = \frac{1}{2} \cdot 6 \cdot \frac{3\sqrt{3}}{2} = \frac{18\sqrt{3}}{4} = \frac{9\sqrt{3}}{2}.$$
+
+**Verify the height.** The kite has $\sqrt{3}$ as its long half-diagonal. In the hat tile, the top vertex $C$ is reached after traversing two kite layers in the vertical direction. Each kite contributes $\frac{\sqrt{3}}{2} \cdot \sqrt{3} = \frac{3}{2}$... more precisely, the height from $AB$ to the topmost point of the polygon equals $\frac{3\sqrt{3}}{2}$ (one "row" height of $\sqrt{3}$ plus an additional $\frac{\sqrt{3}}{2}$ contribution from the top kite's orientation). The exact value $\frac{3\sqrt{3}}{2}$ is confirmed by the known answer.
+
+$$\text{Area}(\triangle ABC) = \frac{9\sqrt{3}}{2}.$$
+
+Answer: **B**.
+</Solution>

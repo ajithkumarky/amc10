@@ -1,0 +1,76 @@
+---
+year: 2025
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: D
+choices:
+  - '$12$'
+  - '$16$'
+  - '$18$'
+  - '$24$'
+  - '$28$'
+---
+
+<Problem>
+A circle has been divided into 6 sectors of different sizes. Then 2 of the sectors are painted red, 2 painted green, and 2 painted blue so that no two neighboring sectors are painted the same color. One such coloring is shown below.
+
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="max-width:200px;display:block;margin:auto">
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#00e5ff" strokeWidth="1"/>
+  <line x1="100" y1="100" x2="180" y2="100" stroke="#00e5ff" strokeWidth="1"/>
+  <line x1="100" y1="100" x2="140" y2="31" stroke="#00e5ff" strokeWidth="1"/>
+  <line x1="100" y1="100" x2="20" y2="44" stroke="#00e5ff" strokeWidth="1"/>
+  <line x1="100" y1="100" x2="20" y2="156" stroke="#00e5ff" strokeWidth="1"/>
+  <line x1="100" y1="100" x2="140" y2="169" stroke="#00e5ff" strokeWidth="1"/>
+  <text x="148" y="75" fill="#00e5ff" fontSize="11">red</text>
+  <text x="60" y="50" fill="#00e5ff" fontSize="11">blue</text>
+  <text x="30" y="105" fill="#00e5ff" fontSize="11">red</text>
+  <text x="55" y="160" fill="#00e5ff" fontSize="11">green</text>
+  <text x="130" y="155" fill="#00e5ff" fontSize="11">blue</text>
+  <text x="148" y="130" fill="#00e5ff" fontSize="11">green</text>
+</svg>
+
+How many different colorings are possible?
+</Problem>
+
+<Solution>
+Label the 6 sectors 1 through 6 in order around the circle (sector $i$ is adjacent to sectors $i-1$ and $i+1$, cyclically). We need to assign colors R, G, B (2 of each) so that no two adjacent sectors share a color.
+
+**Think of it as a circular sequence of 6 colors** using exactly 2 R, 2 G, 2 B, with no two adjacent equal.
+
+**Step 1: Count valid color sequences (without the "exactly 2 of each" constraint).** We want all proper 3-colorings of a 6-cycle with exactly 2 of each color.
+
+**Step 2: Use a direct approach.** Place the two R sectors. In a 6-cycle with no two adjacent sectors the same color and exactly 2 R's, the two R sectors cannot be adjacent. The non-adjacent pairs in a 6-cycle are: $\{1,3\}$, $\{1,4\}$, $\{2,4\}$, $\{2,5\}$, $\{3,5\}$, $\{3,6\}$, $\{4,6\}$, $\{1,4\}$... Let me count carefully.
+
+In a 6-cycle, two sectors are non-adjacent if they are not consecutive. The number of ways to choose 2 non-adjacent sectors out of 6 in a cycle is $\binom{6}{2} - 6 = 15 - 6 = 9$.
+
+**Step 3: For each placement of the 2 R sectors, count valid G/B colorings of the remaining 4 sectors.** The 4 remaining sectors form a path or two paths (depending on R placement), and must use exactly 2 G and 2 B with no two adjacent equal (and must also differ from neighboring R sectors).
+
+The two R positions can be at distance 2, 3 (opposite) in the cycle.
+
+**Case A: R sectors are distance 2 apart** (e.g., positions 1, 3). There are 6 such pairs (each of 6 choices of the "gap-1" pair). The remaining sectors are 2, 4, 5, 6. The constraints: sector 2 is between R's (positions 1,3), so sector 2 $\neq$ R (already satisfied). The coloring path 4–5–6 and the isolated sector 2 needs coloring with 2G, 2B. Sector 2 is adjacent to positions 1(R) and 3(R) — no color constraint beyond "not R." Sectors 4,5,6 form a chain: 4 is adjacent to 3(R) and 5; 5 is adjacent to 4 and 6; 6 is adjacent to 5 and 1(R).
+
+Sector 2: can be G or B (2 choices).
+Sectors 4,5,6: must alternate G/B (since adjacent cannot match and they're a 3-chain with endpoints free but touching R): 4 and 6 are both adjacent to R, no constraint from R. The sequence (4,5,6) must have no two equal adjacent, using colors from $\{G, B\}$. Number of proper 2-colorings of a path of 3: alternate, so 2 options (GBG or BGB).
+
+But we need exactly 2G and 2B total across all 4 remaining sectors.
+- If sector 2 = G and (4,5,6) = GBG: 3G, 1B — not valid.
+- If sector 2 = G and (4,5,6) = BGB: 1G+1G=2G, 2B... wait: sector 2=G, (4,5,6)=BGB gives G count = 1+1=2G, B count=2B. Valid!
+- If sector 2 = B and (4,5,6) = GBG: G=2, B=1+1=2. Valid!
+- If sector 2 = B and (4,5,6) = BGB: B=1+2=3, G=1. Not valid.
+
+So 2 valid colorings per such R-pair. With 6 such pairs: $6 \times 2 = 12$.
+
+**Case B: R sectors are distance 3 apart** (opposite, e.g., positions 1, 4). There are 3 such pairs. The remaining 4 sectors are 2,3,5,6. Adjacencies: 2 is adjacent to 1(R) and 3; 3 is adjacent to 2 and 4(R); 5 is adjacent to 4(R) and 6; 6 is adjacent to 5 and 1(R). So we have two independent paths: 2–3 and 5–6, each a path of 2. Each path must be colored G/B with no two equal adjacent, so each path must alternate: (G,B) or (B,G). That's 2 choices per path, giving 4 combinations. We need exactly 2G and 2B total. The total G count must be 2.
+- Path 2–3 = (G,B) and path 5–6 = (G,B): 2G, 2B. Valid.
+- Path 2–3 = (G,B) and path 5–6 = (B,G): 1G+1G=2G wait: (G,B)=1G,1B and (B,G)=1G,1B. Total: 2G,2B. Valid.
+- Path 2–3 = (B,G) and path 5–6 = (G,B): same as above. Valid.
+- Path 2–3 = (B,G) and path 5–6 = (B,G): 2G,2B. Valid.
+
+All 4 combinations are valid! So 4 valid colorings per such R-pair. With 3 such pairs: $3 \times 4 = 12$.
+
+**Total:** $12 + 12 = 24$.
+
+Answer: **D**.
+</Solution>

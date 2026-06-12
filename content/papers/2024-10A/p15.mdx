@@ -1,0 +1,53 @@
+---
+year: 2024
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: E
+choices: ["$1$", "$2$", "$3$", "$6$", "$8$"]
+---
+
+<Problem>
+Let $M$ be the greatest integer such that both $M + 1213$ and $M + 3773$ are perfect squares. What is the units digit of $M$?
+</Problem>
+
+<Solution>
+Let $M + 1213 = a^2$ and $M + 3773 = b^2$ for non-negative integers $a < b$.
+
+Then $b^2 - a^2 = 3773 - 1213 = 2560$.
+
+Factor: $(b-a)(b+a) = 2560$.
+
+Since $b^2 = b^2$ and $a^2 = a^2$ must both be non-negative, we need $b > a \geq 0$ and both $b-a$ and $b+a$ have the same parity (both even or both odd). Since $2560$ is even, they can't both be odd, so both must be even.
+
+Write $b - a = 2s$ and $b + a = 2t$ where $s, t$ are positive integers with $s < t$ and $st = \frac{2560}{4} = 640$.
+
+Then $b = s + t$ and $a = t - s$, giving:
+$$M = a^2 - 1213 = (t-s)^2 - 1213.$$
+
+To **maximize** $M$, we maximize $(t-s)^2 = (t-s)^2$. Since $st = 640$ and $s < t$, we have $t - s = t - \frac{640}{t}$, which increases as $t$ increases.
+
+We want $t$ as large as possible and $s = \frac{640}{t}$ as small as possible (still a positive integer). The maximum $t$ with $s \geq 1$ is $t = 640$, $s = 1$.
+
+Check: $b + a = 2(640) = 1280$, $b - a = 2(1) = 2$, so $b = 641$, $a = 639$.
+
+We need $a \geq 0$: $a = 639 \geq 0$ ✓. Also $M = a^2 - 1213 = 639^2 - 1213$.
+
+Let's verify: $M + 1213 = 639^2$ ✓ and $M + 3773 = 639^2 + 2560 = 639^2 + 2560$.
+Is $639^2 + 2560 = 641^2$? Check: $641^2 - 639^2 = (641-639)(641+639) = 2 \cdot 1280 = 2560$ ✓.
+
+**Compute the units digit of $M$.**
+
+$M = 639^2 - 1213$.
+
+Units digit of $639^2$: $9^2 = 81$, so units digit is $1$.
+
+Units digit of $1213$ is $3$.
+
+Units digit of $M = 1 - 3$: since $1 < 3$, borrow: $11 - 3 = 8$.
+
+The units digit of $M$ is $\boxed{8}$.
+
+Answer: **E**.
+</Solution>

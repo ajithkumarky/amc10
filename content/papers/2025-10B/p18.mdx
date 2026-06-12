@@ -1,0 +1,40 @@
+---
+year: 2025
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: D
+choices:
+  - '$1$'
+  - '$2$'
+  - '$3$'
+  - '$5$'
+  - '$8$'
+---
+
+<Problem>
+What is the ones digit of the sum
+$$\lfloor\sqrt{1}\rfloor + \lfloor\sqrt{2}\rfloor + \lfloor\sqrt{3}\rfloor + \cdots + \lfloor\sqrt{2025}\rfloor?$$
+(Recall that $\lfloor x \rfloor$ represents the greatest integer less than or equal to $x$.)
+</Problem>
+
+<Solution>
+For integer $m \ge 1$, $\lfloor\sqrt{k}\rfloor = m$ exactly when $m^2 \le k \le (m+1)^2 - 1$, i.e., for $2m$ values of $k$ (from $m^2$ to $m^2 + 2m - 1 = (m+1)^2 - 1$).
+
+But we must handle the endpoints carefully. Note $\sqrt{2025} = 45$ exactly, so $\lfloor\sqrt{2025}\rfloor = 45$.
+
+**Sum structure.** For $m = 1$ to $44$, $\lfloor\sqrt{k}\rfloor = m$ for $k = m^2, m^2+1, \ldots, (m+1)^2 - 1$, which is $2m$ values. For $m = 45$, only $k = 2025$ contributes, giving $\lfloor\sqrt{2025}\rfloor = 45$.
+
+$$S = \sum_{m=1}^{44} m \cdot 2m + 45 = 2\sum_{m=1}^{44} m^2 + 45.$$
+
+**Compute $\sum_{m=1}^{44} m^2$.** Using the formula $\sum_{m=1}^{n} m^2 = \dfrac{n(n+1)(2n+1)}{6}$:
+$$\sum_{m=1}^{44} m^2 = \frac{44 \cdot 45 \cdot 89}{6} = \frac{176220}{6} = 29370.$$
+
+So:
+$$S = 2 \cdot 29370 + 45 = 58740 + 45 = 58785.$$
+
+The ones digit of $58785$ is $\mathbf{5}$.
+
+Answer: **D**.
+</Solution>

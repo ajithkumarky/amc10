@@ -1,0 +1,40 @@
+---
+year: 2025
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 2
+answer: C
+choices: ['$3\tfrac{2}{7}$', '$3\tfrac{3}{7}$', '$3\tfrac{4}{7}$', '$3\tfrac{5}{7}$', '$3\tfrac{6}{7}$']
+---
+
+<Problem>
+Frances stands $15$ meters directly south of a locked gate in a fence that runs east-west. Immediately behind the fence is a box of chocolates, located $x$ meters east of the locked gate. An unlocked gate lies $9$ meters east of the box, and another unlocked gate lies $8$ meters west of the locked gate. Frances can reach the box by walking toward an unlocked gate, passing through it, and walking toward the box. It happens that the total distance Frances would travel is the same via either unlocked gate. What is the value of $x$?
+</Problem>
+
+<Solution>
+Set up coordinates with the locked gate at the origin. The fence runs along the $x$-axis. Frances is at $(0, -15)$. The box is at $(x, 0^+)$ (just north of the fence, at the fence line for distance purposes).
+
+The two unlocked gates are:
+- East gate: $9$ meters east of the box, so at position $(x + 9, 0)$.
+- West gate: $8$ meters west of the locked gate, so at position $(-8, 0)$.
+
+**Distance via the east gate:** Frances walks from $(0, -15)$ to $(x+9, 0)$, then from $(x+9, 0)$ to $(x, 0)$.
+$$d_E = \sqrt{(x+9)^2 + 15^2} + 9.$$
+
+**Distance via the west gate:** Frances walks from $(0, -15)$ to $(-8, 0)$, then from $(-8, 0)$ to $(x, 0)$.
+$$d_W = \sqrt{64 + 225} + (x + 8) = \sqrt{289} + x + 8 = 17 + x + 8 = 25 + x.$$
+
+Setting $d_E = d_W$:
+$$\sqrt{(x+9)^2 + 225} + 9 = 25 + x$$
+$$\sqrt{(x+9)^2 + 225} = 16 + x.$$
+
+Squaring both sides (valid since the right side must be positive, and it is for positive $x$):
+$$(x+9)^2 + 225 = (16+x)^2$$
+$$x^2 + 18x + 81 + 225 = x^2 + 32x + 256$$
+$$18x + 306 = 32x + 256$$
+$$50 = 14x$$
+$$x = \frac{50}{14} = \frac{25}{7} = 3\tfrac{4}{7}.$$
+
+Answer: **C**.
+</Solution>

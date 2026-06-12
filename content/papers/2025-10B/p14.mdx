@@ -1,0 +1,38 @@
+---
+year: 2025
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: C
+choices:
+  - '$\dfrac{2}{9}$'
+  - '$\dfrac{2}{7}$'
+  - '$\dfrac{9}{28}$'
+  - '$\dfrac{1}{3}$'
+  - '$\dfrac{3}{8}$'
+---
+
+<Problem>
+Nine athletes, no two of whom are the same height, try out for the basketball team. One at a time, they draw a wristband at random, without replacement, from a bag containing 3 blue bands, 3 red bands, and 3 green bands. They are divided into a blue group, a red group, and a green group. The tallest member of each group is named the group captain. What is the probability that the group captains are the three tallest athletes?
+</Problem>
+
+<Solution>
+Label the athletes 1 (tallest) through 9 (shortest). We want athletes 1, 2, and 3 to end up in three different color groups, because the captain of each group is its tallest member — and if 1, 2, 3 are all in different groups, each is automatically the tallest in their group.
+
+**Key insight:** The three group captains are the three tallest athletes if and only if athletes 1, 2, 3 receive three different-colored bands.
+
+The total number of ways to assign colors to the 9 athletes (as an ordered draw) is $9!$, but since we only care about which color each athlete gets, we can think of it as: what is the probability that athletes 1, 2, 3 all get different colors?
+
+Equivalently, consider only the 3 positions chosen by athletes 1, 2, 3 out of the 9 total band slots. We need each to draw a different color.
+
+**Counting directly:** Consider the colors drawn by athletes 1, 2, 3 in sequence.
+
+- Athlete 1 draws any band: probability 1.
+- Given athlete 1's color (say blue), athlete 2 must draw a non-blue band. There are 8 remaining bands: 2 blue, 3 red, 3 green. So 6 are "good." Probability: $\dfrac{6}{8} = \dfrac{3}{4}$.
+- Given athletes 1 and 2 have different colors (say blue and red), athlete 3 must draw a green band. There are 7 remaining bands: 2 blue, 2 red, 3 green. So 3 are "good." Probability: $\dfrac{3}{7}$.
+
+$$P = 1 \cdot \frac{6}{8} \cdot \frac{3}{7} = \frac{18}{56} = \frac{9}{28}.$$
+
+Answer: **C**.
+</Solution>

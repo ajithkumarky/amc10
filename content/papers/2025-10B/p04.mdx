@@ -1,0 +1,38 @@
+---
+year: 2025
+paper: "10B"
+topic: number-theory
+subtopic: number-bases
+difficulty: 1
+answer: A
+choices: ["7", "9", "10", "11", "14"]
+---
+
+<Problem>
+The value of the two-digit number $\underline{a}\,\underline{b}$ in base seven equals the value of the two-digit number $\underline{b}\,\underline{a}$ in base nine. What is $a + b$?
+</Problem>
+
+<Solution>
+The two-digit number $\underline{a}\,\underline{b}$ in base $7$ equals $7a + b$.
+
+The two-digit number $\underline{b}\,\underline{a}$ in base $9$ equals $9b + a$.
+
+Setting them equal:
+$$7a + b = 9b + a$$
+$$6a = 8b$$
+$$3a = 4b.$$
+
+So $a = \frac{4b}{3}$. For $a$ and $b$ to be positive integers, $b$ must be a multiple of $3$.
+
+Also, since $\underline{a}\,\underline{b}$ is in base $7$, both $a$ and $b$ must satisfy $0 \leq a, b \leq 6$, with $a \geq 1$ (it's a two-digit number). Similarly, for base $9$, both digits must be at most $8$.
+
+Taking $b = 3$: $a = 4$. Check: $a = 4 \leq 6$ and $b = 3 \leq 6$. Both valid.
+
+Verify: $\underline{4}\,\underline{3}_7 = 28 + 3 = 31$ and $\underline{3}\,\underline{4}_9 = 27 + 4 = 31$. Correct!
+
+Taking $b = 6$: $a = 8 > 6$, invalid in base $7$.
+
+So the only solution is $a = 4$, $b = 3$, giving $a + b = 7$.
+
+Answer: **A**.
+</Solution>

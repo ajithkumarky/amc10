@@ -1,0 +1,27 @@
+---
+year: 2024
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: B
+choices: ["20", "21", "22", "23", "24"]
+---
+
+<Problem>
+The number $2024$ is written as the sum of not necessarily distinct two-digit numbers. What is the least number of two-digit numbers needed to write this sum?
+</Problem>
+
+<Solution>
+The largest two-digit number is $99$. To minimize the count of two-digit numbers, we want each to be as large as possible.
+
+Dividing: $2024 \div 99 = 20.44...$, so $20$ copies of $99$ give $20 \times 99 = 1980$, leaving a remainder of $2024 - 1980 = 44$.
+
+Since $44$ is itself a two-digit number, we can write $2024 = 99 \times 20 + 44$ using $21$ two-digit numbers.
+
+Can we do it in $20$? If we use only $20$ two-digit numbers, each at most $99$, the maximum sum is $20 \times 99 = 1980 < 2024$. So $20$ is impossible.
+
+Therefore the minimum number is $\boxed{21}$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,29 @@
+---
+year: 2024
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: D
+choices: ["11", "21", "22", "23", "253"]
+---
+
+<Problem>
+What is the least value of $n$ such that $n!$ is a multiple of $2024$?
+</Problem>
+
+<Solution>
+First, factor $2024$:
+
+$$2024 = 8 \times 253 = 8 \times 11 \times 23 = 2^3 \times 11 \times 23$$
+
+For $n!$ to be a multiple of $2024$, it must contain the prime factors $2^3$, $11$, and $23$.
+
+- $2^3$ is present in $n!$ for all $n \geq 4$ (in fact, $4! = 24 = 2^3 \times 3$ already has it).
+- The factor of $11$ first appears when $n \geq 11$.
+- The factor of $23$ first appears when $n \geq 23$.
+
+The most demanding requirement is $n \geq 23$. Once $n = 23$, we have $23!$ which includes $2, 3, \ldots, 23$, so it contains $2^3$, $11$, and $23$ as factors. Therefore the least $n$ is $23$.
+
+Answer: **D**.
+</Solution>

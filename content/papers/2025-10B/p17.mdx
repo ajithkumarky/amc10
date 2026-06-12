@@ -1,0 +1,76 @@
+---
+year: 2025
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: B
+choices:
+  - '$1013$'
+  - '$1014$'
+  - '$1016$'
+  - '$2016$'
+  - '$2025$'
+---
+
+<Problem>
+Consider a decreasing sequence of $n$ positive integers
+$$x_1 > x_2 > \cdots > x_n$$
+that satisfies the following conditions:
+
+- The average of the first 3 terms is $2025$.
+- For all $4 \le k \le n$, the average of the first $k$ terms is $1$ less than the average of the first $k-1$ terms.
+
+What is the greatest possible value of $n$?
+</Problem>
+
+<Solution>
+Let $A_k$ denote the average of the first $k$ terms. We're told $A_3 = 2025$ and $A_k = A_{k-1} - 1$ for $k \ge 4$.
+
+**Finding $A_k$ in terms of $k$.**
+
+For $k \ge 4$: $A_k = A_3 - (k - 3) = 2025 - (k-3) = 2028 - k$.
+
+So the average of the first $k$ terms is $2028 - k$.
+
+**Express $x_k$ in terms of previous averages.**
+
+Since $A_k \cdot k = A_{k-1}\cdot(k-1) + x_k$, we get:
+$$x_k = k \cdot A_k - (k-1) \cdot A_{k-1}.$$
+
+For $k \ge 4$:
+$$x_k = k(2028 - k) - (k-1)(2028 - (k-1))$$
+$$= k(2028-k) - (k-1)(2029-k).$$
+
+Expand:
+$$= 2028k - k^2 - (k-1)(2029-k)$$
+$$= 2028k - k^2 - [2029k - k^2 - 2029 + k]$$
+$$= 2028k - k^2 - 2030k + k^2 + 2029$$
+$$= -2k + 2029.$$
+
+So for $k \ge 4$: $x_k = 2029 - 2k$.
+
+**Verify the sequence is strictly decreasing.**
+
+$x_k = 2029 - 2k$ is decreasing in $k$ (each term is 2 less than the previous). Good.
+
+**Positivity constraint.** We need $x_n > 0$:
+$$2029 - 2n > 0 \implies n < 1014.5 \implies n \le 1014.$$
+
+**Check that $x_n \ge 1$ (positive integer) and $x_n > x_{n-1}$... wait, we also need $x_n < x_{n-1}$.** Since $x_k = 2029 - 2k$ and $x_{k-1} = 2029 - 2(k-1) = 2031 - 2k$, we have $x_k < x_{k-1}$ always. Good.
+
+**Check we can choose $x_1, x_2, x_3$ consistently.** We need:
+- $x_1 + x_2 + x_3 = 3 \cdot 2025 = 6075$.
+- $x_1 > x_2 > x_3 > x_4 = 2029 - 8 = 2021$.
+- $x_1, x_2, x_3$ are distinct positive integers with $x_3 > 2021$.
+
+For $n = 1014$: $x_{1014} = 2029 - 2028 = 1 > 0$. Good.
+
+For the first three terms, we need $x_3 > x_4 = 2021$, so $x_3 \ge 2022$. We also need $x_1 > x_2 > x_3 \ge 2022$ and $x_1 + x_2 + x_3 = 6075$.
+
+One valid choice: $x_3 = 2022$, $x_2 = 2023$, $x_1 = 6075 - 2022 - 2023 = 2030$. Indeed $2030 > 2023 > 2022 > 2021$. All positive integers. 
+
+Therefore the greatest possible value of $n$ is $\boxed{1014}$.
+
+Answer: **B**.
+</Solution>

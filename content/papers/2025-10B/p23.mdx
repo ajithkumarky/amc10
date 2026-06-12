@@ -1,0 +1,51 @@
+---
+year: 2025
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: C
+choices:
+  - '$7$'
+  - '$10$'
+  - '$11$'
+  - '$12$'
+  - '$19$'
+---
+
+<Problem>
+A rectangular grid of squares has 141 rows and 91 columns. Each square has room for two numbers. Horace and Vera each fill in the grid by putting the numbers from 1 through $141 \times 91 = 12{,}831$ into the squares. Horace fills the grid horizontally: he puts 1 through 91 in order from left to right into row 1, puts 92 through 182 into row 2 in order from left to right, and continues similarly through row 141. Vera fills the grid vertically: she puts 1 through 141 in order from top to bottom into column 1, then 142 through 282 into column 2 in order from top to bottom, and continues similarly through column 91. How many squares get two copies of the same number?
+</Problem>
+
+<Solution>
+**Set up.** Let square $(r, c)$ be in row $r$ (1-indexed from top) and column $c$ (1-indexed from left).
+
+**Horace's number** in square $(r,c)$: $H(r,c) = 91(r-1) + c$.
+
+**Vera's number** in square $(r,c)$: $V(r,c) = 141(c-1) + r$.
+
+**We need $H(r,c) = V(r,c)$:**
+$$91(r-1) + c = 141(c-1) + r$$
+$$91r - 91 + c = 141c - 141 + r$$
+$$90r - 140c = -50$$
+$$9r - 14c = -5$$
+$$9r = 14c - 5.$$
+
+**Solve $9r \equiv -5 \pmod{14}$, i.e., $9r \equiv 9 \pmod{14}$** (since $-5 \equiv 9 \pmod{14}$).
+
+Since $\gcd(9, 14) = 1$, divide both sides by 9. We need $9^{-1} \pmod{14}$. Since $9 \times 11 = 99 = 7\times14 + 1$, we have $9^{-1} \equiv 11 \pmod{14}$.
+
+$$r \equiv 11 \times 9 \equiv 99 \equiv 1 \pmod{14}.$$
+
+So $r = 1 + 14t$ for non-negative integer $t$, and $r \in \{1, 15, 29, 43, 57, 71, 85, 99, 113, 127, 141\}$ (since $r \le 141$). That's $t = 0, 1, \ldots, 10$: **11 values of $r$**.
+
+For each such $r$, find $c$: from $9r = 14c - 5$, $c = \dfrac{9r + 5}{14}$.
+
+Check: $r = 1 + 14t \Rightarrow 9r + 5 = 9(1+14t)+5 = 14 + 126t = 14(1+9t)$, so $c = 1 + 9t$.
+
+For $t = 0, \ldots, 10$: $c = 1, 10, 19, 28, 37, 46, 55, 64, 73, 82, 91$. All satisfy $1 \le c \le 91$. Each gives a valid square.
+
+Therefore, exactly **11** squares have the same number from both Horace and Vera.
+
+Answer: **C**.
+</Solution>

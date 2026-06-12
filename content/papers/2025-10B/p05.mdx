@@ -1,0 +1,33 @@
+---
+year: 2025
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 2
+answer: C
+choices: ["$20^\\circ$", "$30^\\circ$", "$40^\\circ$", "$50^\\circ$", "$60^\\circ$"]
+---
+
+<Problem>
+In $\triangle ABC$, $AB = 10$, $AC = 18$, and $\angle B = 130^\circ$. Let $O$ be the center of the circle containing points $A$, $B$, $C$. What is the degree measure of $\angle CAO$?
+</Problem>
+
+<Solution>
+Since $O$ is the circumcenter, $OA = OB = OC = R$ (circumradius).
+
+Triangle $OAB$ is isosceles with $OA = OB$, so $\angle OAB = \angle OBA$.
+
+The central angle $\angle AOB = 2\angle ACB$ (inscribed angle theorem, since both subtend arc $AB$). But we don't know $\angle ACB$ directly.
+
+Instead, use the fact that $\angle B = 130^\circ$ is an inscribed angle subtending arc $AC$ (not containing $B$). By the inscribed angle theorem, the central angle subtending the same arc is:
+$$\angle AOC = 2 \angle ABC = 2 \times 130^\circ = 260^\circ.$$
+
+But that's the reflex angle. The non-reflex central angle is $360^\circ - 260^\circ = 100^\circ$.
+
+Since $OA = OC$, triangle $OAC$ is isosceles. The base angles are:
+$$\angle OAC = \angle OCA = \frac{180^\circ - 100^\circ}{2} = 40^\circ.$$
+
+Therefore $\angle CAO = 40^\circ$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,48 @@
+---
+year: 2024
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: E
+choices: ["$10$", "$11$", "$12$", "$13$", "$14$"]
+---
+
+<Problem>
+Two teams are in a best-two-out-of-three playoff: the teams will play at most $3$ games, and the winner of the playoff is the first team to win $2$ games. The first game is played on Team A's home field, and the remaining games are played on Team B's home field. Team A has a $\tfrac{2}{3}$ chance of winning at home, and its probability of winning when playing away from home is $p$. Outcomes of the games are independent. The probability that Team A wins the playoff is $\tfrac{1}{2}$. Then $p$ can be written in the form $\tfrac{1}{2}(m - \sqrt{n})$, where $m$ and $n$ are positive integers. What is $m + n$?
+</Problem>
+
+<Solution>
+Team A wins the playoff in exactly these scenarios (A = Team A wins that game, B = Team A loses):
+
+- **AA**: A wins games 1 and 2. Probability: $\frac{2}{3} \cdot p$.
+- **ABA**: A wins game 1, loses game 2, wins game 3. Probability: $\frac{2}{3} \cdot (1-p) \cdot p$.
+- **BAA**: A loses game 1, wins games 2 and 3. Probability: $\frac{1}{3} \cdot p \cdot p = \frac{p^2}{3}$.
+
+(Game 1 is at A's home, games 2 and 3 are at B's home, so A's away probability $p$ applies to games 2 and 3.)
+
+Total probability A wins:
+$$P = \frac{2p}{3} + \frac{2p(1-p)}{3} + \frac{p^2}{3} = \frac{1}{2}.$$
+
+Multiply through by 3:
+$$2p + 2p(1-p) + p^2 = \frac{3}{2}.$$
+$$2p + 2p - 2p^2 + p^2 = \frac{3}{2}.$$
+$$4p - p^2 = \frac{3}{2}.$$
+
+Multiply by 2:
+$$8p - 2p^2 = 3.$$
+$$2p^2 - 8p + 3 = 0.$$
+
+Quadratic formula:
+$$p = \frac{8 \pm \sqrt{64 - 24}}{4} = \frac{8 \pm \sqrt{40}}{4} = \frac{8 \pm 2\sqrt{10}}{4} = \frac{4 \pm \sqrt{10}}{2}.$$
+
+Since $0 \leq p \leq 1$ and $\sqrt{10} \approx 3.16$:
+- $p = \frac{4 + \sqrt{10}}{2} \approx \frac{7.16}{2} \approx 3.58 > 1$. Not valid.
+- $p = \frac{4 - \sqrt{10}}{2} = \frac{1}{2}(4 - \sqrt{10}) \approx \frac{0.84}{2} \approx 0.42$. Valid.
+
+So $p = \frac{1}{2}(4 - \sqrt{10})$, giving $m = 4$ and $n = 10$.
+
+$$m + n = 4 + 10 = 14.$$
+
+Answer: **E**.
+</Solution>

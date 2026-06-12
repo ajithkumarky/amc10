@@ -1,0 +1,30 @@
+---
+year: 2025
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 1
+answer: D
+choices: ["9025", "9070", "9090", "9115", "9160"]
+---
+
+<Problem>
+Jerry wrote down the ones digit of each of the first $2025$ positive squares: $1, 4, 9, 6, 5, 6, \ldots$ What is the sum of all the numbers Jerry wrote down?
+</Problem>
+
+<Solution>
+The ones digit of $n^2$ depends only on the ones digit of $n$, and it repeats with period $10$. The ones digits of $1^2$ through $10^2$ are:
+
+$$1, 4, 9, 6, 5, 6, 9, 4, 1, 0.$$
+
+Their sum is $1+4+9+6+5+6+9+4+1+0 = 45$.
+
+Now $2025 = 10 \cdot 202 + 5$, so there are $202$ complete cycles of $10$ and then $5$ extra terms.
+
+- Sum from $202$ complete cycles: $202 \times 45 = 9090$.
+- The first $5$ ones digits are $1, 4, 9, 6, 5$, which sum to $25$.
+
+Total: $9090 + 25 = 9115$.
+
+Answer: **D**.
+</Solution>

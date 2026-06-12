@@ -1,0 +1,43 @@
+---
+year: 2024
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 3
+answer: D
+choices: ["1", "2", "3", "4", "$\\text{infinitely many}$"]
+---
+
+<Problem>
+How many ordered pairs of integers $(m, n)$ satisfy $\sqrt{n^2 - 49} = m$?
+</Problem>
+
+<Solution>
+For the equation $\sqrt{n^2 - 49} = m$ to make sense, we need:
+
+1. $m \geq 0$ (square root is nonnegative).
+2. $n^2 - 49 \geq 0$, i.e., $n^2 \geq 49$, so $|n| \geq 7$.
+
+Squaring both sides: $n^2 - 49 = m^2$, so:
+
+$$n^2 - m^2 = 49 \implies (n-m)(n+m) = 49$$
+
+Since $m, n$ are integers, let $u = n - m$ and $v = n + m$, so $uv = 49$ and $u, v$ are integers of the same parity (since $n = \frac{u+v}{2}$ and $m = \frac{v-u}{2}$ must be integers, we need $u$ and $v$ to have the same parity).
+
+The integer factor pairs of $49$ are: $(1, 49)$, $(7, 7)$, $(49, 1)$, $(-1, -49)$, $(-7, -7)$, $(-49, -1)$.
+
+All these pairs have the same parity (both odd), so all six give integer solutions. But we also need $m \geq 0$.
+
+Check each:
+
+- $(u, v) = (1, 49)$: $n = 25$, $m = 24 \geq 0$. Valid.
+- $(u, v) = (7, 7)$: $n = 7$, $m = 0 \geq 0$. Valid.
+- $(u, v) = (49, 1)$: $n = 25$, $m = -24 < 0$. Invalid.
+- $(u, v) = (-1, -49)$: $n = -25$, $m = -24 < 0$. Invalid.
+- $(u, v) = (-7, -7)$: $n = -7$, $m = 0 \geq 0$. Valid.
+- $(u, v) = (-49, -1)$: $n = -25$, $m = 24 \geq 0$. Valid.
+
+That gives $4$ valid pairs: $(m, n) = (24, 25)$, $(0, 7)$, $(0, -7)$, $(24, -25)$.
+
+Answer: **D**.
+</Solution>

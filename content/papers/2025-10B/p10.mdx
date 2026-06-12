@@ -1,0 +1,53 @@
+---
+year: 2025
+paper: "10B"
+topic: algebra
+subtopic: polynomials
+difficulty: 2
+answer: A
+choices: ["2", "3", "4", "5", "6"]
+---
+
+<Problem>
+Let $f(n) = n^3 - 5n^2 + 2n + 8$ and $g(n) = n^3 - 6n^2 + 5n + 12$. What is the sum of all integers $n$ such that $\dfrac{f(n)}{g(n)}$ is an integer?
+</Problem>
+
+<Solution>
+Since $f(n)$ and $g(n)$ are both degree-$3$ polynomials with the same leading coefficient, compute their difference:
+
+$$f(n) - g(n) = (n^3 - 5n^2 + 2n + 8) - (n^3 - 6n^2 + 5n + 12) = n^2 - 3n - 4 = (n-4)(n+1).$$
+
+So $f(n) = g(n) + (n-4)(n+1)$.
+
+Thus $\dfrac{f(n)}{g(n)} = 1 + \dfrac{(n-4)(n+1)}{g(n)}$.
+
+This is an integer exactly when $g(n) \mid (n-4)(n+1)$.
+
+Factor $g(n)$: Try $n = -1$: $g(-1) = -1 - 6 - 5 + 12 = 0$. So $(n+1)$ is a factor.
+Try $n = 4$: $g(4) = 64 - 96 + 20 + 12 = 0$. So $(n-4)$ is a factor.
+
+Dividing: $g(n) = (n+1)(n-4)(n-3)$.
+
+So we need $(n+1)(n-4)(n-3) \mid (n-4)(n+1)$.
+
+**Case 1: $g(n) = 0$.** Then $g(n) \nmid (n-4)(n+1)$ unless $(n-4)(n+1) = 0$ too, but division by zero is undefined. So $n = -1$, $n = 4$, $n = 3$ are excluded.
+
+**Case 2: $g(n) \neq 0$.** We need $\left|\dfrac{(n-4)(n+1)}{g(n)}\right| = \left|\dfrac{(n-4)(n+1)}{(n+1)(n-4)(n-3)}\right| = \left|\dfrac{1}{n-3}\right|$ to lead to an integer quotient.
+
+Wait — when $(n-4)(n+1) \neq 0$ and $g(n) \neq 0$, we have:
+$$\frac{(n-4)(n+1)}{g(n)} = \frac{(n-4)(n+1)}{(n+1)(n-4)(n-3)} = \frac{1}{n-3}.$$
+
+This is an integer iff $n - 3 \in \{1, -1\}$, i.e., $n \in \{4, 2\}$.
+
+But $n = 4$ makes $g(n) = 0$, so exclude it.
+
+So $n = 2$: check $g(2) = 8 - 24 + 10 + 12 = 6 \neq 0$. And $\frac{f(2)}{g(2)} = \frac{8 - 20 + 4 + 8}{6} = \frac{0}{6} = 0$. Integer! ✓
+
+**Case 3: $(n-4)(n+1) = 0$ but $g(n) \neq 0$.** If $n = -1$: $g(-1) = 0$, undefined. If $n = 4$: $g(4) = 0$, undefined. So no additional solutions here.
+
+**Case 4:** What if $n-3 = 0$, i.e., $n = 3$? Then $g(3) = 0$, undefined.
+
+So the only integer solution is $n = 2$. The sum of all such integers is $\mathbf{2}$.
+
+Answer: **A**.
+</Solution>

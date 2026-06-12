@@ -1,0 +1,76 @@
+---
+year: 2024
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: C
+choices: ["$19$", "$24$", "$29$", "$34$", "$39$"]
+---
+
+<Problem>
+The numbers, in order, of each row and the numbers, in order, of each column of a $5 \times 5$ array of integers form an arithmetic progression of length $5$. The numbers in positions $(5,5)$, $(2,4)$, $(4,3)$, and $(3,1)$ are $0$, $48$, $16$, and $12$, respectively. What number is in position $(1,2)$?
+</Problem>
+
+<Solution>
+**Model the grid.** A $5 \times 5$ array where every row and every column is an arithmetic progression is determined by 4 parameters: the value at position $(1,1)$, the common difference of row 1, the common difference of column 1, and a "cross-difference."
+
+More precisely: let $a_{i,j}$ denote the entry in row $i$, column $j$ (with $i$ = row, $j$ = column, both from 1 to 5). If rows and columns are APs, then:
+$$a_{i,j} = a_{1,1} + (j-1)r + (i-1)c + (i-1)(j-1)d$$
+
+where $r$ is the common difference of row 1, $c$ is the common difference of column 1, and $d$ is a "twist" parameter.
+
+Wait — let's be more careful. Row $i$ is an AP with common difference $d_i$ (its own), and column $j$ is an AP with common difference $e_j$ (its own). But a key constraint is that these must be consistent.
+
+**Simpler parametrization**: If each row is an AP and each column is an AP, then the grid has the form:
+$$a_{i,j} = \alpha + \beta(i-1) + \gamma(j-1) + \delta(i-1)(j-1)$$
+
+for constants $\alpha, \beta, \gamma, \delta$.
+
+*Proof*: Row $i$ is an AP $\Rightarrow a_{i,j} = f(i) + g(i)(j-1)$ for some functions $f, g$. Column $j$ being an AP means second differences in $i$ vanish: $a_{i+1,j} - a_{i,j}$ is constant in $i$, i.e., $f(i+1)-f(i) + (g(i+1)-g(i))(j-1)$ is constant in $j$... this forces $g(i) = \beta_0 + \delta_0 i$ to be linear, and $f(i)$ linear. Hence the bilinear form above.
+
+**Set up equations.** With $a_{i,j} = \alpha + \beta(i-1) + \gamma(j-1) + \delta(i-1)(j-1)$:
+
+- $(3,1)$: $a_{3,1} = \alpha + 2\beta = 12$.
+- $(5,5)$: $a_{5,5} = \alpha + 4\beta + 4\gamma + 16\delta = 0$.
+- $(2,4)$: $a_{2,4} = \alpha + \beta + 3\gamma + 3\delta = 48$.
+- $(4,3)$: $a_{4,3} = \alpha + 3\beta + 2\gamma + 6\delta = 16$.
+
+From equation 1: $\alpha = 12 - 2\beta$.
+
+Substitute into the others:
+
+$(5,5)$: $(12 - 2\beta) + 4\beta + 4\gamma + 16\delta = 0 \Rightarrow 12 + 2\beta + 4\gamma + 16\delta = 0$. ... (I)
+
+$(2,4)$: $(12 - 2\beta) + \beta + 3\gamma + 3\delta = 48 \Rightarrow 12 - \beta + 3\gamma + 3\delta = 48 \Rightarrow -\beta + 3\gamma + 3\delta = 36$. ... (II)
+
+$(4,3)$: $(12 - 2\beta) + 3\beta + 2\gamma + 6\delta = 16 \Rightarrow 12 + \beta + 2\gamma + 6\delta = 16 \Rightarrow \beta + 2\gamma + 6\delta = 4$. ... (III)
+
+From (II): $\beta = 3\gamma + 3\delta - 36$. Substitute into (I) and (III):
+
+(I): $12 + 2(3\gamma + 3\delta - 36) + 4\gamma + 16\delta = 0$
+$\Rightarrow 12 + 6\gamma + 6\delta - 72 + 4\gamma + 16\delta = 0$
+$\Rightarrow 10\gamma + 22\delta = 60$
+$\Rightarrow 5\gamma + 11\delta = 30$. ... (IV)
+
+(III): $(3\gamma + 3\delta - 36) + 2\gamma + 6\delta = 4$
+$\Rightarrow 5\gamma + 9\delta = 40$. ... (V)
+
+Subtract (IV) from (V): $-2\delta = 10 \Rightarrow \delta = -5$.
+
+From (IV): $5\gamma + 11(-5) = 30 \Rightarrow 5\gamma = 85 \Rightarrow \gamma = 17$.
+
+$\beta = 3(17) + 3(-5) - 36 = 51 - 15 - 36 = 0$.
+
+$\alpha = 12 - 2(0) = 12$.
+
+**Find $a_{1,2}$:** $a_{1,2} = \alpha + \beta(0) + \gamma(1) + \delta(0)(1) = 12 + 0 + 17 + 0 = 29$.
+
+**Verify:** $a_{i,j} = 12 + 17(j-1) - 5(i-1)(j-1)$.
+- $a_{5,5} = 12 + 17(4) - 5(4)(4) = 12 + 68 - 80 = 0$ ✓
+- $a_{2,4} = 12 + 17(3) - 5(1)(3) = 12 + 51 - 15 = 48$ ✓
+- $a_{4,3} = 12 + 17(2) - 5(3)(2) = 12 + 34 - 30 = 16$ ✓
+- $a_{3,1} = 12 + 17(0) - 5(2)(0) = 12$ ✓
+
+Answer: **C**.
+</Solution>

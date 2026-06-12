@@ -1,0 +1,63 @@
+---
+year: 2025
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: A
+choices:
+  - '$\dfrac{3}{14}$'
+  - '$\dfrac{3}{11}$'
+  - '$\dfrac{2}{7}$'
+  - '$\dfrac{4}{11}$'
+  - '$\dfrac{3}{7}$'
+---
+
+<Problem>
+A seven-digit positive integer is chosen at random. What is the probability that the number is divisible by $11$, given that the sum of its digits is $61$?
+</Problem>
+
+<Solution>
+Let the 7-digit number have digits $d_1 d_2 d_3 d_4 d_5 d_6 d_7$ where $d_1 \in \{1,\ldots,9\}$ and $d_i \in \{0,\ldots,9\}$ for $i \ge 2$.
+
+**Divisibility by 11.** A number is divisible by 11 iff the alternating digit sum is divisible by 11:
+$$(d_1 - d_2 + d_3 - d_4 + d_5 - d_6 + d_7) \equiv 0 \pmod{11}.$$
+
+Let $E = d_2 + d_4 + d_6$ (even-position digits) and $O = d_1 + d_3 + d_5 + d_7$ (odd-position digits). Then $O + E = 61$ and divisibility by 11 requires $O - E \equiv 0 \pmod{11}$.
+
+From $O + E = 61$ and $O - E = 11m$ for some integer $m$:
+$$O = \frac{61 + 11m}{2}, \quad E = \frac{61 - 11m}{2}.$$
+
+For $O$ and $E$ to be non-negative integers, we need $61 + 11m$ even, so $m$ must be odd (since 61 is odd and 11 is odd, $11m$ is odd iff $m$ is odd, making $61 + 11m$ even). Also $0 \le E \le 27$ (at most 3 digits of 9) and $0 \le O \le 36$ (at most 4 digits of 9).
+
+Valid odd values of $m$:
+- $m = -5$: $O = (61-55)/2 = 3$, $E = (61+55)/2 = 58 > 27$. Invalid.
+- $m = -3$: $O = (61-33)/2 = 14$, $E = (61+33)/2 = 47 > 27$. Invalid.
+- $m = -1$: $O = (61-11)/2 = 25$, $E = (61+11)/2 = 36 > 27$. Invalid.
+- $m = 1$: $O = (61+11)/2 = 36$, $E = (61-11)/2 = 25$. $O \le 36$ and $E \le 27$. Valid.
+- $m = 3$: $O = (61+33)/2 = 47 > 36$. Invalid.
+
+So the only valid case is $m = 1$: $O = 36$, $E = 25$.
+
+$O = 36$ with 4 digits means $d_1 + d_3 + d_5 + d_7 = 36$. Since the maximum is $9+9+9+9 = 36$, we must have $d_1 = d_3 = d_5 = d_7 = 9$.
+
+$E = 25$ with 3 digits means $d_2 + d_4 + d_6 = 25$ where each $d_i \le 9$.
+
+**Count total 7-digit numbers with digit sum 61.** All such numbers have digits summing to 61. Given the constraint above that $O - E \equiv 0 \pmod{11}$ is only possible when $O = 36, E = 25$, we need to count all 7-digit numbers with digit sum 61.
+
+**Total count (denominator).** We need $d_1 + \cdots + d_7 = 61$, $d_1 \in \{1,\ldots,9\}$, $d_i \in \{0,\ldots,9\}$.
+
+Since the sum of 7 digits is 61 and the maximum is $9 \times 7 = 63$, the sum is quite large. Let $e_i = 9 - d_i \ge 0$, so $\sum e_i = 63 - 61 = 2$, and $e_1 \le 8$ (since $d_1 \ge 1$ means $e_1 \le 8$), $e_i \le 9$ for $i \ge 2$.
+
+The number of non-negative integer solutions to $e_1 + \cdots + e_7 = 2$ with $e_1 \le 8$, $e_i \le 9$ is the same as unconstrained (since $e_1 \le 2 \le 8$ and $e_i \le 2 \le 9$ are automatically satisfied):
+$$\binom{2 + 6}{6} = \binom{8}{6} = 28.$$
+
+**Divisible-by-11 count (numerator).** These are numbers with $d_1 = d_3 = d_5 = d_7 = 9$ and $d_2 + d_4 + d_6 = 25$.
+
+For $d_2 + d_4 + d_6 = 25$ with each $\le 9$: let $f_i = 9 - d_i \ge 0$, $\sum f_i = 27 - 25 = 2$. Unconstrained: $\binom{2+2}{2} = \binom{4}{2} = 6$.
+
+**Probability:**
+$$P = \frac{6}{28} = \frac{3}{14}.$$
+
+Answer: **A**.
+</Solution>

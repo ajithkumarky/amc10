@@ -1,0 +1,63 @@
+---
+year: 2025
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: C
+choices: ["7", "8", "11", "14", "15"]
+---
+
+<Problem>
+Emmy says to Max, "I ordered $36$ math club sweatshirts today." Max asks, "How much did each shirt cost?" Emmy responds, "I'll give you a hint. The total cost was $\$\underline{A}\,\underline{B}\,\underline{B}.\underline{B}\,\underline{A}$, where $A$ and $B$ are digits and $A \neq 0$." After a pause, Max says, "That was a good price." What is $A + B$?
+</Problem>
+
+<Solution>
+The total cost in dollars is $\$\underline{A}\,\underline{B}\,\underline{B}.\underline{B}\,\underline{A}$. In cents, this is the integer:
+
+$$100 \cdot (100A + 10B + B) + (10B + A) = 10000A + 1000B + 100B + 10B + A = 10001A + 1110B.$$
+
+This total must be divisible by $36$ (since $36$ shirts were purchased and each costs a whole number of cents).
+
+So we need $10001A + 1110B \equiv 0 \pmod{36}$.
+
+First, reduce the coefficients mod $36$:
+- $10001 = 277 \times 36 + 29$, so $10001 \equiv 29 \pmod{36}$.
+- $1110 = 30 \times 36 + 30$, so $1110 \equiv 30 \pmod{36}$.
+
+The condition becomes:
+$$29A + 30B \equiv 0 \pmod{36}.$$
+
+Since $A \in \{1, \ldots, 9\}$ and $B \in \{0, \ldots, 9\}$, and both appear as digits in a dollar amount (so $B$ in the tenths place gives a valid decimal), we search for solutions.
+
+Rewrite: $29A \equiv -30B \equiv 6B \pmod{36}$ (since $-30 \equiv 6 \pmod{36}$).
+
+Also $29 \equiv -7 \pmod{36}$, so $-7A \equiv 6B \pmod{36}$, i.e., $7A + 6B \equiv 0 \pmod{36}$.
+
+Try values. We need $7A + 6B$ to be a multiple of $36$.
+
+- $A=6, B=3$: $42 + 18 = 60$. Not divisible by $36$.
+- $A=6, B=9$: $42 + 54 = 96$. Not divisible by $36$.
+- $A=3, B=\ldots$: $21 + 6B \equiv 0 \pmod{36}$, so $6B \equiv 15 \pmod{36}$, so $2B \equiv 5 \pmod{12}$. No integer solution.
+- $A=9, B=\ldots$: $63 + 6B \equiv 0 \pmod{36}$, so $6B \equiv -63 \equiv -63 + 72 = 9 \pmod{36}$, so $2B \equiv 3 \pmod{12}$. No integer solution.
+- $A=6, B=\ldots$: $42 + 6B \equiv 0 \pmod{36}$, so $6B \equiv -42 \equiv -42 + 72 = 30 \pmod{36}$, so $B \equiv 5 \pmod{6}$. So $B = 5$.
+  - Check: $7(6) + 6(5) = 42 + 30 = 72 = 2 \times 36$. Yes!
+
+With $A = 6$, $B = 5$: total cost in cents is $10001(6) + 1110(5) = 60006 + 5550 = 65556$ cents $= \$655.56$.
+
+Price per shirt: $65556 / 36 = 1821$ cents $= \$18.21$.
+
+Verify the dollar amount: $\$655.56$ has the pattern $\underline{6}\,\underline{5}\,\underline{5}.\underline{5}\,\underline{6}$ = $ABB.BA$ with $A=6, B=5$. Correct!
+
+Also check other solutions: $A=6, B=5+6=11$ exceeds $9$, so the only valid solution is $A=6, B=5$.
+
+Let's also check $A=2$: $14 + 6B \equiv 0 \pmod{36}$, $6B \equiv 22 \pmod{36}$, $3B \equiv 11 \pmod{18}$. No solution.
+
+$A=4$: $28 + 6B \equiv 0 \pmod{36}$, $6B \equiv 8 \pmod{36}$, $3B \equiv 4 \pmod{18}$. No solution.
+
+$A=8$: $56 + 6B \equiv 0 \pmod{36}$, $6B \equiv -56 \equiv -56+72=16 \pmod{36}$, $3B \equiv 8 \pmod{18}$. No solution.
+
+So $A + B = 6 + 5 = 11$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,64 @@
+---
+year: 2024
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: C
+choices: ["$436$", "$506$", "$608$", "$654$", "$675$"]
+---
+
+<Problem>
+Let $S$ be a subset of $\{1, 2, 3, \ldots, 2024\}$ such that the following two conditions hold:
+
+- If $x$ and $y$ are distinct elements of $S$, then $|x - y| > 2$.
+- If $x$ and $y$ are distinct odd elements of $S$, then $|x - y| > 6$.
+
+What is the maximum possible number of elements in $S$?
+</Problem>
+
+<Solution>
+**Understanding the constraints:**
+
+Condition 1 says no two elements of $S$ can be within distance 2 of each other (they must differ by at least 3).
+
+Condition 2 (additional constraint for odd elements) says any two odd elements must differ by at least 7.
+
+**Strategy: Identify a repeating pattern.**
+
+Since odd elements must be spaced at least 7 apart, consecutive odd elements in $S$ differ by at least 7 (so actually at least 8, since consecutive odd numbers differ by 2, and they must differ by more than 6, so at least 8). Wait — odd numbers differ by even amounts, so $|x-y| \geq 8$ for distinct odd elements in $S$.
+
+Between two consecutive odd elements $o_1 < o_2$ in $S$ (with $o_2 - o_1 \geq 8$), we can fit even elements, subject to condition 1: each even element must be $> 2$ away from every other element in $S$.
+
+**Find the optimal periodic pattern.**
+
+Consider placing elements mod 10. Try the pattern where we pick from every block of 10 consecutive integers $\{10k+1, 10k+2, \ldots, 10k+10\}$.
+
+If we can pick 3 elements per block of 10 without violating the constraints, we get roughly $\frac{2024}{10} \times 3 \approx 607$ elements.
+
+**Test the pattern $\{1, 4, 8\} \pmod{10}$**: pick numbers congruent to $1, 4, 8 \pmod{10}$.
+- In consecutive block: e.g., $1, 4, 8, 11, 14, 18, 21, \ldots$
+- Differences: $4-1=3>2$ ✓, $8-4=4>2$ ✓, $11-8=3>2$ ✓.
+- Odd elements: $1, 11, 21, \ldots$ (all $\equiv 1 \pmod{10}$), differing by 10. $10 > 6$ ✓. Numbers $\equiv 9 \pmod{10}$... wait, 9 is odd but not in our pattern. Check: $\{1, 4, 8\} \pmod{10}$ — odd elements are $1 \pmod{10}$. Consecutive odd elements in $S$ differ by 10. $10 > 6$ ✓. 
+
+Condition 1: Check all consecutive pairs in the pattern $1, 4, 8, 11, 14, 18, 21, \ldots$
+- $4-1=3$, $8-4=4$, $11-8=3$, $14-11=3$, $18-14=4$, $21-18=3$. All $\geq 3 > 2$. ✓
+
+So this pattern gives 3 elements per 10 consecutive integers.
+
+**Count elements in $\{1, \ldots, 2024\}$ congruent to $1, 4, 8 \pmod{10}$:**
+
+- Congruent to $1 \pmod{10}$: $1, 11, 21, \ldots, 2021$. Count: $\frac{2021-1}{10}+1 = 203$.
+- Congruent to $4 \pmod{10}$: $4, 14, 24, \ldots, 2024$. Count: $\frac{2024-4}{10}+1 = 203$.
+- Congruent to $8 \pmod{10}$: $8, 18, 28, \ldots, 2018$. Count: $\frac{2018-8}{10}+1 = 202$.
+
+Total: $203 + 203 + 202 = 608$.
+
+**Verify this is optimal.** In any 10 consecutive integers, there are 5 odd and 5 even. Odd elements must be spaced $\geq 8$ apart, so in any window of 10, at most 1 odd element from $S$ (since two consecutive odds in $S$ would need gap $\geq 8$, which means within the same 10-block you can have at most 1 odd). With 1 odd per 10 integers, and remaining elements must be $> 2$ from each other and from the odd:
+
+With the odd at position $o$, the nearest allowed positions (distance $> 2$) are $o \pm 3, o \pm 4, \ldots$. In a window of 10 around $o$, we can fit at most 2 more elements. So 3 per 10 is optimal.
+
+The maximum is $\boxed{608}$.
+
+Answer: **C**.
+</Solution>

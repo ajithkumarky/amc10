@@ -1,0 +1,64 @@
+---
+year: 2025
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: E
+choices:
+  - '$\dfrac{1}{101}$'
+  - '$\dfrac{1}{100}$'
+  - '$\dfrac{1}{99}$'
+  - '$\dfrac{1}{98}$'
+  - '$\dfrac{1}{97}$'
+---
+
+<Problem>
+A frog hops along the number line according to the following rules:
+
+- It starts at $0$.
+- If it is at $0$, then it moves to $1$ with probability $\dfrac{1}{2}$ and it disappears with probability $\dfrac{1}{2}$.
+- For $n = 1, 2$, or $3$, if it is at $n$, then it moves to $n+1$ with probability $\dfrac{1}{4}$, it moves to $n-1$ with probability $\dfrac{1}{4}$, and it disappears with probability $\dfrac{1}{2}$.
+
+What is the probability that the frog reaches $4$?
+</Problem>
+
+<Solution>
+Let $p_n$ = probability that the frog eventually reaches 4, given it is currently at $n$.
+
+We want $p_0$.
+
+**At $n = 0$:** the frog moves to 1 with probability $\tfrac{1}{2}$ or disappears with probability $\tfrac{1}{2}$:
+$$p_0 = \frac{1}{2} p_1.$$
+
+**At $n = 1, 2, 3$:** the frog moves to $n+1$ with prob $\tfrac{1}{4}$, to $n-1$ with prob $\tfrac{1}{4}$, disappears with prob $\tfrac{1}{2}$:
+$$p_n = \frac{1}{4}p_{n+1} + \frac{1}{4}p_{n-1}, \quad n = 1,2,3.$$
+
+With $p_4 = 1$ (already reached 4) and absorbing state at disappearance (contributing 0).
+
+**Solve the system.** For $n = 1, 2, 3$:
+$$4p_n = p_{n+1} + p_{n-1}.$$
+
+This is a linear recurrence: $p_{n+1} - 4p_n + p_{n-1} = 0$.
+
+Characteristic equation: $r^2 - 4r + 1 = 0$, roots $r = 2 \pm \sqrt{3}$.
+
+General solution: $p_n = A(2+\sqrt{3})^n + B(2-\sqrt{3})^n$.
+
+**Boundary conditions:** $p_4 = 1$ and $p_0 = \tfrac{1}{2}p_1$ (from the equation at 0).
+
+From the recurrence, $p_0$ is treated as a variable related to $p_1$ by the equation above.
+
+Using $p_0 = \tfrac{1}{2}p_1$, i.e., $p_1 = 2p_0$:
+
+At $n=0$: we can write a "virtual" recurrence. Let's treat $p_0$ as unknown, $p_1 = 2p_0$, and use the recurrence to express $p_2, p_3$ in terms of $p_0$, then apply $p_4 = 1$.
+
+From the recurrence:
+- $p_2 = 4p_1 - p_0 = 8p_0 - p_0 = 7p_0$.
+- $p_3 = 4p_2 - p_1 = 28p_0 - 2p_0 = 26p_0$.
+- $p_4 = 4p_3 - p_2 = 104p_0 - 7p_0 = 97p_0$.
+
+Set $p_4 = 1$: $97p_0 = 1$, so $p_0 = \dfrac{1}{97}$.
+
+Answer: **E**.
+</Solution>

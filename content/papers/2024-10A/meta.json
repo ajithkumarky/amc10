@@ -1,0 +1,11 @@
+{
+  "year": 2024,
+  "ab": "10A",
+  "title": "AMC 10A 2024",
+  "date": "2024-11-06",
+  "source": "https://artofproblemsolving.com/wiki/index.php/2024_AMC_10A_Problems",
+  "skipped": [
+    { "n": 16, "reason": "figure-dependent: requires exact layout of similar-rectangle dissection to identify segment AB; no faithful textual description possible" },
+    { "n": 25, "reason": "figure-dependent: requires exact positions of constraint numbers in 8x3 toothpick grid; no faithful textual description possible" }
+  ]
+}

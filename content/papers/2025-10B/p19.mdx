@@ -1,0 +1,46 @@
+---
+year: 2025
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: D
+choices:
+  - '$70$'
+  - '$85$'
+  - '$90$'
+  - '$95$'
+  - '$105$'
+---
+
+<Problem>
+A container has a $1 \times 1$ square bottom, a $3 \times 3$ open square top, and four congruent trapezoidal sides, as shown. Starting when the container is empty, a hose that runs water at a constant rate takes 35 minutes to fill the container up to the midline of the trapezoids. How many more minutes will it take to fill the remainder of the container?
+</Problem>
+
+<Solution>
+**Set up coordinates.** Let the total height of the container be $h$. At height $t$ above the bottom ($0 \le t \le h$), the cross-section is a square whose side length varies linearly from $1$ (at $t=0$) to $3$ (at $t=h$):
+$$s(t) = 1 + \frac{2t}{h}.$$
+
+**Volume from bottom up to height $z$:**
+$$V(z) = \int_0^z s(t)^2\,dt = \int_0^z \left(1 + \frac{2t}{h}\right)^2 dt.$$
+
+Substitute $u = 1 + \dfrac{2t}{h}$:
+$$V(z) = \frac{h}{2}\int_1^{1+2z/h} u^2\,du = \frac{h}{6}\left[\left(1 + \frac{2z}{h}\right)^3 - 1\right].$$
+
+**Total volume** ($z = h$, top side length 3):
+$$V_{\text{total}} = \frac{h}{6}(3^3 - 1) = \frac{26h}{6} = \frac{13h}{3}.$$
+
+**Volume at the midline** ($z = h/2$, midpoint of the trapezoidal sides):
+$$V\!\left(\tfrac{h}{2}\right) = \frac{h}{6}\left(2^3 - 1\right) = \frac{7h}{6}.$$
+
+**Filling rate.** The hose fills $\dfrac{7h}{6}$ in 35 minutes:
+$$r = \frac{7h/6}{35} = \frac{h}{30} \text{ per minute.}$$
+
+**Remaining volume** (top half of container):
+$$V_{\text{rem}} = \frac{13h}{3} - \frac{7h}{6} = \frac{26h - 7h}{6} = \frac{19h}{6}.$$
+
+**Time to fill remainder:**
+$$t = \frac{19h/6}{h/30} = \frac{19h}{6} \cdot \frac{30}{h} = \frac{19 \times 30}{6} = 95 \text{ minutes.}$$
+
+Answer: **D**.
+</Solution>

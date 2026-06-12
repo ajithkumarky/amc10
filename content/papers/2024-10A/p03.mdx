@@ -1,0 +1,46 @@
+---
+year: 2024
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: B
+choices: ["5", "7", "8", "10", "13"]
+---
+
+<Problem>
+Let $n$ be the least prime number that can be written as the sum of $5$ distinct prime numbers. What is the sum of the digits of $n$?
+</Problem>
+
+<Solution>
+We want to find the smallest prime that is the sum of exactly 5 distinct primes.
+
+The smallest 5 distinct primes are $2, 3, 5, 7, 11$, which sum to $28$. But $28$ is even and not prime.
+
+To get a prime sum, notice that a sum of five primes is prime (odd) only if exactly one of the five primes is $2$ (since $2$ is the only even prime, an odd number of even addends keeps the sum odd). With one even prime ($2$) and four odd primes, the sum is $2 + \text{odd} + \text{odd} + \text{odd} + \text{odd} = 2 + \text{even} = \text{even}$. That's still even — so it won't be prime unless it equals $2$, which is impossible for a sum this large.
+
+Wait, let's reconsider: five odd primes sum to an odd number (odd sum), but we need exactly the right set. If all five primes are odd, the sum is odd and could be prime. The five smallest odd primes are $3, 5, 7, 11, 13$, summing to $39 = 3 \times 13$, not prime.
+
+Try $3, 5, 7, 11, 17$: sum $= 43$, which is prime! But can we do better (smaller prime sum) with a different set?
+
+Check sets giving sums between $28$ and $43$:
+- $\{2, 3, 5, 7, 11\}$: sum $= 28$, not prime.
+- $\{2, 3, 5, 7, 13\}$: sum $= 30$, not prime.
+- $\{2, 3, 5, 7, 17\}$: sum $= 34$, not prime.
+- $\{2, 3, 5, 11, 13\}$: sum $= 34$, not prime.
+- $\{2, 3, 5, 7, 19\}$: sum $= 36$, not prime.
+- $\{2, 3, 5, 11, 17\}$: sum $= 38$, not prime.
+- $\{2, 3, 7, 11, 13\}$: sum $= 36$, not prime.
+- $\{3, 5, 7, 11, 13\}$: sum $= 39$, not prime.
+- $\{2, 3, 5, 7, 23\}$: sum $= 40$, not prime.
+- $\{2, 3, 5, 13, 17\}$: sum $= 40$, not prime.
+- $\{2, 3, 5, 7, 29\}$: sum $= 46$, prime but larger than $43$.
+- $\{2, 3, 7, 11, 17\}$: sum $= 40$, not prime.
+- $\{2, 5, 7, 11, 13\}$: sum $= 38$, not prime.
+- $\{2, 3, 5, 13, 19\}$: sum $= 42$, not prime.
+- $\{2, 3, 7, 13, 17\}$: sum $= 42$, not prime.
+
+So $n = 43$. The sum of its digits is $4 + 3 = 7$.
+
+Answer: **B**.
+</Solution>

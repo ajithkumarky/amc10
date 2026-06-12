@@ -1,0 +1,25 @@
+---
+year: 2024
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: D
+choices: ["6", "10", "12", "15", "24"]
+---
+
+<Problem>
+What is the minimum number of successive swaps of adjacent letters in the string $ABCDEF$ that are needed to change the string to $FEDCBA$? (For example, $3$ swaps are required to change $ABC$ to $CBA$; one such sequence of swaps is $ABC \to BAC \to BCA \to CBA$.)
+</Problem>
+
+<Solution>
+Reversing a string by adjacent swaps is equivalent to counting the number of inversions between the original and final arrangements. An inversion is a pair of elements that are out of order.
+
+In $ABCDEF$, assign positions $1$ through $6$ to letters $A$ through $F$. In $FEDCBA$, the desired order is $F, E, D, C, B, A$, meaning letter in original position $i$ should go to position $7 - i$.
+
+The minimum number of adjacent swaps to sort a permutation is exactly the number of inversions in the permutation. Here we want to go from the identity permutation to the reverse permutation $(6, 5, 4, 3, 2, 1)$.
+
+Count inversions in $(6, 5, 4, 3, 2, 1)$: every pair $(i, j)$ with $i < j$ is an inversion since $6 > 5 > 4 > 3 > 2 > 1$. The number of such pairs from 6 elements is $\binom{6}{2} = 15$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,44 @@
+---
+year: 2024
+paper: "10A"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 2
+answer: C
+choices: ["10", "20", "30", "40", "50"]
+---
+
+<Problem>
+Consider the following operation. Given a positive integer $n$, if $n$ is a multiple of $3$, then you replace $n$ by $\dfrac{n}{3}$. If $n$ is not a multiple of $3$, then you replace $n$ by $n + 10$. For example, beginning with $n = 4$, this procedure gives $4 \to 14 \to 24 \to 8 \to 18 \to 6 \to 2 \to 12 \to \cdots$. Suppose you start with $n = 100$. What value results if you perform this operation exactly $100$ times?
+</Problem>
+
+<Solution>
+Let's trace the sequence starting from $n = 100$:
+
+$100 \to 110 \to 120 \to 40 \to 50 \to 60 \to 20 \to 30 \to 10 \to 20 \to 30 \to 10 \to \cdots$
+
+After reaching $10$, the sequence cycles: $10 \to 20 \to 30 \to 10 \to 20 \to 30 \to \cdots$ (a cycle of length 3).
+
+Let's count operations to reach the cycle:
+- Step 1: $100 \to 110$ (not mult of 3, add 10)
+- Step 2: $110 \to 120$ (not mult of 3, add 10)
+- Step 3: $120 \to 40$ (mult of 3, divide by 3)
+- Step 4: $40 \to 50$
+- Step 5: $50 \to 60$
+- Step 6: $60 \to 20$
+- Step 7: $20 \to 30$
+- Step 8: $30 \to 10$
+- Step 9: $10 \to 20$
+- Step 10: $20 \to 30$
+- Step 11: $30 \to 10$
+
+After step 8 we're at 10, and the cycle $10 \to 20 \to 30 \to 10 \to \cdots$ begins. After step 8 we've used 8 operations. We need 100 total, so we perform $100 - 8 = 92$ more steps from $10$.
+
+The cycle has period 3: $10 \to 20 \to 30 \to 10$. After $92$ more steps from $10$:
+
+$92 = 3 \times 30 + 2$
+
+So after 92 steps from 10, we are at position 2 in the cycle $\{10, 20, 30\}$, which is $30$.
+
+Answer: **C**.
+</Solution>

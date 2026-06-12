@@ -1,0 +1,10 @@
+{
+  "year": 2025,
+  "ab": "10B",
+  "title": "AMC 10B 2025",
+  "date": "2025-11-13",
+  "source": "https://artofproblemsolving.com/wiki/index.php/2025_AMC_10B_Problems",
+  "skipped": [
+    { "n": 12, "reason": "complex diagram: disk-packing comparison depends on the exact figure; transcription could not be verified against the official answer" }
+  ]
+}

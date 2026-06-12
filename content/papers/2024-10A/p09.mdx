@@ -1,0 +1,43 @@
+---
+year: 2024
+paper: "10A"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 2
+answer: B
+choices: ["720", "1350", "2700", "3280", "8100"]
+---
+
+<Problem>
+In how many ways can $6$ juniors and $6$ seniors form $3$ disjoint teams of $4$ people so that each team has $2$ juniors and $2$ seniors?
+</Problem>
+
+<Solution>
+We count in two steps: first assign the juniors to teams, then assign the seniors to teams, then account for the teams being unlabeled (unordered).
+
+**Step 1: Assign juniors.** Divide 6 juniors into 3 groups of 2. The number of ways to do this (treating the groups as distinguishable for now) is:
+
+$$\binom{6}{2}\binom{4}{2}\binom{2}{2} = 15 \times 6 \times 1 = 90$$
+
+**Step 2: Assign seniors.** Similarly, divide 6 seniors into 3 groups of 2:
+
+$$\binom{6}{2}\binom{4}{2}\binom{2}{2} = 15 \times 6 \times 1 = 90$$
+
+**Step 3: Pair up.** Once we have 3 junior-pairs and 3 senior-pairs (both labeled group 1, 2, 3), there are $3! = 6$ ways to match them into teams.
+
+**Step 4: Remove overcounting.** The 3 teams themselves are unordered, but in Steps 1 and 2 we labeled them. We've overcounted by $3! = 6$.
+
+Total $= \dfrac{90 \times 90 \times 6}{6} = 90 \times 90 / 1$... wait, let me be more careful.
+
+A cleaner approach: choose which 2 juniors go to team 1, which 2 go to team 2, and the remaining 2 go to team 3: $\binom{6}{2}\binom{4}{2} = 90$ ways (teams are labeled here). Similarly for seniors: $90$ ways. Since the teams are unlabeled, divide by $3! = 6$... but actually the teams become distinguishable once we assign people to them, so we don't divide by 6 at this stage.
+
+The number of ways to split 6 juniors into an **ordered** sequence of 3 pairs is $\binom{6}{2}\binom{4}{2}\binom{2}{2} = 90$. Similarly for seniors: $90$. Now pair junior-group $i$ with senior-group $i$ for $i=1,2,3$: there are $3!= 6$ ways to create this matching. But the 3 resulting teams are unordered, so divide by $3!$:
+
+$$\frac{90 \times 90 \times 6}{6} \text{ is wrong} — \text{let me redo.}$$
+
+Simpler: the number of ways to partition 6 juniors into 3 unordered pairs is $\dfrac{\binom{6}{2}\binom{4}{2}\binom{2}{2}}{3!} = \dfrac{90}{6} = 15$. Similarly for seniors: $15$ unordered pairs. Now we have 3 junior-pairs and 3 senior-pairs; pair them up: $3! = 6$ matchings.
+
+Total $= 15 \times 15 \times 6 = 1350$.
+
+Answer: **B**.
+</Solution>

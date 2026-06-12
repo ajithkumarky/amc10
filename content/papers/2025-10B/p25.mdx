@@ -1,0 +1,65 @@
+---
+year: 2025
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 5
+answer: B
+choices:
+  - '$A$'
+  - '$B$'
+  - '$C$'
+  - '$D$'
+  - 'The path continues forever.'
+---
+
+<Problem>
+Square $ABCD$ has sides of length 4. Points $P$ and $Q$ lie on $\overline{AD}$ and $\overline{CD}$, respectively, with $AP = \dfrac{8}{5}$ and $DQ = \dfrac{10}{3}$. A path begins along the segment from $P$ to $Q$ and continues by reflecting against the sides of $ABCD$ (with congruent incoming and outgoing angles). If the path hits a vertex of the square, it terminates there; otherwise it continues forever. At which vertex does the path terminate?
+</Problem>
+
+<Solution>
+**Unfolding method.** We use the standard billiard "unfolding" technique: instead of reflecting the path, we unfold the square by reflecting it across its sides, and trace a straight line in the unfolded grid.
+
+**Set up coordinates.** Place $A = (0,0)$, $B = (4,0)$, $C = (4,4)$, $D = (0,4)$. Then:
+- $P$ on $\overline{AD}$: $AP = \dfrac{8}{5}$, so $P = \left(0, \dfrac{8}{5}\right)$.
+- $Q$ on $\overline{CD}$: $DQ = \dfrac{10}{3}$, and $D = (0,4)$, $C = (4,4)$. So $Q$ is $\dfrac{10}{3}$ from $D$ along $DC$, giving $Q = \left(\dfrac{10}{3}, 4\right)$.
+
+**Direction vector.** $\vec{PQ} = Q - P = \left(\dfrac{10}{3} - 0,\ 4 - \dfrac{8}{5}\right) = \left(\dfrac{10}{3},\ \dfrac{12}{5}\right)$.
+
+In the unfolding grid, the path is a straight line starting at $P = \left(0, \dfrac{8}{5}\right)$ with direction $\left(\dfrac{10}{3}, \dfrac{12}{5}\right)$, or equivalently direction $\left(\dfrac{10}{3}, \dfrac{12}{5}\right) = \dfrac{2}{15}(25, 18)$. So the slope is $\dfrac{18}{25}$.
+
+**Parametric line:** $(x, y) = \left(\dfrac{10}{3}t,\ \dfrac{8}{5} + \dfrac{12}{5}t\right)$ where $t=0$ gives $P$ and $t=1$ gives $Q$.
+
+**Unfolding.** We need to find when the unfolded path hits a lattice point of the grid of $4\times 4$ squares (a grid-vertex, which corresponds to a vertex of the original square). A lattice point in the unfolded grid is $(4m, 4n)$ for integers $m, n$.
+
+The path passes through $\left(\dfrac{10}{3}t, \dfrac{8}{5} + \dfrac{12}{5}t\right) = (4m, 4n)$:
+
+From the $x$-coordinate: $t = \dfrac{4m \cdot 3}{10} = \dfrac{6m}{5}$.
+
+Substituting into the $y$-coordinate:
+$$\frac{8}{5} + \frac{12}{5} \cdot \frac{6m}{5} = 4n$$
+$$\frac{8}{5} + \frac{72m}{25} = 4n$$
+$$\frac{40}{25} + \frac{72m}{25} = 4n$$
+$$40 + 72m = 100n$$
+$$2 + \frac{18m}{5} = 5n.$$
+
+For this to have integer solutions: $18m \equiv 0 \pmod 5$, so $3m \equiv 0 \pmod 5$, so $m \equiv 0 \pmod 5$.
+
+Smallest positive $m$: $m = 5$.
+
+Then $t = \dfrac{6 \times 5}{5} = 6$, and $40 + 72(5) = 40 + 360 = 400 = 100n$, so $n = 4$.
+
+**Unfolded endpoint:** $(4\times 5, 4\times 4) = (20, 16)$.
+
+**Map back to original square.** Divide each coordinate by 4: $x$-direction has 5 folds, $y$-direction has 4 folds.
+
+The $x$-coordinate $20 = 5 \times 4$. Folding: $5$ folds in $x$. Since $5$ is odd, the $x$-component corresponds to $x = 4$ (right side if odd). $\lfloor 5/2 \rfloor \times 2 + 1$: after an odd number of reflections the endpoint is at $x = 4$.
+
+Actually: in the unfolded grid, $x = 20$. Folding back: $20 \div 4 = 5$ intervals. Alternating: 0→4 (forward), 4→8 (backward, maps to 4→0), 8→12 (forward, maps to 0→4), 12→16 (backward), 16→20 (forward). So at $x=20$, we are at $x=4$ in the original square.
+
+For $y = 16$: $16 \div 4 = 4$ intervals. 0→4 (forward), 4→8 (backward, 4→0), 8→12 (forward, 0→4), 12→16 (backward, 4→0). At $y=16$ we are at $y = 0$.
+
+So the path terminates at $(4, 0) = B$.
+
+Answer: **B**.
+</Solution>

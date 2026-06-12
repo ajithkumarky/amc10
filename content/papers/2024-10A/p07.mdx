@@ -1,0 +1,69 @@
+---
+year: 2024
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: B
+choices: ["2", "3", "5", "6", "13"]
+---
+
+<Problem>
+The product of three integers is $60$. What is the least possible positive sum of the three integers?
+</Problem>
+
+<Solution>
+We need three integers $a, b, c$ with $abc = 60$ and $a + b + c > 0$ minimized.
+
+To get a small positive sum, we should use negative numbers. With two negatives and one positive, the product is positive.
+
+Factor $60$ as a product of three integers with two negative factors. We want to minimize the positive sum $a + b + c = -(|a|) - (|b|) + c$ where $|a| \cdot |b| \cdot c = 60$.
+
+We want $c - |a| - |b|$ to be as small as possible while remaining positive. This means we want $|a|$ and $|b|$ large, and $c$ somewhat large too.
+
+Try $(-1, -60, 1)$: product $= 60$, sum $= -60$. Negative sum, not allowed.
+
+Try $(-3, -5, 4)$: product $= 60$, sum $= -4$. Negative.
+
+Try $(-4, -5, 3)$: product $= 60$, sum $= -6$. Negative.
+
+Try $(-2, -6, 5)$: product $= 60$, sum $= -3$. Negative.
+
+Try $(-1, -4, 15)$: product $= 60$, sum $= 10$. Positive.
+
+Try $(-1, -5, 12)$: product $= 60$, sum $= 6$. Positive.
+
+Try $(-1, -6, 10)$: product $= 60$, sum $= 3$. Positive.
+
+Try $(-1, -10, 6)$: product $= 60$, sum $= -5$. Negative.
+
+Try $(-2, -5, 6)$: product $= 60$, sum $= -1$. Negative.
+
+Try $(-2, -3, 10)$: product $= 60$, sum $= 5$. Positive.
+
+Try $(-1, -12, 5)$: product $= 60$, sum $= -8$. Negative.
+
+Try $(-1, -60, 1)$: sum $= -60$. Negative.
+
+So far the candidates with positive sum are: $(-1,-6,10) \to 3$, $(-2,-3,10) \to 5$, $(-1,-5,12) \to 6$.
+
+Try $(-1, -15, 4)$: sum $= -12$. Negative.
+
+Try $(-1, -20, 3)$: sum $= -18$. Negative.
+
+Try $(-3, -4, 5)$: product $= 60$, sum $= -2$. Negative.
+
+Try $(-1, -30, 2)$: sum $= -29$. Negative.
+
+The smallest positive sum found is $3$ from $\{-1, -6, 10\}$.
+
+Can we do better — sum $= 1$ or $2$? We'd need $c - |a| - |b| = 1$ or $2$ with $|a| \cdot |b| \cdot c = 60$.
+
+For sum $= 2$: $c = |a| + |b| + 2$ and $|a| \cdot |b| \cdot (|a|+|b|+2) = 60$. Testing small values of $|a|, |b|$: $|a|=1, |b|=1$: $1 \cdot 1 \cdot 4 = 4 \ne 60$. $|a|=1,|b|=2$: $1\cdot2\cdot5=10\ne60$. $|a|=2,|b|=3$: $2\cdot3\cdot7=42\ne60$. $|a|=2,|b|=4$: $2\cdot4\cdot8=64\ne60$. None work.
+
+For sum $=1$: $|a|=1,|b|=1$: $1\cdot1\cdot3=3\ne60$. $|a|=1,|b|=2$: $1\cdot2\cdot4=8\ne60$. $|a|=2,|b|=3$: $2\cdot3\cdot6=36\ne60$. $|a|=3,|b|=4$: $3\cdot4\cdot8=96\ne60$. None work.
+
+Therefore the minimum positive sum is $3$.
+
+Answer: **B**.
+</Solution>

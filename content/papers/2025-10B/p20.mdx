@@ -1,0 +1,82 @@
+---
+year: 2025
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: A
+choices:
+  - '$3$'
+  - '$5$'
+  - '$8$'
+  - '$9$'
+  - '$11$'
+---
+
+<Problem>
+Four congruent semicircles are inscribed in a square of side length 1 so that their diameters are on the sides of the square, one endpoint of each diameter is at a vertex of the square, and adjacent semicircles are tangent to each other. A small circle centered at the center of the square is tangent to each of the four semicircles, as shown below.
+
+The diameter of the small circle can be written as $(\sqrt{a} + b)(\sqrt{c} + d)$, where $a$, $b$, $c$, and $d$ are integers. What is $a + b + c + d$?
+</Problem>
+
+<Solution>
+**Set up coordinates.** Place the square with vertices at $(0,0)$, $(1,0)$, $(1,1)$, $(0,1)$. Center of square is $\left(\tfrac{1}{2}, \tfrac{1}{2}\right)$.
+
+**Describe the semicircles.** Each semicircle has its diameter on one side of the square, with one diameter endpoint at a vertex. By symmetry all four are congruent with radius $r$.
+
+Consider the semicircle on the bottom side: one endpoint of its diameter is at $(0,0)$, the other endpoint is at $(2r, 0)$ (since diameter $= 2r$). Its center is at $(r, 0)$ and it bulges upward (into the square).
+
+By the 4-fold symmetry, rotating by $90°$ gives the other three semicircles:
+- Bottom: center $(r, 0)$, radius $r$, bulges up.
+- Right: center $(1, r)$, radius $r$, bulges left.
+- Top: center $(1-r, 1)$, radius $r$, bulges down.
+- Left: center $(0, 1-r)$, radius $r$, bulges right.
+
+**Adjacent tangency condition.** Adjacent semicircles are tangent to each other. Consider bottom and right semicircles. Their centers are $(r, 0)$ and $(1, r)$. For external tangency the distance between centers equals $2r$:
+$$\sqrt{(1-r)^2 + r^2} = 2r.$$
+$$(1-r)^2 + r^2 = 4r^2.$$
+$$1 - 2r + r^2 + r^2 = 4r^2.$$
+$$1 - 2r = 2r^2.$$
+$$2r^2 + 2r - 1 = 0.$$
+$$r = \frac{-2 + \sqrt{4 + 8}}{4} = \frac{-2 + 2\sqrt{3}}{4} = \frac{\sqrt{3}-1}{2}.$$
+
+**Radius of small circle.** The small circle is centered at $\left(\tfrac{1}{2}, \tfrac{1}{2}\right)$ with radius $\rho$. It is internally tangent to each semicircle (the small circle is inside the region bounded by the semicircles). For the bottom semicircle (center $(r,0)$, radius $r$), the small circle is internally tangent to it, so:
+$$\text{dist}\!\left(\tfrac{1}{2},\tfrac{1}{2}\right) \text{ to } (r,0) = r - \rho.$$
+
+$$\sqrt{\left(\frac{1}{2}-r\right)^2 + \frac{1}{4}} = r - \rho.$$
+
+Compute $\left(\tfrac{1}{2} - r\right)^2$. With $r = \dfrac{\sqrt{3}-1}{2}$:
+$$\frac{1}{2} - r = \frac{1}{2} - \frac{\sqrt{3}-1}{2} = \frac{1 - \sqrt{3}+1}{2} = \frac{2-\sqrt{3}}{2} = 1 - \frac{\sqrt{3}}{2}.$$
+
+Hmm, let me recompute: $\dfrac{1}{2} - \dfrac{\sqrt{3}-1}{2} = \dfrac{1 - (\sqrt{3}-1)}{2} = \dfrac{2-\sqrt{3}}{2}$.
+
+$$\left(\frac{2-\sqrt{3}}{2}\right)^2 + \frac{1}{4} = \frac{(2-\sqrt{3})^2 + 1}{4} = \frac{4 - 4\sqrt{3} + 3 + 1}{4} = \frac{8 - 4\sqrt{3}}{4} = 2 - \sqrt{3}.$$
+
+So $\sqrt{2 - \sqrt{3}} = r - \rho$, giving:
+$$\rho = r - \sqrt{2-\sqrt{3}}.$$
+
+**Simplify $\sqrt{2-\sqrt{3}}$.** Note that $2 - \sqrt{3} = \dfrac{4-2\sqrt{3}}{2} = \dfrac{(\sqrt{3}-1)^2}{2}$, so:
+$$\sqrt{2-\sqrt{3}} = \frac{\sqrt{3}-1}{\sqrt{2}}.$$
+
+Thus:
+$$\rho = \frac{\sqrt{3}-1}{2} - \frac{\sqrt{3}-1}{\sqrt{2}} = (\sqrt{3}-1)\left(\frac{1}{2} - \frac{1}{\sqrt{2}}\right) = (\sqrt{3}-1)\cdot\frac{\sqrt{2}-2}{2\sqrt{2}}.$$
+
+Since $\sqrt{2} - 2 < 0$, we get $\rho < 0$ which is impossible. The small circle must be externally tangent to the semicircles (the semicircles curve toward the center, and the small circle sits in the middle touching them from outside).
+
+**Re-do with external tangency:**
+$$\text{dist} = r + \rho \implies \sqrt{2-\sqrt{3}} = r + \rho \implies \rho = \sqrt{2-\sqrt{3}} - r.$$
+
+$$\rho = \frac{\sqrt{3}-1}{\sqrt{2}} - \frac{\sqrt{3}-1}{2} = (\sqrt{3}-1)\left(\frac{1}{\sqrt{2}} - \frac{1}{2}\right) = (\sqrt{3}-1)\cdot\frac{2-\sqrt{2}}{2\sqrt{2}}.$$
+
+**Diameter** $= 2\rho = (\sqrt{3}-1)\cdot\dfrac{2-\sqrt{2}}{\sqrt{2}}$.
+
+Rationalize: $\dfrac{2-\sqrt{2}}{\sqrt{2}} = \dfrac{(2-\sqrt{2})\sqrt{2}}{2} = \dfrac{2\sqrt{2}-2}{2} = \sqrt{2}-1$.
+
+So diameter $= (\sqrt{3}-1)(\sqrt{2}-1)$.
+
+This has the form $(\sqrt{a}+b)(\sqrt{c}+d)$ with $a=3$, $b=-1$, $c=2$, $d=-1$.
+
+$$a + b + c + d = 3 + (-1) + 2 + (-1) = 3.$$
+
+Answer: **A**.
+</Solution>

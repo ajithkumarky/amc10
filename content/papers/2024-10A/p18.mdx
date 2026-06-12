@@ -1,0 +1,77 @@
+---
+year: 2024
+paper: "10A"
+topic: number-theory
+subtopic: number-bases
+difficulty: 4
+answer: D
+choices: ["$16$", "$17$", "$18$", "$20$", "$21$"]
+---
+
+<Problem>
+There are exactly $K$ positive integers $b$ with $5 \leq b \leq 2024$ such that the base-$b$ integer $\overline{2024}_b$ is divisible by $16$ (where $16$ is in base ten). What is the sum of the digits of $K$?
+</Problem>
+
+<Solution>
+The base-$b$ integer $\overline{2024}_b$ means digits $2, 0, 2, 4$ in base $b$, which equals:
+$$2b^3 + 0 \cdot b^2 + 2b + 4 = 2b^3 + 2b + 4 = 2(b^3 + b + 2).$$
+
+We need $16 \mid 2(b^3 + b + 2)$, i.e., $8 \mid (b^3 + b + 2)$.
+
+Factor: $b^3 + b + 2 = b^3 - b + 2b + 2 = b(b^2-1) + 2(b+1) = (b+1)(b^2-b) + 2(b+1)$... let's just compute $b^3 + b + 2 \pmod{8}$ for $b = 0, 1, \ldots, 7$:
+
+| $b \pmod{8}$ | $b^3 \pmod{8}$ | $b \pmod{8}$ | $b^3+b+2 \pmod{8}$ |
+|:---:|:---:|:---:|:---:|
+| 0 | 0 | 0 | 2 |
+| 1 | 1 | 1 | 4 |
+| 2 | 0 | 2 | 4 |
+| 3 | 3 | 3 | 0 ✓ |
+| 4 | 0 | 4 | 6 |
+| 5 | 5 | 5 | 4 |
+| 6 | 0 | 6 | 0 ✓ |
+| 7 | 7 | 7 | 0 ✓ |
+
+So $8 \mid (b^3 + b + 2)$ iff $b \equiv 3, 6,$ or $7 \pmod{8}$.
+
+**Count bases $b$ with $5 \leq b \leq 2024$ satisfying $b \equiv 3, 6,$ or $7 \pmod{8}$.**
+
+The range $5 \leq b \leq 2024$ has $2024 - 5 + 1 = 2020$ integers.
+
+In any 8 consecutive integers, exactly 3 residues ($3, 6, 7 \bmod 8$) appear once each.
+
+**Full periods**: $\lfloor 2020/8 \rfloor = 252$ full periods, contributing $252 \times 3 = 756$ values.
+
+**Remainder**: $2020 = 252 \times 8 + 4$, so 4 extra values.
+
+The range starts at $b = 5$. The residues $5 \leq b \leq 2024$ modulo 8:
+- $b = 5 \equiv 5$
+- $b = 6 \equiv 6$ ✓
+- $b = 7 \equiv 7$ ✓
+- $b = 8 \equiv 0$
+- $b = 9 \equiv 1$
+- ...
+
+The 4 extra values in the final partial period start at $5 + 252 \times 8 = 5 + 2016 = 2021$:
+- $2021 \equiv 2021 - 252\cdot 8 = 2021 - 2016 = 5 \pmod 8$: residue 5. No.
+- $2022 \equiv 6 \pmod 8$. ✓
+- $2023 \equiv 7 \pmod 8$. ✓
+- $2024 \equiv 0 \pmod 8$. No.
+
+Wait, I need to check the first partial period too (at the start of the range, $b=5$).
+
+Let me restart: count $b \in \{5, 6, \ldots, 2024\}$ with $b \equiv 3, 6, 7 \pmod 8$.
+
+For each residue $r \in \{3, 6, 7\}$, count $b \in [5, 2024]$ with $b \equiv r \pmod 8$.
+
+**Residue 3**: smallest $b \geq 5$ with $b \equiv 3 \pmod 8$: $b = 11$. Largest $\leq 2024$: $2024 = 253 \times 8 = 2024$, and $2024 \equiv 0$, so $2024 - 5 = 2019 \equiv 3 \pmod 8$... $2019 = 252 \times 8 + 3$, so $2019 \equiv 3$. Count: $\frac{2019 - 11}{8} + 1 = \frac{2008}{8} + 1 = 251 + 1 = 252$.
+
+**Residue 6**: smallest $b \geq 5$ with $b \equiv 6 \pmod 8$: $b = 6$. Largest $\leq 2024$: $2022 \equiv 6 \pmod 8$ ($2022 = 252 \times 8 + 6$). Count: $\frac{2022 - 6}{8} + 1 = \frac{2016}{8} + 1 = 252 + 1 = 253$.
+
+**Residue 7**: smallest $b \geq 5$ with $b \equiv 7 \pmod 8$: $b = 7$. Largest $\leq 2024$: $2023 \equiv 7 \pmod 8$ ($2023 = 252 \times 8 + 7$). Count: $\frac{2023 - 7}{8} + 1 = \frac{2016}{8} + 1 = 252 + 1 = 253$.
+
+**Total**: $K = 252 + 253 + 253 = 758$.
+
+Sum of digits of $758$: $7 + 5 + 8 = 20$.
+
+Answer: **D**.
+</Solution>

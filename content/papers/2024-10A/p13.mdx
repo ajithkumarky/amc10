@@ -1,0 +1,64 @@
+---
+year: 2024
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 3
+answer: C
+choices: ["1", "2", "3", "4", "5"]
+---
+
+<Problem>
+Two transformations are said to commute if applying the first followed by the second gives the same result as applying the second followed by the first. Consider these four transformations of the coordinate plane:
+
+- a translation $2$ units to the right,
+- a $90^\circ$-rotation counterclockwise about the origin,
+- a reflection across the $x$-axis, and
+- a dilation centered at the origin with scale factor $2$.
+
+Of the $6$ pairs of distinct transformations from this list, how many commute?
+</Problem>
+
+<Solution>
+Label the transformations:
+- $T$: translate right by $2$, so $T(x,y) = (x+2, y)$
+- $R$: rotate $90^\circ$ CCW, so $R(x,y) = (-y, x)$
+- $F$: reflect across $x$-axis, so $F(x,y) = (x, -y)$
+- $D$: dilate by factor $2$, so $D(x,y) = (2x, 2y)$
+
+Check all 6 pairs on a test point $(x,y)$:
+
+**$T$ and $R$:**
+- $R(T(x,y)) = R(x+2, y) = (-y, x+2)$
+- $T(R(x,y)) = T(-y, x) = (-y+2, x)$
+These differ (e.g., second coordinates $x+2$ vs $x$). **Do NOT commute.**
+
+**$T$ and $F$:**
+- $F(T(x,y)) = F(x+2, y) = (x+2, -y)$
+- $T(F(x,y)) = T(x,-y) = (x+2, -y)$
+Same! **Commute.**
+
+**$T$ and $D$:**
+- $D(T(x,y)) = D(x+2, y) = (2x+4, 2y)$
+- $T(D(x,y)) = T(2x, 2y) = (2x+2, 2y)$
+These differ ($2x+4 \ne 2x+2$). **Do NOT commute.**
+
+**$R$ and $F$:**
+- $F(R(x,y)) = F(-y, x) = (-y, -x)$
+- $R(F(x,y)) = R(x, -y) = (y, x)$
+These differ. **Do NOT commute.**
+
+**$R$ and $D$:**
+- $D(R(x,y)) = D(-y, x) = (-2y, 2x)$
+- $R(D(x,y)) = R(2x, 2y) = (-2y, 2x)$
+Same! **Commute.**
+
+**$F$ and $D$:**
+- $D(F(x,y)) = D(x,-y) = (2x, -2y)$
+- $F(D(x,y)) = F(2x, 2y) = (2x, -2y)$
+Same! **Commute.**
+
+Three pairs commute: $(T, F)$, $(R, D)$, and $(F, D)$.
+
+Answer: **C**.
+</Solution>

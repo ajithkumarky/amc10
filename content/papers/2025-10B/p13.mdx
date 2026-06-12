@@ -1,0 +1,61 @@
+---
+year: 2025
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: A
+choices: ['$\dfrac{3}{7}$', '$\dfrac{\sqrt{3}}{4}$', '$\dfrac{4}{9}$', '$\dfrac{5}{11}$', '$\dfrac{4\sqrt{3}}{15}$']
+---
+
+<Problem>
+The altitude to the hypotenuse of a $30^\circ$-$60^\circ$-$90^\circ$ triangle is divided into two segments of lengths $x < y$ by the median to the shortest side of the triangle. What is the ratio $\dfrac{x}{x+y}$?
+</Problem>
+
+<Solution>
+Place the $30$-$60$-$90$ triangle with the right angle at $C$, the $30^\circ$ angle at $B$, and the $60^\circ$ angle at $A$.
+
+Let the hypotenuse $AB = 2$ (for convenience). Then:
+- $BC = 1$ (side opposite $30^\circ$, the shortest side),
+- $AC = \sqrt{3}$ (side opposite $60^\circ$),
+- $C = $ right angle.
+
+Set coordinates: $A = (0, 0)$, $B = (2, 0)$.
+
+Then $C$ satisfies $AC = \sqrt{3}$ and $BC = 1$. From $A$: $x_C^2 + y_C^2 = 3$; from $B$: $(x_C - 2)^2 + y_C^2 = 1$.
+
+Subtracting: $x_C^2 - (x_C-2)^2 = 2$, so $4x_C - 4 = 2$, $x_C = \frac{3}{2}$. Then $y_C = \sqrt{3 - 9/4} = \sqrt{3/4} = \frac{\sqrt{3}}{2}$.
+
+So $C = \left(\frac{3}{2}, \frac{\sqrt{3}}{2}\right)$.
+
+**Foot of altitude from $C$ to $AB$:** Since $AB$ lies on the $x$-axis, the foot is $H = \left(\frac{3}{2}, 0\right)$.
+
+The altitude $CH$ goes from $C = \left(\frac{3}{2}, \frac{\sqrt{3}}{2}\right)$ to $H = \left(\frac{3}{2}, 0\right)$, and has length $\frac{\sqrt{3}}{2}$.
+
+**Median to the shortest side $BC$:** The shortest side is $BC$ (length $1$). The median from $A$ to the midpoint of $BC$:
+
+Midpoint of $BC = M_{BC} = \left(\frac{2 + 3/2}{2}, \frac{0 + \sqrt{3}/2}{2}\right) = \left(\frac{7}{4}, \frac{\sqrt{3}}{4}\right)$.
+
+The median from $A = (0,0)$ to $M_{BC} = \left(\frac{7}{4}, \frac{\sqrt{3}}{4}\right)$.
+
+Parametrize: $(x, y) = t\left(\frac{7}{4}, \frac{\sqrt{3}}{4}\right)$ for $t \in [0, 1]$.
+
+**Intersection with the altitude $CH$:** The altitude is the vertical segment $x = \frac{3}{2}$, $0 \leq y \leq \frac{\sqrt{3}}{2}$.
+
+Set $x$-coordinate equal: $\frac{7t}{4} = \frac{3}{2}$, so $t = \frac{6}{7}$.
+
+Then $y = \frac{\sqrt{3}}{4} \cdot \frac{6}{7} = \frac{6\sqrt{3}}{28} = \frac{3\sqrt{3}}{14}$.
+
+**Two segments of the altitude:** The altitude runs from $H = \left(\frac{3}{2}, 0\right)$ to $C = \left(\frac{3}{2}, \frac{\sqrt{3}}{2}\right)$.
+
+The intersection point $P = \left(\frac{3}{2}, \frac{3\sqrt{3}}{14}\right)$.
+
+- Segment from $H$ to $P$: length $= \frac{3\sqrt{3}}{14}$.
+- Segment from $P$ to $C$: length $= \frac{\sqrt{3}}{2} - \frac{3\sqrt{3}}{14} = \frac{7\sqrt{3}}{14} - \frac{3\sqrt{3}}{14} = \frac{4\sqrt{3}}{14} = \frac{2\sqrt{3}}{7}$.
+
+Since $\frac{3\sqrt{3}}{14} < \frac{2\sqrt{3}}{7} = \frac{4\sqrt{3}}{14}$, we have $x = \frac{3\sqrt{3}}{14}$ and $y = \frac{4\sqrt{3}}{14}$.
+
+$$\frac{x}{x + y} = \frac{3\sqrt{3}/14}{3\sqrt{3}/14 + 4\sqrt{3}/14} = \frac{3}{7}.$$
+
+Answer: **A**.
+</Solution>

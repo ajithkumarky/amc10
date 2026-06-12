@@ -1,0 +1,153 @@
+---
+year: 2024
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: D
+choices: ["$72$", "$73$", "$74$", "$75$", "$76$"]
+---
+
+<Problem>
+One side of an equilateral triangle of height $24$ lies on line $\ell$. A circle of radius $12$ is tangent to line $\ell$ and is externally tangent to the triangle. The area of the region exterior to the triangle and the circle and bounded by the triangle, the circle, and line $\ell$ can be written as $a\sqrt{b} - c\pi$, where $a$, $b$, and $c$ are positive integers and $b$ is not divisible by the square of any prime. What is $a + b + c$?
+</Problem>
+
+<Solution>
+**Set up the geometry.**
+
+An equilateral triangle of height $h = 24$ has side length $s = \dfrac{24}{\frac{\sqrt{3}}{2}} = 16\sqrt{3}$.
+
+Place the triangle with its base on line $\ell$. The base vertices are at $(\pm 8\sqrt{3}, 0)$ and the apex is at $(0, 24)$.
+
+The circle of radius $12$ is tangent to $\ell$ (from above), so its center is at $(x_0, 12)$ for some $x_0$. It is externally tangent to the triangle, meaning it touches the nearest slanted side.
+
+**Find the circle center.**
+
+By symmetry, place the circle to one side. The left slanted side runs from $(-8\sqrt{3}, 0)$ to $(0, 24)$. Its equation:
+
+Direction vector: $(8\sqrt{3}, 24)$, so slope $= \dfrac{24}{8\sqrt{3}} = \dfrac{3}{\sqrt{3}} = \sqrt{3}$.
+
+Line: $y - 0 = \sqrt{3}(x + 8\sqrt{3})$, i.e., $\sqrt{3}x - y + 24 = 0$.
+
+Distance from center $(x_0, 12)$ to this line equals $12$ (external tangency):
+$$\frac{|\sqrt{3}\,x_0 - 12 + 24|}{2} = 12 \implies |\sqrt{3}\,x_0 + 12| = 24.$$
+
+Since the circle is outside (to the left of) the triangle: $\sqrt{3}\,x_0 + 12 = -24$, giving $x_0 = -\dfrac{36}{\sqrt{3}} = -12\sqrt{3}$.
+
+**Identify the bounded region.**
+
+The region is bounded above by the triangle's two slanted sides and the circle arc, and below by line $\ell$. It lies between the circle and the triangle (to the left), inside the "wedge" formed by $\ell$ and the triangle's left side, but exterior to both the triangle and the circle.
+
+More precisely: the region is the area inside the "corner" formed by line $\ell$ and the left side of the triangle (a $30°$-$60°$-$90°$ wedge region meeting at the left base vertex), minus the portion of the circle inside that corner.
+
+**Corner angle at the base vertex.**
+
+At vertex $(-8\sqrt{3}, 0)$: the interior angle of the equilateral triangle is $60°$, so the exterior corner angle between line $\ell$ and the left slant side (on the outside) is $180° - 60° = 120°$. Wait — the region outside the triangle below the slant side and above $\ell$ forms an angle of $180° - 60° = 120°$. But the circle sits in this $120°$ wedge.
+
+Actually, let me reconsider. The angle between $\ell$ (horizontal) and the slant side at the left vertex: the slant side rises at $60°$ from horizontal (since the triangle is equilateral). The region between $\ell$ and the outside of the slant forms a $180° - 60° = 120°$ angle at the left base vertex.
+
+**Area of the region.**
+
+The bounded region is: the right triangle formed by the tangent point, the vertex, and the foot — minus the circular sector.
+
+Let $V = (-8\sqrt{3}, 0)$ be the left base vertex. The circle is tangent to $\ell$ at point $P = (-12\sqrt{3}, 0)$ and tangent to the slant side at point $Q$.
+
+The region is bounded by: segment $VP$ on $\ell$, the arc $PQ$ on the circle, and segment $QV$ on the slant side.
+
+$VP = |-12\sqrt{3} - (-8\sqrt{3})| = 4\sqrt{3}$.
+
+The distance from the circle center $C = (-12\sqrt{3}, 12)$ to $V = (-8\sqrt{3}, 0)$:
+$$CV = \sqrt{(-4\sqrt{3})^2 + 12^2} = \sqrt{48 + 144} = \sqrt{192} = 8\sqrt{3}.$$
+
+The angle $\angle CVP$: $\tan(\angle CVP) = \frac{12}{4\sqrt{3}} = \frac{3}{\sqrt{3}} = \sqrt{3}$, so $\angle CVP = 60°$.
+
+But the corner angle at $V$ between $\ell$ and the slant is $120°$, and $\angle CVP = 60°$ (the center lies on the angle bisector of the $120°$ corner, since it's equidistant from both sides). So the half-angle is $60°$. ✓
+
+**Area of the wedge triangle $VPQ$** (the triangle formed by the two tangent lines and the chord $PQ$, i.e., the curvilinear region):
+
+The area of triangle $VCT$ where $T$ is the tangent point: use the right triangles from $C$ to each tangent line.
+
+$VP = CQ_\perp$-type: from the tangency, $VC \cdot \sin(60°) = 12$, so $VC = \frac{12}{\sin 60°} = \frac{12}{\sqrt{3}/2} = 8\sqrt{3}$ ✓.
+
+Area of triangle $VPC$: $\frac{1}{2} \cdot VP \cdot CP = \frac{1}{2} \cdot 4\sqrt{3} \cdot 12 = 24\sqrt{3}$.
+
+By symmetry (the two tangent lines from $V$ are equal), the triangle $VPQ$ (with $P$ and $Q$ the two tangent points) has area $= 2 \times 24\sqrt{3} = 48\sqrt{3}$.
+
+The angle at $C$ subtended by arc $PQ$: the angle $\angle PCQ = 180° - 60° = 120°$ (since $\angle PVC = 60°$ and the quadrilateral $VPCQ$... actually $\angle CVP = 60°$, and $\angle CPV = 90°$, so $\angle PCQ = 180° - 2\cdot 60° = 60°$... let me redo).
+
+In right triangle $VPC$: $\angle VPC = 90°$, $VP = 4\sqrt{3}$, $PC = 12$, $VC = 8\sqrt{3}$.
+$\cos(\angle PVC) = \frac{VP}{VC} = \frac{4\sqrt{3}}{8\sqrt{3}} = \frac{1}{2}$, so $\angle PVC = 60°$. ✓
+$\angle VCP = 180° - 90° - 60° = 30°$.
+
+The angle $\angle PCQ = 2 \times 30° = 60°$... wait, $\angle PCQ$ = the angle at $C$ between the two tangent lines (by symmetry, both tangent radii make $30°$ with the bisector), so $\angle PCQ = 2 \times 30° = 60°$? 
+
+Hmm, let me reconsider. The angle at $V$ is $120°$, and $CV$ bisects it, so the half-angle is $60°$. In right triangle $VPC$: $\angle PVC = 60°$, $\angle VCP = 30°$. By symmetry ($Q$ is on the other side), $\angle QCV = 30°$, so $\angle PCQ = 360° - 30° - 30° - \angle$ on the far side... No, $P$ and $Q$ are on the same side of $V$, so $\angle PCQ = 360° - \angle PCV - \angle VCQ = 360° - 30° - 30°$? No.
+
+Actually both tangent points are in the arc "between" the two tangent lines. $\angle PCQ = 180° - 60° = 120°$. (The angle at the center between two radii to tangent points from an external point: if the external angle is $\alpha$, the central angle for the near arc is $180° - \alpha$.) Here $\alpha = 60°$, so the arc $PQ$ (the near arc, between the lines) subtends $120°$ at $C$.
+
+Area of circular sector $CPQ$ = $\frac{120}{360} \pi \cdot 12^2 = \frac{1}{3} \cdot 144\pi = 48\pi$.
+
+**Area of the bounded region** = Area of quadrilateral $VPQ$ (with straight sides $VP$, $VQ$ and straight chord) minus the sector = Triangle $VCR$ approach:
+
+Area of triangle $V, P, Q$ (going around the two tangent lines):
+$= $ Area($VPC$) + Area($VQC$) - Area($PCQ$)
+$= 24\sqrt{3} + 24\sqrt{3} - $ Area($\triangle PCQ$).
+
+Area($\triangle PCQ$): base $PQ$, but easier: Area($\triangle PCQ$) = Area($\triangle VPC$) + Area($\triangle VQC$) - Area($\triangle VPQ_\text{outer}$)... This is getting complicated.
+
+**Simpler approach**: Region area = Area of the curvilinear triangle between $V$, arc $PQ$, two tangent segments:
+$$= \text{Area}(\triangle VCR) - \text{Area(sector } CPQ) $$
+
+where "triangle $VCR$" means the kite $VPCQ$... area of kite $VPCQ$:
+$= \frac{1}{2} d_1 d_2$ where $d_1 = VC = 8\sqrt{3}$ and $d_2 = PQ$.
+
+Alternatively, just: Area(kite $VPCQ$) = Area($\triangle VPC$) + Area($\triangle VQC$) = $24\sqrt{3} + 24\sqrt{3} = 48\sqrt{3}$.
+
+Area of region = Area(kite) - Area(sector) = $48\sqrt{3} - 48\pi$.
+
+So $a\sqrt{b} - c\pi = 48\sqrt{3} - 48\pi$, giving $a = 48$, $b = 3$, $c = 48$.
+
+$a + b + c = 48 + 3 + 48 = 99$. This doesn't match any answer choice. Let me recheck.
+
+**Recheck the setup.** The circle is externally tangent to the triangle and tangent to $\ell$, so it lies outside the triangle. The region bounded by the triangle, the circle, and line $\ell$ is the region enclosed between all three — a region that is:
+- above $\ell$
+- outside the triangle
+- outside the circle
+- and enclosed (bounded) by portions of $\ell$, the triangle side, and the circle.
+
+The bounded region is between the left base vertex, stretching left to where the circle meets $\ell$, up along the circle, and back along the triangle side. This is exactly what I computed above: area $= 48\sqrt{3} - 48\pi$.
+
+Hmm, but the answer should give $a+b+c = 75$. Let me recheck the radius.
+
+Wait — height = 24, circle radius = 12. Let me re-examine: external tangency means the circle and triangle don't overlap, and the distance from the circle center to the nearest point on the triangle equals the radius. Since the circle is outside the triangle and tangent to it, the distance from center to side = 12.
+
+I had: distance from $(x_0, 12)$ to line $\sqrt{3}x - y + 24 = 0$ equals $12$:
+$$\frac{|\sqrt{3}x_0 - 12 + 24|}{\sqrt{3+1}} = \frac{|\sqrt{3}x_0 + 12|}{2} = 12,$$
+so $|\sqrt{3}x_0 + 12| = 24$.
+
+For the circle to the left: $\sqrt{3}x_0 + 12 = -24 \Rightarrow x_0 = -12\sqrt{3}$.
+
+$VP = |x_0 - (-8\sqrt{3})| = |-12\sqrt{3} + 8\sqrt{3}| = 4\sqrt{3}$.
+
+$VC = \sqrt{(4\sqrt{3})^2 + 12^2} = \sqrt{48 + 144} = \sqrt{192} = 8\sqrt{3}$.
+
+$\sin(\angle PVC) = \frac{12}{8\sqrt{3}} = \frac{12}{8\sqrt{3}} = \frac{3}{2\sqrt{3}} = \frac{\sqrt{3}}{2}$, so $\angle PVC = 60°$. ✓
+
+Area of kite: $= 2 \times \frac{1}{2} \times VP \times CP = VP \times CP = 4\sqrt{3} \times 12 = 48\sqrt{3}$. ✓
+
+Central angle: In right triangle $VPC$, $\sin(\angle VCP) = \frac{VP}{VC} = \frac{4\sqrt{3}}{8\sqrt{3}} = \frac{1}{2}$, so $\angle VCP = 30°$.
+
+By symmetry $\angle VCQ = 30°$, so $\angle PCQ = 360° - 30° - 30° - $ (reflex)? No — the kite has $P$ and $Q$ on the same side as the exterior region. The angle $\angle PCQ$ at the center going through the exterior arc (the short arc toward $V$) is $360° - 30° - 30° - 180° = 120°$... 
+
+More carefully: $\angle PCV + \angle VCQ = 30° + 30° = 60°$. So the arc on the side of $V$ (the arc $PQ$ closest to $V$) has central angle $60°$, and the arc on the other side has central angle $300°$.
+
+Wait, which arc is in the region? The bounded region uses the arc of the circle facing toward $V$ (the near arc). So central angle = $60°$.
+
+Area of circular sector = $\frac{60}{360} \pi \cdot 144 = \frac{1}{6} \cdot 144\pi = 24\pi$.
+
+Area of region = $48\sqrt{3} - 24\pi$, giving $a = 48$, $b = 3$, $c = 24$.
+
+$a + b + c = 48 + 3 + 24 = 75$. ✓
+
+Answer: **D**.
+</Solution>
