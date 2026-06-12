@@ -11,46 +11,29 @@ choices: ["11", "13", "14", "16", "17"]
 <Problem>
 A Pascal-like triangle has $10$ as the top row and $10$ followed by $1$ as the second row. In each subsequent row the first number is $10$, the last number is $1$, and, as in the standard Pascal Triangle, each other number in the row is the sum of the two numbers directly above it. The first four rows are shown below.
 
-$$\begin{array}{ccccccccc}
-& & & & 10 \\
-& & & 10 & & 1 \\
-& & 10 & & 11 & & 1 \\
-& 10 & & 21 & & 12 & & 1
-\end{array}$$
+$$\begin{array}{ccccccccc} & & & & 10 \\ & & & 10 & & 1 \\ & & 10 & & 11 & & 1 \\ & 10 & & 21 & & 12 & & 1 \end{array}$$
 
 What is the sum of the digits of the sum of the numbers in the $11$th row?
 </Problem>
 
 <Solution>
-Let's find the row sums. In the standard Pascal's triangle, row $n$ (starting from row $0$) sums to $2^n$. Here the ends are forced to $10$ and $1$ instead of $1$ and $1$.
+Let $S_n$ be the sum of row $n$, with row $1$ being the single entry $10$ and row $2$ being $10, 1$.
 
-Notice that each interior entry is the sum of the two above it, just like Pascal's triangle. Let $S_n$ be the sum of row $n$ (with row $1$ being the single entry $10$).
+**Interior sum recurrence.** Each row's sum equals the fixed endpoints $10 + 1 = 11$ plus the sum of the interior entries. Interior entry $i$ of row $n$ equals entry $i-1$ plus entry $i$ of row $n-1$, so the interior entries of row $n$ are a telescoping sum over adjacent pairs of row $n-1$:
 
-Row 1: $10$. Sum $= 10$.
-Row 2: $10, 1$. Sum $= 11$.
-Row 3: $10, 11, 1$. Sum $= 22$.
-Row 4: $10, 21, 12, 1$. Sum $= 44$.
+$$\text{interior sum of row } n = \sum_{i=1}^{k-1}(a_i + a_{i+1}) = (a_1 + a_k) + 2\sum_{i=2}^{k-1}a_i = 11 + 2(S_{n-1} - 11) = 2S_{n-1} - 11.$$
 
-Each row's sum equals: first entry $10$ + last entry $1$ + sum of interior entries. The interior entries each equal the sum of two entries from the row above, so the interior sum of row $n$ equals (sum of row $n-1$) minus the first and last of row $n-1$ (i.e., $S_{n-1} - 10 - 1 = S_{n-1} - 11$). Thus:
+Therefore:
 
-$$S_n = 10 + 1 + (S_{n-1} - 11) = S_{n-1}.$$
+$$S_n = 11 + (2S_{n-1} - 11) = 2S_{n-1}.$$
 
-Wait, that gives $S_n = S_{n-1}$ for $n \geq 3$. Let me verify: Row 3 sum $= 22$, Row 4 sum $= 44$. That's not constant. Let me recount.
+**Solving the recurrence.** With $S_2 = 11$ and $S_n = 2S_{n-1}$ for $n \geq 3$:
 
-Row 3: $10 + 11 + 1 = 22$.
-Row 4: $10 + 21 + 12 + 1 = 44$.
+$$S_n = 11 \cdot 2^{n-2}.$$
 
-The interior of row $n$ sums to (sum of all of row $n-1$) minus nothing — each pair of adjacent entries in row $n-1$ contributes to one interior entry of row $n$. With $k$ entries in row $n-1$, there are $k-1$ interior positions in row $n$. The sum of the interior of row $n$ equals the sum of all entries in row $n-1$ (each entry in row $n-1$ is counted once for each interior neighbor it contributes to — leftmost and rightmost each counted once, middle ones counted twice).
+Check: $S_3 = 11 \cdot 2 = 22 = 10 + 11 + 1$. $S_4 = 11 \cdot 4 = 44 = 10 + 21 + 12 + 1$. Both match.
 
-Actually: interior entry $i$ of row $n$ = entry $i-1$ + entry $i$ of row $n-1$ (1-indexed, interior means positions $2$ through $k$). So the interior sum = $\sum_{i=1}^{k-1}(\text{entry}_i + \text{entry}_{i+1}) = (\text{entry}_1 + \text{entry}_k) + 2\sum_{i=2}^{k-1}\text{entry}_i = 10 + 1 + 2(S_{n-1} - 10 - 1) = 11 + 2S_{n-1} - 22 = 2S_{n-1} - 11$.
-
-Therefore: $S_n = 10 + 1 + (2S_{n-1} - 11) = 2S_{n-1}$.
-
-Check: $S_3 = 2 \cdot 11 = 22$. $S_4 = 2 \cdot 22 = 44$. Both match.
-
-So $S_n = 11 \cdot 2^{n-2}$ for $n \geq 2$.
-
-Row 11: $S_{11} = 11 \cdot 2^9 = 11 \cdot 512 = 5632$.
+**Row 11.** $S_{11} = 11 \cdot 2^{9} = 11 \cdot 512 = 5632$.
 
 Sum of digits of $5632$: $5 + 6 + 3 + 2 = 16$.
 

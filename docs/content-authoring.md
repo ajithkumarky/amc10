@@ -4,6 +4,10 @@ All content is MDX with KaTeX math ($...$ inline, $$...$$ display). House rules:
 - Choices are exactly 5 strings, frontmatter `answer` is the correct letter A–E.
 - YAML gotcha: when a choice contains LaTeX backslashes (`\sqrt`, `\dfrac`, …), use SINGLE-quoted YAML strings (`'$\sqrt{5}$'`). Double quotes make YAML treat `\s` etc. as escape sequences and the file fails to parse.
 - MDX gotcha: NEVER use bare curly braces in prose (`{AAB, ABA, BAA}`) — MDX evaluates `{...}` as a JavaScript expression and the build crashes. Put set notation inside math (`$\{1, 2, 3\}$`) or drop the braces. Same for bare `<Word>` outside math — MDX parses it as a JSX tag.
+- MDX gotcha: NO HTML comments (`<!-- ... -->`) anywhere, including inside SVG — MDX cannot parse them and the build crashes. Omit comments entirely.
+- MDX gotcha: NO string `style="..."` attributes in SVG/HTML — MDX renders as React JSX where style must be an object; the build crashes. Use width/height attributes and omit style entirely.
+- Multi-line LaTeX environments (`\begin{array}...\end{array}`) must be collapsed onto a SINGLE line inside `$$...$$` — spanning lines breaks MDX's JSX tag balancing.
+- NEVER use `\$` inside `$...$` math — the math span closes at ANY `$`, leaking the rest as a crashing JSX expression. For a dollar sign in math use `\textdollar`.
 - LaTeX: plain KaTeX syntax. No Asymptote. No \begin{tikzpicture}. Tables in markdown.
 - Diagrams: simple figures as inline SVG inside the <Problem> block (viewBox, stroke="#00e5ff", fill="none", max-width 360px). If a faithful figure is impractical, augment the problem text with a precise textual description instead. If the problem is unusable without a complex diagram, skip it (papers only — record in meta.json "skipped").
 - Voice: clear, friendly, aimed at a strong middle-schooler. Solutions explain WHY, not just compute.
