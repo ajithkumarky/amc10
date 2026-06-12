@@ -1,0 +1,109 @@
+---
+year: 2021
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: C
+choices: ["$12$", "$64$", "$84$", "$90$", "$144$"]
+---
+
+<Problem>
+A farmer's rectangular field is partitioned into a $2$ by $2$ grid of $4$ rectangular sections as shown in the figure. In each section the farmer will plant one crop: corn, wheat, soybeans, or potatoes. The farmer does not want to grow corn and wheat in any two sections that share a border, and the farmer does not want to grow soybeans and potatoes in any two sections that share a border. Given these restrictions, in how many ways can the farmer choose crops to plant in each of the four sections of the field?
+
+<svg viewBox="0 0 200 100" width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="180" height="80" stroke="#00e5ff" fill="none" strokeWidth="2"/>
+  <line x1="100" y1="10" x2="100" y2="90" stroke="#00e5ff" strokeWidth="2"/>
+  <line x1="10" y1="50" x2="190" y2="50" stroke="#00e5ff" strokeWidth="2"/>
+</svg>
+</Problem>
+
+<Solution>
+Label the four cells: top-left (TL), top-right (TR), bottom-left (BL), bottom-right (BR).
+
+The crops are corn (C), wheat (W), soybeans (S), and potatoes (P).
+
+**Restrictions:**
+- C and W cannot be in adjacent (border-sharing) cells.
+- S and P cannot be in adjacent (border-sharing) cells.
+
+Think of the four crops as belonging to two **conflict pairs**: $\{C, W\}$ and $\{S, P\}$.
+
+Crucially, note that there are no restrictions between crops from different pairs (e.g., corn and soybeans can be neighbors).
+
+**Reframe the problem.** Each cell gets one of 4 crops. The adjacencies in the 2×2 grid are: TL–TR, TL–BL, TR–BR, BL–BR (the two diagonals are NOT adjacent).
+
+For each of the two conflict pairs, we need to count arrangements of all four cells such that the pair members are never neighbors.
+
+**Counting approach:** Assign each cell a crop. Total unrestricted = $4^4 = 256$. But let's count directly.
+
+Think of it as a graph coloring problem. Each cell gets one of 4 values from $\{C, W, S, P\}$. Two neighbors cannot both have $\{C, W\}$ conflict, and cannot both have $\{S, P\}$ conflict.
+
+**Alternative: classify by which crops appear.** Assign each cell a pair-label: let $X \in \{1, 2\}$ where pair 1 = $\{C, W\}$ and pair 2 = $\{S, P\}$. Within pair 1, choose C or W; within pair 2, choose S or P. No restriction between pairs.
+
+For the pair-label assignment, only constraint is: adjacent cells with the same pair-label cannot have the conflicting crops within that pair — wait, actually the restriction is simply that if two adjacent cells both use crops from the same conflict pair, those two crops must be the **same** crop (or the same crop is allowed; only different crops within the same conflict pair are forbidden).
+
+More precisely: the only forbidden assignment is "adjacent cells have C in one and W in the other" or "adjacent cells have S in one and P in the other."
+
+**Direct count by case on the pair-label pattern:**
+
+Each cell independently gets one of 4 crops. Let's count valid assignments.
+
+For pair $\{C, W\}$: across all adjacent cell pairs, we cannot have one cell $= C$ and adjacent cell $= W$ (or vice versa). For pair $\{S, P\}$: similarly.
+
+These two constraints are **independent** of each other (one applies only to C/W assignments, the other only to S/P assignments).
+
+**Key insight:** Map each crop to a "pair" (1 = C or W, 2 = S or P) and a "choice within pair" (a or b). The constraint only restricts the "choice within pair" for adjacent cells **that share the same pair label**.
+
+For each cell, independently choose the pair (2 options) and the within-pair choice (2 options). The constraint says: two adjacent cells that both chose pair $k$ cannot have opposite within-pair choices.
+
+But actually the pairs chosen in each cell are independent — there's no constraint on which pair a cell uses; only on the within-pair assignment.
+
+**Simplest direct approach:** 
+
+For each of the 4 cells, the crop is one of $\{C, W, S, P\}$. Consider the "C/W" decision separately from the "S/P" decision.
+
+Actually, re-label: let each cell's crop be encoded as $(p_i, q_i)$ where $p_i \in \{0, 1\}$ indicates the pair ($0 = \{C,W\}$-family, $1 = \{S,P\}$-family), and $q_i \in \{0,1\}$ is the choice within the pair (e.g., $0 = C$ or $S$, $1 = W$ or $P$). So cell $i$ gets crop $(p_i, q_i)$: $(0,0)=C$, $(0,1)=W$, $(1,0)=S$, $(1,1)=P$.
+
+The constraint: if two adjacent cells $i$ and $j$ satisfy $p_i = p_j = 0$, then $q_i = q_j$ (cannot have one C and one W). Similarly if $p_i = p_j = 1$, then $q_i = q_j$.
+
+For each adjacent pair $(i,j)$: when $p_i = p_j$, we need $q_i = q_j$.
+
+Count over all assignments of $(p_1, p_2, p_3, p_4) \in \{0,1\}^4$ (16 possibilities), then for each, count valid $(q_1, q_2, q_3, q_4)$.
+
+The adjacencies in the 2×2 grid (TL, TR, BL, BR) are: (TL,TR), (TL,BL), (TR,BR), (BL,BR).
+
+For a fixed assignment of $p$-values, the $q$-values form a constraint graph: whenever $p_i = p_j$ for adjacent $i,j$, we need $q_i = q_j$. This means connected components (in the restricted graph of "same-$p$ adjacent pairs") must all share the same $q$-value.
+
+For each $p$-assignment, the number of valid $q$-assignments equals $2^{(\text{number of free components})}$.
+
+Let's enumerate. In the 2×2 grid, the 4 edges are TL-TR, TL-BL, TR-BR, BL-BR. I'll write $p$-assignments as (TL, TR, BL, BR).
+
+**Case A: all $p$'s equal** (2 sub-cases: all 0 or all 1). All 4 cells are connected $\Rightarrow$ 1 free component $\Rightarrow$ $2^1 = 2$ q-assignments. Count: $2 \times 2 = 4$.
+
+**Case B: exactly one cell differs.** $\binom{4}{1} \times 2 = 8$ p-assignments (choose which cell differs and which value it is... wait). Actually 4 cells, each can be 0 or 1. "Exactly one cell = 0, three cells = 1" (4 choices) plus "exactly one = 1, three = 0" (4 choices) = 8.
+
+For "TL=0, TR=BL=BR=1": the same-$p$ adjacent pairs among 1-cells: TR-BR, BL-BR (both have $p=1$, and they are adjacent). So TL is isolated (free), and $\{TR, BL, BR\}$: is TR adjacent to BL? No (diagonal). So the same-$p$ subgraph on $\{TR, BR, BL\}$ has edges TR-BR and BL-BR. This is connected. So 2 free components (TL alone, and $\{TR,BR,BL\}$ connected). $q$-assignments: $2^2 = 4$.
+
+By symmetry each of these 8 p-assignments gives $2^2 = 4$ q-assignments. Total: $8 \times 4 = 32$.
+
+**Case C: exactly two cells = 0, two = 1.** $\binom{4}{2} = 6$ p-assignments.
+
+- (TL=TR=0, BL=BR=1): Same-$p$ edges: TL-TR (both 0) and BL-BR (both 1). The edge TL-BL and TR-BR are cross-$p$, no constraint. Two components each of size 2. Free components: 2. $q$: $2^2 = 4$.
+
+- (TL=BL=0, TR=BR=1): Same-$p$ edges: TL-BL (both 0) and TR-BR (both 1). Two separate components. $q$: $2^2 = 4$.
+
+- (TL=BR=0, TR=BL=1) (diagonal split): Edges TL-TR (cross), TL-BL (cross), TR-BR (cross), BL-BR (cross). No same-$p$ adjacent pairs! All 4 cells free. $q$: $2^4 = 16$.
+
+- (TR=BL=0, TL=BR=1) (other diagonal): Same analysis $\Rightarrow$ $2^4 = 16$.
+
+- (TL=TR=1, BL=BR=0): Same as first sub-case, $q$: $2^2 = 4$.
+
+- (TL=BL=1, TR=BR=0): Same as second, $q$: $2^2 = 4$.
+
+Total for Case C: $4 + 4 + 16 + 16 + 4 + 4 = 48$.
+
+**Grand total:** $4 + 32 + 48 = 84$.
+
+Answer: **C**.
+</Solution>

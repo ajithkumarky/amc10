@@ -1,0 +1,69 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 3
+answer: D
+choices: ["$1$", "$2$", "$3$", "$5$", "$7$"]
+---
+
+<Problem>
+How many ordered pairs $(x, y)$ of real numbers satisfy the following system of equations?
+
+$$x^2 + 3y = 9$$
+
+$$(|x| + |y| - 4)^2 = 1$$
+</Problem>
+
+<Solution>
+From the first equation, $y = \dfrac{9 - x^2}{3}$. The second equation gives $|x| + |y| - 4 = \pm 1$, so two cases:
+
+**Case 1:** $|x| + |y| = 5$
+
+**Case 2:** $|x| + |y| = 3$
+
+Substitute $y = \dfrac{9 - x^2}{3}$ into each case.
+
+**Case 1: $|x| + \left|\dfrac{9-x^2}{3}\right| = 5$**
+
+Since $9 - x^2 = (3-x)(3+x)$, this is non-negative when $|x| \le 3$.
+
+*Sub-case 1a: $|x| \le 3$ (so $y \ge 0$).*
+
+$$|x| + \frac{9-x^2}{3} = 5 \implies 3|x| + 9 - x^2 = 15 \implies x^2 - 3|x| + 6 = 0.$$
+
+Let $u = |x| \ge 0$: $u^2 - 3u + 6 = 0$. Discriminant: $9 - 24 = -15 < 0$. No real solutions.
+
+*Sub-case 1b: $|x| > 3$ (so $y < 0$).*
+
+$$|x| + \frac{x^2 - 9}{3} = 5 \implies 3|x| + x^2 - 9 = 15 \implies x^2 + 3|x| - 24 = 0.$$
+
+Let $u = |x|$: $u^2 + 3u - 24 = 0 \implies u = \dfrac{-3 + \sqrt{9 + 96}}{2} = \dfrac{-3 + \sqrt{105}}{2}$.
+
+$\sqrt{105} \approx 10.25$, so $u \approx 3.62 > 3$ ✓. This gives $x = \pm u$, so **2 solutions**.
+
+**Case 2: $|x| + \left|\dfrac{9-x^2}{3}\right| = 3$**
+
+*Sub-case 2a: $|x| \le 3$ (so $y \ge 0$).*
+
+$$|x| + \frac{9-x^2}{3} = 3 \implies 3|x| + 9 - x^2 = 9 \implies x^2 - 3|x| = 0 \implies |x|(|x| - 3) = 0.$$
+
+So $|x| = 0$ or $|x| = 3$, giving $x \in \{-3, 0, 3\}$.
+
+- $x = 0$: $y = 3$. Check: $|0| + 3 = 3$ ✓.
+- $x = 3$: $y = 0$. Check: $3 + 0 = 3$ ✓.
+- $x = -3$: $y = 0$. Check: $3 + 0 = 3$ ✓.
+
+Three solutions here.
+
+*Sub-case 2b: $|x| > 3$ (so $y < 0$).*
+
+$$|x| + \frac{x^2 - 9}{3} = 3 \implies x^2 + 3|x| - 18 = 0 \implies u^2 + 3u - 18 = 0 \implies (u+6)(u-3) = 0.$$
+
+$u = 3$ (not $> 3$, boundary only, already counted) or $u = -6$ (invalid). No new solutions.
+
+**Total:** $2 + 3 = 5$ ordered pairs.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,50 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: D
+choices: ["$9$", '$6\sqrt{3}$', '$8\sqrt{3}$', "$17$", '$12\sqrt{3}$']
+---
+
+<Problem>
+An architect is building a structure that will place vertical pillars at the vertices of regular hexagon $ABCDEF$, which is lying horizontally on the ground. The six pillars will hold up a flat solar panel that will not be parallel to the ground. The heights of pillars at $A$, $B$, and $C$ are $12$, $9$, and $10$ meters, respectively. What is the height, in meters, of the pillar at $E$?
+</Problem>
+
+<Solution>
+Place the regular hexagon in the $xy$-plane with center at the origin and side length $1$. Label the vertices:
+
+$$A = (1, 0),\quad B = \left(\tfrac{1}{2}, \tfrac{\sqrt{3}}{2}\right),\quad C = \left(-\tfrac{1}{2}, \tfrac{\sqrt{3}}{2}\right),$$
+$$D = (-1, 0),\quad E = \left(-\tfrac{1}{2}, -\tfrac{\sqrt{3}}{2}\right),\quad F = \left(\tfrac{1}{2}, -\tfrac{\sqrt{3}}{2}\right).$$
+
+The solar panel is a flat (planar) surface. A plane in 3D has the form $z = ax + by + c$. The height of each pillar equals the $z$-value of the plane above that vertex.
+
+Given: $z_A = 12$, $z_B = 9$, $z_C = 10$.
+
+**Find $a$, $b$, $c$:**
+
+From $A = (1, 0)$: $\quad a(1) + b(0) + c = 12 \implies a + c = 12.$
+
+From $B = \left(\tfrac{1}{2}, \tfrac{\sqrt{3}}{2}\right)$: $\quad \tfrac{a}{2} + \tfrac{b\sqrt{3}}{2} + c = 9.$
+
+From $C = \left(-\tfrac{1}{2}, \tfrac{\sqrt{3}}{2}\right)$: $\quad -\tfrac{a}{2} + \tfrac{b\sqrt{3}}{2} + c = 10.$
+
+Subtract the $B$ equation from the $C$ equation:
+$$-a = 1 \implies a = -1.$$
+
+From $a + c = 12$: $c = 13$.
+
+Substitute back into the $B$ equation:
+$$\tfrac{-1}{2} + \tfrac{b\sqrt{3}}{2} + 13 = 9 \implies \tfrac{b\sqrt{3}}{2} = 9 - 13 + \tfrac{1}{2} = -\tfrac{7}{2} \implies b\sqrt{3} = -7 \implies b = -\tfrac{7}{\sqrt{3}}.$$
+
+**Find $z_E$:**
+
+$E = \left(-\tfrac{1}{2}, -\tfrac{\sqrt{3}}{2}\right)$:
+
+$$z_E = a\left(-\tfrac{1}{2}\right) + b\left(-\tfrac{\sqrt{3}}{2}\right) + c = (-1)\left(-\tfrac{1}{2}\right) + \left(-\tfrac{7}{\sqrt{3}}\right)\left(-\tfrac{\sqrt{3}}{2}\right) + 13.$$
+
+$$= \tfrac{1}{2} + \tfrac{7}{2} + 13 = 4 + 13 = 17.$$
+
+Answer: **D**.
+</Solution>

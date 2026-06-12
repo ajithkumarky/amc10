@@ -1,0 +1,31 @@
+---
+year: 2021
+paper: "10A"
+topic: counting-probability
+subtopic: expected-value
+difficulty: 2
+answer: B
+choices: ["$-18.5$", "$-13.5$", "$0$", "$13.5$", "$18.5$"]
+---
+
+<Problem>
+A school has $100$ students and $5$ teachers. In the first period, each student is taking one class, and each teacher is teaching one class. The enrollments in the classes are $50$, $20$, $20$, $5$, and $5$. Let $t$ be the average value obtained if a teacher is picked at random and the number of students in their class is noted. Let $s$ be the average value obtained if a student is picked at random and the number of students in their class, including the student, is noted. What is $t - s$?
+</Problem>
+
+<Solution>
+**Computing $t$:** Each of the $5$ teachers is equally likely to be picked. The class sizes are $50, 20, 20, 5, 5$.
+
+$$t = \frac{50 + 20 + 20 + 5 + 5}{5} = \frac{100}{5} = 20.$$
+
+**Computing $s$:** A student picked at random is more likely to come from a large class. Each student "votes" for their own class size, weighted by how many students are in that class.
+
+$$s = \frac{50 \cdot 50 + 20 \cdot 20 + 20 \cdot 20 + 5 \cdot 5 + 5 \cdot 5}{100} = \frac{2500 + 400 + 400 + 25 + 25}{100} = \frac{3350}{100} = 33.5.$$
+
+**Therefore:**
+
+$$t - s = 20 - 33.5 = -13.5.$$
+
+This illustrates the inspection paradox: a randomly chosen student is disproportionately from large classes, so $s > t$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,43 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: functions
+difficulty: 4
+answer: D
+choices:
+  - 'the $y$-axis'
+  - 'the line $x = 1$'
+  - 'the origin'
+  - 'the point $\left(\dfrac{1}{2}, 0\right)$'
+  - 'the point $(1, 0)$'
+---
+
+<Problem>
+The graph of $f(x) = |\lfloor x \rfloor| - |\lfloor 1 - x \rfloor|$ is symmetric about which of the following? (Here $\lfloor x \rfloor$ is the greatest integer not exceeding $x$.)
+
+$\textbf{(A)}$ the $y$-axis $\quad \textbf{(B)}$ the line $x = 1$ $\quad \textbf{(C)}$ the origin $\quad \textbf{(D)}$ the point $\left(\dfrac{1}{2}, 0\right)$ $\quad \textbf{(E)}$ the point $(1, 0)$
+</Problem>
+
+<Solution>
+A function has point symmetry about $(a, b)$ if $f(a + t) + f(a - t) = 2b$ for all $t$.
+
+We test symmetry about the point $\left(\tfrac{1}{2}, 0\right)$, i.e., we want to show $f\!\left(\tfrac{1}{2} + t\right) + f\!\left(\tfrac{1}{2} - t\right) = 0$ for all real $t$.
+
+Note that $1 - \left(\tfrac{1}{2} + t\right) = \tfrac{1}{2} - t$, so $f\!\left(\tfrac{1}{2} - t\right) = |\lfloor \tfrac{1}{2} - t \rfloor| - |\lfloor \tfrac{1}{2} + t \rfloor|$.
+
+Therefore:
+$$f\!\left(\tfrac{1}{2}+t\right) + f\!\left(\tfrac{1}{2}-t\right) = \bigl(|\lfloor \tfrac{1}{2}+t\rfloor| - |\lfloor \tfrac{1}{2}-t\rfloor|\bigr) + \bigl(|\lfloor \tfrac{1}{2}-t\rfloor| - |\lfloor \tfrac{1}{2}+t\rfloor|\bigr) = 0.$$
+
+This holds for every real $t$. So the graph is symmetric about $\left(\dfrac{1}{2}, 0\right)$.
+
+**Verification with sample values:**
+
+- $f(0) = |0| - |1| = -1$; $f(1) = |1| - |0| = 1$. These are negatives of each other, consistent with symmetry about $\left(\tfrac{1}{2}, 0\right)$ ✓.
+- $f(2) = |2| - |-1| = 1$; $f(-1) = |-1| - |2| = -1$ ✓.
+- $f(0.5) = |0| - |0| = 0$ ✓ (the center has value 0).
+
+None of the other options work: $f$ is not even (asymmetry about $y$-axis), not symmetric about $x=1$, not symmetric about origin (since $f(0) = -1$ but $f(0) \ne -f(0)$... actually let's check origin: $f(0) + f(0) = -2 \ne 0$; symmetric about origin would require $f(-x) = -f(x)$, but $f(0) = -1 \ne 0$).
+
+Answer: **D**.
+</Solution>

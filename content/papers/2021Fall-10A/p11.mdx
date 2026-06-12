@@ -1,0 +1,38 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: A
+choices: ["$70$", "$84$", "$98$", "$105$", "$126$"]
+---
+
+<Problem>
+Emily sees a ship traveling at a constant speed along a straight section of a river. She walks parallel to the riverbank at a uniform rate faster than the ship. She counts $210$ equal steps walking from the back of the ship to the front. Walking in the opposite direction, she counts $42$ steps of the same size from the front of the ship to the back. In terms of Emily's equal steps, what is the length of the ship?
+</Problem>
+
+<Solution>
+Let $L$ be the ship's length in Emily-steps, $e$ be Emily's speed in steps per unit time, and $v$ be the ship's speed in the same units (with $e > v$).
+
+**Going in the same direction as the ship (back to front):** Emily's speed relative to the ship is $e - v$. In the time she takes $210$ steps, she covers $210$ steps relative to the ground but only $L$ steps relative to the ship.
+
+$$\frac{L}{e - v} = \frac{210}{e} \implies L = \frac{210(e-v)}{e}.$$
+
+**Going opposite to the ship (front to back):** Emily's speed relative to the ship is $e + v$. In $42$ steps:
+
+$$\frac{L}{e + v} = \frac{42}{e} \implies L = \frac{42(e+v)}{e}.$$
+
+Setting these equal:
+
+$$210(e - v) = 42(e + v)$$
+$$210e - 210v = 42e + 42v$$
+$$168e = 252v$$
+$$\frac{v}{e} = \frac{168}{252} = \frac{2}{3}.$$
+
+Now substitute back:
+
+$$L = \frac{42\left(1 + \dfrac{2}{3}\right) \cdot e}{e} = 42 \cdot \frac{5}{3} = 70.$$
+
+Answer: **A**.
+</Solution>

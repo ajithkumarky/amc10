@@ -1,0 +1,132 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 5
+answer: A
+choices:
+  - '$\dfrac{5}{16}$'
+  - '$\dfrac{1}{2}$'
+  - '$\dfrac{5}{8}$'
+  - '$1$'
+  - '$\dfrac{9}{8}$'
+---
+
+<Problem>
+A quadratic polynomial with real coefficients and leading coefficient $1$ is called *disrespectful* if the equation $p(p(x)) = 0$ is satisfied by exactly three real numbers. Among all the disrespectful quadratic polynomials, there is a unique such polynomial $\tilde{p}(x)$ for which the sum of the roots of $p(p(x)) = 0$ is maximized. What is $\tilde{p}(1)$?
+</Problem>
+
+<Solution>
+Write $p(x) = (x - r)(x - s)$ with $r \le s$ (since leading coefficient is 1 and coefficients are real, so roots are real or complex conjugates — but we'll see the constraints force real roots).
+
+**Structure of $p(p(x)) = 0$:**
+
+$p(p(x)) = 0$ iff $p(x) = r$ or $p(x) = s$.
+
+Each equation $p(x) = c$ is a quadratic in $x$: $(x-r)(x-s) = c$, or $x^2 - (r+s)x + rs - c = 0$.
+
+Number of real solutions to $p(x) = c$: depends on discriminant $(r+s)^2 - 4(rs-c) = (r-s)^2 + 4c$.
+
+For exactly 3 total real solutions to $p(p(x)) = 0$:
+
+- $p(x) = r$: has $(r-s)^2 + 4r$ discriminant.
+- $p(x) = s$: has $(r-s)^2 + 4s$ discriminant.
+
+The total real solutions must be 3. Possible splits: $\{0,3\}$ (impossible since each equation is a quadratic, giving 0, 1, or 2 solutions), $\{1,2\}$, $\{3,0\}$—same issue. So the only option is one equation gives 2 solutions and the other gives 1 solution, but with a shared root (the single root is a repeated root of the other, and the two equations share a root).
+
+Actually, $\{1, 2\}$ can occur if the two quadratics share exactly one root (making 3 distinct roots total) or if one quadratic has a double root and the other has 2 distinct roots not equal to it (giving 3 distinct roots: the double root counts once).
+
+Let me re-think. The equation $p(p(x)) = 0$ has 4 roots counting multiplicity (it's degree 4). For exactly 3 **distinct** real numbers to satisfy it, one of the following must hold:
+
+**Case A:** One root has multiplicity 2, the others are simple. The multiplicities sum to 4 = 2+1+1.
+
+**Case B:** The 4 roots are real but with a double root (one value repeated twice, two others distinct): 4 = 2+1+1. Same as Case A.
+
+**Case C:** One quadratic $p(x)=r$ has a double root (discriminant = 0), and the other $p(x)=s$ has 2 distinct roots, all three distinct. This gives $1 + 2 = 3$ values.
+
+**Case D:** The two quadratics $p(x)=r$ and $p(x)=s$ share exactly one root (so $r$ and $s$ count as one common root), and together have 3 distinct roots. The common root means $p(x_0) = r$ and $p(x_0) = s$, so $r = s$. But if $r = s$, then $p(x) = (x-r)^2$, and $p(p(x)) = 0$ means $(x-r)^2 = r$, giving $x = r \pm \sqrt{r}$. For real solutions we need $r \ge 0$. If $r = 0$: $x = 0$ (double root), so only 1 value. If $r > 0$: 2 distinct values. So $r = s$ doesn't give 3.
+
+So the only viable case is **Case C**: one equation has a double root.
+
+**Case C analysis:**
+
+Sub-case 1: $p(x) = r$ has a double root ($r$ is the smaller root), discriminant = 0:
+$$(r-s)^2 + 4r = 0 \implies (r-s)^2 = -4r.$$
+This requires $r \le 0$. Let $r = -t^2/4$ for some $t \ge 0$, and $(r-s)^2 = -4r = t^2$, so $s = r \pm t$.
+
+Sub-case 2: $p(x) = s$ has a double root:
+$$(r-s)^2 + 4s = 0 \implies (r-s)^2 = -4s.$$
+This requires $s \le 0$. But $r \le s \le 0$.
+
+Additionally, for the other equation to have 2 distinct real roots (not equal to the double root from the first equation), its discriminant must be $> 0$, and the 3 total roots must be distinct.
+
+**Maximizing the sum of the 3 roots:**
+
+The sum of all 4 roots of $p(p(x)) = 0$ (counted with multiplicity) can be found by Vieta's: $p(p(x)) = x^4 - \ldots$ Sum of all 4 roots (with multiplicity) $= $ coefficient of $x^3$ (negated). 
+
+For the sum of distinct roots to be maximized, with one being a double root: sum of distinct roots = (sum of 4 roots) - (double root value).
+
+Let $p(x) = x^2 + bx + c$ (leading coefficient 1, roots $r$ and $s = -b-r$, $c = rs$).
+
+$p(p(x)) = p(x)^2 + b \cdot p(x) + c$.
+
+The sum of all 4 roots of $p(p(x)) = 0$: by Vieta on the degree-4 polynomial. Since $p(p(x)) = (p(x) - r)(p(x) - s)$, expanding:
+
+$(x^2+bx+c-r)(x^2+bx+c-s).$
+
+Sum of all 4 roots = $-2b$ (sum of roots of each quadratic factor is $-b$, total $-2b$). 
+
+The double root occurs when $p(x) = r$ has a repeated root, call it $x_0 = (r+s)/2 = -b/2$ (vertex of the parabola occurs at $x = -b/2$, and $p(-b/2) = -b^2/4 + c$). For $p(x) = r$ to have a double root at $x_0$: $p(x_0) = r$, so $-b^2/4 + c = r$. But the minimum of $p(x)$ is $r$ (the smaller root's value as output). 
+
+Wait: the minimum value of $p(x) = x^2+bx+c$ is $c - b^2/4$. For $p(x) = r$ to have a double root: the minimum of $p(x)$ equals $r$, so $c - b^2/4 = r$.
+
+The double root of $p(x) = r$ is $x_0 = -b/2$.
+
+The sum of 3 distinct roots:
+- Double root: $x_0 = -b/2$.
+- Two roots of $p(x) = s$: sum $= -b$.
+- Sum of 3 distinct roots $= -b/2 + (-b) = -3b/2$... wait, but total sum of 4 roots $= -2b$, and the double root accounts for $x_0 + x_0 = -b$. Sum of remaining 2 roots (from $p(x)=s$) $= -b$. So total $= -2b$ ✓.
+
+Sum of 3 distinct roots $= x_0 + (\text{sum of two roots from } p(x)=s) = -b/2 + (-b) = -3b/2$.
+
+To maximize $-3b/2$, we want $b$ as negative (most negative) as possible, subject to the constraints:
+
+1. $c - b^2/4 = r$ (double root condition).
+2. $r$ is a root of $p$: $p(r) = r^2 + br + c = 0 \implies c = -r^2 - br$.
+3. From (1) and (2): $-r^2 - br - b^2/4 = r \implies -(r + b/2)^2 = r \implies (r+b/2)^2 = -r$.
+
+This requires $r \le 0$. Let $r = -t^2$ (with $t \ge 0$): $(r + b/2)^2 = t^2 \implies r + b/2 = \pm t \implies b = 2(\pm t - r) = 2(\pm t + t^2)$.
+
+To minimize $b$: $b = 2(-t - (-t^2)) = 2(t^2 - t)$... wait: $r = -t^2$, so $b = 2(-t - r) = 2(-t + t^2)$ or $b = 2(t - r) = 2(t + t^2)$.
+
+For $b = 2(t^2 - t)$: this is minimized at $t = 1/2$: $b = 2(1/4 - 1/2) = -1/2$. For $t > 1$, $b$ grows positive, and for $t < 1$, $b$ is negative with minimum at $t = 1/2$.
+
+For $b = 2(t^2 + t)$: always $\ge 0$ for $t \ge 0$. Not useful for maximizing $-3b/2$.
+
+So the minimum value of $b$ is $-1/2$, achieved at $t = 1/2$.
+
+**Verify $p(x) = s$ has 2 real distinct roots (not equal to $x_0$):**
+
+At $t = 1/2$: $r = -1/4$, $b = -1/2$.
+
+$s$: the other root of $p$, so $r + s = -b = 1/2 \implies s = 1/2 - (-1/4) = 3/4$.
+
+$c = rs = (-1/4)(3/4) = -3/16$.
+
+Check: $c - b^2/4 = -3/16 - 1/16 = -4/16 = -1/4 = r$ ✓.
+
+$p(x) = s$ discriminant: $(r-s)^2 + 4s = (-1/4 - 3/4)^2 + 4(3/4) = 1 + 3 = 4 > 0$ ✓. Two distinct roots.
+
+$x_0 = -b/2 = 1/4$. Roots of $p(x) = s$: $x = \frac{1/2 \pm 2}{2} = \frac{1/2 \pm 2}{2}$. More carefully: $p(x) = 3/4 \implies x^2 - x/2 - 3/16 = 3/4 \implies x^2 - x/2 - 15/16 = 0 \implies x = \frac{1/2 \pm \sqrt{1/4 + 15/4}}{2} = \frac{1/2 \pm 2}{2}$. 
+
+$x = \frac{1/2 + 2}{2} = \frac{5/2}{2} = 5/4$ or $x = \frac{1/2 - 2}{2} = \frac{-3/2}{2} = -3/4$.
+
+So the 3 distinct roots are $x_0 = 1/4$, $5/4$, $-3/4$. These are distinct ✓.
+
+**$\tilde{p}(x) = x^2 - \dfrac{1}{2}x - \dfrac{3}{16}$.**
+
+$$\tilde{p}(1) = 1 - \frac{1}{2} - \frac{3}{16} = \frac{16}{16} - \frac{8}{16} - \frac{3}{16} = \frac{5}{16}.$$
+
+Answer: **A**.
+</Solution>

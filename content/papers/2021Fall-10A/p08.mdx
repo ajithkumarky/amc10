@@ -1,0 +1,46 @@
+---
+year: 2021
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: B
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+A two-digit positive integer is said to be *cuddly* if it is equal to the sum of its nonzero tens digit and the square of its units digit. How many two-digit positive integers are cuddly?
+</Problem>
+
+<Solution>
+Let the two-digit number be $\overline{ab} = 10a + b$, where $a \in \{1, \ldots, 9\}$ and $b \in \{0, \ldots, 9\}$.
+
+The cuddly condition is:
+$$10a + b = a + b^2.$$
+
+Rearranging:
+$$9a = b^2 - b = b(b-1).$$
+
+So we need $b(b-1)$ divisible by $9$ and $a = \dfrac{b(b-1)}{9} \in \{1, \ldots, 9\}$.
+
+Check each $b$:
+
+| $b$ | $b(b-1)$ | $a = b(b-1)/9$ | Valid? |
+|-----|----------|-----------------|--------|
+| $0$ | $0$ | $0$ | No ($a$ must be nonzero) |
+| $1$ | $0$ | $0$ | No |
+| $2$ | $2$ | not integer | No |
+| $3$ | $6$ | not integer | No |
+| $4$ | $12$ | not integer | No |
+| $5$ | $20$ | not integer | No |
+| $6$ | $30$ | not integer | No |
+| $7$ | $42$ | not integer | No |
+| $8$ | $56$ | not integer | No |
+| $9$ | $72$ | $8$ | Yes! $\to 89$ |
+
+Only $b = 9$ gives a valid solution: the number $89 = 8 + 9^2 = 8 + 81 = 89$. ✓
+
+There is exactly $1$ cuddly two-digit integer.
+
+Answer: **B**.
+</Solution>

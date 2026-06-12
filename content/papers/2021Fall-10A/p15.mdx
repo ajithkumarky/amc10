@@ -1,0 +1,68 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: C
+choices: ["$24\\pi$", "$25\\pi$", "$26\\pi$", "$27\\pi$", "$28\\pi$"]
+---
+
+<Problem>
+Isosceles triangle $ABC$ has $AB = AC = 3\sqrt{6}$, and a circle with radius $5\sqrt{2}$ is tangent to line $AB$ at $B$ and to line $AC$ at $C$. What is the area of the circle that passes through vertices $A$, $B$, and $C$?
+</Problem>
+
+<Solution>
+Let the large circle have center $O$ with radius $R_0 = 5\sqrt{2}$. Since it is tangent to line $AB$ at $B$ and to line $AC$ at $C$, $OB \perp AB$ and $OC \perp AC$.
+
+Because $OB = OC = 5\sqrt{2}$ and $OB \perp AB$, $OC \perp AC$, the center $O$ lies on the angle bisector of $\angle BAC$, which is also the perpendicular bisector of $BC$ (since the triangle is isosceles).
+
+Let $M$ be the midpoint of $BC$. Place $A$ at the top and $M$ below $A$. Let $\angle BAM = \alpha$ (half of $\angle BAC$). Then $\sin\alpha = \dfrac{BM}{AB}$.
+
+From right triangle $OBM$ (since $OB \perp AB$ implies $\angle OBM = 90° - \alpha$):
+
+In right triangle $ABО$ (with right angle at $B$):
+$$OB \perp AB \implies OA^2 = OB^2 + AB^2 = (5\sqrt{2})^2 + (3\sqrt{6})^2 = 50 + 54 = 104.$$
+
+So $OA = \sqrt{104} = 2\sqrt{26}$.
+
+By the same reasoning (tangency at $C$), $OA^2 = OC^2 + AC^2 = 50 + 54 = 104$ ✓.
+
+Since $O$ lies on the perpendicular bisector of $BC$, the circumradius $R$ of triangle $ABC$ satisfies the relation involving $O$, $A$, $B$, $C$.
+
+The circumcenter of $\triangle ABC$ lies on the perpendicular bisector of $BC$ (call it the axis of symmetry). Let the circumcenter be $P$, at distance $d$ from $A$ along the axis.
+
+We use the fact that $A$, $O$, and the circumcenter $P$ are all collinear (they all lie on the axis of symmetry).
+
+From right triangle $OBP$ (if $P$ is the circumcenter): $PB = R$ (circumradius), $OB = 5\sqrt{2}$, and $\angle OBP$... Let's use a coordinate approach.
+
+Place the axis of symmetry along the $y$-axis with $A$ at the origin. Then $A = (0,0)$, and $B$, $C$ are symmetric about the $y$-axis. Since $O$ is on the $y$-axis at distance $OA = 2\sqrt{26}$ from $A$, let $O = (0, -2\sqrt{26})$ (below $A$).
+
+Since $OB \perp AB$ and $OB = 5\sqrt{2}$: $B$ is on line $AB$ at distance $AB = 3\sqrt{6}$ from $A$, and $\vec{OB} \perp \vec{AB}$.
+
+Direction of $AB$: let $B = (3\sqrt{6}\sin\alpha, -3\sqrt{6}\cos\alpha)$ for some $\alpha$. Then $\vec{OB} = B - O = (3\sqrt{6}\sin\alpha,\; -3\sqrt{6}\cos\alpha + 2\sqrt{26})$.
+
+$\vec{AB} = (3\sqrt{6}\sin\alpha, -3\sqrt{6}\cos\alpha)$.
+
+$\vec{OB} \cdot \vec{AB} = 0$:
+$$3\sqrt{6}\sin\alpha \cdot 3\sqrt{6}\sin\alpha + (-3\sqrt{6}\cos\alpha + 2\sqrt{26})(-3\sqrt{6}\cos\alpha) = 0.$$
+$$54\sin^2\alpha + 54\cos^2\alpha - 6\sqrt{6}\cdot\sqrt{26}\cos\alpha = 0.$$
+$$54 = 6\sqrt{156}\cos\alpha = 6 \cdot 2\sqrt{39}\cos\alpha = 12\sqrt{39}\cos\alpha.$$
+$$\cos\alpha = \frac{54}{12\sqrt{39}} = \frac{9}{2\sqrt{39}}.$$
+
+Now the circumcenter $P = (0, p)$ for some $p$. We need $PA = PB$:
+$$PA = |p|.$$
+$$PB^2 = (3\sqrt{6}\sin\alpha)^2 + (p + 3\sqrt{6}\cos\alpha)^2 = 54\sin^2\alpha + p^2 + 6\sqrt{6}p\cos\alpha + 54\cos^2\alpha.$$
+$$= 54 + p^2 + 6\sqrt{6}p\cos\alpha.$$
+
+Setting $PA^2 = PB^2$: $p^2 = 54 + p^2 + 6\sqrt{6}p\cos\alpha$, so:
+$$-54 = 6\sqrt{6}p \cdot \frac{9}{2\sqrt{39}} = \frac{27\sqrt{6}}{\sqrt{39}}p = \frac{27\sqrt{6}}{\sqrt{39}}p.$$
+
+$$p = \frac{-54\sqrt{39}}{27\sqrt{6}} = \frac{-2\sqrt{39}}{\sqrt{6}} = -2\sqrt{\frac{39}{6}} = -2\sqrt{\frac{13}{2}} = -\sqrt{26}.$$
+
+So $R = PA = |p| = \sqrt{26}$.
+
+Area of circumcircle $= \pi R^2 = 26\pi$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,140 @@
+---
+year: 2021
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: D
+choices: ["$7$", "$8$", "$9$", "$10$", "$11$"]
+---
+
+<Problem>
+For each positive integer $n$, let $f_1(n)$ be twice the number of positive integer divisors of $n$, and for $j \ge 2$, let $f_j(n) = f_1(f_{j-1}(n))$. For how many values of $n \le 50$ is $f_{50}(n) = 12$?
+</Problem>
+
+<Solution>
+Let $\tau(n)$ denote the number of positive divisors of $n$, so $f_1(n) = 2\tau(n)$.
+
+Note that $f_j(n) = 2\tau(f_{j-1}(n))$ for $j \ge 2$.
+
+**When does iteration converge to 12?**
+
+A value $k$ is a **fixed point** of $f_1$ when $f_1(k) = k$, i.e., $2\tau(k) = k$.
+
+Check: $2\tau(12) = 2 \cdot 6 = 12$ ✓. So $k = 12$ is a fixed point.
+
+Any other fixed points? $2\tau(k) = k$ means $k$ is even (since $2\tau(k)$ is even). Write $k = 2m$: $2\tau(2m) = 2m \implies \tau(2m) = m$. Small values: $m=1$: $\tau(2)=2 \ne 1$; $m=2$: $\tau(4)=3 \ne 2$; $m=3$: $\tau(6)=4 \ne 3$; $m=4$: $\tau(8)=4=4$ ✓. So $k=8$ is also a fixed point? $2\tau(8) = 2 \cdot 4 = 8$ ✓. Also check $m=6$: $\tau(12) = 6$ ✓, gives $k=12$ again. $m=5$: $\tau(10)=4 \ne 5$; $m=8$: $\tau(16)=5 \ne 8$; $m=12$: $\tau(24)=8 \ne 12$; $m=24$: $\tau(48)=10 \ne 24$; $m=16$: $\tau(32)=6 \ne 16$. So the fixed points with $k$ small are 8 and 12.
+
+Now, for $f_{50}(n) = 12$, since 12 is a fixed point and we're applying $f$ 50 times, we need the iteration starting at $n$ to reach 12 and stay there. Since 8 is also a fixed point, values that map to 8 stay at 8 forever and never reach 12.
+
+**Finding which $n \le 50$ eventually reach 12:**
+
+Compute $f_1(n) = 2\tau(n)$ for relevant $n$, then trace the iteration.
+
+The key question: which $n$ have $f_1(n) = 12$, i.e., $\tau(n) = 6$?
+
+$\tau(n) = 6$ when $n = p^5$ or $n = p^2 q$ (where $p, q$ are distinct primes). For $n \le 50$:
+- $p^5$: $2^5 = 32$. ✓
+- $p^2 q$ ($p \ne q$): $4 \cdot 3=12$, $4\cdot5=20$, $4\cdot7=28$, $4\cdot11=44$, $9\cdot2=18$, $9\cdot5=45$, $25\cdot2=50$, $4\cdot13=52>50$, $9\cdot7=63>50$.
+
+So $\tau(n)=6$ for $n \in \{12, 18, 20, 28, 32, 44, 45, 50\}$. These all give $f_1(n) = 12$.
+
+But also, $n = 12$ itself: $f_1(12) = 12$, and all further iterations stay at 12 ✓.
+
+Now find $n$ with $f_1(n) = $ something that eventually leads to 12. We need the orbit under $f_1$ to reach 12.
+
+Let me map out what $f_1(n) = 2\tau(n)$ gives for small even numbers (since $f_1$ outputs an even number):
+
+- $f_1(2) = 2\tau(2) = 4$
+- $f_1(4) = 2\tau(4) = 6$
+- $f_1(6) = 2\tau(6) = 8$ → fixed at 8, never reaches 12.
+- $f_1(8) = 8$ → fixed at 8.
+- $f_1(10) = 2\tau(10) = 8$ → stuck at 8.
+- $f_1(12) = 12$ → fixed.
+- $f_1(14) = 2\tau(14) = 8$ → stuck at 8.
+- $f_1(16) = 2\tau(16) = 10$
+- $f_1(18) = 12$ → reaches 12.
+- $f_1(20) = 12$ → reaches 12.
+- $f_1(22) = 8$ → stuck.
+- $f_1(24) = 2\tau(24) = 16$
+- $f_1(26) = 8$ → stuck.
+- $f_1(28) = 12$ → reaches 12.
+- $f_1(32) = 12$ → reaches 12.
+- $f_1(44) = 12$ → reaches 12.
+- $f_1(45) = 12$ → reaches 12.
+- $f_1(50) = 12$ → reaches 12.
+
+Now: what reaches those intermediate values ($16, 10, 4, 6$)?
+
+$f_1(n) = 16$ iff $\tau(n) = 8$. Then $f_1(16) = 10$, $f_1(10) = 8$ → stuck. So values with $\tau(n) = 8$ reach 16, then 10, then 8. Never 12. Skip.
+
+$f_1(n) = 10$ iff $\tau(n) = 5$, i.e., $n = p^4$. Then $f_1(10) = 8$ → stuck.
+
+$f_1(n) = 6$ iff $\tau(n) = 3$, i.e., $n = p^2$. Then $f_1(6) = 8$ → stuck.
+
+$f_1(n) = 4$ iff $\tau(n) = 2$, i.e., $n$ is prime. Then $f_1(4) = 6$, $f_1(6) = 8$ → stuck.
+
+So none of the "other paths" lead to 12. The only $n$ that reach 12 are:
+1. $n$ with $f_1(n) = 12$ (i.e., $\tau(n) = 6$): $\{12, 18, 20, 28, 32, 44, 45, 50\}$ — that's 8 values.
+2. $n = 12$ itself (already included above).
+
+But wait, we also need to check $n$ with $f_1(n)$ equal to one of $\{12, 18, 20, 28, 32, 44, 45, 50\}$, meaning $\tau(n)$ equals half of one of those values.
+
+Actually: for $f_{50}(n) = 12$, we need the sequence $n \to f_1(n) \to f_2(n) \to \cdots$ to reach 12 by step 50.
+
+Since $f_1$ of any of $\{12, 18, 20, 28, 32, 44, 45, 50\}$ equals 12, and we have 50 steps, any $n$ that reaches any of these within 49 steps will end at 12 on step 50 (or sooner and stay).
+
+But for $n \le 50$: going deeper, we need $f_1(n)$ to be one of $\{12, 18, 20, 28, 32, 44, 45, 50\}$. That means $\tau(n) \in \{6, 9, 10, 14, 16, 22, 22.5, 25\}$. But $\tau(n)$ must be an integer, so $\tau(n) \in \{6, 9, 10, 14, 16\}$... wait:
+
+- $\tau(n) = 9$: $f_1(n) = 18$, then $f_1(18) = 12$ ✓.
+- $\tau(n) = 10$: $f_1(n) = 20$, then $f_1(20) = 12$ ✓.
+- $\tau(n) = 14$: $f_1(n) = 28$, then $f_1(28) = 12$ ✓.
+- $\tau(n) = 16$: $f_1(n) = 32$, then $f_1(32) = 12$ ✓.
+
+Now for $n \le 50$:
+
+$\tau(n) = 9$: $n = p^8$ or $n = p^2 q^2$. $p^8$: $2^8 = 256 > 50$. $p^2 q^2$: $4 \cdot 9 = 36$. So $n = 36$. Check: $\tau(36) = \tau(2^2 \cdot 3^2) = 3 \cdot 3 = 9$ ✓. $f_1(36) = 18$, $f_1(18) = 12$ ✓.
+
+$\tau(n) = 10$: $n = p^9$ or $n = p^4 q$ or $n = p q^4$. For $n \le 50$:
+- $p^9$: $2^9 = 512 > 50$.
+- $p^4 q$: $16 \cdot 3 = 48$, $16 \cdot 5 = 80 > 50$, $81 \cdot 2 > 50$.
+- So $n = 48$. $\tau(48) = \tau(2^4 \cdot 3) = 5 \cdot 2 = 10$ ✓. $f_1(48) = 20$, $f_1(20) = 12$ ✓.
+
+$\tau(n) = 14$: $n = p^{13}$ or $n = p^6 q$ or $n = p q^6$. For $n \le 50$:
+- $p^6 q$: $64 \cdot q > 50$ for all $q \ge 2$? No: $64 \cdot 1$ is not prime. $p=2$: $64 > 50$. No solutions.
+- So no $n \le 50$ has $\tau(n) = 14$.
+
+$\tau(n) = 16$: $n = p^{15}$, $p^7 q$, $p^3 q^3$, $p^3 q r$, etc. For $n \le 50$:
+- $2^3 \cdot 3 \cdot 5 = 120 > 50$... hmm. Let me check small cases: $\tau(n) = 16$ requires $(a_1+1)(a_2+1)\cdots = 16$ in the prime factorization $n = p_1^{a_1} p_2^{a_2} \cdots$. 
+  - $n = 2^{15} > 50$.
+  - $n = 2^7 \cdot 3 = 384 > 50$.
+  - $n = 2^3 \cdot 3^3 = 216 > 50$.
+  - $n = 2^3 \cdot 3 \cdot 5 = 120 > 50$.
+  - $n = 2 \cdot 3 \cdot 5 \cdot 7 = 210 > 50$.
+  - All too large. No solutions.
+
+So the "two-step path" through $\tau = 9, 10$ adds $n = 36, 48$.
+
+Check "three-step paths": find $n \le 50$ with $\tau(n) = k$ where $2k \in \{36, 48\}$ (giving $f_1(n) \in \{36, 48\}$, then reaching 12 in two more steps): $k = 18$ or $k = 24$.
+
+$\tau(n) = 18$: $(a+1)(b+1) = 18 = 2 \cdot 9 = 3 \cdot 6 = 18$. For $n \le 50$:
+- $2^{17}$: too large.
+- $2^8 \cdot 3 = 768$: too large.
+- $2^5 \cdot 3^2 = 288$: too large.
+- $2^2 \cdot 3^5 = 972$: too large.
+- $2 \cdot 3^8$: too large.
+- All too large.
+
+$\tau(n) = 24$: even larger requirements. No solutions.
+
+So there are no new $n \le 50$ reachable via 3-step paths.
+
+**Final count:** 
+- $\tau(n) = 6$: $n \in \{12, 18, 20, 28, 32, 44, 45, 50\}$ — 8 values.
+- $\tau(n) = 9$: $n = 36$ — 1 value.
+- $\tau(n) = 10$: $n = 48$ — 1 value.
+
+Total: $8 + 1 + 1 = 10$.
+
+Answer: **D**.
+</Solution>

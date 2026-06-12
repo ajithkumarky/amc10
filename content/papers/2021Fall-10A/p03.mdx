@@ -1,0 +1,25 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 1
+answer: D
+choices: ["$3$", "$4$", "$5$", "$6$", "$7$"]
+---
+
+<Problem>
+What is the maximum number of balls of clay of radius $2$ that can completely fit inside a cube of side length $6$, assuming the balls can be reshaped but not compressed before they are packed in the cube?
+</Problem>
+
+<Solution>
+The key insight is that the balls can be **reshaped** (but not compressed), so what matters is total volume, not geometric packing.
+
+Volume of the cube: $6^3 = 216$ cubic units.
+
+Volume of one ball: $\dfrac{4}{3}\pi r^3 = \dfrac{4}{3}\pi (2)^3 = \dfrac{32\pi}{3}$ cubic units.
+
+Maximum number of balls: $\left\lfloor \dfrac{216}{32\pi/3} \right\rfloor = \left\lfloor \dfrac{648}{32\pi} \right\rfloor = \left\lfloor \dfrac{648}{100.53\ldots} \right\rfloor = \lfloor 6.44\ldots \rfloor = 6$.
+
+Answer: **D**.
+</Solution>

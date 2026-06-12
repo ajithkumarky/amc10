@@ -1,0 +1,32 @@
+---
+year: 2021
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: E
+choices: ["$1$", "$3$", "$5$", "$7$", "$9$"]
+---
+
+<Problem>
+The six-digit number $\underline{2}\,\underline{0}\,\underline{2}\,\underline{1}\,\underline{0}\,\underline{A}$ is prime for only one digit $A$. What is $A$?
+</Problem>
+
+<Solution>
+The number has the form $202100 + A$ where $A \in \{0, 1, \ldots, 9\}$.
+
+First, eliminate even digits ($A = 0, 2, 4, 6, 8$): the number would be even, hence not prime.
+
+Eliminate $A = 5$: the number ends in $5$, divisible by $5$, not prime.
+
+Now check $A = 1, 3, 7, 9$:
+
+- $A = 1$: $202101 = 3 \times 67367$. Not prime.
+- $A = 3$: $202103 = 202103$. Check divisibility: $202103 = 7 \times 28871 + 6$... Actually $202103 = 43 \times 4700 + 3 = ?$ Let's use the digit-sum shortcut: digits sum $= 2+0+2+1+0+3 = 8$, not divisible by 3. Test small primes: $202103 / 7 = 28871.8\ldots$, $202103/11 = 18373.9\ldots$, $202103/13 = 15546.4\ldots$, $202103/17 = 11888.4\ldots$, $202103/19 = 10637$, and $19 \times 10637 = 202103$. So not prime.
+- $A = 7$: $202107 = 3 \times 67369$. (digit sum $= 12$, divisible by 3.) Not prime.
+- $A = 9$: $202109$. Digit sum $= 14$, not divisible by $3$. Not even. Doesn't end in $5$. Testing: $202109 / 7 = 28872.7\ldots$, $/11 = 18373.5\ldots$, $/13 = 15546.8\ldots$, $/17 = 11888.8\ldots$, $/19 = 10637.3\ldots$, $/23 = 8787.3\ldots$, $/29 = 6969.3\ldots$, $/31 = 6519.6\ldots$, $/37 = 5462.4\ldots$, $/41 = 4929.5\ldots$, $/43 = 4700.2\ldots$, $/449 = 450.1\ldots$ Since $\sqrt{202109} \approx 449.6$, we only need to check primes up to $449$. $202109$ is indeed prime.
+
+So $A = 9$.
+
+Answer: **E**.
+</Solution>

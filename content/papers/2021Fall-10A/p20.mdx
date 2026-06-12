@@ -1,0 +1,64 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 4
+answer: B
+choices: ["$4$", "$6$", "$8$", "$12$", "$16$"]
+---
+
+<Problem>
+For how many ordered pairs $(b, c)$ of positive integers does neither $x^2 + bx + c = 0$ nor $x^2 + cx + b = 0$ have two distinct real solutions?
+</Problem>
+
+<Solution>
+A quadratic $x^2 + px + q = 0$ has two distinct real solutions iff its discriminant $p^2 - 4q > 0$, i.e., $p^2 > 4q$.
+
+We want: **neither** equation has two distinct real solutions, meaning:
+$$b^2 \le 4c \quad \text{and} \quad c^2 \le 4b.$$
+
+We need to find all pairs of positive integers $(b, c)$ satisfying both $b^2 \le 4c$ and $c^2 \le 4b$.
+
+**From $b^2 \le 4c$:** $c \ge \dfrac{b^2}{4}$.
+
+**From $c^2 \le 4b$:** $c \le 2\sqrt{b}$ (since $c > 0$).
+
+So we need $\dfrac{b^2}{4} \le c \le 2\sqrt{b}$.
+
+For this range to contain any integers, we need $\dfrac{b^2}{4} \le 2\sqrt{b}$, i.e., $b^2 \le 8\sqrt{b}$, i.e., $b^{3/2} \le 8$ (dividing by $b^{1/2}$), i.e., $b \le 4$.
+
+So $b \in \{1, 2, 3, 4\}$. Let's enumerate:
+
+**$b = 1$:** $\dfrac{1}{4} \le c \le 2$. Since $c$ is a positive integer: $c \in \{1, 2\}$.
+
+Check:
+- $(1, 1)$: $1 \le 4$ ✓, $1 \le 4$ ✓.
+- $(1, 2)$: $1 \le 8$ ✓, $4 \le 4$ ✓.
+
+2 pairs.
+
+**$b = 2$:** $1 \le c \le 2\sqrt{2} \approx 2.83$. So $c \in \{1, 2\}$.
+
+Check:
+- $(2, 1)$: $4 \le 4$ ✓, $1 \le 8$ ✓.
+- $(2, 2)$: $4 \le 8$ ✓, $4 \le 8$ ✓.
+
+2 pairs.
+
+**$b = 3$:** $\dfrac{9}{4} = 2.25 \le c \le 2\sqrt{3} \approx 3.46$. So $c = 3$.
+
+Check $(3, 3)$: $9 \le 12$ ✓, $9 \le 12$ ✓.
+
+1 pair.
+
+**$b = 4$:** $4 \le c \le 4$. So $c = 4$.
+
+Check $(4, 4)$: $16 \le 16$ ✓, $16 \le 16$ ✓.
+
+1 pair.
+
+**Total:** $2 + 2 + 1 + 1 = 6$.
+
+Answer: **B**.
+</Solution>

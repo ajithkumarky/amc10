@@ -1,0 +1,37 @@
+---
+year: 2021
+paper: "10A"
+topic: number-theory
+subtopic: number-bases
+difficulty: 3
+answer: D
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+The base-nine representation of the number $N$ is $27{,}006{,}000{,}052_{\text{nine}}$. What is the remainder when $N$ is divided by $5$?
+</Problem>
+
+<Solution>
+We need $N \pmod{5}$. Since $9 \equiv 4 \pmod{5}$, we note that $9^2 = 81 \equiv 1 \pmod{5}$.
+
+So powers of $9$ alternate mod $5$: $9^k \equiv 4$ when $k$ is odd, and $9^k \equiv 1$ when $k$ is even.
+
+The digits of $N$ in base nine are (from most to least significant, so $9^{10}$ down to $9^0$):
+
+$$2,\ 7,\ 0,\ 0,\ 6,\ 0,\ 0,\ 0,\ 0,\ 5,\ 2$$
+
+Compute $d \cdot 9^k \pmod 5$ for each nonzero digit:
+
+| Digit $d$ | Power $k$ | $9^k \bmod 5$ | $d \cdot 9^k \bmod 5$ |
+|-----------|-----------|----------------|------------------------|
+| $2$ | $10$ | $1$ | $2$ |
+| $7$ | $9$ | $4$ | $28 \equiv 3$ |
+| $6$ | $6$ | $1$ | $6 \equiv 1$ |
+| $5$ | $1$ | $4$ | $20 \equiv 0$ |
+| $2$ | $0$ | $1$ | $2$ |
+
+Sum: $2 + 3 + 1 + 0 + 2 = 8 \equiv 3 \pmod{5}$.
+
+Answer: **D**.
+</Solution>

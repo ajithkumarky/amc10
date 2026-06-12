@@ -1,0 +1,25 @@
+---
+year: 2021
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 2
+answer: E
+choices: ['$\dfrac{3}{8}$', '$\dfrac{4}{9}$', '$\dfrac{5}{9}$', '$\dfrac{9}{16}$', '$\dfrac{5}{8}$']
+---
+
+<Problem>
+When a certain unfair die is rolled, an even number is $3$ times as likely to appear as an odd number. The die is rolled twice. What is the probability that the sum of the numbers rolled is even?
+</Problem>
+
+<Solution>
+Let $P(\text{odd}) = p$. Since an even number is $3$ times as likely, $P(\text{even}) = 3p$. These must sum to $1$:
+
+$$p + 3p = 1 \implies p = \frac{1}{4}, \quad P(\text{even}) = \frac{3}{4}.$$
+
+The sum of two rolls is even exactly when both rolls are even, or both rolls are odd:
+
+$$P(\text{sum even}) = P(\text{even})^2 + P(\text{odd})^2 = \left(\frac{3}{4}\right)^2 + \left(\frac{1}{4}\right)^2 = \frac{9}{16} + \frac{1}{16} = \frac{10}{16} = \frac{5}{8}.$$
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,62 @@
+---
+year: 2021
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: E
+choices: ["$1$", "$4$", "$8$", "$12$", "$16$"]
+---
+
+<Problem>
+Each of the $20$ balls is tossed independently and at random into one of the $5$ bins. Let $p$ be the probability that some bin ends up with $3$ balls, another with $5$ balls, and the other three with $4$ balls each. Let $q$ be the probability that every bin ends up with $4$ balls. What is $\dfrac{p}{q}$?
+</Problem>
+
+<Solution>
+Both $p$ and $q$ involve distributing 20 distinguishable balls into 5 distinguishable bins, each with total $5^{20}$.
+
+**Computing $q$:** Each bin gets exactly 4 balls.
+
+$$q = \frac{\dbinom{20}{4}\dbinom{16}{4}\dbinom{12}{4}\dbinom{8}{4}\dbinom{4}{4}}{5^{20}} = \frac{\dfrac{20!}{(4!)^5}}{5^{20}}.$$
+
+**Computing $p$:** One bin gets 3, one bin gets 5, three bins get 4 each.
+
+- Choose which bin gets 3: 5 ways.
+- Choose which bin gets 5: 4 ways.
+- The remaining 3 bins each get 4.
+
+Number of ways to distribute:
+$$\binom{20}{3}\binom{17}{5}\binom{12}{4}\binom{8}{4}\binom{4}{4} \times 5 \times 4.$$
+
+So:
+$$p = \frac{20 \cdot \dbinom{20}{3}\dbinom{17}{5}\dbinom{12}{4}\dbinom{8}{4}\dbinom{4}{4}}{5^{20}}.$$
+
+**Computing the ratio $\dfrac{p}{q}$:**
+
+$$\frac{p}{q} = \frac{20 \cdot \dbinom{20}{3}\dbinom{17}{5}\dbinom{12}{4}\dbinom{8}{4}\dbinom{4}{4}}{\dbinom{20}{4}\dbinom{16}{4}\dbinom{12}{4}\dbinom{8}{4}\dbinom{4}{4}}.$$
+
+Cancel $\dbinom{12}{4}\dbinom{8}{4}\dbinom{4}{4}$:
+
+$$\frac{p}{q} = 20 \cdot \frac{\dbinom{20}{3}\dbinom{17}{5}}{\dbinom{20}{4}\dbinom{16}{4}}.$$
+
+Compute each:
+$$\binom{20}{3} = \frac{20 \cdot 19 \cdot 18}{6} = 1140, \quad \binom{17}{5} = \frac{17 \cdot 16 \cdot 15 \cdot 14 \cdot 13}{120} = 6188.$$
+$$\binom{20}{4} = \frac{20 \cdot 19 \cdot 18 \cdot 17}{24} = 4845, \quad \binom{16}{4} = \frac{16 \cdot 15 \cdot 14 \cdot 13}{24} = 1820.$$
+
+$$\frac{p}{q} = 20 \cdot \frac{1140 \cdot 6188}{4845 \cdot 1820}.$$
+
+Let's simplify step by step. First: $\dfrac{\binom{20}{3}}{\binom{20}{4}} = \dfrac{1140}{4845} = \dfrac{4!}{(20-3)! / (20-4)!} $... 
+
+Using the identity $\dfrac{\binom{n}{k}}{\binom{n}{k+1}} = \dfrac{k+1}{n-k}$:
+
+$$\frac{\binom{20}{3}}{\binom{20}{4}} = \frac{4}{20-3} = \frac{4}{17}.$$
+
+And $\dfrac{\binom{17}{5}}{\binom{16}{4}}$:
+
+$$\binom{17}{5} = \frac{17}{5} \cdot \binom{16}{4} \implies \frac{\binom{17}{5}}{\binom{16}{4}} = \frac{17}{5}.$$
+
+So:
+$$\frac{p}{q} = 20 \cdot \frac{4}{17} \cdot \frac{17}{5} = 20 \cdot \frac{4}{5} = 16.$$
+
+Answer: **E**.
+</Solution>

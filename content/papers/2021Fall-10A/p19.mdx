@@ -1,0 +1,316 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: A
+choices: ["$10$", "$11$", "$12$", "$13$", "$14$"]
+---
+
+<Problem>
+A disk of radius $1$ rolls all the way around the inside of a square of side length $s > 4$ and sweeps out a region of area $A$. A second disk of radius $1$ rolls all the way around the outside of the same square and sweeps out a region of area $2A$. The value of $s$ can be written as $a + \dfrac{b\pi}{c}$, where $a$, $b$, and $c$ are positive integers and $b$ and $c$ are relatively prime. What is $a + b + c$?
+</Problem>
+
+<Solution>
+**Rolling inside the square:**
+
+When a disk of radius $1$ rolls around the inside of a square of side $s$, the center of the disk traces a smaller square of side $s - 2$ (staying $1$ unit from each wall). The swept region is an annular-like band: the set of all points within distance $1$ from the center's path but inside the square.
+
+The swept area $A$ = (area of square of side $s$) $-$ (area of square of side $s-4$).
+
+Wait — the swept region is the set of all points covered by the disk as it rolls. The center travels along a square of side $s-2$. The disk sweeps the region within distance $1$ of the center's path. That region is:
+
+- Along each straight side of the center's path (length $s-2$ each), a rectangle of width $2 \times 1 = 2$. But the center path has corners; at each corner, the center of the disk moves along a quarter-circle of radius... actually in a square, the corners of the center's path are sharp corners (the disk pivots around the inside corners of the square). 
+
+More carefully: as the disk rolls along a flat wall, the center moves parallel to the wall. At an inside corner of the square, the center pivots, tracing a quarter-circle of radius $\sqrt{2}\cdot 1 - 1$... no. At a corner of the square (inside), the disk is tangent to both walls, so its center is at distance $1$ from each wall, i.e., at coordinates $(1, 1)$ from the corner. The center's path at a corner is a quarter-circle of radius... well, the center simply goes from one straight segment to another, turning $90°$ — but for a disk rolling **inside** a square corner, the center traces a quarter-circle of radius $0$ (a sharp corner) because the constraint is just "center at distance 1 from walls." So the center path is a square of side $s-2$ with sharp corners.
+
+The swept area = area within distance 1 of the square path of side $s - 2$. This "Minkowski sum" of the square path:
+
+- 4 rectangles of dimensions $(s-2) \times 2$ (inner: but overlapping at corners).
+- Actually, the swept region is the annular band between the square of side $s$ and the square of side $s-4$:
+
+$$A = s^2 - (s-4)^2 = s^2 - s^2 + 8s - 16 = 8s - 16 = 8(s-2).$$
+
+Wait — is it the square of side $s-4$? The inner boundary of the swept region is where the far edge of the disk reaches, which is the square of side $s-2-1 = s-3$... Hmm, let me reconsider.
+
+The disk has radius 1, center at distance 1 from each wall. As the center traces the inner square (side $s-2$), the disk covers all points within distance 1 of the center's path. The outermost points are at distance 1 from the center toward the wall, reaching the wall (side $s$). The innermost points are at distance 1 from the center away from the wall. The inner boundary is a square of side $(s-2) - 2 = s-4$.
+
+So the swept area inside: $A = s^2 - (s-4)^2 = 8s - 16$.
+
+**Rolling outside the square:**
+
+When the disk rolls around the outside of the square, the center traces a path consisting of 4 straight segments (parallel to each side, at distance 1 outside) and 4 quarter-circles of radius 1 at the corners.
+
+The swept area $2A$ = (area within distance 1 of the square's exterior) = (area of "expanded square" of side $s+2$ with rounded corners of radius 1) $-$ (area of original square of side $s$).
+
+The expanded region has area $= (s+2)^2 - 4(1)^2 + \pi(1)^2$... Let me be precise.
+
+The region within distance 1 of the (exterior of the) square, outside the square:
+- 4 rectangles along sides: each $s \times 1$, total $4s$.
+- 4 quarter-circles at corners: radius 1, total area $\pi(1)^2 = \pi$.
+
+So $2A = 4s + \pi$.
+
+**Setting up the equation:**
+
+$$2(8s - 16) = 4s + \pi$$
+$$16s - 32 = 4s + \pi$$
+$$12s = 32 + \pi$$
+$$s = \frac{32 + \pi}{12} = \frac{8}{3} + \frac{\pi}{12}.$$
+
+Hmm, but $s$ must be greater than 4. $\frac{8}{3} + \frac{\pi}{12} \approx 2.67 + 0.26 = 2.93$, which is not $> 4$. Something is off.
+
+Let me recompute the inside area. The swept region inside is an annular band. The outer boundary is the inner wall of the square (side $s$) and the inner boundary is... the disk can reach points as close as $s - 2 - 1 = s - 3$ from the opposite wall. So inner square has side $2(s/2 - (s/2 - (s-2)/2 - 1))$... let me use coordinates.
+
+Square: $[0, s] \times [0, s]$. Center path: $[1, s-1] \times [1, s-1]$ (square of side $s-2$). Disk sweeps within distance 1 of this path. The swept region = $\{(x,y) : \text{dist}((x,y), \text{path}) \le 1\}$.
+
+The path is the boundary of $[1, s-1]^2$. The Minkowski sum of this path with a disk of radius 1:
+
+Outer boundary: $[0, s]^2$ boundary (the actual square walls).
+Inner boundary: $[2, s-2]^2$ boundary.
+
+So swept area $= s^2 - (s-4)^2 = 8s - 16$. This seems right. Check: $s = 5$: area $= 40 - 16 = 24$. The band would be from side 5 to side 1 (area $25 - 1 = 24$) ✓.
+
+For the outside area, I need to be more careful. The swept region when rolling outside = area of all points covered by the disk. As the disk rolls outside the square, its center is always at distance 1 from the square boundary, outside.
+
+The center's path: along each side, the center is at distance 1 outside; at corners, the center traces a quarter-circle of radius 1 (the disk pivots around the outside corner).
+
+Swept area = region within distance 1 of the exterior of the square (i.e., the "outer Minkowski sum" of the square with a disk of radius 1, minus the original square).
+
+Outer Minkowski sum area $= (s + 2)^2 - 4\left(1 - \frac{\pi}{4}\right)\cdot 1^2$... Let me just compute directly:
+
+Area within distance 1 outside the square:
+- 4 rectangular strips along sides: $s \times 1$ each, total $4s$.
+- 4 quarter-circle corners (outside convex corners of square): radius 1, total area $\pi \cdot 1^2 / 4 \times 4 = \pi$.
+
+So swept outside area $= 4s + \pi$.
+
+Setting $2A = 4s + \pi$ where $A = 8s - 16$:
+$$16s - 32 = 4s + \pi \implies 12s = 32 + \pi \implies s = \frac{32 + \pi}{12}.$$
+
+This gives $s \approx \frac{32 + 3.14}{12} \approx \frac{35.14}{12} \approx 2.93 < 4$. That contradicts $s > 4$.
+
+I must have the swept regions wrong. Let me reconsider.
+
+**Re-examining inside sweep:** When the disk rolls inside and the center's path is a square of side $s - 2$, the disk sweeps points within distance 1 of the path (the boundary of $[1, s-1]^2$). This is correct: outer boundary = $[0,s]^2$, inner boundary = $[2, s-2]^2$. So $A = s^2 - (s-4)^2 = 8(s-2)$.
+
+**Re-examining outside sweep:** The swept area should be the set of points outside the square that the disk covers. The outer boundary of the swept region is the set of points at distance 1 from the center's path, away from the square. The center's path is at distance 1 from the square exterior. So the outer boundary of the swept region is at distance 2 from the square. The inner boundary of the swept region is the square itself.
+
+So: swept area outside $= $ (square expanded by 2) area $-$ original square area.
+
+Expanded square area (with rounded corners at radius 2):
+$$= (s + 4)^2 - 4(2^2) + \pi(2^2) \cdot \frac{1}{1}$$
+
+Wait: the "offset" of the square by distance 2 has area $(s+4)^2 - 4(4) + 4\pi = s^2 + 8s + 16 - 16 + 4\pi = s^2 + 8s + 4\pi$.
+
+Subtract original square: $s^2 + 8s + 4\pi - s^2 = 8s + 4\pi$.
+
+Hmm, but actually I should think of it differently. The swept region outside = (union of all disk positions) = all points at distance $\le 1$ from the center's path that lie outside the square.
+
+The center's path has:
+- 4 straight segments each of length $s$ (parallel to the sides, at distance 1 outside). Actually length $s$ not $s+2$ — the straight segments connect the quarter-circle corners.
+- 4 quarter-circles of radius 1 at the outside corners.
+
+So the center path total is a "rounded square" of side $s$ and corner radius 1 (perimeter $= 4s + 2\pi$).
+
+The swept region = all points within distance 1 of this rounded-square path, that lie outside the original square.
+
+The outer edge = rounded square of side $s+2$ with corner radius 2: area $= (s+2)^2 - 4(2^2)(1 - \pi/4) = (s+2)^2 - 4 \cdot 4 + 4\pi$... I'll use: rounded square of side $L$ and corner radius $r$ has area $L^2 - 4r^2 + \pi r^2 = L^2 - r^2(4 - \pi)$.
+
+Outer boundary: side $s + 2$, corner radius 2.
+Area $= (s+2)^2 - 4(1 - \pi/4) = $... 
+
+Let me just compute swept area outside directly:
+
+Along each of the 4 straight sides: the disk sweeps a rectangle. The straight part of the center's path along one side has length $s$ (from corner to corner), and the disk extends 1 unit on each side of the center, so swept strip = $s \times 2 = 2s$ per side; but we only count the part outside the square, which is a strip of width... The center is already 1 unit outside, so the disk spans from the square wall (distance 0 from square) to distance 2 from the square wall. Strip: $s \times 2$ per side? No.
+
+The strip along one side: center path is a line segment of length $s$, at distance 1 outside the wall. The disk (radius 1) sweeps a band: from distance 0 to distance 2 from the wall, width $s$ (ignoring corners). Area per side = $s \times 2$ (height $2$ = diameter). But the inner edge (at the wall) is included in the original square boundary, and we want points outside the square only, so the strip occupying distance 0 to 2 outside the wall has area $s \times 2$. But wait, the length of the straight segment of the center's path is not $s$ exactly — because at each corner, the center traces a quarter-circle. The straight segment length for one side: the center travels from one quarter-circle endpoint to the next. The outside corner of the square is at, say, $(0, 0)$; the center can't get closer than 1 unit to this corner, so the straight segments along adjacent sides are each shortened by 1 at each end. The straight center path along a side of length $s$ has length $s$ (it starts and ends at the tangent points of the quarter-circles, which are at distance 1 from the corners, measured along the side). But measured along the outside edge, the straight center segment is $s$ (it runs the full width). Hmm — actually the center path along the side runs parallel to the side, starting where it leaves the quarter-circle at one end ($1$ unit from the corner, around the outside) and ending at the start of the next quarter-circle. The straight path length = $s$ (same as the side length, since the quarter-circle terminates at the point $1$ unit from the corner along the adjacent direction).
+
+**Swept area outside (clean version):**
+
+The swept region is everything within distance 1 of the square's perimeter, on the exterior:
+- 4 rectangular strips: each $s \times 1$, total area $4s$.
+- 4 quarter-circle sectors at corners (the outside corners are convex, so within distance 1 of the corner point): radius 1, total $4 \times \frac{\pi}{4} = \pi$.
+
+No wait — the disk's center is at distance 1 outside, and the disk has radius 1, so it covers from 0 to 2 from the wall. So the swept region is everything from 0 to 2 outside the wall:
+
+- 4 rectangular strips (one per side): $s \times 2$ each... but the strips overlap at the corners! 
+
+Actually, the swept region = all points at distance $\le 2$ from the square boundary, outside the square, minus all points at distance $> 0$ from the square boundary that the disk could not reach (i.e., the corners of the outer ring).
+
+The correct formula: the exterior band of width 2 around the square, which is the set $\{P : 0 \le \text{dist}(P, \text{square}) \le 2, P \notin \text{square}\}$. Its area:
+
+Area of "offset square" (side $s$, offset 2) $-$ area of original square:
+
+The offset of a square by $r$ outside has area $s^2 + 4rs + \pi r^2$ (4 side rectangles plus 4 corner quarters of a circle of radius $r$). For $r = 2$: $s^2 + 8s + 4\pi$. So swept area $= (s^2 + 8s + 4\pi) - s^2 = 8s + 4\pi$.
+
+Wait, that's the band of width 2. But we need the band from width 0 to 2. Is this right? The center is at distance 1, and the disk has radius 1, so indeed it reaches from distance 0 to distance 2 outside. ✓
+
+Also I need to double-check $A$. Inside: swept area = band of inner width. Center at distance 1 from wall inside, disk has radius 1, covers from the wall (distance 0 from wall) to the interior (distance 2 from wall). The interior swept band = area between the square of side $s$ and the square of side $s - 4$. Area = $s^2 - (s-4)^2 = 8s - 16$.
+
+So:
+$$2A = 8s + 4\pi$$
+$$A = 4s + 2\pi$$
+$$8s - 16 = 4s + 2\pi$$
+$$4s = 16 + 2\pi$$
+$$s = 4 + \frac{\pi}{2}.$$
+
+Check: $s \approx 4 + 1.57 = 5.57 > 4$ ✓.
+
+So $s = 4 + \dfrac{\pi}{2}$, giving $a = 4$, $b = 1$, $c = 2$. Check: $\gcd(1, 2) = 1$ ✓.
+
+$$a + b + c = 4 + 1 + 2 = 7.$$
+
+Hmm, 7 is not among the choices. Let me re-examine.
+
+**Re-examining outside area:** The swept region as the disk rolls around the **outside** might actually be bigger — the full outer band is not just thickness 2. The disk's center is at distance 1 from the square at all times, but consider the corners: the outside corners of the square are convex, and the center traces a quarter-circle of radius 1 there. So the center is at distance 1 from the corner point too, meaning the outer edge of the disk is at distance 2 from the corner — consistent with the outer offset.
+
+But the inner edge of the disk at the corner is at the corner itself (distance 0 from the square corner). So the swept region includes the corners at distance 0 from the square — that's fine.
+
+Hmm, let me reconsider what "sweep" means. For the inner case, is the disk going around the inside and sweeping a region that **excludes** corners? Actually in the inside case:
+
+When rolling inside, the disk cannot fit into the corners of the square (the disk has radius 1, and a square corner is a $90°$ right angle). The disk fits perfectly tangent to both walls at a corner, with center at $(1, 1)$ from the inside corner. So the center's path is a square with corners at distance $\sqrt{2}$ from each original corner... no wait.
+
+The center's path: tangent to the bottom wall means center is at height 1. Tangent to the left wall means center is at $x = 1$. So when the disk is tangent to both walls at the bottom-left corner, the center is at $(1, 1)$. The center's path turns sharply from the bottom track (height 1) to the left track ($x = 1$) — it passes through the corner point $(1, 1)$. So the center does trace a square of side $s - 2$ with sharp corners.
+
+The swept region inside = all points within distance 1 of the **boundary** of the square $[1, s-1]^2$.
+
+Points within distance 1 of the boundary of $[1, s-1]^2$ that are also inside $[0, s]^2$:
+
+This is $[0, s]^2 \setminus [2, s-2]^2$ (since the inner boundary of the swept region is the square of side $s - 4$, centered within $[0, s]^2$, i.e., $[2, s-2]^2$).
+
+Area: $s^2 - (s-4)^2 = 8s - 16$. ✓ (This is $8(s-2)$.)
+
+For outside, the swept region = all points within distance 1 of the **boundary** of $[1, s+1]^2$... hmm no.
+
+Actually: the center path outside is a "rounded square" or just a square of side $s + 2$ but with rounded corners of radius 1 (since the center traces quarter-circles of radius 1 at the outside corners). The swept region = all points within distance 1 of this rounded-square path, lying outside $[0, s]^2$.
+
+The outer edge = offset of the rounded-square path by 1 outward = rounded square of side $s + 2$ with corner radius 2 (adding 1 to each corner's radius of 1). The inner edge = offset by 1 inward toward the square = the original square $[0, s]^2$.
+
+So swept area $= $ area(rounded square, side $s+2$, corner radius $2$) $-$ area of original square.
+
+Area of rounded square (side $L$, corner radius $r$): this has 4 straight sides of length $L - 2r$ (the corners are cut), 4 quarter-circles of radius $r$. Area $= (L - 2r)^2 + 4r(L-2r) + \pi r^2 = L^2 - 4Lr + 4r^2 + 4rL - 8r^2 + \pi r^2 = L^2 - 4r^2 + \pi r^2 = L^2 + r^2(\pi - 4)$.
+
+For $L = s+2$, $r = 2$: $(s+2)^2 + 4(\pi - 4) = s^2 + 4s + 4 + 4\pi - 16 = s^2 + 4s - 12 + 4\pi$.
+
+Subtract $s^2$: swept area $= 4s - 12 + 4\pi$.
+
+**Setting up the equation:**
+
+$$2A = 4s - 12 + 4\pi$$
+$$A = 8s - 16$$
+$$2(8s - 16) = 4s - 12 + 4\pi$$
+$$16s - 32 = 4s - 12 + 4\pi$$
+$$12s = 20 + 4\pi$$
+$$s = \frac{20 + 4\pi}{12} = \frac{5}{3} + \frac{\pi}{3}.$$
+
+Still $< 4$. Something is still off.
+
+Let me try: the outside swept area = band of thickness 2 around the **outside** of the square (not rounded, just the full band of width 2 on all sides). That gives area $= (s+4)^2 - s^2 = 8s + 16$... minus the 4 corners that are "squared" rather than rounded?
+
+Actually the swept region outside only covers where the disk actually goes. The disk's center goes around the outside at distance 1, sweeping a band of thickness 2 (from distance 0 to 2 outside the square). In the corners, the center traces a quarter-circle of radius 1, so the disk sweeps out a quarter-annulus of inner radius 0 and outer radius 2. The area of this corner piece = $\frac{1}{4}\pi(2^2) - \frac{1}{4}\pi(0^2) = \pi$. Per corner, the swept area is a quarter-circle of radius 2 (area $\pi$).
+
+Straight sections along each side: center traces a segment of length $s$ at distance 1, disk sweeps a $s \times 2$ rectangle (from distance 0 to 2 outside). Area per side: $2s$.
+
+Total swept area outside: $4 \times 2s + 4 \times \pi = 8s + 4\pi$.
+
+Setting $2A = 8s + 4\pi$:
+$$2(8s-16) = 8s + 4\pi$$
+$$16s - 32 = 8s + 4\pi$$
+$$8s = 32 + 4\pi$$
+$$s = 4 + \frac{\pi}{2}.$$
+
+$s \approx 5.57 > 4$ ✓. So $a = 4$, $b = 1$, $c = 2$, giving $a + b + c = 7$.
+
+Still not matching choices. Let me reconsider the inside area.
+
+The inside swept area: the disk rolls inside. If the square has side $s > 4$, the center of the disk traces a square of side $s - 2$ (keeping distance 1 from each wall). The disk sweeps the region within distance 1 of the center path. 
+
+The center path is the **boundary** (perimeter) of the square $[1, s-1]^2$, not the interior. The swept region is the set of all points within distance 1 of this boundary square.
+
+This region = the $s^2$ square $\setminus$ the $(s-4)^2$ square. $A = s^2 - (s-4)^2 = 8s - 16$.
+
+Hmm, but when the disk is going around the **inside** corner, can it really fit? At the corner, the center is at $(1, 1)$, and the disk has radius 1. The disk just fits: it's tangent to both walls. The center traces the corner point of the inner square. So the swept region at the inside corners is a quarter-circle of radius 1 centered at $(1,1)$ (or the equivalent corner). This is already included in the "$\text{within distance 1 of the corner}$" computation.
+
+I believe the formulas are:
+- $A = 8s - 16$
+- $2A = 8s + 4\pi$
+
+Wait, but I'm getting $a+b+c = 7$, and the answer choice (A) is 10. Let me reconsider the outside swept area more carefully. Maybe the straight parts along each side aren't length $s$ but length $s - 2$ (because the center path's straight portions are length $s - 2$, between quarter-circles)?
+
+No wait — the outside corners are convex, so the center sweeps outward. The straight portion of the center path along a side of the square of length $s$: the center starts at distance 1 from the corner of the square, moves parallel to the wall, ends at distance 1 from the next corner. So the straight center path length = $s - 2 + 2 = s$? No: the corner of the square is at $(0, 0)$. As the disk rolls along the bottom wall (outside), the center is at height $-1$. The disk is tangent to the corner at $(0, 0)$ when the center is at $(-1, 0)$ (reaching the far left while rolling along the bottom). Wait, the quarter-circles at the corners: center traces a quarter-circle of radius 1 centered at the outside corner $(0, 0)$. This quarter-circle goes from $(-1, 0)$ (approaching from the left side) to $(0, -1)$ (departing along the bottom).
+
+So along the bottom of the square (from $(0, 0)$ to $(s, 0)$), the center path's straight segment goes from $(0, -1)$ to $(s, -1)$. Length = $s$. ✓
+
+So my formula $2A = 8s + 4\pi$ is correct, and $s = 4 + \pi/2$, $a+b+c = 7$.
+
+But the answer choices start at 10. I must be computing $A$ wrong for the inside case.
+
+**Inside case revisited:** When the disk rolls **inside**, does the center trace the full boundary of the inner square including corners? At the inside corner, the corner is a $90°$ interior angle. The disk cannot roll into the corner, but it can be tangent to both walls simultaneously, with its center at $(1, 1)$ from the corner (inside). So the center **does** reach the corner of the inner square. The center path is indeed the full boundary of $[1, s-1]^2$ including corners. 
+
+But maybe the question means the swept region is an annular ring between two circles (if it were a circle) — here it's the annular region between two squares. $A = s^2 - (s-4)^2 = 8s-16$ seems right.
+
+Alternatively, maybe the "swept region" doesn't include where the disk was when it started (since it "rolls all the way around"). But the total area should still be $8s - 16$ since the swept region is the same regardless.
+
+Let me try a completely different approach: maybe "rolls inside" means the center traces a path that is not simply the inner square boundary. In fact, when a circle of radius $r$ rolls inside a square of side $s$ (with $s > 2r$), the center traces the inner square at distance $r$ from each wall. At each corner, the center doesn't truly trace the corner point — instead, the disk pivots around the corner of the square by rotating (since the corner is a point of tangency). During the pivot, the center traces a quarter-circle of radius $r\sqrt{2} - r = r(\sqrt{2}-1)$ centered at the inside corner of the square? 
+
+Actually no: at an inside corner $(0, 0)$ of the square (with the square being $[0,s]^2$, and the disk rolling inside), the disk is tangent to both walls when its center is at $(r, r) = (1, 1)$. The corner is not rounded, and the disk fits exactly. The center simply arrives at $(1, 1)$ from one straight path and leaves along another. There's no pivot needed for the **center** path — the center makes a right-angle turn at $(1, 1)$. 
+
+So the center path is a square with corners at $(1,1)$, $(s-1, 1)$, $(s-1, s-1)$, $(1, s-1)$ — a square of side $s-2$ with sharp corners. ✓
+
+And the swept region is all points within distance 1 of this path, intersected with the interior of $[0,s]^2$, which equals $[0,s]^2 \setminus [2, s-2]^2$. Area $= s^2 - (s-4)^2 = 8s-16$. ✓
+
+Let me verify with the answer: if $a+b+c = 10$ (choice A), what is $s$? We'd need something like $s = 7 + \frac{\pi}{2}$ (giving $7 + 1 + 2 = 10$) or $s = 6 + 2\pi/1$ (giving $6+2+1=9$), etc.
+
+Maybe my outside area is wrong. Let me recount: the straight segments of the center path along the outside are length $s$ each, but the full swept band along one side:
+
+The center is at height $-1$ below the bottom wall (at $y = 0$). The disk's radius is 1, so it sweeps from $y = -2$ to $y = 0$. Width of strip: $s$ (from $x = 0$ to $x = s$, the full side). Height: 2. Area: $2s$ per side, $8s$ total for 4 sides.
+
+But at the corner (center at $(-1, 0)$ transitioning to $(0, -1)$), the disk sweeps a quarter-circle of inner radius 0 and outer radius 2, centered at the corner $(0, 0)$. Area: $\frac{1}{4}\pi(2)^2 = \pi$ per corner, $4\pi$ total.
+
+However, the rectangular strips along each side already extend to the corner: the strip for the bottom side covers $x \in [0, s], y \in [-2, 0]$, and the strip for the left side covers $x \in [-2, 0], y \in [0, s]$. The quarter-circle at corner $(0, 0)$ covers the region $x^2 + y^2 \le 4$ in the third quadrant (x ≤ 0, y ≤ 0). This does **not** overlap with the rectangular strips (which are in $x \ge 0$ for the bottom strip, and $y \ge 0$ for the left strip). So total swept area outside $= 4 \cdot 2s + 4\pi = 8s + 4\pi$.
+
+OK so that all checks out. The issue might be my inside calculation is wrong.
+
+Hmm. Let me try yet again, being very literal.
+
+The inside swept area: I claimed the swept region is an annular band from the square $[0,s]^2$ boundary inward to the square $[2,s-2]^2$ boundary. But wait — the disk also sweeps the corner regions of the inner part! At the inside corner of the original square, the center is at $(1,1)$. The disk (radius 1) covers the set of points at distance $\le 1$ from $(1,1)$, i.e., the quarter-disk in the corner $x \ge 0, y \ge 0$, from $(0,0)$ to $(2,0)$ and $(0,2)$. 
+
+The swept region is all points within distance 1 of the **path** $\partial([1,s-1]^2)$. For a point like $(0.5, 0.5)$ inside the original square: is it within distance 1 of the path $\partial([1,s-1]^2)$? The nearest point on $\partial([1,s-1]^2)$ to $(0.5, 0.5)$ is the corner $(1, 1)$, at distance $\sqrt{0.5^2 + 0.5^2} = \frac{\sqrt{2}}{2} \approx 0.707 < 1$. So yes, $(0.5, 0.5)$ is in the swept region! 
+
+This means the swept region inside the corners is larger than what I computed. The "inner square" of side $s-4$ has its corners at $(2, 2)$, etc. But the swept region's inner boundary (farthest from the path) at the corner is at distance 1 from $(1,1)$: it's a quarter-circle of radius 1 around $(1,1)$, going from $(1, 0) \to (0, 1)$... wait, that's the outer boundary. 
+
+Hmm, let me be careful. The swept region $= \{P \in [0,s]^2 : \text{dist}(P, \partial([1,s-1]^2)) \le 1\}$.
+
+For a point $(x, y)$ inside $[1,s-1]^2$: it's in the swept region if $\text{dist}((x,y), \partial([1,s-1]^2)) \le 1$, i.e., $\min(x-1, y-1, s-1-x, s-1-y) \le 1$, i.e., $x \le 2$ or $y \le 2$ or $x \ge s-2$ or $y \ge s-2$. This is the complement of $(2, s-2)^2$, so points in $[1,s-1]^2 \setminus [2,s-2]^2$. Area $= (s-2)^2 - (s-4)^2 = 4s - 12$.
+
+For a point $(x, y)$ **outside** $[1,s-1]^2$ but inside $[0,s]^2$: it's in the swept region if $\text{dist}((x,y), \partial([1,s-1]^2)) \le 1$. The nearest point on $\partial([1,s-1]^2)$ is on the boundary: if $(x,y) \in [0,1) \times [0,s]$, the nearest point on the boundary is $(1, \max(1, \min(s-1, y)))$, at distance $1 - x$ (if $y \in [1, s-1]$) or something slightly larger in the corners. For $y \in [1, s-1]$, distance $= 1 - x$, which is in $[0, 1)$, always $\le 1$ ✓. For $y \in [0,1)$: nearest boundary point is $(1, 1)$ at distance $\sqrt{(1-x)^2 + (1-y)^2}$. This is $\le 1$ iff $(1-x)^2 + (1-y)^2 \le 1$.
+
+So the swept region outside $[1,s-1]^2$ but inside $[0,s]^2$ is:
+- Strips: $x \in [0, 1], y \in [1, s-1]$ (left strip): area $1 \times (s-2) = s-2$.
+- Symmetrically for right, top, bottom: 4 strips of area $s - 2$ each. But wait, some of this extends into the corner regions outside $[1,s-1]^2$.
+- Corner regions (e.g., $x \in [0,1], y \in [0,1]$): include points where $(1-x)^2 + (1-y)^2 \le 1$ (quarter-disk of radius 1 centered at $(1,1)$). Area $= \frac{\pi}{4}$ per corner.
+
+Total swept region area:
+$$A = 4 \cdot (s-2) \cdot 1 + 4 \cdot \frac{\pi}{4} + \text{interior band area}$$
+$$= 4(s-2) + \pi + 4s - 12$$
+$$= 4s - 8 + \pi + 4s - 12$$
+$$= 8s - 20 + \pi.$$
+
+So $A = 8s - 20 + \pi$.
+
+Setting $2A = 8s + 4\pi$:
+$$2(8s - 20 + \pi) = 8s + 4\pi$$
+$$16s - 40 + 2\pi = 8s + 4\pi$$
+$$8s = 40 + 2\pi$$
+$$s = 5 + \frac{\pi}{4}.$$
+
+Check: $s \approx 5 + 0.785 = 5.785 > 4$ ✓.
+
+So $a = 5$, $b = 1$, $c = 4$, $\gcd(1,4) = 1$ ✓. $a + b + c = 5 + 1 + 4 = 10$.
+
+That matches answer choice **A**.
+
+Answer: **A**.
+</Solution>

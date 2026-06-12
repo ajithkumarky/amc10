@@ -1,0 +1,218 @@
+---
+year: 2021
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: E
+choices: ["$8$", "$10$", "$12$", "$16$", "$20$"]
+---
+
+<Problem>
+Each of the $12$ edges of a cube is labeled $0$ or $1$. Two labelings are considered different even if one can be obtained from the other by a sequence of one or more rotations and/or reflections. For how many such labelings is the sum of the labels on the edges of each of the $6$ faces of the cube equal to $2$?
+</Problem>
+
+<Solution>
+The cube has 12 edges and 6 faces, each face having 4 edges. We need every face's edge-sum to equal 2, meaning exactly 2 of the 4 edges of every face are labeled 1.
+
+The cube's edges can be grouped into 3 sets of 4 parallel edges each (the three "directions": $x$, $y$, $z$). Each face contains exactly 2 edges from two of the three directions (not the direction perpendicular to the face). Each set of 4 parallel edges contributes to exactly 4 faces.
+
+**Setting up the structure.** Label the 12 edges: 4 in the $x$-direction ($x_1, x_2, x_3, x_4$), 4 in the $y$-direction ($y_1, y_2, y_3, y_4$), 4 in the $z$-direction ($z_1, z_2, z_3, z_4$).
+
+Each face: two $x$-edges and two $y$-edges (bottom/top face), or two $x$-edges and two $z$-edges (front/back), or two $y$-edges and two $z$-edges (left/right).
+
+Each face sum = 2. For a face with edges $\{a, b, c, d\}$: $a + b + c + d = 2$.
+
+**Constraint analysis.** There are 6 face-sum constraints. Note that each edge is shared by exactly 2 faces. The sum of all 6 face sums $= 2 \times (\text{sum of all 12 edges}) = 2S$ where $S$ is the total number of 1-labels. Since each face sum is 2, total = 12, so $2S = 12 \implies S = 6$. Exactly 6 edges are labeled 1.
+
+**Structure by direction.** Let $a$ = number of 1s among $x$-edges, $b$ = number of 1s among $y$-edges, $c$ = number of 1s among $z$-edges, with $a + b + c = 6$.
+
+Consider the two $x$-faces (faces with normal in the $x$-direction). These faces each have 2 $y$-edges and 2 $z$-edges. Each $x$-face sum = (sum of its 2 $y$-edges) + (sum of its 2 $z$-edges) = 2.
+
+Consider the two $y$-faces (normals in $y$-direction). Each has 2 $x$-edges and 2 $z$-edges; sum = 2.
+
+Consider the two $z$-faces (normals in $z$-direction). Each has 2 $x$-edges and 2 $y$-edges; sum = 2.
+
+Let me label the vertices of the cube as $(i, j, k)$ with $i, j, k \in \{0, 1\}$. The $x$-edges connect vertices differing only in $i$: 
+- $x$-edges: $(0,0,0)$–$(1,0,0)$, $(0,1,0)$–$(1,1,0)$, $(0,0,1)$–$(1,0,1)$, $(0,1,1)$–$(1,1,1)$.
+
+Label these $x_{00}, x_{10}, x_{01}, x_{11}$ (indexed by $(j,k)$).
+
+Similarly $y_{ik}$ and $z_{ij}$.
+
+The 6 face-sum constraints (sum of each face's edges = 2):
+
+**Bottom face** ($k=0$, $z$-normal): $x_{00} + x_{10} + y_{00} + y_{10} = 2$.
+**Top face** ($k=1$): $x_{01} + x_{11} + y_{01} + y_{11} = 2$.
+**Front face** ($j=0$, $y$-normal): $x_{00} + x_{01} + z_{00} + z_{10} = 2$.
+**Back face** ($j=1$): $x_{10} + x_{11} + z_{01} + z_{11} = 2$.
+**Left face** ($i=0$, $x$-normal): $y_{00} + y_{01} + z_{00} + z_{01} = 2$.
+**Right face** ($i=1$): $y_{10} + y_{11} + z_{10} + z_{11} = 2$.
+
+These 6 equations have a dependency: summing all = $2(x+y+z\text{-sums}) = 12$. 
+
+We need to count 0/1 assignments to all 12 variables satisfying all 6 equations.
+
+**Enumeration approach.** Let $X = (x_{00}, x_{10}, x_{01}, x_{11})$, and similarly $Y, Z$. Sum of $X = a$, $Y = b$, $Z = c$.
+
+Add the bottom + top face constraints:
+$(x_{00}+x_{10}+x_{01}+x_{11}) + (y_{00}+y_{10}+y_{01}+y_{11}) = 4$
+$\implies a + b = 4.$
+
+Add the front + back face constraints:
+$(x_{00}+x_{10}+x_{01}+x_{11}) + (z_{00}+z_{10}+z_{01}+z_{11}) = 4$
+$\implies a + c = 4.$
+
+Add the left + right face constraints:
+$(y_{00}+y_{10}+y_{01}+y_{11}) + (z_{00}+z_{10}+z_{01}+z_{11}) = 4$
+$\implies b + c = 4.$
+
+So $a + b = 4$, $a + c = 4$, $b + c = 4 \implies a = b = c = 2$.
+
+**Each direction has exactly 2 ones among its 4 edges.** The number of ways to choose 2 ones from 4 is $\binom{4}{2} = 6$.
+
+So there are $6^3 = 216$ ways to assign labels with each direction having exactly 2 ones. But we also need all 6 individual face constraints to hold (not just the paired sums).
+
+**Further constraints.** The bottom face: $x_{00} + x_{10} + y_{00} + y_{10} = 2$. Since $x_{00} + x_{10} + x_{01} + x_{11} = 2$ (total $x$-sum) and $y_{00} + y_{10} + y_{01} + y_{11} = 2$, we have:
+
+Bottom face: $x_{00} + x_{10} + y_{00} + y_{10} = 2$
+Top face: $x_{01} + x_{11} + y_{01} + y_{11} = 2$.
+
+Let $\alpha = x_{00} + x_{10}$ (sum of $x$-edges in bottom half, i.e., $k=0$) and $\alpha' = x_{01} + x_{11}$ (top half), so $\alpha + \alpha' = 2$.
+Let $\beta = y_{00} + y_{10}$ and $\beta' = y_{01} + y_{11}$, $\beta + \beta' = 2$.
+
+Bottom: $\alpha + \beta = 2$, top: $\alpha' + \beta' = 2$. Since $\alpha' = 2 - \alpha$ and $\beta' = 2 - \beta$: $(2-\alpha) + (2-\beta) = 4 - (\alpha+\beta) = 2$ ✓. So top face is automatically satisfied if bottom face is!
+
+Similarly for front/back and left/right pairs.
+
+So we have 3 independent face constraints (one per pair), not 6.
+
+The 3 independent constraints:
+1. $x_{00} + x_{10} + y_{00} + y_{10} = 2$ (bottom)
+2. $x_{00} + x_{01} + z_{00} + z_{10} = 2$ (front)
+3. $y_{00} + y_{01} + z_{00} + z_{01} = 2$ (left)
+
+Given $a = b = c = 2$, let's count solutions. 
+
+Let $X$ have two 1s among $(x_{00}, x_{10}, x_{01}, x_{11})$. There are $\binom{4}{2} = 6$ choices for $X$, similarly for $Y$ and $Z$. The 6 choices for $X$ are (listing which two are 1):
+$S_1 = \{00,10\}$, $S_2 = \{00,01\}$, $S_3 = \{00,11\}$, $S_4 = \{10,01\}$, $S_5 = \{10,11\}$, $S_6 = \{01,11\}$.
+
+Let $\alpha = x_{00} + x_{10}$ (i.e., how many of the $k=0$ $x$-edges are 1):
+- $S_1$: $\alpha = 2$, $\alpha' = 0$.
+- $S_2$: $\alpha = 1$ (just $x_{00}$), but wait $\{00, 01\}$ means $x_{00}=x_{01}=1$: $\alpha = 1$ (just $x_{00}$), $\alpha' = 1$.
+- $S_3$: $\{x_{00}, x_{11}\}$: $\alpha = 1$ ($x_{00}=1$, $x_{10}=0$), $\alpha'=1$ ($x_{01}=0$, $x_{11}=1$).
+- $S_4$: $\{x_{10}, x_{01}\}$: $\alpha = 1$, $\alpha' = 1$.
+- $S_5$: $\{x_{10}, x_{11}\}$: $\alpha = 1$, $\alpha' = 1$.
+- $S_6$: $\{x_{01}, x_{11}\}$: $\alpha = 0$, $\alpha' = 2$.
+
+So $\alpha \in \{0, 1, 2\}$. The constraint 1: $\alpha + \beta = 2$, i.e., $\beta = 2 - \alpha$.
+
+Similarly, let $\gamma = z_{00} + z_{01}$ (the $i=0$ $z$-edges' sum). Constraint 3: $\beta_0 + \gamma = 2$ where $\beta_0 = y_{00} + y_{01}$ (the $k=0$ column $y$-edges... wait, let me re-index.
+
+This is getting complex. Let me just directly enumerate via a computer-like approach.
+
+**Systematic count.** For each of the 6 choices of $X$ (which 2 of the 4 $x$-edges are 1), the constraint 1 ($\alpha + \beta = 2$, where $\alpha = x_{00}+x_{10}$) fixes $\beta = y_{00}+y_{10}$. Since $b = 2$ and $\beta = y_{00}+y_{10}$, the complementary sum $y_{01}+y_{11} = 2 - \beta = \alpha$.
+
+The valid $Y$ choices satisfying $\beta = 2-\alpha$:
+- $\alpha = 2$ ($X = S_1$): $\beta = 0$, meaning $y_{00}=y_{10}=0$, so $y_{01}=y_{11}=1$: only $Y = S_6$. (1 choice)
+- $\alpha = 0$ ($X = S_6$): $\beta = 2$, meaning $y_{00}=y_{10}=1$: only $Y = S_1$. (1 choice)
+- $\alpha = 1$ ($X \in \{S_2, S_3, S_4, S_5\}$): $\beta = 1$, meaning exactly one of $\{y_{00}, y_{10}\}$ is 1, i.e., $Y \in \{S_2, S_3, S_4, S_5\}$ (the 4 choices where $\beta = 1$). (4 choices each)
+
+Now constraint 2: $x_{00} + x_{01} + z_{00} + z_{10} = 2$. Let $\alpha_2 = x_{00}+x_{01}$ (front-face $x$-sum) and $\gamma_2 = z_{00}+z_{10}$. Need $\alpha_2 + \gamma_2 = 2$.
+
+And constraint 3: $y_{00} + y_{01} + z_{00} + z_{01} = 2$. Let $\beta_3 = y_{00}+y_{01}$ and $\delta_3 = z_{00}+z_{01}$. Need $\beta_3 + \delta_3 = 2$.
+
+The choice of $Z$ must satisfy both $\gamma_2 = z_{00}+z_{10} = 2-\alpha_2$ and $\delta_3 = z_{00}+z_{01} = 2-\beta_3$.
+
+So the number of valid $Z$ (with $c=2$) satisfying these two constraints depends on $\alpha_2$ and $\beta_3$.
+
+This requires careful enumeration of all valid $(X, Y, Z)$ triples. Let me count by cases on $\alpha$:
+
+**Case $\alpha = 2$:** $X = S_1$ ($x_{00}=x_{10}=1, x_{01}=x_{11}=0$), $Y = S_6$ ($y_{01}=y_{11}=1, y_{00}=y_{10}=0$).
+
+$\alpha_2 = x_{00}+x_{01} = 1+0 = 1$.
+$\beta_3 = y_{00}+y_{01} = 0+1 = 1$.
+$\gamma_2 = z_{00}+z_{10} = 2-1 = 1$.
+$\delta_3 = z_{00}+z_{01} = 2-1 = 1$.
+
+Need $Z$ with $c=2$, $z_{00}+z_{10}=1$, $z_{00}+z_{01}=1$.
+If $z_{00}=0$: $z_{10}=1, z_{01}=1$, then $z_{11}=0$ (since total=2). Check: $z_{00}+z_{10}=1$ ✓, $z_{00}+z_{01}=1$ ✓.
+If $z_{00}=1$: $z_{10}=0, z_{01}=0$, then $z_{11}=1$. Check: $1+0=1$ ✓, $1+0=1$ ✓.
+
+So 2 choices for $Z$. Subtotal: $1 \times 1 \times 2 = 2$.
+
+**Case $\alpha = 0$:** $X = S_6$, $Y = S_1$ (by symmetry with case $\alpha=2$). 
+$\alpha_2 = x_{00}+x_{01}=0+1=1$, $\beta_3 = y_{00}+y_{01}=1+0=1$.
+Same $Z$ constraints as above $\Rightarrow$ 2 choices. Subtotal: $1 \times 1 \times 2 = 2$.
+
+**Case $\alpha = 1$:** 4 choices for $X$, 4 choices for $Y$ each.
+
+For each $(X, Y)$ pair, compute $\alpha_2$ and $\beta_3$, then count valid $Z$.
+
+Let me go through the 4 $X$ choices with $\alpha = 1$:
+
+$X = S_2 = \{x_{00}=1, x_{01}=1, x_{10}=0, x_{11}=0\}$: $\alpha_2 = x_{00}+x_{01} = 2$.
+$X = S_3 = \{x_{00}=1, x_{11}=1\}$: $\alpha_2 = 1+0 = 1$.
+$X = S_4 = \{x_{10}=1, x_{01}=1\}$: $\alpha_2 = 0+1 = 1$.
+$X = S_5 = \{x_{10}=1, x_{11}=1\}$: $\alpha_2 = 0+0 = 0$.
+
+For $Y$ with $\beta = y_{00}+y_{10} = 1$ (since $\alpha=1 \Rightarrow \beta=1$), 4 choices:
+
+$Y = S_2 = \{y_{00}=1, y_{01}=1\}$: $\beta_3 = y_{00}+y_{01} = 2$.
+$Y = S_3 = \{y_{00}=1, y_{11}=1\}$: $\beta_3 = 1$.
+$Y = S_4 = \{y_{10}=1, y_{01}=1\}$: $\beta_3 = 0+1 = 1$.
+$Y = S_5 = \{y_{10}=1, y_{11}=1\}$: $\beta_3 = 0$.
+
+Wait—but constraint: $\beta = y_{00}+y_{10}$. For $S_2 = \{y_{00},y_{01}\}$: $y_{00}=1, y_{10}=0 \Rightarrow \beta = 1$ ✓. For $S_3 = \{y_{00}, y_{11}\}$: $\beta = 1+0=1$ ✓. For $S_4=\{y_{10},y_{01}\}$: $\beta=1+0=1$ ✓. For $S_5=\{y_{10},y_{11}\}$: $\beta=1+0=1$ ✓.
+
+Now for each $(X, Y)$, I need to count $Z$ with $c=2$, $\gamma_2 = z_{00}+z_{10} = 2-\alpha_2$, $\delta_3 = z_{00}+z_{01} = 2-\beta_3$.
+
+Number of $Z$ (from 6 options $S_1,\ldots,S_6$) satisfying two constraints:
+
+Let $u = 2-\alpha_2$ and $v = 2-\beta_3$. Need $z_{00}+z_{10}=u$ and $z_{00}+z_{01}=v$, with $z_{00}+z_{10}+z_{01}+z_{11}=2$.
+
+Enumerate by $z_{00} \in \{0,1\}$:
+- $z_{00}=0$: $z_{10}=u$, $z_{01}=v$, $z_{11}=2-u-v$. Valid if $u,v \in \{0,1\}$ and $2-u-v \in \{0,1\}$.
+- $z_{00}=1$: $z_{10}=u-1$, $z_{01}=v-1$, $z_{11}=2-(u-1)-(v-1)-1 = 3-u-v$... wait let me redo: $z_{11} = 2-1-z_{10}-z_{01} = 2-1-(u-1)-(v-1) = 2-1-u+1-v+1 = 3-u-v$. Need $3-u-v \in \{0,1\}$, $u-1 \in \{0,1\}$, $v-1 \in \{0,1\}$.
+
+For each $(\alpha_2, \beta_3)$ combination:
+
+| $\alpha_2$ | $\beta_3$ | $u=2-\alpha_2$ | $v=2-\beta_3$ | #Z |
+|---|---|---|---|---|
+| 2 | 2 | 0 | 0 | $z_0=0: z_{10}=0,z_{01}=0,z_{11}=2$—invalid (>1). $z_0=1: z_{10}=-1$—invalid. 0 choices. |
+| 2 | 1 | 0 | 1 | $z_0=0: z_{10}=0,z_{01}=1,z_{11}=1$✓. $z_0=1: z_{10}=-1$—invalid. 1 choice. |
+| 2 | 0 | 0 | 2 | $z_0=0: z_{10}=0,z_{01}=2$—invalid. 0 choices. |
+| 1 | 2 | 1 | 0 | $z_0=0: z_{10}=1,z_{01}=0,z_{11}=1$✓. $z_0=1: z_{10}=0,z_{01}=-1$—invalid. 1 choice. |
+| 1 | 1 | 1 | 1 | $z_0=0: z_{10}=1,z_{01}=1,z_{11}=0$✓. $z_0=1: z_{10}=0,z_{01}=0,z_{11}=1$✓. 2 choices. |
+| 1 | 0 | 1 | 2 | $z_0=0: z_{01}=2$—invalid. $z_0=1: z_{01}=1, z_{10}=0, z_{11}=0$✓. 1 choice. |
+| 0 | 2 | 2 | 0 | $z_0=0: z_{10}=2$—invalid. 0 choices. |
+| 0 | 1 | 2 | 1 | $z_0=0: z_{10}=2$—invalid. $z_0=1: z_{10}=1, z_{01}=0, z_{11}=0$✓. 1 choice. |
+| 0 | 0 | 2 | 2 | Invalid (both $z_{10}$ and $z_{01}$ need to be $\ge 1$ with $z_0=1$ gives $z_{10}=1,z_{01}=1,z_{11}=-1$—invalid). 0 choices. |
+
+Now enumerate all 16 $(X,Y)$ pairs with $\alpha = 1$:
+
+| $X$ | $Y$ | $\alpha_2$ | $\beta_3$ | #Z |
+|---|---|---|---|---|
+| $S_2$ ($\alpha_2=2$) | $S_2$ ($\beta_3=2$) | 2 | 2 | 0 |
+| $S_2$ | $S_3$ ($\beta_3=1$) | 2 | 1 | 1 |
+| $S_2$ | $S_4$ ($\beta_3=1$) | 2 | 1 | 1 |
+| $S_2$ | $S_5$ ($\beta_3=0$) | 2 | 0 | 0 |
+| $S_3$ ($\alpha_2=1$) | $S_2$ ($\beta_3=2$) | 1 | 2 | 1 |
+| $S_3$ | $S_3$ | 1 | 1 | 2 |
+| $S_3$ | $S_4$ | 1 | 1 | 2 |
+| $S_3$ | $S_5$ | 1 | 0 | 1 |
+| $S_4$ ($\alpha_2=1$) | $S_2$ | 1 | 2 | 1 |
+| $S_4$ | $S_3$ | 1 | 1 | 2 |
+| $S_4$ | $S_4$ | 1 | 1 | 2 |
+| $S_4$ | $S_5$ | 1 | 0 | 1 |
+| $S_5$ ($\alpha_2=0$) | $S_2$ | 0 | 2 | 0 |
+| $S_5$ | $S_3$ | 0 | 1 | 1 |
+| $S_5$ | $S_4$ | 0 | 1 | 1 |
+| $S_5$ | $S_5$ | 0 | 0 | 0 |
+
+Sum for $\alpha=1$: $0+1+1+0+1+2+2+1+1+2+2+1+0+1+1+0 = 16$.
+
+**Grand total:** $2 + 2 + 16 = 20$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,66 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: B
+choices:
+  - '$\dfrac{3}{2}$'
+  - '$\dfrac{90-40\sqrt{3}}{11}$'
+  - '$2$'
+  - '$\dfrac{144-25\sqrt{3}}{44}$'
+  - '$\dfrac{5}{2}$'
+---
+
+<Problem>
+Inside a right circular cone with base radius $5$ and height $12$ are three congruent spheres with radius $r$. Each sphere is tangent to the other two spheres and also tangent to the base and side of the cone. What is $r$?
+</Problem>
+
+<Solution>
+By symmetry, the three sphere centers lie in a horizontal plane at height $r$ (since each sphere is tangent to the base). Their centers form an equilateral triangle, and by symmetry, the centers are equally spaced around the cone's axis.
+
+**Step 1: Distance between sphere centers.**
+
+Each pair of spheres is externally tangent, so the distance between any two centers is $2r$. The three centers form an equilateral triangle of side $2r$. The circumradius of this equilateral triangle is:
+$$R_{\triangle} = \frac{2r}{\sqrt{3}}.$$
+
+**Step 2: Cross-section analysis.**
+
+Look at the cone's axial cross-section through one sphere center. The cone has base radius 5, height 12. The slant height is $\sqrt{5^2 + 12^2} = 13$.
+
+The half-angle $\alpha$ of the cone satisfies $\sin\alpha = \dfrac{5}{13}$, $\cos\alpha = \dfrac{12}{13}$.
+
+Each sphere center is at height $r$ and at horizontal distance $R_\triangle = \dfrac{2r}{\sqrt{3}}$ from the axis.
+
+**Step 3: Tangency with the side of the cone.**
+
+The distance from the sphere's center to the lateral surface of the cone equals $r$.
+
+The cone's lateral surface in 3D: a point $(x, y, z)$ is on the lateral surface if $\sqrt{x^2 + y^2} = 5 - \dfrac{5z}{12} = \dfrac{5(12-z)}{12}$ (the radius at height $z$ is $5\left(1 - \dfrac{z}{12}\right)$).
+
+The distance from a point $(d, 0, h)$ (at horizontal distance $d$ from axis, height $h$) to the lateral surface equals $r$. Using the formula for distance from a point to a cone:
+
+In the axial cross-section through the sphere center, the cone's side is a line. The apex is at $(0, 12)$ in the $(r_\text{horiz}, z)$ plane, and the base edge is at $(5, 0)$. The slant line from apex $(0, 12)$ to base edge $(5, 0)$ has equation: $12x + 5z = 60$ (in the $(x, z)$ plane, where $x$ is the horizontal distance from axis). [Check: at $(0, 12)$: $0 + 60 = 60$ ✓; at $(5, 0)$: $60 + 0 = 60$ ✓.]
+
+Distance from the sphere center at $(d, r)$ (horizontal distance $d = R_\triangle = \dfrac{2r}{\sqrt{3}}$, height $r$) to the line $12x + 5z - 60 = 0$:
+$$\text{dist} = \frac{|12d + 5r - 60|}{13} = r.$$
+
+Since the sphere is inside the cone: $12d + 5r < 60$, so:
+$$\frac{60 - 12d - 5r}{13} = r.$$
+$$60 - 12d - 5r = 13r.$$
+$$60 - 12d = 18r.$$
+
+Substitute $d = \dfrac{2r}{\sqrt{3}}$:
+
+$$60 - \frac{24r}{\sqrt{3}} = 18r.$$
+$$60 = 18r + \frac{24r}{\sqrt{3}} = r\left(18 + \frac{24}{\sqrt{3}}\right) = r\left(18 + 8\sqrt{3}\right).$$
+$$r = \frac{60}{18 + 8\sqrt{3}} = \frac{60}{2(9 + 4\sqrt{3})} = \frac{30}{9 + 4\sqrt{3}}.$$
+
+Rationalize by multiplying by $\dfrac{9 - 4\sqrt{3}}{9 - 4\sqrt{3}}$:
+$$r = \frac{30(9 - 4\sqrt{3})}{81 - 48} = \frac{30(9 - 4\sqrt{3})}{33} = \frac{10(9 - 4\sqrt{3})}{11} = \frac{90 - 40\sqrt{3}}{11}.$$
+
+Check: $\sqrt{3} \approx 1.732$, so $40\sqrt{3} \approx 69.28$, and $r \approx \dfrac{90 - 69.28}{11} \approx \dfrac{20.72}{11} \approx 1.88$. This is between $\dfrac{3}{2}$ and $2$, seems reasonable ✓.
+
+Answer: **B**.
+</Solution>
