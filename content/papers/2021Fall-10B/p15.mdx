@@ -1,0 +1,78 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 3
+answer: D
+choices: ['$85$', '$93$', '$100$', '$117$', '$125$']
+---
+
+<Problem>
+In square $ABCD$, points $P$ and $Q$ lie on $\overline{AD}$ and $\overline{AB}$, respectively. Segments $\overline{BP}$ and $\overline{CQ}$ intersect at right angles at $R$, with $BR = 6$ and $PR = 7$. What is the area of the square?
+
+(In the figure: $A$ is at bottom-left, $B$ at bottom-right, $C$ at top-right, $D$ at top-left. $P$ is on the left side $AD$ and $Q$ is on the bottom side $AB$. $BP$ and $CQ$ cross at right angles at $R$, with $BR = 6$ and $PR = 7$ labeled along $BP$.)
+</Problem>
+
+<Solution>
+Let the side length of the square be $s$. Place $A = (0,0)$, $B = (s,0)$, $C = (s,s)$, $D = (0,s)$.
+
+Since $P$ lies on $\overline{AD}$, write $P = (0, p)$ for some $0 \le p \le s$. Since $Q$ lies on $\overline{AB}$, write $Q = (q, 0)$ for some $0 \le q \le s$.
+
+**Key similarity observation.** In square $ABCD$, triangles $ABP$ and $BCQ$ are congruent (right triangles sharing the same hypotenuse structure), so $\angle ABP + \angle CBP = 90°$. Because $\overline{BP} \perp \overline{CQ}$, and $\angle CBQ$ is complementary to $\angle ABP$... let's use the right-angle condition directly.
+
+Direction of $\overrightarrow{BP}$: from $B = (s,0)$ to $P = (0,p)$ is $(-s, p)$.
+Direction of $\overrightarrow{CQ}$: from $C = (s,s)$ to $Q = (q,0)$ is $(q-s, -s)$.
+
+Perpendicularity:
+$$(-s)(q-s) + (p)(-s) = 0 \implies -s(q-s) - ps = 0 \implies s-q = p \implies p+q = s.$$
+
+So $p + q = s$.
+
+**Using the given lengths $BR = 6$ and $PR = 7$.**
+
+$R$ divides $\overline{BP}$ in ratio $BR : RP = 6 : 7$. Since $|BP| = \sqrt{s^2 + p^2}$ and $BR = 6$, $PR = 7$:
+$$BP = BR + RP = 13, \quad \text{so } \sqrt{s^2 + p^2} = 13.$$
+
+**Finding $CQ$ using triangle $BRC$.**
+
+Since $\overline{BP} \perp \overline{CQ}$ at $R$, triangles $BRC$ and $PRsomething$ share angle relationships. Use coordinate intersection.
+
+$R$ lies on $BP$ at parameter $t = \dfrac{BR}{BP} = \dfrac{6}{13}$ from $B$:
+$$R = B + \frac{6}{13}(P - B) = \left(s - \frac{6s}{13},\, \frac{6p}{13}\right) = \left(\frac{7s}{13},\, \frac{6p}{13}\right).$$
+
+$R$ also lies on $CQ$. Direction from $C = (s,s)$ to $Q = (q,0) = (s-p, 0)$ is $(s-p-s, -s) = (-p, -s)$.
+
+Parameterize $CQ$: $(s,s) + u(-p,-s) = (s - up,\, s - us)$.
+
+Set equal to $R$:
+$$s - up = \frac{7s}{13} \implies up = s - \frac{7s}{13} = \frac{6s}{13} \implies u = \frac{6s}{13p}.$$
+$$s - us = \frac{6p}{13} \implies us = s - \frac{6p}{13} = \frac{13s - 6p}{13} \implies u = \frac{13s - 6p}{13s}.$$
+
+Setting both expressions for $u$ equal:
+$$\frac{6s}{13p} = \frac{13s-6p}{13s} \implies \frac{6s}{p} = \frac{13s-6p}{s} \implies 6s^2 = p(13s - 6p).$$
+
+We also have $s^2 + p^2 = 169$ (from $BP = 13$) and $q = s - p$.
+
+From $6s^2 = 13ps - 6p^2$:
+$$6(s^2 + p^2) = 13ps \implies 6 \cdot 169 = 13ps \implies ps = \frac{6 \cdot 169}{13} = 78.$$
+
+So $ps = 78$ and $s^2 + p^2 = 169$.
+
+$$s^2 + p^2 = (s+p)^2 - 2sp = 169 \implies (s+p)^2 = 169 + 2 \cdot 78 = 169 + 156 = 325.$$
+
+We need $s^2$. From $ps = 78$, we get $p = 78/s$, and:
+$$s^2 + \frac{78^2}{s^2} = 169 \implies s^4 - 169s^2 + 78^2 = 0.$$
+
+$$s^2 = \frac{169 \pm \sqrt{169^2 - 4 \cdot 6084}}{2} = \frac{169 \pm \sqrt{28561 - 24336}}{2} = \frac{169 \pm \sqrt{4225}}{2} = \frac{169 \pm 65}{2}.$$
+
+So $s^2 = \dfrac{234}{2} = 117$ or $s^2 = \dfrac{104}{2} = 52$.
+
+Check $s^2 = 52$: then $p = 78/s$ and $p^2 = 78^2/52 = 117$, so $p > s$ — impossible since $P$ is on $AD$ with $p \le s$.
+
+Check $s^2 = 117$: then $p^2 = 169 - 117 = 52$, $p = \sqrt{52} < s = \sqrt{117}$ ✓.
+
+The area of the square is $s^2 = \boxed{117}$.
+
+Answer: **D**.
+</Solution>

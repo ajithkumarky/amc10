@@ -1,0 +1,53 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: expected-value
+difficulty: 4
+answer: D
+choices: ['$1.6$', '$1.8$', '$2.0$', '$2.2$', '$2.4$']
+---
+
+<Problem>
+Five balls are arranged around a circle. Chris chooses two adjacent balls at random and interchanges them. Then Silva does the same, with her choice of adjacent balls to interchange being independent of Chris's. What is the expected number of balls that occupy their original positions after these two successive transpositions?
+</Problem>
+
+<Solution>
+Label the five positions $1, 2, 3, 4, 5$ around the circle, and the balls start in their "home" positions. There are 5 pairs of adjacent positions, each chosen with probability $\tfrac{1}{5}$.
+
+We compute the expected number of balls in their home positions after Chris swaps and then Silva swaps.
+
+**After Chris's swap:** Chris swaps two adjacent balls, say positions $i$ and $i+1$. Exactly 3 balls remain in their home positions (those not in positions $i$ or $i+1$), and 2 balls are displaced.
+
+**After Silva's swap:** Silva independently swaps some adjacent pair. We use linearity of expectation. For each ball $b$, let $p_b$ = probability ball $b$ is in its home position after both swaps.
+
+By symmetry, all five balls have the same probability, so the expected count is $5 \cdot p$, where $p$ is the probability any fixed ball is home after both moves.
+
+Fix ball at position 1. Chris swaps position $(5,1)$, $(1,2)$, or one of the 3 non-adjacent pairs.
+
+**Chris's swap options (each with probability $\tfrac15$):**
+- Swap $(5,1)$: ball 1 moves to position 5. Ball 1 is away.
+- Swap $(1,2)$: ball 1 moves to position 2. Ball 1 is away.
+- Any other swap (probability $\tfrac35$): ball 1 stays home.
+
+**For each case, what's the probability ball 1 is home after Silva?**
+
+**Case A** (probability $\tfrac35$): Ball 1 is at position 1. Silva swaps one of 5 pairs:
+- Swap $(5,1)$ or $(1,2)$ (probability $\tfrac25$): ball 1 moves away.
+- Other swaps (probability $\tfrac35$): ball 1 stays home.
+Probability ball 1 is home: $\tfrac35$.
+
+**Case B** (probability $\tfrac15$): Chris swapped $(5,1)$, so ball 1 is at position 5. Silva can restore ball 1 to position 1 only by swapping $(5,1)$, probability $\tfrac15$. Otherwise ball 1 is not home.
+Probability ball 1 is home: $\tfrac15$.
+
+**Case C** (probability $\tfrac15$): Chris swapped $(1,2)$, so ball 1 is at position 2. Silva restores ball 1 by swapping $(1,2)$, probability $\tfrac15$.
+Probability ball 1 is home: $\tfrac15$.
+
+**Overall probability for ball 1:**
+$$p = \frac{3}{5} \cdot \frac{3}{5} + \frac{1}{5} \cdot \frac{1}{5} + \frac{1}{5} \cdot \frac{1}{5} = \frac{9}{25} + \frac{1}{25} + \frac{1}{25} = \frac{11}{25}.$$
+
+**Expected number of balls in home position:**
+$$5p = 5 \cdot \frac{11}{25} = \frac{11}{5} = 2.2.$$
+
+Answer: **D**.
+</Solution>

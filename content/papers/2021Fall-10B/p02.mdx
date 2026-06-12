@@ -1,0 +1,63 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 1
+answer: B
+choices: ["$4$", "$6$", "$8$", "$10$", "$12$"]
+---
+
+<Problem>
+What is the area of the shaded figure shown below?
+
+<svg viewBox="0 0 210 185" width="210" height="185" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#333"/>
+    </marker>
+  </defs>
+  <g transform="translate(25,160) scale(30,-30)">
+    <line x1="0" y1="0" x2="6.4" y2="0" stroke="#333" stroke-width="0.06" marker-end="url(#ah)"/>
+    <line x1="0" y1="0" x2="0" y2="5.4" stroke="#333" stroke-width="0.06" marker-end="url(#ah)"/>
+    <line x1="1" y1="-0.08" x2="1" y2="5" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <line x1="2" y1="-0.08" x2="2" y2="5" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <line x1="3" y1="-0.08" x2="3" y2="5" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <line x1="4" y1="-0.08" x2="4" y2="5" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <line x1="5" y1="-0.08" x2="5" y2="5" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <line x1="-0.08" y1="1" x2="6" y2="1" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <line x1="-0.08" y1="2" x2="6" y2="2" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <line x1="-0.08" y1="3" x2="6" y2="3" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <line x1="-0.08" y1="4" x2="6" y2="4" stroke="#aaa" stroke-width="0.025" stroke-dasharray="0.1,0.1"/>
+    <polygon points="1,0 3,5 5,0 3,2" fill="#00e5ff" fill-opacity="0.25" stroke="#00e5ff" stroke-width="0.06"/>
+  </g>
+  <text x="25" y="173" font-size="9" fill="#555">0</text>
+  <text x="52" y="173" font-size="9" fill="#555">1</text>
+  <text x="82" y="173" font-size="9" fill="#555">2</text>
+  <text x="112" y="173" font-size="9" fill="#555">3</text>
+  <text x="142" y="173" font-size="9" fill="#555">4</text>
+  <text x="172" y="173" font-size="9" fill="#555">5</text>
+  <text x="14" y="163" font-size="9" fill="#555">0</text>
+  <text x="14" y="133" font-size="9" fill="#555">1</text>
+  <text x="14" y="103" font-size="9" fill="#555">2</text>
+  <text x="14" y="73" font-size="9" fill="#555">3</text>
+  <text x="14" y="43" font-size="9" fill="#555">4</text>
+  <text x="14" y="13" font-size="9" fill="#555">5</text>
+</svg>
+
+The shaded region is the quadrilateral with vertices $(1,0)$, $(3,5)$, $(5,0)$, and $(3,2)$.
+</Problem>
+
+<Solution>
+Use the Shoelace formula on the vertices in order: $(1,0) \to (3,5) \to (5,0) \to (3,2)$.
+
+$$\text{Area} = \frac{1}{2}|x_1(y_2-y_4)+x_2(y_3-y_1)+x_3(y_4-y_2)+x_4(y_1-y_3)|$$
+
+$$= \frac{1}{2}|1(5-2)+3(0-0)+5(2-5)+3(0-0)|$$
+
+$$= \frac{1}{2}|1\cdot3 + 3\cdot0 + 5\cdot(-3) + 3\cdot0|$$
+
+$$= \frac{1}{2}|3 + 0 - 15 + 0| = \frac{1}{2}\cdot 12 = 6.$$
+
+Answer: **B**.
+</Solution>

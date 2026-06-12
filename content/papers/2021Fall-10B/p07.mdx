@@ -1,0 +1,94 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: C
+choices: ["$9$", "$10$", "$11$", "$12$", "$13$"]
+---
+
+<Problem>
+Call a fraction $\dfrac{a}{b}$, not necessarily in simplest form, **special** if $a$ and $b$ are positive integers whose sum is $15$. How many distinct integers can be written as the sum of two, not necessarily different, special fractions?
+</Problem>
+
+<Solution>
+A special fraction has $a + b = 15$ with $a, b \ge 1$, so $a \in \{1, 2, \ldots, 14\}$ and $b = 15 - a$. The value of the fraction is $\dfrac{a}{15-a}$.
+
+The possible values of a special fraction range from $\dfrac{1}{14}$ (smallest) up to $\dfrac{14}{1} = 14$ (largest).
+
+We need the sum of two special fractions to be an integer. If $\dfrac{a}{15-a} + \dfrac{c}{15-c} = n$ (integer), then:
+
+$$\frac{a(15-c) + c(15-a)}{(15-a)(15-c)} = n.$$
+
+The numerator simplifies: $15a - ac + 15c - ac = 15(a+c) - 2ac$.
+
+For this to be an integer multiple of $(15-a)(15-c)$, it helps to look at the fractions modulo 1. Each special fraction equals $\dfrac{a}{15-a}$. Let $b = 15-a$, so the fraction is $\dfrac{15-b}{b} = \dfrac{15}{b} - 1$.
+
+So every special fraction has the form $\dfrac{15}{b} - 1$ where $b \in \{1, 2, \ldots, 14\}$.
+
+The sum of two special fractions is:
+$$\left(\frac{15}{b_1}-1\right)+\left(\frac{15}{b_2}-1\right) = 15\!\left(\frac{1}{b_1}+\frac{1}{b_2}\right)-2.$$
+
+For this to be an integer, we need $\dfrac{1}{b_1}+\dfrac{1}{b_2} = \dfrac{b_1+b_2}{b_1 b_2}$ to be a multiple of $\dfrac{1}{15}$, i.e., $\dfrac{15(b_1+b_2)}{b_1 b_2}$ must be an integer.
+
+Let me enumerate systematically. The special fractions (as values) are $\dfrac{a}{15-a}$ for $a=1,\ldots,14$:
+
+| $a$ | fraction | decimal |
+|---|---|---|
+| 1 | 1/14 | 0.0714... |
+| 2 | 2/13 | 0.1538... |
+| 3 | 1/4 | 0.25 |
+| 4 | 4/11 | 0.3636... |
+| 5 | 1/2 | 0.5 |
+| 6 | 2/3 | 0.6667... |
+| 7 | 7/8 | 0.875 |
+| 8 | 8/7 | 1.1428... |
+| 9 | 3/2 | 1.5 |
+| 10 | 2/1 = 2 | 2 |
+| 11 | 11/4 | 2.75 |
+| 12 | 4/1 = 4 | 4 |
+| 13 | 13/2 | 6.5 |
+| 14 | 14/1 = 14 | 14 |
+
+Wait — let me recheck $a=10$: $\dfrac{10}{15-10}=\dfrac{10}{5}=2$. And $a=12$: $\dfrac{12}{3}=4$. And $a=14$: $\dfrac{14}{1}=14$.
+
+For the sum of two special fractions to be an integer, we need the fractional parts to sum to an integer (i.e., 0 or 1).
+
+Fractions that are already integers: $2$ ($a=10$), $4$ ($a=12$), $14$ ($a=14$). These have fractional part 0.
+
+Other fractional parts:
+- $a=1$: frac = 1/14
+- $a=2$: frac = 2/13
+- $a=3$: frac = 1/4
+- $a=4$: frac = 4/11
+- $a=5$: frac = 1/2
+- $a=6$: frac = 2/3
+- $a=7$: frac = 7/8
+- $a=8$: frac = 1/7 (since 8/7 = 1 + 1/7)
+- $a=9$: frac = 1/2
+- $a=11$: frac = 3/4 (since 11/4 = 2 + 3/4)
+- $a=13$: frac = 1/2 (since 13/2 = 6 + 1/2)
+
+Pairs with fractional parts summing to 1:
+- $1/4 + 3/4$: $(a=3) + (a=11) = 1/4 + 11/4 = 12/4 = 3$. Integer sum = 3.
+- $1/2 + 1/2$: $(a=5)+(a=5) = 1$, $(a=5)+(a=9) = 1/2+3/2=2$, $(a=5)+(a=13)=1/2+13/2=7$, $(a=9)+(a=9)=3$, $(a=9)+(a=13)=8$, $(a=13)+(a=13)=13$.
+- $1/7 + 6/7$: no special fraction has fractional part 6/7.
+- $1/14 + 13/14$: no special fraction has fractional part 13/14.
+- $2/13 + 11/13$: no special fraction has fractional part 11/13.
+- $4/11 + 7/11$: no special fraction has fractional part 7/11.
+- $7/8 + 1/8$: no special fraction has fractional part 1/8.
+- $2/3 + 1/3$: no special fraction has fractional part 1/3.
+
+Pairs with both fractional parts = 0 (both integers):
+- $2+2=4$, $2+4=6$, $2+14=16$, $4+4=8$, $4+14=18$, $14+14=28$.
+
+So the achievable integer sums are:
+- From (int, int) pairs: $4, 6, 8, 16, 18, 28$.
+- From $(1/4 + 3/4)$ pair: $3$.
+- From $(1/2 + 1/2)$ pairs: $1, 2, 7, 3, 8, 13$.
+
+Consolidating all distinct values: $1, 2, 3, 4, 6, 7, 8, 13, 16, 18, 28$ — that is 11 distinct integers.
+
+Answer: **C**.
+</Solution>

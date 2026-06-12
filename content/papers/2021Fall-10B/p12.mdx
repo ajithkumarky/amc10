@@ -1,0 +1,54 @@
+---
+year: 2021
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: D
+choices:
+  - "$x>y$ and $y=z$"
+  - "$x=y-1$ and $y=z-1$"
+  - "$x=z+1$ and $y=x+1$"
+  - "$x=z$ and $y-1=x$"
+  - "$x+y+z=1$"
+---
+
+<Problem>
+Which of the following conditions is sufficient to guarantee that integers $x$, $y$, and $z$ satisfy the equation
+
+$$x(x-y)+y(y-z)+z(z-x) = 1?$$
+</Problem>
+
+<Solution>
+Let's check each option by substituting.
+
+**Option A:** $x > y$ and $y = z$.
+With $y = z$, the expression becomes
+$$x(x-y) + y(y-y) + y(y-x) = x(x-y) + 0 + y(y-x) = (x-y)(x-y) = (x-y)^2.$$
+This equals 1 only when $|x-y|=1$, but $x>y$ allows any gap. For example $x=3, y=z=1$ gives $(3-1)^2 = 4 \ne 1$. **Not sufficient.**
+
+**Option B:** $x = y-1$ and $y = z-1$, so $x < y < z$ are consecutive integers.
+Try $x = 0, y = 1, z = 2$:
+$$0(0-1)+1(1-2)+2(2-0) = 0 + (-1) + 4 = 3 \ne 1.$$
+**Not sufficient.**
+
+**Option C:** $x = z+1$ and $y = x+1 = z+2$, so $z < x < y$.
+Try $z = 0, x = 1, y = 2$:
+$$1(1-2)+2(2-0)+0(0-1) = -1+4+0 = 3 \ne 1.$$
+**Not sufficient.**
+
+**Option D:** $x = z$ and $y - 1 = x$ (equivalently $y = x+1$).
+Substitute directly:
+$$x(x-y) + y(y-z) + z(z-x).$$
+With $z = x$ and $y = x+1$:
+$$x(x-(x+1)) + (x+1)((x+1)-x) + x(x-x)$$
+$$= x(-1) + (x+1)(1) + x(0)$$
+$$= -x + x + 1 = 1.$$
+
+This equals $1$ for every integer $x$. **Sufficient!**
+
+**Option E:** $x+y+z = 1$.
+Try $x=1, y=0, z=0$: $1\cdot1+0+0=1$. But try $x=0,y=0,z=1$: $0+0+1(1-0)=1$. Try $x=2,y=0,z=-1$ (sum=1): $2(2-0)+0+(-1)(-1-2)=4+0+3=7\ne1$. **Not sufficient.**
+
+Answer: **D**.
+</Solution>

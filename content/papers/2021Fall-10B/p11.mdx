@@ -1,0 +1,38 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: B
+choices: ['$\dfrac{5\sqrt{3}}{2}-\pi$', '$3\sqrt{3}-\pi$', '$4\sqrt{3}-\dfrac{3\pi}{2}$', '$\pi-\dfrac{\sqrt{3}}{2}$', '$\dfrac{\pi+\sqrt{3}}{2}$']
+---
+
+<Problem>
+A regular hexagon of side length $1$ is inscribed in a circle. Each minor arc of the circle determined by a side of the hexagon is reflected over that side. What is the area of the region bounded by these $6$ reflected arcs?
+</Problem>
+
+<Solution>
+Since the hexagon has side length $1$ and is inscribed in a circle, the circle has radius $r = 1$.
+
+**Setting up the area calculation.**
+The regular hexagon has area $\dfrac{3\sqrt{3}}{2}$.
+
+Each side of the hexagon is a chord of the circle. The corresponding minor arc (which lies outside the hexagon) subtends a central angle of $60°$ at the center. When we reflect this arc over its chord, the arc flips to the inside of the hexagon, creating an inward-curving arc.
+
+The region bounded by the 6 reflected arcs is the hexagon minus the 6 circular segments cut off by those reflected arcs.
+
+**Area of one circular segment.**
+Each circular segment corresponds to a $60°$ sector minus an equilateral triangle (the triangle formed by the two radii and the chord, which is equilateral since $r = 1 =$ chord length).
+
+$$\text{Sector area} = \frac{1}{2}r^2\theta = \frac{1}{2}(1)^2\cdot\frac{\pi}{3} = \frac{\pi}{6}.$$
+
+$$\text{Triangle area} = \frac{\sqrt{3}}{4}(1)^2 = \frac{\sqrt{3}}{4}.$$
+
+$$\text{Segment area} = \frac{\pi}{6} - \frac{\sqrt{3}}{4}.$$
+
+**Total region area.**
+$$\text{Region} = \text{Hexagon} - 6 \times \text{Segment} = \frac{3\sqrt{3}}{2} - 6\!\left(\frac{\pi}{6}-\frac{\sqrt{3}}{4}\right) = \frac{3\sqrt{3}}{2} - \pi + \frac{3\sqrt{3}}{2} = 3\sqrt{3} - \pi.$$
+
+Answer: **B**.
+</Solution>

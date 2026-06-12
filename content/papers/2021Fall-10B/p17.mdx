@@ -1,0 +1,44 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: D
+choices: ['$5x+2y=0$', '$3x+2y=0$', '$x-3y=0$', '$2x-3y=0$', '$5x-3y=0$']
+---
+
+<Problem>
+Distinct lines $\ell$ and $m$ lie in the $xy$-plane. They intersect at the origin. Point $P(-1, 4)$ is reflected about line $\ell$ to point $P'$, and then $P'$ is reflected about line $m$ to point $P''$. The equation of line $\ell$ is $5x - y = 0$, and the coordinates of $P''$ are $(4, 1)$. What is the equation of line $m$?
+</Problem>
+
+<Solution>
+**Step 1: Reflect $P(-1,4)$ about line $\ell: y = 5x$.**
+
+To reflect a point $(a,b)$ about the line $y = mx$ (through the origin), use the formula:
+$$\text{reflection} = \frac{1}{1+m^2}\bigl((1-m^2)a + 2mb,\; 2ma - (1-m^2)b\bigr).$$
+
+Here $m = 5$, $a = -1$, $b = 4$:
+$$1 - m^2 = 1 - 25 = -24, \quad 2m = 10, \quad 1 + m^2 = 26.$$
+
+$$P'_x = \frac{(-24)(-1) + (10)(4)}{26} = \frac{24 + 40}{26} = \frac{64}{26} = \frac{32}{13}.$$
+$$P'_y = \frac{(10)(-1) - (-24)(4)}{26} = \frac{-10 + 96}{26} = \frac{86}{26} = \frac{43}{13}.$$
+
+So $P' = \left(\dfrac{32}{13}, \dfrac{43}{13}\right)$.
+
+**Step 2: Find line $m$ such that reflecting $P'$ about $m$ gives $P'' = (4,1)$.**
+
+The key property of reflection: the line of reflection is the perpendicular bisector of $\overline{P'P''}$.
+
+Midpoint of $P'P''$:
+$$M = \left(\frac{\frac{32}{13} + 4}{2},\, \frac{\frac{43}{13} + 1}{2}\right) = \left(\frac{\frac{32+52}{13}}{2},\, \frac{\frac{43+13}{13}}{2}\right) = \left(\frac{84}{26}, \frac{56}{26}\right) = \left(\frac{42}{13}, \frac{28}{13}\right).$$
+
+Since line $m$ passes through the origin (both $\ell$ and $m$ pass through the origin), we need $M$ to lie on $m$. The slope of $m$ is:
+$$\text{slope of } m = \frac{28/13}{42/13} = \frac{28}{42} = \frac{2}{3}.$$
+
+So line $m$ has slope $\tfrac{2}{3}$ and passes through the origin: $y = \tfrac{2}{3}x$, i.e., $2x - 3y = 0$.
+
+**Verification:** The slope of $\overline{P'P''}$ is $\dfrac{1 - 43/13}{4 - 32/13} = \dfrac{(13-43)/13}{(52-32)/13} = \dfrac{-30}{20} = -\dfrac{3}{2}$. This is indeed the negative reciprocal of $\tfrac{2}{3}$ ✓, confirming perpendicularity.
+
+Answer: **D**.
+</Solution>

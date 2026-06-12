@@ -1,0 +1,42 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: B
+choices: ["$47$", "$58$", "$59$", "$88$", "$90$"]
+---
+
+<Problem>
+The least positive integer with exactly $2021$ distinct positive divisors can be written in the form $m \cdot 6^k$, where $m$ and $k$ are integers and $6$ is not a divisor of $m$. What is $m + k$?
+</Problem>
+
+<Solution>
+The number of divisors of $n = p_1^{a_1} p_2^{a_2} \cdots$ is $(a_1+1)(a_2+1)\cdots$. We need this product to equal $2021$.
+
+Factor $2021$: $2021 = 43 \times 47$.
+
+To make the smallest number with divisor count $2021$, we want to assign larger exponents to smaller primes. The exponent list (sorted decreasingly) must have product of incremented values equal to $2021$.
+
+Possible factorizations of $2021$ as an ordered product (each factor $\ge 2$):
+- $2021 = 2021$ → one prime with exponent 2020: gives $2^{2020}$.
+- $2021 = 43 \times 47$ → two primes with exponents 46 and 42 (assign largest exponent to smallest prime): $2^{46} \cdot 3^{42}$.
+- $2021 = 47 \times 43$ → assign largest exponent to smallest prime: $2^{46} \cdot 3^{42}$ (same, just reordered).
+
+So we need the pair exponents $(a_1, a_2)$ with $a_1 \ge a_2$ and $(a_1+1)(a_2+1) = 43 \times 47$. Assigning the larger exponent to 2: exponents $(46, 42)$ giving $2^{46} \cdot 3^{42}$.
+
+Compare $2^{2020}$ vs $2^{46} \cdot 3^{42}$: clearly $2^{46} \cdot 3^{42}$ is much smaller since $2^{2020}$ is astronomically larger.
+
+So the smallest integer with 2021 divisors is $N = 2^{46} \cdot 3^{42}$.
+
+Now write $N = m \cdot 6^k$ where $6 \nmid m$. Since $6 = 2 \cdot 3$, we can factor out $6^k = 2^k \cdot 3^k$ as long as we don't exceed either exponent. The maximum $k$ is $\min(46, 42) = 42$.
+
+$$N = 2^{46} \cdot 3^{42} = (2^{46-42} \cdot 3^{42-42}) \cdot 6^{42} = 2^4 \cdot 6^{42} = 16 \cdot 6^{42}.$$
+
+So $m = 16$ and $k = 42$. Check: $6 \nmid 16$ since $16 = 2^4$. Good.
+
+$$m + k = 16 + 42 = 58.$$
+
+Answer: **B**.
+</Solution>

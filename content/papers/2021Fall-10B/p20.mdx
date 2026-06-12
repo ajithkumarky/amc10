@@ -1,0 +1,62 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: C
+choices: ['$\dfrac{61}{216}$', '$\dfrac{367}{1296}$', '$\dfrac{41}{144}$', '$\dfrac{185}{648}$', '$\dfrac{11}{36}$']
+---
+
+<Problem>
+In a particular game, each of $4$ players rolls a standard $6$-sided die. The winner is the player who rolls the highest number. If there is a tie for the highest roll, those involved in the tie will roll again and this process will continue until one player wins. Hugo is one of the players in this game. What is the probability that Hugo's first roll was a $5$, given that he won the game?
+</Problem>
+
+<Solution>
+We want $P(\text{Hugo's first roll} = 5 \mid \text{Hugo won})$.
+
+By Bayes' theorem:
+$$P(\text{first roll}=5 \mid \text{won}) = \frac{P(\text{won} \mid \text{first roll}=5) \cdot P(\text{first roll}=5)}{P(\text{won})}.$$
+
+**$P(\text{Hugo won})$:** By symmetry among 4 equal players, $P(\text{won}) = \dfrac{1}{4}$.
+
+**$P(\text{first roll} = 5)$:** $\dfrac{1}{6}$.
+
+**$P(\text{won} \mid \text{first roll} = 5)$:**
+
+If Hugo rolls a 5 on his first roll:
+- The other 3 players each roll. Hugo wins outright if no other player rolls 5 or 6? No — Hugo wins if no other player rolls a **strictly higher** number (i.e., 6), and among those who tied with 5, he wins the tiebreak.
+
+Wait, let me reconsider. Hugo rolled 5. He wins if his roll is the unique maximum, or he wins the tiebreak among those who tied for the maximum.
+
+**Case 1: All 3 others roll $\le 4$.** Hugo wins immediately.
+$$P = \left(\frac{4}{6}\right)^3 = \left(\frac{2}{3}\right)^3 = \frac{8}{27}.$$
+
+**Case 2: Some other player(s) roll 6.** Then 6 > 5, so Hugo is eliminated immediately (he cannot win). He loses.
+
+**Case 3: No other rolls 6, and exactly $k \ge 1$ others roll 5** (tying Hugo). Hugo proceeds to a tiebreak among $k+1$ players (all with 5), where he wins with probability $\dfrac{1}{k+1}$.
+
+$P(\text{exactly } k \text{ others roll 5, none roll 6}) = \binom{3}{k}\left(\frac{1}{6}\right)^k \left(\frac{4}{6}\right)^{3-k}$, for $k = 1, 2, 3$.
+
+Contribution to Hugo winning:
+$$\sum_{k=1}^{3} \binom{3}{k}\left(\frac{1}{6}\right)^k \left(\frac{2}{3}\right)^{3-k} \cdot \frac{1}{k+1}.$$
+
+$k=1$: $\binom{3}{1}\frac{1}{6}\left(\frac{4}{6}\right)^2 \cdot \frac{1}{2} = 3 \cdot \frac{1}{6} \cdot \frac{16}{36} \cdot \frac{1}{2} = 3 \cdot \frac{16}{432} = \frac{48}{432} = \frac{1}{9}$.
+
+$k=2$: $\binom{3}{2}\left(\frac{1}{6}\right)^2 \cdot \frac{4}{6} \cdot \frac{1}{3} = 3 \cdot \frac{1}{36} \cdot \frac{4}{6} \cdot \frac{1}{3} = 3 \cdot \frac{4}{648} = \frac{12}{648} = \frac{1}{54}$.
+
+$k=3$: $\left(\frac{1}{6}\right)^3 \cdot \frac{1}{4} = \frac{1}{216} \cdot \frac{1}{4} = \frac{1}{864}$.
+
+Total from Cases 1 and 3:
+$$P(\text{Hugo wins} \mid \text{first roll}=5) = \frac{8}{27} + \frac{1}{9} + \frac{1}{54} + \frac{1}{864}.$$
+
+Common denominator 864:
+$$= \frac{256}{864} + \frac{96}{864} + \frac{16}{864} + \frac{1}{864} = \frac{369}{864} = \frac{41}{96}.$$
+
+Wait: $\frac{8}{27} = \frac{256}{864}$, $\frac{1}{9} = \frac{96}{864}$, $\frac{1}{54} = \frac{16}{864}$, $\frac{1}{864}$. Sum $= \frac{369}{864} = \frac{41}{96}$.
+
+**Applying Bayes:**
+$$P(\text{first roll}=5 \mid \text{won}) = \frac{(41/96)(1/6)}{1/4} = \frac{41}{96} \cdot \frac{1}{6} \cdot 4 = \frac{41 \cdot 4}{96 \cdot 6} = \frac{164}{576} = \frac{41}{144}.$$
+
+Answer: **C**.
+</Solution>

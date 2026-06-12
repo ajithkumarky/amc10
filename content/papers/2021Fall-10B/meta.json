@@ -1,0 +1,10 @@
+{
+  "year": 2021,
+  "ab": "10B",
+  "title": "AMC 10B 2021 Fall",
+  "date": "2021-11-16",
+  "source": "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Problems",
+  "skipped": [
+    { "n": 25, "reason": "complex diagram: tilted-square configuration is figure-essential" }
+  ]
+}

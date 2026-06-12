@@ -1,0 +1,45 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: B
+choices: ['$19\dfrac{1}{4}$', '$20\dfrac{1}{4}$', '$21\dfrac{3}{4}$', '$22\dfrac{1}{2}$', '$23\dfrac{3}{4}$']
+---
+
+<Problem>
+A square with side length $3$ is inscribed in an isosceles triangle with one side of the square along the base of the triangle. A square with side length $2$ has two vertices on the other square and the other two on sides of the triangle, as shown. What is the area of the triangle?
+
+The figure shows an isosceles triangle with a $3 \times 3$ square resting on its base and a $2 \times 2$ square centered on top of the first square, with its top two corners touching the legs of the triangle.
+</Problem>
+
+<Solution>
+Set up coordinates with the base on the $x$-axis and the apex directly above the midpoint of the base. By symmetry, place the apex at $(0, h)$ and the base from $(-b, 0)$ to $(b, 0)$.
+
+**Condition from the big square (side 3).**
+The square of side 3 is centered on the base. Its top edge lies at height $y = 3$, stretching from $x = -\tfrac{3}{2}$ to $x = \tfrac{3}{2}$. The corners at $(±\tfrac{3}{2}, 3)$ lie on the legs of the triangle.
+
+The width of the triangle at height $y$ is $2b\!\left(1 - \dfrac{y}{h}\right)$, so the half-width at $y = 3$ is $\dfrac{b(h-3)}{h}$. Setting this equal to $\tfrac{3}{2}$:
+
+$$\frac{b(h-3)}{h} = \frac{3}{2}. \tag{1}$$
+
+**Condition from the small square (side 2).**
+The square of side 2 is centered on top of the big square, so its top edge lies at $y = 5$, stretching from $x = -1$ to $x = 1$. The corners at $(±1, 5)$ lie on the legs. The half-width at $y = 5$ is $\dfrac{b(h-5)}{h}$:
+
+$$\frac{b(h-5)}{h} = 1. \tag{2}$$
+
+**Solving the system.**
+Divide equation (1) by equation (2):
+
+$$\frac{h-3}{h-5} = \frac{3}{2}.$$
+
+$$2(h-3) = 3(h-5) \implies 2h - 6 = 3h - 15 \implies h = 9.$$
+
+Substituting back into (2): $\dfrac{b(9-5)}{9} = 1 \Rightarrow b = \dfrac{9}{4}$.
+
+**Area of the triangle.**
+$$\text{Area} = \frac{1}{2} \times \text{base} \times \text{height} = \frac{1}{2} \times 2b \times h = \frac{1}{2} \times \frac{9}{2} \times 9 = \frac{81}{4} = 20\frac{1}{4}.$$
+
+Answer: **B**.
+</Solution>

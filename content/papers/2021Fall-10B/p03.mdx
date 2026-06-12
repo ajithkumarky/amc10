@@ -1,0 +1,34 @@
+---
+year: 2021
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 1
+answer: E
+choices: ["$1$", "$9$", "$2020$", "$2021$", "$4041$"]
+---
+
+<Problem>
+The expression $\dfrac{2021}{2020} - \dfrac{2020}{2021}$ is equal to the fraction $\dfrac{p}{q}$ in which $p$ and $q$ are positive integers whose greatest common divisor is $1$. What is $p$?
+</Problem>
+
+<Solution>
+Subtract the two fractions over a common denominator of $2020 \cdot 2021$:
+
+$$\frac{2021}{2020} - \frac{2020}{2021} = \frac{2021^2 - 2020^2}{2020 \cdot 2021}.$$
+
+The numerator factors as a difference of squares:
+
+$$2021^2 - 2020^2 = (2021+2020)(2021-2020) = 4041 \cdot 1 = 4041.$$
+
+So the fraction equals $\dfrac{4041}{2020 \cdot 2021}$.
+
+Now check whether $\gcd(4041, 2020 \cdot 2021) = 1$.
+$4041 = 3 \times 1347 = 3 \times 3 \times 449$. Check that 449 is prime (not divisible by 2, 3, 5, 7, 11, 13, 17, 19 — and $21^2 > 449$). Indeed 449 is prime.
+
+$2020 = 4 \times 5 \times 101$ and $2021 = 43 \times 47$. Neither contains 3 or 449 as a factor, so $\gcd(4041, 2020 \cdot 2021) = 1$.
+
+Therefore $p = 4041$.
+
+Answer: **E**.
+</Solution>

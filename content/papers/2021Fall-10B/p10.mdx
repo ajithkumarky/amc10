@@ -1,0 +1,39 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: A
+choices: ["$27$", "$37$", "$47$", "$57$", "$67$"]
+---
+
+<Problem>
+Forty slips of paper numbered $1$ to $40$ are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other. Alice says, "I can't tell who has the larger number." Then Bob says, "I know who has the larger number." Alice says, "You do? Is your number prime?" Bob replies, "Yes." Alice says, "In that case, if I multiply your number by $100$ and add my number, the result is a perfect square." What is the sum of the two numbers drawn from the hat?
+</Problem>
+
+<Solution>
+**Step 1: What Alice's statement tells us.**
+Alice knows her own number but not Bob's. She "can't tell" who has the larger number, so there exist both numbers larger and smaller than hers in the remaining pool. This fails only for $a = 1$ (Bob must be larger) or $a = 40$ (Bob must be smaller). Therefore Alice's number $a \in \{2, 3, \ldots, 39\}$.
+
+**Step 2: What Bob's statement tells us.**
+Bob knows his number $b$ and knows Alice is in $\{2, \ldots, 39\} \setminus \{b\}$. Bob can determine who has the larger number only if:
+- $b > $ every number Alice could have: this requires $b = 39$ (max of $\{2,\ldots,38\}$) or $b = 40$.
+- $b < $ every number Alice could have: this requires $b = 1$ or $b = 2$ (since then Alice's pool is $\{3,\ldots,39\}$ or $\{2,\ldots,39\}\setminus\{1\}$).
+
+So $b \in \{1, 2, 39, 40\}$.
+
+**Step 3: Bob's number is prime.**
+Among $\{1, 2, 39, 40\}$, only $2$ is prime. So $b = 2$.
+
+**Step 4: Alice's perfect-square condition.**
+Alice's number $a \in \{3, 4, \ldots, 39\}$ (she's in $\{2,\ldots,39\}$ and $b=2$ is taken). We need
+
+$$100 \cdot 2 + a = 200 + a$$
+
+to be a perfect square. The perfect squares near $200$ are $14^2 = 196$ and $15^2 = 225$. The only one giving $a \in \{3,\ldots,39\}$ is $225 = 200 + 25$, so $a = 25$.
+
+**The sum is** $b + a = 2 + 25 = 27$.
+
+Answer: **A**.
+</Solution>

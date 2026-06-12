@@ -1,0 +1,53 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: D
+choices: ['$\dfrac{2}{3}$', '$\dfrac{105}{128}$', '$\dfrac{125}{128}$', '$\dfrac{253}{256}$', '$1$']
+---
+
+<Problem>
+Each of the $5$ sides and the $5$ diagonals of a regular pentagon are randomly and independently colored red or blue with equal probability. What is the probability that there will be a triangle whose vertices are among the vertices of the pentagon such that all of its sides have the same color?
+</Problem>
+
+<Solution>
+We want $P(\text{there exists a monochromatic triangle})$. By complementary counting, compute $P(\text{no monochromatic triangle})$.
+
+A regular pentagon has 5 vertices. Any 3 vertices form a triangle using 3 of the 10 edges (sides or diagonals). We want no such triangle to have all 3 edges the same color.
+
+**Total colorings:** $2^{10} = 1024$.
+
+**Bad colorings (no monochromatic triangle):** We need to 2-color the edges of $K_5$ (the complete graph on 5 vertices) such that no monochromatic triangle exists.
+
+This is the Ramsey problem. The Ramsey number $R(3,3) = 6$ means every 2-coloring of $K_6$ has a monochromatic triangle. For $K_5$, it is possible to 2-color with no monochromatic triangle.
+
+**Counting 2-colorings of $K_5$ with no monochromatic triangle:**
+
+Each vertex has degree 4. In a monochromatic-triangle-free 2-coloring, the edges from each vertex split as either $(2,2)$ — exactly 2 red and 2 blue — or another split. If any vertex has 3 edges of one color, those 3 neighbors form a triangle, and if any edge among those 3 neighbors has that same color, we get a monochromatic triangle.
+
+In fact, it is known that the only 2-colorings of $K_5$ without a monochromatic triangle are the two "Petersen colorings" (or cycle colorings): color the edges of $K_5$ using one color for the 5-cycle and the other color for the 5-cycle of diagonals. There are exactly 2 such colorings (swapping colors), times the 2 Hamiltonian cycles? Actually let's count carefully.
+
+The edges of $K_5$ can be decomposed into two 5-cycles (the outer pentagon and the pentagram). Coloring one 5-cycle red and the other blue gives no monochromatic triangle. There are 12 Hamiltonian cycles in $K_5$, forming 6 complementary pairs, but only those where both cycles are 5-cycles and together cover all 10 edges.
+
+Actually, $K_5$ has 12 Hamiltonian cycles. However, the 5-cycle decompositions: $K_5$ can be decomposed into two edge-disjoint Hamiltonian cycles (5-cycles) in exactly $\frac{12}{2} / \text{something}$... 
+
+Let's count directly. It is a known result that the number of triangle-free 2-colorings of $K_5$ is $12$. Let me verify:
+
+Each triangle-free 2-coloring must have each vertex with exactly 2 red and 2 blue edges (if a vertex had 3+ edges of one color, we'd need to check, but $R(3,3)=6$ only guarantees a triangle for $K_6$). 
+
+In a triangle-free 2-coloring of $K_5$: the red graph is triangle-free and the blue graph is triangle-free. Triangle-free graphs on 5 vertices with 5 edges that are also 2-regular (each vertex degree 2): these are 5-cycles! So the red graph must be a 5-cycle on 5 vertices, and the blue graph is the complementary 5-cycle (the Petersen star/pentagram).
+
+The number of 5-cycles on 5 labeled vertices $= \dfrac{4!}{2} = 12$ (fix one vertex, arrange 4 others in a cycle, divide by 2 for direction). Each such 5-cycle determines a unique complementary 5-cycle. So there are 12 pairs... wait, each 5-cycle decomposition uses 5 edges for red and 5 for blue, giving 12 colorings (one for each choice of which 5-cycle is red) — but each pair is counted twice (swapping colors), so 12 colorings where "red cycle" is chosen, but since colors are distinguishable, there are 12 colorings total (each 5-cycle can be the red one).
+
+Actually: number of 5-cycles = 12. For each choice of 5-cycle as the red subgraph, the complement (the other 5-cycle) is blue. These are 12 distinct colorings. (The 12 red cycles pair up into 6 complementary pairs, so there are 6 decompositions; each decomposition gives 2 colorings with colors swapped, for $6 \times 2 = 12$ total.)
+
+So there are exactly 12 triangle-free 2-colorings of $K_5$.
+
+$P(\text{no monochromatic triangle}) = \dfrac{12}{1024} = \dfrac{3}{256}$.
+
+$P(\text{monochromatic triangle exists}) = 1 - \dfrac{3}{256} = \dfrac{253}{256}$.
+
+Answer: **D**.
+</Solution>

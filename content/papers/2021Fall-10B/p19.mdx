@@ -1,0 +1,47 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: A
+choices: ['$8$', '$9$', '$11$', '$22$', '$29$']
+---
+
+<Problem>
+Let $N$ be the positive integer $7777\ldots777$, a $313$-digit number where each digit is a $7$. Let $f(r)$ be the leading digit of the $r$th root of $N$. What is $f(2) + f(3) + f(4) + f(5) + f(6)$?
+</Problem>
+
+<Solution>
+We need the leading digit of $N^{1/r}$ for $r = 2, 3, 4, 5, 6$.
+
+**Expressing $N$ in scientific notation.** $N = 7 \cdot \underbrace{11\ldots1}_{313} = 7 \cdot \dfrac{10^{313}-1}{9}$.
+
+Since $N$ is a 313-digit number: $10^{312} \le N < 10^{313}$. More precisely,
+$$N \approx \frac{7}{9} \cdot 10^{313},$$
+so $\log_{10} N = \log_{10}(7/9) + 313 \approx -0.1091 + 313 = 312.8909$.
+
+Actually, $\log_{10}(7/9) = \log_{10} 7 - \log_{10} 9 = 0.8451 - 0.9542 = -0.1091$.
+
+So $\log_{10} N \approx 312.8909$.
+
+**Finding the leading digit of $N^{1/r}$.**
+
+$\log_{10}(N^{1/r}) = \dfrac{\log_{10} N}{r} \approx \dfrac{312.8909}{r}$.
+
+The leading digit of a number $x$ is determined by the fractional part of $\log_{10} x$: if $\{{\log_{10} x}\} = f$, then the leading digit is $\lfloor 10^f \rfloor$.
+
+**$r = 2$:** $\dfrac{312.8909}{2} = 156.4454$. Fractional part $= 0.4454$. $10^{0.4454} \approx 2.787$. Leading digit $= 2$.
+
+**$r = 3$:** $\dfrac{312.8909}{3} = 104.2970$. Fractional part $= 0.2970$. $10^{0.2970} \approx 1.982$. Leading digit $= 1$.
+
+**$r = 4$:** $\dfrac{312.8909}{4} = 78.2227$. Fractional part $= 0.2227$. $10^{0.2227} \approx 1.670$. Leading digit $= 1$.
+
+**$r = 5$:** $\dfrac{312.8909}{5} = 62.5782$. Fractional part $= 0.5782$. $10^{0.5782} \approx 3.787$. Leading digit $= 3$.
+
+**$r = 6$:** $\dfrac{312.8909}{6} = 52.1485$. Fractional part $= 0.1485$. $10^{0.1485} \approx 1.408$. Leading digit $= 1$.
+
+**Sum:** $f(2) + f(3) + f(4) + f(5) + f(6) = 2 + 1 + 1 + 3 + 1 = 8$.
+
+Answer: **A**.
+</Solution>

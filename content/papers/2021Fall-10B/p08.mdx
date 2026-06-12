@@ -1,0 +1,31 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: C
+choices: ["$3$", "$7$", "$10$", "$16$", "$22$"]
+---
+
+<Problem>
+The greatest prime number that is a divisor of $16{,}384$ is $2$ because $16{,}384 = 2^{14}$. What is the sum of the digits of the greatest prime number that is a divisor of $16{,}383$?
+</Problem>
+
+<Solution>
+We need to factor $16{,}383 = 2^{14} - 1$.
+
+Factor using difference of squares and sum of cubes:
+
+$$2^{14} - 1 = (2^7-1)(2^7+1) = 127 \times 129.$$
+
+Now factor each:
+- $127$: check divisibility by primes up to $\sqrt{127} \approx 11.3$. Not divisible by 2, 3, 5, 7, 11. So 127 is prime.
+- $129 = 3 \times 43$, and 43 is prime.
+
+So $16{,}383 = 3 \times 43 \times 127$.
+
+The greatest prime factor is $127$. The sum of its digits is $1 + 2 + 7 = 10$.
+
+Answer: **C**.
+</Solution>
