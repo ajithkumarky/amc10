@@ -1,0 +1,33 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 2
+answer: D
+choices: ["$0$", '$\dfrac{1}{4}$', '$\dfrac{1}{2}$', "$1$", "$2$"]
+---
+
+<Problem>
+What is the least possible value of $(xy-1)^2 + (x+y)^2$ for real numbers $x$ and $y$?
+</Problem>
+
+<Solution>
+Expand the expression:
+
+$$(xy-1)^2 + (x+y)^2 = x^2y^2 - 2xy + 1 + x^2 + 2xy + y^2 = x^2y^2 + x^2 + y^2 + 1.$$
+
+So we want to minimize $x^2y^2 + x^2 + y^2 + 1$.
+
+Factor cleverly: $x^2y^2 + x^2 + y^2 + 1 = (x^2+1)(y^2+1)$.
+
+Since $x^2 + 1 \ge 1$ and $y^2 + 1 \ge 1$ for all real $x, y$, the product satisfies
+
+$$(x^2+1)(y^2+1) \ge 1.$$
+
+Equality holds when $x = 0$ and $y = 0$, giving $(0-1)^2 + (0+0)^2 = 1$.
+
+The minimum value is $\boxed{1}$.
+
+Answer: **D**.
+</Solution>

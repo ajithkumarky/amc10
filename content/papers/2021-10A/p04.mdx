@@ -1,0 +1,25 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 1
+answer: D
+choices: ["215", "360", "2992", "3195", "3242"]
+---
+
+<Problem>
+A cart rolls down a hill, travelling $5$ inches the first second and accelerating so that during each successive $1$-second time interval, it travels $7$ inches more than during the previous $1$-second interval. The cart takes $30$ seconds to reach the bottom of the hill. How far, in inches, does it travel?
+</Problem>
+
+<Solution>
+The distances form an arithmetic sequence with first term $a_1 = 5$ and common difference $d = 7$.
+
+The distance in second $k$ is $5 + 7(k-1)$.
+
+The total distance over 30 seconds is the sum of the arithmetic sequence:
+
+$$S = \frac{n}{2}(2a_1 + (n-1)d) = \frac{30}{2}(2 \cdot 5 + 29 \cdot 7) = 15(10 + 203) = 15 \cdot 213 = 3195.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,37 @@
+---
+year: 2021
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: D
+choices: ['$10$', '$18$', '$24$', '$32$', '$44$']
+---
+
+<Problem>
+In how many ways can the sequence $1, 2, 3, 4, 5$ be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?
+</Problem>
+
+<Solution>
+We want permutations $(a_1, a_2, a_3, a_4, a_5)$ of $\{1,2,3,4,5\}$ such that for every $i \in \{1,2,3\}$, it is NOT the case that $a_i < a_{i+1} < a_{i+2}$ or $a_i > a_{i+1} > a_{i+2}$. This means every three consecutive terms must contain a "zigzag" — i.e., for each triple, the middle term is either a local max or local min.
+
+Equivalently, the sequence must alternate: each $a_{i+1}$ is either greater than both neighbors or less than both neighbors (for interior positions).
+
+**Characterize valid sequences.** The condition "no three consecutive increasing and no three consecutive decreasing" means every consecutive pair changes direction: $a_1 < a_2 > a_3 < a_4 > a_5$ or $a_1 > a_2 < a_3 > a_4 < a_5$ (alternating up-down or down-up), or sequences where the up-down pattern is not strict alternation but still no three consecutive same direction...
+
+Actually, the condition is exactly that consecutive differences alternate in sign. A permutation satisfying this for all consecutive triples must satisfy: for each $i$, either $a_i < a_{i+1}$ and $a_{i+1} > a_{i+2}$ (local max at $i+1$) or $a_i > a_{i+1}$ and $a_{i+1} < a_{i+2}$ (local min at $i+1$). This must hold for $i = 1, 2, 3$. This forces the permutation to be an "alternating" (zigzag) permutation where signs of differences strictly alternate.
+
+There are two patterns of signs: $(+,-,+,-)$ meaning $a_1 < a_2 > a_3 < a_4 > a_5$, and $(-,+,-,+)$ meaning $a_1 > a_2 < a_3 > a_4 < a_5$.
+
+**Counting each type.** The number of alternating permutations of $n$ elements is given by the zigzag (tangent/secant) numbers. For $n=5$, the number of "up-down" permutations ($a_1 < a_2 > a_3 < a_4 > a_5$) equals the number of "down-up" permutations, and each equals $E_5/2$... 
+
+The Euler zigzag numbers: $E_1=1, E_2=1, E_3=2, E_4=5, E_5=16$. The total number of alternating permutations of 5 elements (both types) $= 2 \times 16 = 32$.
+
+Let me verify $E_5 = 16$ by listing. For up-down ($a_1 < a_2 > a_3 < a_4 > a_5$): Choose the peaks (positions 2 and 4) and valleys (positions 1, 3, 5). $a_2 > a_1, a_3$ and $a_4 > a_3, a_5$. 
+
+A direct count: there are 16 up-down permutations of $\{1,2,3,4,5\}$. By symmetry (replacing each $a_i$ with $6 - a_i$ maps up-down to down-up), there are also 16 down-up permutations.
+
+Total valid: $16 + 16 = 32$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,56 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: E
+choices: ['$18$', '$27$', '$36$', '$45$', '$54$']
+---
+
+<Problem>
+The area of the region bounded by the graph of
+$$x^2 + y^2 = 3|x - y| + 3|x + y|$$
+is $m + n\pi$, where $m$ and $n$ are integers. What is $m + n$?
+</Problem>
+
+<Solution>
+**Simplify using cases.** We analyze $|x-y|$ and $|x+y|$ by splitting into regions based on the signs of $x-y$ and $x+y$ (i.e., the lines $y=x$ and $y=-x$).
+
+**Case 1: $x \geq 0, y \geq 0$ (first quadrant).** Here $x+y \geq 0$.
+- Sub-case $y \leq x$: $x-y \geq 0$, so $|x-y| + |x+y| = (x-y) + (x+y) = 2x$. Equation: $x^2+y^2 = 6x$, i.e., $(x-3)^2 + y^2 = 9$ — circle centered at $(3,0)$, radius 3.
+- Sub-case $y \geq x$: $|x-y| = y-x$, so $|x-y|+|x+y| = (y-x)+(x+y) = 2y$. Equation: $x^2+y^2=6y$, i.e., $x^2+(y-3)^2=9$ — circle centered at $(0,3)$, radius 3.
+
+**Case 2: $x \leq 0, y \geq 0$ (second quadrant).** Here $x+y$ can vary; $x - y \leq 0$.
+- $|x-y| = y-x$. For $y \geq -x$ (i.e., $x+y \geq 0$): $|x+y| = x+y$, sum $= (y-x)+(x+y) = 2y$. Equation: $x^2+y^2=6y$.
+- For $y \leq -x$ (i.e., $x+y \leq 0$): $|x+y| = -(x+y)$, sum $= (y-x)-(x+y) = -2x$. Equation: $x^2+y^2 = -6x$, i.e., $(x+3)^2+y^2=9$.
+
+**By symmetry** (the equation is symmetric under $x \to -x$, $y \to -y$, and swapping $x,y$), the full region is symmetric about both axes and the lines $y = \pm x$. The boundary consists of four circles of radius 3, each centered at distance 3 from the origin along an axis: $(3,0), (0,3), (-3,0), (0,-3)$.
+
+**Computing the area.** Each of the four circles has radius 3 and passes through the origin. Consider the circle $(x-3)^2 + y^2 = 9$: it passes through $(0,0)$ and $(6,0)$.
+
+The region is the union of four "petal" shapes formed by the portions of these circles in their respective sectors. By symmetry, compute the area in one sector and multiply by 4.
+
+**Area in the sector $0 \leq \theta \leq \pi/2$ (between $y=x$ and $y$-axis, for the circle $x^2+(y-3)^2=9$):**
+
+Actually, in the first quadrant, the boundary switches between the two circles at $y = x$. Each circle contributes a half-disk in the first quadrant (the part of circle centered at $(3,0)$ in the region $y \leq x$, plus part of circle centered at $(0,3)$ in region $y \geq x$).
+
+Consider the circle centered at $(3,0)$ with radius 3: in the first quadrant with $y \leq x$, it covers the right-lower quarter of the quadrant. The area of this circle lying in the first quadrant below $y = x$ equals a quarter-circle plus a triangle, but let's use the full picture.
+
+The full region $x^2+y^2 \leq 6x$ (disk $(x-3)^2+y^2 \leq 9$) contributes its area in the sector $\{x+y \geq 0, x \geq y \geq 0\} \cup \{x \geq 0, y \leq 0, x+y \geq 0\}$... 
+
+**Cleaner approach:** The total area is the union of four disks of radius 3 centered at $(\pm 3, 0)$ and $(0, \pm 3)$. Each adjacent pair of disks overlaps in a lens-shaped region.
+
+- Area of each disk: $9\pi$.
+- Overlap between adjacent disks (e.g., centered at $(3,0)$ and $(0,3)$): distance between centers $= 3\sqrt{2}$. For two circles of radius 3 with centers distance $3\sqrt{2}$ apart:
+$$\text{Lens area} = 2 \cdot 9 \cos^{-1}\!\left(\frac{3\sqrt{2}/2}{3}\right) - \frac{1}{2}(3\sqrt{2})\sqrt{4\cdot 9 - 18} = 2\cdot 9\cdot\frac{\pi}{4} - \frac{1}{2}(3\sqrt{2})(3\sqrt{2}) = \frac{9\pi}{2} - 9.$$
+
+There are 4 adjacent pairs (and opposite disks centered at $(\pm 3,0)$ or $(0,\pm 3)$ don't overlap since distance $= 6 = $ diameter).
+
+By inclusion-exclusion (no triple overlaps since any three of these circles have no common point):
+$$\text{Area} = 4 \cdot 9\pi - 4\left(\frac{9\pi}{2} - 9\right) = 36\pi - 18\pi + 36 = 18\pi + 36.$$
+
+So $m = 36$, $n = 18$, and $m + n = 54$.
+
+Answer: **E**.
+</Solution>

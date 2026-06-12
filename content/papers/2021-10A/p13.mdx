@@ -1,0 +1,38 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 3
+answer: C
+choices: ["$3$", '$2\sqrt{3}$', "$4$", '$3\sqrt{3}$', "$6$"]
+---
+
+<Problem>
+What is the volume of tetrahedron $ABCD$ with edge lengths $AB = 2$, $AC = 3$, $AD = 4$, $BC = \sqrt{13}$, $BD = 2\sqrt{5}$, and $CD = 5$?
+</Problem>
+
+<Solution>
+We look for a right-angle structure. Notice that:
+$$AB^2 + AC^2 = 4 + 9 = 13 = BC^2,$$
+$$AB^2 + AD^2 = 4 + 16 = 20 = BD^2 = (2\sqrt{5})^2,$$
+$$AC^2 + AD^2 = 9 + 16 = 25 = CD^2.$$
+
+All three pairs satisfy the Pythagorean theorem! This means:
+- $\angle BAC = 90°$ (right angle at $A$ in triangle $ABC$),
+- $\angle BAD = 90°$ (right angle at $A$ in triangle $ABD$),
+- $\angle CAD = 90°$ (right angle at $A$ in triangle $ACD$).
+
+Since $AB$, $AC$, and $AD$ are mutually perpendicular at $A$, we can place $A$ at the origin with:
+- $B$ along the $x$-axis at $(2, 0, 0)$,
+- $C$ along the $y$-axis at $(0, 3, 0)$,
+- $D$ along the $z$-axis at $(0, 0, 4)$.
+
+The tetrahedron $ABCD$ has three mutually perpendicular edges $AB$, $AC$, $AD$ meeting at $A$, so it fits inside the rectangular box with those edges as three sides.
+
+The volume of a tetrahedron with three mutually perpendicular edges $p$, $q$, $r$ at a vertex is:
+
+$$V = \frac{1}{6} \cdot p \cdot q \cdot r = \frac{1}{6} \cdot 2 \cdot 3 \cdot 4 = \frac{24}{6} = 4.$$
+
+Answer: **C**.
+</Solution>

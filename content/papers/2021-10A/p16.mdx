@@ -1,0 +1,37 @@
+---
+year: 2021
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: C
+choices: ['$100.5$', '$134$', '$142$', '$150.5$', '$167$']
+---
+
+<Problem>
+In the following list of numbers, the integer $n$ appears $n$ times in the list for $1 \leq n \leq 200$.
+$$1, 2, 2, 3, 3, 3, 4, 4, 4, 4, \dots, 200, 200, \dots, 200$$
+What is the median of the numbers in this list?
+</Problem>
+
+<Solution>
+**Total count.** The list has $1 + 2 + 3 + \cdots + 200 = \dfrac{200 \cdot 201}{2} = 20100$ entries total.
+
+The median is the average of the 10050th and 10051st entries. Since these will be equal (as we'll see), the median equals that common value.
+
+**Locating the median.** The entries $1$ through $n$ occupy positions $1$ through $1 + 2 + \cdots + n = \dfrac{n(n+1)}{2}$.
+
+We need $\dfrac{n(n+1)}{2} \geq 10050$.
+
+Solve $n(n+1) \geq 20100$. Try $n = 141$: $141 \times 142 = 20022 < 20100$. Try $n = 142$: $142 \times 143 = 20306 > 20100$.
+
+So all numbers $1$ through $141$ fill positions $1$ through $\dfrac{141 \times 142}{2} = 10011$.
+
+Number $142$ starts at position $10012$ and runs through position $10011 + 142 = 10153$.
+
+Since positions $10050$ and $10051$ both fall in the range $[10012, 10153]$, both are occupied by $142$.
+
+The median is $\mathbf{142}$.
+
+Answer: **C**.
+</Solution>

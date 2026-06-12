@@ -1,0 +1,36 @@
+---
+year: 2021
+paper: "10A"
+topic: number-theory
+subtopic: number-bases
+difficulty: 3
+answer: E
+choices: ["$3$", "$4$", "$6$", "$7$", "$8$"]
+---
+
+<Problem>
+For which of the following integers $b$ is the base-$b$ number $2021_b - 221_b$ not divisible by $3$?
+</Problem>
+
+<Solution>
+First compute the difference in base $b$:
+
+$$2021_b - 221_b = (2b^3 + 0 \cdot b^2 + 2b + 1) - (2b^2 + 2b + 1) = 2b^3 - 2b^2 = 2b^2(b-1).$$
+
+We need to find when $2b^2(b-1)$ is **not** divisible by $3$.
+
+For $2b^2(b-1)$ to be divisible by $3$, either $b \equiv 0 \pmod{3}$ or $b \equiv 1 \pmod{3}$.
+
+It is **not** divisible by $3$ exactly when $b \equiv 2 \pmod{3}$.
+
+Check each choice:
+- $b = 3$: $3 \equiv 0$, divisible. Also $b=3$ is invalid as a base for digit $3$ — but let's check divisibility anyway.
+- $b = 4$: $4 \equiv 1 \pmod{3}$, so $b - 1 = 3$, divisible.
+- $b = 6$: $6 \equiv 0 \pmod{3}$, divisible.
+- $b = 7$: $7 \equiv 1 \pmod{3}$, so $b - 1 = 6$, divisible.
+- $b = 8$: $8 \equiv 2 \pmod{3}$, and $b - 1 = 7 \equiv 1 \pmod{3}$, so neither $b$ nor $b-1$ is divisible by $3$. Not divisible by $3$.
+
+(Note: $b = 3$ is invalid since the digit $3$ cannot appear in base $3$. The problem implicitly requires $b \ge 4$.)
+
+Answer: **E**.
+</Solution>

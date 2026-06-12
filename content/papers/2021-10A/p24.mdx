@@ -1,0 +1,48 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 5
+answer: D
+choices: ['$\dfrac{8a^2}{(a+1)^2}$', '$\dfrac{4a}{a+1}$', '$\dfrac{8a}{a+1}$', '$\dfrac{8a^2}{a^2+1}$', '$\dfrac{8a}{a^2+1}$']
+---
+
+<Problem>
+The interior of a quadrilateral is bounded by the graphs of $(x + ay)^2 = 4a^2$ and $(ax - y)^2 = a^2$, where $a$ is a positive real number. What is the area of this region in terms of $a$, valid for all $a > 0$?
+</Problem>
+
+<Solution>
+**Rewrite the equations.** Each equation represents two parallel lines:
+
+$(x + ay)^2 = 4a^2 \Rightarrow x + ay = 2a$ or $x + ay = -2a$.
+
+$(ax - y)^2 = a^2 \Rightarrow ax - y = a$ or $ax - y = -a$.
+
+So the quadrilateral is bounded by four lines:
+$$L_1: x + ay = 2a, \quad L_2: x + ay = -2a,$$
+$$L_3: ax - y = a, \quad L_4: ax - y = -a.$$
+
+**Identify the quadrilateral.** Lines $L_1$ and $L_2$ are parallel (direction vector $(a, -1)$, normal $(1, a)$). Lines $L_3$ and $L_4$ are parallel (direction vector $(1, a)$, normal $(a, -1)$). The two pairs of parallel lines form a parallelogram.
+
+**Find the vertices** (intersections of $L_1$ or $L_2$ with $L_3$ or $L_4$).
+
+$L_1 \cap L_3$: $x + ay = 2a$ and $ax - y = a$.
+From $ax - y = a$: $y = ax - a$. Substitute: $x + a(ax-a) = 2a \Rightarrow x + a^2x - a^2 = 2a \Rightarrow x(1+a^2) = 2a + a^2 \Rightarrow x = \dfrac{a^2+2a}{1+a^2} = \dfrac{a(a+2)}{a^2+1}$.
+$y = ax - a = \dfrac{a^2(a+2)}{a^2+1} - a = \dfrac{a^3+2a^2 - a^2 - a}{a^2+1} = \dfrac{a^3+a^2-a}{a^2+1} = \dfrac{a(a^2+a-1)}{a^2+1}$.
+
+This is getting complex. Use the area formula for a parallelogram directly.
+
+**Parallelogram area.** For a parallelogram bounded by $\mathbf{n_1} \cdot \mathbf{x} = \pm c_1$ and $\mathbf{n_2} \cdot \mathbf{x} = \pm c_2$ (where $\mathbf{n_1}, \mathbf{n_2}$ are the normal vectors), the area is:
+$$\text{Area} = \frac{(2c_1)(2c_2)}{|\mathbf{n_1} \times \mathbf{n_2}|} = \frac{4c_1 c_2}{|\sin\theta| \cdot |\mathbf{n_1}||\mathbf{n_2}|},$$
+where $\theta$ is the angle between the normal vectors.
+
+Here: $\mathbf{n_1} = (1, a)$ with $|\mathbf{n_1}| = \sqrt{1+a^2}$, $c_1 = 2a$. $\mathbf{n_2} = (a, -1)$ with $|\mathbf{n_2}| = \sqrt{a^2+1}$, $c_2 = a$.
+
+The cross product (2D): $\mathbf{n_1} \times \mathbf{n_2} = 1\cdot(-1) - a\cdot a = -1 - a^2$.
+$|\mathbf{n_1} \times \mathbf{n_2}| = 1 + a^2$.
+
+Area $= \dfrac{4 \cdot 2a \cdot a}{1+a^2} = \dfrac{8a^2}{a^2+1}$.
+
+Answer: **D**.
+</Solution>

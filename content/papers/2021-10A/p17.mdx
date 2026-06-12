@@ -1,0 +1,86 @@
+---
+year: 2021
+paper: "10A"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 4
+answer: D
+choices: ['$65$', '$132$', '$157$', '$194$', '$215$']
+---
+
+<Problem>
+Trapezoid $ABCD$ has $\overline{AB} \parallel \overline{CD}$, $BC = CD = 43$, and $\overline{AD} \perp \overline{BD}$. Let $O$ be the intersection of the diagonals $\overline{AC}$ and $\overline{BD}$, and let $P$ be the midpoint of $\overline{BD}$. Given that $OP = 11$, the length $AD$ can be written in the form $m\sqrt{n}$, where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. What is $m + n$?
+</Problem>
+
+<Solution>
+**Set up coordinates.** Place $D$ at the origin with $BD$ along the positive $x$-axis, so $B = (BD, 0)$ and $D = (0,0)$. Since $AD \perp BD$, point $A$ lies on the $y$-axis: $A = (0, h)$ for some $h > 0$ (let $h = AD$).
+
+Since $AB \parallel CD$, both are horizontal. We have $D = (0,0)$, so $C$ lies at some point $(c, 0)$ with $c > 0$ (along the base — wait, $CD$ must be horizontal to be parallel to $AB$). Let $D = (0,0)$, $C = (c,0)$, $A = (0,h)$, and since $AB \parallel CD$ (both horizontal), $B = (b, h)$ for some $b$.
+
+Actually we need $B$ on the $x$-axis since $AD \perp BD$ and $D$ is at origin, $A = (0,h)$, $D = (0,0)$, so $BD$ is along the $x$-axis. Let $B = (d_B, 0)$ with $d_B > 0$.
+
+**Using $BC = CD = 43$.** We have $C = (c, 0)$, $D = (0,0)$, so $CD = c = 43$.
+
+$BC$: distance from $B = (d_B, 0)$ to $C = (43, 0)$ would be $|d_B - 43|$ — but that puts $B$ and $C$ on the same horizontal line. However $AB$ must be parallel to $CD$ (horizontal), and $B = (d_B, 0)$ means $A, B$ are not at the same height unless $A$ is also at $y=0$... 
+
+Let me restart. $AD \perp BD$ means the angle at $D$ in triangle $ABD$ satisfies $\angle ADB = 90°$. Place $D$ at origin, $A$ along the positive $y$-axis, $B$ along the positive $x$-axis: $D=(0,0)$, $A=(0,a)$, $B=(b,0)$.
+
+$AB \parallel CD$: the direction of $AB$ is $(b, -a)$. For $CD$ to be parallel, $C = D + t(b,-a) = (tb, -ta)$ for some $t$. But $C$ should be positioned so $ABCD$ is a proper trapezoid.
+
+Actually, let $A=(0,a)$, $B=(b,0)$. The line $AB$ has slope $-a/b$. For $\overline{CD} \parallel \overline{AB}$, $\overrightarrow{CD}$ must be proportional to $(b,-a)$.
+
+Since $BC = CD = 43$: Let $C = D + s(b,-a)/\sqrt{a^2+b^2}$ scaled to length 43. This is getting complicated. Use the property of trapezoids.
+
+**Diagonal intersection and midpoint property.** In a trapezoid with $AB \parallel CD$, if $AB = p$ and $CD = q$, then the diagonals intersect at $O$ which divides each diagonal in ratio $p:q$. The midpoint $P$ of $BD$ is distinct from $O$.
+
+Let $BD = \ell$. Then $BO = \dfrac{p}{p+q} \cdot \ell$ and $OP = |PB - OB|$... let $P$ be midpoint of $BD$, so $BP = \ell/2$. Then $OP = |BP - BO| = \left|\dfrac{\ell}{2} - \dfrac{p \cdot \ell}{p+q}\right| = \ell \cdot \dfrac{|q-p|}{2(p+q)}$.
+
+Hmm, I need more information. Let me use the coordinate approach fully.
+
+**Coordinates:** $D=(0,0)$, $A=(0,a)$ ($a = AD$), $B=(b,0)$ ($b = BD$). Since $AB \parallel CD$, the direction of $\overrightarrow{AB}$ equals that of $\overrightarrow{DC}$. $\overrightarrow{AB} = (b, -a)$. So $C = D + t(b,-a) = (tb, -ta)$ for some scalar $t > 0$.
+
+$CD = |t| \cdot \sqrt{a^2 + b^2} = 43$.
+
+$BC$: $B = (b,0)$, $C = (tb, -ta)$.
+$$BC = \sqrt{(b - tb)^2 + (ta)^2} = \sqrt{b^2(1-t)^2 + t^2 a^2} = 43.$$
+
+So both give 43:
+$$t^2(a^2 + b^2) = 43^2 \quad \Rightarrow \quad t = \frac{43}{\sqrt{a^2+b^2}}.$$
+$$b^2(1-t)^2 + t^2 a^2 = 43^2.$$
+
+Substitute $t^2(a^2+b^2) = 43^2$, so $t^2 a^2 = 43^2 - t^2 b^2$:
+$$b^2(1-t)^2 + 43^2 - t^2 b^2 = 43^2.$$
+$$b^2(1-t)^2 - t^2 b^2 = 0.$$
+$$b^2[(1-t)^2 - t^2] = 0.$$
+$$b^2(1 - 2t) = 0.$$
+
+Since $b \neq 0$: $t = 1/2$.
+
+So $C = (b/2, -a/2)$, $CD = \dfrac{1}{2}\sqrt{a^2+b^2} = 43$, giving $\sqrt{a^2+b^2} = 86$.
+
+Also $AB$: $A=(0,a)$, $B=(b,0)$, so $AB = \sqrt{a^2+b^2} = 86 = 2 \cdot CD$. ✓ (makes sense: $t=1/2$ means $AB = 2 CD$).
+
+**Finding $O$ and $OP$.** Diagonal $BD$: from $B=(b,0)$ to $D=(0,0)$ — this is just the segment from $(b,0)$ to $(0,0)$.
+
+Diagonal $AC$: from $A=(0,a)$ to $C=(b/2, -a/2)$.
+
+Parametrize $AC$: $(0,a) + s(b/2 - 0, -a/2 - a) = (sb/2,\; a - 3sa/2)$.
+
+Intersection with $BD$ (the $x$-axis, $y=0$): $a - 3sa/2 = 0 \Rightarrow s = 2/3$.
+
+So $O = (b/3, 0)$.
+
+Midpoint $P$ of $BD$: $P = (b/2, 0)$.
+
+$$OP = |b/2 - b/3| = b/6 = 11 \implies b = 66.$$
+
+**Finding $a = AD$.** From $a^2 + b^2 = 86^2 = 7396$ and $b = 66$:
+$$a^2 = 7396 - 4356 = 3040.$$
+$$a = \sqrt{3040} = \sqrt{16 \cdot 190} = 4\sqrt{190}.$$
+
+Check: $190 = 2 \cdot 5 \cdot 19$ is squarefree ✓.
+
+So $m = 4$, $n = 190$, and $m + n = 194$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,58 @@
+---
+year: 2021
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: D
+choices: ['$\dfrac{9}{16}$', '$\dfrac{5}{8}$', '$\dfrac{3}{4}$', '$\dfrac{25}{32}$', '$\dfrac{13}{16}$']
+---
+
+<Problem>
+Frieda the frog begins a sequence of hops on a $3 \times 3$ grid of squares, moving one square on each hop and choosing at random the direction of each hop — up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she "wraps around" and jumps to the opposite edge. For example, if Frieda begins in the center square and makes two hops "up", the first hop would place her in the top row middle square, and the second hop would cause Frieda to jump to the opposite edge, landing in the bottom row middle square. Suppose Frieda starts from the center square, makes at most four hops at random, and stops hopping if she lands on a corner square. What is the probability that she reaches a corner square on one of the four hops?
+</Problem>
+
+<Solution>
+**Label the grid.** Name the squares by type: $C$ = center, $E$ = edge-middle (4 squares), $K$ = corner (4 squares). With wrap-around, from any square each direction is equally likely with probability $1/4$.
+
+**Transitions with wrap-around:**
+- From $C$ (center): all 4 neighbors are edge-middles. Goes to $E$ with probability 1.
+- From $E$ (edge-middle, say top-middle at position $(2,3)$ in a $3\times3$ grid with center $(2,2)$): neighbors are top-left corner, top-right corner (the two horizontal), center (down), and the wrap-around (up → bottom-middle). So from $E$: 2 corners, 1 center, 1 edge (opposite edge-middle). Goes to $K$ with prob $1/2$, $C$ with prob $1/4$, $E$ with prob $1/4$.
+- $K$ is absorbing (we stop).
+
+**Compute probability of reaching $K$ in 1–4 hops starting from $C$.**
+
+Let $p_C(t)$ = prob of NOT having reached $K$ after $t$ hops, starting from $C$ (still hopping). Let $q_E$ = prob of eventually reaching $K$ on some hop, given currently at $E$ and haven't been absorbed yet.
+
+Actually, track the probability of being at each non-absorbing state at each step, without having been absorbed.
+
+Let $c_t$ = prob of being at $C$ after $t$ hops (without absorption), $e_t$ = prob of being at $E$ after $t$ hops (without absorption).
+
+Start: $c_0 = 1$, $e_0 = 0$.
+
+Transitions (conditional on not absorbed):
+$$c_{t+1} = c_t \cdot 0 + e_t \cdot \frac{1}{4} \quad (\text{from } E \text{, prob } 1/4 \text{ goes to } C)$$
+$$e_{t+1} = c_t \cdot 1 + e_t \cdot \frac{1}{4} \quad (\text{from } C, \text{prob 1 goes to } E; \text{from } E, \text{prob } 1/4 \text{ goes to other } E)$$
+
+The probability of being absorbed (reaching $K$) on hop $t+1$ is $e_t \cdot \frac{1}{2}$ (from $E$, prob $1/2$ goes to corner).
+
+**Step 1** ($t=0 \to 1$): $c_0=1, e_0=0$.
+- Absorbed on hop 1: $e_0 \cdot 1/2 = 0$.
+- $c_1 = e_0 \cdot 1/4 = 0$, $e_1 = c_0 \cdot 1 + e_0 \cdot 1/4 = 1$.
+
+**Step 2** ($t=1 \to 2$):
+- Absorbed on hop 2: $e_1 \cdot 1/2 = 1/2$.
+- $c_2 = e_1 \cdot 1/4 = 1/4$, $e_2 = c_1 \cdot 1 + e_1 \cdot 1/4 = 0 + 1/4 = 1/4$.
+
+**Step 3** ($t=2 \to 3$):
+- Absorbed on hop 3: $e_2 \cdot 1/2 = 1/8$.
+- $c_3 = e_2 \cdot 1/4 = 1/16$, $e_3 = c_2 \cdot 1 + e_2 \cdot 1/4 = 1/4 + 1/16 = 5/16$.
+
+**Step 4** ($t=3 \to 4$):
+- Absorbed on hop 4: $e_3 \cdot 1/2 = 5/32$.
+
+**Total probability** of reaching a corner in 4 hops:
+$$P = 0 + \frac{1}{2} + \frac{1}{8} + \frac{5}{32} = \frac{16}{32} + \frac{4}{32} + \frac{5}{32} = \frac{25}{32}.$$
+
+Answer: **D**.
+</Solution>

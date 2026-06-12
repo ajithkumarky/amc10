@@ -1,0 +1,39 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 4
+answer: E
+choices: ['$\dfrac{17}{32}$', '$\dfrac{11}{16}$', '$\dfrac{7}{9}$', '$\dfrac{7}{6}$', '$\dfrac{25}{11}$']
+---
+
+<Problem>
+Let $f$ be a function defined on the set of positive rational numbers with the property that $f(a \cdot b) = f(a) + f(b)$ for all positive rational numbers $a$ and $b$. Furthermore, suppose that $f$ also has the property that $f(p) = p$ for every prime number $p$. For which of the following numbers $x$ is $f(x) < 0$?
+</Problem>
+
+<Solution>
+**Understand $f$.** The functional equation $f(ab) = f(a) + f(b)$ says $f$ is completely additive: $f(p^k) = k \cdot f(p) = kp$ for any prime $p$ and positive integer $k$, and for rationals, $f(a/b) = f(a) - f(b)$.
+
+For a positive rational $x = \dfrac{p_1^{a_1} p_2^{a_2} \cdots}{q_1^{b_1} q_2^{b_2} \cdots}$ (primes in numerator and denominator), we get:
+$$f(x) = \sum_i a_i p_i - \sum_j b_j q_j.$$
+
+**Evaluate each choice:**
+
+**(A) $x = \dfrac{17}{32} = \dfrac{17}{2^5}$:**
+$$f\!\left(\tfrac{17}{32}\right) = 17 - 5 \cdot 2 = 17 - 10 = 7 > 0.$$
+
+**(B) $x = \dfrac{11}{16} = \dfrac{11}{2^4}$:**
+$$f\!\left(\tfrac{11}{16}\right) = 11 - 4 \cdot 2 = 11 - 8 = 3 > 0.$$
+
+**(C) $x = \dfrac{7}{9} = \dfrac{7}{3^2}$:**
+$$f\!\left(\tfrac{7}{9}\right) = 7 - 2 \cdot 3 = 7 - 6 = 1 > 0.$$
+
+**(D) $x = \dfrac{7}{6} = \dfrac{7}{2 \cdot 3}$:**
+$$f\!\left(\tfrac{7}{6}\right) = 7 - 2 - 3 = 2 > 0.$$
+
+**(E) $x = \dfrac{25}{11} = \dfrac{5^2}{11}$:**
+$$f\!\left(\tfrac{25}{11}\right) = 2 \cdot 5 - 11 = 10 - 11 = -1 < 0.$$
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,39 @@
+---
+year: 2021
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: E
+choices: ["15", "30", "45", "60", "75"]
+---
+
+<Problem>
+When a student multiplied the number $66$ by the repeating decimal $\underline{1}.\overline{\underline{a}\,\underline{b}}$, where $a$ and $b$ are digits, he did not notice the repeating bar and just multiplied $66$ times $\underline{1}.\underline{a}\,\underline{b}$. Later he found that his answer is $0.5$ less than the correct answer. What is the $2$-digit number $\underline{a}\,\underline{b}$?
+</Problem>
+
+<Solution>
+Let the two-digit number $\overline{ab}$ equal $n$ (so $10 \le n \le 99$).
+
+The repeating decimal is $1.\overline{ab} = 1 + \dfrac{n}{99}$.
+
+The terminating decimal the student used is $1.ab = 1 + \dfrac{n}{100}$.
+
+The student's answer was $0.5$ less than the correct answer:
+
+$$66\left(1 + \frac{n}{99}\right) - 66\left(1 + \frac{n}{100}\right) = 0.5$$
+
+$$66n\left(\frac{1}{99} - \frac{1}{100}\right) = 0.5$$
+
+$$66n \cdot \frac{1}{9900} = 0.5$$
+
+$$\frac{66n}{9900} = \frac{1}{2}$$
+
+$$66n = 4950$$
+
+$$n = 75.$$
+
+So $\underline{a}\,\underline{b} = 75$.
+
+Answer: **E**.
+</Solution>

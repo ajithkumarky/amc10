@@ -1,0 +1,48 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 5
+answer: B
+choices: ['$10$', '$13$', '$15$', '$17$', '$20$']
+---
+
+<Problem>
+Hiram's algebra notes are $50$ pages long and are printed on $25$ sheets of paper; the first sheet contains pages $1$ and $2$, the second sheet contains pages $3$ and $4$, and so on. One day he leaves his notes on the table before leaving for lunch, and his roommate decides to borrow some pages from the middle of the notes. When Hiram comes back, he discovers that his roommate has taken a consecutive set of sheets from the notes and that the average (mean) of the page numbers on all remaining sheets is exactly $19$. How many sheets were borrowed?
+</Problem>
+
+<Solution>
+**Setup.** Sheet $k$ contains pages $2k-1$ and $2k$, so the sum of page numbers on sheet $k$ is $(2k-1) + 2k = 4k - 1$.
+
+Total sum of all 25 sheets: $\sum_{k=1}^{25}(4k-1) = 4\cdot\dfrac{25\cdot 26}{2} - 25 = 1300 - 25 = 1275$.
+
+The average of all 50 pages is $1275/50 = 25.5$.
+
+**After removal.** Suppose sheets $k, k+1, \ldots, k+n-1$ are removed ($n$ consecutive sheets starting at sheet $k$). Total pages remaining: $50 - 2n$. 
+
+Sum removed: $\sum_{j=k}^{k+n-1}(4j-1) = 4\cdot\dfrac{n(2k+n-1)}{2} - n = 2n(2k+n-1) - n = n(4k + 2n - 3)$.
+
+Remaining sum: $1275 - n(4k+2n-3)$.
+
+Average of remaining pages: $\dfrac{1275 - n(4k+2n-3)}{50-2n} = 19$.
+
+So:
+$$1275 - n(4k+2n-3) = 19(50-2n) = 950 - 38n.$$
+$$325 = n(4k+2n-3) - 38n = n(4k + 2n - 3 - 38) = n(4k + 2n - 41).$$
+
+We need positive integers $n$ and $k$ with $1 \leq k$ and $k + n - 1 \leq 25$ (all sheets exist), and $n(4k + 2n - 41) = 325$.
+
+Factor $325 = 5^2 \cdot 13$. Divisors: $1, 5, 13, 25, 65, 325$.
+
+For each divisor $n$ of $325$ with $1 \leq n \leq 25$: try $n \in \{1, 5, 13, 25\}$.
+
+- $n = 1$: $4k + 2 - 41 = 325 \Rightarrow 4k = 364 \Rightarrow k = 91$. But $k \leq 25$. No.
+- $n = 5$: $4k + 10 - 41 = 65 \Rightarrow 4k = 96 \Rightarrow k = 24$. Check: sheets 24 through 28, but sheet 28 doesn't exist (only 25 sheets). $k + n - 1 = 28 > 25$. No.
+- $n = 13$: $4k + 26 - 41 = 25 \Rightarrow 4k = 40 \Rightarrow k = 10$. Check: sheets 10 through 22, $k + n - 1 = 22 \leq 25$ ✓. And $k = 10 \geq 1$ ✓.
+- $n = 25$: $4k + 50 - 41 = 13 \Rightarrow 4k = 4 \Rightarrow k = 1$. Sheets 1 through 25 — that's all the sheets, leaving nothing. But the problem says "from the middle," implying some sheets remain. No valid solution.
+
+The valid solution is $n = 13$ sheets borrowed.
+
+Answer: **B**.
+</Solution>

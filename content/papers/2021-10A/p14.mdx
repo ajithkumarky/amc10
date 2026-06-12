@@ -1,0 +1,42 @@
+---
+year: 2021
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 3
+answer: A
+choices: ['$-88$', '$-80$', '$-64$', '$-41$', '$-40$']
+---
+
+<Problem>
+All the roots of the polynomial $z^6 - 10z^5 + Az^4 + Bz^3 + Cz^2 + Dz + 16$ are positive integers, possibly repeated. What is the value of $B$?
+</Problem>
+
+<Solution>
+We need six positive integer roots $r_1, r_2, \ldots, r_6$ satisfying two constraints from Vieta's formulas:
+
+$$r_1 + r_2 + \cdots + r_6 = 10 \quad \text{and} \quad r_1 r_2 \cdots r_6 = 16.$$
+
+Since all roots are positive integers summing to 10 and having product 16, we need a multiset of positive integers with sum 10 and product 16.
+
+**Finding the roots.** $16 = 2^4$, so all roots must be powers of 2 (or 1). Try roots from $\{1, 2\}$: if we use $a$ ones and $b$ twos, then $a + b = 6$, $a + 2b = 10$, $2^b = 16$. From the first two: $b = 4$, $a = 2$. Check product: $1^2 \cdot 2^4 = 16$ ✓.
+
+So the roots are $1, 1, 2, 2, 2, 2$.
+
+**Computing $B$.** By Vieta's formulas, $-B$ equals the sum of all products of three roots at a time (the elementary symmetric polynomial $e_3$).
+
+We need $e_3(1,1,2,2,2,2)$. Group by how many 2s appear in each triple:
+
+- **0 twos** (both 1s plus a 2... wait, we need triples of three from the six roots):
+  - **Choose 0 twos, 2 ones**: impossible (only 2 ones, need 3 total so need 1 two → that's "1 two" case)
+  - **0 twos**: need 3 ones, but only 2 ones. 0 ways.
+  - **1 two, 2 ones**: $\binom{4}{1}\binom{2}{2} = 4 \cdot 1 = 4$ triples, each product $= 2 \cdot 1 \cdot 1 = 2$. Contribution: $4 \times 2 = 8$.
+  - **2 twos, 1 one**: $\binom{4}{2}\binom{2}{1} = 6 \cdot 2 = 12$ triples, each product $= 4 \cdot 1 = 4$. Contribution: $12 \times 4 = 48$.
+  - **3 twos, 0 ones**: $\binom{4}{3} = 4$ triples, each product $= 8$. Contribution: $4 \times 8 = 32$.
+
+$$e_3 = 8 + 48 + 32 = 88.$$
+
+Since the polynomial is $z^6 - e_1 z^5 + e_2 z^4 - e_3 z^3 + \cdots$, we have $B = -e_3 = -88$.
+
+Answer: **A**.
+</Solution>
