@@ -1,0 +1,58 @@
+---
+year: 2022
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: E
+choices: ['$108$', '$120$', '$126$', '$132$', '$144$']
+---
+
+<Problem>
+How many ways are there to split the integers $1$ through $14$ into $7$ pairs such that in each pair, the greater number is at least $2$ times the lesser number?
+</Problem>
+
+<Solution>
+We need each pair $\{a, b\}$ with $a < b$ to satisfy $b \geq 2a$.
+
+**Step 1: Find which numbers can be the smaller element of a pair.**
+
+For $a$ to be the smaller element, there must be some $b \in \{1,\ldots,14\}$ with $b \geq 2a$ and $b > a$. The constraint $2a \leq 14$ gives $a \leq 7$. So only $1, 2, 3, 4, 5, 6, 7$ can serve as lesser elements, and $8, 9, 10, 11, 12, 13, 14$ must all be greater elements.
+
+**Step 2: Determine valid pairings.**
+
+Since there are exactly 7 numbers on each side, the pairing is a perfect matching: each of $\{1,2,3,4,5,6,7\}$ is paired with exactly one of $\{8,9,10,11,12,13,14\}$, subject to the constraint that if $a$ is paired with $b$, then $b \geq 2a$.
+
+The valid partners for each lesser element:
+- $1$ can pair with: $2,3,4,5,6,7,8,9,10,11,12,13,14$ — but since partners are from $\{8,...,14\}$: all $7$ values work.
+- $2$ can pair with: $4,5,...,14$ — from $\{8,...,14\}$: all $7$ values ($4 \leq 8$, so $2 \cdot 2 = 4 \leq 8$) ✓ all work.
+- $3$ can pair with: $6,7,...,14$ — from $\{8,...,14\}$: all $7$ values ($2 \cdot 3 = 6 \leq 8$) ✓ all work.
+- $4$ can pair with: $8,9,...,14$ — from $\{8,...,14\}$: all $7$ values ✓.
+- $5$ can pair with: $10,11,12,13,14$ — from $\{8,...,14\}$: $5$ values.
+- $6$ can pair with: $12,13,14$ — from $\{8,...,14\}$: $3$ values.
+- $7$ can pair with: $14$ — from $\{8,...,14\}$: $1$ value.
+
+**Step 3: Count the matchings using a chain argument.**
+
+Since $7$ must be paired with $14$, and $6$ must be paired with one of $\{12, 13, 14\}$, but $14$ is taken by $7$, so $6$ pairs with $12$ or $13$ ($2$ choices).
+
+Once $6$ and $7$ are assigned, $5$ can pair with any of $\{10, 11, 12, 13, 14\}$ minus those taken. $7$ takes $14$; $6$ takes one of $\{12,13\}$. So $5$ has $5 - 2 = 3$ remaining choices from $\{10,11,12,13,14\} \setminus \{\text{used}\}$.
+
+For $4$: can pair with any of $\{8,9,10,11,12,13,14\}$ minus the 3 already taken, giving $7 - 3 = 4$ choices.
+
+For $3,2,1$: they can pair with anything in $\{8,...,14\}$, so the remaining $4$ values fill in $4!$ ways — wait, let's be careful.
+
+Actually, $1$, $2$, $3$, $4$ can all pair with anything in $\{8,...,14\}$. After $7 \to 14$, $6 \to$ one of $\{12,13\}$, $5 \to$ one of the remaining valid values, and $4 \to$ one of the remaining valid values, then $1$, $2$, $3$ take whatever is left (they have no restriction on the upper bound since $2 \cdot 3 = 6 < 8$).
+
+Let me count sequentially. Assign partners to $7, 6, 5, 4$ in order; then $1, 2, 3$ take the remaining three values in any order.
+
+- $7$: must take $14$. ($1$ choice)
+- $6$: can take $12$ or $13$. ($2$ choices)
+- $5$: needs $\geq 10$; available from $\{10,11,12,13\}$ minus one used by $6$. That's $3$ choices.
+- $4$: needs $\geq 8$; available from $\{8,9,10,11,12,13\}$ minus two used by $5,6$. That's $6 - 2 = 4$ choices.
+- $1, 2, 3$: take the remaining $3$ values in any order ($3! = 6$ ways, all valid since all remaining values are $\geq 8 > 2 \cdot 3$).
+
+Total $= 1 \times 2 \times 3 \times 4 \times 6 = 144$.
+
+Answer: **E**.
+</Solution>

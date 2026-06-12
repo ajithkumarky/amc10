@@ -1,0 +1,31 @@
+---
+year: 2022
+paper: "10A"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 1
+answer: C
+choices: ['$\dfrac{\sqrt{2}}{3}$', '$\dfrac{1}{2}$', '$2-\sqrt{2}$', '$1-\dfrac{\sqrt{2}}{4}$', '$\dfrac{2}{3}$']
+---
+
+<Problem>
+Square $ABCD$ has side length $1$. Points $P$, $Q$, $R$, and $S$ each lie on a side of $ABCD$ such that $APQCRS$ is an equilateral convex hexagon with side length $s$. What is $s$?
+</Problem>
+
+<Solution>
+Place the square with $A=(0,1)$, $B=(0,0)$, $C=(1,0)$, $D=(1,1)$.
+
+In an equilateral hexagon inscribed in a square this way, by symmetry $P$ lies on $AB$, $Q$ on $BC$, $R$ on $CD$, $S$ on $DA$, each at distance $s$ from the nearest vertex of the hexagon path.
+
+Since $AP = s$ and $AP$ is along side $AB$ (length 1), we get $AP = s$, so $PB = 1 - s$. Similarly $QC = s$ and $BQ = 1 - s$. The segment $PQ$ crosses the corner at $B$; by the Pythagorean theorem:
+
+$$PQ = \sqrt{PB^2 + BQ^2} = \sqrt{(1-s)^2 + (1-s)^2} = (1-s)\sqrt{2}.$$
+
+For an equilateral hexagon, $PQ = s$:
+$$(1-s)\sqrt{2} = s$$
+$$\sqrt{2} - \sqrt{2}\,s = s$$
+$$\sqrt{2} = s(1 + \sqrt{2})$$
+$$s = \frac{\sqrt{2}}{1+\sqrt{2}} = \frac{\sqrt{2}({\sqrt{2}-1})}{(\sqrt{2}+1)(\sqrt{2}-1)} = \frac{2-\sqrt{2}}{1} = 2-\sqrt{2}.$$
+
+Answer: **C**.
+</Solution>

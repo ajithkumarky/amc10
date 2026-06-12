@@ -1,0 +1,47 @@
+---
+year: 2022
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: A
+choices: ["$7$", "$12$", "$21$", "$27$", "$31$"]
+---
+
+<Problem>
+On Halloween, $31$ children walked into the principal's office asking for candy. They can be classified into three types: some always lie; some always tell the truth; and some alternately lie and tell the truth. The alternaters arbitrarily choose their first response, either a lie or the truth, but each subsequent statement has the opposite truth value from its predecessor. The principal asked everyone the same three questions in this order.
+
+"Are you a truth-teller?" The principal gave a piece of candy to each of the $22$ children who answered yes.
+
+"Are you an alternater?" The principal gave a piece of candy to each of the $15$ children who answered yes.
+
+"Are you a liar?" The principal gave a piece of candy to each of the $9$ children who answered yes.
+
+How many pieces of candy in all did the principal give to the children who always tell the truth?
+</Problem>
+
+<Solution>
+Let $T$ = truth-tellers, $L$ = liars, $A$ = alternaters.
+
+**Truth-tellers** always tell the truth: Q1 (yes), Q2 (no), Q3 (no). Each gets 1 candy.
+
+**Liars** always lie: Q1 they lie about being a truth-teller — they say "yes". Q2 they lie about being an alternater — they say "yes". Q3 they lie about being a liar — they say "no". Each gets 2 candies.
+
+**Alternaters (start with truth):** Q1 truth — they're not a truth-teller, so answer "no". Q2 lie — they are an alternater, lie says "no". Q3 truth — they're not a liar, answer "no". Gets 0 candies.
+
+**Alternaters (start with lie):** Q1 lie — they're not a truth-teller, lie says "yes". Q2 truth — they are alternaters, truth says "yes". Q3 lie — they're not liars, lie says "yes". Gets 3 candies. Call this group $A_1$ with count $a_1$, and the first group $A_0$ with count $a_0$.
+
+Now set up equations from candy counts. "Yes" counts:
+
+- Q1: $T + L + a_1 = 22$
+- Q2: $L + a_1 = 15$
+- Q3: $a_1 = 9$
+
+From Q3: $a_1 = 9$. From Q2: $L = 15 - 9 = 6$. From Q1: $T = 22 - 6 - 9 = 7$.
+
+Check: $T + L + a_0 + a_1 = 31 \Rightarrow a_0 = 31 - 7 - 6 - 9 = 9$.
+
+Truth-tellers each get 1 candy (answered yes to Q1 only), so total candy to truth-tellers $= T \times 1 = 7$.
+
+Answer: **A**.
+</Solution>

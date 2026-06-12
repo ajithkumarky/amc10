@@ -1,0 +1,70 @@
+---
+year: 2022
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: D
+choices: ['$9$', '$10$', '$11$', '$13$', '$14$']
+---
+
+<Problem>
+How many three-digit positive integers $\underline{a}\ \underline{b}\ \underline{c}$ are there whose nonzero digits $a$, $b$, and $c$ satisfy
+$$0.\overline{\underline{a}\ \underline{b}\ \underline{c}} = \frac{1}{3}\!\left(0.\overline{a} + 0.\overline{b} + 0.\overline{c}\right)?$$
+(The bar indicates repetition, so $0.\overline{\underline{a}\ \underline{b}\ \underline{c}}$ is the infinite repeating decimal $0.\underline{a}\ \underline{b}\ \underline{c}\ \underline{a}\ \underline{b}\ \underline{c}\ \cdots$)
+</Problem>
+
+<Solution>
+**Convert repeating decimals to fractions.**
+
+- $0.\overline{abc}$ (the three-digit block repeating) $= \dfrac{100a + 10b + c}{999}$.
+- $0.\overline{a} = \dfrac{a}{9}$, $0.\overline{b} = \dfrac{b}{9}$, $0.\overline{c} = \dfrac{c}{9}$.
+
+The equation becomes:
+
+$$\frac{100a + 10b + c}{999} = \frac{1}{3} \cdot \frac{a + b + c}{9} = \frac{a+b+c}{27}.$$
+
+Cross-multiply:
+
+$$27(100a + 10b + c) = 999(a + b + c).$$
+
+$$2700a + 270b + 27c = 999a + 999b + 999c.$$
+
+$$1701a - 729b - 972c = 0.$$
+
+Divide through by $\gcd(1701, 729, 972)$. Check: $1701 = 3 \cdot 567 = 3 \cdot 3 \cdot 189 = 9 \cdot 189 = 9 \cdot 27 \cdot 7 = 243 \cdot 7$. $729 = 3^6$. $972 = 4 \cdot 243 = 2^2 \cdot 3^5$. $\gcd = 3^5 = 243$.
+
+Divide by $243$:
+
+$$7a - 3b - 4c = 0.$$
+
+So we need $7a = 3b + 4c$ with $a, b, c \in \{1,2,\ldots,9\}$ (all nonzero digits).
+
+**Count solutions.**
+
+$7a = 3b + 4c$. Since $a, b, c \geq 1$: minimum value of $3b + 4c = 7$, maximum $= 3(9) + 4(9) = 63$. So $a = 1$ gives $7 = 3b + 4c$; $a = 9$ gives $63 = 3b + 4c$.
+
+For each $a$, find pairs $(b,c)$ with $b,c \in \{1,...,9\}$ and $3b + 4c = 7a$.
+
+- $a=1$: $3b + 4c = 7$. With $b,c \geq 1$: $3b = 7 - 4c$. For $c=1$: $3b=3$, $b=1$ ✓. No other $c \geq 1$ works ($c=2$ gives $3b=-1$). **1 solution**: $(1,1,1)$.
+
+- $a=2$: $3b + 4c = 14$. $c=1$: $3b=10$, not integer. $c=2$: $3b=6$, $b=2$ ✓. $c=3$: $3b=2$, no. **1 solution**: $(2,2,2)$.
+
+- $a=3$: $3b + 4c = 21$. $c=1$: $3b=17$, no. $c=2$: $3b=13$, no. $c=3$: $3b=9$, $b=3$ ✓. $c=4$: $3b=5$, no. $c=5$: $3b=1$, no. **1 solution**: $(3,3,3)$.
+
+- $a=4$: $3b + 4c = 28$. $c=1$: $3b=24$, $b=8$ ✓. $c=2$: $3b=20$, no. $c=3$: $3b=16$, no. $c=4$: $3b=12$, $b=4$ ✓. $c=7$: $3b=0$, no ($b \geq 1$). **2 solutions**: $(4,8,1)$, $(4,4,4)$.
+
+- $a=5$: $3b + 4c = 35$. $c=2$: $3b=27$, $b=9$ ✓. $c=3$: $3b=23$, no. $c=4$: $3b=19$, no. $c=5$: $3b=15$, $b=5$ ✓. $c=6$: $3b=11$, no. $c=8$: $3b=3$, $b=1$ ✓. **3 solutions**: $(5,9,2)$, $(5,5,5)$, $(5,1,8)$.
+
+- $a=6$: $3b + 4c = 42$. $c=3$: $3b=30$, $b=10$, too big. $c=6$: $3b=18$, $b=6$ ✓. $c=7$: $3b=14$, no. $c=9$: $3b=6$, $b=2$ ✓. Also $c=1$: $3b=38$, no. $c=5$: $3b=22$, no. $c=8$: $3b=10$, no. $c=4$: $3b=26$, no. Let me be systematic: $4c = 42 - 3b$, so $42 - 3b \equiv 0 \pmod{4}$, meaning $3b \equiv 42 \equiv 2 \pmod{4}$, so $b \equiv 2 \pmod{4}$ (since $3 \cdot 2 = 6 \equiv 2$). $b \in \{2, 6\}$ (within 1-9, $b \equiv 2 \pmod 4$: $b=2,6$). $b=2$: $c=(42-6)/4=9$ ✓. $b=6$: $c=(42-18)/4=6$ ✓. **2 solutions**: $(6,2,9)$, $(6,6,6)$.
+
+- $a=7$: $3b + 4c = 49$. $b \equiv ?$: $4c = 49 - 3b$, need $49 - 3b \equiv 0 \pmod 4$, so $3b \equiv 1 \pmod 4$, $b \equiv 3 \pmod 4$. $b \in \{3,7\}$. $b=3$: $c=(49-9)/4=10$, too big. $b=7$: $c=(49-21)/4=7$ ✓. Also $b=7+4=11$, too big. **1 solution**: $(7,7,7)$.
+
+- $a=8$: $3b + 4c = 56$. $4c = 56-3b$, $3b \equiv 0 \pmod 4$, $b \equiv 0 \pmod 4$. $b \in \{4,8\}$. $b=4$: $c=(56-12)/4=11$, too big. $b=8$: $c=(56-24)/4=8$ ✓. **1 solution**: $(8,8,8)$.
+
+- $a=9$: $3b + 4c = 63$. $3b \equiv 3 \pmod 4$, $b \equiv 1 \pmod 4$. Wait: $4c=63-3b$, need $63-3b \equiv 0 \pmod 4$, $3b \equiv 63 \equiv 3 \pmod 4$, $b \equiv 1 \pmod 4$. $b \in \{1,5,9\}$. $b=1$: $c=(63-3)/4=15$, too big. $b=5$: $c=(63-15)/4=12$, too big. $b=9$: $c=(63-27)/4=9$ ✓. **1 solution**: $(9,9,9)$.
+
+**Total**: $1+1+1+2+3+2+1+1+1 = 13$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,33 @@
+---
+year: 2022
+paper: "10A"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 2
+answer: B
+choices: ["$3$", "$6$", "$8$", "$9$", "$12$"]
+---
+
+<Problem>
+The least common multiple of a positive integer $n$ and $18$ is $180$, and the greatest common divisor of $n$ and $45$ is $15$. What is the sum of the digits of $n$?
+</Problem>
+
+<Solution>
+Factor everything: $18 = 2 \cdot 3^2$, $180 = 2^2 \cdot 3^2 \cdot 5$, $45 = 3^2 \cdot 5$, $15 = 3 \cdot 5$.
+
+Write $n = 2^a \cdot 3^b \cdot 5^c$ (other primes would not divide 180 or 45, so only 2, 3, 5 matter).
+
+From $\text{lcm}(n, 18) = 180$:
+- $\max(a, 1) = 2 \Rightarrow a = 2$
+- $\max(b, 2) = 2 \Rightarrow b \leq 2$
+- $\max(c, 0) = 1 \Rightarrow c = 1$
+
+From $\gcd(n, 45) = 15$:
+- $\gcd$ with $45 = 3^2 \cdot 5$: contribution from 2 is $\min(a,0)=0$ (fine), from 3 is $\min(b,2)=1 \Rightarrow b=1$, from 5 is $\min(c,1)=1 \Rightarrow c \geq 1$, confirmed $c=1$.
+
+So $n = 2^2 \cdot 3^1 \cdot 5^1 = 4 \cdot 3 \cdot 5 = 60$.
+
+Sum of digits of $60$: $6 + 0 = 6$.
+
+Answer: **B**.
+</Solution>

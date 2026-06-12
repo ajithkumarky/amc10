@@ -1,0 +1,33 @@
+---
+year: 2022
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: E
+choices: ["$14$", '$10\sqrt{2}$', "$16$", '$12\sqrt{2}$', "$18$"]
+---
+
+<Problem>
+Daniel finds a rectangular index card and measures its diagonal to be $8$ centimeters. Daniel then cuts out equal squares of side $1$ cm at two opposite corners of the index card and measures the distance between the two closest vertices of these squares to be $4\sqrt{2}$ centimeters. What is the area of the original index card?
+</Problem>
+
+<Solution>
+Let the rectangle have width $w$ and height $h$. The diagonal gives $w^2 + h^2 = 64$.
+
+When a $1 \times 1$ square is cut from one corner, the two closest new vertices of opposite cut squares are the ones diagonally inward. The distance between these vertices equals the diagonal of the rectangle minus $2\sqrt{2} \cdot 1$ (each cut moves the vertex $\sqrt{2}$ inward along the diagonal direction).
+
+More precisely: if the rectangle has corners at $(0,0)$ and $(w,h)$, cut squares at $(0,0)$ and $(w,h)$. The closest new vertex at the $(0,0)$ corner is at $(1,0)$ or $(0,1)$; the corresponding vertex at the $(w,h)$ corner is at $(w-1, h)$ or $(w, h-1)$. The distance between $(1,0)$ and $(w-1,h)$ is $\sqrt{(w-2)^2+h^2}$.
+
+Actually, the "closest vertices of these squares" are the inner corners: from the $(0,0)$ cut, the inner corner is $(1,1)$; from the $(w,h)$ cut, the inner corner is $(w-1, h-1)$.
+
+Distance: $\sqrt{(w-2)^2 + (h-2)^2} = 4\sqrt{2}$.
+
+So $(w-2)^2 + (h-2)^2 = 32$, i.e., $w^2 - 4w + 4 + h^2 - 4h + 4 = 32$.
+
+Using $w^2 + h^2 = 64$: $64 - 4(w+h) + 8 = 32$, so $4(w+h) = 40$, giving $w + h = 10$.
+
+The area is $wh = \dfrac{(w+h)^2 - (w^2+h^2)}{2} = \dfrac{100-64}{2} = \dfrac{36}{2} = 18$.
+
+Answer: **E**.
+</Solution>

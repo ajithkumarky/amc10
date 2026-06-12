@@ -1,0 +1,171 @@
+---
+year: 2022
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 5
+answer: B
+choices: ['$336$', '$337$', '$338$', '$339$', '$340$']
+---
+
+<Problem>
+Let $R$, $S$, and $T$ be squares that have vertices at lattice points in the coordinate plane, together with their interiors. The bottom edge of each square is on the $x$-axis. The left edge of $R$ and the right edge of $S$ are on the $y$-axis, and $R$ contains $\dfrac{9}{4}$ as many lattice points as does $S$. The top two vertices of $T$ are in $R \cup S$, and $T$ contains $\dfrac{1}{4}$ of the lattice points contained in $R \cup S$. The fraction of lattice points in $S$ that are in $S \cap T$ is $27$ times the fraction of lattice points in $R$ that are in $R \cap T$. What is the minimum possible value of the edge length of $R$ plus the edge length of $S$ plus the edge length of $T$?
+</Problem>
+
+<Solution>
+**Set up variables.** Let $r$ = edge length of $R$, $s$ = edge length of $S$, $t$ = edge length of $T$. All are positive integers (since vertices are at lattice points).
+
+**Lattice point counts.** A square of side $n$ with vertices at lattice points aligned with axes contains $(n+1)^2$ lattice points. So:
+- $|R| = (r+1)^2$,
+- $|S| = (s+1)^2$.
+
+**Condition 1:** $R$ contains $\dfrac{9}{4}$ as many lattice points as $S$:
+$$(r+1)^2 = \frac{9}{4}(s+1)^2 \implies \frac{r+1}{s+1} = \frac{3}{2} \implies r+1 = \frac{3(s+1)}{2}.$$
+
+For $r+1$ to be an integer, $s+1$ must be even, so $s$ is odd. Let $s+1 = 2m$, so $r+1 = 3m$: $s = 2m-1$, $r = 3m-1$.
+
+**Lattice points in $R \cup S$.** $R$ sits on the right side of the $y$-axis (left edge on $y$-axis), so $R$ occupies $x \in [0, r]$. $S$ sits on the left side (right edge on $y$-axis), so $S$ occupies $x \in [-s, 0]$. They share only the $y$-axis segment $x=0$, $y \in [0, \min(r,s)]$.
+
+Lattice points on shared edge: $x=0$, $0 \leq y \leq \min(r,s) = \min(3m-1, 2m-1) = 2m-1$. Count: $2m$ points.
+
+$$|R \cup S| = (r+1)^2 + (s+1)^2 - (2m) = (3m)^2 + (2m)^2 - 2m = 9m^2 + 4m^2 - 2m = 13m^2 - 2m.$$
+
+**Condition 2:** $T$ contains $\dfrac{1}{4}$ of $|R \cup S|$:
+$$(t+1)^2 = \frac{1}{4}(13m^2 - 2m).$$
+
+For this to yield an integer, $13m^2 - 2m \equiv 0 \pmod{4}$, i.e., $m(13m - 2) \equiv 0 \pmod{4}$.
+
+If $m$ is even: $m = 2k$, $13m-2 = 26k-2$, $m(13m-2) = 2k(26k-2) = 4k(13k-1) \equiv 0 \pmod 4$ ✓.
+If $m$ is odd: $13m-2 \equiv 13-2 = 11 \equiv 3 \pmod 4$, $m(13m-2) \equiv 1 \cdot 3 = 3 \pmod 4$. Not divisible by 4.
+
+So $m$ must be even; let $m = 2k$: $s = 4k-1$, $r = 6k-1$.
+
+$$(t+1)^2 = \frac{13(4k)^2 - 2(2k)}{4} = \frac{208k^2 - 4k}{4} = 52k^2 - k = k(52k-1).$$
+
+So $k(52k-1)$ must be a perfect square.
+
+**Condition 3: The $27\times$ condition.**
+
+Square $T$ has bottom on the $x$-axis and its top two vertices in $R \cup S$. From the figure, $T$ straddles the $y$-axis, with part in $R$ (right of $y$-axis) and part in $S$ (left). Let $T$ have left edge at $x = -a$ and right edge at $x = -a+t$, where $0 \leq a \leq t$ (so the right edge is at $x = t-a$). The $y$-axis intersects $T$ if $-a \leq 0 \leq t-a$, i.e., $0 \leq a \leq t$.
+
+Lattice points of $T$ in $R$: $x \in [0, t-a]$, $y \in [0, t]$: count $(t-a+1)(t+1)$.
+Lattice points of $T$ in $S$: $x \in [-a, 0]$, $y \in [0, t]$: count $(a+1)(t+1)$.
+
+(The $x=0$ column is counted in both; total for $T$ is $(t+1)^2 = (t+1)[(t-a+1)+(a+1)-1] = (t+1)^2$... wait: $(t-a+1)(t+1) + (a+1)(t+1) - (t+1) = (t+1)[t-a+1+a+1-1] = (t+1)(t+1) = (t+1)^2$ ✓.)
+
+The condition: $\dfrac{|S \cap T|}{|S|} = 27 \cdot \dfrac{|R \cap T|}{|R|}$:
+
+$$\frac{(a+1)(t+1)}{(s+1)^2} = 27 \cdot \frac{(t-a+1)(t+1)}{(r+1)^2}.$$
+
+Since $r+1 = 3m$ and $s+1 = 2m$:
+
+$$\frac{(a+1)}{(2m)^2} = 27 \cdot \frac{(t-a+1)}{(3m)^2}.$$
+
+$$\frac{a+1}{4m^2} = \frac{27(t-a+1)}{9m^2} = \frac{3(t-a+1)}{m^2}.$$
+
+$$(a+1) = 12(t-a+1).$$
+
+$$a + 1 = 12t - 12a + 12 \implies 13a = 12t + 11 \implies a = \frac{12t+11}{13}.$$
+
+For $a$ to be a positive integer, $12t + 11 \equiv 0 \pmod{13}$, i.e., $12t \equiv -11 \equiv 2 \pmod{13}$, i.e., $t \equiv 2 \cdot 12^{-1} \pmod{13}$.
+
+$12 \equiv -1 \pmod{13}$, so $12^{-1} \equiv -1 \equiv 12 \pmod{13}$. Thus $t \equiv 2 \cdot 12 = 24 \equiv 11 \pmod{13}$.
+
+So $t = 13j + 11$ for non-negative integer $j$, giving $a = \dfrac{12(13j+11)+11}{13} = \dfrac{156j+143}{13} = 12j+11$.
+
+Also need $0 \leq a \leq t$: $12j+11 \leq 13j+11$, i.e., $0 \leq j$ ✓. And $a \geq 0$: $j \geq 0$ ✓. Also $t-a = 13j+11-(12j+11) = j \geq 0$ ✓.
+
+**Combine conditions.** We have $m = 2k$, $t = 13j+11$, and $(t+1)^2 = k(52k-1)$.
+
+$(t+1) = 13j+12$, so $(13j+12)^2 = k(52k-1)$.
+
+We minimize $r+s+t = (6k-1)+(4k-1)+(13j+11) = 10k + 13j + 9$.
+
+We need $k(52k-1) = (13j+12)^2$. Let $u = 13j+12$ (so $u \equiv 12 \equiv -1 \pmod{13}$, i.e., $u \equiv 12 \pmod{13}$). Then $k(52k-1) = u^2$.
+
+This is a quadratic in $k$: $52k^2 - k - u^2 = 0$:
+
+$$k = \frac{1 \pm \sqrt{1 + 208u^2}}{104}.$$
+
+For $k$ to be a positive integer, $1 + 208u^2$ must be a perfect square. Let $1 + 208u^2 = v^2$:
+
+$$v^2 - 208u^2 = 1.$$
+
+This is a Pell equation! The fundamental solution of $v^2 - 208u^2 = 1$ (where $208 = 16 \cdot 13$, so $\sqrt{208} = 4\sqrt{13}$):
+
+The continued fraction of $\sqrt{208}$: $\sqrt{208} \approx 14.42$. Continued fraction: $[14; \overline{2, 28}]$ (period 2). The fundamental solution: try small $v$, $u$. $v^2 - 208u^2 = 1$: $u=1$: $v^2 = 209 = 11 \cdot 19$, not a square. $u=2$: $v^2 = 833$, no. $u=3$: $v^2 = 1873$, no. $u=9$: $v^2 = 1+208\cdot81=1+16848=16849=129.8...^2$? $129^2=16641$, $130^2=16900$. No. $u=13$: $v^2=1+208\cdot169=1+35152=35153$. $\sqrt{35153}\approx 187.5$, $187^2=34969$, $188^2=35344$. No. 
+
+Hmm, but we also need $u \equiv 12 \pmod{13}$. And $k = \frac{1+v}{104}$ must be a positive integer.
+
+Let me take a different approach. We need $k(52k-1)$ to be a perfect square, and $u^2 = k(52k-1)$ with $u \equiv 12 \pmod{13}$.
+
+Note $\gcd(k, 52k-1) = \gcd(k, 1) = 1$. So $k$ and $52k-1$ are coprime. For their product to be a perfect square, each must individually be a perfect square (or one is $p^2$ times the other form, but since $\gcd=1$, both must be perfect squares):
+
+$k = p^2$ and $52k - 1 = q^2$ for some positive integers $p, q$. Then $52p^2 - q^2 = 1$, i.e., $q^2 - 52p^2 = -1$.
+
+This is a negative Pell equation: $q^2 - 52p^2 = -1$. The negative Pell equation $x^2 - Dy^2 = -1$ has solutions iff $\sqrt{D}$ has a continued fraction with odd period. For $D=52=4\cdot13$: $\sqrt{52} = 2\sqrt{13}$. CF of $\sqrt{52}$: $\sqrt{52} \approx 7.21$. $a_0 = 7$. $52 - 49 = 3$, so $\sqrt{52} = 7 + (\sqrt{52}-7)$. The CF is $[7; \overline{4, 14}]$ with period 2 (even). So no solution to the negative Pell equation.
+
+So we can't have both $k$ and $52k-1$ perfect squares. Let me reconsider: $\gcd(k, 52k-1)=1$, product is a square, so... actually it IS true that each factor must be a perfect square. But if there's no solution, perhaps I made an error.
+
+Wait — I need to reconsider. $(t+1)^2 = k(52k-1)$ doesn't require $k$ and $52k-1$ to each be perfect squares; it requires their product to equal $(t+1)^2$. Since $\gcd(k, 52k-1)=1$, we need $k = A^2$ and $52k-1 = B^2$ where $t+1 = AB$. So $52A^2 - B^2 = 1$, i.e., $B^2 - 52A^2 = -1$. And there's no solution (as shown above).
+
+There must be an error in my setup. Let me recheck the lattice point formula for $R \cup S$.
+
+Actually: the $y$-axis is the left edge of $R$ and right edge of $S$. The $y$-axis points $x=0$ are shared by both. But both $R$ and $S$ include $x=0$ because $R$ includes $x \in [0,r]$ (left edge at $x=0$) and $S$ includes $x \in [-s,0]$ (right edge at $x=0$). The intersection $R \cap S$ is the segment of the $y$-axis from $y=0$ to $y = \min(r,s)$.
+
+With $r = 3m-1 > s = 2m-1$ (for $m \geq 1$), $\min(r,s) = s = 2m-1$.
+
+$|R \cap S|$: lattice points at $x=0$, $0 \leq y \leq 2m-1$: that's $2m$ points.
+
+$|R \cup S| = (r+1)^2 + (s+1)^2 - |R \cap S| = (3m)^2 + (2m)^2 - 2m = 9m^2 + 4m^2 - 2m = 13m^2 - 2m$. ✓
+
+So with $m = 2k$: $|R \cup S| = 13(4k^2) - 2(2k) = 52k^2 - 4k$.
+
+$(t+1)^2 = \frac{1}{4}(52k^2 - 4k) = 13k^2 - k = k(13k-1)$.
+
+I had an arithmetic error earlier! Let me redo: $m = 2k$, so $m^2 = 4k^2$, $13m^2 - 2m = 13(4k^2) - 2(2k) = 52k^2 - 4k$.
+
+$(t+1)^2 = \frac{52k^2 - 4k}{4} = 13k^2 - k = k(13k-1)$.
+
+Now $\gcd(k, 13k-1) = \gcd(k,1) = 1$. So $k = A^2$ and $13k-1 = B^2$, giving $13A^2 - B^2 = 1$, i.e., $B^2 - 13A^2 = -1$ (negative Pell, $D=13$).
+
+CF of $\sqrt{13} = [3; \overline{1,1,1,1,6}]$, period 5 (odd). So the negative Pell equation $B^2 - 13A^2 = -1$ has solutions!
+
+The fundamental solution: convergents of $\sqrt{13}$: $3/1, 4/1, 7/2, 11/3, 18/5, 119/33, \ldots$. The first convergent with odd index (1, 3, 5, ...): $p_1/q_1 = 4/1$: $4^2 - 13 \cdot 1^2 = 3 \neq -1$. $p_3/q_3 = 11/3$: $11^2 - 13 \cdot 9 = 121 - 117 = 4 \neq -1$. $p_5/q_5 = 119/33$: $119^2 - 13 \cdot 33^2 = 14161 - 14157 = 4$. Hmm.
+
+Let me recompute the CF more carefully. $\sqrt{13} \approx 3.606$.
+
+$a_0 = 3$. $\sqrt{13}-3 = 0.606...$, $1/0.606 = 1.651$, $a_1=1$.
+$1/(\sqrt{13}-3) = (\sqrt{13}+3)/4$. $(\sqrt{13}+3)/4 \approx 1.651$, $a_1=1$, remainder $(\sqrt{13}+3)/4 - 1 = (\sqrt{13}-1)/4$.
+$4/(\sqrt{13}-1) = 4(\sqrt{13}+1)/12 = (\sqrt{13}+1)/3 \approx 1.535$, $a_2=1$, remainder $(\sqrt{13}+1)/3 - 1 = (\sqrt{13}-2)/3$.
+$3/(\sqrt{13}-2) = 3(\sqrt{13}+2)/9 = (\sqrt{13}+2)/3 \approx 1.869$, $a_3=1$, remainder $(\sqrt{13}+2)/3 - 1 = (\sqrt{13}-1)/3$.
+$3/(\sqrt{13}-1) = 3(\sqrt{13}+1)/12 = (\sqrt{13}+1)/4 \approx 1.151$, $a_4=1$, remainder $(\sqrt{13}+1)/4 - 1 = (\sqrt{13}-3)/4$.
+$4/(\sqrt{13}-3) = 4(\sqrt{13}+3)/4 = \sqrt{13}+3 \approx 6.606$, $a_5=6$, remainder $\sqrt{13}+3-6 = \sqrt{13}-3$.
+Back to start: period = 5. $\sqrt{13} = [3; 1,1,1,1,6,1,1,1,1,6,\ldots]$.
+
+Convergents:
+$h_{-1}=1, h_0=3, h_1=4, h_2=7, h_3=11, h_4=18, h_5=119$.
+$k_{-1}=0, k_0=1, k_1=1, k_2=2, k_3=3, k_4=5, k_5=33$.
+
+Check $h_4^2 - 13k_4^2 = 18^2 - 13 \cdot 25 = 324 - 325 = -1$. Yes! Fundamental solution of $x^2 - 13y^2 = -1$ is $(x,y) = (18, 5)$.
+
+So the smallest solution is $B=18$, $A=5$: $k = A^2 = 25$, $13k-1 = 13(25)-1 = 324 = 18^2$ ✓.
+
+Then $t+1 = AB = 18 \cdot 5 = 90$, so $t = 89$.
+
+Check $u = t+1 = 90 \equiv 12 \pmod{13}$? $90 = 6 \cdot 13 + 12$ ✓.
+
+With $k=25$: $m = 2k = 50$, $r = 3m-1 = 149$, $s = 2m-1 = 99$, $t = 89$.
+
+But wait — I also need to verify $j \geq 0$ from $t = 13j + 11$: $89 = 13j + 11 \Rightarrow j = 6 \geq 0$ ✓. And $a = 12j+11 = 83$.
+
+Also check $a \leq s = 99$: $83 \leq 99$ ✓ (needed for $T$ to be inside $R \cup S$). And $t-a = 89-83 = 6 \leq r = 149$ ✓.
+
+$r+s+t = 149 + 99 + 89 = 337$.
+
+**Is this the minimum?** The next solution to $B^2 - 13A^2 = -1$ comes from composing with the fundamental solution of $x^2 - 13y^2 = 1$. The fundamental solution of $x^2 - 13y^2=1$ is $(h_9, k_9)$... from doubling, $(2\cdot18^2+1, 2\cdot18\cdot5) = (649, 180)$. The next solution to the $-1$ equation: $(18\cdot649+5\cdot13\cdot180, 18\cdot180+5\cdot649) = (11682+11700, 3240+3245) = (23382, 6485)$... clearly much larger, giving $r+s+t \gg 337$.
+
+Therefore, the minimum value is $r+s+t = \mathbf{337}$.
+
+Answer: **B**.
+</Solution>

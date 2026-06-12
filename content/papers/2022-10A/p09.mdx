@@ -1,0 +1,55 @@
+---
+year: 2022
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: D
+choices: ["$120$", "$270$", "$360$", "$540$", "$720$"]
+---
+
+<Problem>
+A rectangle is partitioned into $5$ regions as shown. Each region is to be painted a solid color — red, orange, yellow, blue, or green — so that regions that touch are painted different colors, and colors can be used more than once. How many different colorings are possible?
+
+<svg viewBox="0 0 240 160" width="240" height="160" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="80" width="50" height="60" fill="none" stroke="#00e5ff" strokeWidth="2"/>
+  <rect x="60" y="80" width="120" height="60" fill="none" stroke="#00e5ff" strokeWidth="2"/>
+  <rect x="180" y="80" width="50" height="60" fill="none" stroke="#00e5ff" strokeWidth="2"/>
+  <rect x="10" y="20" width="115" height="60" fill="none" stroke="#00e5ff" strokeWidth="2"/>
+  <rect x="125" y="20" width="105" height="60" fill="none" stroke="#00e5ff" strokeWidth="2"/>
+  <text x="35" y="115" fontSize="12" fill="#00e5ff" textAnchor="middle">1</text>
+  <text x="120" y="115" fontSize="12" fill="#00e5ff" textAnchor="middle">2</text>
+  <text x="205" y="115" fontSize="12" fill="#00e5ff" textAnchor="middle">3</text>
+  <text x="67" y="55" fontSize="12" fill="#00e5ff" textAnchor="middle">4</text>
+  <text x="177" y="55" fontSize="12" fill="#00e5ff" textAnchor="middle">5</text>
+</svg>
+
+The figure shows a $3 \times 2$ grid of rectangles where: the bottom row has three side-by-side regions (left, middle, right), and the top row has two regions split differently (the left top region spans above regions 1 and part of 2; the right top region spans the rest). Adjacencies: region 1 touches 2 and 4; region 2 touches 1, 3, 4, and 5; region 3 touches 2 and 5; region 4 touches 1, 2, and 5; region 5 touches 2, 3, and 4.
+</Problem>
+
+<Solution>
+Label the five regions as in the figure: bottom-left (1), bottom-middle (2), bottom-right (3), top-left (4), top-right (5).
+
+Adjacency list:
+- 1 is adjacent to 2 and 4.
+- 2 is adjacent to 1, 3, 4, 5.
+- 3 is adjacent to 2 and 5.
+- 4 is adjacent to 1, 2, 5.
+- 5 is adjacent to 2, 3, 4.
+
+Count by choosing colors in order 2, 4, 1, 5, 3.
+
+**Region 2:** 5 choices (any color).
+
+**Region 4** (adjacent to 2): 4 choices (anything but the color of 2).
+
+**Region 1** (adjacent to 2 and 4): if regions 2 and 4 share the same color, 4 choices; if they differ, 3 choices. But we've fixed them to differ (4 chose $\neq$ 2's color), so region 1 has 3 choices.
+
+**Region 5** (adjacent to 2, 4): must differ from 2 and 4, which are different from each other, so 3 choices.
+
+**Region 3** (adjacent to 2 and 5): must differ from 2 and 5. Are 2 and 5 the same? Region 5 $\neq$ region 2, so they differ: 3 choices.
+
+Total: $5 \times 4 \times 3 \times 3 \times 3 = 540$.
+
+Answer: **D**.
+</Solution>

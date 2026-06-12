@@ -1,0 +1,61 @@
+---
+year: 2022
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: A
+choices: ['$359$', '$360$', '$719$', '$720$', '$721$']
+---
+
+<Problem>
+Let $T_k$ be the transformation of the coordinate plane that first rotates the plane $k$ degrees counterclockwise around the origin and then reflects the plane across the $y$-axis. What is the least positive integer $n$ such that performing the sequence of transformations $T_1, T_2, T_3, \ldots, T_n$ returns the point $(1,0)$ back to itself?
+</Problem>
+
+<Solution>
+**Track the angle.** Represent a point by its angle $\theta$ from the positive $x$-axis (at unit distance from the origin, which is preserved by both operations). Let $\theta_0 = 0$ (starting angle of $(1,0)$).
+
+Each transformation $T_k$ does:
+1. Rotate by $k°$: $\theta \mapsto \theta + k$.
+2. Reflect across the $y$-axis: $\theta \mapsto 180° - \theta$.
+
+So $T_k$ sends $\theta \mapsto 180° - (\theta + k) = 180° - k - \theta$.
+
+**Compose the transformations.** Let $\theta_j$ be the angle after applying $T_1, T_2, \ldots, T_j$. We have:
+
+$$\theta_j = 180° - j - \theta_{j-1}.$$
+
+This recurrence alternates the "flip" behavior. Let's unroll it:
+
+$$\theta_j = (180° - j) - \theta_{j-1}.$$
+
+Let $S_j = 1+2+\cdots+j = \frac{j(j+1)}{2}$.
+
+For odd $j$: since each step flips the sign of the accumulated angle, we get
+
+$$\theta_j = 180°(1-1+1-\cdots) - (j - (j-1) + (j-2) - \cdots) + \text{(sign flip of }\theta_0).$$
+
+Let's just compute directly. $\theta_0 = 0$.
+
+$$\theta_1 = 180 - 1 - 0 = 179.$$
+$$\theta_2 = 180 - 2 - 179 = -1.$$
+$$\theta_3 = 180 - 3 - (-1) = 178.$$
+$$\theta_4 = 180 - 4 - 178 = -2.$$
+
+Pattern: $\theta_{2m-1} = 180 - m$ and $\theta_{2m} = -m$ (in degrees, mod 360).
+
+Check: $\theta_1 = 179 = 180-1$, $\theta_2 = -1$, $\theta_3 = 178 = 180-2$, $\theta_4 = -2$. Yes!
+
+**Verify the pattern.** Assume $\theta_{2m} = -m$.
+$$\theta_{2m+1} = 180 - (2m+1) - (-m) = 180 - 2m - 1 + m = 179 - m = 180-(m+1).$$
+$$\theta_{2m+2} = 180 - (2m+2) - (179-m) = 180 - 2m - 2 - 179 + m = -m - 1 = -(m+1). \checkmark$$
+
+**Find when the point returns to $(1,0)$, i.e., $\theta \equiv 0 \pmod{360}$.**
+
+- Odd case: $\theta_{2m-1} = 180-m \equiv 0 \pmod{360}$ means $m \equiv 180 \pmod{360}$. Smallest $m = 180$, giving $n = 2(180)-1 = 359$.
+- Even case: $\theta_{2m} = -m \equiv 0 \pmod{360}$ means $m \equiv 0 \pmod{360}$. Smallest $m = 360$, giving $n = 720$.
+
+The smallest is $n = 359$.
+
+Answer: **A**.
+</Solution>

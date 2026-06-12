@@ -1,0 +1,102 @@
+---
+year: 2022
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: C
+choices: ["$8$", "$9$", "$10$", "$11$", "$12$"]
+---
+
+<Problem>
+Let $\triangle ABC$ be a scalene triangle. Point $P$ lies on $\overline{BC}$ so that $\overline{AP}$ bisects $\angle BAC.$ The line through $B$ perpendicular to $\overline{AP}$ intersects the line through $A$ parallel to $\overline{BC}$ at point $D.$ Suppose $BP = 2$ and $PC = 3.$ What is $AD$?
+</Problem>
+
+<Solution>
+Let $M$ be the midpoint of $BD$. Since $AP \perp BD$ and $D$ is on the line through $A$ parallel to $BC$, we can find $AD$ using the angle bisector and perpendicularity conditions.
+
+Let $\angle BAP = \angle CAP = \alpha$ (since $AP$ bisects $\angle BAC$).
+
+Drop a perpendicular from $B$ to line $AP$, meeting $AD$ (the line through $A$ parallel to $BC$) at $D$. In right triangle $ABD$ (right angle at the foot from $B$ perpendicular to $AP$... actually the right angle is where $BD \perp AP$).
+
+Let $F$ be the foot of the perpendicular from $B$ to line $AP$. Then $BF \perp AP$.
+
+Since $D$ is on line $AD \parallel BC$ and also on line $BF$, the line $BD$ is perpendicular to $AP$.
+
+By the angle bisector theorem: $\dfrac{AB}{AC} = \dfrac{BP}{PC} = \dfrac{2}{3}$.
+
+Let $AB = 2k$ and $AC = 3k$.
+
+Since $AD \parallel BC$ and $BD \perp AP$, consider triangle $ABD$: $A$, $B$, $D$ with $AD \parallel BC$.
+
+Because $AD \parallel BC$, the angle $\angle DAP = \angle APC$ (alternate interior angles... wait, $AP$ is a transversal). Actually $\angle DAP = \angle BPA$ (alternate interior angles since $AD \parallel BC$ cut by transversal $AP$). But $\angle BPA$ is the angle at $P$ in triangle $ABP$.
+
+Let me use coordinates. Place $P$ at the origin, $B$ at $(-2, 0)$, $C$ at $(3, 0)$.
+
+By the angle bisector theorem, $A$ lies such that $AB/AC = 2/3$. Let $A = (x, y)$ with $y > 0$.
+
+$AP$ bisects $\angle BAC$, and $P$ is the origin, so $AP$ is along the $y$-axis (i.e., $A$ is directly above $P$): $A = (0, h)$ for some $h > 0$.
+
+Check: $AB = \sqrt{4 + h^2}$, $AC = \sqrt{9 + h^2}$. The ratio $AB/AC = 2/3$ gives $\dfrac{\sqrt{4+h^2}}{\sqrt{9+h^2}} = \dfrac{2}{3}$, so $9(4+h^2) = 4(9+h^2)$, giving $36 + 9h^2 = 36 + 4h^2$, so $5h^2 = 0$, meaning $h = 0$. That contradicts a proper triangle.
+
+So $A$ is NOT directly above $P$. The angle bisector condition means $\overrightarrow{AP}$ bisects $\angle BAC$, but $A$ need not be above $P$.
+
+Let $A = (a_x, a_y)$. The angle bisector from $A$ passes through $P = (0,0)$. The direction of $AP$ is $(-a_x, -a_y)$ (from $A$ toward $P$).
+
+The angle bisector direction from $A$ is the sum of the unit vectors toward $B$ and toward $C$:
+
+$\hat{u}_B = \dfrac{(-2-a_x, -a_y)}{AB}$, $\hat{u}_C = \dfrac{(3-a_x, -a_y)}{AC}$.
+
+The bisector from $A$ in direction $\hat{u}_B + \hat{u}_C$ must point toward $P$.
+
+This is complex. Use the result more directly.
+
+Line $BD$ is perpendicular to $AP$ at some point, and $D$ lies on the line through $A$ parallel to $BC$ (the $x$-axis shifted up to height $a_y$).
+
+Since $BD \perp AP$: let the direction of $AP$ be $\vec{v} = P - A = -A = (-a_x, -a_y)$. The line through $B = (-2, 0)$ perpendicular to $\vec{v}$ has direction $(a_y, -a_x)$ (rotate $\vec{v}$ by 90 degrees). Parametrically: $(-2 + a_y t,\; -a_x t)$.
+
+$D$ is on the horizontal line $y = a_y$: $-a_x t = a_y \Rightarrow t = -a_y/a_x$.
+
+$D_x = -2 + a_y \cdot (-a_y/a_x) = -2 - a_y^2/a_x$.
+
+$AD = |D_x - a_x| = |-2 - a_y^2/a_x - a_x| = \left|\frac{-2a_x - a_y^2 - a_x^2}{a_x}\right| = \frac{a_x^2 + a_y^2 + 2a_x}{|a_x|} = \frac{|A|^2 + 2a_x}{|a_x|}$ (assuming $a_x > 0$ for now, adjust sign if needed).
+
+Now use the angle bisector condition. The unit vectors from $A$ toward $B$ and $C$:
+
+$|AB|^2 = (a_x+2)^2 + a_y^2$, $|AC|^2 = (a_x-3)^2 + a_y^2$.
+
+By angle bisector theorem: $AB/AC = BP/PC = 2/3$, so $|AB| = 2k$, $|AC| = 3k$.
+
+$(a_x+2)^2 + a_y^2 = 4k^2$
+$(a_x-3)^2 + a_y^2 = 9k^2$
+
+Subtract: $(a_x+2)^2 - (a_x-3)^2 = 4k^2 - 9k^2 = -5k^2$.
+
+$(a_x^2 + 4a_x + 4) - (a_x^2 - 6a_x + 9) = -5k^2$
+$10a_x - 5 = -5k^2$
+$k^2 = 1 - 2a_x$.
+
+Also, the bisector direction from $A$ toward $P = (0,0)$: the unit vector toward $P$ is $\dfrac{(-a_x,-a_y)}{|AP|}$.
+
+The angle bisector condition: $\dfrac{\vec{AB}}{|AB|} + \dfrac{\vec{AC}}{|AC|}$ is parallel to $\vec{AP}$.
+
+$\dfrac{(-2-a_x, -a_y)}{2k} + \dfrac{(3-a_x, -a_y)}{3k}$ is parallel to $(-a_x, -a_y)$.
+
+$x$-component: $\dfrac{-2-a_x}{2k} + \dfrac{3-a_x}{3k} = \dfrac{3(-2-a_x) + 2(3-a_x)}{6k} = \dfrac{-6-3a_x+6-2a_x}{6k} = \dfrac{-5a_x}{6k}$.
+
+$y$-component: $\dfrac{-a_y}{2k} + \dfrac{-a_y}{3k} = \dfrac{-5a_y}{6k}$.
+
+So the bisector direction is $(-5a_x, -5a_y)$, which is indeed parallel to $(-a_x, -a_y)$. This is always true! So the only constraint is the ratio condition.
+
+From $k^2 = 1-2a_x$ and $(a_x+2)^2+a_y^2 = 4k^2 = 4-8a_x$:
+$a_x^2+4a_x+4+a_y^2 = 4-8a_x$
+$a_x^2+a_y^2 = -12a_x$.
+
+So $|A|^2 = a_x^2+a_y^2 = -12a_x$, meaning $a_x < 0$.
+
+Now $AD = \dfrac{|A|^2 + 2a_x}{|a_x|} = \dfrac{-12a_x + 2a_x}{|a_x|} = \dfrac{-10a_x}{|a_x|}$.
+
+Since $a_x < 0$, $|a_x| = -a_x$, so $AD = \dfrac{-10a_x}{-a_x} = 10$.
+
+Answer: **C**.
+</Solution>

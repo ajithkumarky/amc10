@@ -1,0 +1,55 @@
+---
+year: 2022
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: D
+choices: ['$260$', '$855$', '$1235$', '$1565$', '$1997$']
+---
+
+<Problem>
+Quadrilateral $ABCD$ with side lengths $AB=7$, $BC=24$, $CD=20$, $DA=15$ is inscribed in a circle. The area interior to the circle but exterior to the quadrilateral can be written in the form $\dfrac{a\pi - b}{c}$, where $a$, $b$, and $c$ are positive integers such that $a$ and $c$ have no common prime factor. What is $a+b+c$?
+</Problem>
+
+<Solution>
+**Step 1: Find the area of the quadrilateral using Brahmagupta's formula.**
+
+The semiperimeter is $s = \tfrac{7+24+20+15}{2} = \tfrac{66}{2} = 33$.
+
+$$[ABCD] = \sqrt{(s-a)(s-b)(s-c)(s-d)} = \sqrt{(33-7)(33-24)(33-20)(33-15)}$$
+$$= \sqrt{26 \cdot 9 \cdot 13 \cdot 18} = \sqrt{26 \cdot 13 \cdot 9 \cdot 18}.$$
+
+Note $26 \cdot 13 = 338$ and $9 \cdot 18 = 162$, so the product is $338 \cdot 162 = 54756$.
+
+Check: $\sqrt{54756}$. We have $234^2 = 54756$, so $[ABCD] = 234$.
+
+**Step 2: Find the circumradius using the diagonal.**
+
+Split the quadrilateral along diagonal $AC$. Because $ABCD$ is cyclic, opposite angles are supplementary: $\angle A + \angle C = 180°$.
+
+In triangle $ABC$: use the law of cosines to find $AC$.
+In triangle $ACD$: the diagonal $AC$ is the same, and we can relate the two triangles.
+
+Let $\angle DAB = \alpha$. By the law of cosines in $\triangle ABD$... actually, let's use a cleaner approach.
+
+Since $ABCD$ is cyclic, we can check if any triangle formed is a right triangle. Try $\triangle ABC$ with sides $7, 24$: $7^2 + 24^2 = 49 + 576 = 625 = 25^2$, so $AC = 25$ and $\angle ABC = 90°$.
+
+Since $\angle ABC = 90°$, the diagonal $AC$ is a diameter of the circumscribed circle. So the circumradius is $R = \tfrac{25}{2}$.
+
+**Step 3: Find the area of the circle.**
+
+$$\text{Circle area} = \pi R^2 = \pi \cdot \frac{625}{4} = \frac{625\pi}{4}.$$
+
+**Step 4: Compute the region's area.**
+
+$$\text{Area} = \frac{625\pi}{4} - 234 = \frac{625\pi - 936}{4}.$$
+
+Check that $\gcd(625, 4) = 1$ ✓ (625 is odd).
+
+So $a = 625$, $b = 936$, $c = 4$, giving:
+
+$$a + b + c = 625 + 936 + 4 = 1565.$$
+
+Answer: **D**.
+</Solution>

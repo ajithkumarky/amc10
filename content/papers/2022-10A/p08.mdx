@@ -1,0 +1,31 @@
+---
+year: 2022
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: D
+choices: ["$10$", "$26$", "$32$", "$36$", "$40$"]
+---
+
+<Problem>
+A data set consists of $6$ (not distinct) positive integers: $1$, $7$, $5$, $2$, $5$, and $X$. The average (arithmetic mean) of the $6$ numbers equals a value in the data set. What is the sum of all possible values of $X$?
+</Problem>
+
+<Solution>
+The sum of the five known numbers is $1+7+5+2+5 = 20$. The mean of all six numbers is $\dfrac{20+X}{6}$. This mean must equal one of the values in the data set: $1, 2, 5, 7$, or $X$.
+
+**Case: mean $= 1$.** $\dfrac{20+X}{6}=1 \Rightarrow X=-14$. Not a positive integer. Discard.
+
+**Case: mean $= 2$.** $\dfrac{20+X}{6}=2 \Rightarrow X=-8$. Not positive. Discard.
+
+**Case: mean $= 5$.** $\dfrac{20+X}{6}=5 \Rightarrow X=10$. Check: $X=10$ is positive and the mean is 5, which is in the set. Valid.
+
+**Case: mean $= 7$.** $\dfrac{20+X}{6}=7 \Rightarrow X=22$. Check: $X=22$ is positive and the mean is 7, which is in the set. Valid.
+
+**Case: mean $= X$.** $\dfrac{20+X}{6}=X \Rightarrow 20+X=6X \Rightarrow X=4$. Check: mean $= 4$ and $X=4$, so 4 is now in the set. Valid.
+
+All valid values: $10, 22, 4$. Sum $= 10 + 22 + 4 = 36$.
+
+Answer: **D**.
+</Solution>

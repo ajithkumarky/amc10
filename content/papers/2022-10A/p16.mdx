@@ -1,0 +1,36 @@
+---
+year: 2022
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 4
+answer: D
+choices: ['$\dfrac{24}{5}$', '$\dfrac{42}{5}$', '$\dfrac{81}{5}$', '$30$', '$48$']
+---
+
+<Problem>
+The roots of the polynomial $10x^3 - 39x^2 + 29x - 6$ are the height, length, and width of a rectangular box (right rectangular prism). A new rectangular box is formed by lengthening each edge of the original box by $2$ units. What is the volume of the new box?
+</Problem>
+
+<Solution>
+Let the roots be $p$, $q$, $r$ (the dimensions of the original box). By Vieta's formulas for $10x^3 - 39x^2 + 29x - 6$:
+
+$$p + q + r = \frac{39}{10}, \quad pq + pr + qr = \frac{29}{10}, \quad pqr = \frac{6}{10} = \frac{3}{5}.$$
+
+The new box has dimensions $p+2$, $q+2$, $r+2$, so its volume is:
+
+$$(p+2)(q+2)(r+2).$$
+
+Expand:
+
+$$(p+2)(q+2)(r+2) = pqr + 2(pq+pr+qr) + 4(p+q+r) + 8.$$
+
+Substituting the Vieta values:
+
+$$= \frac{3}{5} + 2 \cdot \frac{29}{10} + 4 \cdot \frac{39}{10} + 8$$
+$$= \frac{3}{5} + \frac{58}{10} + \frac{156}{10} + 8$$
+$$= \frac{6}{10} + \frac{58}{10} + \frac{156}{10} + \frac{80}{10}$$
+$$= \frac{6 + 58 + 156 + 80}{10} = \frac{300}{10} = 30.$$
+
+Answer: **D**.
+</Solution>

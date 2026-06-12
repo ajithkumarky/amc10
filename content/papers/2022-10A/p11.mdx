@@ -1,0 +1,32 @@
+---
+year: 2022
+paper: "10A"
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 3
+answer: C
+choices: ["$5$", "$6$", "$7$", "$8$", "$9$"]
+---
+
+<Problem>
+Ted mistakenly wrote $2^m \cdot \sqrt{\dfrac{1}{4096}}$ as $2 \cdot \sqrt[m]{\dfrac{1}{4096}}$. What is the sum of all real numbers $m$ for which these two expressions have the same value?
+</Problem>
+
+<Solution>
+Note $4096 = 2^{12}$, so $\sqrt{\dfrac{1}{4096}} = 2^{-6}$ and $\sqrt[m]{\dfrac{1}{4096}} = 2^{-12/m}$.
+
+The original expression: $2^m \cdot 2^{-6} = 2^{m-6}$.
+
+Ted's expression: $2 \cdot 2^{-12/m} = 2^{1 - 12/m}$.
+
+Setting them equal:
+$$m - 6 = 1 - \frac{12}{m}$$
+$$m - 7 = -\frac{12}{m}$$
+$$m(m-7) = -12$$
+$$m^2 - 7m + 12 = 0$$
+$$(m-3)(m-4) = 0.$$
+
+So $m = 3$ or $m = 4$. Sum $= 3 + 4 = 7$.
+
+Answer: **C**.
+</Solution>

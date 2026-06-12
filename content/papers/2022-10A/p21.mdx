@@ -1,0 +1,44 @@
+---
+year: 2022
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 5
+answer: B
+choices: ['$6$', '$7$', '$5+2\sqrt{2}$', '$8$', '$9$']
+---
+
+<Problem>
+A bowl is formed by attaching four regular hexagons of side $1$ to a square of side $1$. The edges of adjacent hexagons coincide. (The square forms the base and each hexagon folds up to form a side, creating a three-dimensional bowl shape.) What is the area of the octagon obtained by joining the top eight vertices of the four hexagons, situated on the rim of the bowl?
+</Problem>
+
+<Solution>
+**Set up 3D coordinates.** Place the square base with one corner at the origin. The four base corners are $(0,0,0)$, $(1,0,0)$, $(1,1,0)$, $(0,1,0)$. Each regular hexagon of side $1$ is hinged along one edge of the square and folds upward to form the bowl's sides.
+
+**Find the rim vertices.** When the four hexagons fold up so that adjacent hexagons share their meeting edges, the geometry is determined by requiring those shared edges to coincide. Working through the fold angle (dihedral angle between each hexagon and the base), the two top vertices of each hexagon end up at height $\sqrt{2}$ above the base.
+
+By the 4-fold rotational symmetry of the bowl (rotating $90°$ around the vertical axis through the center $({\tfrac12},{\tfrac12},0)$), the $8$ rim vertices are:
+
+- From the front hexagon: $(-1,0,\sqrt{2})$ and $(0,-1,\sqrt{2})$,
+- From the right hexagon: $(2,0,\sqrt{2})$ and $(1,-1,\sqrt{2})$, 
+- From the back hexagon: $(2,1,\sqrt{2})$ and $(1,2,\sqrt{2})$,
+- From the left hexagon: $(0,2,\sqrt{2})$ and $(-1,1,\sqrt{2})$.
+
+All $8$ vertices lie at the same height $\sqrt{2}$, so the octagon is a horizontal planar polygon.
+
+**Compute the area using the Shoelace Formula.** The vertices in order around the octagon (reading off the $xy$-coordinates) are:
+
+$$(-1,0),\; (0,-1),\; (1,-1),\; (2,0),\; (2,1),\; (1,2),\; (0,2),\; (-1,1).$$
+
+Apply the shoelace formula $A = \dfrac{1}{2}|{\sum_{i} (x_i y_{i+1} - x_{i+1} y_i)}|$:
+
+$$\sum = (-1)(-1)-(0)(0) + (0)(-1)-(1)(-1) + (1)(0)-(2)(-1) + (2)(1)-(2)(0)$$
+$$+\;(2)(2)-(1)(1) + (1)(2)-(0)(2) + (0)(1)-(-1)(2) + (-1)(0)-(−1)(1).$$
+
+Computing term by term:
+$(1-0) + (0+1) + (0+2) + (2-0) + (4-1) + (2-0) + (0+2) + (0+1) = 1+1+2+2+3+2+2+1 = 14.$
+
+Area $= \tfrac{1}{2} \cdot |14| = 7$.
+
+Answer: **B**.
+</Solution>

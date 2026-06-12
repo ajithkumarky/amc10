@@ -1,0 +1,62 @@
+---
+year: 2022
+paper: "10A"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 5
+answer: D
+choices: ['$4082$', '$4095$', '$4096$', '$8178$', '$8191$']
+---
+
+<Problem>
+Suppose that $13$ cards numbered $1, 2, 3, \ldots, 13$ are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards $1, 2, 3$ are picked up on the first pass, $4$ and $5$ on the second pass, $6$ on the third pass, $7, 8, 9, 10$ on the fourth pass, and $11, 12, 13$ on the fifth pass. For how many of the $13!$ possible orderings of the cards will the $13$ cards be picked up in exactly two passes?
+</Problem>
+
+<Solution>
+**Understand the pass rule.** On each pass, we sweep left to right and pick up the next required card whenever we encounter it. A new pass begins when a required card has already been passed (i.e., it appears to the left of the last card picked up in the previous pass).
+
+More precisely: on pass $k$, we pick up a consecutive sequence of integers starting where the previous pass ended. The pass ends when the next required card appears to the left of our current position — i.e., when the next card to pick up is to the left of the last picked card.
+
+**Rephrase "exactly 2 passes."** In the first pass, we pick up cards $1, 2, \ldots, m$ for some $1 \leq m \leq 12$. In the second pass, we pick up $m+1, m+2, \ldots, 13$. For this to work in exactly $2$ passes, we need:
+
+1. In pass 1, we successfully pick $1, 2, \ldots, m$ in one left-to-right sweep: after picking each of $1, \ldots, m-1$, the next card $k+1$ appears to the right of card $k$.
+2. Pass 2 picks up $m+1, \ldots, 13$ from left to right: the same condition holds for $m+1$ through $13$.
+3. But pass 2 was forced to start: card $m+1$ appeared to the left of card $m$ (otherwise pass 1 would continue).
+
+Wait — actually, the rule is simpler. A pass picks up cards until the next card is to the left (already passed). So exactly 2 passes means: there is exactly one position $j$ such that card $j+1$ is to the left of card $j$ in the arrangement.
+
+Actually, let me re-examine. During pass 1: we scan left to right, picking up $1, 2, 3, \ldots$ as we encounter them. When we reach the right end of the row, pass 1 ends. We then start a new pass from the left. Exactly 2 passes means all remaining cards are picked up in pass 2.
+
+**Condition for exactly 2 passes.** The sequence $1, 2, \ldots, 13$ must be split into exactly $2$ increasing subsequences of the arrangement. Specifically: the positions of $1, 2, \ldots, 13$ in the arrangement form a sequence $p_1, p_2, \ldots, p_{13}$. Pass 1 picks up $1, 2, \ldots, m$ where $m$ is the largest index such that $p_1 < p_2 < \cdots < p_m$ (no, this isn't quite right either).
+
+**Cleaner characterization.** The number of passes equals the number of "left-to-right ascents" needed: specifically, the minimum number of increasing subsequences the sequence of positions forms. But here, a "pass" sweeps left-to-right, picking up everything it can. The positions $p_1, \ldots, p_{13}$ (where $p_i$ = position of card $i$) are split into passes: pass $k$ collects the longest prefix of what remains that forms an increasing sequence in terms of positions.
+
+Exactly 2 passes means: the sequence $p_1, p_2, \ldots, p_{13}$ can be partitioned into exactly 2 consecutive groups that are each increasing, with the second group not extendable to the left (i.e., there is a "descent" between group 1 and group 2).
+
+This means there is exactly one index $m$ ($1 \leq m \leq 12$) such that $p_1 < p_2 < \cdots < p_m$ and $p_{m+1} < p_{m+1}$... Hmm, let me think again.
+
+**The correct condition.** Pass 1 picks up cards $1, 2, \ldots, m$ such that their positions are increasing in the arrangement: $p_1 < p_2 < \cdots < p_m$. The pass ends when $p_{m+1} < p_m$ (card $m+1$ is to the left of where we just picked up card $m$). Then pass 2 picks up $m+1, \ldots, 13$: we need $p_{m+1} < p_{m+2} < \cdots < p_{13}$ (they appear in order left to right), AND there must be no $m' > m$ where pass 2 would need a 3rd pass. This means $p_{m+1} < p_{m+2} < \cdots < p_{13}$ with no descent.
+
+So: exactly 2 passes $\iff$ there exists exactly one $m \in \{1,\ldots,12\}$ such that:
+- $p_1 < p_2 < \cdots < p_m$ (pass 1 is successful up to $m$)
+- $p_{m+1} < p_m$ (pass 2 is forced to start)
+- $p_{m+1} < p_{m+2} < \cdots < p_{13}$ (pass 2 has no descents)
+
+But we also need there to be exactly one descent in $(p_1, \ldots, p_{13})$ (at position $m$), because any descent within the first group would cause an earlier pass split, and any descent in the second group would require a third pass.
+
+Wait — this isn't quite right either because the descent condition is "the next card is to the left of the previously picked card." Let me be more precise.
+
+**Exact characterization.** The sequence of card positions $p_1, p_2, \ldots, p_{13}$ has exactly 2 passes if and only if the sequence has exactly one "descent" — i.e., exactly one index $m$ with $p_m > p_{m+1}$, and this descent separates two increasing runs: $(p_1, \ldots, p_m)$ is increasing and $(p_{m+1}, \ldots, p_{13})$ is increasing.
+
+This is exactly the condition that $(p_1,\ldots,p_{13})$ has exactly one descent. (A sequence with one descent is the union of two increasing runs.)
+
+**Count permutations of positions with exactly one descent.** The positions $p_1, \ldots, p_{13}$ form a permutation of $\{1, \ldots, 13\}$ (the $13!$ arrangements). We want those with exactly one descent.
+
+The Eulerian number $\langle 13 \atop 1 \rangle$ (permutations of $n$ elements with exactly $k$ descents) for $n = 13$, $k = 1$:
+
+$$\langle n \atop 1 \rangle = 2^n - n - 1.$$
+
+For $n=13$: $2^{13} - 13 - 1 = 8192 - 14 = 8178$.
+
+Answer: **D**.
+</Solution>
