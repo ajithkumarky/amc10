@@ -1,0 +1,8 @@
+{
+  "year": 2023,
+  "ab": "10A",
+  "title": "AMC 10A 2023",
+  "date": "2023-11-08",
+  "source": "https://artofproblemsolving.com/wiki/index.php/2023_AMC_10A_Problems",
+  "skipped": [{ "n": 24, "reason": "complex diagram: hexagon frame configuration is figure-essential" }]
+}

@@ -1,0 +1,40 @@
+---
+year: 2023
+paper: "10A"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 3
+answer: C
+choices: ['$\dfrac{1}{5}$', '$\dfrac{1}{4}$', '$2-\sqrt{3}$', '$\sqrt{3}-\sqrt{2}$', '$\sqrt{2}-1$']
+---
+
+<Problem>
+A square of area $2$ is inscribed in a square of area $3$, creating four congruent right triangles, as shown below. What is the ratio of the shorter leg to the longer leg in each shaded right triangle?
+
+<svg viewBox="0 0 120 120" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="100" height="100" stroke="#00e5ff" fill="none" stroke-width="1.5"/>
+  <polygon points="10,68 52,10 110,52 68,110" stroke="#00e5ff" fill="none" stroke-width="1.5"/>
+  <polygon points="10,68 52,10 10,10" fill="#00e5ff" fill-opacity="0.25" stroke="#00e5ff" stroke-width="1.5"/>
+</svg>
+
+The outer square has area $3$ (side $\sqrt{3}$) and the inner tilted square has area $2$ (side $\sqrt{2}$). The four corner triangles are congruent right triangles with legs $a$ (shorter) and $b$ (longer), where $a + b = \sqrt{3}$ and $a^2 + b^2 = 2$.
+</Problem>
+
+<Solution>
+Let the outer square have side length $\sqrt{3}$ and the inner square have side length $\sqrt{2}$. When the inner square is inscribed with each vertex on a side of the outer square, it cuts each side into two segments of lengths $a$ and $b$ (the legs of the right triangles), with $a + b = \sqrt{3}$.
+
+Since the hypotenuse of each right triangle equals a side of the inner square:
+$$a^2 + b^2 = (\sqrt{2})^2 = 2.$$
+
+We also know $(a + b)^2 = 3$, so $a^2 + 2ab + b^2 = 3$, giving $2ab = 3 - 2 = 1$, so $ab = \tfrac{1}{2}$.
+
+Now $a$ and $b$ are the roots of the quadratic $t^2 - \sqrt{3}\,t + \tfrac{1}{2} = 0$:
+$$t = \frac{\sqrt{3} \pm \sqrt{3 - 2}}{2} = \frac{\sqrt{3} \pm 1}{2}.$$
+
+So $a = \dfrac{\sqrt{3} - 1}{2}$ (shorter) and $b = \dfrac{\sqrt{3} + 1}{2}$ (longer).
+
+The ratio is:
+$$\frac{a}{b} = \frac{\sqrt{3}-1}{\sqrt{3}+1} = \frac{(\sqrt{3}-1)^2}{(\sqrt{3}+1)(\sqrt{3}-1)} = \frac{3 - 2\sqrt{3} + 1}{3-1} = \frac{4 - 2\sqrt{3}}{2} = 2 - \sqrt{3}.$$
+
+Answer: **C**.
+</Solution>

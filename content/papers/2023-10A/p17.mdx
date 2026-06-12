@@ -1,0 +1,44 @@
+---
+year: 2023
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: A
+choices: ['$84$', '$86$', '$88$', '$90$', '$92$']
+---
+
+<Problem>
+Let $ABCD$ be a rectangle with $AB = 30$ and $BC = 28$. Point $P$ and $Q$ lie on $\overline{BC}$ and $\overline{CD}$ respectively so that all sides of $\triangle{ABP}$, $\triangle{PCQ}$, and $\triangle{QDA}$ have integer lengths. What is the perimeter of $\triangle{APQ}$?
+
+$\textbf{(A) } 84 \qquad \textbf{(B) } 86 \qquad \textbf{(C) } 88 \qquad \textbf{(D) } 90 \qquad \textbf{(E) } 92$
+</Problem>
+
+<Solution>
+Place the rectangle so $A=(0,0)$, $B=(30,0)$, $C=(30,28)$, $D=(0,28)$.
+
+Let $BP = p$ (so $P=(30,p)$ with $0 < p < 28$) and $DQ = q$ (so $Q=(q,28)$ with $0 < q < 30$). Then $PC = 28-p$ and $CQ = 30-q$.
+
+**Triangle $ABP$:** Right angle at $B$. Sides $AB=30$, $BP=p$, $AP=\sqrt{30^2+p^2}$. We need $AP$ to be an integer, so $(30,p,AP)$ is a Pythagorean triple.
+
+Finding integer $p < 28$ with $30^2 + p^2$ a perfect square:
+$$p^2 = c^2 - 900 = (c-30)(c+30).$$
+Setting $c - 30 = a$, $c + 30 = b$ with $ab = p^2$, $b - a = 60$, and $a, b$ the same parity: the only solution with $p < 28$ is $a = 2, b = 62$... no, let's factor $900$ properly.
+
+We need $(c-p)(c+p) = 900$ — both factors the same parity and positive. With both even: factor pairs $(2, 450)\to p=224$; $(6, 150)\to p=72$; $(10, 90)\to p=40 > 28$; $(18, 50)\to p=16$, $c=34$. Check: $30^2 + 16^2 = 900 + 256 = 1156 = 34^2$ ✓.
+
+So $p = 16$ and $AP = 34$.
+
+**Triangle $QDA$:** Right angle at $D$. Sides $DA = 28$, $DQ = q$, $QA = \sqrt{28^2+q^2}$. Need $QA$ integer with $q < 30$.
+
+Factor pairs of $784 = 28^2$ with both even: $(2,392)\to q=195$; $(4,196)\to q=96$; $(8,98)\to q=45>30$; $(14,56)\to q=21$, $c=35$. Check: $28^2 + 21^2 = 784 + 441 = 1225 = 35^2$ ✓.
+
+So $q = 21$ and $QA = 35$.
+
+**Triangle $PCQ$:** Right angle at $C$. Sides $PC = 28-16=12$, $CQ = 30-21=9$, $PQ = \sqrt{12^2+9^2} = \sqrt{144+81} = \sqrt{225} = 15$. All integers ✓.
+
+**Perimeter of $\triangle APQ$:**
+$$AP + PQ + QA = 34 + 15 + 35 = 84.$$
+
+Answer: **A**.
+</Solution>

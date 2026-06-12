@@ -1,0 +1,55 @@
+---
+year: 2023
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: C
+choices: ['$9$', '$13$', '$15$', '$17$', '$19$']
+---
+
+<Problem>
+If the positive integer $c$ has positive integer divisors $a$ and $b$ with $c = ab$, then $a$ and $b$ are said to be complementary divisors of $c$. Suppose that $N$ is a positive integer that has one complementary pair of divisors that differ by $20$ and another pair of complementary divisors that differ by $23$. What is the sum of the digits of $N$?
+
+$\textbf{(A) } 9 \qquad \textbf{(B) } 13\qquad \textbf{(C) } 15 \qquad \textbf{(D) } 17 \qquad \textbf{(E) } 19$
+</Problem>
+
+<Solution>
+**Setting up equations.**
+
+Suppose $(a, b)$ with $b > a$ and $ab = N$, $b - a = 20$. Then:
+$$(b + a)^2 - (b - a)^2 = 4ab = 4N \implies (a+b)^2 = 4N + 400.$$
+
+Suppose $(c, d)$ with $d > c$ and $cd = N$, $d - c = 23$. Then:
+$$(c+d)^2 = 4N + 529.$$
+
+**Subtracting:**
+
+$$(c+d)^2 - (a+b)^2 = 129 = 3 \times 43.$$
+
+Let $s_1 = a + b$ and $s_2 = c + d$. Then:
+
+$$(s_2 - s_1)(s_2 + s_1) = 129.$$
+
+The factor pairs of $129$ are $(1, 129)$ and $(3, 43)$.
+
+**Case 1:** $s_2 - s_1 = 1$, $s_2 + s_1 = 129 \implies s_2 = 65$, $s_1 = 64$.
+
+$$N = \frac{s_1^2 - 400}{4} = \frac{4096 - 400}{4} = \frac{3696}{4} = 924.$$
+
+Check $(c, d)$: $c + d = 65$, $cd = 924$, so $c$ and $d$ satisfy $t^2 - 65t + 924 = 0$. Discriminant: $4225 - 3696 = 529 = 23^2$. So $t = \tfrac{65 \pm 23}{2}$, giving $t = 44$ or $t = 21$. Check: $44 - 21 = 23$ ✓, $44 \times 21 = 924$ ✓.
+
+Check $(a, b)$: $a + b = 64$, $ab = 924$. Discriminant: $4096 - 3696 = 400 = 20^2$. So $t = \tfrac{64 \pm 20}{2}$, giving $t = 42$ or $t = 22$. Check: $42 - 22 = 20$ ✓, $42 \times 22 = 924$ ✓.
+
+**Case 2:** $s_2 - s_1 = 3$, $s_2 + s_1 = 43 \implies s_1 = 20$, $s_2 = 23$.
+
+$$N = \frac{s_1^2 - 400}{4} = \frac{400 - 400}{4} = 0.$$
+
+Not a positive integer. Discard.
+
+**So $N = 924$.**
+
+Sum of digits: $9 + 2 + 4 = 15$.
+
+Answer: **C**.
+</Solution>

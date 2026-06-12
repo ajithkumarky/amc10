@@ -1,0 +1,38 @@
+---
+year: 2023
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: E
+choices: ['$46$', '$48$', '$56$', '$60$', '$64$']
+---
+
+<Problem>
+An even number of circles are nested, starting with a radius of $1$ and increasing by $1$ each time, all sharing a common point. The region between every other circle is shaded, starting with the region inside the circle of radius $2$ but outside the circle of radius $1$. An example showing $8$ circles is displayed below. What is the least number of circles needed to make the total shaded area at least $2023\pi$?
+
+$\textbf{(A) } 46 \qquad \textbf{(B) } 48 \qquad \textbf{(C) } 56 \qquad \textbf{(D) } 60 \qquad \textbf{(E) } 64$
+</Problem>
+
+<Solution>
+Suppose we use $2n$ circles (radii $1, 2, \ldots, 2n$). The shaded regions are:
+
+$$\text{inside circle of radius }2k \text{ but outside circle of radius }2k-1, \quad k = 1, 2, \ldots, n.$$
+
+**Computing the shaded area for each annular ring:**
+
+$$\pi(2k)^2 - \pi(2k-1)^2 = \pi\bigl[(4k^2) - (4k^2 - 4k + 1)\bigr] = \pi(4k - 1).$$
+
+**Total shaded area with $2n$ circles:**
+
+$$A(2n) = \pi \sum_{k=1}^{n}(4k-1) = \pi\!\left(4 \cdot \frac{n(n+1)}{2} - n\right) = \pi\,n(2n+1).$$
+
+**Finding the minimum $n$ with $n(2n+1) \ge 2023$:**
+
+$$n=31: \quad 31 \times 63 = 1953 < 2023.$$
+$$n=32: \quad 32 \times 65 = 2080 \ge 2023. \checkmark$$
+
+The minimum number of circles is $2 \times 32 = \boxed{64}$.
+
+Answer: **E**.
+</Solution>

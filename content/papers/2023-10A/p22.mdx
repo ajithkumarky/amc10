@@ -1,0 +1,55 @@
+---
+year: 2023
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: D
+choices: ['$\frac{1}{14}$', '$\frac{1}{12}$', '$\frac{1}{10}$', '$\frac{3}{28}$', '$\frac{1}{9}$']
+---
+
+<Problem>
+Circle $C_1$ and $C_2$ each have radius $1$, and the distance between their centers is $\dfrac{1}{2}$. Circle $C_3$ is the largest circle internally tangent to both $C_1$ and $C_2$. Circle $C_4$ is internally tangent to both $C_1$ and $C_2$ and externally tangent to $C_3$. What is the radius of $C_4$?
+
+$\textbf{(A) } \dfrac{1}{14} \qquad \textbf{(B) } \dfrac{1}{12} \qquad \textbf{(C) } \dfrac{1}{10} \qquad \textbf{(D) } \dfrac{3}{28} \qquad \textbf{(E) } \dfrac{1}{9}$
+</Problem>
+
+<Solution>
+Place the centers of $C_1$ and $C_2$ at $O_1 = (-\tfrac{1}{4}, 0)$ and $O_2 = (\tfrac{1}{4}, 0)$.
+
+**Finding $C_3$.**
+
+By symmetry, the center of $C_3$ lies on the $y$-axis at $(0, y_3)$ with radius $r_3$. Internal tangency to $C_1$ means the center of $C_3$ is inside $C_1$ and:
+$$|O_3 O_1| = 1 - r_3 \implies \left(\tfrac{1}{4}\right)^2 + y_3^2 = (1-r_3)^2.$$
+
+To maximize $r_3$, minimize $|O_3 O_1|$, which is minimized when $y_3 = 0$:
+$$\frac{1}{16} = (1-r_3)^2 \implies 1 - r_3 = \frac{1}{4} \implies r_3 = \frac{3}{4}.$$
+
+So $C_3$ has center $O_3 = (0, 0)$ and radius $\tfrac{3}{4}$.
+
+**Finding $C_4$.**
+
+By symmetry, the center of $C_4$ lies on the $y$-axis at $(0, y_4)$ with radius $r_4 > 0$.
+
+*Internally tangent to $C_1$:*
+$$\left(\tfrac{1}{4}\right)^2 + y_4^2 = (1 - r_4)^2. \tag{1}$$
+
+*Externally tangent to $C_3$:*
+$$y_4^2 = (r_4 + r_3)^2 = \left(r_4 + \tfrac{3}{4}\right)^2. \tag{2}$$
+
+(Taking $y_4 > 0$, so $C_4$ is above the $x$-axis and outside $C_3$.)
+
+Substitute (2) into (1):
+$$\frac{1}{16} + \left(r_4 + \frac{3}{4}\right)^2 = (1 - r_4)^2.$$
+
+Expand:
+$$\frac{1}{16} + r_4^2 + \frac{3r_4}{2} + \frac{9}{16} = 1 - 2r_4 + r_4^2.$$
+
+$$\frac{10}{16} + \frac{3r_4}{2} = 1 - 2r_4.$$
+
+$$\frac{5}{8} + \frac{3r_4}{2} + 2r_4 = 1 \implies \frac{7r_4}{2} = \frac{3}{8} \implies r_4 = \frac{3}{28}.$$
+
+*Verification:* $y_4 = \tfrac{3}{28} + \tfrac{3}{4} = \tfrac{3+21}{28} = \tfrac{24}{28} = \tfrac{6}{7}$. Distance from $(0, \tfrac{6}{7})$ to $O_1 = (-\tfrac{1}{4}, 0)$: $\sqrt{\tfrac{1}{16} + \tfrac{36}{49}} = \sqrt{\tfrac{49 + 576}{784}} = \sqrt{\tfrac{625}{784}} = \tfrac{25}{28}$. And $1 - r_4 = 1 - \tfrac{3}{28} = \tfrac{25}{28}$ ✓.
+
+Answer: **D**.
+</Solution>

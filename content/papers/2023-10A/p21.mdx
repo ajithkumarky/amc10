@@ -1,0 +1,55 @@
+---
+year: 2023
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 5
+answer: D
+choices: ['$41$', '$43$', '$45$', '$47$', '$49$']
+---
+
+<Problem>
+Let $P(x)$ be the unique polynomial of minimal degree with the following properties: $P(x)$ has a leading coefficient $1$, $1$ is a root of $P(x) - 1$, $2$ is a root of $P(x-2)$, $3$ is a root of $P(3x)$, and $4$ is a root of $4P(x)$. The roots of $P(x)$ are integers, with one exception. The root that is not an integer can be written as $\dfrac{m}{n}$, where $m$ and $n$ are relatively prime integers. What is $m + n$?
+
+$\textbf{(A) }41\qquad\textbf{(B) }43\qquad\textbf{(C) }45\qquad\textbf{(D) }47\qquad\textbf{(E) }49$
+</Problem>
+
+<Solution>
+**Translating the conditions into roots and values of $P$.**
+
+- "$1$ is a root of $P(x)-1$" means $P(1) = 1$.
+- "$2$ is a root of $P(x-2)$" means $P(2-2) = P(0) = 0$.
+- "$3$ is a root of $P(3x)$" means $P(3 \cdot 3) = P(9) = 0$.
+- "$4$ is a root of $4P(x)$" means $P(4) = 0$.
+
+So $P$ is monic, $P(0) = P(4) = P(9) = 0$, and $P(1) = 1$.
+
+**Finding the minimal degree.**
+
+If $P$ were degree $3$ with roots $0, 4, 9$:
+$$P(x) = x(x-4)(x-9).$$
+Check: $P(1) = 1 \cdot (-3) \cdot (-8) = 24 \ne 1$.
+
+A degree-$3$ monic polynomial with $P(0)=P(4)=P(9)=0$ is uniquely $x(x-4)(x-9)$, which doesn't satisfy $P(1)=1$. So degree $3$ is impossible.
+
+**Try degree $4$.** We have three forced roots $0, 4, 9$, so add one more root $a$:
+$$P(x) = x(x-4)(x-9)(x-a).$$
+
+Imposing $P(1) = 1$:
+$$1 \cdot (-3) \cdot (-8) \cdot (1-a) = 1 \implies 24(1-a) = 1 \implies 1-a = \frac{1}{24} \implies a = \frac{23}{24}.$$
+
+This is a valid monic degree-$4$ polynomial. Its roots are $0, 4, 9, \tfrac{23}{24}$. The first three are integers; the last is not.
+
+**Checking the conditions are met and uniqueness holds.**
+
+- Monic ✓
+- $P(0) = 0$ ✓, $P(4) = 0$ ✓, $P(9) = 0$ ✓
+- $P(1) = 24 \cdot \tfrac{1}{24} = 1$ ✓
+- Degree $4$ is minimal (degree $3$ fails) ✓
+
+The non-integer root is $\dfrac{23}{24}$, with $\gcd(23, 24) = 1$, so $m = 23$, $n = 24$.
+
+$$m + n = 23 + 24 = 47.$$
+
+Answer: **D**.
+</Solution>

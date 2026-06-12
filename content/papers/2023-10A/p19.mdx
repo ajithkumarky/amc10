@@ -1,0 +1,47 @@
+---
+year: 2023
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: E
+choices: ['$\frac{1}{4}$', '$\frac{1}{2}$', '$\frac{3}{4}$', '$\frac{2}{3}$', '$1$']
+---
+
+<Problem>
+The line segment formed by $A(1, 2)$ and $B(3, 3)$ is rotated to the line segment formed by $A'(3, 1)$ and $B'(4, 3)$ about the point $P(r, s)$. What is $|r - s|$?
+
+$\textbf{(A) } \dfrac{1}{4} \qquad \textbf{(B) } \dfrac{1}{2} \qquad \textbf{(C) } \dfrac{3}{4} \qquad \textbf{(D) } \dfrac{2}{3} \qquad \textbf{(E) } 1$
+</Problem>
+
+<Solution>
+The center of rotation $P(r, s)$ is equidistant from each point and its image.
+
+**Condition $PA = PA'$:**
+
+$$PA^2 = (1-r)^2 + (2-s)^2, \qquad PA'^2 = (3-r)^2 + (1-s)^2.$$
+
+Setting equal and expanding:
+$$1 - 2r + r^2 + 4 - 4s + s^2 = 9 - 6r + r^2 + 1 - 2s + s^2.$$
+$$5 - 2r - 4s = 10 - 6r - 2s.$$
+$$4r - 2s = 5. \tag{1}$$
+
+**Condition $PB = PB'$:**
+
+$$PB^2 = (3-r)^2 + (3-s)^2, \qquad PB'^2 = (4-r)^2 + (3-s)^2.$$
+
+The $(3-s)^2$ term cancels:
+$$(3-r)^2 = (4-r)^2 \implies 9 - 6r = 16 - 8r \implies 2r = 7 \implies r = \frac{7}{2}.$$
+
+**Solving for $s$** using equation (1):
+
+$$4 \cdot \frac{7}{2} - 2s = 5 \implies 14 - 2s = 5 \implies s = \frac{9}{2}.$$
+
+**Final answer:**
+
+$$|r - s| = \left|\frac{7}{2} - \frac{9}{2}\right| = \left|\frac{-2}{2}\right| = 1.$$
+
+*Verification:* $PA^2 = (1 - \tfrac{7}{2})^2 + (2 - \tfrac{9}{2})^2 = \tfrac{25}{4} + \tfrac{25}{4} = \tfrac{25}{2} = PA'^2$ ✓. $PB^2 = (\tfrac{-1}{2})^2 + (\tfrac{-3}{2})^2 = \tfrac{10}{4} = PB'^2$ ✓.
+
+Answer: **E**.
+</Solution>

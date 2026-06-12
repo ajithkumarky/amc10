@@ -1,0 +1,38 @@
+---
+year: 2023
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: B
+choices: ["13", "14", "15", "16", "17"]
+---
+
+<Problem>
+How many three-digit positive integers $N$ satisfy the following properties?
+
+- The number $N$ is divisible by $7$.
+- The number formed by reversing the digits of $N$ is divisible by $5$.
+</Problem>
+
+<Solution>
+Write $N$ as a three-digit number with digits $\overline{abc}$ (hundreds digit $a$, tens digit $b$, units digit $c$), so $N = 100a + 10b + c$ with $a \in \{1,\ldots,9\}$, $b,c \in \{0,\ldots,9\}$.
+
+The reversal is $\overline{cba} = 100c + 10b + a$.
+
+**Condition on the reversal:** $\overline{cba}$ is divisible by $5$, so its units digit $a$ must be $0$ or $5$. But $a \ne 0$ (since $N$ is a three-digit number), so $a = 5$.
+
+Thus $N = 500 + 10b + c$, and we need $7 \mid N$, i.e., $7 \mid (500 + 10b + c)$.
+
+Since $500 = 7 \times 71 + 3$, we need $7 \mid (3 + 10b + c)$, i.e., $10b + c \equiv 4 \pmod{7}$.
+
+We need to count two-digit combinations $10b + c$ (where $b \in \{0,\ldots,9\}$, $c \in \{0,\ldots,9\}$) with $10b + c \equiv 4 \pmod{7}$. Note that $10b + c$ ranges from $00$ to $99$.
+
+The values $10b + c \equiv 4 \pmod 7$ form an arithmetic progression: $4, 11, 18, 25, 32, 39, 46, 53, 60, 67, 74, 81, 88, 95$ — that's every 7th value starting from 4 up to 99.
+
+Count: $\lfloor (99 - 4)/7 \rfloor + 1 = \lfloor 95/7 \rfloor + 1 = 13 + 1 = 14$.
+
+All of these give valid two-digit pairs $(b, c)$ since $10b + c$ ranges 0–99 and $b = \lfloor (10b+c)/10 \rfloor$, $c = (10b+c) \bmod 10$ are valid digits.
+
+Answer: **B**.
+</Solution>

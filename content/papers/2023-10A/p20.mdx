@@ -1,0 +1,66 @@
+---
+year: 2023
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: B
+choices: ['$55$', '$62$', '$64$', '$66$', '$76$']
+---
+
+<Problem>
+Rows 1, 2, 3, 4, and 5 of Pascal's triangle are shown below.
+
+| Row 1 | 1 |
+|-------|---|
+| Row 2 | 1 &nbsp; 1 |
+| Row 3 | 1 &nbsp; 2 &nbsp; 1 |
+| Row 4 | 1 &nbsp; 3 &nbsp; 3 &nbsp; 1 |
+| Row 5 | 1 &nbsp; 4 &nbsp; 6 &nbsp; 4 &nbsp; 1 |
+
+In which row of Pascal's triangle do three consecutive entries occur that are in the ratio $3:4:5$?
+</Problem>
+
+<Solution>
+In row $n$ of Pascal's triangle, three consecutive entries at positions $k-1$, $k$, and $k+1$ are $\binom{n}{k-1}$, $\binom{n}{k}$, and $\binom{n}{k+1}$.
+
+**Setting up the ratio conditions.**
+
+We need:
+$$\binom{n}{k-1} : \binom{n}{k} : \binom{n}{k+1} = 3 : 4 : 5.$$
+
+Use the consecutive-entry ratio formula:
+$$\frac{\binom{n}{k}}{\binom{n}{k-1}} = \frac{n-k+1}{k}.$$
+
+From the first ratio: $\dfrac{4}{3} = \dfrac{n-k+1}{k}$, giving $4k = 3(n-k+1) = 3n - 3k + 3$, so
+$$7k = 3n + 3 \implies k = \frac{3n+3}{7} = \frac{3(n+1)}{7}. \tag{1}$$
+
+From the second ratio: $\dfrac{5}{4} = \dfrac{n-k}{k+1}$, giving $5(k+1) = 4(n-k)$, so $5k + 5 = 4n - 4k$, thus
+$$9k = 4n - 5 \implies k = \frac{4n-5}{9}. \tag{2}$$
+
+**Solving the system.**
+
+Set (1) equal to (2):
+$$\frac{3(n+1)}{7} = \frac{4n-5}{9}.$$
+
+Cross-multiply:
+$$27(n+1) = 7(4n-5)$$
+$$27n + 27 = 28n - 35$$
+$$n = 62.$$
+
+**Verify $k$ is an integer.** From (1): $k = \dfrac{3(63)}{7} = \dfrac{189}{7} = 27$. ✓
+
+From (2): $k = \dfrac{4(62)-5}{9} = \dfrac{243}{9} = 27$. ✓
+
+**Verify the ratio.** In row 62 at position 27:
+
+$$\frac{\binom{62}{27}}{\binom{62}{26}} = \frac{62-27+1}{27} = \frac{36}{27} = \frac{4}{3} \checkmark$$
+
+$$\frac{\binom{62}{28}}{\binom{62}{27}} = \frac{62-27}{28} = \frac{35}{28} = \frac{5}{4} \checkmark$$
+
+So the three consecutive entries $\binom{62}{26} : \binom{62}{27} : \binom{62}{28}$ are in ratio $3:4:5$. ✓
+
+The answer is **row 62**.
+
+Answer: **B**.
+</Solution>

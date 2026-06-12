@@ -1,0 +1,31 @@
+---
+year: 2023
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 2
+answer: B
+choices: ['$\dfrac{2}{9}$', '$\dfrac{49}{216}$', '$\dfrac{25}{108}$', '$\dfrac{17}{72}$', '$\dfrac{13}{54}$']
+---
+
+<Problem>
+Janet rolls a standard $6$-sided die $4$ times and keeps a running total of the numbers she rolls. What is the probability that at some point, her running total will equal $3$?
+</Problem>
+
+<Solution>
+The running total equals $3$ at some point if and only if the total after roll 1, 2, or 3 equals $3$ (after 4 rolls the total is at least 4, so it can only equal 3 after rolls 1, 2, or 3).
+
+**After roll 1:** Total = 3 means the first roll is 3. Probability: $\dfrac{1}{6}$.
+
+**After roll 2 (not already 3 after roll 1):** We need the first roll to not be 3, but the sum of the first two rolls to be 3. The pairs $(r_1, r_2)$ summing to 3 are $(1,2)$ and $(2,1)$. Neither starts with 3. Probability: $\dfrac{2}{36} = \dfrac{1}{18}$.
+
+**After roll 3 (not already 3 after rolls 1 or 2):** The sum of three rolls equals 3. The only possibility is $(1,1,1)$. We need this sequence to not have hit 3 earlier: the sum after roll 1 is 1 (not 3), and after roll 2 is 2 (not 3). So $(1,1,1)$ is valid.
+
+Probability: $\dfrac{1}{216}$.
+
+Now add the three mutually exclusive events (the condition "not already hit 3" is automatically satisfied in cases 2 and 3 since we already enumerated sequences that don't hit 3 early):
+
+$$P = \frac{1}{6} + \frac{2}{36} + \frac{1}{216} = \frac{36}{216} + \frac{12}{216} + \frac{1}{216} = \frac{49}{216}.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,40 @@
+---
+year: 2023
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: D
+choices: ['$5$', '$6$', '$7$', '$8$', '$9$']
+---
+
+<Problem>
+A rhombic dodecahedron is a solid with $12$ congruent rhombus faces. At every vertex, $3$ or $4$ edges meet, depending on the vertex. How many vertices have exactly $3$ edges meet?
+
+$\textbf{(A) }5\qquad\textbf{(B) }6\qquad\textbf{(C) }7\qquad\textbf{(D) }8\qquad\textbf{(E) }9$
+</Problem>
+
+<Solution>
+We use Euler's formula and a degree-count argument.
+
+**Step 1: Count faces and edges.**
+
+The rhombic dodecahedron has $F = 12$ faces, each a rhombus (4 sides). Each edge is shared by exactly 2 faces, so:
+$$E = \frac{12 \times 4}{2} = 24.$$
+
+**Step 2: Count vertices via Euler's formula.**
+
+$$V - E + F = 2 \implies V = 2 + E - F = 2 + 24 - 12 = 14.$$
+
+**Step 3: Use the handshake lemma.**
+
+Let $v_3$ = number of degree-3 vertices and $v_4$ = number of degree-4 vertices.
+
+$$v_3 + v_4 = 14,$$
+$$3v_3 + 4v_4 = 2E = 48.$$
+
+Substituting $v_4 = 14 - v_3$ into the second equation:
+$$3v_3 + 4(14 - v_3) = 48 \implies 3v_3 + 56 - 4v_3 = 48 \implies v_3 = 8.$$
+
+Answer: **D**.
+</Solution>

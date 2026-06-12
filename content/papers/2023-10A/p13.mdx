@@ -1,0 +1,43 @@
+---
+year: 2023
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: C
+choices: ["1728", "2601", "3072", "4608", "6912"]
+---
+
+<Problem>
+Abdul and Chiang are standing $48$ feet apart in a field. Bharat is standing in the same field as far from Abdul as possible so that the angle formed by his lines of sight to Abdul and Chiang measures $60^\circ$. What is the square of the distance (in feet) between Abdul and Bharat?
+</Problem>
+
+<Solution>
+We want Bharat (point $B$) such that $\angle ABC = 60°$ (where $A$ = Abdul, $C$ = Chiang), with $B$ as far from $A$ as possible.
+
+By the inscribed angle theorem, all points $B$ where $\angle ABC = 60°$ lie on a circular arc over chord $AC$. The inscribed angle is half the central angle, so the central angle over $AC$ is $120°$.
+
+For a circle where chord $AC = 48$ subtends a central angle of $120°$, using the relationship $AC = 2R\sin(\theta/2)$ where $\theta = 120°$ is the central angle:
+
+Wait — the inscribed angle theorem says: if $\angle ABC = 60°$ is an inscribed angle subtending arc $AC$ (not containing $B$), then the central angle for the same arc is $120°$. The chord $AC$ relates to the circumradius $R$ by:
+
+$$AC = 2R \sin(\angle ABC) = 2R \sin 60°$$
+
+Wait, more precisely: $\dfrac{AC}{\sin(\angle ABC)} = 2R$ (law of sines in triangle $ABC$). So:
+
+$$2R = \frac{48}{\sin 60°} = \frac{48}{\sqrt{3}/2} = \frac{96}{\sqrt{3}} = 32\sqrt{3}.$$
+
+Thus $R = 16\sqrt{3}$.
+
+Bharat must lie on this circle (or its reflection across $AC$, giving $\angle ABC = 120°$ — but we want $60°$, so there are two arcs). To maximize the distance $AB$, Bharat should be at the point on the circle farthest from $A$.
+
+The farthest point from $A$ on a circle is the point diametrically opposite to $A$, at distance $2R$ from $A$.
+
+$$AB_{\max} = 2R = 32\sqrt{3}.$$
+
+Therefore:
+
+$$AB^2 = (32\sqrt{3})^2 = 1024 \times 3 = 3072.$$
+
+Answer: **C**.
+</Solution>

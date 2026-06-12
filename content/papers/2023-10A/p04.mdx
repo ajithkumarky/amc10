@@ -1,0 +1,27 @@
+---
+year: 2023
+paper: "10A"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 1
+answer: D
+choices: ["9", "10", "11", "12", "13"]
+---
+
+<Problem>
+A quadrilateral has all integer side lengths, a perimeter of $26$, and one side of length $4$. What is the greatest possible length of one side of this quadrilateral?
+</Problem>
+
+<Solution>
+Let the four integer side lengths be $4, a, b, c$ with $4 + a + b + c = 26$, so $a + b + c = 22$.
+
+We want to maximize one side, say $c$. The quadrilateral inequality requires that every side must be strictly less than the sum of the other three sides (a generalization of the triangle inequality). So:
+
+$$c < 4 + a + b = 26 - c \implies 2c < 26 \implies c < 13.$$
+
+Since $c$ must be a positive integer, the maximum is $c = 12$.
+
+We need $a + b = 22 - 12 = 10$ with $a, b$ positive integers — for instance $a = 5, b = 5$ works, and the sides $4, 5, 5, 12$ have perimeter 26. Check: $12 < 4 + 5 + 5 = 14$. ✓
+
+Answer: **D**.
+</Solution>

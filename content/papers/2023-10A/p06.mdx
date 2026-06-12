@@ -1,0 +1,35 @@
+---
+year: 2023
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: D
+choices: ["42", "63", "84", "126", "252"]
+---
+
+<Problem>
+An integer is assigned to each vertex of a cube. The value of an edge is defined to be the sum of the values of the two vertices it touches, and the value of a face is defined to be the sum of the values of the four edges surrounding it. The value of the cube is defined as the sum of the values of its six faces. Suppose the sum of the integers assigned to the vertices is $21$. What is the value of the cube?
+</Problem>
+
+<Solution>
+Let the eight vertex values be $v_1, v_2, \ldots, v_8$ with $v_1 + v_2 + \cdots + v_8 = 21$.
+
+Each edge value is the sum of its two endpoint vertices. Each face value is the sum of its four surrounding edges.
+
+The key observation is: how many times does each vertex contribute to the total cube value?
+
+A cube has 8 vertices. Each vertex belongs to exactly 3 faces (the three faces meeting at that corner). Within each face, the vertex's edges: each vertex on a face is shared by 2 of the 4 edges of that face. So the vertex contributes to 2 edges per face, and belongs to 3 faces.
+
+Let's count more carefully. The cube value = sum over all 6 faces of (sum of the 4 edge values on that face). Each edge appears in exactly 2 faces. So:
+
+$$\text{Cube value} = 2 \times \sum_{\text{all 12 edges}} (\text{edge value}).$$
+
+Each edge's value is the sum of 2 vertices, and each vertex belongs to exactly 3 edges. So:
+
+$$\sum_{\text{all 12 edges}} (\text{edge value}) = 3 \times \sum_{\text{all vertices}} v_i = 3 \times 21 = 63.$$
+
+Therefore the cube value is $2 \times 63 = 126$.
+
+Answer: **D**.
+</Solution>

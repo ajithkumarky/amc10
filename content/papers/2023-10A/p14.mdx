@@ -1,0 +1,35 @@
+---
+year: 2023
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: B
+choices: ['$\frac{4}{100}$', '$\frac{9}{200}$', '$\frac{1}{20}$', '$\frac{11}{200}$', '$\frac{3}{50}$']
+---
+
+<Problem>
+A number is chosen at random from among the first $100$ positive integers, and a positive integer divisor of that number is then chosen at random. What is the probability that the chosen divisor is divisible by $11$?
+
+$\textbf{(A)}~\dfrac{4}{100}\qquad\textbf{(B)}~\dfrac{9}{200}\qquad\textbf{(C)}~\dfrac{1}{20}\qquad\textbf{(D)}~\dfrac{11}{200}\qquad\textbf{(E)}~\dfrac{3}{50}$
+</Problem>
+
+<Solution>
+For the chosen divisor to be divisible by $11$, the original number must itself be divisible by $11$.
+
+**Step 1: Find the multiples of 11 in $\{1, \ldots, 100\}$.**
+
+They are $11, 22, 33, 44, 55, 66, 77, 88, 99$ — exactly $9$ numbers.
+
+**Step 2: For each multiple $n = 11k$ (where $1 \le k \le 9$, so $\gcd(k,11)=1$), find the fraction of its divisors that are multiples of $11$.**
+
+Every divisor of $n = 11k$ is either of the form $d$ (with $d \mid k$, not a multiple of $11$) or $11d$ (with $d \mid k$, a multiple of $11$). So exactly half the divisors of $n$ are multiples of $11$.
+
+This holds for all nine values because $k \in \{1,2,3,4,5,6,7,8,9\}$ and none of these is divisible by $11$, so $\tau(11k) = 2\tau(k)$ and exactly $\tau(k)$ of the divisors are multiples of $11$.
+
+**Step 3: Compute the total probability using the law of total probability.**
+
+$$P = \sum_{j=1}^{9} P(\text{chose } 11j) \cdot P(\text{divisor} \mid 11 \mid \text{chose }11j) = 9 \cdot \frac{1}{100} \cdot \frac{1}{2} = \frac{9}{200}.$$
+
+Answer: **B**.
+</Solution>

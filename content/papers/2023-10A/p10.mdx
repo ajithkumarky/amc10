@@ -1,0 +1,32 @@
+---
+year: 2023
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 2
+answer: D
+choices: ["4", "5", "6", "7", "8"]
+---
+
+<Problem>
+Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an $11$ on the next quiz, her mean will increase by $1$. If she scores an $11$ on each of the next three quizzes, her mean will increase by $2$. What is the mean of her quiz scores currently?
+</Problem>
+
+<Solution>
+Let $\mu$ be the current mean and $n$ be the current number of quizzes.
+
+**Condition 1:** After adding one score of $11$, the mean becomes $\mu + 1$:
+$$\frac{n\mu + 11}{n+1} = \mu + 1.$$
+So $n\mu + 11 = (n+1)(\mu + 1) = n\mu + n + \mu + 1$, which gives:
+$$11 = n + \mu + 1 \implies n + \mu = 10. \quad (1)$$
+
+**Condition 2:** After adding three scores of $11$, the mean becomes $\mu + 2$:
+$$\frac{n\mu + 33}{n+3} = \mu + 2.$$
+So $n\mu + 33 = (n+3)(\mu + 2) = n\mu + 3\mu + 2n + 6$, which gives:
+$$33 = 3\mu + 2n + 6 \implies 3\mu + 2n = 27. \quad (2)$$
+
+From (1): $n = 10 - \mu$. Substituting into (2):
+$$3\mu + 2(10 - \mu) = 27 \implies 3\mu + 20 - 2\mu = 27 \implies \mu = 7.$$
+
+Answer: **D**.
+</Solution>

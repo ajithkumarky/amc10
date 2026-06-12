@@ -1,0 +1,28 @@
+---
+year: 2023
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: E
+choices: ["14", "15", "16", "17", "18"]
+---
+
+<Problem>
+How many digits are in the base-ten representation of $8^5 \cdot 5^{10} \cdot 15^5$?
+</Problem>
+
+<Solution>
+First simplify the expression by factoring everything into primes.
+
+$8^5 = 2^{15}$, $\quad 5^{10} = 5^{10}$, $\quad 15^5 = (3 \cdot 5)^5 = 3^5 \cdot 5^5$.
+
+So the product equals:
+$$2^{15} \cdot 5^{10} \cdot 3^5 \cdot 5^5 = 2^{15} \cdot 5^{15} \cdot 3^5 = (2 \cdot 5)^{15} \cdot 3^5 = 10^{15} \cdot 243.$$
+
+$10^{15}$ is a $1$ followed by fifteen zeros (16 digits), so $243 \times 10^{15}$ is $243$ followed by fifteen zeros.
+
+That number has $3 + 15 = 18$ digits.
+
+Answer: **E**.
+</Solution>

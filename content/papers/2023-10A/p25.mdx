@@ -1,0 +1,53 @@
+---
+year: 2023
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: A
+choices: ['$\frac{7}{22}$', '$\frac{1}{3}$', '$\frac{3}{8}$', '$\frac{5}{12}$', '$\frac{1}{2}$']
+---
+
+<Problem>
+If $A$ and $B$ are vertices of a polyhedron, define the distance $d(A, B)$ to be the minimum number of edges of the polyhedron one must traverse in order to connect $A$ and $B$. For example, if $\overline{AB}$ is an edge of the polyhedron, then $d(A, B) = 1$, but if $\overline{AC}$ and $\overline{CB}$ are edges and $\overline{AB}$ is not an edge, then $d(A, B) = 2$. Let $Q$, $R$, and $S$ be randomly chosen distinct vertices of a regular icosahedron (regular polyhedron made up of $20$ equilateral triangles). What is the probability that $d(Q, R) > d(R, S)$?
+
+$\textbf{(A) } \dfrac{7}{22} \qquad \textbf{(B) } \dfrac{1}{3} \qquad \textbf{(C) } \dfrac{3}{8} \qquad \textbf{(D) } \dfrac{5}{12} \qquad \textbf{(E) } \dfrac{1}{2}$
+</Problem>
+
+<Solution>
+**Distance distribution on the icosahedron.**
+
+A regular icosahedron has $12$ vertices, $30$ edges, and $20$ triangular faces. From any fixed vertex $v$, the remaining $11$ vertices are distributed by distance:
+
+- $d = 1$: $5$ vertices (adjacent along edges),
+- $d = 2$: $5$ vertices (two edges away),
+- $d = 3$: $1$ vertex (the antipodal vertex).
+
+*(This follows from the icosahedron's high symmetry: each vertex has exactly $5$ neighbors, and the graph diameter is $3$.)*
+
+**Setting up the probability.**
+
+Fix $R$. By symmetry, the probability $P(d(Q,R) > d(R,S))$ is the same regardless of which vertex $R$ is chosen. We need to count ordered pairs $(Q, S)$ of distinct vertices (both different from $R$ and from each other) such that $d(Q,R) > d(R,S)$.
+
+There are $11 \times 10 = 110$ such ordered pairs $(Q, S)$.
+
+**Counting favorable pairs.**
+
+The distance sets from $R$ are: $D_1 = $ 5 vertices at $d=1$, $D_2 = $ 5 vertices at $d=2$, $D_3 = $ 1 vertex at $d=3$. Pairs with $Q$ and $S$ in different distance classes are automatically distinct.
+
+Favorable cases ($d(Q,R) > d(R,S)$):
+
+| $d(Q,R)$ | $d(R,S)$ | Count |
+|----------|----------|-------|
+| $2$ | $1$ | $5 \times 5 = 25$ |
+| $3$ | $1$ | $1 \times 5 = 5$ |
+| $3$ | $2$ | $1 \times 5 = 5$ |
+
+Total favorable $= 25 + 5 + 5 = 35$.
+
+**Probability:**
+
+$$P(d(Q,R) > d(R,S)) = \frac{35}{110} = \frac{7}{22}.$$
+
+Answer: **A**.
+</Solution>

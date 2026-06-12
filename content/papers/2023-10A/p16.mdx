@@ -1,0 +1,43 @@
+---
+year: 2023
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: B
+choices: ['$15$', '$36$', '$45$', '$48$', '$66$']
+---
+
+<Problem>
+In a table tennis tournament, every participant played every other participant exactly once. Although there were twice as many right-handed players as left-handed players, the number of games won by left-handed players was $40\%$ more than the number of games won by right-handed players. (There were no ties and no ambidextrous players.) What is the total number of games played?
+
+$\textbf{(A) }15\qquad\textbf{(B) }36\qquad\textbf{(C) }45\qquad\textbf{(D) }48\qquad\textbf{(E) }66$
+</Problem>
+
+<Solution>
+Let $L$ be the number of left-handed players, so there are $R = 2L$ right-handed players and $N = 3L$ players total.
+
+**Total games:** Every pair plays once, so the total number of games is $\displaystyle\binom{3L}{2} = \frac{3L(3L-1)}{2}$.
+
+Every game produces exactly one win, so the total wins equals the total games:
+$$W_L + W_R = \frac{3L(3L-1)}{2}.$$
+
+**Constraint:** $W_L = 1.4\, W_R$, so $2.4\, W_R = \dfrac{3L(3L-1)}{2}$, giving
+
+$$W_R = \frac{3L(3L-1)}{4.8} = \frac{5L(3L-1)}{8}.$$
+
+For $W_R$ to be a positive integer, $8 \mid 5L(3L-1)$. Since $\gcd(5,8)=1$, we need $8 \mid L(3L-1)$.
+
+- If $L$ is even, say $L = 2m$: $L(3L-1) = 2m(6m-1)$; need $4 \mid 2m(6m-1)$, i.e., $4 \mid m(6m-1)$. Since $6m-1$ is odd, need $4\mid m$, so $L = 8m'$.
+- If $L$ is odd: $L$ odd, $3L-1$ even. Need $8 \mid (3L-1)$, so $3L \equiv 1 \pmod{8}$, so $L \equiv 3 \pmod 8$.
+
+The smallest values are $L = 3$ (giving $N=9$) and $L = 8$ (giving $N=24$).
+
+**Check $L=3$:** Total games $= \dfrac{9 \cdot 8}{2} = 36$. Then $W_R = \dfrac{5 \cdot 3 \cdot 8}{8} = 15$ and $W_L = 21$. Check: $21 = 1.4 \times 15$ ✓. Also $15+21=36$ ✓.
+
+**Checking $L=3$ satisfies the tournament constraints:** With $3$ left-handed and $6$ right-handed players, we need left-handed players to collectively win $21$ out of $36$ games. The maximum left-handed wins occur when every left-handed player beats every right-handed player: that's $3 \times 6 = 18$ inter-group wins. Games among left-handed players: $\binom{3}{2}=3$, all go to left. Games among right-handed: $\binom{6}{2}=15$, all go to right. So maximum $W_L = 18+3 = 21$. Exactly achievable!
+
+The total number of games is $\boxed{36}$.
+
+Answer: **B**.
+</Solution>
