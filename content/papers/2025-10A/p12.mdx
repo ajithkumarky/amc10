@@ -1,0 +1,45 @@
+---
+year: 2025
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: D
+choices: ["176", "192", "432", "464", "608"]
+---
+
+<Problem>
+Carlos uses a $4$-digit passcode to unlock his computer. In his passcode, exactly one digit is even, exactly one (possibly different) digit is prime, and no digit is $0$. How many $4$-digit passcodes satisfy these conditions?
+</Problem>
+
+<Solution>
+The digits are from $1$ through $9$ (no $0$). Let's classify:
+
+- Even digits (1–9): $2, 4, 6, 8$ — that's 4 choices.
+- Prime digits (1–9): $2, 3, 5, 7$ — that's 4 choices.
+- Digits that are both even AND prime: just $2$.
+- Odd non-prime digits: $1, 9$ — wait, also check: $1$ is odd and not prime; $3, 5, 7$ are odd primes; $9$ is odd and not prime. So odd non-prime digits in 1–9: $1, 9$ — that's 2 choices.
+- Even non-prime digits: $4, 6, 8$ — that's 3 choices.
+- Odd prime digits: $3, 5, 7$ — that's 3 choices.
+- The digit $2$ is both even and prime.
+
+For the passcode to have exactly one even digit and exactly one prime digit, we consider cases based on whether the "even digit" and "prime digit" are the same or different.
+
+**Case 1: The even digit and the prime digit are the same (it's the digit $2$).** One position has a $2$, the other three positions have digits that are neither even nor prime. Odd non-prime digits in 1–9: $1, 9$ — 2 choices each.
+
+Number of passcodes: $\binom{4}{1} \times 1 \times 2^3 = 4 \times 8 = 32$.
+
+**Case 2: The even digit and the prime digit are different.** One position has an even non-prime digit ($4, 6, 8$: 3 choices), one position has an odd prime digit ($3, 5, 7$: 3 choices), and the other two positions have odd non-prime digits ($1, 9$: 2 choices each).
+
+Choose which position has the even digit: 4 ways.
+Choose which of the remaining 3 positions has the prime digit: 3 ways.
+Choose the even non-prime digit: 3 ways.
+Choose the odd prime digit: 3 ways.
+Each of the 2 remaining positions gets an odd non-prime: $2 \times 2 = 4$ ways.
+
+Number of passcodes: $4 \times 3 \times 3 \times 3 \times 4 = 432$.
+
+**Total:** $32 + 432 = 464$.
+
+Answer: **D**.
+</Solution>

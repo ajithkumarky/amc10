@@ -1,0 +1,74 @@
+---
+year: 2025
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: B
+choices: ['$\dfrac{1}{4}$', '$\dfrac{6}{23}$', '$\dfrac{3}{11}$', '$\dfrac{5}{17}$', '$\dfrac{3}{10}$']
+---
+
+<Problem>
+A circle of radius $r$ is surrounded by three circles, whose radii are $1$, $2$, and $3$, all externally tangent to the inner circle and to each other, as shown.
+
+The figure shows four mutually tangent circles: the inner circle of radius $r$, and three outer circles of radii $1$, $2$, and $3$, each pair of outer circles also tangent to each other.
+
+What is $r$?
+</Problem>
+
+<Solution>
+Let the three outer circles have radii $R_1 = 1$, $R_2 = 2$, $R_3 = 3$ and centers $O_1, O_2, O_3$. Let the inner circle have radius $r$ and center $O$.
+
+**Distances between outer centers:**
+$$O_1O_2 = 1+2 = 3,\quad O_1O_3 = 1+3 = 4,\quad O_2O_3 = 2+3 = 5.$$
+
+Note $3^2 + 4^2 = 5^2$, so triangle $O_1O_2O_3$ is a right triangle with the right angle at $O_1$.
+
+**Set up coordinates.** Place $O_1 = (0,0)$, $O_2 = (3,0)$, $O_3 = (0,4)$.
+
+The inner circle center $O = (x,y)$ satisfies:
+$$|O O_1| = r+1 \implies x^2 + y^2 = (r+1)^2, \tag{1}$$
+$$|O O_2| = r+2 \implies (x-3)^2 + y^2 = (r+2)^2, \tag{2}$$
+$$|O O_3| = r+3 \implies x^2 + (y-4)^2 = (r+3)^2. \tag{3}$$
+
+Subtract (1) from (2):
+$$(x-3)^2 - x^2 = (r+2)^2 - (r+1)^2$$
+$$-6x + 9 = 2r+3$$
+$$-6x = 2r - 6 \implies x = \frac{6-2r}{6} = 1 - \frac{r}{3}. \tag{4}$$
+
+Subtract (1) from (3):
+$$-8y + 16 = (r+3)^2 - (r+1)^2 = (2r+4)(2) = 4r+8$$
+$$-8y = 4r - 8 \implies y = \frac{8-4r}{8} = 1 - \frac{r}{2}. \tag{5}$$
+
+Substitute (4) and (5) into (1):
+$$\left(1 - \frac{r}{3}\right)^2 + \left(1 - \frac{r}{2}\right)^2 = (r+1)^2.$$
+
+Expand:
+$$1 - \frac{2r}{3} + \frac{r^2}{9} + 1 - r + \frac{r^2}{4} = r^2 + 2r + 1.$$
+
+$$2 - \frac{5r}{3} + r^2\!\left(\frac{1}{9}+\frac{1}{4}\right) = r^2 + 2r + 1.$$
+
+$\dfrac{1}{9}+\dfrac{1}{4} = \dfrac{13}{36}$:
+
+$$2 - \frac{5r}{3} + \frac{13r^2}{36} = r^2 + 2r + 1.$$
+
+$$1 - \frac{5r}{3} - 2r + \frac{13r^2}{36} - r^2 = 0.$$
+
+$$1 - \frac{11r}{3} + r^2\!\left(\frac{13}{36}-1\right) = 0.$$
+
+$\dfrac{13}{36} - 1 = -\dfrac{23}{36}$:
+
+$$1 - \frac{11r}{3} - \frac{23r^2}{36} = 0.$$
+
+Multiply through by $36$:
+$$36 - 132r - 23r^2 = 0 \implies 23r^2 + 132r - 36 = 0.$$
+
+Quadratic formula:
+$$r = \frac{-132 \pm \sqrt{132^2 + 4 \cdot 23 \cdot 36}}{46} = \frac{-132 \pm \sqrt{17424 + 3312}}{46} = \frac{-132 \pm \sqrt{20736}}{46}.$$
+
+$\sqrt{20736} = 144$.
+
+$$r = \frac{-132 + 144}{46} = \frac{12}{46} = \frac{6}{23} \quad (\text{taking the positive root}).$$
+
+Answer: **B**.
+</Solution>

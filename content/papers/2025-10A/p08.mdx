@@ -1,0 +1,47 @@
+---
+year: 2025
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: B
+choices: ["0", "1", "2", "3", "4"]
+---
+
+<Problem>
+Agnes writes the following four statements on a blank piece of paper.
+
+- At least one of these statements is true.
+- At least two of these statements are true.
+- At least two of these statements are false.
+- At least one of these statements is false.
+
+Each statement is either true or false. How many false statements did Agnes write on the paper?
+</Problem>
+
+<Solution>
+Let's label the statements S1, S2, S3, S4 and figure out how many are true.
+
+Call the number of true statements $T$ (so the number of false statements is $4 - T$).
+
+- S1 is true iff $T \ge 1$.
+- S2 is true iff $T \ge 2$.
+- S3 is true iff $4 - T \ge 2$, i.e., $T \le 2$.
+- S4 is true iff $4 - T \ge 1$, i.e., $T \le 3$.
+
+We need these truth values to be consistent with $T$ being the count of true statements. Let's check each possible value of $T$:
+
+**$T = 0$:** S1 is false ($T < 1$), S2 false, S3 true ($T \le 2$), S4 true ($T \le 3$). That gives $T = 2$, contradiction.
+
+**$T = 1$:** S1 true, S2 false, S3 true, S4 true. That gives $T = 3$, contradiction.
+
+**$T = 2$:** S1 true, S2 true, S3 true ($T \le 2$), S4 true. That gives $T = 4$, contradiction.
+
+**$T = 3$:** S1 true, S2 true, S3 false ($T > 2$), S4 true ($T \le 3$). That gives $T = 3$. This is consistent!
+
+**$T = 4$:** S1 true, S2 true, S3 false, S4 false ($T > 3$). That gives $T = 2$, contradiction.
+
+So $T = 3$ is the unique consistent solution, meaning exactly $1$ statement is false.
+
+Answer: **B**.
+</Solution>

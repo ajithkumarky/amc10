@@ -1,0 +1,49 @@
+---
+year: 2025
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: A
+choices: ['$\dfrac{3}{8}$', '$\dfrac{4}{9}$', '$\dfrac{1}{8}\sqrt{13}$', '$\dfrac{7}{15}$', '$\dfrac{1}{8}\sqrt{15}$']
+---
+
+<Problem>
+In the figure below, $ABEF$ is a rectangle, $\overline{AD} \perp \overline{DE}$, $AF = 7$, $AB = 1$, and $AD = 5$. What is the area of $\triangle ABC$?
+
+Point $C$ is the intersection of line $\overline{AD}$ extended with side $\overline{BE}$. The figure shows rectangle $ABEF$ with diagonal line from $F$ through $D$ to create point $C$ on $\overline{BE}$.
+</Problem>
+
+<Solution>
+Place $D$ at the origin with $\overline{AD}$ along the $y$-axis, so $A = (0, 5)$ (since $AD = 5$). Because $AD \perp DE$, segment $\overline{DE}$ is horizontal.
+
+**Finding coordinates of all vertices.** In rectangle $ABEF$ with $AB = 1$ and $AF = 7$:
+
+The diagonal $AE$ satisfies $AE^2 = AB^2 + AF^2 = 1 + 49 = 50$, so $AE = 5\sqrt{2}$.
+
+With $E$ on the horizontal line through $D$ (i.e., $y = 0$): $E = (-5, 0)$ (since $A = (0,5)$ and $AE^2 = 5^2 + 5^2 = 50$ ✓).
+
+Now compute the rectangle. $\overrightarrow{AE} = (-5,-5)$, a diagonal. The sides of the rectangle are:
+
+$$\overrightarrow{AF} = \frac{7}{5\sqrt{2}}(-5,-5) = \left(-\frac{28}{5}, -\frac{21}{5}\right), \qquad \overrightarrow{AB} = \frac{1}{5\sqrt{2}}(5,-5) = \left(\frac{3}{5}, -\frac{4}{5}\right).$$
+
+Wait — let me verify: $|\overrightarrow{AB}| = \sqrt{9/25+16/25} = 1$ ✓, $|\overrightarrow{AF}| = \sqrt{784/25 + 441/25} = \sqrt{49} = 7$ ✓, and $\overrightarrow{AB}\cdot\overrightarrow{AF} = (-28/5)(3/5)+(-21/5)(-4/5) = -84/25 + 84/25 = 0$ ✓.
+
+So $B = A + \overrightarrow{AB} = \left(\tfrac{3}{5},\, \tfrac{21}{5}\right)$ and $F = A + \overrightarrow{AF} = \left(-\tfrac{28}{5},\, \tfrac{4}{5}\right)$.
+
+**Locating $C$.** From the figure, $C$ is the intersection of line $\overline{AD}$ with segment $\overline{BE}$.
+
+Line $\overline{AD}$ is the $y$-axis ($x = 0$).
+
+Line through $B = (3/5, 21/5)$ and $E = (-5, 0)$: slope $= \dfrac{21/5 - 0}{3/5 - (-5)} = \dfrac{21/5}{28/5} = \dfrac{3}{4}$.
+
+Equation: $y = \dfrac{3}{4}(x + 5)$.
+
+At $x = 0$: $y = \dfrac{15}{4}$, so $C = \left(0,\, \dfrac{15}{4}\right)$.
+
+**Area of $\triangle ABC$.** With $A = (0,5)$, $B = (3/5, 21/5)$, $C = (0, 15/4)$:
+
+$$\text{Area} = \frac{1}{2}\left|x_B(y_A - y_C)\right| = \frac{1}{2}\cdot\frac{3}{5}\cdot\left|5 - \frac{15}{4}\right| = \frac{1}{2}\cdot\frac{3}{5}\cdot\frac{5}{4} = \frac{3}{8}.$$
+
+Answer: **A**.
+</Solution>

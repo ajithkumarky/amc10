@@ -1,0 +1,52 @@
+---
+year: 2025
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: D
+choices: ['$18$', '$19$', '$20$', '$21$', '$22$']
+---
+
+<Problem>
+Triangle $\triangle ABC$ has side lengths $AB = 80$, $BC = 45$, and $AC = 75$. The bisector of $\angle B$ and the altitude to side $\overline{AB}$ intersect at point $P$. What is $BP$?
+</Problem>
+
+<Solution>
+Place the triangle in coordinates. Let $B = (0, 0)$ and $A = (80, 0)$ (so $AB$ lies along the $x$-axis).
+
+**Find $C$.** We need $BC = 45$ and $AC = 75$.
+$$x_C^2 + y_C^2 = 45^2 = 2025,$$
+$$(x_C - 80)^2 + y_C^2 = 75^2 = 5625.$$
+
+Subtract: $(x_C - 80)^2 - x_C^2 = 3600 \Rightarrow -160x_C + 6400 = 3600 \Rightarrow x_C = \dfrac{2800}{160} = \dfrac{35}{2}$.
+
+$y_C^2 = 2025 - (35/2)^2 = 2025 - 1225/4 = (8100 - 1225)/4 = 6875/4$, so $y_C = \dfrac{25\sqrt{11}}{2}$ (taking positive value).
+
+**Altitude to $\overline{AB}$.** Since $AB$ is along the $x$-axis, the altitude from $C$ to $AB$ is the vertical line $x = 35/2$. But we want the altitude *to* side $\overline{AB}$, which is the line perpendicular to $AB$ passing through... wait: "the altitude to side $\overline{AB}$" means the altitude from vertex $C$ to side $AB$, which is the line through $C$ perpendicular to $AB$.
+
+Since $AB$ is horizontal, this altitude is the vertical line $x = x_C = 35/2$.
+
+**Angle bisector from $B$.** By the angle bisector theorem, the bisector of $\angle B$ divides $AC$ in the ratio $AB:BC = 80:45 = 16:9$.
+
+Direction of bisector from $B$: it's in the direction of $\hat{u}_{BA} + \hat{u}_{BC}$, where $\hat{u}_{BA}$ and $\hat{u}_{BC}$ are unit vectors from $B$ toward $A$ and $C$ respectively.
+
+$\hat{u}_{BA} = (1, 0)$ (toward $A = (80,0)$).
+
+$\hat{u}_{BC} = \dfrac{1}{45}\left(\dfrac{35}{2},\, \dfrac{25\sqrt{11}}{2}\right) = \left(\dfrac{35}{90},\, \dfrac{25\sqrt{11}}{90}\right) = \left(\dfrac{7}{18},\, \dfrac{5\sqrt{11}}{18}\right)$.
+
+Bisector direction: $\hat{u}_{BA} + \hat{u}_{BC} = \left(1 + \dfrac{7}{18},\, \dfrac{5\sqrt{11}}{18}\right) = \left(\dfrac{25}{18},\, \dfrac{5\sqrt{11}}{18}\right)$.
+
+Simplified direction: $(25, 5\sqrt{11}) = 5(5, \sqrt{11})$.
+
+Bisector line from $B = (0,0)$: parametrically $(5t, t\sqrt{11})$, or slope $\dfrac{\sqrt{11}}{5}$.
+
+**Intersection $P$ of the bisector with the altitude $x = 35/2$:**
+$$5t = \frac{35}{2} \Rightarrow t = \frac{7}{2}.$$
+$$P = \left(\frac{35}{2},\; \frac{7\sqrt{11}}{2}\right).$$
+
+**Distance $BP$:**
+$$BP = \sqrt{\left(\frac{35}{2}\right)^2 + \left(\frac{7\sqrt{11}}{2}\right)^2} = \sqrt{\frac{1225 + 49 \cdot 11}{4}} = \sqrt{\frac{1225 + 539}{4}} = \sqrt{\frac{1764}{4}} = \frac{42}{2} = 21.$$
+
+Answer: **D**.
+</Solution>

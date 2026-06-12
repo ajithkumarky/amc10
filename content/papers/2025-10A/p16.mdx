@@ -1,0 +1,32 @@
+---
+year: 2025
+paper: "10A"
+topic: counting-probability
+subtopic: expected-value
+difficulty: 4
+answer: D
+choices: ['$\dfrac{4}{3}$', '$\dfrac{13}{9}$', '$\dfrac{5}{3}$', '$\dfrac{17}{9}$', '$2$']
+---
+
+<Problem>
+There are three jars. Each of three coins is placed in one of the three jars, chosen at random and independently of the placements of the other coins. What is the expected number of coins in the jar with the most coins?
+</Problem>
+
+<Solution>
+Each coin goes into one of 3 jars uniformly at random; total outcomes $= 3^3 = 27$.
+
+Let $M$ = number of coins in the most-loaded jar. We want $E[M]$.
+
+Rather than computing $E[M]$ directly, use $E[M] = 1\cdot P(M=1) + 2\cdot P(M=2) + 3\cdot P(M=3)$.
+
+**$P(M = 3)$:** All 3 coins in the same jar: $3$ outcomes (jar 1, jar 2, or jar 3). $P(M=3) = 3/27 = 1/9$.
+
+**$P(M = 1)$:** Max is 1, meaning each jar has exactly 1 coin. This is a bijection (permutation) from coins to jars: $3! = 6$ outcomes. $P(M=1) = 6/27 = 2/9$.
+
+**$P(M = 2)$:** Remaining outcomes: $27 - 3 - 6 = 18$. $P(M=2) = 18/27 = 2/3$.
+
+**Expected value:**
+$$E[M] = 1\cdot\frac{2}{9} + 2\cdot\frac{2}{3} + 3\cdot\frac{1}{9} = \frac{2}{9} + \frac{12}{9} + \frac{3}{9} = \frac{17}{9}.$$
+
+Answer: **D**.
+</Solution>

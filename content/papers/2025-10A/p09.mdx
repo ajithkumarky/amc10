@@ -1,0 +1,52 @@
+---
+year: 2025
+paper: "10A"
+topic: algebra
+subtopic: functions
+difficulty: 2
+answer: C
+choices: ["1", "2", "3", "4", "more than 4"]
+---
+
+<Problem>
+Let $f(x) = 100x^3 - 300x^2 + 200x$. For how many real numbers $a$ does the graph of $y = f(x - a)$ pass through the point $(1, 25)$?
+</Problem>
+
+<Solution>
+The graph of $y = f(x - a)$ passes through $(1, 25)$ when $f(1 - a) = 25$.
+
+Let $u = 1 - a$. We need $f(u) = 25$, i.e.:
+
+$$100u^3 - 300u^2 + 200u = 25.$$
+
+Factor out: $100u(u^2 - 3u + 2) = 25$, so $100u(u-1)(u-2) = 25$.
+
+Let's analyze $f(u) = 100u(u-1)(u-2)$. This cubic has roots at $u = 0, 1, 2$, and a positive leading coefficient. We want $f(u) = 25$.
+
+Find the local extrema by taking the derivative:
+
+$$f'(u) = 300u^2 - 600u + 200 = 0$$
+$$3u^2 - 6u + 2 = 0$$
+$$u = \frac{6 \pm \sqrt{36 - 24}}{6} = \frac{6 \pm \sqrt{12}}{6} = 1 \pm \frac{1}{\sqrt{3}}.$$
+
+So the local max is at $u_1 = 1 - \frac{1}{\sqrt{3}} \approx 0.423$ and local min at $u_2 = 1 + \frac{1}{\sqrt{3}} \approx 1.577$.
+
+Evaluate the local max value:
+$$f\!\left(1 - \tfrac{1}{\sqrt3}\right) = 100\left(1-\tfrac{1}{\sqrt3}\right)\left(-\tfrac{1}{\sqrt3}\right)\left(1-\tfrac{2}{\sqrt3}\right).$$
+
+Note $u_1 - 1 = -1/\sqrt{3}$ and $u_1 - 2 = -1 - 1/\sqrt{3}$.
+
+$$f(u_1) = 100 \cdot \frac{(\sqrt{3}-1)}{\sqrt{3}} \cdot \frac{-1}{\sqrt{3}} \cdot \frac{-({\sqrt{3}+1})}{\sqrt{3}}$$
+$$= 100 \cdot \frac{(\sqrt{3}-1)(\sqrt{3}+1)}{3\sqrt{3}} = 100 \cdot \frac{3-1}{3\sqrt{3}} = \frac{200}{3\sqrt{3}} = \frac{200\sqrt{3}}{9} \approx \frac{200 \times 1.732}{9} \approx 38.5.$$
+
+The local max is about $38.5 > 25$, and local min is $-38.5 < 25$ (by symmetry of the cubic about $u = 1$). Since $f(0) = 0 < 25$, $f(1) = 0 < 25$, $f(2) = 0 < 25$, and $f \to +\infty$ as $u \to +\infty$ and $f \to -\infty$ as $u \to -\infty$:
+
+The horizontal line $y = 25$ (which is between $0$ and $38.5$) crosses the cubic three times:
+1. Once on the increasing part before $u_1$ (where $f$ rises from $-\infty$ to the local max $\approx 38.5$).
+2. Once on the decreasing part between $u_1$ and $u_2$ (where $f$ decreases from $38.5$ through $0$ to $-38.5$; since $25 > 0$ and the local max is $38.5 > 25$, it crosses once here too).
+3. Once on the increasing part after $u_2$ (where $f$ rises from $-38.5$ back up to $+\infty$; since $25 > -38.5$, it crosses here).
+
+So $f(u) = 25$ has exactly $3$ real solutions, meaning there are $3$ values of $a = 1 - u$.
+
+Answer: **C**.
+</Solution>

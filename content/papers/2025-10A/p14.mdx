@@ -1,0 +1,45 @@
+---
+year: 2025
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: B
+choices: ['$\dfrac{1}{6}$', '$\dfrac{1}{5}$', '$\dfrac{2}{9}$', '$\dfrac{3}{13}$', '$\dfrac{1}{4}$']
+---
+
+<Problem>
+Six chairs are arranged around a round table. Two students and two teachers randomly select four of the chairs to sit in. What is the probability that the two students sit in two adjacent chairs and the two teachers also sit in two adjacent chairs?
+</Problem>
+
+<Solution>
+Label the six chairs $1, 2, 3, 4, 5, 6$ around the table (chair 6 is adjacent to chair 1).
+
+**Total ways to choose 4 chairs out of 6:** $\binom{6}{4} = 15$.
+
+Once 4 chairs are chosen, the two students pick 2 of those 4 chairs and the two teachers get the other 2: that's $\binom{4}{2} = 6$ ways to assign students vs. teachers (since students are distinguishable within each group). But actually we need to count the seating itself — the students are distinguishable and the teachers are distinguishable too. Let's count ordered seatings.
+
+**Cleaner approach — count directly.**
+
+Total ordered seatings of 4 people in 6 chairs: choose 4 chairs from 6 ($\binom{6}{4} = 15$ ways), then arrange 4 people in them ($4! = 24$ ways). Total = $15 \times 24 = 360$.
+
+**Favorable seatings:** Both student pairs and teacher pairs each occupy a pair of adjacent chairs.
+
+First count the number of ways to choose two non-overlapping adjacent pairs from the 6-chair circle.
+
+Adjacent pairs on a 6-chair circle: $\{1,2\}, \{2,3\}, \{3,4\}, \{4,5\}, \{5,6\}, \{6,1\}$ — there are 6 adjacent pairs.
+
+We need to choose 2 disjoint adjacent pairs (one for students, one for teachers). Two adjacent pairs are disjoint unless they share a chair (i.e., they are consecutive pairs). The number of ways to pick 2 disjoint adjacent pairs:
+
+Total pairs of adjacent pairs: $\binom{6}{2} = 15$.
+Pairs that share a chair (consecutive adjacent pairs): $(1,2)$ and $(2,3)$ share chair 2, etc. — there are 6 such overlapping pairs.
+Disjoint adjacent pairs: $15 - 6 = 9$.
+
+For each of these 9 choices of disjoint adjacent-pair sets, we assign one pair to the students and one to the teachers: $2$ ways (students get pair $A$ or pair $B$). Then arrange 2 students in their 2 chairs ($2! = 2$) and 2 teachers in their 2 chairs ($2! = 2$).
+
+Favorable seatings $= 9 \times 2 \times 2 \times 2 = 72$.
+
+**Probability** $= \dfrac{72}{360} = \dfrac{1}{5}$.
+
+Answer: **B**.
+</Solution>

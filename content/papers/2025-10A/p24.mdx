@@ -1,0 +1,36 @@
+---
+year: 2025
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: C
+choices: ['$511$', '$2584$', '$9841$', '$17711$', '$19682$']
+---
+
+<Problem>
+Call a positive integer *fair* if no digit is used more than once, it has no $0$s, and no digit is adjacent to two greater digits. For example, $196$, $23$, and $12463$ are fair, but $1546$, $320$, and $34321$ are not. How many fair positive integers are there?
+</Problem>
+
+<Solution>
+A fair integer uses digits from $\{1, 2, \ldots, 9\}$ with no repeats. The condition "no digit is adjacent to two greater digits" means: no interior digit is a strict local minimum (i.e., no interior digit has both neighbors larger than itself).
+
+**Key observation.** In a sequence with no interior local minimum, the sequence must be "unimodal" — it goes up (weakly or not at all) and then down (weakly), possibly with a plateau at the peak. More precisely, the digits form a pattern that increases (non-strictly) from the left up to some peak, then decreases (non-strictly). But since all digits are distinct, the pattern is: strictly increasing up to a peak, then strictly decreasing.
+
+Such a sequence is called a **unimodal permutation** of the chosen digit set.
+
+**Counting.** Choose any non-empty subset $S$ of $\{1,2,\ldots,9\}$ with $|S| = k$. Given $S$, how many fair integers can be formed using exactly the digits of $S$?
+
+For a fair arrangement of $k$ distinct digits: the sequence must be unimodal (increase then decrease). The maximum element of $S$ must be the peak. We need to split the remaining $k-1$ elements into a left-increasing part and a right-decreasing part (both written in order).
+
+For each of the $k-1$ non-maximum elements of $S$, it either goes to the left of the peak or to the right of the peak. Once we decide which side, the order is determined (left side: increasing order; right side: decreasing order). The left side can be empty (peak is first) and the right side can be empty (peak is last), as long as the whole number makes sense.
+
+So there are $2^{k-1}$ unimodal arrangements of a $k$-element set.
+
+**Total fair integers:**
+$$\sum_{k=1}^{9} \binom{9}{k} \cdot 2^{k-1} = \frac{1}{2}\sum_{k=1}^{9}\binom{9}{k}2^k = \frac{1}{2}\left[(1+2)^9 - \binom{9}{0}\cdot 1\right] = \frac{3^9 - 1}{2} = \frac{19683 - 1}{2} = \frac{19682}{2} = 9841.$$
+
+**Verification with small examples.** $196$: digits $1, 9, 6$. Peak is $9$; left side $\{1\}$ gives $1$; right side $\{6\}$ gives $6$. Sequence $1,9,6$ ✓. $34321$ has $4$ in the interior with neighbors $3$ and $3$ — neither is greater, so the issue is $3, 4, 3, 2, 1$: the digit $4$ has neighbors $3$ and $3$, that's fine. The digit $3$ (second from left) has neighbors $4$ and $3$, and $4 > 3$ but $3 \not> 3$, so OK. Actually $34321$: reading as $3,4,3,2,1$ — digit $3$ appears twice, violating the "no repeats" rule, so $34321$ fails on repetition.
+
+Answer: **C**.
+</Solution>

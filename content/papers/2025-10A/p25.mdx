@@ -1,0 +1,73 @@
+---
+year: 2025
+paper: "10A"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 5
+answer: A
+choices: ['$25$', '$26$', '$27$', '$28$', '$29$']
+---
+
+<Problem>
+A point $P$ is chosen at random inside square $ABCD$. The probability that $\overline{AP}$ is neither the shortest nor the longest side of $\triangle APB$ can be written as $\dfrac{a + b\pi - c\sqrt{d}}{e}$, where $a$, $b$, $c$, $d$, and $e$ are positive integers, $\gcd(a, b, c, e) = 1$, and $d$ is not divisible by the square of any prime. What is $a + b + c + d + e$?
+</Problem>
+
+<Solution>
+Let the square have side length $1$, with $A = (0,0)$ and $B = (1,0)$. Point $P = (x,y)$ is chosen uniformly in the unit square $[0,1]^2$. The three sides of $\triangle APB$ are:
+
+$$AP = \sqrt{x^2+y^2},\qquad BP = \sqrt{(x-1)^2+y^2},\qquad AB = 1.$$
+
+We want $P\bigl(AP \text{ is neither shortest nor longest}\bigr) = 1 - P(AP \text{ is shortest}) - P(AP \text{ is longest})$.
+
+**Condition for $AP$ shortest:** $AP < BP$ and $AP < 1$.
+
+- $AP < BP$: $x^2 < (x-1)^2$ $\Rightarrow$ $x < 1/2$.
+- $AP < 1$: $x^2 + y^2 < 1$, i.e., $P$ is inside the quarter-circle of radius $1$ centered at $A$.
+
+Region: $\{x < 1/2\} \cap \{x^2+y^2 < 1\} \cap [0,1]^2$.
+
+Since for $x \in [0,1/2]$ and $y \in [0,1]$, the constraint $x^2+y^2 < 1$ is active only when $y > \sqrt{1-x^2}$... actually for $x \in [0,1/2]$, $\sqrt{1-x^2} \geq \sqrt{3}/2 \approx 0.866$. So the quarter-circle cuts the square for $y < \sqrt{1-x^2}$.
+
+$P(AP < BP,\, AP < 1) = \int_0^{1/2}\!\int_0^{\min(1, \sqrt{1-x^2})}\! dy\,dx = \int_0^{1/2} \sqrt{1-x^2}\,dx$.
+
+(Since $\sqrt{1-x^2} \leq 1$ for $x \geq 0$, the upper limit is $\sqrt{1-x^2}$ throughout.)
+
+$\int_0^{1/2}\sqrt{1-x^2}\,dx = \left[\frac{x\sqrt{1-x^2}}{2} + \frac{\arcsin x}{2}\right]_0^{1/2} = \frac{(1/2)(\sqrt{3}/2)}{2} + \frac{\pi/6}{2} = \frac{\sqrt{3}}{8} + \frac{\pi}{12}$.
+
+**Condition for $AP$ longest:** $AP > BP$ and $AP > 1$.
+
+- $AP > BP$: $x > 1/2$.
+- $AP > 1$: $x^2+y^2 > 1$.
+
+Region: $\{x > 1/2\} \cap \{x^2+y^2 > 1\} \cap [0,1]^2$.
+
+For $x \in (1/2, 1)$: $x^2+y^2 > 1 \Leftrightarrow y > \sqrt{1-x^2}$ (for $x < 1$).
+
+At $x=1$: $\sqrt{1-x^2}=0$; at $x=1/2$: $\sqrt{1-x^2}=\sqrt{3}/2$.
+
+$P(AP > BP,\, AP > 1) = \int_{1/2}^{1}\!\int_{\sqrt{1-x^2}}^{1}\!dy\,dx = \int_{1/2}^{1}\!\bigl(1 - \sqrt{1-x^2}\bigr)\,dx$.
+
+$= \int_{1/2}^{1} 1\,dx - \int_{1/2}^{1}\sqrt{1-x^2}\,dx = \frac{1}{2} - \left[\frac{x\sqrt{1-x^2}}{2}+\frac{\arcsin x}{2}\right]_{1/2}^{1}$.
+
+$= \frac{1}{2} - \left[\left(0 + \frac{\pi/2}{2}\right) - \left(\frac{\sqrt{3}}{8}+\frac{\pi}{12}\right)\right] = \frac{1}{2} - \frac{\pi}{4} + \frac{\sqrt{3}}{8} + \frac{\pi}{12}$.
+
+$= \frac{1}{2} - \frac{3\pi}{12} + \frac{\pi}{12} + \frac{\sqrt{3}}{8} = \frac{1}{2} - \frac{2\pi}{12} + \frac{\sqrt{3}}{8} = \frac{1}{2} - \frac{\pi}{6} + \frac{\sqrt{3}}{8}$.
+
+**Final probability:**
+
+$$\text{Prob} = 1 - \left(\frac{\sqrt{3}}{8}+\frac{\pi}{12}\right) - \left(\frac{1}{2}-\frac{\pi}{6}+\frac{\sqrt{3}}{8}\right).$$
+
+$= 1 - \frac{\sqrt{3}}{8} - \frac{\pi}{12} - \frac{1}{2} + \frac{\pi}{6} - \frac{\sqrt{3}}{8}$
+
+$= \frac{1}{2} + \frac{\pi}{12} - \frac{\sqrt{3}}{4}$
+
+$= \frac{6 + \pi - 3\sqrt{3}}{12}$.
+
+So the probability is $\dfrac{6 + \pi - 3\sqrt{3}}{12}$, giving $a = 6$, $b = 1$, $c = 3$, $d = 3$, $e = 12$.
+
+Check $\gcd(a,b,c,e) = \gcd(6,1,3,12) = 1$ ✓. $d = 3$ is squarefree ✓.
+
+$$a+b+c+d+e = 6+1+3+3+12 = 25.$$
+
+Answer: **A**.
+</Solution>

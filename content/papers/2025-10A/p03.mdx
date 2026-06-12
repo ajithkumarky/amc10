@@ -1,0 +1,27 @@
+---
+year: 2025
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: D
+choices: ["2025", "2026", "3012", "3037", "4050"]
+---
+
+<Problem>
+How many isosceles triangles are there with positive area whose side lengths are all positive integers and whose longest side has length $2025$?
+</Problem>
+
+<Solution>
+An isosceles triangle has two equal sides and one base (or all three equal). We need the longest side to be $2025$.
+
+**Case 1: The two equal sides are the longest.** Let the equal sides be $2025$ and the base be $b$, where $1 \le b \le 2025$. The triangle inequality requires $b < 2025 + 2025$ (always true) and $2025 < 2025 + b$, i.e., $b > 0$ (always true since $b \ge 1$). But we also need the longest side to be $2025$, so $b \le 2025$. All values $b = 1, 2, \ldots, 2025$ work. That gives $2025$ triangles.
+
+**Case 2: The base is the longest side.** The base is $2025$ and the two equal sides are each $s$, where $1 \le s < 2025$. The triangle inequality requires $s + s > 2025$, i.e., $2s > 2025$, i.e., $s \ge 1013$. So $s$ ranges from $1013$ to $2024$, giving $2024 - 1013 + 1 = 1012$ triangles.
+
+However, when $b = 2025$ in Case 1, the triangle has all sides $2025$ (equilateral), which is already included in Case 1. When $b = 2025$ in Case 1 that's the equilateral triangle with $s = 2025$ (base $= 2025$, legs $= 2025$). This would also be counted if we considered the "base = 2025 and equal sides = 2025" situation — but that falls in Case 1 (both sides $= 2025$, base $= 2025$). Case 2 only has $s < 2025$, so there's no overlap.
+
+Total: $2025 + 1012 = 3037$.
+
+Answer: **D**.
+</Solution>

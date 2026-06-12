@@ -1,0 +1,43 @@
+---
+year: 2025
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 4
+answer: B
+choices: ['$-\dfrac{5}{3}$', '$-\dfrac{3}{2}$', '$-\dfrac{6}{5}$', '$-\dfrac{5}{6}$', '$-\dfrac{2}{3}$']
+---
+
+<Problem>
+The harmonic mean of a collection of numbers is the reciprocal of the arithmetic mean of the reciprocals of the numbers in the collection. For example, the harmonic mean of $4, 4, 5$ is
+$$\frac{1}{\dfrac{1}{3}\!\left(\dfrac{1}{4}+\dfrac{1}{4}+\dfrac{1}{5}\right)} = \frac{30}{7}.$$
+
+What is the harmonic mean of all the real roots of the $4050^{\text{th}}$ degree polynomial
+$$\prod_{k=1}^{2025}(kx^2 - 4x - 3) = (x^2-4x-3)(2x^2-4x-3)(3x^2-4x-3)\cdots(2025x^2-4x-3)\,?$$
+</Problem>
+
+<Solution>
+For each factor $kx^2 - 4x - 3$, let its real roots be $r_k$ and $s_k$ (if they exist). By Vieta's formulas:
+
+$$r_k + s_k = \frac{4}{k}, \qquad r_k s_k = \frac{-3}{k}.$$
+
+The sum of reciprocals of the two roots is:
+$$\frac{1}{r_k} + \frac{1}{s_k} = \frac{r_k + s_k}{r_k s_k} = \frac{4/k}{-3/k} = -\frac{4}{3}.$$
+
+This is the same for every $k$! Now we need to check which quadratics have real (non-zero) roots. The discriminant of $kx^2 - 4x - 3$ is $16 + 12k > 0$ for all $k \geq 1$, so every factor has two distinct real roots. Neither root is $0$ (since the constant term $-3 \neq 0$).
+
+So all $2025$ quadratics contribute real roots, giving $2025 \times 2 = 4050$ real roots total.
+
+The harmonic mean $H$ of a collection $\{x_i\}$ of $n$ numbers is:
+$$H = \frac{n}{\sum_i \frac{1}{x_i}}.$$
+
+Total number of real roots: $n = 4050$.
+
+Sum of reciprocals of all roots:
+$$\sum_{k=1}^{2025}\left(\frac{1}{r_k}+\frac{1}{s_k}\right) = \sum_{k=1}^{2025}\left(-\frac{4}{3}\right) = 2025 \times \left(-\frac{4}{3}\right) = -2700.$$
+
+Harmonic mean:
+$$H = \frac{4050}{-2700} = -\frac{4050}{2700} = -\frac{3}{2}.$$
+
+Answer: **B**.
+</Solution>

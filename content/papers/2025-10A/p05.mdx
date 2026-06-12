@@ -1,0 +1,66 @@
+---
+year: 2025
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 1
+answer: E
+choices: ["5", "15", "16", "44", "45"]
+---
+
+<Problem>
+Consider the sequence of positive integers
+
+$$1,2,1,2,3,2,1,2,3,4,3,2,1,2,3,4,5,4,3,2,1,2,3,4,5,6,5,4,3,2,1,2,\dots$$
+
+What is the $2025$th term in this sequence?
+</Problem>
+
+<Solution>
+The sequence is built from "zigzag" blocks. The $n$th block goes up from $1$ to $n$ then back down to $1$, but consecutive blocks share their endpoint. Let's look at the structure:
+
+- Block 1: $1$ (length 1)
+- Block 2: $1, 2, 1$ (length 3, but shares endpoint 1 with block 1 — new terms: $2, 1$, adding 2)
+- Block 3: $1, 2, 3, 2, 1$ (new terms: $2, 3, 2, 1$, adding 4)
+
+Actually, let's look at complete "mountain" segments that go up to a peak of $n$ and come back down:
+
+Peak $n$: the segment $1, 2, 3, \ldots, n, \ldots, 3, 2, 1$ has $2n - 1$ terms.
+
+The sequence shown is: $1 \mid 2, 1 \mid 2, 3, 2, 1 \mid 2, 3, 4, 3, 2, 1 \mid \ldots$
+
+Let's recount. The pattern: ascending from previous peak to $n$, then descending back to 1:
+- Peak 1: just $1$ — length $1$, cumulative: $1$
+- Peak 2: $2, 1$ appended — length $2$, cumulative: $3$
+- Peak 3: $2, 3, 2, 1$ appended — length $4$, cumulative: $7$
+- Peak 4: $2, 3, 4, 3, 2, 1$ appended — length $6$, cumulative: $13$
+- Peak $n$ (for $n \ge 2$): adds $2(n-1)$ terms.
+
+Cumulative after peak $n$ (for $n \ge 1$):
+$$1 + \sum_{k=2}^{n} 2(k-1) = 1 + 2 \cdot \frac{(n-1)n}{2} = 1 + n(n-1) = n^2 - n + 1.$$
+
+We want the largest $n$ such that $n^2 - n + 1 \le 2025$.
+
+$n^2 - n + 1 \le 2025 \Rightarrow n^2 - n - 2024 \le 0.$
+
+Using the quadratic formula: $n = \frac{1 + \sqrt{1 + 4 \cdot 2024}}{2} = \frac{1 + \sqrt{8097}}{2}$.
+
+$\sqrt{8097} \approx 89.98$, so $n \approx \frac{1 + 89.98}{2} \approx 45.5$.
+
+Check $n = 45$: $45^2 - 45 + 1 = 2025 - 45 + 1 = 1981$. Cumulative after peak 45 is $1981$.
+
+Check $n = 46$: $46^2 - 46 + 1 = 2116 - 46 + 1 = 2071$. Cumulative after peak 46 is $2071$.
+
+So the 2025th term falls within the block for peak 46. After peak 45's segment ends at position 1981, the block for peak 46 starts at position 1982. This block goes:
+$$2, 3, 4, \ldots, 46, 45, 44, \ldots, 1.$$
+
+The position within this block is $2025 - 1981 = 44$.
+
+The block for peak 46 (appended part) is: $2, 3, 4, \ldots, 46, 45, \ldots, 1$ with $2 \times 45 = 90$ terms.
+
+The ascending part goes $2, 3, \ldots, 46$: that's $45$ terms (positions 1 through 45 within this appended block).
+
+Position 44 within the block is in the ascending part: the 44th term of $2, 3, 4, \ldots$ is $2 + 44 - 1 = 45$.
+
+Answer: **E**.
+</Solution>

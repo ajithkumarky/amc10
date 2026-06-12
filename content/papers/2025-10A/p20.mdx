@@ -1,0 +1,74 @@
+---
+year: 2025
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: A
+choices: ['$119$', '$120$', '$121$', '$122$', '$123$']
+---
+
+<Problem>
+A silo (right circular cylinder) with diameter $20$ meters stands in a field. MacDonald is located $20$ meters west and $15$ meters south of the center of the silo. McGregor is located $20$ meters east and $g > 0$ meters south of the center of the silo. The line of sight between MacDonald and McGregor is tangent to the silo. The value of $g$ can be written as $\dfrac{a\sqrt{b} - c}{d}$, where $a$, $b$, $c$, and $d$ are positive integers, $b$ is not divisible by the square of any prime, and $d$ is relatively prime to the greatest common divisor of $a$ and $c$. What is $a + b + c + d$?
+</Problem>
+
+<Solution>
+Set up coordinates with the silo center at the origin. The silo has radius $10$.
+
+- MacDonald: $M = (-20, -15)$ (20 west, 15 south).
+- McGregor: $G = (20, -g)$ (20 east, $g$ south, with $g > 0$).
+
+**Distance from origin to line $MG$ equals 10 (tangency condition).**
+
+Direction vector of $MG$: $G - M = (40, 15 - g)$.
+
+The line $MG$ passes through $M = (-20, -15)$. Its equation in normal form: for point $P = (x,y)$ on the line,
+
+$$\frac{(P - M) \times (G - M)}{|G - M|} = \pm 10,$$
+
+where $\times$ denotes the 2D cross product (scalar).
+
+Cross product $(0 - M) \times (G - M)$: take $P = (0,0)$:
+
+$$(0 - (-20),\; 0 - (-15)) \times (40,\; 15 - g) = (20,\; 15) \times (40,\; 15 - g)$$
+$$= 20(15 - g) - 15(40) = 300 - 20g - 600 = -300 - 20g.$$
+
+$|G - M| = \sqrt{40^2 + (15-g)^2} = \sqrt{1600 + (15-g)^2}$.
+
+Tangency condition:
+$$\frac{|-300 - 20g|}{\sqrt{1600 + (15-g)^2}} = 10.$$
+
+Since $g > 0$, $-300 - 20g < 0$, so $|-300 - 20g| = 300 + 20g$:
+
+$$(300 + 20g)^2 = 100\bigl[1600 + (15-g)^2\bigr].$$
+
+Expand left side: $100(15 + g)^2 \cdot 4 = 400(15+g)^2$. Wait: $(300+20g)^2 = [20(15+g)]^2 = 400(15+g)^2$.
+
+Right side: $100[1600 + 225 - 30g + g^2] = 100[1825 - 30g + g^2]$.
+
+So:
+$$400(15+g)^2 = 100(1825 - 30g + g^2).$$
+$$4(225 + 30g + g^2) = 1825 - 30g + g^2.$$
+$$900 + 120g + 4g^2 = 1825 - 30g + g^2.$$
+$$3g^2 + 150g - 925 = 0.$$
+
+Quadratic formula:
+$$g = \frac{-150 \pm \sqrt{150^2 + 4\cdot 3\cdot 925}}{6} = \frac{-150 \pm \sqrt{22500 + 11100}}{6} = \frac{-150 \pm \sqrt{33600}}{6}.$$
+
+$\sqrt{33600} = \sqrt{400 \cdot 84} = 20\sqrt{84} = 20 \cdot 2\sqrt{21} = 40\sqrt{21}$.
+
+$$g = \frac{-150 \pm 40\sqrt{21}}{6} = \frac{-75 \pm 20\sqrt{21}}{3}.$$
+
+Since $g > 0$, take the $+$ sign:
+$$g = \frac{-75 + 20\sqrt{21}}{3} = \frac{20\sqrt{21} - 75}{3}.$$
+
+Check: $\sqrt{21} \approx 4.583$, so $20\sqrt{21} \approx 91.65$, and $g \approx (91.65 - 75)/3 \approx 5.55 > 0$ ✓.
+
+**Identifying $a, b, c, d$.** We have $g = \dfrac{20\sqrt{21} - 75}{3}$, so $a = 20$, $b = 21$, $c = 75$, $d = 3$.
+
+Check conditions: $b = 21 = 3 \times 7$ is squarefree ✓. $\gcd(a, c) = \gcd(20, 75) = 5$; $\gcd(d, 5) = \gcd(3, 5) = 1$, so $d$ is relatively prime to $\gcd(a,c)$ ✓.
+
+$$a + b + c + d = 20 + 21 + 75 + 3 = 119.$$
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,44 @@
+---
+year: 2025
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: E
+choices: ["66", "91", "103", "132", "149"]
+---
+
+<Problem>
+The sequence $1, x, y, z$ is arithmetic. The sequence $1, p, q, z$ is geometric. Both sequences are strictly increasing and contain only integers, and $z$ is as small as possible. What is the value of $x + y + z + p + q$?
+</Problem>
+
+<Solution>
+**Arithmetic sequence $1, x, y, z$:** Let the common difference be $d > 0$ (strictly increasing integers). Then $x = 1 + d$, $y = 1 + 2d$, $z = 1 + 3d$.
+
+**Geometric sequence $1, p, q, z$:** Let the common ratio be $r$. Then $p = r$, $q = r^2$, $z = r^3$.
+
+Since the sequence is strictly increasing integers and starts at $1$, we need $r$ to be a positive integer with $r > 1$ (so $r \ge 2$). Actually $r$ could be rational — $p$ and $q$ must be integers. If $r = s/t$ in lowest terms, then $p = s/t$ must be an integer, so $t = 1$ and $r$ is an integer. Thus $r \ge 2$.
+
+So $z = r^3$ for some integer $r \ge 2$, and also $z = 1 + 3d$ for some positive integer $d$.
+
+We need $z - 1$ to be divisible by $3$, i.e., $r^3 \equiv 1 \pmod{3}$, i.e., $r \equiv 1 \pmod{3}$.
+
+The smallest $r \ge 2$ with $r \equiv 1 \pmod 3$ is $r = 4$.
+
+Check $r = 2$: $z = 8$, $3d = 7$, not an integer. Fail.
+Check $r = 3$: $z = 27$, $3d = 26$, not an integer. Fail.
+Check $r = 4$: $z = 64$, $3d = 63$, $d = 21$. Works!
+
+So $r = 4$, $z = 64$, $d = 21$:
+- $x = 1 + 21 = 22$
+- $y = 1 + 42 = 43$
+- $z = 64$
+- $p = 4$
+- $q = 16$
+
+Both sequences strictly increase with integer terms. ✓
+
+$$x + y + z + p + q = 22 + 43 + 64 + 4 + 16 = 149.$$
+
+Answer: **E**.
+</Solution>

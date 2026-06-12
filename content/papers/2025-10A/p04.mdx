@@ -1,0 +1,39 @@
+---
+year: 2025
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 1
+answer: A
+choices: ["28", "29", "30", "32", "33"]
+---
+
+<Problem>
+A team of students is going to compete against a team of teachers in a trivia contest. The total number of students and teachers is $15$. Ash, a cousin of one of the students, wants to join the contest. If Ash plays with the students, the average age on that team will increase from $12$ to $14$. If Ash plays with the teachers, the average age on that team will decrease from $55$ to $52$. How old is Ash?
+</Problem>
+
+<Solution>
+Let $s$ = number of students and $t$ = number of teachers, so $s + t = 15$.
+
+**Using the students' information:** The total age of the students is $12s$. When Ash joins, the new average is $14$ with $s + 1$ people:
+
+$$\frac{12s + A}{s + 1} = 14,$$
+
+where $A$ is Ash's age. So $12s + A = 14(s+1) = 14s + 14$, giving $A = 2s + 14$.
+
+**Using the teachers' information:** The total age of the teachers is $55t$. When Ash joins, the new average is $52$ with $t + 1$ people:
+
+$$\frac{55t + A}{t + 1} = 52,$$
+
+so $55t + A = 52(t+1) = 52t + 52$, giving $A = 52 - 3t$.
+
+**Solving the system:** We have $s + t = 15$, $A = 2s + 14$, and $A = 52 - 3t$.
+
+From $s + t = 15$: $s = 15 - t$. Substituting into the first expression: $A = 2(15 - t) + 14 = 44 - 2t$.
+
+Setting equal to the second expression: $44 - 2t = 52 - 3t$, so $t = 8$. Then $s = 7$.
+
+Therefore $A = 52 - 3(8) = 52 - 24 = 28$.
+
+Answer: **A**.
+</Solution>
