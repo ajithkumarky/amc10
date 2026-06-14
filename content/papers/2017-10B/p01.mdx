@@ -1,0 +1,36 @@
+---
+year: 2017
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 1
+answer: B
+choices:
+  - '$11$'
+  - '$12$'
+  - '$13$'
+  - '$14$'
+  - '$15$'
+---
+
+<Problem>
+Mary thought of a positive two-digit number. She multiplied it by $3$ and added $11$. Then she switched the digits of the result, obtaining a number between $71$ and $75$, inclusive. What was Mary's number?
+</Problem>
+
+<Solution>
+Let Mary's number be $n$. She computes $3n + 11$, then reverses the digits to get a number in $\{71, 72, 73, 74, 75\}$.
+
+If the reversed result is a two-digit number $\overline{ab}$ (i.e., $10a + b$), then after reversing we get $\overline{ba} = 10b + a$. So $3n + 11 = \overline{ba}$ where $\overline{ab} \in \{71,72,73,74,75\}$.
+
+Let's try each value in $\{71,72,73,74,75\}$ as the switched result, meaning $3n + 11$ equals the number before switching:
+
+- If switched result is $71$, then $3n + 11$ has digits reversed to give $71$, so $3n + 11 = 17 \Rightarrow n = 2$ (not two-digit).
+- If switched result is $72$, then $3n + 11 = 27 \Rightarrow 3n = 16$ (not integer).
+- If switched result is $73$, then $3n + 11 = 37 \Rightarrow 3n = 26$ (not integer).
+- If switched result is $74$, then $3n + 11 = 47 \Rightarrow 3n = 36 \Rightarrow n = 12$. Check: $3(12)+11 = 47$, switch digits: $74$. Yes, $74$ is between $71$ and $75$.
+- If switched result is $75$, then $3n + 11 = 57 \Rightarrow 3n = 46$ (not integer).
+
+The only solution is $n = 12$.
+
+Answer: **B**.
+</Solution>

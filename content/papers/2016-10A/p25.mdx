@@ -1,0 +1,73 @@
+---
+year: 2016
+paper: "10A"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 5
+answer: A
+choices: ["15", "16", "24", "27", "64"]
+---
+
+<Problem>
+How many ordered triples $(x, y, z)$ of positive integers satisfy $\text{lcm}(x,y) = 72$, $\text{lcm}(x,z) = 600$, and $\text{lcm}(y,z) = 900$?
+</Problem>
+
+<Solution>
+Factor: $72 = 2^3 \cdot 3^2$, $600 = 2^3 \cdot 3 \cdot 5^2$, $900 = 2^2 \cdot 3^2 \cdot 5^2$.
+
+Write $x = 2^a 3^b 5^c$, $y = 2^d 3^e 5^f$, $z = 2^g 3^h 5^i$ (exponents $\geq 0$).
+
+The lcm conditions become (for each prime, take the max of exponents):
+
+**Prime $2$:** $\max(a,d)=3$, $\max(a,g)=3$, $\max(d,g)=2$.
+
+From $\max(d,g)=2$: both $d \leq 2$ and $g \leq 2$.
+Since $\max(a,d)=3$ and $d \leq 2$: $a = 3$.
+Since $\max(a,g)=3$ and $a=3$: automatically satisfied for any $g \leq 2$ (need $\max(3,g)=3$ ✓).
+Also $\max(d,g)=2$: at least one of $d,g$ equals $2$.
+
+Cases: $(d,g) \in \{(2,0),(2,1),(2,2),(0,2),(1,2)\}$ — that's $5$ pairs where $\max(d,g)=2$.
+
+**Prime $3$:** $\max(b,e)=2$, $\max(b,h)=1$, $\max(e,h)=2$.
+
+From $\max(b,h)=1$: $b \leq 1$ and $h \leq 1$.
+Since $\max(b,e)=2$ and $b \leq 1$: $e = 2$.
+Since $\max(e,h)=2$ and $e=2$: automatically satisfied ✓.
+$b$ can be $0$ or $1$ (2 choices), $h$ can be $0$ or $1$ (2 choices).
+
+Pairs for $(b,h)$: $4$ choices.
+
+**Prime $5$:** $\max(c,f)=0$, $\max(c,i)=2$, $\max(f,i)=2$.
+
+From $\max(c,f)=0$: $c = 0$ and $f = 0$.
+Then $\max(0,i)=2$: $i = 2$.
+And $\max(0,2)=2$ ✓.
+
+Only $1$ choice for $(c,f,i)$.
+
+**Total:** $5 \times 4 \times 1 = 20$? Let me recount.
+
+Wait — for prime 2, we need to also ensure $d \leq 2$ (already ensured by $\max(d,g)=2$) and $g \leq 2$. The valid $(d,g)$ pairs with $\max(d,g)=2$ and $d,g \in \{0,1,2,3\}$... actually $d$ and $g$ can be anything, but we need $\max(d,g)=2$, meaning $d \leq 2$, $g \leq 2$, and at least one equals $2$.
+
+Total pairs with both $\leq 2$: $3 \times 3 = 9$. Pairs where both $< 2$ (max $\leq 1$): $2 \times 2 = 4$. So pairs with max exactly $2$: $9 - 4 = 5$. ✓
+
+For prime 3: $(b,h)$ with $b,h \in \{0,1\}$ gives $4$ pairs, all valid.
+
+For prime 5: $1$ triple.
+
+Total: $5 \times 4 \times 1 = 20$? But that's not a choice. Let me recheck.
+
+Oh — the answer choices include $15$ and $16$. Let me recheck prime 3.
+
+$\max(b,e)=2$: with $e=2$, $b$ can be $0,1,2$... but we also said $b \leq 1$ from $\max(b,h)=1$.
+So $b \in \{0,1\}$ (2 choices).
+$h \in \{0,1\}$ (2 choices, from $\max(b,h)=1$ — both $\leq 1$, and since $b$ could be $1$, this is automatically $\leq 1$).
+
+But we also need $\max(b,h) = 1$, meaning at least one of $b,h$ equals $1$.
+
+So from the 4 pairs $(b,h) \in \{0,1\}^2$, we need $\max(b,h)=1$, excluding $(0,0)$: $4 - 1 = 3$ pairs.
+
+Total: $5 \times 3 \times 1 = 15$.
+
+Answer: **A**.
+</Solution>

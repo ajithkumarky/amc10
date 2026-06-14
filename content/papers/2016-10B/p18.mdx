@@ -1,0 +1,47 @@
+---
+year: 2016
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: E
+choices: ["$1$", "$3$", "$5$", "$6$", "$7$"]
+---
+
+<Problem>
+In how many ways can $345$ be written as the sum of an increasing sequence of two or more consecutive positive integers?
+</Problem>
+
+<Solution>
+A sequence of $k$ consecutive integers starting at $m$ has sum $km + \dfrac{k(k-1)}{2}$. Setting this equal to $345$:
+
+$$km + \frac{k(k-1)}{2} = 345 \implies k(2m + k - 1) = 690.$$
+
+Let $k \ge 2$ and $m \ge 1$. Then $2m + k - 1 = \dfrac{690}{k}$, so $k$ must divide $690$.
+
+$690 = 2 \times 3 \times 5 \times 23$.
+
+Also, $2m = \dfrac{690}{k} - k + 1$, so $\dfrac{690}{k} - k + 1$ must be even and positive.
+
+Note $\dfrac{690}{k} - k + 1 > 0 \Rightarrow k^2 - k < 690 \Rightarrow k < 27$ (since $26 \times 27 = 702 > 690$, but $26^2 - 26 = 650 < 690$, so $k \le 26$).
+
+Let $n = 690/k$ (so $n$ is a positive integer divisor of $690$, and $k \ge 2$, $k \le 26$). We need $n - k + 1$ to be a positive even number (so $m = \frac{n-k+1}{2} \ge 1$).
+
+$n - k + 1$ is even $\iff n$ and $k$ have opposite parities (one odd, one even).
+
+$690 = 2 \times 3 \times 5 \times 23$. The divisors $k$ with $2 \le k \le 26$:
+
+Check each divisor of $690$ in $[2,26]$: $2, 3, 5, 6, 10, 15, 23$.
+
+- $k=2$: $n=345$, parity: $k$ even, $n$ odd — opposite. $m = (345-2+1)/2 = 344/2 = 172$. Valid. ✓
+- $k=3$: $n=230$, parity: $k$ odd, $n$ even — opposite. $m = (230-3+1)/2 = 228/2 = 114$. Valid. ✓
+- $k=5$: $n=138$, parity: $k$ odd, $n$ even — opposite. $m = (138-5+1)/2 = 134/2 = 67$. Valid. ✓
+- $k=6$: $n=115$, parity: $k$ even, $n$ odd — opposite. $m = (115-6+1)/2 = 110/2 = 55$. Valid. ✓
+- $k=10$: $n=69$, parity: $k$ even, $n$ odd — opposite. $m = (69-10+1)/2 = 60/2 = 30$. Valid. ✓
+- $k=15$: $n=46$, parity: $k$ odd, $n$ even — opposite. $m = (46-15+1)/2 = 32/2 = 16$. Valid. ✓
+- $k=23$: $n=30$, parity: $k$ odd, $n$ even — opposite. $m = (30-23+1)/2 = 8/2 = 4$. Valid. ✓
+
+All $7$ divisors work! The answer is $7$.
+
+Answer: **E**.
+</Solution>

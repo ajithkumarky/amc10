@@ -1,0 +1,30 @@
+---
+year: 2016
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: D
+choices: ["13", "26", "102", "103", "110"]
+---
+
+<Problem>
+Ximena lists the whole numbers $1$ through $30$ once. Emilio copies Ximena's numbers, replacing each occurrence of the digit $2$ by the digit $1$. Ximena adds her numbers and Emilio adds his numbers. How much larger is Ximena's sum than Emilio's?
+</Problem>
+
+<Solution>
+Emilio replaces every digit $2$ with a digit $1$, decreasing the sum by the place value of each replaced $2$. We need to find all occurrences of the digit $2$ in the numbers $1$ through $30$.
+
+**Digit $2$ in the units place:** $2, 12, 22$. Each contributes $2 - 1 = 1$ to the difference, but $22$ has a $2$ in the units place too.
+
+**Digit $2$ in the tens place:** $20, 21, 22, 23, 24, 25, 26, 27, 28, 29$. Each has a $2$ in the tens place (worth $20 - 10 = 10$).
+
+Let me count systematically:
+
+- Numbers with $2$ in the units place: $2, 12, 22$. Each such occurrence reduces the sum by $2 - 1 = 1$. That's $3$ occurrences, reducing by $3$.
+- Numbers with $2$ in the tens place: $20, 21, 22, 23, 24, 25, 26, 27, 28, 29$. That's $10$ occurrences, each reducing by $10$. Total reduction: $100$.
+
+Total difference: $3 + 100 = 103$.
+
+Answer: **D**.
+</Solution>

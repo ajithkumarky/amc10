@@ -1,0 +1,49 @@
+---
+year: 2015
+paper: "10A"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 3
+answer: B
+choices: ["$0$", "$1$", "$2$", "$3$", "infinitely many"]
+---
+
+<Problem>
+Consider the set of all fractions $\tfrac{x}{y},$ where $x$ and $y$ are relatively prime positive integers. How many of these fractions have the property that if both numerator and denominator are increased by $1$, the value of the fraction is increased by $10\%$?
+</Problem>
+
+<Solution>
+We need $\dfrac{x+1}{y+1} = \dfrac{x}{y} \cdot \dfrac{11}{10} = \dfrac{11x}{10y}$.
+
+Cross-multiplying: $10y(x+1) = 11x(y+1)$, so $10xy + 10y = 11xy + 11x$, giving $10y - 11x = xy$.
+
+Rearranging: $xy - 10y + 11x = 0$. Add $-110$ to both sides:
+$$xy - 10y + 11x - 110 = -110$$
+$$y(x - 10) + 11(x - 10) = -110$$
+$$(y + 11)(x - 10) = -110.$$
+
+Since $x$ and $y$ are positive integers, $x \ge 1$ so $x - 10 \ge -9$, and $y \ge 1$ so $y + 11 \ge 12$.
+
+We need $(y+11)(x-10) = -110$ with $y+11 \ge 12$ and $x - 10 \le -1$ (so $x \le 9$, and $x - 10 < 0$).
+
+The factor pairs of $-110$ where the first factor is positive and the second is negative (since $y+11 > 0$ and $x - 10 < 0$):
+- $(y+11, x-10)$ with $(y+11) > 0$, $(x-10) < 0$, product $= -110$.
+
+So $(y+11)$ is a positive divisor of $110$ and $x - 10 = -110/(y+11)$.
+
+Divisors of $110$: $1, 2, 5, 10, 11, 22, 55, 110$.
+
+We need $y + 11 \ge 12$ (since $y \ge 1$), so $y + 11 \in \{22, 55, 110\}$ (at least $12$... but wait, $11$ gives $y = 0$, not positive; and $10$ gives $y = -1$):
+
+Actually $y + 11 \ge 12$ requires $y + 11 > 11$, so we need divisors $> 11$: $22, 55, 110$.
+
+- $y+11=22$: $y=11$, $x-10 = -5$, $x=5$. Check $\gcd(5,11)=1$. Valid!
+- $y+11=55$: $y=44$, $x-10=-2$, $x=8$. Check $\gcd(8,44)=4\ne 1$. Not valid (not coprime).
+- $y+11=110$: $y=99$, $x-10=-1$, $x=9$. Check $\gcd(9,99)=9\ne 1$. Not valid.
+
+Also check $y+11=11$: $y=0$, invalid. So only $(x,y)=(5,11)$ works, giving fraction $\dfrac{5}{11}$. Verify: $\dfrac{6}{12} = \dfrac{1}{2}$ and $\dfrac{5}{11} \times \dfrac{11}{10} = \dfrac{1}{2}$. Yes!
+
+There is exactly $1$ such fraction.
+
+Answer: **B**.
+</Solution>

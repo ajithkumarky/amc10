@@ -1,0 +1,45 @@
+---
+year: 2015
+paper: "10A"
+topic: number-theory
+subtopic: number-bases
+difficulty: 4
+answer: E
+choices: ["$17$", "$18$", "$19$", "$20$", "$21$"]
+---
+
+<Problem>
+Hexadecimal (base-16) numbers are written using numeric digits $0$ through $9$ as well as the letters $A$ through $F$ to represent $10$ through $15$. Among the first $1000$ positive integers, there are $n$ whose hexadecimal representation contains only numeric digits. What is the sum of the digits of $n$?
+</Problem>
+
+<Solution>
+We need to count positive integers from $1$ to $1000$ whose base-16 representation uses only digits $0$–$9$ (no letters $A$–$F$).
+
+In base 16, a number uses only numeric digits if each hex digit is between $0$ and $9$.
+
+The numbers $1$ to $1000$ in hex: $1000_{10} = 3E8_{16}$, so we need numbers from $1_{16}$ to $3E8_{16}$ with only digits $0$–$9$.
+
+Such numbers in base 16 are exactly those numbers whose base-16 digits are all $\le 9$. These are essentially base-10 numbers interpreted in base 16, but that's not quite right — we want numbers whose hex digits are all in $\{0,1,\ldots,9\}$.
+
+**1-digit hex numbers** (1–15): digits $1$–$9$ are valid (digit $\le 9$). That's $9$ numbers.
+
+**2-digit hex numbers** ($16$–$255$, i.e., $10_{16}$–$FF_{16}$): form is $d_1 d_0$ where $d_1 \in \{1,\ldots,9\}$ and $d_0 \in \{0,\ldots,9\}$. That's $9 \times 10 = 90$ numbers.
+
+**3-digit hex numbers** ($256$–$4095$, i.e., $100_{16}$–$FFF_{16}$): but we only go up to $1000$. The 3-digit hex numbers with all digits $\le 9$ have form $d_2 d_1 d_0$ with $d_2 \in \{1,\ldots,9\}$, $d_1, d_0 \in \{0,\ldots,9\}$. But we need the number $\le 1000$.
+
+$1000 = 3E8_{16}$, so $d_2 \le 3$. But $E$ and $8$ in positions mean $d_2 = 3$ gives the constraint more carefully.
+
+For $d_2 = 1$ or $d_2 = 2$: any $d_1, d_0 \in \{0,\ldots,9\}$. That's $2 \times 10 \times 10 = 200$ numbers.
+
+For $d_2 = 3$: the number is $3 \cdot 256 + d_1 \cdot 16 + d_0 = 768 + 16d_1 + d_0 \le 1000$, so $16d_1 + d_0 \le 232$. Since $d_1 \le 9$: $16(9) + 9 = 153 \le 232$, all choices work! So $d_1 \in \{0,\ldots,9\}$, $d_0 \in \{0,\ldots,9\}$: that's $10 \times 10 = 100$ numbers. But we must check that none exceed $1000$: max is $768 + 153 = 921 \le 1000$. All valid.
+
+For $d_2 = 4$ through $9$: these give numbers $\ge 4 \times 256 = 1024 > 1000$. None count.
+
+Total 3-digit hex numbers: $200 + 100 = 300$.
+
+Grand total: $n = 9 + 90 + 300 = 399$.
+
+Sum of digits of $399$: $3 + 9 + 9 = 21$.
+
+Answer: **E**.
+</Solution>

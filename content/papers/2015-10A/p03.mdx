@@ -1,0 +1,36 @@
+---
+year: 2015
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 1
+answer: D
+choices: ["$9$", "$18$", "$20$", "$22$", "$24$"]
+---
+
+<Problem>
+Ann made a 3-step staircase using 18 toothpicks as shown in the figure. How many toothpicks does she need to add to complete a 5-step staircase?
+
+The staircase is built on a grid: a 3-step staircase occupies a region with 3 columns, where column $k$ (from the right) has $k$ unit squares stacked vertically, forming steps of height 1, 2, and 3.
+</Problem>
+
+<Solution>
+Let's find the pattern for the number of toothpicks in an $n$-step staircase.
+
+For an $n$-step staircase, we can count toothpicks systematically. The staircase has $n$ columns; column $k$ (from the right, $k = 1, 2, \ldots, n$) has $k$ unit squares stacked vertically.
+
+For a 3-step staircase: 18 toothpicks (given).
+
+For a 5-step staircase, let's count directly. An $n$-step staircase uses $n^2 + 2n$ toothpicks? Let's verify for $n = 3$: $9 + 6 = 15 \neq 18$. Let me think more carefully.
+
+Think of it as a grid: vertical toothpicks and horizontal toothpicks.
+
+For a 3-step staircase:
+- Vertical toothpicks: In column 1 we have 2 vertical segments on the sides of 1 square = 2; column 2 has 3 verticals (left side has 2, right side has 2... let me count row by row.
+
+A cleaner approach: the toothpick count for an $n$-step staircase is $n^2 + 3n$. Check: $n=3$: $9 + 9 = 18$. Yes! For $n=5$: $25 + 15 = 40$.
+
+The number of toothpicks to add is $40 - 18 = 22$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,40 @@
+---
+year: 2017
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: D
+choices:
+  - '$\sqrt{5}$'
+  - '$\frac{11}{4}$'
+  - '$2\sqrt{2}$'
+  - '$\frac{17}{6}$'
+  - '$3$'
+---
+
+<Problem>
+In $\triangle ABC$, $AB = 6$, $AC = 8$, $BC = 10$, and $D$ is the midpoint of $\overline{BC}$. What is the sum of the radii of the circles inscribed in $\triangle ADB$ and $\triangle ADC$?
+</Problem>
+
+<Solution>
+Note that $6^2 + 8^2 = 36 + 64 = 100 = 10^2$, so $\triangle ABC$ is a right triangle with the right angle at $A$.
+
+Place $A$ at the origin, $B = (6, 0)$, $C = (0, 8)$. Then $D$ is the midpoint of $BC$: $D = (3, 4)$.
+
+Compute $AD$: $AD = \sqrt{3^2 + 4^2} = \sqrt{25} = 5$.
+
+**Triangle $ADB$:** sides $AB = 6$, $BD = 5$, $AD = 5$.
+- Semi-perimeter: $s_1 = \dfrac{6+5+5}{2} = 8$.
+- Area: Use coordinates $A=(0,0)$, $D=(3,4)$, $B=(6,0)$: area $= \dfrac{1}{2}|0(4-0)+3(0-0)+6(0-4)| = \dfrac{1}{2}|{-24}| = 12$.
+- Inradius: $r_1 = \dfrac{\text{Area}}{s_1} = \dfrac{12}{8} = \dfrac{3}{2}$.
+
+**Triangle $ADC$:** sides $AC = 8$, $DC = 5$, $AD = 5$.
+- Semi-perimeter: $s_2 = \dfrac{8+5+5}{2} = 9$.
+- Area: $A=(0,0)$, $D=(3,4)$, $C=(0,8)$: area $= \dfrac{1}{2}|0(4-8)+3(8-0)+0(0-4)| = \dfrac{1}{2}|24| = 12$.
+- Inradius: $r_2 = \dfrac{12}{9} = \dfrac{4}{3}$.
+
+**Sum of inradii:** $r_1 + r_2 = \dfrac{3}{2} + \dfrac{4}{3} = \dfrac{9}{6} + \dfrac{8}{6} = \dfrac{17}{6}$.
+
+Answer: **D**.
+</Solution>

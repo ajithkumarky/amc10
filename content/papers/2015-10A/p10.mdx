@@ -1,0 +1,37 @@
+---
+year: 2015
+paper: "10A"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 2
+answer: C
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+How many rearrangements of $abcd$ are there in which no two adjacent letters are also adjacent letters in the alphabet? For example, no such rearrangements could include either $ab$ or $ba$.
+</Problem>
+
+<Solution>
+The pairs of letters that are adjacent in the alphabet are: $(a,b)$, $(b,c)$, $(c,d)$. In any valid rearrangement, none of these pairs can be adjacent (in either order).
+
+There are $4! = 24$ total rearrangements. Let's find those where no alphabetically-adjacent pair is adjacent in position.
+
+We can systematically try rearrangements. Note that $b$ is adjacent to both $a$ and $c$, so $b$ cannot be next to $a$ or $c$. Similarly $c$ cannot be next to $b$ or $d$.
+
+Since $b$ must avoid $a$ and $c$, and $c$ must avoid $b$ and $d$, the only letters $b$ can be next to are $d$, and the only letters $c$ can be next to are $a$. 
+
+In a 4-letter arrangement, each interior position has 2 neighbors and each end position has 1 neighbor. For $b$ to only be adjacent to $d$, and $c$ to only be adjacent to $a$, we need $b$ and $d$ to be together, and $a$ and $c$ to be together, with $b$ separated from $a$ and $c$, and $c$ separated from $b$ and $d$.
+
+The valid arrangements are $\mathbf{cabd}$ and $\mathbf{dbac}$. Let's verify:
+- $cabd$: pairs $(c,a)$, $(a,b)$ — wait, $a$ and $b$ are adjacent! That fails.
+
+Let me try directly. List all 24 permutations and filter:
+The valid ones are those with no $(a,b)$, $(b,a)$, $(b,c)$, $(c,b)$, $(c,d)$, or $(d,c)$ as consecutive pairs.
+
+After checking, the valid arrangements are $cadb$ and $bdac$. Verify $cadb$: pairs $(c,a)$, $(a,d)$, $(d,b)$ — none are alphabetically adjacent. Valid! Verify $bdac$: pairs $(b,d)$, $(d,a)$, $(a,c)$ — none are alphabetically adjacent. Valid!
+
+There are exactly $2$ valid rearrangements.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,41 @@
+---
+year: 2016
+paper: "10A"
+topic: algebra
+subtopic: functions
+difficulty: 5
+answer: A
+choices: ["109", "201", "301", "3049", "33601"]
+---
+
+<Problem>
+A binary operation $\diamondsuit$ has the properties that $a \,\diamondsuit\, (b \,\diamondsuit\, c) = (a \,\diamondsuit\, b) \cdot c$ and that $a \,\diamondsuit\, a = 1$ for all nonzero real numbers $a, b,$ and $c$. (Here $\cdot$ represents multiplication.) The solution to the equation $2016 \,\diamondsuit\, (6 \,\diamondsuit\, x) = 100$ can be written as $\tfrac{p}{q}$, where $p$ and $q$ are relatively prime positive integers. What is $p + q$?
+</Problem>
+
+<Solution>
+**Finding a formula for $\diamondsuit$:**
+
+From $a \,\diamondsuit\, a = 1$ and the property $a \,\diamondsuit\, (b \,\diamondsuit\, c) = (a \,\diamondsuit\, b) \cdot c$:
+
+Set $b = c = a$: $a \,\diamondsuit\, (a \,\diamondsuit\, a) = (a \,\diamondsuit\, a) \cdot a$, so $a \,\diamondsuit\, 1 = a$.
+
+Set $c = b$: $a \,\diamondsuit\, (b \,\diamondsuit\, b) = (a \,\diamondsuit\, b) \cdot b$, so $a \,\diamondsuit\, 1 = (a \,\diamondsuit\, b) \cdot b$.
+
+Since $a \,\diamondsuit\, 1 = a$: $(a \,\diamondsuit\, b) \cdot b = a$, so $a \,\diamondsuit\, b = \dfrac{a}{b}$.
+
+**Verify:** $a \,\diamondsuit\, (b \,\diamondsuit\, c) = a \,\diamondsuit\, (b/c) = \dfrac{a}{b/c} = \dfrac{ac}{b}$.
+$(a \,\diamondsuit\, b) \cdot c = \dfrac{a}{b} \cdot c = \dfrac{ac}{b}$. ✓
+Also $a \,\diamondsuit\, a = a/a = 1$. ✓
+
+**Solve the equation:**
+$$2016 \,\diamondsuit\, (6 \,\diamondsuit\, x) = 100$$
+$$2016 \,\diamondsuit\, \frac{6}{x} = 100$$
+$$\frac{2016}{6/x} = 100$$
+$$\frac{2016x}{6} = 100$$
+$$336x = 100$$
+$$x = \frac{100}{336} = \frac{25}{84}.$$
+
+Since $\gcd(25, 84) = 1$: $p + q = 25 + 84 = 109$.
+
+Answer: **A**.
+</Solution>

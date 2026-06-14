@@ -1,0 +1,57 @@
+---
+year: 2017
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: C
+choices:
+  - '$1$'
+  - '$4$'
+  - '$9$'
+  - '$18$'
+  - '$44$'
+---
+
+<Problem>
+Let $N = 123456789101112\dots4344$ be the $79$-digit number that is formed by writing the integers from $1$ to $44$ in order, one after the other. What is the remainder when $N$ is divided by $45$?
+</Problem>
+
+<Solution>
+Since $45 = 9 \times 5$ and $\gcd(9, 5) = 1$, by CRT we find $N \pmod{9}$ and $N \pmod{5}$ separately.
+
+**$N \pmod{9}$:** The remainder when $N$ is divided by $9$ equals the remainder when the sum of all its digits is divided by $9$.
+
+The sum of all digits of $N$ equals the sum of digits of all integers from $1$ to $44$.
+
+Sum of digits of $1$–$9$: $1+2+\cdots+9 = 45 \equiv 0 \pmod{9}$.
+
+Sum of digits of $10$–$44$ (two-digit numbers $10, 11, \ldots, 44$):
+- Tens digits: for $10$–$19$, tens digit is $1$ ($\times 10$): sum $= 10$.
+- Tens digits: for $20$–$29$, tens digit is $2$ ($\times 10$): sum $= 20$.
+- Tens digits: for $30$–$39$, tens digit is $3$ ($\times 10$): sum $= 30$.
+- Tens digits: for $40$–$44$, tens digit is $4$ ($\times 5$): sum $= 20$.
+- Units digits of $10$–$19$: $0+1+\cdots+9 = 45$.
+- Units digits of $20$–$29$: $0+1+\cdots+9 = 45$.
+- Units digits of $30$–$39$: $0+1+\cdots+9 = 45$.
+- Units digits of $40$–$44$: $0+1+2+3+4 = 10$.
+
+Total digit sum $= 45 + (10+20+30+20) + (45+45+45+10)$
+$= 45 + 80 + 145 = 270$.
+
+$270 = 30 \times 9$, so $N \equiv 0 \pmod{9}$.
+
+**$N \pmod{5}$:** $N \pmod 5$ depends only on its last digit. The last number written is $44$, so the last digit of $N$ is $4$.
+
+$N \equiv 4 \pmod{5}$.
+
+**CRT:** Find $x$ with $x \equiv 0 \pmod{9}$ and $x \equiv 4 \pmod{5}$.
+
+$x = 9k$ for some integer $k$. Then $9k \equiv 4 \pmod{5} \implies 4k \equiv 4 \pmod{5} \implies k \equiv 1 \pmod{5}$.
+
+So $k = 1$ gives $x = 9$. Check: $9 \equiv 0 \pmod 9$ ✓ and $9 \equiv 4 \pmod 5$ ✓.
+
+The remainder is $9$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,42 @@
+---
+year: 2017
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: E
+choices:
+  - '$1$'
+  - '$\frac{42}{25}$'
+  - '$\frac{28}{15}$'
+  - '$2$'
+  - '$\frac{54}{25}$'
+---
+
+<Problem>
+Rectangle $ABCD$ has $AB = 3$ and $BC = 4$. Point $E$ is the foot of the perpendicular from $B$ to diagonal $\overline{AC}$. What is the area of $\triangle AED$?
+</Problem>
+
+<Solution>
+Set up coordinates: $A = (0,0)$, $B = (3,0)$, $C = (3,4)$, $D = (0,4)$.
+
+Diagonal $AC$ goes from $(0,0)$ to $(3,4)$, with direction vector $(3,4)$. The length $AC = 5$.
+
+The unit vector along $AC$ is $\left(\dfrac{3}{5}, \dfrac{4}{5}\right)$.
+
+Point $E$ is the foot of the perpendicular from $B = (3,0)$ to line $AC$.
+
+Line $AC$ has equation $4x - 3y = 0$ (since it passes through origin with slope $4/3$).
+
+Distance from $B = (3,0)$ to line $4x - 3y = 0$: $\dfrac{|4(3) - 3(0)|}{\sqrt{16+9}} = \dfrac{12}{5}$.
+
+Project $B$ onto $AC$:
+$$E = A + \frac{\overrightarrow{AB} \cdot \overrightarrow{AC}}{|\overrightarrow{AC}|^2} \overrightarrow{AC} = \frac{(3,0)\cdot(3,4)}{25}(3,4) = \frac{9}{25}(3,4) = \left(\frac{27}{25}, \frac{36}{25}\right).$$
+
+Now find the area of $\triangle AED$ with $A = (0,0)$, $E = \left(\dfrac{27}{25}, \dfrac{36}{25}\right)$, $D = (0,4)$.
+
+Using the formula $\text{Area} = \dfrac{1}{2}|x_A(y_E - y_D) + x_E(y_D - y_A) + x_D(y_A - y_E)|$:
+$$= \frac{1}{2}\left|0\cdot\left(\frac{36}{25} - 4\right) + \frac{27}{25}(4 - 0) + 0\cdot\left(0 - \frac{36}{25}\right)\right| = \frac{1}{2}\cdot\frac{108}{25} = \frac{54}{25}.$$
+
+Answer: **E**.
+</Solution>

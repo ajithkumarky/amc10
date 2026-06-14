@@ -1,0 +1,45 @@
+---
+year: 2016
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: E
+choices: ["7", "9", "12", "15", "20"]
+---
+
+<Problem>
+In rectangle $ABCD$, $AB=6$ and $BC=3$. Point $E$ between $B$ and $C$, and point $F$ between $E$ and $C$ are such that $BE=EF=FC$. Segments $\overline{AE}$ and $\overline{AF}$ intersect $\overline{BD}$ at $P$ and $Q$, respectively. The ratio $BP:PQ:QD$ can be written as $r:s:t$ where the greatest common factor of $r, s,$ and $t$ is $1$. What is $r+s+t$?
+</Problem>
+
+<Solution>
+Place coordinates: $A=(0,3)$, $B=(0,0)$, $C=(6,0)$, $D=(6,3)$.
+
+Since $BE = EF = FC = 2$: $E=(2,0)$, $F=(4,0)$.
+
+**Diagonal $BD$:** from $B=(0,0)$ to $D=(6,3)$. Parametrically: $(6t, 3t)$ for $t \in [0,1]$.
+
+**Line $AE$:** from $A=(0,3)$ to $E=(2,0)$. Direction $(2,-3)$. Parametrically: $(2s, 3-3s)$.
+
+Intersect with $BD$: $6t = 2s$ and $3t = 3 - 3s$. From the second: $t = 1 - s$. Substituting: $6(1-s) = 2s \Rightarrow 6 - 6s = 2s \Rightarrow s = 3/4$. So $t = 1/4$.
+
+Point $P = (6 \cdot 1/4,\ 3 \cdot 1/4) = (3/2, 3/4)$.
+
+**Line $AF$:** from $A=(0,3)$ to $F=(4,0)$. Direction $(4,-3)$. Parametrically: $(4s, 3-3s)$.
+
+Intersect with $BD$: $6t = 4s$ and $3t = 3 - 3s$. From the second: $t = 1 - s$. Substituting: $6(1-s) = 4s \Rightarrow 6 = 10s \Rightarrow s = 3/5$. So $t = 2/5$.
+
+Point $Q = (6 \cdot 2/5,\ 3 \cdot 2/5) = (12/5, 6/5)$.
+
+**Finding the ratios:** The parameter $t$ along $BD$ gives the position: $B$ is at $t=0$, $D$ at $t=1$.
+
+$P$ is at $t_P = 1/4$ and $Q$ is at $t_Q = 2/5$.
+
+$$BP : PQ : QD = t_P : (t_Q - t_P) : (1 - t_Q) = \frac{1}{4} : \left(\frac{2}{5} - \frac{1}{4}\right) : \frac{3}{5}.$$
+
+$$= \frac{1}{4} : \frac{3}{20} : \frac{3}{5} = \frac{5}{20} : \frac{3}{20} : \frac{12}{20} = 5 : 3 : 12.$$
+
+Check: $\gcd(5,3,12) = 1$. So $r+s+t = 5+3+12 = 20$.
+
+Answer: **E**.
+</Solution>

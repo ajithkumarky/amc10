@@ -1,0 +1,42 @@
+---
+year: 2015
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: D
+choices: ['$2\sqrt{6}$', '$2+2\sqrt{3}$', "$6$", '$3+2\sqrt{3}$', '$6+\frac{\sqrt{3}}{3}$']
+---
+
+<Problem>
+A line that passes through the origin intersects both the line $x=1$ and the line $y=1+\dfrac{\sqrt{3}}{3}x$. The three lines create an equilateral triangle. What is the perimeter of the triangle?
+</Problem>
+
+<Solution>
+The three lines are: $L_1$: the line through the origin (slope $m$), $L_2$: $x = 1$ (vertical), and $L_3$: $y = 1 + \dfrac{\sqrt{3}}{3}x$ (slope $\dfrac{\sqrt{3}}{3} = \tan 30°$).
+
+For the three lines to form an equilateral triangle, all pairwise angles must be $60°$.
+
+The slope of $L_3$ corresponds to angle $30°$ from horizontal. The vertical line $L_2$ is at $90°$.
+
+The angle between $L_2$ and $L_3$: $L_2$ is vertical ($90°$) and $L_3$ is at $30°$, so the angle between them is $60°$. Good.
+
+For an equilateral triangle, $L_1$ must make $60°$ angles with both $L_2$ and $L_3$.
+
+$L_1$ makes a $60°$ angle with the vertical ($L_2$), so $L_1$ has slope $\tan(90° - 60°) = \tan 30°$... that's the same as $L_3$, making them parallel, so no intersection. Or the angle measured the other way: $L_1$ makes $60°$ with vertical means it makes $30°$ with horizontal from the other side, giving slope $-\tan 30° = -\dfrac{\sqrt{3}}{3}$.
+
+Check the angle between $L_1$ (slope $-\dfrac{\sqrt{3}}{3}$, angle $150°$) and $L_3$ (slope $\dfrac{\sqrt{3}}{3}$, angle $30°$): difference is $120°$, so the acute angle is $60°$. 
+
+So $L_1$: $y = -\dfrac{\sqrt{3}}{3}x$.
+
+Find the three vertices:
+- $L_1 \cap L_2$ ($x=1$): $y = -\dfrac{\sqrt{3}}{3}$, so point $A = \left(1, -\dfrac{\sqrt{3}}{3}\right)$.
+- $L_2 \cap L_3$ ($x=1$): $y = 1 + \dfrac{\sqrt{3}}{3}$, so point $B = \left(1, 1 + \dfrac{\sqrt{3}}{3}\right)$.
+- $L_1 \cap L_3$: $-\dfrac{\sqrt{3}}{3}x = 1 + \dfrac{\sqrt{3}}{3}x$, so $-\dfrac{2\sqrt{3}}{3}x = 1$, giving $x = -\dfrac{3}{2\sqrt{3}} = -\dfrac{\sqrt{3}}{2}$. Then $y = -\dfrac{\sqrt{3}}{3} \cdot (-\dfrac{\sqrt{3}}{2}) = \dfrac{1}{2}$. So $C = \left(-\dfrac{\sqrt{3}}{2}, \dfrac{1}{2}\right)$.
+
+Side $AB$ (on $x=1$): length $= \left(1 + \dfrac{\sqrt{3}}{3}\right) - \left(-\dfrac{\sqrt{3}}{3}\right) = 1 + \dfrac{2\sqrt{3}}{3}$.
+
+Perimeter $= 3 \times \left(1 + \dfrac{2\sqrt{3}}{3}\right) = 3 + 2\sqrt{3}$.
+
+Answer: **D**.
+</Solution>

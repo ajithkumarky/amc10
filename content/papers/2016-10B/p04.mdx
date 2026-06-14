@@ -1,0 +1,29 @@
+---
+year: 2016
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 1
+answer: B
+choices: ["Sunday", "Monday", "Wednesday", "Friday", "Saturday"]
+---
+
+<Problem>
+Zoey read $15$ books, one at a time. The first book took her $1$ day to read, the second book took her $2$ days to read, the third book took her $3$ days to read, and so on, with each book taking her $1$ more day to read than the previous book. Zoey finished the first book on a Monday, and the second on a Wednesday. On what day of the week did she finish her $15$th book?
+</Problem>
+
+<Solution>
+The $k$th book takes $k$ days. The total number of days to finish the first $n$ books is $1 + 2 + \cdots + n = \dfrac{n(n+1)}{2}$.
+
+The first book finishes on day $1$ (Monday). The second finishes on day $1 + 2 = 3$ (Wednesday). This confirms: day 1 = Monday, so day $d$ falls on the day of the week that is $(d-1)$ days after Monday.
+
+Total days after finishing all 15 books: $\dfrac{15 \cdot 16}{2} = 120$.
+
+We need the day of the week for day $120$. Monday is day 1, so day 120 is $(120 - 1) = 119$ days after Monday.
+
+$119 = 17 \times 7 = 119$, so $119 \equiv 0 \pmod{7}$.
+
+Zero days after Monday is still Monday.
+
+Answer: **B**.
+</Solution>

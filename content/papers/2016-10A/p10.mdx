@@ -1,0 +1,30 @@
+---
+year: 2016
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 2
+answer: B
+choices: ["1", "2", "4", "6", "8"]
+---
+
+<Problem>
+A rug is made with three different colors. The areas of the three differently colored regions form an arithmetic progression. The inner rectangle is $1$ foot wide, and each of the two surrounding border regions is $1$ foot wide on all four sides. The inner rectangle has width $1$ ft. What is the length in feet of the inner rectangle?
+
+The rug consists of three nested rectangles: the innermost (white), a middle border (light gray, $1$ ft wide on all sides), and an outer border (dark gray, $1$ ft wide on all sides).
+</Problem>
+
+<Solution>
+Let the length of the inner rectangle be $\ell$ feet. Its width is $1$ foot.
+
+- **Inner rectangle area:** $A_1 = 1 \cdot \ell = \ell$.
+- **Middle rectangle** (inner + one border): dimensions $(1 + 2) \times (\ell + 2) = 3(\ell + 2)$. So the middle border area is $A_2 = 3(\ell + 2) - \ell = 2\ell + 6$.
+- **Outer rectangle** (inner + two borders): dimensions $(1 + 4) \times (\ell + 4) = 5(\ell + 4)$. So the outer border area is $A_3 = 5(\ell + 4) - 3(\ell + 2) = 2\ell + 14$.
+
+For an arithmetic progression: $A_2 - A_1 = A_3 - A_2$:
+$$(2\ell + 6) - \ell = (2\ell + 14) - (2\ell + 6)$$
+$$\ell + 6 = 8$$
+$$\ell = 2.$$
+
+Answer: **B**.
+</Solution>

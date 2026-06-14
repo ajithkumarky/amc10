@@ -1,0 +1,34 @@
+---
+year: 2015
+paper: "10A"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 4
+answer: B
+choices: ["$100$", "$102$", "$104$", "$106$", "$108$"]
+---
+
+<Problem>
+A rectangle with positive integer side lengths in $\text{cm}$ has area $A$ $\text{cm}^2$ and perimeter $P$ $\text{cm}$. Which of the following numbers cannot equal $A+P$?
+</Problem>
+
+<Solution>
+Let the sides be positive integers $a$ and $b$. Then $A = ab$ and $P = 2a + 2b$, so:
+$$A + P = ab + 2a + 2b.$$
+
+Add $4$ to both sides:
+$$A + P + 4 = ab + 2a + 2b + 4 = (a+2)(b+2).$$
+
+Let $N = A + P$. Then $N + 4 = (a+2)(b+2)$. We need $N + 4$ to be expressible as a product of two integers, each at least $3$ (since $a, b \ge 1$ means $a+2, b+2 \ge 3$).
+
+Check each choice:
+- $N = 100$: $N + 4 = 104 = 8 \times 13$. Since $8 \ge 3$ and $13 \ge 3$: valid (e.g., $a=6, b=11$).
+- $N = 102$: $N + 4 = 106 = 2 \times 53$. The only factorizations of $106$ with both factors $\ge 3$ require checking: $106 = 1 \times 106 = 2 \times 53$. Neither $1$ nor $2$ is $\ge 3$, and $2 \times 53$ has factor $2 < 3$. So $106$ cannot be written as $(a+2)(b+2)$ with $a,b \ge 1$. This means $N = 102$ is impossible!
+- $N = 104$: $N + 4 = 108 = 4 \times 27$. Both $\ge 3$: valid (e.g., $a=2, b=25$).
+- $N = 106$: $N + 4 = 110 = 5 \times 22$. Both $\ge 3$: valid.
+- $N = 108$: $N + 4 = 112 = 4 \times 28$. Both $\ge 3$: valid.
+
+So the answer that cannot equal $A + P$ is $102$.
+
+Answer: **B**.
+</Solution>

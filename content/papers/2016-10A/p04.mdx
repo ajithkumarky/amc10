@@ -1,0 +1,27 @@
+---
+year: 2016
+paper: "10A"
+topic: algebra
+subtopic: functions
+difficulty: 1
+answer: B
+choices: ['$-\dfrac{3}{8}$', '$-\dfrac{1}{40}$', '$0$', '$\dfrac{3}{8}$', '$\dfrac{31}{40}$']
+---
+
+<Problem>
+The remainder can be defined for all real numbers $x$ and $y$ with $y \neq 0$ by $$\text{rem}(x, y) = x - y\left\lfloor \frac{x}{y} \right\rfloor$$ where $\left\lfloor \dfrac{x}{y} \right\rfloor$ denotes the greatest integer less than or equal to $\dfrac{x}{y}$. What is the value of $\text{rem}\!\left(\dfrac{3}{8}, -\dfrac{2}{5}\right)$?
+</Problem>
+
+<Solution>
+We need $\text{rem}\!\left(\tfrac{3}{8}, -\tfrac{2}{5}\right) = \tfrac{3}{8} - \left(-\tfrac{2}{5}\right)\left\lfloor \dfrac{3/8}{-2/5} \right\rfloor$.
+
+First compute the ratio:
+$$\frac{3/8}{-2/5} = \frac{3}{8} \cdot \frac{-5}{2} = -\frac{15}{16}.$$
+
+Since $-\dfrac{15}{16} \approx -0.9375$, we have $\left\lfloor -\dfrac{15}{16} \right\rfloor = -1$.
+
+Therefore:
+$$\text{rem} = \frac{3}{8} - \left(-\frac{2}{5}\right)(-1) = \frac{3}{8} - \frac{2}{5} = \frac{15}{40} - \frac{16}{40} = -\frac{1}{40}.$$
+
+Answer: **B**.
+</Solution>

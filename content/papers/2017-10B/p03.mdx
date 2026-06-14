@@ -1,0 +1,36 @@
+---
+year: 2017
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 1
+answer: E
+choices:
+  - '$y+x^2$'
+  - '$y+xz$'
+  - '$y+y^2$'
+  - '$y+2y^2$'
+  - '$y+z$'
+---
+
+<Problem>
+Real numbers $x$, $y$, and $z$ satisfy the inequalities $0 < x < 1$, $-1 < y < 0$, and $1 < z < 2$. Which of the following numbers is necessarily positive?
+</Problem>
+
+<Solution>
+We need to find which expression is always positive given the constraints. Let's analyze each:
+
+**(A) $y + x^2$:** Since $0 < x < 1$, we have $0 < x^2 < 1$. Since $-1 < y < 0$, the sum $y + x^2$ could be negative (e.g., $y = -0.9$, $x = 0.1$ gives $y + x^2 = -0.9 + 0.01 = -0.89 < 0$). Not necessarily positive.
+
+**(B) $y + xz$:** Since $0 < x < 1$ and $1 < z < 2$, we have $0 < xz < 2$. But $y$ can be close to $-1$, making this negative. Not necessarily positive.
+
+**(C) $y + y^2$:** We have $y(1 + y)$. Since $-1 < y < 0$, both $y < 0$ and $1 + y > 0$ (since $y > -1$), so $y(1+y) < 0$. Always negative!
+
+**(D) $y + 2y^2$:** At $y = -0.4$: $-0.4 + 2(0.16) = -0.4 + 0.32 = -0.08 < 0$. Not necessarily positive.
+
+**(E) $y + z$:** Since $y > -1$ and $z > 1$, we have $y + z > -1 + 1 = 0$. This is always positive!
+
+The expression $y + z > -1 + 1 = 0$ holds for all valid $y$ and $z$.
+
+Answer: **E**.
+</Solution>

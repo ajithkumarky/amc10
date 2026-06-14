@@ -1,0 +1,31 @@
+---
+year: 2016
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: E
+choices: ['$\frac{1+\sqrt{5}}{2}$', "$2$", '$\sqrt{5}$', "$3$", "$4$"]
+---
+
+<Problem>
+The sum of an infinite geometric series is a positive number $S$, and the second term in the series is $1$. What is the smallest possible value of $S$?
+</Problem>
+
+<Solution>
+Let the first term be $a$ and the common ratio be $r$. For the series to converge with positive sum, we need $|r| < 1$ and $a > 0$.
+
+The second term is $ar = 1$, so $a = \dfrac{1}{r}$.
+
+The sum is $S = \dfrac{a}{1-r} = \dfrac{1/r}{1-r} = \dfrac{1}{r(1-r)}$.
+
+We need $a > 0$ and the sum is positive, so $r > 0$ (otherwise $a = 1/r < 0$). Also $r < 1$ for convergence. So $0 < r < 1$.
+
+Minimize $S = \dfrac{1}{r(1-r)}$ is equivalent to maximizing $f(r) = r(1-r) = r - r^2$ for $0 < r < 1$.
+
+By AM-GM or calculus: $f(r) = r(1-r) \le \left(\dfrac{r + (1-r)}{2}\right)^2 = \dfrac{1}{4}$, with maximum at $r = \tfrac{1}{2}$.
+
+So the maximum of $r(1-r)$ is $\tfrac{1}{4}$, giving minimum $S = \dfrac{1}{1/4} = 4$.
+
+Answer: **E**.
+</Solution>

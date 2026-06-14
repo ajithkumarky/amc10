@@ -1,0 +1,35 @@
+---
+year: 2015
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 4
+answer: B
+choices: ["$10$", "$15$", "$20$", "$25$", "$30$"]
+---
+
+<Problem>
+If $y+4 = (x-2)^2$, $x+4 = (y-2)^2$, and $x \neq y$, what is the value of $x^2+y^2$?
+</Problem>
+
+<Solution>
+Subtract the second equation from the first:
+$$(y + 4) - (x + 4) = (x-2)^2 - (y-2)^2$$
+$$y - x = [(x-2) - (y-2)][(x-2) + (y-2)]$$
+$$y - x = (x - y)(x + y - 4)$$
+$$-(x - y) = (x-y)(x + y - 4).$$
+
+Since $x \neq y$, we can divide both sides by $(x-y)$:
+$$-1 = x + y - 4$$
+$$x + y = 3.$$
+
+Now add the two original equations:
+$$(y + 4) + (x + 4) = (x-2)^2 + (y-2)^2$$
+$$(x + y) + 8 = x^2 - 4x + 4 + y^2 - 4y + 4$$
+$$3 + 8 = x^2 + y^2 - 4(x+y) + 8$$
+$$11 = x^2 + y^2 - 4(3) + 8$$
+$$11 = x^2 + y^2 - 4$$
+$$x^2 + y^2 = 15.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,35 @@
+---
+year: 2016
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: D
+choices: ["$312$", "$343$", "$625$", "$729$", "$1680$"]
+---
+
+<Problem>
+All the numbers $2, 3, 4, 5, 6, 7$ are assigned to the six faces of a cube, one number to each face. For each of the eight vertices of the cube, a product of three numbers is computed, where the three numbers are the numbers assigned to the three faces that include that vertex. What is the greatest possible value of the sum of these eight products?
+</Problem>
+
+<Solution>
+Label the three pairs of opposite faces with values $(a, a')$, $(b, b')$, $(c, c')$ where $\{a, a', b, b', c, c'\} = \{2,3,4,5,6,7\}$.
+
+Each vertex touches exactly one face from each pair of opposite faces. The sum of all eight vertex products is:
+
+$$(a + a')(b + b')(c + c').$$
+
+This is because when you expand $(a+a')(b+b')(c+c')$, you get $abc + ab'c + abc' + ab'c' + a'bc + a'b'c + a'bc' + a'b'c'$, which is exactly the sum of products at all 8 vertices.
+
+We need to partition $\{2,3,4,5,6,7\}$ into three pairs and maximize the product of the pair sums.
+
+The total sum is $2+3+4+5+6+7 = 27$. We want to choose pairs $(a,a'), (b,b'), (c,c')$ to maximize $(a+a')(b+b')(c+c')$ subject to $(a+a') + (b+b') + (c+c') = 27$.
+
+By AM-GM, the product is maximized when the three factors are as equal as possible. $27/3 = 9$, so we want each pair sum to be $9$.
+
+Pairs summing to $9$: $\{2,7\}, \{3,6\}, \{4,5\}$ — all three pairs sum to $9$.
+
+Maximum sum $= 9 \times 9 \times 9 = 729$.
+
+Answer: **D**.
+</Solution>

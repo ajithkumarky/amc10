@@ -1,0 +1,28 @@
+---
+year: 2016
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: B
+choices: ["$256$", "$336$", "$384$", "$448$", "$512$"]
+---
+
+<Problem>
+Sola decided to fence in his rectangular garden. He bought $20$ fence posts, placed one on each of the four corners, and spaced out the rest evenly along the edges of the garden, leaving exactly $4$ yards between neighboring posts. The longer side of his garden, including the corners, has twice as many posts as the shorter side, including the corners. What is the area, in square yards, of Sola's garden?
+</Problem>
+
+<Solution>
+Let the shorter side have $n$ posts (including corners). Then the longer side has $2n$ posts.
+
+The total posts around the perimeter: we count each corner post once. The perimeter has $2$ short sides and $2$ long sides. Each short side contributes $n$ posts, but the corners are shared between sides. Around the whole rectangle: total posts $= 2(n - 1) + 2(2n - 1) = 2n - 2 + 4n - 2 = 6n - 4$.
+
+Set equal to $20$: $6n - 4 = 20 \Rightarrow 6n = 24 \Rightarrow n = 4$.
+
+So the shorter side has $4$ posts (including corners), giving $3$ gaps of $4$ yards each: length $= 12$ yards.
+The longer side has $8$ posts (including corners), giving $7$ gaps of $4$ yards each: length $= 28$ yards.
+
+Area $= 12 \times 28 = 336$ square yards.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,46 @@
+---
+year: 2016
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: D
+choices: ["counterclockwise rotation about the origin by $90^{\\circ}$", "clockwise rotation about the origin by $90^{\\circ}$", "reflection about the $x$-axis", "reflection about the line $y = x$", "reflection about the $y$-axis"]
+---
+
+<Problem>
+A triangle with vertices $A(0, 2)$, $B(-3, 2)$, and $C(-3, 0)$ is reflected about the $x$-axis, then the image $\triangle A'B'C'$ is rotated counterclockwise about the origin by $90^{\circ}$ to produce $\triangle A''B''C''$. Which of the following transformations will return $\triangle A''B''C''$ to $\triangle ABC$?
+
+(A) counterclockwise rotation about the origin by $90^{\circ}$
+
+(B) clockwise rotation about the origin by $90^{\circ}$
+
+(C) reflection about the $x$-axis
+
+(D) reflection about the line $y = x$
+
+(E) reflection about the $y$-axis
+</Problem>
+
+<Solution>
+**Step 1 — Reflection about the $x$-axis** (negate $y$-coordinates):
+
+$A(0,2) \to A'(0,-2)$, $B(-3,2) \to B'(-3,-2)$, $C(-3,0) \to C'(-3,0)$.
+
+**Step 2 — Counterclockwise rotation by $90^{\circ}$** (rule: $(x,y) \to (-y, x)$):
+
+$A'(0,-2) \to A''(2, 0)$, $B'(-3,-2) \to B''(2,-3)$, $C'(-3,0) \to C''(0,-3)$.
+
+**Step 3 — Find transformation from $A''B''C''$ back to $ABC$:**
+
+We need $A''(2,0) \to A(0,2)$, $B''(2,-3) \to B(-3,2)$, $C''(0,-3) \to C(-3,0)$.
+
+Check reflection about $y = x$ (swap coordinates: $(x,y) \to (y,x)$):
+$A''(2,0) \to (0,2) = A$ ✓
+$B''(2,-3) \to (-3,2) = B$ ✓
+$C''(0,-3) \to (-3,0) = C$ ✓
+
+The transformation is a reflection about the line $y = x$.
+
+Answer: **D**.
+</Solution>

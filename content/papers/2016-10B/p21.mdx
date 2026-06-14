@@ -1,0 +1,51 @@
+---
+year: 2016
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: B
+choices: ['$\pi+\sqrt{2}$', '$\pi+2$', '$\pi+2\sqrt{2}$', '$2\pi+\sqrt{2}$', '$2\pi+2\sqrt{2}$']
+---
+
+<Problem>
+What is the area of the region enclosed by the graph of the equation $x^2 + y^2 = |x| + |y|$?
+</Problem>
+
+<Solution>
+Rewrite the equation by completing the square. Consider the first quadrant ($x \ge 0$, $y \ge 0$) where $|x| = x$ and $|y| = y$:
+
+$$x^2 - x + y^2 - y = 0 \implies \left(x - \tfrac{1}{2}\right)^2 + \left(y - \tfrac{1}{2}\right)^2 = \tfrac{1}{2}.$$
+
+This is a circle centered at $\left(\tfrac{1}{2}, \tfrac{1}{2}\right)$ with radius $r = \dfrac{1}{\sqrt{2}}$.
+
+By symmetry, we get four such circles in the four quadrants:
+- Q1: center $\left(\tfrac{1}{2}, \tfrac{1}{2}\right)$
+- Q2: center $\left(-\tfrac{1}{2}, \tfrac{1}{2}\right)$
+- Q3: center $\left(-\tfrac{1}{2}, -\tfrac{1}{2}\right)$
+- Q4: center $\left(\tfrac{1}{2}, -\tfrac{1}{2}\right)$
+
+Each circle has radius $\dfrac{1}{\sqrt{2}}$ and is centered at distance $\dfrac{\sqrt{2}}{2} = \dfrac{1}{\sqrt{2}}$ from the origin.
+
+Since the center of each circle is at distance equal to its radius from the origin, each circle passes through the origin.
+
+Adjacent circles (e.g., Q1 and Q2) have centers at distance $\sqrt{(1/2+1/2)^2 + 0} = 1$ apart. Since each radius is $\dfrac{1}{\sqrt{2}} \approx 0.707$, and $1 < 2 \times \dfrac{1}{\sqrt{2}} = \sqrt{2}$, adjacent circles overlap.
+
+**Area computation:** The total region is the union of the four circles. Each circle has area $\pi r^2 = \dfrac{\pi}{2}$. Four circles: total $2\pi$.
+
+Adjacent circles overlap: two circles of radius $r = \dfrac{1}{\sqrt{2}}$ with centers distance $d = 1$ apart. The intersection area of two circles is $2r^2 \cos^{-1}\!\left(\dfrac{d}{2r}\right) - \dfrac{d}{2}\sqrt{4r^2 - d^2}$.
+
+Here $\dfrac{d}{2r} = \dfrac{1}{2 \cdot (1/\sqrt{2})} = \dfrac{\sqrt{2}}{2}$, so $\cos^{-1}\!\left(\dfrac{\sqrt{2}}{2}\right) = \dfrac{\pi}{4}$.
+
+$4r^2 - d^2 = 2 - 1 = 1$, so $\sqrt{4r^2 - d^2} = 1$.
+
+Intersection area $= 2 \cdot \dfrac{1}{2} \cdot \dfrac{\pi}{4} - \dfrac{1}{2} \cdot 1 = \dfrac{\pi}{4} - \dfrac{1}{2}$.
+
+There are $4$ pairs of adjacent circles (arranged in a ring), each contributing this overlap. But at the center (where all four meet), we also need to check overlap — all four circles pass through the origin but do not create a quadruple overlap region beyond a single point.
+
+By inclusion-exclusion (4 circles in a symmetric ring, with each pair of adjacent circles overlapping and no triple overlaps except at origin):
+
+Area $= 4 \cdot \dfrac{\pi}{2} - 4 \cdot \left(\dfrac{\pi}{4} - \dfrac{1}{2}\right) = 2\pi - \pi + 2 = \pi + 2$.
+
+Answer: **B**.
+</Solution>

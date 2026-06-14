@@ -1,0 +1,31 @@
+---
+year: 2016
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: A
+choices: ['$\sqrt{2}$', '$1.5$', '$\sqrt{\pi}$', '$\sqrt{2\pi}$', '$\pi$']
+---
+
+<Problem>
+Seven cookies of radius $1$ inch are cut from a circle of cookie dough, as shown. Neighboring cookies are tangent, and all except the center cookie are tangent to the edge of the dough. The leftover scrap is reshaped to form another cookie of the same thickness. What is the radius in inches of the scrap cookie?
+
+The arrangement: one center cookie of radius $1$ and six surrounding cookies of radius $1$, all tangent to each other and (the outer six) tangent internally to the large dough circle.
+</Problem>
+
+<Solution>
+**Finding the radius of the dough circle:**
+
+The center cookie has its center at the origin. Each outer cookie has radius $1$ and is tangent to the center cookie, so the outer cookies' centers are at distance $1 + 1 = 2$ from the origin. Since the outer cookies are also tangent to the edge of the dough, the dough's radius equals the distance from the origin to an outer cookie's center plus that cookie's radius: $R = 2 + 1 = 3$.
+
+**Area of the dough:** $\pi \cdot 3^2 = 9\pi$.
+
+**Area of the seven cookies:** $7 \cdot \pi \cdot 1^2 = 7\pi$.
+
+**Scrap area:** $9\pi - 7\pi = 2\pi$.
+
+**Radius of scrap cookie:** If the scrap cookie has radius $r$, then $\pi r^2 = 2\pi$, so $r^2 = 2$ and $r = \sqrt{2}$.
+
+Answer: **A**.
+</Solution>

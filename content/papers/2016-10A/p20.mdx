@@ -1,0 +1,33 @@
+---
+year: 2016
+paper: "10A"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: B
+choices: ["9", "14", "16", "17", "19"]
+---
+
+<Problem>
+For some particular value of $N$, when $(a+b+c+d+1)^N$ is expanded and like terms are combined, the resulting expression contains exactly $1001$ terms that include all four variables $a, b, c,$ and $d$, each to some positive power. What is $N$?
+</Problem>
+
+<Solution>
+A term in the expansion of $(a+b+c+d+1)^N$ has the form $a^i b^j c^k d^l \cdot 1^m$ where $i+j+k+l+m = N$ and $i,j,k,l,m \geq 0$.
+
+For a term to include all four variables to some positive power, we need $i,j,k,l \geq 1$ and $m \geq 0$.
+
+Substitute $i' = i-1, j' = j-1, k' = k-1, l' = l-1$ (all $\geq 0$): then $i'+j'+k'+l'+m = N-4$.
+
+The number of non-negative integer solutions is $\dbinom{(N-4)+4}{4} = \dbinom{N}{4}$.
+
+We need $\dbinom{N}{4} = 1001$.
+
+$$\binom{N}{4} = \frac{N(N-1)(N-2)(N-3)}{24} = 1001.$$
+
+So $N(N-1)(N-2)(N-3) = 24024$.
+
+Try $N = 14$: $14 \times 13 \times 12 \times 11 = 14 \times 13 \times 132 = 14 \times 1716 = 24024$. ✓
+
+Answer: **B**.
+</Solution>

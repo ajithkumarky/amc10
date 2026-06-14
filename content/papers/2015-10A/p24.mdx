@@ -1,0 +1,62 @@
+---
+year: 2015
+paper: "10A"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: B
+choices: ["$30$", "$31$", "$61$", "$62$", "$63$"]
+---
+
+<Problem>
+For some positive integers $p$, there is a quadrilateral $ABCD$ with positive integer side lengths, perimeter $p$, right angles at $B$ and $C$, $AB=2$, and $CD=AD$. How many different values of $p < 2015$ are possible?
+</Problem>
+
+<Solution>
+Place the quadrilateral in coordinates. With right angles at $B$ and $C$:
+
+Let $A = (0, 0)$, and since $AB = 2$, place $B = (0, -2)$ (going down). Right angle at $B$ means $BC \perp AB$, so $C = (a, -2)$ for some $a > 0$ (going right). Right angle at $C$ means $CD \perp BC$, so $D = (a, b)$ for some $b$.
+
+We need $D$ to connect back to $A = (0,0)$ with $CD = AD$.
+
+$CD = |b - (-2)| = b + 2$ (taking $b > -2$, so $D$ is above $C$, meaning $b > -2$). Actually $CD = |b + 2|$.
+
+$AD = \sqrt{a^2 + b^2}$.
+
+For $CD = AD$: $|b+2| = \sqrt{a^2 + b^2}$, so $(b+2)^2 = a^2 + b^2$, giving $4b + 4 = a^2$, hence $b = \dfrac{a^2 - 4}{4}$.
+
+For $b$ to be a positive rational and give positive integer side lengths, we need $a^2 \equiv 0 \pmod{4}$, i.e., $a$ is even. Let $a = 2k$ for positive integer $k$. Then $b = \dfrac{4k^2 - 4}{4} = k^2 - 1$.
+
+For $b > 0$: $k^2 - 1 > 0$, so $k \ge 2$. Also $b > -2$ is automatically satisfied.
+
+The side lengths are:
+- $AB = 2$
+- $BC = a = 2k$
+- $CD = b + 2 = k^2 + 1$
+- $AD = \sqrt{(2k)^2 + (k^2-1)^2} = \sqrt{4k^2 + k^4 - 2k^2 + 1} = \sqrt{k^4 + 2k^2 + 1} = k^2 + 1$.
+
+Good, $CD = AD = k^2 + 1$ as required.
+
+Perimeter: $p = AB + BC + CD + DA = 2 + 2k + (k^2+1) + (k^2+1) = 2k^2 + 2k + 4$.
+
+We need $p = 2k^2 + 2k + 4 < 2015$ with $k \ge 2$ (integer):
+$$2k^2 + 2k + 4 < 2015$$
+$$2k^2 + 2k < 2011$$
+$$k^2 + k < 1005.5$$
+$$k(k+1) < 1005.5.$$
+
+Check: $k=31$: $31 \times 32 = 992 < 1005.5$. Valid.
+$k=32$: $32 \times 33 = 1056 > 1005.5$. Invalid.
+
+So $k$ ranges from $2$ to $31$, giving $31 - 2 + 1 = 30$ values of $k$.
+
+But wait — we need to check that different values of $k$ give different perimeters. Since $p = 2k^2 + 2k + 4$ is strictly increasing in $k$, all $30$ values of $k$ give distinct perimeters.
+
+Answer: **A** ... that's 30, choice A. But the official answer is B (31). Let me recheck.
+
+Oh — I should check $k = 1$: $b = 0$, which would make $D = (2, 0) = $ something with $b=0$. Then $D$ is at the same height as $A$, and the figure has $CD = 2$ and $AD = 2$. The perimeter would be $2 + 2 + 2 + 2 = 8$. But we need $CD = AD$ and $b = k^2 - 1 = 0$, so $D = (2, 0)$. Then $AD = 2$ and $CD = 2$. The quadrilateral has vertices $A=(0,0)$, $B=(0,-2)$, $C=(2,-2)$, $D=(2,0)$, which is a rectangle — valid! Perimeter $= 8 < 2015$.
+
+So $k = 1$ is also valid. That gives $k$ from $1$ to $31$, a total of $31$ values.
+
+Answer: **B**.
+</Solution>

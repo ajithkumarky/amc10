@@ -1,0 +1,56 @@
+---
+year: 2017
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: A
+choices:
+  - '$469$'
+  - '$471$'
+  - '$475$'
+  - '$478$'
+  - '$481$'
+---
+
+<Problem>
+How many of the base-ten numerals for the positive integers less than or equal to $2017$ contain the digit $0$?
+</Problem>
+
+<Solution>
+We count integers from $1$ to $2017$ that contain at least one digit $0$. It's easier to count those containing a $0$ directly by cases.
+
+**1-digit numbers ($1$–$9$):** None contain $0$.
+
+**2-digit numbers ($10$–$99$):** The tens digit is $1$–$9$, units digit is $0$–$9$. Those with a $0$ must have units digit $0$: $10, 20, \ldots, 90$ — that's $9$ numbers.
+
+**3-digit numbers ($100$–$999$):** Form $\overline{abc}$ where $a \in \{1,\ldots,9\}$, $b,c \in \{0,\ldots,9\}$. Count those with at least one $0$ among $b, c$:
+- Total 3-digit numbers: $900$.
+- Those with no $0$ (i.e., $b,c \in \{1,\ldots,9\}$): $9 \times 9 \times 9 = 729$.
+- Those with at least one $0$: $900 - 729 = 171$.
+
+**4-digit numbers ($1000$–$2017$):**
+
+Split into $1000$–$1999$ and $2000$–$2017$.
+
+*$1000$–$1999$:* Form $1\overline{bcd}$ where $b,c,d \in \{0,\ldots,9\}$. Always has leading $1$, so we need at least one $0$ among $b, c, d$:
+- Total: $1000$.
+- Those with no $0$ ($b,c,d \in \{1,\ldots,9\}$): $9^3 = 729$.
+- Those with at least one $0$: $1000 - 729 = 271$.
+
+*$2000$–$2017$:* These are $2000, 2001, \ldots, 2017$ — all $18$ numbers. Which contain a $0$?
+- $2000$: three $0$s. Yes.
+- $2001$–$2009$: form $200d$, all contain $0$. That's $9$ numbers.
+- $2010$: $2, 0, 1, 0$ — contains $0$. Yes.
+- $2011$–$2017$: form $201d$ with $d \in \{1,\ldots,7\}$. None contain $0$ since digits are $2,0,1,d$ — wait, $0$ appears in position 2! So all of $2011$–$2017$ contain $0$.
+
+Numbers $2000$–$2017$ that contain $0$: all $18$ (since every number $2000$–$2017$ has $0$ as the hundreds digit or lower). Let me verify: $2000$ has $0$s; $2001$–$2009$ have $0$s; $2010$ has $0$s; $2011$–$2017$ all have $0$ in the tens place. Yes, all $18$ contain $0$.
+
+Wait — check $2011$: digits are $2, 0, 1, 1$. Yes, has a $0$.
+
+So all $18$ numbers from $2000$ to $2017$ contain a $0$.
+
+**Total:** $0 + 9 + 171 + 271 + 18 = 469$.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,35 @@
+---
+year: 2015
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: A
+choices: ['$\frac{47}{256}$', '$\frac{3}{16}$', '$\frac{49}{256}$', '$\frac{25}{128}$', '$\frac{51}{256}$']
+---
+
+<Problem>
+Eight people are sitting around a circular table, each holding a fair coin. All eight people flip their coins and those who flip heads stand while those who flip tails remain seated. What is the probability that no two adjacent people will stand?
+</Problem>
+
+<Solution>
+We need to count the number of subsets of people around a circular table of 8 such that no two chosen people are adjacent, then divide by $2^8 = 256$.
+
+Let $L(n)$ denote the number of independent sets (including the empty set) on a cycle $C_n$. The formula is $L(n) = L_{n-1} + L_{n-2}$ (Lucas numbers), but let's derive it directly.
+
+For a cycle of $n$ vertices, the number of independent sets is $L(n) = F_{n-1} + F_{n+1}$ where $F_k$ is the Fibonacci sequence... Actually, the count equals the Lucas number $\mathcal{L}_n$.
+
+For $n = 8$, we use the recurrence. Let $a_n$ = number of independent sets in a path of $n$ vertices, and $c_n$ = number in a cycle.
+
+$a_0 = 1$, $a_1 = 2$, $a_n = a_{n-1} + a_{n-2}$: so $a_2=3, a_3=4, a_4=7, a_5=13, a_6=21, a_7=34, a_8=55$.
+
+For the cycle $C_8$: $c_8 = a_6 + a_5 = 21 + 13 = 34$? Let me use the standard formula:
+
+$c_n = a_{n-1} + a_{n-3}$... Actually: $c_n = a_{n-2} + a_{n-1}$ where the cycle is broken by fixing vertex 1: either vertex 1 is not in the set (giving $a_{n-1}$ choices for the remaining $n-1$ in a path) or vertex 1 is in the set (meaning vertices 2 and $n$ are not, giving $a_{n-3}$ choices for vertices 3 through $n-1$).
+
+For $n = 8$: $c_8 = a_7 + a_5 = 34 + 13 = 47$.
+
+The probability is $\dfrac{47}{256}$.
+
+Answer: **A**.
+</Solution>

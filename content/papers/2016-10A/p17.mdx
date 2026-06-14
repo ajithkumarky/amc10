@@ -1,0 +1,46 @@
+---
+year: 2016
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: A
+choices: ["12", "14", "16", "18", "20"]
+---
+
+<Problem>
+Let $N$ be a positive multiple of $5$. One red ball and $N$ green balls are arranged in a line in random order. Let $P(N)$ be the probability that at least $\tfrac{3}{5}$ of the green balls are on the same side of the red ball. Observe that $P(5)=1$ and that $P(N)$ approaches $\tfrac{4}{5}$ as $N$ grows large. What is the sum of the digits of the least value of $N$ such that $P(N) < \tfrac{321}{400}$?
+</Problem>
+
+<Solution>
+The red ball can be in any of $N+1$ positions (positions $1$ through $N+1$). If the red ball is in position $k$, then there are $k-1$ green balls on its left and $N-k+1$ on its right. We need at least $\frac{3N}{5}$ green balls on one side.
+
+The condition "at least $\frac{3N}{5}$ green balls on the same side" means:
+$$\max(k-1, N-k+1) \geq \frac{3N}{5}.$$
+
+This fails (neither side has $\geq \frac{3N}{5}$ green balls) when both sides have $< \frac{3N}{5}$, meaning $k-1 < \frac{3N}{5}$ AND $N-k+1 < \frac{3N}{5}$, i.e., $\frac{2N}{5} < k-1 < \frac{3N}{5}$... let me be careful.
+
+Both sides $< \frac{3N}{5}$ requires $k-1 < \frac{3N}{5}$ (left side small) and $N-k+1 < \frac{3N}{5}$ (right side small), so $N - \frac{3N}{5} < k-1$, meaning $\frac{2N}{5} < k-1 < \frac{3N}{5}$.
+
+The number of "failure" positions: $k-1 \in \left(\frac{2N}{5}, \frac{3N}{5}\right)$, strictly. Since $N = 5m$, this is $k - 1 \in \{2m+1, 2m+2, \ldots, 3m-1\}$, giving $m-1$ failure positions.
+
+Total positions: $N + 1 = 5m + 1$.
+
+$$P(N) = 1 - \frac{m-1}{5m+1}.$$
+
+We need $P(N) < \frac{321}{400}$:
+$$1 - \frac{m-1}{5m+1} < \frac{321}{400}$$
+$$\frac{m-1}{5m+1} > 1 - \frac{321}{400} = \frac{79}{400}.$$
+
+Cross-multiplying:
+$$400(m-1) > 79(5m+1)$$
+$$400m - 400 > 395m + 79$$
+$$5m > 479$$
+$$m > 95.8.$$
+
+So the smallest integer $m$ is $96$, giving $N = 5m = 480$.
+
+Sum of digits of $480$: $4 + 8 + 0 = 12$.
+
+Answer: **A**.
+</Solution>

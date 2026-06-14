@@ -1,0 +1,59 @@
+---
+year: 2016
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: B
+choices: ["1", "2", "3", "4", "5"]
+---
+
+<Problem>
+Five friends sat in a movie theater in a row containing $5$ seats, numbered $1$ to $5$ from left to right. (The directions "left" and "right" are from the point of view of the people as they sit in the seats.) During the movie Ada went to the lobby to get some popcorn. When she returned, she found that Bea had moved two seats to the right, Ceci had moved one seat to the left, and Dee and Edie had switched seats, leaving an end seat for Ada. In which seat had Ada been sitting before she got up?
+</Problem>
+
+<Solution>
+Let Ada, Bea, Ceci, Dee, Edie be in seats $a, b, c, d, e$ respectively (before Ada left).
+
+The four remaining people (Bea, Ceci, Dee, Edie) occupy the four seats that are NOT seat $a$. After the moves:
+- Bea moves to seat $b+2$.
+- Ceci moves to seat $c-1$.
+- Dee and Edie swap: Dee goes to seat $e$, Edie goes to seat $d$.
+
+Their new seats must also be among seats $1$–$5$, excluding the end seat left for Ada.
+
+Let's try each possible original seat for Ada and see which works.
+
+**Try $a = 2$ (Ada was in seat 2):**
+
+The other four originally occupy seats $\{1,3,4,5\}$ in some order. We need:
+- $b + 2 \leq 5$ and $b + 2 \neq a_{\text{new}}$
+- $c - 1 \geq 1$
+
+Assign: suppose Bea was in seat $b$, Ceci in $c$, Dee in $d$, Edie in $e$, all from $\{1,3,4,5\}$.
+
+After moves, the new seats are $b+2$, $c-1$, $e$, $d$. These four values, together with Ada's new (end) seat, must cover $\{1,2,3,4,5\}$.
+
+Since Ada takes an end seat ($1$ or $5$) upon return:
+- If Ada takes seat $1$: the others' new seats are $\{2,3,4,5\}$.
+- If Ada takes seat $5$: the others' new seats are $\{1,2,3,4\}$.
+
+Try Ada returns to seat $1$ (so new seats for others = $\{2,3,4,5\}$):
+
+Original seats of Bea, Ceci, Dee, Edie are a permutation of $\{1,3,4,5\}$.
+
+We need $b+2$, $c-1$, $d$, $e$ to be a permutation of $\{2,3,4,5\}$.
+
+Note $d$ and $e$ just swap, so $\{d,e\} = $ the same set. From $\{1,3,4,5\}$, suppose $\{d,e\} = \{3,5\}$ and $\{b,c\} = \{1,4\}$.
+
+If $b=1$: $b+2=3$. If $c=4$: $c-1=3$. Conflict (two people in seat $3$). Try $b=4, c=1$: $b+2=6$ — invalid.
+
+Try $\{d,e\} = \{4,5\}$ and $\{b,c\} = \{1,3\}$:
+- $b=1, c=3$: $b+2=3$, $c-1=2$. New seats: $3, 2, 4, 5$ (or $3,2,5,4$). Together: $\{2,3,4,5\}$. ✓
+
+This works! Bea was in seat $1$, Ceci in seat $3$, and Dee/Edie in seats $4$ and $5$.
+
+So Ada was originally in seat $2$.
+
+Answer: **B**.
+</Solution>

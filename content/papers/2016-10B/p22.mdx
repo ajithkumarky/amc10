@@ -1,0 +1,35 @@
+---
+year: 2016
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: A
+choices: ["$385$", "$665$", "$945$", "$1140$", "$1330$"]
+---
+
+<Problem>
+A set of teams held a round-robin tournament in which every team played every other team exactly once. Every team won $10$ games and lost $10$ games; there were no ties. How many sets of three teams $\{A, B, C\}$ were there in which $A$ beat $B$, $B$ beat $C$, and $C$ beat $A$?
+</Problem>
+
+<Solution>
+Each team plays $20$ games total (winning $10$ and losing $10$), so there are $21$ teams (since each team plays $n-1$ games where $n$ is the number of teams, giving $n - 1 = 20$, so $n = 21$).
+
+Total number of 3-team sets: $\dbinom{21}{3} = \dfrac{21 \cdot 20 \cdot 19}{6} = 1330$.
+
+For any set of 3 teams, exactly one of two things happens:
+1. One team beats both others (a "dominant" arrangement), or
+2. The three teams form a cycle (A beats B, B beats C, C beats A).
+
+For a set $\{X, Y, Z\}$, let $w_X, w_Y, w_Z$ be the number of wins among games within the trio (each is $0$, $1$, or $2$). A dominant arrangement occurs when one team has $2$ wins and another has $0$.
+
+The number of dominant triples can be counted as: for each team $i$ with $w_i$ wins overall, the number of triples where team $i$ beats both others is $\dbinom{w_i}{2}$.
+
+Each team has exactly $10$ wins, so $\dbinom{10}{2} = 45$ triples where that team beats the other two.
+
+With $21$ teams: total dominant triples $= 21 \times 45 = 945$.
+
+Number of cyclic triples $= 1330 - 945 = 385$.
+
+Answer: **A**.
+</Solution>

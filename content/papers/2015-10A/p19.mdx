@@ -1,0 +1,46 @@
+---
+year: 2015
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: D
+choices: ['$\frac{5\sqrt{2}}{3}$', '$\frac{50\sqrt{3}-75}{4}$', '$\frac{15\sqrt{3}}{8}$', '$\frac{50-25\sqrt{3}}{2}$', '$\frac{25}{6}$']
+---
+
+<Problem>
+The isosceles right triangle $ABC$ has right angle at $C$ and area $12.5$. The rays trisecting $\angle ACB$ intersect $AB$ at $D$ and $E$. What is the area of $\triangle CDE$?
+</Problem>
+
+<Solution>
+Since $\triangle ABC$ is isosceles right with right angle at $C$ and area $12.5$, we have $\frac{1}{2} \cdot CA \cdot CB = 12.5$, so $CA = CB = 5$ (since $CA = CB$ for isosceles right triangle).
+
+Place $C$ at the origin with $CA$ along the positive $y$-axis and $CB$ along the positive $x$-axis: $C = (0,0)$, $A = (0,5)$, $B = (5,0)$.
+
+The angle $\angle ACB = 90°$ is trisected into three $30°$ angles. The two trisecting rays from $C$ make angles $30°$ and $60°$ with the positive $x$-axis (i.e., with $CB$).
+
+Ray at $30°$: direction $(\cos 30°, \sin 30°) = \left(\dfrac{\sqrt{3}}{2}, \dfrac{1}{2}\right)$, so parametrically $(t\frac{\sqrt{3}}{2}, \frac{t}{2})$.
+
+Ray at $60°$: direction $(\cos 60°, \sin 60°) = \left(\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}\right)$, so parametrically $(\frac{t}{2}, t\frac{\sqrt{3}}{2})$.
+
+Line $AB$: from $A=(0,5)$ to $B=(5,0)$, equation $x + y = 5$.
+
+Intersection of $30°$ ray with $AB$: $\dfrac{\sqrt{3}}{2}t + \dfrac{1}{2}t = 5$, so $t\cdot\dfrac{\sqrt{3}+1}{2} = 5$, giving $t = \dfrac{10}{\sqrt{3}+1} = \dfrac{10(\sqrt{3}-1)}{2} = 5(\sqrt{3}-1)$.
+
+Point $E = \left(\dfrac{5\sqrt{3}(\sqrt{3}-1)}{2}, \dfrac{5(\sqrt{3}-1)}{2}\right) = \left(\dfrac{5(3-\sqrt{3})}{2}, \dfrac{5(\sqrt{3}-1)}{2}\right)$.
+
+Intersection of $60°$ ray with $AB$: $\dfrac{1}{2}t + \dfrac{\sqrt{3}}{2}t = 5$, so $t\cdot\dfrac{1+\sqrt{3}}{2} = 5$, giving same $t = 5(\sqrt{3}-1)$.
+
+Point $D = \left(\dfrac{5(\sqrt{3}-1)}{2}, \dfrac{5\sqrt{3}(\sqrt{3}-1)}{2}\right) = \left(\dfrac{5(\sqrt{3}-1)}{2}, \dfrac{5(3-\sqrt{3})}{2}\right)$.
+
+Area of $\triangle CDE$ with $C = (0,0)$:
+$$\text{Area} = \frac{1}{2}|x_D y_E - x_E y_D|$$
+$$= \frac{1}{2}\left|\frac{5(\sqrt{3}-1)}{2}\cdot\frac{5(\sqrt{3}-1)}{2} - \frac{5(3-\sqrt{3})}{2}\cdot\frac{5(3-\sqrt{3})}{2}\right|$$
+$$= \frac{1}{2}\cdot\frac{25}{4}\left|(\sqrt{3}-1)^2 - (3-\sqrt{3})^2\right|.$$
+
+$(\sqrt{3}-1)^2 = 4 - 2\sqrt{3}$ and $(3-\sqrt{3})^2 = 12 - 6\sqrt{3}$.
+
+$$= \frac{25}{8}\left|(4-2\sqrt{3}) - (12-6\sqrt{3})\right| = \frac{25}{8}\left|-8 + 4\sqrt{3}\right| = \frac{25}{8}(8 - 4\sqrt{3}) = \frac{25(8-4\sqrt{3})}{8} = \frac{50 - 25\sqrt{3}}{2}.$$
+
+Answer: **D**.
+</Solution>

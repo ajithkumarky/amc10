@@ -1,0 +1,33 @@
+---
+year: 2017
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 2
+answer: D
+choices:
+  - '$\frac{1}{27}$'
+  - '$\frac{1}{9}$'
+  - '$\frac{2}{9}$'
+  - '$\frac{7}{27}$'
+  - '$\frac{1}{2}$'
+---
+
+<Problem>
+A radio program has a quiz consisting of $3$ multiple-choice questions, each with $3$ choices. A contestant wins if he or she gets $2$ or more of the questions right. The contestant answers randomly to each question. What is the probability of winning?
+</Problem>
+
+<Solution>
+Each question is answered correctly with probability $\dfrac{1}{3}$ and incorrectly with probability $\dfrac{2}{3}$, independently.
+
+The contestant wins by getting exactly $2$ or exactly $3$ correct.
+
+**Exactly 3 correct:** $\left(\dfrac{1}{3}\right)^3 = \dfrac{1}{27}$.
+
+**Exactly 2 correct:** Choose which $2$ questions are correct: $\binom{3}{2} = 3$ ways. Each such outcome has probability $\left(\dfrac{1}{3}\right)^2 \cdot \dfrac{2}{3} = \dfrac{2}{27}$. Total: $3 \cdot \dfrac{2}{27} = \dfrac{6}{27}$.
+
+**Total probability of winning:**
+$$\frac{6}{27} + \frac{1}{27} = \frac{7}{27}.$$
+
+Answer: **D**.
+</Solution>

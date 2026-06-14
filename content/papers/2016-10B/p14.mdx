@@ -1,0 +1,66 @@
+---
+year: 2016
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 3
+answer: D
+choices: ["$30$", "$41$", "$45$", "$50$", "$57$"]
+---
+
+<Problem>
+How many squares whose sides are parallel to the axes and whose vertices have integer coordinates lie entirely within the region bounded by the line $y = \pi x$, the line $y = -0.1$, and the line $x = 5.1$?
+</Problem>
+
+<Solution>
+The region is essentially $0 \le x \le 5$ and $0 \le y < \pi x$ (since $y = -0.1$ is just below $y = 0$, and $x = 5.1$ is just past $x = 5$, so integer points go up to $x = 5$).
+
+An axis-aligned square with integer vertices and side length $s$ (a positive integer) with bottom-left corner $(a, b)$ occupies columns $a$ to $a+s$ and rows $b$ to $b+s$. For it to lie entirely within the region we need:
+
+- $b \ge 0$ (above $y = -0.1$, i.e., $y \ge 0$)
+- $a + s \le 5$ (left of $x = 5.1$)
+- The top-right corner $(a+s, b+s)$ must satisfy $y < \pi x$, i.e., $b + s < \pi(a+s)$, which means $b + s \le \lfloor \pi(a+s) \rfloor$ since everything is integers (actually we need $b + s \le \pi(a+s) - \epsilon$, i.e., $b + s < \pi(a+s)$, so $b + s \le \lfloor \pi(a+s) \rfloor$ when $\pi(a+s)$ is not an integer, which it never is since $\pi$ is irrational).
+
+So for each side length $s \in \{1, 2, 3, 4, 5\}$ and right-column index $R = a + s \in \{s, s+1, \ldots, 5\}$ (so $a \in \{0, \ldots, 5-s\}$):
+
+The constraint on $b$ is $0 \le b$ and $b + s \le \lfloor \pi R \rfloor$, i.e., $0 \le b \le \lfloor \pi R \rfloor - s$.
+
+Number of valid $b$ values: $\max(0, \lfloor \pi R \rfloor - s + 1)$.
+
+Using $\pi \approx 3.14159$:
+- $\lfloor \pi \cdot 1 \rfloor = 3$
+- $\lfloor \pi \cdot 2 \rfloor = 6$
+- $\lfloor \pi \cdot 3 \rfloor = 9$
+- $\lfloor \pi \cdot 4 \rfloor = 12$
+- $\lfloor \pi \cdot 5 \rfloor = 15$
+
+For $s = 1$: $R$ from $1$ to $5$. Valid $b$: $\lfloor \pi R \rfloor - 0 = 3, 6, 9, 12, 15$ choices (we need $b \le \lfloor \pi R \rfloor - 1$, so $\lfloor \pi R \rfloor$ choices). Total: $3 + 6 + 9 + 12 + 15 = 45$.
+
+Wait — $b \le \lfloor \pi R \rfloor - s$ and $b \ge 0$: count is $\lfloor \pi R \rfloor - s + 1$.
+
+$s=1$: $R=1$: $3-1+1=3$; $R=2$: $6-1+1=6$; $R=3$: $9-1+1=9$; $R=4$: $12-1+1=12$; $R=5$: $15-1+1=15$. Sum $= 45$.
+
+$s=2$: $R=2$: $6-2+1=5$; $R=3$: $9-2+1=8$; $R=4$: $12-2+1=11$; $R=5$: $15-2+1=14$. Sum $= 38$.
+
+Hmm, total so far is getting large. Let me reconsider. The region is $y \ge 0$, $x \le 5.1$, and $y \le \pi x$. The square's vertices must all be in the region, so ALL four corners must satisfy these. The critical constraint is the top-right corner $(a+s, b+s)$ must have $b + s \le \pi(a+s)$.
+
+Also the top-LEFT corner $(a, b+s)$ must satisfy $b + s \le \pi a$ (since it must be below $y = \pi x$ at $x = a$).
+
+So the binding constraint is $b + s \le \pi \cdot a$ (from the top-left corner, which is tightest since $a < a+s$).
+
+Redo: for bottom-left corner $(a, b)$, side $s$: need $b \ge 0$, $a \ge 0$, $a + s \le 5$, and $b + s \le \pi a$ (top-left corner condition is most restrictive).
+
+Also need $a \ge 1$ since $b+s \le \pi a$ and $b+s \ge s \ge 1$ requires $\pi a \ge 1$, i.e., $a \ge 1$.
+
+For each $s \ge 1$ and $a \ge 1$ with $a + s \le 5$:
+Number of valid $b$: $0 \le b \le \lfloor \pi a \rfloor - s$, count $= \max(0, \lfloor \pi a \rfloor - s + 1)$.
+
+$s=1$: $a=1$: $3-1+1=3$; $a=2$: $6-1+1=6$; $a=3$: $9-1+1=9$; $a=4$: $12-1+1=12$. Sum $=30$.
+$s=2$: $a=1$: $3-2+1=2$; $a=2$: $6-2+1=5$; $a=3$: $9-2+1=8$. Sum $=15$.
+$s=3$: $a=1$: $3-3+1=1$; $a=2$: $6-3+1=4$. Sum $=5$.
+$s=4$: $a=1$: $3-4+1=0$. Sum $=0$.
+
+Total $= 30 + 15 + 5 + 0 = 50$.
+
+Answer: **D**.
+</Solution>

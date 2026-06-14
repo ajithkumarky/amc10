@@ -1,0 +1,53 @@
+---
+year: 2016
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: D
+choices: ['$\frac{\sqrt{13}}{16}$', '$\frac{\sqrt{2}}{13}$', '$\frac{9}{82}$', '$\frac{10}{91}$', '$\frac{1}{9}$']
+---
+
+<Problem>
+Rectangle $ABCD$ has $AB = 5$ and $BC = 4$. Point $E$ lies on $\overline{AB}$ so that $EB = 1$, point $G$ lies on $\overline{BC}$ so that $CG = 1$, and point $F$ lies on $\overline{CD}$ so that $DF = 2$. Segments $\overline{AG}$ and $\overline{AC}$ intersect $\overline{EF}$ at $Q$ and $P$, respectively. What is the value of $\dfrac{PQ}{EF}$?
+
+Place $A$ at the origin with $B = (5,0)$, $C = (5,4)$, $D = (0,4)$. Then $E = (4,0)$, $G = (5,3)$, $F = (2,4)$.
+</Problem>
+
+<Solution>
+Set up coordinates: $A = (0,0)$, $B = (5,0)$, $C = (5,4)$, $D = (0,4)$.
+
+From the given data: $EB = 1$ so $E = (4, 0)$; $CG = 1$ so $G = (5, 3)$; $DF = 2$ so $F = (2, 4)$.
+
+**Line $EF$:** from $E = (4,0)$ to $F = (2,4)$. Direction vector $(-2, 4)$, parametrized as $(4 - 2t, 4t)$ for $t \in [0,1]$.
+
+Slope of $EF$: $\dfrac{4-0}{2-4} = \dfrac{4}{-2} = -2$. Equation: $y - 0 = -2(x-4)$, i.e., $y = -2x + 8$.
+
+**Line $AC$:** from $A = (0,0)$ to $C = (5,4)$. Slope $= \dfrac{4}{5}$. Equation: $y = \dfrac{4}{5}x$.
+
+**Intersection $P$ of $AC$ and $EF$:** $\dfrac{4}{5}x = -2x + 8 \Rightarrow \dfrac{4x + 10x}{5} = 8 \Rightarrow 14x = 40 \Rightarrow x = \dfrac{20}{7}$, $y = \dfrac{4}{5} \cdot \dfrac{20}{7} = \dfrac{16}{7}$.
+
+So $P = \left(\dfrac{20}{7}, \dfrac{16}{7}\right)$.
+
+**Line $AG$:** from $A = (0,0)$ to $G = (5,3)$. Slope $= \dfrac{3}{5}$. Equation: $y = \dfrac{3}{5}x$.
+
+**Intersection $Q$ of $AG$ and $EF$:** $\dfrac{3}{5}x = -2x + 8 \Rightarrow \dfrac{3x + 10x}{5} = 8 \Rightarrow 13x = 40 \Rightarrow x = \dfrac{40}{13}$, $y = \dfrac{3}{5} \cdot \dfrac{40}{13} = \dfrac{24}{13}$.
+
+So $Q = \left(\dfrac{40}{13}, \dfrac{24}{13}\right)$.
+
+**Length $EF$:** $|EF| = \sqrt{(4-2)^2 + (0-4)^2} = \sqrt{4 + 16} = \sqrt{20} = 2\sqrt{5}$.
+
+**Length $PQ$:**
+
+$\Delta x = \dfrac{40}{13} - \dfrac{20}{7} = \dfrac{280 - 260}{91} = \dfrac{20}{91}$.
+
+$\Delta y = \dfrac{24}{13} - \dfrac{16}{7} = \dfrac{168 - 208}{91} = \dfrac{-40}{91}$.
+
+$|PQ| = \sqrt{\left(\dfrac{20}{91}\right)^2 + \left(\dfrac{40}{91}\right)^2} = \dfrac{1}{91}\sqrt{400 + 1600} = \dfrac{\sqrt{2000}}{91} = \dfrac{20\sqrt{5}}{91}$.
+
+**Ratio:**
+
+$$\frac{PQ}{EF} = \frac{20\sqrt{5}/91}{2\sqrt{5}} = \frac{20}{91 \cdot 2} = \frac{10}{91}.$$
+
+Answer: **D**.
+</Solution>

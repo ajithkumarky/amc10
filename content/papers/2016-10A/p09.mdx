@@ -1,0 +1,25 @@
+---
+year: 2016
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: D
+choices: ["6", "7", "8", "9", "10"]
+---
+
+<Problem>
+A triangular array of $2016$ coins has $1$ coin in the first row, $2$ coins in the second row, $3$ coins in the third row, and so on up to $N$ coins in the $N$th row. What is the sum of the digits of $N$?
+</Problem>
+
+<Solution>
+The total number of coins in $N$ rows is $1 + 2 + 3 + \cdots + N = \dfrac{N(N+1)}{2}$.
+
+We need $\dfrac{N(N+1)}{2} = 2016$, so $N(N+1) = 4032$.
+
+Estimate: $\sqrt{4032} \approx 63.5$, so try $N = 63$: $63 \times 64 = 4032$. ✓
+
+The sum of the digits of $N = 63$ is $6 + 3 = 9$.
+
+Answer: **D**.
+</Solution>

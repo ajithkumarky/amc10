@@ -1,0 +1,69 @@
+---
+year: 2017
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: E
+choices:
+  - '$92$'
+  - '$94$'
+  - '$96$'
+  - '$98$'
+  - '$100$'
+---
+
+<Problem>
+Last year Isabella took $7$ math tests and received $7$ different scores, each an integer between $91$ and $100$, inclusive. After each test she noticed that the average of her test scores was an integer. Her score on the seventh test was $95$. What was her score on the sixth test?
+</Problem>
+
+<Solution>
+Let Isabella's scores be $s_1, s_2, \ldots, s_7$, each a distinct integer from $\{91, 92, \ldots, 100\}$.
+
+After $k$ tests, the sum $S_k = s_1 + \cdots + s_k$ must be divisible by $k$.
+
+We know $s_7 = 95$, and all $7$ scores are distinct integers from $91$ to $100$.
+
+**Key constraint:** $7 \mid S_7$ and $6 \mid S_6$.
+
+The sum of all $10$ integers from $91$ to $100$ is $\dfrac{10(91+100)}{2} = 955$. Isabella uses $7$ of these, omitting $3$. Let the sum of omitted scores be $O$. Then $S_7 = 955 - O$.
+
+For $7 \mid S_7$: $7 \mid (955 - O) \implies 955 - O \equiv 0 \pmod 7$.
+$955 = 7 \cdot 136 + 3$, so $955 \equiv 3 \pmod 7$. Thus $O \equiv 3 \pmod 7$.
+
+The omitted scores are $3$ distinct integers from $\{91,\ldots,100\}$ not including $95$ (since $s_7 = 95$ is used). So omitted scores are from $\{91,92,93,94,96,97,98,99,100\}$, $3$ of them.
+
+Find triples with sum $\equiv 3 \pmod 7$. Also the sum must satisfy $O \geq 91+92+93 = 276$ and $O \leq 98+99+100 = 297$.
+
+$955 - 297 = 658 = 7 \times 94$, so $S_7 \in \{658, \ldots, 679\}$ and must be divisible by $7$. Possible: $658, 665, 672, 679$.
+
+- $O = 955 - 658 = 297 = 98+99+100$. Omit $\{98,99,100\}$; scores used: $\{91,92,93,94,95,96,97\}$.
+- $O = 955 - 665 = 290$. Triples summing to $290$: from $\{91,...,94,96,...,100\}$, need three summing to $290$. Max is $297$; $290 = 100+99+91 = 100+98+92 = 100+97+93 = 100+96+94 = 99+98+93 = 99+97+94 = 99+96+95$ (but $95$ is used) $= 98+97+95$ (95 used). Valid: $\{91,99,100\}, \{92,98,100\}, \{93,97,100\}, \{94,96,100\}, \{93,98,99\}, \{94,97,99\}, \{94,98,98\}$ (repeat, invalid). So many triples.
+- $O = 955 - 672 = 283$. Similarly, several triples.
+- $O = 955-679=276=91+92+93$. Omit $\{91,92,93\}$; scores: $\{94,95,96,97,98,99,100\}$.
+
+Now apply the condition $6 \mid S_6 = S_7 - s_7 = S_7 - 95$.
+
+$S_6 = S_7 - 95$. For $6 \mid S_6$: $6 \mid (S_7 - 95)$.
+
+- $S_7 = 658$: $S_6 = 563$. $563 = 6 \cdot 93 + 5$. Not divisible by $6$.
+- $S_7 = 665$: $S_6 = 570 = 6 \cdot 95$. Divisible by $6$. ✓
+- $S_7 = 672$: $S_6 = 577$. $577 = 6 \cdot 96 + 1$. Not divisible by $6$.
+- $S_7 = 679$: $S_6 = 584$. $584 = 6 \cdot 97 + 2$. Not divisible by $6$.
+
+So $S_7 = 665$ is the only viable sum, with $O = 290$.
+
+Also need $5 \mid S_5$, $4 \mid S_4$, $3 \mid S_3$, $2 \mid S_2$, and $1 \mid S_1$ (trivial).
+
+$S_6 = 570$, scores are $7$ distinct values from $\{91,...,100\}$ summing to $665$, omitting $3$ values summing to $290$ from $\{91,...,94,96,...,100\}$.
+
+We need to determine which $3$ are omitted and what $s_6$ is.
+
+The triples from $\{91,...,94,96,...,100\}$ summing to $290$ include several possibilities. Apply further divisibility:
+
+$S_5 = S_6 - s_6 = 570 - s_6$ must be divisible by $5$. So $5 \mid (570 - s_6)$, i.e., $s_6 \equiv 570 \equiv 0 \pmod 5$. So $s_6 \in \{95, 100\}$. Since $s_7 = 95$, we have $s_6 = 100$.
+
+Check: $100$ must be among the $7$ scores (not omitted). From $O = 290$: if $100$ is not omitted, the omitted set does not include $100$, so omitted values are from $\{91,...,94,96,...,99\}$ summing to $290 - 0 = 290$... wait, $100$ is not omitted. The omitted set sums to $290$ without $100$, so we need three values from $\{91,92,93,94,96,97,98,99\}$ summing to $290$. Max is $97+98+99 = 294$, min is $91+92+93 = 276$. Indeed $290$ is achievable: e.g., $93+98+99 = 290$. So $s_6 = 100$ is consistent.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,36 @@
+---
+year: 2017
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: B
+choices:
+  - '$\frac{1}{21}$'
+  - '$\frac{1}{19}$'
+  - '$\frac{1}{18}$'
+  - '$\frac{1}{2}$'
+  - '$\frac{11}{21}$'
+---
+
+<Problem>
+The number $21! = 51{,}090{,}942{,}171{,}709{,}440{,}000$ has over $60{,}000$ positive integer divisors. One of them is chosen at random. What is the probability that it is odd?
+</Problem>
+
+<Solution>
+A divisor of $21!$ is odd if and only if it has no factor of $2$.
+
+First, find the exact power of $2$ in $21!$ using Legendre's formula:
+$$\nu_2(21!) = \left\lfloor\frac{21}{2}\right\rfloor + \left\lfloor\frac{21}{4}\right\rfloor + \left\lfloor\frac{21}{8}\right\rfloor + \left\lfloor\frac{21}{16}\right\rfloor = 10 + 5 + 2 + 1 = 18.$$
+
+So $21! = 2^{18} \cdot m$ where $m$ is odd.
+
+The total number of divisors of $21!$ is the product of $(e_p + 1)$ over all prime powers $p^{e_p}$ in the factorization. The divisors of $21!$ are of the form $2^a \cdot d$ where $0 \leq a \leq 18$ and $d \mid m$.
+
+The odd divisors are those with $a = 0$, i.e., divisors of $m$. So the fraction of odd divisors is:
+$$\frac{\text{number of divisors of } m}{\text{number of divisors of } 21!} = \frac{1}{18 + 1} = \frac{1}{19}.$$
+
+This is because the $2$-component contributes exactly $19$ choices ($a = 0, 1, \ldots, 18$), and a divisor is odd exactly when $a = 0$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,44 @@
+---
+year: 2017
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: C
+choices:
+  - '$1$'
+  - '$2$'
+  - '$3$'
+  - '$4$'
+  - '$5$'
+---
+
+<Problem>
+There are $20$ students participating in an after-school program offering classes in yoga, bridge, and painting. Each student must take at least one of these three classes, but may take two or all three. There are $10$ students taking yoga, $13$ taking bridge, and $9$ taking painting. There are $9$ students taking at least two classes. How many students are taking all three classes?
+</Problem>
+
+<Solution>
+Use the inclusion-exclusion principle. Let $Y$, $B$, $P$ denote the sets of yoga, bridge, and painting students.
+
+Inclusion-exclusion gives:
+$$|Y \cup B \cup P| = |Y| + |B| + |P| - |Y \cap B| - |Y \cap P| - |B \cap P| + |Y \cap B \cap P|.$$
+
+We know $|Y \cup B \cup P| = 20$ (all students take at least one class), and $|Y| + |B| + |P| = 10 + 13 + 9 = 32$.
+
+Let $a = |Y \cap B| + |Y \cap P| + |B \cap P|$ and $t = |Y \cap B \cap P|$.
+
+So: $20 = 32 - a + t$, giving $a - t = 12$.
+
+Now, the number of students in at least two classes counts: students in exactly two classes (counted once in $a$, zero times in $t$) plus students in all three classes (counted three times in $a$, once in $t$).
+
+If $e_2$ = number in exactly two classes and $e_3 = t$ = number in all three:
+$$a = e_2 + 3e_3 \quad \text{and} \quad e_2 + e_3 = 9 \text{ (at least two classes)}.$$
+
+From $a - t = 12$: $(e_2 + 3e_3) - e_3 = e_2 + 2e_3 = 12$.
+
+Combined with $e_2 + e_3 = 9$: subtracting gives $e_3 = 3$.
+
+So $3$ students take all three classes.
+
+Answer: **C**.
+</Solution>

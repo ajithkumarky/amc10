@@ -1,0 +1,42 @@
+---
+year: 2016
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: D
+choices: ['$4\dfrac{3}{5}$', '$5$', '$5\dfrac{1}{4}$', '$6\dfrac{1}{2}$', '$8$']
+---
+
+<Problem>
+Find the area of the shaded region in the figure below. The outer rectangle is $8$ units wide and $5$ units tall, and the shaded region is the "bowtie" band whose six corners are at $(7,0)$, $(8,0)$, $(8,1)$, $(0,4)$, $(0,5)$, and $(1,5)$ (with the rectangle's lower-left corner at the origin).
+
+<svg viewBox="0 0 360 240" width="360" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="320" height="200" fill="none" stroke="#00e5ff" />
+  <polygon points="300,220 340,220 340,180 20,60 20,20 60,20" fill="#00e5ff" fillOpacity="0.25" stroke="#00e5ff" fillRule="evenodd" />
+</svg>
+</Problem>
+
+<Solution>
+Place the rectangle with corners $(0,0)$, $(8,0)$, $(8,5)$, $(0,5)$. The shaded band is traced by the closed path
+
+$$(7,0)\to(8,0)\to(8,1)\to(0,4)\to(0,5)\to(1,5)\to(7,0).$$
+
+The two long edges — from $(8,1)$ to $(0,4)$ and from $(1,5)$ to $(7,0)$ — cross, so the band is really **two congruent triangular lobes** that meet at the crossing point.
+
+**Crossing point.** The line through $(8,1)$ and $(0,4)$ is $y = 4 - \tfrac{3}{8}x$. The line through $(1,5)$ and $(7,0)$ is $y = \tfrac{35}{6} - \tfrac{5}{6}x$. Setting them equal:
+
+$$4 - \tfrac{3}{8}x = \tfrac{35}{6} - \tfrac{5}{6}x \implies \tfrac{11}{24}x = \tfrac{11}{6} \implies x = 4,\ y = \tfrac{5}{2}.$$
+
+So the lobes meet at $\left(4, \tfrac{5}{2}\right)$.
+
+**Area of one lobe.** The top-left lobe has vertices $(1,5),(0,5),(0,4),\left(4,\tfrac{5}{2}\right)$. By the shoelace formula,
+
+$$A = \tfrac{1}{2}\bigl| (1\cdot5 - 0\cdot5) + (0\cdot4 - 0\cdot5) + (0\cdot\tfrac{5}{2} - 4\cdot4) + (4\cdot5 - 1\cdot\tfrac{5}{2}) \bigr| = \tfrac{1}{2}\bigl|5 + 0 - 16 + 17.5\bigr| = \tfrac{13}{4}.$$
+
+**Total.** The bottom-right lobe $(7,0),(8,0),(8,1),\left(4,\tfrac{5}{2}\right)$ is congruent to it (the figure is symmetric about the rectangle's center $\left(4,\tfrac{5}{2}\right)$), so it also has area $\tfrac{13}{4}$. Therefore
+
+$$\frac{13}{4} + \frac{13}{4} = \frac{13}{2} = 6\tfrac{1}{2}.$$
+
+Answer: **D**.
+</Solution>

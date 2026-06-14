@@ -1,0 +1,109 @@
+---
+year: 2016
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: A
+choices: ["$32$", "$36$", "$45$", "$46$", "infinitely many"]
+---
+
+<Problem>
+Let $f(x) = \sum_{k=2}^{10}(\lfloor kx \rfloor - k\lfloor x \rfloor)$, where $\lfloor r \rfloor$ denotes the greatest integer less than or equal to $r$. How many distinct values does $f(x)$ assume for $x \ge 0$?
+</Problem>
+
+<Solution>
+Write $x = n + \theta$ where $n = \lfloor x \rfloor$ is a non-negative integer and $\theta \in [0,1)$ is the fractional part.
+
+Then $\lfloor kx \rfloor = \lfloor k(n+\theta) \rfloor = kn + \lfloor k\theta \rfloor$.
+
+So $\lfloor kx \rfloor - k\lfloor x \rfloor = kn + \lfloor k\theta \rfloor - kn = \lfloor k\theta \rfloor$.
+
+Therefore $f(x) = \sum_{k=2}^{10} \lfloor k\theta \rfloor$ where $\theta = \{x\}$ is the fractional part of $x$.
+
+The function $f$ depends only on $\theta \in [0,1)$. As $\theta$ increases from $0$ to $1$, each $\lfloor k\theta \rfloor$ is a step function that jumps at $\theta = j/k$ for $j = 1, 2, \ldots, k-1$.
+
+The values of $f$ change only at $\theta = p/q$ (in lowest terms) for some $q \in \{2, 3, \ldots, 10\}$.
+
+$f(0) = 0$. As $\theta \to 1^-$, each $\lfloor k\theta \rfloor \to k-1$, so $f \to \sum_{k=2}^{10}(k-1) = 1+2+\cdots+9 = 45$.
+
+To count distinct values: $f$ is non-decreasing on $[0,1)$ and takes integer values from $0$ to $44$ (since it approaches but doesn't reach $45$). However, it might skip some values.
+
+At each breakpoint $\theta = p/q$ (in lowest terms, $q \le 10$), $f$ increases by the number of integers $k \in [2,10]$ that are multiples of $q$.
+
+If $f$ jumps by more than $1$ at any point, it skips values. We need to count how many values are attained.
+
+The total increase from $\theta = 0^+$ to $\theta \to 1^-$ is $45$ (from $0$ to values summing to $44$ max, with final value being $44$ at $\theta$ just below $1$). Wait: at $\theta = 0$, $f = 0$. Just below $\theta = 1$, $f = \sum_{k=2}^{10}(k-1) = 45 - 1 = 44$ (since $\lfloor k\theta \rfloor = k-1$ for $\theta$ just below $1$).
+
+The number of distinct values $= 1 + (\text{number of breakpoints where } f \text{ increases by exactly 1}) + (\text{breakpoints with jump} \ge 2 \text{ contribute 1 value each but skip others})$.
+
+More precisely: distinct values $= 1 + \sum_{\text{breakpoints}} 1$ minus values skipped. Or: distinct values $=$ (total distinct integers attained) $= 45 - (\text{number of integers in } [0,44] \text{ skipped})$.
+
+At each breakpoint $\theta = p/q$ (reduced), the jump is $|\{k \in [2,10] : q | k\}|$. Multiples of $q$ in $[2,10]$:
+- $q=2$: $2,4,6,8,10$ — 5 multiples, jump = 5 (skips 4 values)
+- $q=3$: $3,6,9$ — 3 multiples, jump = 3 (skips 2)
+- $q=4$: $4,8$ — 2 multiples, jump = 2 (skips 1)
+- $q=5$: $5,10$ — 2 multiples, jump = 2 (skips 1)
+- $q=6$: $6$ — 1 multiple, jump = 1 (skips 0)
+- $q=7$: $7$ — 1 multiple, jump = 1 (skips 0)
+- $q=8$: $8$ — 1 multiple, jump = 1 (skips 0)
+- $q=9$: $9$ — 1 multiple, jump = 1 (skips 0)
+- $q=10$: $10$ — 1 multiple, jump = 1 (skips 0)
+
+Number of reduced fractions $p/q$ in $(0,1)$ with denominator $q$: $\phi(q)$ (Euler's totient).
+- $q=2$: $\phi(2)=1$ fraction, each skips $4$ values: $4$ values skipped.
+- $q=3$: $\phi(3)=2$ fractions, each skips $2$: $4$ values skipped.
+- $q=4$: $\phi(4)=2$ fractions, each skips $1$: $2$ values skipped.
+- $q=5$: $\phi(5)=4$ fractions, each skips $1$: $4$ values skipped.
+- $q=6$: $\phi(6)=2$ fractions, jump $= 1$: $0$ skipped.
+- $q=7$: $\phi(7)=6$, jump $= 1$: $0$ skipped.
+- $q=8$: $\phi(8)=4$, jump $= 1$: $0$ skipped.
+- $q=9$: $\phi(9)=6$, jump $= 1$: $0$ skipped.
+- $q=10$: $\phi(10)=4$, jump $= 1$: $0$ skipped.
+
+Total values skipped $= 4 + 4 + 2 + 4 = 14$.
+
+But wait: do multiple breakpoints at different $q$'s sometimes coincide? No — reduced fractions with different denominators are distinct.
+
+However, I need to be careful about what "skipped" means when two breakpoints coincide. Fractions in $(0,1)$ with denominator $q$ (in lowest terms) are unique, so no two breakpoints coincide.
+
+Actually, could breakpoints from different $q$ happen to fall at the same $\theta$? E.g., $\theta = 1/2$ and $\theta = 2/4$: but $2/4$ is not in lowest terms (it reduces to $1/2$, $q=2$). So no, each breakpoint is a unique reduced fraction.
+
+Total distinct values $= 45 - 14 = 31$... hmm, but $45 - 14 = 31$, which isn't a choice. Let me recount.
+
+The function takes values $\{0, 1, 2, \ldots, 44\}$ minus skipped values, plus the value $0$ at $\theta = 0$. Total possible values in $[0, 44]$: $45$. Skipped: $14$. Distinct values: $45 - 14 = 31$.
+
+That's not an answer choice. Let me reconsider. The maximum is $44$, but does $f$ also attain $45$? No, since $\theta < 1$.
+
+Wait — I think I'm over-counting skips. When $f$ jumps by $j$ at a breakpoint, it skips $j-1$ values. Let me redo:
+
+- $q=2$: $\phi(2)=1$ breakpoint, jump $= 5$, skips $= 4$.
+- $q=3$: $\phi(3)=2$ breakpoints, each jump $= 3$, total skips $= 2 \times 2 = 4$.
+- $q=4$: $\phi(4)=2$ breakpoints, each jump $= 2$, total skips $= 2 \times 1 = 2$.
+- $q=5$: $\phi(5)=4$ breakpoints, each jump $= 2$, total skips $= 4 \times 1 = 4$.
+- $q=6$ through $q=10$: jump $= 1$, so $0$ skips each.
+
+But: at $\theta = 1/2$ ($q=2$), $f$ already jumps by the contributions of all $k$ divisible by $2$: $k = 2,4,6,8,10$. But $q = 4$ contributes at $\theta = 1/4$ and $3/4$ for multiples of $4$; at $\theta = 1/2$, $q=2$ captures those (since $1/2$ has $q=2$, not $q=4$). So there's no double-counting.
+
+Total skips $= 4 + 4 + 2 + 4 = 14$.
+
+Distinct values $= 45 - 14 = 31$.
+
+But the answer should be $32$. The discrepancy is likely because $f(0) = 0$ is the starting value and I need to add $1$ for the starting point:
+
+Total distinct values $= (\text{total range}) - (\text{skipped}) = 45 - 14 = 31$... 
+
+Actually the range includes $45$ values ($0$ through $44$), and we skip $14$, leaving $31$ values. But one more check: is $f = 0$ actually attained? Yes, at $\theta = 0$. Is $f = 44$ attained? Just before $\theta = 1$.
+
+Hmm, let me reconsider the max value. At $\theta$ just below $1$: $\lfloor k\theta \rfloor = k - 1$. Sum $= \sum_{k=2}^{10}(k-1) = 1+2+\cdots+9 = 45$. Wait, that's $45$, not $44$!
+
+$\sum_{k=2}^{10}(k-1) = \sum_{j=1}^{9} j = 45$.
+
+But $\theta < 1$ so does $f$ actually reach $45$? No — $\lfloor k \cdot \theta \rfloor = k-1$ only when $\theta \ge (k-1)/k$, i.e., when $(k-1)/k \le \theta < 1$. The condition $\lfloor k\theta \rfloor = k-1$ for all $k$ from $2$ to $10$ simultaneously requires $\theta \ge 9/10$. So for $\theta \in [9/10, 1)$, $f = 45$.
+
+So $f$ attains the value $45$! The range is $0$ to $45$, that's $46$ values minus skipped.
+
+Total distinct values $= 46 - 14 = 32$.
+
+Answer: **A**.
+</Solution>

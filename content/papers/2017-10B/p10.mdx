@@ -1,0 +1,41 @@
+---
+year: 2017
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 2
+answer: E
+choices:
+  - '$-13$'
+  - '$-8$'
+  - '$2$'
+  - '$8$'
+  - '$13$'
+---
+
+<Problem>
+The lines with equations $ax - 2y = c$ and $2x + by = -c$ are perpendicular and intersect at $(1, -5)$. What is $c$?
+</Problem>
+
+<Solution>
+**Step 1: Find $a$ and $b$ using the perpendicularity condition.**
+
+Rewrite both lines in slope-intercept form:
+- Line 1: $y = \dfrac{a}{2}x - \dfrac{c}{2}$, so slope $m_1 = \dfrac{a}{2}$.
+- Line 2: $y = -\dfrac{2}{b}x - \dfrac{c}{b}$, so slope $m_2 = -\dfrac{2}{b}$.
+
+For perpendicular lines: $m_1 \cdot m_2 = -1$:
+$$\frac{a}{2} \cdot \left(-\frac{2}{b}\right) = -1 \implies \frac{a}{b} = 1 \implies a = b.$$
+
+**Step 2: Use the intersection point $(1, -5)$.**
+
+Substituting into Line 1: $a(1) - 2(-5) = c \implies a + 10 = c$.
+
+Substituting into Line 2: $2(1) + b(-5) = -c \implies 2 - 5b = -c$.
+
+Since $a = b$, substitute $b = a$: $2 - 5a = -c = -(a+10) = -a - 10$, so $2 - 5a = -a - 10$, giving $12 = 4a$, so $a = 3$.
+
+Therefore $c = a + 10 = 3 + 10 = 13$.
+
+Answer: **E**.
+</Solution>

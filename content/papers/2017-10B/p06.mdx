@@ -1,0 +1,40 @@
+---
+year: 2017
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 2
+answer: B
+choices:
+  - '$3$'
+  - '$4$'
+  - '$5$'
+  - '$6$'
+  - '$7$'
+---
+
+<Problem>
+What is the largest number of solid $2\text{ in.}$ by $2\text{ in.}$ by $1\text{ in.}$ blocks that can fit in a $3\text{ in.}$ by $2\text{ in.}$ by $3\text{ in.}$ box?
+</Problem>
+
+<Solution>
+The box has volume $3 \times 2 \times 3 = 18$ cubic inches. Each block has volume $2 \times 2 \times 1 = 4$ cubic inches. So at most $\lfloor 18/4 \rfloor = 4$ blocks could fit volumetrically.
+
+Let's check if we can actually fit $4$ blocks. Orient the box with dimensions $3 \times 2 \times 3$ (length $\times$ width $\times$ height).
+
+Place blocks flat ($2 \times 2 \times 1$ with the $1$ in. dimension vertical):
+- On the bottom layer (height 0 to 1): the footprint is $3 \times 2$. A $2 \times 2$ block occupies a $2 \times 2$ area. We can fit one block in the $2 \times 2$ portion, leaving a $1 \times 2$ strip unused. That gives 1 block per layer of height 1.
+
+Try a different orientation — stand blocks on their $2 \times 1$ face (so the $2$-in dimension goes vertically):
+- Block dimensions become $2 \times 1 \times 2$ in the box. Along the $3 \times 2 \times 3$ box: fit 1 block along the $3$-in width ($2$ fits, $1$ remains), and 1 block along the $2$-in depth (exactly $2$). Stack 1 high ($2$ of $3$-in height used). That's 1 block in the front-left. Do another beside it shifted to use the remaining $3$-in length by trying another orientation... 
+
+Actually, let's think carefully. With 4 blocks at 4 cu. in. each, we'd use 16 of 18 cu. in. Attempting a concrete packing:
+
+Place 2 blocks flat ($2\times2$ footprint, height $1$) side by side along the $3$-in dimension — but $2 + 2 = 4 > 3$, so only $1$ fits per row. Place 1 flat block: uses $2 \times 2 \times 1$. In the remaining $1 \times 2 \times 1$ space next to it, a $2\times2\times1$ block won't fit.
+
+Try upright orientation ($1 \times 2 \times 2$ footprint, standing $2$ tall): In the $3 \times 2$ base, a $1 \times 2$ footprint fits 3 times across the 3-in side (using $1+1+1=3$ in.) and 1 time in the 2-in side. But height is 2 in., so in the $3$-in height we can stack one ($2$ in.) then have $1$ in. left. That gives $3$ blocks in the first $2$ in. of height. In the remaining $1$ in. of height, a block lying flat ($2 \times 2 \times 1$) can fit: 1 block. Total: $3 + 1 = 4$ blocks.
+
+So $4$ blocks do fit.
+
+Answer: **B**.
+</Solution>

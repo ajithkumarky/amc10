@@ -1,0 +1,44 @@
+---
+year: 2017
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: D
+choices:
+  - '$\frac{120}{37}$'
+  - '$\frac{140}{39}$'
+  - '$\frac{145}{39}$'
+  - '$\frac{140}{37}$'
+  - '$\frac{120}{31}$'
+---
+
+<Problem>
+The diameter $AB$ of a circle of radius $2$ is extended to a point $D$ outside the circle so that $BD = 3$. Point $E$ is chosen so that $ED = 5$ and line $ED$ is perpendicular to line $AD$. Segment $AE$ intersects the circle at a point $C$ between $A$ and $E$. What is the area of $\triangle ABC$?
+</Problem>
+
+<Solution>
+Set up coordinates with $A = (-2, 0)$, center $O = (0,0)$, $B = (2, 0)$, $D = (5, 0)$ (since $BD = 3$, $D$ is $3$ beyond $B$). Line $ED$ is perpendicular to $AD$ (the x-axis), so $E = (5, 5)$ (taking $E$ above the x-axis since $ED = 5$).
+
+**Line $AE$:** from $A = (-2, 0)$ to $E = (5, 5)$.
+
+Direction: $(7, 5)$. Parametrize: $(x, y) = (-2, 0) + t(7, 5) = (-2 + 7t, 5t)$.
+
+**Find $C$** (intersection of line $AE$ with the circle $x^2 + y^2 = 4$):
+$$(-2+7t)^2 + (5t)^2 = 4$$
+$$4 - 28t + 49t^2 + 25t^2 = 4$$
+$$74t^2 - 28t = 0$$
+$$t(74t - 28) = 0.$$
+
+So $t = 0$ (point $A$) or $t = \dfrac{28}{74} = \dfrac{14}{37}$.
+
+Thus $C = \left(-2 + 7 \cdot \dfrac{14}{37},\ 5 \cdot \dfrac{14}{37}\right) = \left(-2 + \dfrac{98}{37},\ \dfrac{70}{37}\right) = \left(\dfrac{-74+98}{37},\ \dfrac{70}{37}\right) = \left(\dfrac{24}{37},\ \dfrac{70}{37}\right)$.
+
+**Area of $\triangle ABC$** with $A = (-2, 0)$, $B = (2, 0)$, $C = \left(\dfrac{24}{37}, \dfrac{70}{37}\right)$:
+
+Base $AB = 4$ (along x-axis). Height = y-coordinate of $C = \dfrac{70}{37}$.
+
+$$\text{Area} = \frac{1}{2} \cdot 4 \cdot \frac{70}{37} = \frac{140}{37}.$$
+
+Answer: **D**.
+</Solution>

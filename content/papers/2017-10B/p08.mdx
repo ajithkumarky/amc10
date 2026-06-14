@@ -1,0 +1,38 @@
+---
+year: 2017
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 2
+answer: C
+choices:
+  - '$(-8, 9)$'
+  - '$(-4, 8)$'
+  - '$(-4, 9)$'
+  - '$(-2, 3)$'
+  - '$(-1, 0)$'
+---
+
+<Problem>
+Points $A(11, 9)$ and $B(2, -3)$ are vertices of $\triangle ABC$ with $AB = AC$. The altitude from $A$ meets the opposite side at $D(-1, 3)$. What are the coordinates of point $C$?
+</Problem>
+
+<Solution>
+Since $AB = AC$, triangle $ABC$ is isosceles with apex $A$. The altitude from $A$ to side $BC$ also bisects $BC$ (the altitude from the apex of an isosceles triangle is also the median). So $D$ is the midpoint of $BC$.
+
+We know $B = (2, -3)$ and $D = (-1, 3)$. Since $D$ is the midpoint of $BC$:
+$$D = \frac{B + C}{2} \implies C = 2D - B.$$
+
+$$C = 2(-1, 3) - (2, -3) = (-2, 6) - (2, -3) = (-4, 9).$$
+
+We can verify: $AD$ is perpendicular to $BC$.
+- Slope of $AD$: $\dfrac{9-3}{11-(-1)} = \dfrac{6}{12} = \dfrac{1}{2}$.
+- Slope of $BC$: $\dfrac{9-(-3)}{-4-2} = \dfrac{12}{-6} = -2$.
+- Product: $\dfrac{1}{2} \times (-2) = -1$. Perpendicular. ✓
+
+Also check $AB = AC$:
+- $AB = \sqrt{(11-2)^2 + (9-(-3))^2} = \sqrt{81+144} = \sqrt{225} = 15$.
+- $AC = \sqrt{(11-(-4))^2 + (9-9)^2} = \sqrt{225+0} = 15$. ✓
+
+Answer: **C**.
+</Solution>

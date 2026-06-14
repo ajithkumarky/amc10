@@ -1,0 +1,46 @@
+---
+year: 2017
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: E
+choices:
+  - '$9:1$'
+  - '$16:1$'
+  - '$25:1$'
+  - '$36:1$'
+  - '$37:1$'
+---
+
+<Problem>
+Let $ABC$ be an equilateral triangle. Extend side $\overline{AB}$ beyond $B$ to a point $B'$ so that $BB' = 3 \cdot AB$. Similarly, extend side $\overline{BC}$ beyond $C$ to a point $C'$ so that $CC' = 3 \cdot BC$, and extend side $\overline{CA}$ beyond $A$ to a point $A'$ so that $AA' = 3 \cdot CA$. What is the ratio of the area of $\triangle A'B'C'$ to the area of $\triangle ABC$?
+</Problem>
+
+<Solution>
+Let the side length of equilateral $\triangle ABC$ be $1$, and place it with $A = (0, 0)$, $B = (1, 0)$, $C = (1/2, \sqrt{3}/2)$.
+
+**Finding $B'$:** Extend $\overline{AB}$ beyond $B$ by $BB' = 3 \cdot AB = 3$. Direction from $A$ to $B$ is $(1,0)$, so $B' = B + 3(1,0) = (4, 0)$.
+
+**Finding $C'$:** Extend $\overline{BC}$ beyond $C$ by $CC' = 3$. Direction from $B$ to $C$ is $(-1/2, \sqrt{3}/2)$, so $C' = C + 3(-1/2, \sqrt{3}/2) = (1/2 - 3/2, \sqrt{3}/2 + 3\sqrt{3}/2) = (-1, 2\sqrt{3})$.
+
+**Finding $A'$:** Extend $\overline{CA}$ beyond $A$ by $AA' = 3$. Direction from $C$ to $A$ is $(-1/2, -\sqrt{3}/2)$, so $A' = A + 3(-1/2, -\sqrt{3}/2) = (-3/2, -3\sqrt{3}/2)$.
+
+**Area of $\triangle A'B'C'$** with $A' = (-3/2, -3\sqrt{3}/2)$, $B' = (4, 0)$, $C' = (-1, 2\sqrt{3})$:
+
+$$\text{Area} = \frac{1}{2}|x_{A'}(y_{B'} - y_{C'}) + x_{B'}(y_{C'} - y_{A'}) + x_{C'}(y_{A'} - y_{B'})|$$
+
+$$= \frac{1}{2}\left|{-\frac{3}{2}}(0 - 2\sqrt{3}) + 4\left(2\sqrt{3} + \frac{3\sqrt{3}}{2}\right) + (-1)\left(-\frac{3\sqrt{3}}{2} - 0\right)\right|$$
+
+$$= \frac{1}{2}\left|{-\frac{3}{2}}(-2\sqrt{3}) + 4\cdot\frac{7\sqrt{3}}{2} + \frac{3\sqrt{3}}{2}\right|$$
+
+$$= \frac{1}{2}\left|3\sqrt{3} + 14\sqrt{3} + \frac{3\sqrt{3}}{2}\right| = \frac{1}{2}\left|\frac{6\sqrt{3} + 28\sqrt{3} + 3\sqrt{3}}{2}\right| = \frac{37\sqrt{3}}{4}.$$
+
+**Area of $\triangle ABC$** $= \dfrac{\sqrt{3}}{4}$ (equilateral triangle with side $1$).
+
+**Ratio:** $\dfrac{37\sqrt{3}/4}{\sqrt{3}/4} = 37$.
+
+The ratio is $37:1$.
+
+Answer: **E**.
+</Solution>

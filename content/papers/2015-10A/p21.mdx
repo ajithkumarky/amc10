@@ -1,0 +1,54 @@
+---
+year: 2015
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: C
+choices: ['$3\sqrt{2}$', '$2\sqrt{5}$', '$\frac{24}{5}$', '$3\sqrt{3}$', '$\frac{24}{5}\sqrt{2}$']
+---
+
+<Problem>
+Tetrahedron $ABCD$ has $AB=5$, $AC=3$, $BC=4$, $BD=4$, $AD=3$, and $CD=\tfrac{12}{5}\sqrt{2}$. What is the volume of the tetrahedron?
+</Problem>
+
+<Solution>
+Notice that $AB=5$, $AC=3$, $BC=4$: triangle $ABC$ has $3^2 + 4^2 = 9 + 16 = 25 = 5^2$, so $\triangle ABC$ is a right triangle with the right angle at $C$.
+
+Similarly $AB=5$, $AD=3$, $BD=4$: triangle $ABD$ has $3^2 + 4^2 = 5^2$, so $\triangle ABD$ is also right-angled at $D$.
+
+Place the coordinate system so that $A$ and $B$ lie along the $x$-axis. Let $A = (0, 0, 0)$ and $B = (5, 0, 0)$.
+
+Since $\triangle ABC$ is right-angled at $C$ with $AC=3$, $BC=4$: $C$ lies in the $xy$-plane. $C = \left(\frac{AC^2}{AB}, \frac{AC \cdot BC}{AB} \cdot h, 0\right)$... let's use coordinates directly. With $A=(0,0,0)$, $B=(5,0,0)$: $|AC|=3$ and $|BC|=4$. So $C = (x_C, y_C, 0)$ with $x_C^2 + y_C^2 = 9$ and $(x_C-5)^2 + y_C^2 = 16$. Subtracting: $x_C^2 - (x_C-5)^2 = 9 - 16 = -7$, so $10x_C - 25 = -7$, giving $x_C = \frac{18}{10} = \frac{9}{5}$. Then $y_C^2 = 9 - \frac{81}{25} = \frac{144}{25}$, so $y_C = \frac{12}{5}$. Thus $C = \left(\frac{9}{5}, \frac{12}{5}, 0\right)$.
+
+Similarly, $D = (x_D, y_D, z_D)$ with $|AD|=3$, $|BD|=4$. By the same calculation, $x_D = \frac{9}{5}$ and $y_D^2 + z_D^2 = 9 - \frac{81}{25} = \frac{144}{25}$.
+
+Also $|CD| = \frac{12\sqrt{2}}{5}$:
+$$|CD|^2 = \left(x_D - \frac{9}{5}\right)^2 + \left(y_D - \frac{12}{5}\right)^2 + z_D^2 = \frac{288}{25}.$$
+
+Since $x_D = \frac{9}{5}$:
+$$\left(y_D - \frac{12}{5}\right)^2 + z_D^2 = \frac{288}{25}.$$
+
+Expanding: $y_D^2 - \frac{24}{5}y_D + \frac{144}{25} + z_D^2 = \frac{288}{25}$.
+
+Using $y_D^2 + z_D^2 = \frac{144}{25}$:
+$$\frac{144}{25} - \frac{24}{5}y_D + \frac{144}{25} = \frac{288}{25}$$
+$$\frac{288}{25} - \frac{24}{5}y_D = \frac{288}{25}$$
+$$y_D = 0.$$
+
+Then $z_D^2 = \frac{144}{25}$, so $z_D = \frac{12}{5}$.
+
+So $D = \left(\frac{9}{5}, 0, \frac{12}{5}\right)$ and $C = \left(\frac{9}{5}, \frac{12}{5}, 0\right)$.
+
+Volume of tetrahedron $= \frac{1}{6}|(\vec{AB} \times \vec{AC}) \cdot \vec{AD}|$.
+
+$\vec{AB} = (5, 0, 0)$, $\vec{AC} = (\frac{9}{5}, \frac{12}{5}, 0)$, $\vec{AD} = (\frac{9}{5}, 0, \frac{12}{5})$.
+
+$\vec{AB} \times \vec{AC} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 5 & 0 & 0 \\ \frac{9}{5} & \frac{12}{5} & 0 \end{vmatrix} = (0 - 0)\mathbf{i} - (0 - 0)\mathbf{j} + (5 \cdot \frac{12}{5} - 0)\mathbf{k} = (0, 0, 12)$.
+
+$(\vec{AB} \times \vec{AC}) \cdot \vec{AD} = (0)({\frac{9}{5}}) + (0)(0) + (12)(\frac{12}{5}) = \frac{144}{5}$.
+
+Volume $= \frac{1}{6} \cdot \frac{144}{5} = \frac{24}{5}$.
+
+Answer: **C**.
+</Solution>

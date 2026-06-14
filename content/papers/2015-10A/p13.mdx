@@ -1,0 +1,37 @@
+---
+year: 2015
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: C
+choices: ["$3$", "$4$", "$5$", "$6$", "$7$"]
+---
+
+<Problem>
+Claudia has 12 coins, each of which is a 5-cent coin or a 10-cent coin. There are exactly 17 different values that can be obtained as combinations of one or more of her coins. How many 10-cent coins does Claudia have?
+</Problem>
+
+<Solution>
+Let $f$ = number of 5-cent coins and $t$ = number of 10-cent coins, with $f + t = 12$.
+
+The possible values are obtained by choosing $i$ five-cent coins (where $0 \le i \le f$) and $j$ ten-cent coins (where $0 \le j \le t$), giving value $5i + 10j$ cents, with $(i, j) \ne (0, 0)$.
+
+We need to count the number of distinct values of $5i + 10j = 5(i + 2j)$ with $i + j \ge 1$, $0 \le i \le f$, $0 \le j \le t$.
+
+This equals the number of distinct values of $i + 2j$ for such $(i,j)$.
+
+For fixed $j$, $i$ ranges from $0$ to $f$, so $i + 2j$ ranges over $2j, 2j+1, \ldots, 2j+f$ — that's $f+1$ consecutive integers starting at $2j$.
+
+As $j$ goes from $0$ to $t$, these intervals are $[0, f], [2, 2+f], [4, 4+f], \ldots, [2t, 2t+f]$.
+
+If $f \ge 2$, consecutive intervals overlap (since the next interval starts at $2j+2 \le 2j + f$ when $f \ge 2$), so the total range is $[0, 2t+f]$, giving $2t + f + 1$ values. But we exclude $(i,j)=(0,0)$ which gives value $0$, so we get $2t + f$ distinct values.
+
+With $f + t = 12$: $2t + f = 2t + (12-t) = t + 12$.
+
+Setting this equal to 17: $t + 12 = 17$, so $t = 5$.
+
+Check: $f = 7$, $t = 5$, so $f \ge 2$ holds. The number of distinct non-zero values is $2(5) + 7 = 17$. Correct!
+
+Answer: **C**.
+</Solution>

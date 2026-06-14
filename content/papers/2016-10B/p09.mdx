@@ -1,0 +1,25 @@
+---
+year: 2016
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 2
+answer: C
+choices: ["$4$", "$6$", "$8$", "$10$", "$16$"]
+---
+
+<Problem>
+All three vertices of $\triangle ABC$ are lying on the parabola defined by $y = x^2$, with $A$ at the origin and $\overline{BC}$ parallel to the $x$-axis. The area of the triangle is $64$. What is the length of $BC$?
+</Problem>
+
+<Solution>
+Since $A$ is at the origin, $A = (0, 0)$. Since $B$ and $C$ lie on $y = x^2$ and $\overline{BC}$ is parallel to the $x$-axis, they have the same $y$-coordinate. Let $B = (-t, t^2)$ and $C = (t, t^2)$ for some $t > 0$ (by symmetry).
+
+The base $BC$ has length $2t$, and the height from $A$ to line $BC$ is the vertical distance from $y = 0$ to $y = t^2$, which is $t^2$.
+
+$$\text{Area} = \frac{1}{2} \cdot 2t \cdot t^2 = t^3 = 64.$$
+
+So $t = 4$, and $BC = 2t = 8$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,36 @@
+---
+year: 2015
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 5
+answer: C
+choices: ["$7$", "$8$", "$16$", "$17$", "$18$"]
+---
+
+<Problem>
+The zeroes of the function $f(x)=x^2-ax+2a$ are integers. What is the sum of the possible values of $a$?
+</Problem>
+
+<Solution>
+Let the integer roots be $r$ and $s$. By Vieta's formulas:
+$$r + s = a \quad \text{and} \quad rs = 2a = 2(r+s).$$
+
+So $rs = 2r + 2s$, which gives $rs - 2r - 2s = 0$. Add $4$ to both sides:
+$$rs - 2r - 2s + 4 = 4$$
+$$(r-2)(s-2) = 4.$$
+
+We need all integer factor pairs of $4$:
+- $(r-2, s-2) = (1, 4)$: $r=3, s=6$, $a = 9$.
+- $(r-2, s-2) = (4, 1)$: same roots, $a = 9$.
+- $(r-2, s-2) = (2, 2)$: $r=4, s=4$, $a = 8$.
+- $(r-2, s-2) = (-1, -4)$: $r=1, s=-2$, $a = -1$.
+- $(r-2, s-2) = (-4, -1)$: same as above, $a = -1$.
+- $(r-2, s-2) = (-2, -2)$: $r=0, s=0$, $a = 0$.
+
+The distinct values of $a$ are $9, 8, -1, 0$.
+
+Sum $= 9 + 8 + (-1) + 0 = 16$.
+
+Answer: **C**.
+</Solution>

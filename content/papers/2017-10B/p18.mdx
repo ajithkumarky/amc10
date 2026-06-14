@@ -1,0 +1,72 @@
+---
+year: 2017
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: D
+choices:
+  - '$6$'
+  - '$8$'
+  - '$9$'
+  - '$12$'
+  - '$15$'
+---
+
+<Problem>
+In the figure below, $3$ of the $6$ disks are to be painted blue, $2$ are to be painted red, and $1$ is to be painted green. Two paintings that can be obtained from one another by a rotation or a reflection of the entire figure are considered the same. How many different paintings are possible?
+
+The figure shows $6$ disks arranged in a triangular grid: one disk at the top, two in the middle row, and three at the bottom row (a triangular arrangement of $3$ rows).
+</Problem>
+
+<Solution>
+The $6$ disks form an equilateral triangular arrangement (triangle with side length 2): one disk on top, two in the middle row, three on the bottom. The symmetry group of this figure is the dihedral group $D_3$ (symmetries of an equilateral triangle), which has $6$ elements: $3$ rotations ($0°$, $120°$, $240°$) and $3$ reflections.
+
+We use Burnside's lemma: the number of distinct colorings equals
+$$\frac{1}{|G|}\sum_{g \in G} |\text{Fix}(g)|,$$
+where $|\text{Fix}(g)|$ is the number of colorings fixed by symmetry $g$.
+
+Label the disks: top = $1$, middle row = $2,3$ (left, right), bottom row = $4,5,6$ (left, center, right).
+
+The colorings use 3 blue (B), 2 red (R), 1 green (G).
+
+**Identity ($0°$ rotation):** All $\dfrac{6!}{3!\,2!\,1!} = 60$ colorings are fixed.
+
+**Rotation $120°$:** Maps $1 \to 6 \to 4 \to 1$ (the three corners), and maps $2 \to 3 \to 5 \to 2$ (the three edge midpoints) — wait, let me reconsider the structure.
+
+In a triangular grid with 6 positions: the three corners are at the vertices of the equilateral triangle, and the three edge-midpoint positions are at the midpoints of the sides. The $120°$ rotation cycles the 3 corners among themselves and the 3 edge-midpoints among themselves.
+
+For a coloring to be fixed under $120°$ rotation, all three corners must have the same color, and all three edge-midpoints must have the same color. With colors $3B, 2R, 1G$: we'd need to assign a single color to all 3 corners and a single color to all 3 edge-midpoints. That requires $3+3 = 6$ with each group monochromatic. But we only have $3B, 2R, 1G$ — no color has exactly 3 of one kind for both groups simultaneously (we'd need one group all-B and one group all-R-or-G, but we have only 2R and 1G, not 3 of either). So $|\text{Fix}(120°)| = 0$.
+
+**Rotation $240°$:** Same argument: $|\text{Fix}(240°)| = 0$.
+
+**Reflections:** Each reflection fixes one corner and one edge-midpoint, and swaps the other two corners with each other and the other two edge-midpoints with each other (forming 2 pairs + 2 singletons = 4 orbits of sizes $1,1,2,2$).
+
+For a coloring to be fixed under a reflection, the two swapped corners must have the same color, and the two swapped edge-midpoints must have the same color. We have 4 "slots": corner singleton, edge singleton, corner pair (each must be same), edge pair (each must be same). We need to assign colors with total counts $3B, 2R, 1G$.
+
+The corner pair contributes $2$ of one color, the edge pair contributes $2$ of one color, plus $1$ each for the two singletons.
+
+Denote the color of corner-pair as $c_1$ (count 2), edge-pair as $c_2$ (count 2), corner-singleton as $c_3$ (count 1), edge-singleton as $c_4$ (count 1).
+
+We need $(c_1, c_2, c_3, c_4)$ such that total count is $3B, 2R, 1G$.
+
+The two pairs use $2+2 = 4$ disks, the two singletons use $2$ disks. 
+
+We need $2[\![c_1=B]\!] + 2[\![c_2=B]\!] + [\![c_3=B]\!] + [\![c_4=B]\!] = 3$, etc.
+
+The $3$ blues must include an odd contribution (since $2+2+1+1$, and $3$ is odd, we need either $2+1+0$ or $0+1+2$, i.e., exactly one pair is blue and exactly one singleton is blue).
+
+Enumerate: Exactly one pair is blue, one singleton is blue.
+
+- $c_1 = B$ (pair of 2 blues), $c_3 = B$ (singleton blue): remaining $c_2, c_4$ get $2R, 1G$ — but $c_2$ is a pair needing 2 same and $c_4$ is a singleton. So $c_2 = R$ (uses 2R), $c_4 = G$ (uses 1G). Valid: $(B, R, B, G)$.
+- $c_1 = B$, $c_4 = B$: remaining $c_2, c_3$ get $2R, 1G$. $c_2 = R$, $c_3 = G$. Valid: $(B, R, G, B)$.
+- $c_2 = B$, $c_3 = B$: remaining $c_1, c_4$ get $2R, 1G$. $c_1 = R$, $c_4 = G$. Valid: $(R, B, B, G)$.
+- $c_2 = B$, $c_4 = B$: remaining $c_1, c_3$ get $2R, 1G$. $c_1 = R$, $c_3 = G$. Valid: $(R, B, G, B)$.
+
+So each reflection fixes $4$ colorings. There are $3$ reflections, each fixing $4$ colorings: total $12$.
+
+**Burnside's count:**
+$$\frac{1}{6}(60 + 0 + 0 + 4 + 4 + 4) = \frac{72}{6} = 12.$$
+
+Answer: **D**.
+</Solution>

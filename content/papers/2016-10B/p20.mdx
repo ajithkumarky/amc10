@@ -1,0 +1,41 @@
+---
+year: 2016
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: C
+choices: ["$0$", "$3$", '$\sqrt{13}$', "$4$", "$5$"]
+---
+
+<Problem>
+A dilation of the plane — that is, a size transformation with a positive scale factor — sends the circle of radius $2$ centered at $A(2,2)$ to the circle of radius $3$ centered at $A'(5,6)$. What distance does the origin $O(0,0)$ move under this transformation?
+</Problem>
+
+<Solution>
+A dilation with scale factor $k$ and center $C = (p, q)$ sends each point $X$ to a point $X'$ satisfying $X' - C = k(X - C)$, i.e., $X' = C + k(X - C)$.
+
+The scale factor is $k = \dfrac{3}{2}$ (ratio of radii).
+
+The center of dilation $C = (p, q)$ satisfies: $A' = C + k(A - C)$.
+
+$(5, 6) = (p, q) + \dfrac{3}{2}\big((2,2) - (p,q)\big) = (p,q) + \dfrac{3}{2}(2-p, 2-q)$.
+
+For the $x$-component: $5 = p + \dfrac{3}{2}(2-p) = p + 3 - \dfrac{3p}{2} = 3 - \dfrac{p}{2}$.
+
+So $\dfrac{p}{2} = -2 \Rightarrow p = -4$.
+
+For the $y$-component: $6 = q + \dfrac{3}{2}(2-q) = q + 3 - \dfrac{3q}{2} = 3 - \dfrac{q}{2}$.
+
+So $\dfrac{q}{2} = -3 \Rightarrow q = -6$.
+
+Center of dilation is $C = (-4, -6)$.
+
+Now find where $O = (0,0)$ maps:
+
+$O' = C + k(O - C) = (-4,-6) + \dfrac{3}{2}(0-(-4), 0-(-6)) = (-4,-6) + \dfrac{3}{2}(4,6) = (-4,-6) + (6,9) = (2,3)$.
+
+Distance $OO' = \sqrt{(2-0)^2 + (3-0)^2} = \sqrt{4+9} = \sqrt{13}$.
+
+Answer: **C**.
+</Solution>

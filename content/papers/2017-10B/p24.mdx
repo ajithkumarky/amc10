@@ -1,0 +1,59 @@
+---
+year: 2017
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 5
+answer: C
+choices:
+  - '$48$'
+  - '$60$'
+  - '$108$'
+  - '$120$'
+  - '$169$'
+---
+
+<Problem>
+The vertices of an equilateral triangle lie on the hyperbola $xy = 1$, and a vertex of this hyperbola is the centroid of the triangle. What is the square of the area of the triangle?
+</Problem>
+
+<Solution>
+The hyperbola $xy = 1$ has "vertices" (closest points to the origin) at $(1, 1)$ and $(-1, -1)$. By the problem's symmetry, use the centroid at $(1, 1)$.
+
+Since the hyperbola $xy = 1$ is symmetric under the transformation $(x,y) \to (y,x)$ (reflection over $y = x$), and the centroid is at $(1,1)$ which lies on $y = x$, the equilateral triangle should have one axis of symmetry along $y = x$.
+
+Let the three vertices be $P_1$, $P_2$, $P_3$ on $xy = 1$ with centroid $(1,1)$.
+
+By the reflection symmetry $y = x$, two vertices are reflections of each other: say $P_2 = (a, 1/a)$ and $P_3 = (1/a, a)$ for some $a > 0$, $a \neq 1$. The third vertex $P_1$ lies on $y = x$, so $P_1 = (t, t)$ with $t^2 = 1$, giving $t = 1$ or $t = -1$.
+
+If $t = 1$, then $P_1 = (1,1) =$ centroid, which requires $P_2 + P_3 + P_1 = 3(1,1)$, but then $P_1$ equals the centroid only if $P_2 + P_3 = 2(1,1) - P_1$... let's just use the centroid condition.
+
+Centroid: $\dfrac{P_1 + P_2 + P_3}{3} = (1,1)$, so $P_1 + P_2 + P_3 = (3,3)$.
+
+With $P_2 = (a, 1/a)$, $P_3 = (1/a, a)$, $P_1 = (t, t)$:
+$$t + a + \frac{1}{a} = 3 \implies t = 3 - a - \frac{1}{a}.$$
+
+Also $P_1$ is on $xy = 1$: $t \cdot t = 1 \implies t = \pm 1$.
+
+**Case $t = -1$:** $-1 = 3 - a - \dfrac{1}{a} \implies a + \dfrac{1}{a} = 4 \implies a^2 - 4a + 1 = 0 \implies a = 2 \pm \sqrt{3}$.
+
+Take $a = 2 + \sqrt{3}$ (so $1/a = 2 - \sqrt{3}$).
+
+$P_1 = (-1, -1)$, $P_2 = (2+\sqrt{3},\ 2-\sqrt{3})$, $P_3 = (2-\sqrt{3},\ 2+\sqrt{3})$.
+
+**Verify equilateral:**
+
+$P_2 - P_1 = (3+\sqrt{3},\ 3-\sqrt{3})$, $|P_1P_2|^2 = (3+\sqrt{3})^2 + (3-\sqrt{3})^2 = (9+6\sqrt{3}+3)+(9-6\sqrt{3}+3) = 24$.
+
+$P_3 - P_1 = (3-\sqrt{3},\ 3+\sqrt{3})$, $|P_1P_3|^2 = 24$. ✓
+
+$P_3 - P_2 = (-2\sqrt{3},\ 2\sqrt{3})$, $|P_2P_3|^2 = 12 + 12 = 24$. ✓
+
+Equilateral with side$^2 = 24$, so side $= 2\sqrt{6}$.
+
+**Area of equilateral triangle with side $s$:** $\dfrac{s^2\sqrt{3}}{4} = \dfrac{24\sqrt{3}}{4} = 6\sqrt{3}$.
+
+**Square of area:** $(6\sqrt{3})^2 = 36 \cdot 3 = 108$.
+
+Answer: **C**.
+</Solution>
