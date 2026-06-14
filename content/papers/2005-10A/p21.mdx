@@ -1,0 +1,23 @@
+---
+year: 2005
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: B
+choices: ["$3$", "$5$", "$7$", "$9$", "$11$"]
+---
+
+<Problem>
+For how many positive integers $n$ does $1+2+\dotsb+n$ evenly divide $6n$?
+</Problem>
+
+<Solution>
+The sum $1+2+\cdots+n = \frac{n(n+1)}{2}$. We need $\frac{n(n+1)}{2} \mid 6n$, i.e., $\frac{n(n+1)}{2}$ divides $6n$.
+
+This means $\frac{6n}{\frac{n(n+1)}{2}} = \frac{12}{n+1}$ must be a positive integer. So $n+1$ must divide $12$.
+
+The divisors of $12$ are $1,2,3,4,6,12$, giving $n+1 \in \{1,2,3,4,6,12\}$, so $n \in \{0,1,2,3,5,11\}$. Excluding $n=0$ (not a positive integer), we get $n \in \{1,2,3,5,11\}$: five values.
+
+Answer: **B**.
+</Solution>

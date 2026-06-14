@@ -1,0 +1,35 @@
+---
+year: 2006
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: C
+choices: ['$\dfrac{4}{63}$', '$\dfrac{1}{8}$', '$\dfrac{8}{63}$', '$\dfrac{1}{6}$', '$\dfrac{2}{7}$']
+---
+
+<Problem>
+For a particular peculiar pair of dice, the probabilities of rolling $1$, $2$, $3$, $4$, $5$, and $6$ on each die are in the ratio $1:2:3:4:5:6$. What is the probability of rolling a total of $7$ on the two dice?
+</Problem>
+
+<Solution>
+The probabilities sum to 1. With ratio $1:2:3:4:5:6$, the total ratio is $1+2+3+4+5+6 = 21$. So $P(\text{roll } k) = \dfrac{k}{21}$ for $k = 1, 2, 3, 4, 5, 6$.
+
+The pairs summing to 7 are $(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)$.
+
+$$P(\text{sum} = 7) = \sum_{k=1}^{6} P(k) \cdot P(7-k) = \sum_{k=1}^{6} \frac{k}{21} \cdot \frac{7-k}{21} = \frac{1}{441}\sum_{k=1}^{6} k(7-k).$$
+
+Compute $\sum_{k=1}^{6} k(7-k)$:
+- $k=1$: $1 \cdot 6 = 6$
+- $k=2$: $2 \cdot 5 = 10$
+- $k=3$: $3 \cdot 4 = 12$
+- $k=4$: $4 \cdot 3 = 12$
+- $k=5$: $5 \cdot 2 = 10$
+- $k=6$: $6 \cdot 1 = 6$
+
+Sum $= 56$.
+
+$$P(\text{sum} = 7) = \frac{56}{441} = \frac{8}{63}.$$
+
+Answer: **C**.
+</Solution>

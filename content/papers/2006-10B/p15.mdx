@@ -1,0 +1,35 @@
+---
+year: 2006
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 3
+answer: C
+choices: ['$6$', '$4\sqrt{3}$', '$8$', '$9$', '$6\sqrt{3}$']
+---
+
+<Problem>
+Rhombus $ABCD$ is similar to rhombus $BFDE$. The area of rhombus $ABCD$ is $24$ and $\angle BAD = 60^\circ$. What is the area of rhombus $BFDE$?
+</Problem>
+
+<Solution>
+Let the side length of rhombus $ABCD$ be $s$. Its area is $s^2 \sin 60^\circ = 24$.
+
+**Diagonals of $ABCD$:** In a rhombus, $\angle BAD = 60^\circ$ means $\angle ABC = 120^\circ$.
+
+Shorter diagonal $BD$ (bisected by the $60^\circ$ vertex angles):
+$$BD^2 = s^2 + s^2 - 2s^2\cos 60^\circ = 2s^2\!\left(1 - \tfrac{1}{2}\right) = s^2, \quad \text{so } BD = s.$$
+
+Longer diagonal $AC$ (opposite to $\angle BAD = 60^\circ$, spanning the obtuse angle):
+$$AC^2 = s^2 + s^2 - 2s^2\cos 120^\circ = 2s^2\!\left(1 + \tfrac{1}{2}\right) = 3s^2, \quad \text{so } AC = s\sqrt{3}.$$
+
+**Identifying the diagonal of $BFDE$:** The rhombus $BFDE$ is inscribed with $B$ and $D$ as opposite vertices, so $BD$ is a diagonal of $BFDE$. Since $BFDE$ is smaller than $ABCD$ and similar to it, the diagonal $BD = s$ of $BFDE$ corresponds to the longer diagonal $AC = s\sqrt{3}$ of $ABCD$.
+
+**Ratio of similarity:**
+$$k = \frac{BD}{AC} = \frac{s}{s\sqrt{3}} = \frac{1}{\sqrt{3}}.$$
+
+**Area of $BFDE$:**
+$$[\text{BFDE}] = k^2 \cdot [\text{ABCD}] = \frac{1}{3} \times 24 = 8.$$
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,31 @@
+---
+year: 2005
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: C
+choices: ["$8$", "$12$", "$16$", "$17$", "$21$"]
+---
+
+<Problem>
+For how many positive integers $n$ less than or equal to $24$ is $n!$ evenly divisible by $1 + 2 + \ldots + n$?
+</Problem>
+
+<Solution>
+The sum $1 + 2 + \cdots + n = \dfrac{n(n+1)}{2}$.
+
+We need $\dfrac{n(n+1)}{2} \mid n!$, i.e., $\dfrac{n!}{\frac{n(n+1)}{2}} = \dfrac{2(n-1)!}{n+1}$ is an integer, meaning $(n+1) \mid 2(n-1)!$.
+
+**Case 1: $n+1$ is composite.** If $n+1$ is composite and $n+1 \neq 4$, then $n+1$ has a factor $\leq \frac{n+1}{2} \leq n-1$, so $(n+1) \mid (n-1)!$, which means $(n+1) \mid 2(n-1)!$. This works. If $n + 1 = 4$ (i.e., $n = 3$): $2(n-1)! = 2 \cdot 2 = 4$, and $4 \mid 4$. ✓
+
+**Case 2: $n+1$ is prime $p$.** Then $(n+1) \mid 2(n-1)!$ requires $p \mid 2(p-2)!$. Since $p$ is prime, $\gcd(p, (p-2)!) = 1$ (as $p-2 < p$), so we need $p \mid 2$, meaning $p = 2$, i.e., $n = 1$. For $n = 1$: $\frac{1 \cdot 2}{2} = 1$ divides $1! = 1$. ✓
+
+**Case 3: $n+1 = 2p$ for prime $p > 2$ (i.e., $n+1$ is twice an odd prime).** Then $(n+1) \mid 2(n-1)!$ requires $2p \mid 2(n-1)!$, i.e., $p \mid (n-1)! = (2p-2)!$. Since $p \leq 2p - 2$ for $p \geq 2$, $p$ appears as a factor in $(2p-2)!$ as long as $p \leq 2p-2$, which holds for $p \geq 2$. ✓ (This case always works.)
+
+So the condition **fails** exactly when $n+1$ is an odd prime $p \geq 3$ (and $p \neq 2p$-style). The failing values of $n$ in $[1, 24]$ are those where $n+1$ is an odd prime: $n+1 \in \{3, 5, 7, 11, 13, 17, 19, 23\}$, giving $n \in \{2, 4, 6, 10, 12, 16, 18, 22\}$ — that is $8$ values.
+
+Therefore the number of $n$ where divisibility holds is $24 - 8 = 16$.
+
+Answer: **C**.
+</Solution>

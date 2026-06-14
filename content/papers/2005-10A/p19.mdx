@@ -1,0 +1,33 @@
+---
+year: 2005
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: D
+choices: ["$1$", '$\sqrt{2}$', '$\dfrac{3}{2}$', '$\sqrt{2}+\dfrac{1}{2}$', "$2$"]
+---
+
+<Problem>
+Three one-inch squares are placed with their bases on a line. The center square is lifted out and rotated $45°$, then centered and lowered into its original location until it touches both adjoining squares. How many inches is the point $B$ (the top vertex of the rotated square) from the line on which the bases of the original squares were placed?
+</Problem>
+
+<Solution>
+Place the two flanking squares with their bases on the $x$-axis. The left flanking square occupies $x \in [-1, 0]$ and the right one $x \in [1, 2]$, leaving a $1$-inch gap from $x=0$ to $x=1$. Both flanking squares have their tops at $y = 1$.
+
+The rotated unit square is a diamond shape (rotated $45°$). Its half-diagonal equals $\frac{\sqrt{2}}{2}$, so its four vertices from center $(1/2,\, h)$ are:
+$$\text{top: }\left(\tfrac{1}{2},\, h+\tfrac{\sqrt{2}}{2}\right),\quad\text{left: }\left(\tfrac{1}{2}-\tfrac{\sqrt{2}}{2},\, h\right),\quad\text{right: }\left(\tfrac{1}{2}+\tfrac{\sqrt{2}}{2},\, h\right),\quad\text{bottom: }\left(\tfrac{1}{2},\, h-\tfrac{\sqrt{2}}{2}\right).$$
+
+Since $\frac{\sqrt{2}}{2} \approx 0.707 > 0.5$, the diamond is wider than the gap, so it cannot fall through. Instead, it descends until its lower-left and lower-right sides come to rest on the top edges of the flanking squares (at $y=1$).
+
+The lower-left side of the diamond runs from the left vertex $\left(\frac{1}{2}-\frac{\sqrt{2}}{2},\, h\right)$ to the bottom vertex $\left(\frac{1}{2},\, h-\frac{\sqrt{2}}{2}\right)$, with slope $-1$. Its equation is:
+$$y = -x + h - \tfrac{\sqrt{2}}{2} + \tfrac{1}{2}.$$
+
+This side rests on the right flanking square's top edge at $y = 1$. The contact point lies at $x = 1$ (the inner corner of the right flanking square):
+$$1 = -1 + h - \tfrac{\sqrt{2}}{2} + \tfrac{1}{2} \implies h = \tfrac{\sqrt{2}}{2} + \tfrac{1}{2}.$$
+
+The height of point $B$ (the top vertex) is:
+$$h + \tfrac{\sqrt{2}}{2} = \tfrac{\sqrt{2}}{2} + \tfrac{1}{2} + \tfrac{\sqrt{2}}{2} = \sqrt{2} + \tfrac{1}{2}.$$
+
+Answer: **D**.
+</Solution>

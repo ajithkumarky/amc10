@@ -1,0 +1,52 @@
+---
+year: 2006
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: D
+choices: ['$15$', '$17$', '$\dfrac{35}{2}$', '$18$', '$\dfrac{55}{3}$']
+---
+
+<Problem>
+A triangle is partitioned into three triangles and a quadrilateral by drawing two lines from vertices to their opposite sides. The areas of the three triangles are $3$, $7$, and $7$ as shown. What is the area of the shaded quadrilateral?
+
+Two cevians $AD$ (from vertex $A$ to side $BC$) and $BE$ (from vertex $B$ to side $AC$) intersect at $F$ inside $\triangle ABC$. The three small triangles have areas $[\triangle AEF] = 3$, $[\triangle ABF] = 7$, and $[\triangle BDF] = 7$. The shaded quadrilateral is $CEFD$.
+</Problem>
+
+<Solution>
+**Step 1 — Locate $F$ on cevian $AD$.**
+
+Triangles $ABF$ and $BDF$ share base $BF$, with heights from $A$ and $D$ to line $BF$ in ratio $AF:FD$. Alternatively, they share vertex $B$ and have bases $AF$ and $FD$ on line $AD$:
+$$\frac{[ABF]}{[BDF]} = \frac{AF}{FD} = \frac{7}{7} = 1,$$
+so $F$ is the midpoint of $AD$, giving $[\triangle ABD] = 7 + 7 = 14$.
+
+**Step 2 — Find the total area.**
+
+Since $A$ is a shared vertex and $D$ lies on $BC$:
+$$\frac{[\triangle ABD]}{[\triangle ABC]} = \frac{BD}{BC}.$$
+
+**Step 3 — Locate $F$ on cevian $BE$.**
+
+Triangles $ABF$ and $AEF$ share vertex $A$, with bases $BF$ and $EF$ on line $BE$:
+$$\frac{BF}{FE} = \frac{[ABF]}{[AEF]} = \frac{7}{3}.$$
+
+**Step 4 — Use vectors to find $d = BD/BC$.**
+
+Let $D = B + d(C - B)$ and $E = A + e(C - A)$. Since $F$ is the midpoint of $AD$:
+$$F = \tfrac{1}{2}A + \tfrac{1-d}{2}B + \tfrac{d}{2}C.$$
+
+Since $F$ divides $BE$ in ratio $7:3$:
+$$F = \tfrac{3}{10}B + \tfrac{7}{10}E = \tfrac{7(1-e)}{10}A + \tfrac{3}{10}B + \tfrac{7e}{10}C.$$
+
+Matching the coefficient of $A$: $\tfrac{1}{2} = \tfrac{7(1-e)}{10}$, giving $e = \tfrac{2}{7}$.
+Matching the coefficient of $B$: $\tfrac{1-d}{2} = \tfrac{3}{10}$, giving $d = \tfrac{2}{5}$.
+
+**Step 5 — Compute total area and quadrilateral.**
+
+$$[\triangle ABC] = \frac{[\triangle ABD]}{d} = \frac{14}{2/5} = 35.$$
+
+$$[\text{quad } CEFD] = 35 - 3 - 7 - 7 = 18.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,25 @@
+---
+year: 2006
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: A
+choices: ["43", "44", "45", "46", "47"]
+---
+
+<Problem>
+In a triangle with integer side lengths, one side is three times as long as a second side, and the length of the third side is 15. What is the greatest possible perimeter of the triangle?
+</Problem>
+
+<Solution>
+Let the two related sides be $s$ and $3s$ (with $s$ a positive integer), and the third side is 15. The perimeter is $s + 3s + 15 = 4s + 15$.
+
+To maximize the perimeter, we maximize $s$. The triangle inequality requires:
+- $s + 15 > 3s \Rightarrow 15 > 2s \Rightarrow s < 7.5$, so $s \le 7$.
+- $s + 3s > 15 \Rightarrow 4s > 15 \Rightarrow s \ge 4$ (since $s$ is a positive integer).
+
+The largest valid $s$ is $7$, giving a perimeter of $4(7) + 15 = 43$.
+
+Answer: **A**.
+</Solution>

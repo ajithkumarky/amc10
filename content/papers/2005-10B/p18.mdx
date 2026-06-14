@@ -1,0 +1,20 @@
+---
+year: 2005
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: D
+choices: ["$1$", "$2$", "$7$", "$8$", "$9$"]
+---
+
+<Problem>
+All of David's telephone numbers have the form $555$-$abc$-$defg$, where $a$, $b$, $c$, $d$, $e$, $f$, and $g$ are distinct digits and in increasing order, and none is either $0$ or $1$. How many different telephone numbers can David have?
+</Problem>
+
+<Solution>
+We need to choose $7$ distinct digits from $\{2, 3, 4, 5, 6, 7, 8, 9\}$ (8 available digits) and arrange them in increasing order — but the order is forced once we choose the digits. So the number of telephone numbers equals the number of ways to choose $7$ digits from $8$:
+$$\binom{8}{7} = 8.$$
+
+Answer: **D**.
+</Solution>

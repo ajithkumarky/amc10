@@ -1,0 +1,29 @@
+---
+year: 2006
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: B
+choices: ["4", "5", "6", "7", "8"]
+---
+
+<Problem>
+Mr. Jones has eight children of different ages. On a family trip his oldest child, who is 9, spots a license plate with a 4-digit number in which each of two digits appears two times. "Look, daddy!!!!" she exclaims. "That number is evenly divisible by the age of each of us kids!" "That's right," replies Mr. Jones, "and the last two digits just happen to be my age." Which of the following is not the age of one of Mr. Jones's children?
+</Problem>
+
+<Solution>
+The eight children have eight different ages; the oldest is 9, so their ages are eight of the nine values $1, 2, 3, 4, 5, 6, 7, 8, 9$ (one value is missing). The 4-digit plate number is divisible by all eight ages.
+
+**Test the candidate: exclude 5.** Then the ages are $\{1,2,3,4,6,7,8,9\}$ and the number must be divisible by $\text{lcm}(1,2,3,4,6,7,8,9) = 504$.
+
+We need a multiple of $504$ whose four digits consist of exactly two distinct digits, each appearing exactly twice. Checking $504 \times 11 = 5544$: the digits are $5, 5, 4, 4$ — two $5$s and two $4$s. ✓
+
+Verify divisibility: $5544 = 8 \times 693 = 8 \times 9 \times 77 = 8 \times 9 \times 7 \times 11$. So $5544$ is divisible by $1, 2, 3, 4, 6, 7, 8, 9$ (all present ages). It is not divisible by $5$ (since $5544 / 5 = 1108.8$). ✓
+
+The last two digits are $44$, so Mr. Jones is $44$ years old — a reasonable age. ✓
+
+The age not belonging to any child is $5$.
+
+Answer: **B**.
+</Solution>

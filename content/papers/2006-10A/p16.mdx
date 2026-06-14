@@ -1,0 +1,48 @@
+---
+year: 2006
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: D
+choices: ['$\dfrac{35}{2}$', '$15\sqrt{2}$', '$\dfrac{64}{3}$', '$16\sqrt{2}$', '$24$']
+---
+
+<Problem>
+A circle of radius 1 is tangent to a circle of radius 2. The sides of $\triangle ABC$ are tangent to the circles as shown, and the sides $\overline{AB}$ and $\overline{AC}$ are congruent. What is the area of $\triangle ABC$?
+
+The triangle $ABC$ has $A$ at the top (apex), $B$ at bottom-left, $C$ at bottom-right. The larger circle (radius 2) is inscribed near the base $BC$, tangent to $BC$ and to the two equal legs. The smaller circle (radius 1) sits above it, tangent to the larger circle and to the two equal legs. The distance between the two circle centers is $1 + 2 = 3$ along the altitude of the triangle.
+</Problem>
+
+<Solution>
+Let the triangle be isosceles with apex $A$ and base $BC$. Place the altitude along the $y$-axis with $A$ at the top.
+
+The larger circle has radius 2, center at some height $h_2$ above $BC$. The smaller circle has radius 1, center at height $h_1$ above $BC$, with $h_1 > h_2$, and the circles are externally tangent so $h_1 - h_2 = 3$.
+
+Let the half-angle at $A$ be $\theta$ (so the full apex angle is $2\theta$). Since each leg is tangent to both circles, the distance from each circle's center to a leg equals the circle's radius. For a circle of radius $r$ centered at $(0, h)$ on the altitude (the axis), the distance to the leg equals $r$. The legs make angle $\theta$ with the altitude, so:
+
+$$\sin\theta = \frac{r}{h - h_A}$$
+
+Wait — let me use the geometry more directly. The leg $AB$ makes angle $\theta$ with the axis of symmetry. The distance from the center of the large circle (at height $h_2$ from $BC$, on the axis) to leg $AB$ is 2. This distance equals $h_2 \sin\theta$ (where $h_2$ is measured from the apex would be more natural — let me set $A$ at origin).
+
+Let $A$ be at the origin, altitude pointing downward. The large circle center is at depth $d_2$ from $A$; the small circle center is at depth $d_1$ from $A$, with $d_2 > d_1$.
+
+Distance from circle center to leg = $r$ gives $d \sin\theta = r$ for each circle:
+$$d_1 \sin\theta = 1 \quad \Rightarrow \quad d_1 = \frac{1}{\sin\theta}$$
+$$d_2 \sin\theta = 2 \quad \Rightarrow \quad d_2 = \frac{2}{\sin\theta}$$
+
+The circles are externally tangent: $d_2 - d_1 = 1 + 2 = 3$:
+$$\frac{2}{\sin\theta} - \frac{1}{\sin\theta} = 3 \implies \frac{1}{\sin\theta} = 3 \implies \sin\theta = \frac{1}{3}.$$
+
+Now find the triangle's dimensions. The base $BC$ is tangent to the large circle. The foot of the altitude from $A$ to $BC$ is at depth $d_2 + 2 = \dfrac{2}{\sin\theta} + 2 = 6 + 2 = 8$ from $A$.
+
+So the altitude $h = 8$. The half-base is $h \tan\theta$. Since $\sin\theta = \dfrac{1}{3}$, we get $\cos\theta = \dfrac{2\sqrt{2}}{3}$ and $\tan\theta = \dfrac{1}{2\sqrt{2}}$.
+
+Half-base $= 8 \cdot \dfrac{1}{2\sqrt{2}} = \dfrac{8}{2\sqrt{2}} = \dfrac{4}{\sqrt{2}} = 2\sqrt{2}$.
+
+Full base $= 4\sqrt{2}$.
+
+Area $= \dfrac{1}{2} \times 4\sqrt{2} \times 8 = 16\sqrt{2}$.
+
+Answer: **D**.
+</Solution>

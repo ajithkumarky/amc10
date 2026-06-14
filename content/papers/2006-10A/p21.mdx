@@ -1,0 +1,29 @@
+---
+year: 2006
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: E
+choices: ["$2439$", "$4096$", "$4903$", "$4904$", "$5416$"]
+---
+
+<Problem>
+How many four-digit positive integers have at least one digit that is a $2$ or a $3$?
+</Problem>
+
+<Solution>
+Use complementary counting. Count the four-digit integers with **no** digit equal to 2 or 3, then subtract from the total.
+
+**Total four-digit integers:** $9000$ (from 1000 to 9999).
+
+**Four-digit integers with no digit being 2 or 3:**
+- The thousands digit can be 1, 4, 5, 6, 7, 8, 9 — that is 7 choices (not 0, 2, or 3).
+- Each of the remaining three digits can be 0, 1, 4, 5, 6, 7, 8, 9 — that is 8 choices each.
+
+Count: $7 \times 8 \times 8 \times 8 = 7 \times 512 = 3584$.
+
+**Answer:** $9000 - 3584 = 5416$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,33 @@
+---
+year: 2006
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 4
+answer: E
+choices: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+---
+
+<Problem>
+Leap Day, February 29, 2004, occurred on a Sunday. On what day of the week will Leap Day, February 29, 2020, occur?
+</Problem>
+
+<Solution>
+From 2004 to 2020 is 16 years. We count the number of days in this span to find the day-of-week shift.
+
+In these 16 years, there are 4 leap years: 2004, 2008, 2012, 2016. (2020 itself is the target date, so we count leap days between the two dates: in 2008, 2012, 2016 — that's 3 extra days beyond the "normal" Feb 28 leap days... let me count more carefully.)
+
+From Feb 29, 2004 to Feb 29, 2020: this is exactly 16 years.
+
+Years 2004–2019 (16 years): count ordinary years and leap years.
+- Leap years in this range: 2004, 2008, 2012, 2016 — four leap years, each 366 days.
+- Ordinary years: 12 years, each 365 days.
+
+Total days $= 4 \times 366 + 12 \times 365 = 1464 + 4380 = 5844$.
+
+Day shift $= 5844 \mod 7$. We compute: $5844 = 7 \times 834 + 6$. So the shift is 6 days.
+
+Sunday $+ 6$ days $=$ Saturday.
+
+Answer: **E**.
+</Solution>

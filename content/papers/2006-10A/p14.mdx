@@ -1,0 +1,35 @@
+---
+year: 2006
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: B
+choices: ["$171$", "$173$", "$182$", "$188$", "$210$"]
+---
+
+<Problem>
+A number of linked rings, each 1 cm thick, are hanging on a peg. The top ring has an outside diameter of 20 cm. The outside diameter of each of the other rings is 1 cm less than that of the ring above it. The bottom ring has an outside diameter of 3 cm. What is the distance, in cm, from the top of the top ring to the bottom of the bottom ring?
+</Problem>
+
+<Solution>
+The rings have outside diameters $20, 19, 18, \ldots, 3$, a total of $18$ rings.
+
+Each ring has thickness 1 cm, so its inside diameter is (outside diameter) $- 2$ cm.
+
+**How rings link:** The rings hang on a peg with each ring passing through the one above it. The contribution of each ring to the total vertical distance is its inside diameter (the space it occupies between the bottom of the ring above and the top of the ring below), except for the top ring which contributes its full outside diameter (top to bottom, hanging freely from the peg).
+
+Actually, the total distance from top of top ring to bottom of bottom ring equals:
+
+- Top ring: contributes its full outside diameter = 20 cm (from the top of its outer edge to the bottom of its outer edge).
+- Each subsequent ring: hangs through the previous ring. Each ring contributes its inside diameter $= d - 2$ cm, where $d$ is its outside diameter.
+
+The inside diameters of rings 2 through 18 (outside diameters 19 down to 3):
+$$\text{inside diameters} = 17, 16, 15, \ldots, 1.$$
+
+Sum of inside diameters $= 1 + 2 + \cdots + 17 = \dfrac{17 \times 18}{2} = 153$.
+
+Total distance $= 20 + 153 = 173$ cm.
+
+Answer: **B**.
+</Solution>

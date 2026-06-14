@@ -1,0 +1,44 @@
+---
+year: 2005
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: C
+choices: ['$\dfrac{1}{6}$', '$\dfrac{1}{4}$', '$\dfrac{1}{3}$', '$\dfrac{1}{2}$', '$\dfrac{2}{3}$']
+---
+
+<Problem>
+Let $\overline{AB}$ be a diameter of a circle and $C$ be a point on $\overline{AB}$ with $2 \cdot AC = BC$. Let $D$ and $E$ be points on the circle such that $\overline{DC} \perp \overline{AB}$ and $\overline{DE}$ is a second diameter. What is the ratio of the area of $\triangle DCE$ to the area of $\triangle ABD$?
+</Problem>
+
+<Solution>
+Let the circle have center $O$ and radius $r$, so $AB = 2r$. Place $A = (-r, 0)$, $B = (r, 0)$, $O = (0,0)$.
+
+Since $2 \cdot AC = BC$ and $C$ is on $\overline{AB}$: let $AC = t$ and $BC = 2t$, so $AC + BC = 3t = 2r$, giving $t = \frac{2r}{3}$. Thus $C = A + t\,\hat{AB} = \left(-r + \frac{2r}{3}, 0\right) = \left(-\frac{r}{3}, 0\right)$.
+
+Since $DC \perp AB$ and $D$ is on the circle: $D = \left(-\frac{r}{3}, y_D\right)$ with $\left(\frac{r}{3}\right)^2 + y_D^2 = r^2$, so $y_D = \frac{2r\sqrt{2}}{3}$ (taking the upper semicircle).
+
+Thus $D = \left(-\frac{r}{3},\, \frac{2r\sqrt{2}}{3}\right)$.
+
+Since $DE$ is a diameter, $E = -D = \left(\frac{r}{3},\, -\frac{2r\sqrt{2}}{3}\right)$.
+
+**Area of $\triangle DCE$:**
+$D = \left(-\frac{r}{3}, \frac{2r\sqrt{2}}{3}\right)$, $C = \left(-\frac{r}{3}, 0\right)$, $E = \left(\frac{r}{3}, -\frac{2r\sqrt{2}}{3}\right)$.
+
+Base $DC$ is vertical with length $\frac{2r\sqrt{2}}{3}$. The horizontal distance from $E$ to line $DC$ (which is $x = -\frac{r}{3}$) is $\frac{r}{3} - (-\frac{r}{3}) = \frac{2r}{3}$.
+
+$$[\triangle DCE] = \tfrac{1}{2} \cdot \frac{2r\sqrt{2}}{3} \cdot \frac{2r}{3} = \frac{2r^2\sqrt{2}}{9}.$$
+
+**Area of $\triangle ABD$:**
+$A = (-r, 0)$, $B = (r, 0)$, $D = \left(-\frac{r}{3}, \frac{2r\sqrt{2}}{3}\right)$.
+
+Base $AB = 2r$, height $= \frac{2r\sqrt{2}}{3}$.
+
+$$[\triangle ABD] = \tfrac{1}{2} \cdot 2r \cdot \frac{2r\sqrt{2}}{3} = \frac{2r^2\sqrt{2}}{3}.$$
+
+**Ratio:**
+$$\frac{[\triangle DCE]}{[\triangle ABD]} = \frac{\frac{2r^2\sqrt{2}}{9}}{\frac{2r^2\sqrt{2}}{3}} = \frac{1}{3}.$$
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,27 @@
+---
+year: 2006
+paper: "10B"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 2
+answer: B
+choices: ["16", "25", "36", "49", "64"]
+---
+
+<Problem>
+A $2 \times 3$ rectangle and a $3 \times 4$ rectangle are contained within a square without overlapping at any point, and the sides of the square are parallel to the sides of the two given rectangles. What is the smallest possible area of the square?
+</Problem>
+
+<Solution>
+We need to pack a $2 \times 3$ and a $3 \times 4$ rectangle side-by-side inside a square with axis-aligned sides.
+
+Place the $3 \times 4$ rectangle with its long side (4) horizontal. Place the $2 \times 3$ rectangle next to it. If both $3$-unit heights are aligned vertically, the combined width is $4 + 3 = 7$ and height is $3$, requiring a $7 \times 7$ square (area 49). But we can do better.
+
+Stack them vertically: place the $3 \times 4$ (width 4, height 3) and the $2 \times 3$ (width 3, height 2) one above the other. The combined height is $3 + 2 = 5$ and the maximum width is $\max(4, 3) = 4$, so a $5 \times 5$ square suffices. Area $= 25$.
+
+Can we do it in a $4 \times 4$ square? The $3 \times 4$ rectangle alone already requires at least one dimension of size 4 and the other of size 3. With the $2 \times 3$ also needing to fit, a $4 \times 4$ square can accommodate the $3 \times 4$ (fitting exactly), but leaves only a $4 \times 1$ or $1 \times 4$ strip, which cannot fit the $2 \times 3$. So 16 is too small.
+
+The smallest possible area is $25$.
+
+Answer: **B**.
+</Solution>

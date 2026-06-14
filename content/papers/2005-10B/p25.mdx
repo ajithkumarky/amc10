@@ -1,0 +1,25 @@
+---
+year: 2005
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: C
+choices: ["$50$", "$51$", "$62$", "$65$", "$68$"]
+---
+
+<Problem>
+A subset $B$ of the set of integers from $1$ to $100$, inclusive, has the property that no two elements of $B$ sum to $125$. What is the maximum possible number of elements in $B$?
+</Problem>
+
+<Solution>
+Pair up integers that sum to $125$: $(25, 100), (26, 99), (27, 98), \ldots, (62, 63)$. This gives pairs $(25+k, 100-k)$ for $k = 0, 1, \ldots, 37$, which is $38$ pairs.
+
+The remaining integers from $1$ to $24$ (that is, $\{1, 2, \ldots, 24\}$) have no partner summing to $125$ (since $125 - 24 = 101 > 100$ and $125 - 1 = 124 > 100$). All $24$ of these can be included freely.
+
+From each of the $38$ pairs, we can include at most one element, contributing at most $38$.
+
+Maximum size of $B$: $24 + 38 = 62$.
+
+Answer: **C**.
+</Solution>

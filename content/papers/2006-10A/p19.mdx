@@ -1,0 +1,31 @@
+---
+year: 2006
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: C
+choices: ["$0$", "$1$", "$59$", "$89$", "$178$"]
+---
+
+<Problem>
+How many non-similar triangles have angles whose degree measures are distinct positive integers in arithmetic progression?
+</Problem>
+
+<Solution>
+Let the three angles be $a - d$, $a$, $a + d$ with $d > 0$ (since they must be distinct) and all positive integers.
+
+Their sum equals $180°$:
+$$(a-d) + a + (a+d) = 3a = 180 \implies a = 60.$$
+
+So the angles are $60 - d$, $60$, $60 + d$ for positive integer $d$.
+
+Constraints:
+- All angles are positive: $60 - d > 0 \Rightarrow d < 60$.
+- All angles are distinct positive integers: $d \geq 1$.
+- Largest angle less than 180: $60 + d < 180 \Rightarrow d < 120$ (already satisfied by $d < 60$).
+
+So $d$ can be $1, 2, 3, \ldots, 59$, giving **59** non-similar triangles.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,39 @@
+---
+year: 2006
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: B
+choices: ['$18\sqrt{3}$', '$24\sqrt{2}$', '$36$', '$24\sqrt{3}$', '$32\sqrt{2}$']
+---
+
+<Problem>
+Circles with centers $O$ and $P$ have radii $2$ and $4$, respectively, and are externally tangent. Points $A$ and $B$ on the circle with center $O$ and points $C$ and $D$ on the circle with center $P$ are such that $AD$ and $BC$ are common external tangents to the circles. What is the area of the concave hexagon $AOBCPD$?
+</Problem>
+
+<Solution>
+Place $O = (0,0)$ and $P = (6,0)$ (centers are $2 + 4 = 6$ apart since the circles are externally tangent).
+
+**Finding the tangent points:** The common external tangents both pass through the external homothety center $Q = (-6, 0)$ (which divides $OP$ externally in ratio $2:4 = 1:2$). The tangent line satisfies $y = m(x+6)$, and its distance from $O$ equals $2$:
+$$\frac{|6m|}{\sqrt{1+m^2}} = 2 \implies m = \pm\frac{1}{2\sqrt{2}}.$$
+
+For the upper tangent, the foot of the perpendicular from $O$ to the line $x - 2\sqrt{2}y + 6 = 0$ is:
+$$A = \left(-\frac{2}{3},\, \frac{4\sqrt{2}}{3}\right), \quad \text{and from } P: \quad D = \left(\frac{14}{3},\, \frac{8\sqrt{2}}{3}\right).$$
+
+By symmetry, the lower tangent gives $B = \left(-\frac{2}{3},\, -\frac{4\sqrt{2}}{3}\right)$ and $C = \left(\frac{14}{3},\, -\frac{8\sqrt{2}}{3}\right)$.
+
+**Area via the Shoelace formula** on hexagon $A \to O \to B \to C \to P \to D$:
+
+$$2\,[\text{hex}] = \bigl|x_A(y_O - y_D) + x_O(y_B - y_A) + x_B(y_C - y_O) + x_C(y_P - y_B) + x_P(y_D - y_C) + x_D(y_A - y_P)\bigr|.$$
+
+Computing each term:
+$$-\tfrac{2}{3}\!\left(0 - \tfrac{8\sqrt{2}}{3}\right) = \tfrac{16\sqrt{2}}{9}, \quad 0, \quad -\tfrac{2}{3}\!\left(-\tfrac{8\sqrt{2}}{3}\right) = \tfrac{16\sqrt{2}}{9},$$
+$$\tfrac{14}{3}\!\cdot\tfrac{4\sqrt{2}}{3} = \tfrac{56\sqrt{2}}{9}, \quad 6\!\cdot\!\tfrac{16\sqrt{2}}{3} = 32\sqrt{2}, \quad \tfrac{14}{3}\!\cdot\!\tfrac{4\sqrt{2}}{3} = \tfrac{56\sqrt{2}}{9}.$$
+
+Sum $= \dfrac{144\sqrt{2}}{9} + 32\sqrt{2} = 16\sqrt{2} + 32\sqrt{2} = 48\sqrt{2}$.
+
+Area $= \dfrac{48\sqrt{2}}{2} = 24\sqrt{2}$.
+
+Answer: **B**.
+</Solution>

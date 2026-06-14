@@ -1,0 +1,25 @@
+---
+year: 2005
+paper: "10B"
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 4
+answer: B
+choices: ["$1$", '$\dfrac{3}{2}$', "$2$", '$\dfrac{5}{2}$', "$3$"]
+---
+
+<Problem>
+Suppose that $4^a = 5$, $5^b = 6$, $6^c = 7$, and $7^d = 8$. What is $a \cdot b \cdot c \cdot d$?
+</Problem>
+
+<Solution>
+Chain the equations by substitution:
+
+$$4^a = 5 \implies (4^a)^b = 5^b = 6 \implies 4^{ab} = 6.$$
+$$4^{ab} = 6 \implies (4^{ab})^c = 6^c = 7 \implies 4^{abc} = 7.$$
+$$4^{abc} = 7 \implies (4^{abc})^d = 7^d = 8 \implies 4^{abcd} = 8.$$
+
+Now $4^{abcd} = 8$ means $2^{2abcd} = 2^3$, so $2abcd = 3$ and $abcd = \dfrac{3}{2}$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,25 @@
+---
+year: 2005
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: A
+choices: ["$162$", "$180$", "$324$", "$360$", "$720$"]
+---
+
+<Problem>
+Forty slips are placed into a hat, each bearing a number $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$, or $10$, with each number entered on four slips. Four slips are drawn from the hat at random and without replacement. Let $p$ be the probability that all four slips bear the same number. Let $q$ be the probability that two of the slips bear a number $a$ and the other two bear a number $b \neq a$. What is the value of $\dfrac{q}{p}$?
+</Problem>
+
+<Solution>
+The total number of ways to draw $4$ slips from $40$ is $\binom{40}{4}$, which appears in both $p$ and $q$ and cancels in the ratio.
+
+**Favorable for $p$:** Choose which number all four slips show: $10$ ways. Then choose all $4$ slips of that number: $\binom{4}{4} = 1$ way. So the count is $10$.
+
+**Favorable for $q$:** Choose the two distinct numbers $a$ and $b$: $\binom{10}{2} = 45$ ways. Choose $2$ slips from the $4$ bearing $a$: $\binom{4}{2} = 6$ ways. Choose $2$ slips from the $4$ bearing $b$: $\binom{4}{2} = 6$ ways. Total count: $45 \times 6 \times 6 = 1620$.
+
+$$\frac{q}{p} = \frac{1620}{10} = 162.$$
+
+Answer: **A**.
+</Solution>

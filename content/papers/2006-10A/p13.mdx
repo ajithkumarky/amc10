@@ -1,0 +1,27 @@
+---
+year: 2006
+paper: "10A"
+topic: counting-probability
+subtopic: expected-value
+difficulty: 3
+answer: D
+choices: ["$12$", "$30$", "$50$", "$60$", "$100$"]
+---
+
+<Problem>
+A player pays $\textdollar 5$ to play a game. A die is rolled. If the number on the die is odd, the game is lost. If the number on the die is even, the die is rolled again. In this case the player wins if the second number matches the first and loses otherwise. How much should the player win if the game is fair? (In a fair game the probability of winning times the amount won is what the player should pay.)
+</Problem>
+
+<Solution>
+The even numbers on a die are 2, 4, 6.
+
+The probability of rolling a specific even number on the first roll is $\dfrac{1}{6}$. Given that an even number appeared, the probability of matching it on the second roll is $\dfrac{1}{6}$.
+
+The probability of winning is: probability of rolling a specific even number AND then matching it, summed over all three even values:
+$$P(\text{win}) = 3 \times \frac{1}{6} \times \frac{1}{6} = \frac{3}{36} = \frac{1}{12}.$$
+
+For a fair game: $P(\text{win}) \times W = \textdollar 5$, so:
+$$\frac{1}{12} \times W = 5 \implies W = 60.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,30 @@
+---
+year: 2005
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: C
+choices: ["$2$", "$3$", "$5$", "$6$", "$8$"]
+---
+
+<Problem>
+In trapezoid $ABCD$ we have $\overline{AB}$ parallel to $\overline{DC}$, $E$ as the midpoint of $\overline{BC}$, and $F$ as the midpoint of $\overline{DA}$. The area of $ABEF$ is twice the area of $FECD$. What is $AB/DC$?
+</Problem>
+
+<Solution>
+Let $h$ be the height of the trapezoid (distance between the parallel sides $AB$ and $DC$), $AB = a$, $DC = c$. The trapezoid has total area $\frac{(a+c)h}{2}$.
+
+Since $E$ and $F$ are midpoints of the legs, $EF$ is the midsegment of the trapezoid at height $\frac{h}{2}$ from each base, with length $\frac{a+c}{2}$.
+
+**Area of $ABEF$** (trapezoid with parallel sides $AB = a$ and $EF = \frac{a+c}{2}$, height $\frac{h}{2}$):
+$$[ABEF] = \frac{1}{2} \cdot \frac{h}{2} \cdot \left(a + \frac{a+c}{2}\right) = \frac{h}{4} \cdot \frac{3a+c}{2} = \frac{h(3a+c)}{8}.$$
+
+**Area of $FECD$** (trapezoid with parallel sides $EF = \frac{a+c}{2}$ and $DC = c$, height $\frac{h}{2}$):
+$$[FECD] = \frac{h}{4} \cdot \left(\frac{a+c}{2} + c\right) = \frac{h}{4} \cdot \frac{a+3c}{2} = \frac{h(a+3c)}{8}.$$
+
+Setting $[ABEF] = 2[FECD]$:
+$$\frac{h(3a+c)}{8} = 2 \cdot \frac{h(a+3c)}{8} \implies 3a + c = 2a + 6c \implies a = 5c \implies \frac{a}{c} = 5.$$
+
+Answer: **C**.
+</Solution>

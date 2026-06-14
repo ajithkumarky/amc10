@@ -1,0 +1,25 @@
+---
+year: 2005
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: D
+choices: ["$5$", "$7$", "$9$", "$10$", "$19$"]
+---
+
+<Problem>
+The sum of the digits of a two-digit number is subtracted from the number. The units digit of the result is $6$. How many two-digit numbers have this property?
+</Problem>
+
+<Solution>
+Let the two-digit number be $\overline{ab} = 10a + b$ with $a \in \{1,\ldots,9\}$ and $b \in \{0,\ldots,9\}$.
+
+Subtracting the digit sum: $(10a + b) - (a + b) = 9a$.
+
+The units digit of $9a$ must equal $6$. Since $9a$ for $a = 1, 2, \ldots, 9$ gives $9, 18, 27, 36, 45, 54, 63, 72, 81$ — the units digits are $9, 8, 7, 6, 5, 4, 3, 2, 1$. Only $a = 4$ gives a units digit of $6$ (since $9 \times 4 = 36$).
+
+With $a = 4$, any value $b \in \{0,1,2,\ldots,9\}$ works, giving $10$ two-digit numbers: $40, 41, 42, \ldots, 49$.
+
+Answer: **D**.
+</Solution>

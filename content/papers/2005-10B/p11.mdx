@@ -1,0 +1,34 @@
+---
+year: 2005
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: E
+choices: ["$29$", "$55$", "$85$", "$133$", "$250$"]
+---
+
+<Problem>
+The first term of a sequence is $2005$. Each succeeding term is the sum of the cubes of the digits of the previous term. What is the ${2005}^{\text{th}}$ term of the sequence?
+</Problem>
+
+<Solution>
+Starting from $2005$: sum of cubes of digits is $2^3 + 0^3 + 0^3 + 5^3 = 8 + 0 + 0 + 125 = 133$.
+
+From $133$: $1^3 + 3^3 + 3^3 = 1 + 27 + 27 = 55$.
+
+From $55$: $5^3 + 5^3 = 125 + 125 = 250$.
+
+From $250$: $2^3 + 5^3 + 0^3 = 8 + 125 + 0 = 133$.
+
+The sequence enters a cycle: $133 \to 55 \to 250 \to 133 \to \cdots$ with period $3$.
+
+The cycle starts at term $2$ (value $133$). For term $n \geq 2$, the value depends on $(n - 2) \bmod 3$:
+- remainder $0$: value $133$,
+- remainder $1$: value $55$,
+- remainder $2$: value $250$.
+
+For $n = 2005$: $(2005 - 2) \bmod 3 = 2003 \bmod 3$. Since $2003 = 3 \times 667 + 2$, the remainder is $2$, giving value $\mathbf{250}$.
+
+Answer: **E**.
+</Solution>

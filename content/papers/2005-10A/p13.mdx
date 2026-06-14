@@ -1,0 +1,27 @@
+---
+year: 2005
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 3
+answer: E
+choices: ["$0$", "$7$", "$12$", "$65$", "$125$"]
+---
+
+<Problem>
+How many positive integers $n$ satisfy the following condition:
+$$\left(130n\right)^{50} > n^{100} > 2^{200} \text{ ?}$$
+</Problem>
+
+<Solution>
+Take the $50$th root throughout (all quantities are positive):
+$$130n > n^2 > 2^4 = 16.$$
+
+**Right inequality:** $n^2 > 16 \Rightarrow n > 4$, so $n \geq 5$.
+
+**Left inequality:** $130n > n^2 \Rightarrow 130 > n$, so $n \leq 129$.
+
+Together: $5 \leq n \leq 129$, giving $129 - 5 + 1 = 125$ positive integers.
+
+Answer: **E**.
+</Solution>

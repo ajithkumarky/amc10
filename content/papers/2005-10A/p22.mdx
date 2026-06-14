@@ -1,0 +1,24 @@
+---
+year: 2005
+paper: "10A"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 5
+answer: D
+choices: ["$166$", "$333$", "$500$", "$668$", "$1001$"]
+---
+
+<Problem>
+Let $S$ be the set of the $2005$ smallest positive multiples of $4$, and let $T$ be the set of the $2005$ smallest positive multiples of $6$. How many elements are common to $S$ and $T$?
+</Problem>
+
+<Solution>
+$S = \{4, 8, 12, \ldots, 4\cdot 2005\} = \{4, 8, \ldots, 8020\}$ and $T = \{6, 12, 18, \ldots, 6\cdot 2005\} = \{6, 12, \ldots, 12030\}$.
+
+An integer is in both sets if and only if it is a multiple of $\text{lcm}(4,6) = 12$ that is also at most $\min(8020, 12030) = 8020$ (since it must be in $S$, the smaller-topped set).
+
+The common elements are the positive multiples of $12$ up to $8020$:
+$$\left\lfloor \frac{8020}{12} \right\rfloor = \left\lfloor 668.33\ldots \right\rfloor = 668.$$
+
+Answer: **D**.
+</Solution>

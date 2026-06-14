@@ -1,0 +1,31 @@
+---
+year: 2006
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: C
+choices: ["$1$", "$2$", "$3$", "$4$", "$5$"]
+---
+
+<Problem>
+How many sets of two or more consecutive positive integers have a sum of 15?
+</Problem>
+
+<Solution>
+Let a run of $k$ consecutive integers start at $a$. Their sum is $ka + \dfrac{k(k-1)}{2} = \dfrac{k(2a+k-1)}{2} = 15$.
+
+So $k(2a + k - 1) = 30$. Since $a \geq 1$, we need $2a + k - 1 \geq k + 1$, i.e., $2a \geq 2$, which is always true. Also, $2a = \dfrac{30}{k} - k + 1$ must be even and positive.
+
+Try each divisor $k \geq 2$ of factors of 30:
+
+- $k = 2$: $2a = 15 - 2 + 1 = 14$, so $a = 7$. Sequence: 7, 8. Check: $7+8=15$. ✓
+- $k = 3$: $2a = 10 - 3 + 1 = 8$, so $a = 4$. Sequence: 4, 5, 6. Check: $4+5+6=15$. ✓
+- $k = 5$: $2a = 6 - 5 + 1 = 2$, so $a = 1$. Sequence: 1, 2, 3, 4, 5. Check: $15$. ✓
+- $k = 6$: $2a = 5 - 6 + 1 = 0$, so $a = 0$. Not a positive integer. ✗
+- $k = 10$: $2a = 3 - 10 + 1 = -6 < 0$. ✗
+
+There are **3** valid sets.
+
+Answer: **C**.
+</Solution>

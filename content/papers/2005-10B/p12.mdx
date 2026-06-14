@@ -1,0 +1,27 @@
+---
+year: 2005
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: E
+choices: ['$\left(\dfrac{1}{12}\right)^{12}$', '$\left(\dfrac{1}{6}\right)^{12}$', '$2\left(\dfrac{1}{6}\right)^{11}$', '$\dfrac{5}{2}\left(\dfrac{1}{6}\right)^{11}$', '$\left(\dfrac{1}{6}\right)^{10}$']
+---
+
+<Problem>
+Twelve fair dice are rolled. What is the probability that the product of the numbers on the top faces is prime?
+</Problem>
+
+<Solution>
+For the product of twelve dice rolls to be prime, the product must equal a prime number. The only prime faces available are $2$, $3$, and $5$. For the overall product to be prime, exactly one die must show a prime ($2$, $3$, or $5$) and all other eleven dice must show $1$.
+
+**Probability a single die shows $1$:** $\frac{1}{6}$.
+
+**Probability a single die shows a prime:** $\frac{3}{6} = \frac{1}{2}$ (faces $2$, $3$, $5$).
+
+**Choose which of the $12$ dice shows the prime:** $\binom{12}{1} = 12$ ways.
+
+$$P = 12 \cdot \frac{1}{2} \cdot \left(\frac{1}{6}\right)^{11} = \frac{12}{2} \cdot \left(\frac{1}{6}\right)^{11} = 6 \cdot \left(\frac{1}{6}\right)^{11} = \left(\frac{1}{6}\right)^{10}.$$
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,23 @@
+---
+year: 2006
+paper: "10A"
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 4
+answer: E
+choices: ['$\dfrac{1}{2}$', '$\dfrac{3}{5}$', '$\dfrac{2}{3}$', '$\dfrac{4}{5}$', '$1$']
+---
+
+<Problem>
+Six distinct positive integers are randomly chosen between 1 and 2006, inclusive. What is the probability that some pair of these integers has a difference that is a multiple of 5?
+</Problem>
+
+<Solution>
+Every integer has a remainder of 0, 1, 2, 3, or 4 when divided by 5 — that is, it belongs to one of 5 residue classes mod 5.
+
+We are choosing 6 integers. By the **Pigeonhole Principle**, with 6 integers and only 5 residue classes, at least two of the chosen integers must share the same residue class mod 5. Two integers with the same remainder mod 5 have a difference divisible by 5.
+
+This holds for **every** possible selection of 6 integers — it is guaranteed, not just probable. Therefore the probability is $1$.
+
+Answer: **E**.
+</Solution>

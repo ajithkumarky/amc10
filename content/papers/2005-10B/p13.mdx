@@ -1,0 +1,29 @@
+---
+year: 2005
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: C
+choices: ["$501$", "$668$", "$835$", "$1002$", "$1169$"]
+---
+
+<Problem>
+How many numbers between $1$ and $2005$ are integer multiples of $3$ or $4$ but not $12$?
+</Problem>
+
+<Solution>
+We want multiples of $3$ or $4$, but excluding multiples of $12$ (which are multiples of both $3$ and $4$).
+
+**Multiples of $3$** in $[1, 2005]$: $\lfloor 2005/3 \rfloor = 668$.
+
+**Multiples of $4$** in $[1, 2005]$: $\lfloor 2005/4 \rfloor = 501$.
+
+**Multiples of $12$** in $[1, 2005]$: $\lfloor 2005/12 \rfloor = 167$.
+
+By inclusion-exclusion, multiples of $3$ or $4$: $668 + 501 - 167 = 1002$.
+
+Subtracting those that are multiples of $12$: $1002 - 167 = 835$.
+
+Answer: **C**.
+</Solution>

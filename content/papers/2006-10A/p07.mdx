@@ -1,0 +1,42 @@
+---
+year: 2006
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 2
+answer: A
+choices: ["$6$", "$7$", "$8$", "$9$", "$10$"]
+---
+
+<Problem>
+The $8 \times 18$ rectangle $ABCD$ is cut into two congruent hexagons, as shown, in such a way that the two hexagons can be repositioned without overlap to form a square. What is $y$?
+
+The rectangle has $A$ at top-left, $B$ at top-right, $C$ at bottom-right, $D$ at bottom-left. The width is 18 and the height is 8. A staircase cut goes from a point on the top edge (distance $y$ from $A$) straight down partway, then horizontally to the midpoint of the rectangle, then straight down to the bottom edge. A label $y$ appears at the top-left portion and again at the bottom-right portion, showing the cut creates two congruent hexagons.
+
+<svg viewBox="0 0 200 100" width="360" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#00e5ff" strokeWidth="1.5">
+  <rect x="10" y="10" width="180" height="80" stroke="#00e5ff" fill="none"/>
+  <polyline points="70,10 70,50 130,50 130,90" stroke="#00e5ff" strokeWidth="1.5" fill="none"/>
+  <text x="2" y="14" fontSize="10" fill="#00e5ff" stroke="none">A</text>
+  <text x="190" y="14" fontSize="10" fill="#00e5ff" stroke="none">B</text>
+  <text x="190" y="94" fontSize="10" fill="#00e5ff" stroke="none">C</text>
+  <text x="2" y="94" fontSize="10" fill="#00e5ff" stroke="none">D</text>
+  <text x="36" y="9" fontSize="10" fill="#00e5ff" stroke="none">y</text>
+  <text x="148" y="97" fontSize="10" fill="#00e5ff" stroke="none">y</text>
+  <text x="96" y="9" fontSize="10" fill="#00e5ff" stroke="none">18</text>
+  <text x="96" y="97" fontSize="10" fill="#00e5ff" stroke="none">18</text>
+  <text x="1" y="55" fontSize="10" fill="#00e5ff" stroke="none">8</text>
+  <text x="191" y="55" fontSize="10" fill="#00e5ff" stroke="none">8</text>
+</svg>
+</Problem>
+
+<Solution>
+The rectangle has area $8 \times 18 = 144$. The two hexagons rearrange to form a square, so the square has area $144$ and side length $\sqrt{144} = 12$.
+
+When the two hexagons slide together to form a $12 \times 12$ square, the staircase cut allows one piece to shift horizontally by some amount $s$. The rectangle has height 8 and width 18; the square has side 12.
+
+The cut runs: from a point $y$ from the left on the top edge, down to the midheight (height 4), across to a point $y$ from the right on the bottom edge (by symmetry/congruence), then down. The horizontal segment of the cut is at height 4 (the midpoint vertically), spanning from $x = y$ to $x = 18 - y$.
+
+When the pieces are repositioned into a 12×12 square, the shift is $18 - 12 = 6$ horizontally. This shift equals $y$ (the overlap created by sliding). So $y = 6$.
+
+Answer: **A**.
+</Solution>

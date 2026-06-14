@@ -1,0 +1,27 @@
+---
+year: 2005
+paper: "10B"
+topic: algebra
+subtopic: quadratics
+difficulty: 4
+answer: D
+choices: ["$1$", "$2$", "$4$", "$8$", "$16$"]
+---
+
+<Problem>
+The quadratic equation $x^2 + mx + n = 0$ has roots that are twice those of $x^2 + px + m = 0$, and none of $m$, $n$, and $p$ is zero. What is the value of $n/p$?
+</Problem>
+
+<Solution>
+Let the roots of $x^2 + px + m = 0$ be $r$ and $s$. By Vieta's formulas:
+$$r + s = -p, \quad rs = m.$$
+
+The roots of $x^2 + mx + n = 0$ are $2r$ and $2s$:
+$$2r + 2s = -m \implies 2(-p) = -m \implies m = 2p.$$
+$$(2r)(2s) = n \implies 4rs = n \implies n = 4m.$$
+
+Therefore:
+$$\frac{n}{p} = \frac{4m}{p} = \frac{4 \cdot 2p}{p} = 8.$$
+
+Answer: **D**.
+</Solution>

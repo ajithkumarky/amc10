@@ -1,0 +1,49 @@
+---
+year: 2006
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: C
+choices: ['I, by $8\pi$', 'I, by $6\pi$', 'II, by $4\pi$', 'II, by $8\pi$', 'II, by $10\pi$']
+---
+
+<Problem>
+Rolly wishes to secure his dog with an 8-foot rope to a square shed that is 16 feet on each side.
+
+**Arrangement I:** The rope is attached to the middle of one side of the shed. The dog can roam around the outside, pivoting at the corners.
+
+**Arrangement II:** The rope is attached to a corner of the shed, 4 feet from one end of a side (i.e., at a point 4 feet along one side from a corner). The dog can roam around the outside.
+
+Which of these arrangements gives the dog the greater area to roam, and by how many square feet?
+</Problem>
+
+<Solution>
+**Arrangement I:** The rope (length 8) is attached to the midpoint of a side. In front of that side, the dog sweeps a semicircle of radius 8: area $= \dfrac{1}{2}\pi(8)^2 = 32\pi$.
+
+Around each adjacent corner, the remaining rope length is $8 - 8 = 0$ feet (the rope just reaches the corner), so no additional area wraps around.
+
+Total area for I: $32\pi$.
+
+**Arrangement II:** The rope is attached at a corner, 4 feet from one end (so 4 feet from a corner). The dog can swing with the full 8-foot rope in the open direction. At each side, it can wrap around corners.
+
+On the open side (away from the shed), the dog swings through $\frac{3}{4}$ of a circle of radius 8 (270°): area $= \dfrac{3}{4}\pi(8)^2 = 48\pi$.
+
+Wait — the attachment is at a corner. Re-reading: "attached to a corner of the shed, 4 feet from one end of a side" means the attachment point is on a side, 4 feet from a corner.
+
+From attachment point, going toward the near corner (4 feet of shed wall): the remaining rope is $8 - 4 = 4$ feet. The dog wraps around that corner and sweeps a quarter-circle of radius 4: area $= \dfrac{1}{4}\pi(4)^2 = 4\pi$.
+
+Going the other direction toward the far corner (12 feet of shed wall): the rope length is only 8 feet, which is less than 12, so the dog can't reach that corner. It sweeps a semicircle of radius 8 on that side: wait, the attachment is on a wall midpoint—no.
+
+Let me reconsider the geometry. The attachment is on a side, 4 feet from one corner and 12 feet from the other. The dog roams outside the shed.
+
+- In the half-plane in front of the attachment: the dog sweeps a semicircle of radius 8. Area $= \dfrac{1}{2}\pi(8)^2 = 32\pi$.
+- Wrapping around the near corner (4 ft away): remaining rope $= 8 - 4 = 4$ ft. Sweeps a quarter-circle of radius 4. Area $= \dfrac{1}{4}\pi(4)^2 = 4\pi$.
+- Wrapping around the far corner (12 ft away): rope length 8 < 12, so cannot reach. No additional area.
+
+Total area for II: $32\pi + 4\pi = 36\pi$.
+
+**Difference:** $36\pi - 32\pi = 4\pi$. Arrangement II gives $4\pi$ more square feet.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,25 @@
+---
+year: 2006
+paper: "10A"
+topic: algebra
+subtopic: functions
+difficulty: 2
+answer: E
+choices: ["$3$", "$6$", "$9$", "$10$", "$11$"]
+---
+
+<Problem>
+For how many real values of $x$ is $\sqrt{120 - \sqrt{x}}$ an integer?
+</Problem>
+
+<Solution>
+Let $\sqrt{120 - \sqrt{x}} = n$ where $n$ is a non-negative integer. Then $120 - \sqrt{x} = n^2$, so $\sqrt{x} = 120 - n^2$.
+
+For $\sqrt{x}$ to be real and non-negative, we need $120 - n^2 \geq 0$, i.e., $n^2 \leq 120$, so $n \leq 10$ (since $10^2 = 100 \leq 120$ and $11^2 = 121 > 120$).
+
+For each valid $n$ (from 0 to 10), we get $\sqrt{x} = 120 - n^2 \geq 0$, giving a unique $x = (120 - n^2)^2 \geq 0$.
+
+So there are $n = 0, 1, 2, \ldots, 10$, which is **11** values.
+
+Answer: **E**.
+</Solution>

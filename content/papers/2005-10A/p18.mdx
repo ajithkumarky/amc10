@@ -1,0 +1,29 @@
+---
+year: 2005
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: A
+choices: ['$\dfrac{1}{5}$', '$\dfrac{1}{4}$', '$\dfrac{1}{3}$', '$\dfrac{1}{2}$', '$\dfrac{2}{3}$']
+---
+
+<Problem>
+Team $A$ and team $B$ play a series. The first team to win three games wins the series. Each team is equally likely to win each game, there are no ties, and the outcomes of the individual games are independent. If team $B$ wins the second game and team $A$ wins the series, what is the probability that team $B$ wins the first game?
+</Problem>
+
+<Solution>
+We want $P(\text{B wins game 1} \mid \text{B wins game 2 and A wins series})$.
+
+By Bayes' theorem this equals $\dfrac{P(\text{B wins games 1 and 2, A wins series})}{P(\text{B wins game 2, A wins series})}$.
+
+**Case 1: B wins game 1 (and game 2).** After two games, $B$ leads $2$–$0$. For $A$ to win the series, $A$ must win the next three games in a row (probability $(1/2)^3 = 1/8$). Joint probability: $\frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{8} = \frac{1}{32}$.
+
+**Case 2: A wins game 1, B wins game 2.** After two games, the score is $1$–$1$. By symmetry, each team wins the series with probability $1/2$. Joint probability: $\frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{2} = \frac{1}{8}$.
+
+**Total** $P(\text{B wins game 2, A wins series}) = \frac{1}{32} + \frac{1}{8} = \frac{1}{32} + \frac{4}{32} = \frac{5}{32}$.
+
+$$P(\text{B wins game 1} \mid \text{B wins game 2, A wins series}) = \frac{1/32}{5/32} = \frac{1}{5}.$$
+
+Answer: **A**.
+</Solution>

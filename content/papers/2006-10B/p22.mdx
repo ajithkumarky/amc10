@@ -1,0 +1,29 @@
+---
+year: 2006
+paper: "10B"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 5
+answer: D
+choices: ['$\$1.05$', '$\$1.25$', '$\$1.45$', '$\$1.65$', '$\$1.85$']
+---
+
+<Problem>
+Elmo makes $N$ sandwiches for a fundraiser. For each sandwich he uses $B$ globs of peanut butter at $4$ cents per glob and $J$ blobs of jam at $5$ cents per blob. The cost of the peanut butter and jam to make all the sandwiches is $\$2.53$. Assume that $B$, $J$, and $N$ are positive integers with $N > 1$. What is the cost of the jam Elmo uses to make the sandwiches?
+</Problem>
+
+<Solution>
+The total cost in cents is $N(4B + 5J) = 253$.
+
+Factor $253$: $253 = 11 \times 23$. Since $N > 1$ and $N$ divides 253, the possible values are $N = 11, 23, 253$.
+
+**Case $N = 11$:** $4B + 5J = 23$. We need positive integer solutions. From $4B = 23 - 5J$: try $J = 3 \Rightarrow 4B = 8 \Rightarrow B = 2$. Valid! Jam cost $= N \cdot J \cdot 5 = 11 \cdot 3 \cdot 5 = 165$ cents $= \$1.65$.
+
+**Case $N = 23$:** $4B + 5J = 11$. Try $J = 1 \Rightarrow 4B = 6$: not an integer. No positive integer solution.
+
+**Case $N = 253$:** $4B + 5J = 1$: no positive integer solution.
+
+The unique valid case is $N = 11$, $B = 2$, $J = 3$, giving jam cost of $\$1.65$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,32 @@
+---
+year: 2005
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: B
+choices: ["$0$", "$1$", "$2$", "$4$", "$5$"]
+---
+
+<Problem>
+On a certain math exam, $10\%$ of the students got $70$ points, $25\%$ got $80$ points, $20\%$ got $85$ points, $15\%$ got $90$ points, and the rest got $95$ points. What is the difference between the mean and the median score on this exam?
+</Problem>
+
+<Solution>
+The "rest" got $95$ points: $100\% - 10\% - 25\% - 20\% - 15\% = 30\%$.
+
+**Mean:**
+$$\text{Mean} = 0.10(70) + 0.25(80) + 0.20(85) + 0.15(90) + 0.30(95)$$
+$$= 7 + 20 + 17 + 13.5 + 28.5 = 86.$$
+
+**Median:** List cumulative percentages:
+- Up to $70$: $10\%$
+- Up to $80$: $35\%$
+- Up to $85$: $55\%$
+
+The $50$th percentile falls in the $85$-point group (which covers the $35\%$-to-$55\%$ range), so the median is $85$.
+
+**Difference:** $|86 - 85| = 1$.
+
+Answer: **B**.
+</Solution>

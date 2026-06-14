@@ -1,0 +1,22 @@
+---
+year: 2005
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: D
+choices: ["$9$", "$10$", "$11$", "$12$", "$13$"]
+---
+
+<Problem>
+In a five-sided star, the letters $A$, $B$, $C$, $D$, and $E$ are replaced by the numbers $3$, $5$, $6$, $7$, and $9$, although not necessarily in this order. The sums of the numbers at the ends of the line segments $\overline{AB}$, $\overline{BC}$, $\overline{CD}$, $\overline{DE}$, and $\overline{EA}$ form an arithmetic sequence, although not necessarily in this order. What is the middle term of the arithmetic sequence?
+</Problem>
+
+<Solution>
+Each of the five numbers $3, 5, 6, 7, 9$ appears in exactly two of the five sums (each vertex is an endpoint of exactly two segments in the star). Therefore, the sum of all five sums equals $2(3+5+6+7+9) = 2 \times 30 = 60$.
+
+For an arithmetic sequence of five terms with middle term $m$ and common difference $d$, the five terms are $m-2d,\, m-d,\, m,\, m+d,\, m+2d$, which sum to $5m$. Thus:
+$$5m = 60 \implies m = 12.$$
+
+Answer: **D**.
+</Solution>

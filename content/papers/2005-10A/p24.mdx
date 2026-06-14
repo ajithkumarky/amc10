@@ -1,0 +1,34 @@
+---
+year: 2005
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: B
+choices: ["$0$", "$1$", "$3$", "$4$", "$5$"]
+---
+
+<Problem>
+For each positive integer $m > 1$, let $P(m)$ denote the greatest prime factor of $m$. For how many positive integers $n$ is it true that both $P(n) = \sqrt{n}$ and $P(n+48) = \sqrt{n+48}$?
+</Problem>
+
+<Solution>
+$P(n) = \sqrt{n}$ means $\sqrt{n}$ is an integer (so $n$ is a perfect square) and $\sqrt{n}$ is prime, so $n = p^2$ for some prime $p$.
+
+Similarly $n + 48 = q^2$ for some prime $q$.
+
+We need $q^2 - p^2 = 48$, i.e., $(q-p)(q+p) = 48$, with $p$ and $q$ prime and $q > p$.
+
+Since $q$ and $p$ are both odd or both even. If both are odd, $q-p$ and $q+p$ are both even; if $p=2$, $q$ is odd so $q-p$ and $q+p$ are both odd. Let's check:
+
+**Case $p = 2$:** $q^2 = 4 + 48 = 52$. $\sqrt{52}$ is not an integer. No solution.
+
+**Case $p$ and $q$ both odd:** $(q-p)(q+p)=48$. Factor $48$ with both factors even: $48 = 2 \times 24 = 4 \times 12 = 6 \times 8$.
+- $q-p=2,\, q+p=24$: $q=13,\, p=11$. Both prime. ✓ $(n=121)$
+- $q-p=4,\, q+p=12$: $q=8$ (not prime). ✗
+- $q-p=6,\, q+p=8$: $q=7,\, p=1$ (not prime). ✗
+
+Only one solution: $n = 121$, giving $p = 11$, $q = 13$, and $n+48 = 169 = 13^2$.
+
+Answer: **B**.
+</Solution>

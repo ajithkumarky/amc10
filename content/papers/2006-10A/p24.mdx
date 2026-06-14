@@ -1,0 +1,31 @@
+---
+year: 2006
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: B
+choices: ['$\dfrac{1}{8}$', '$\dfrac{1}{6}$', '$\dfrac{1}{4}$', '$\dfrac{1}{3}$', '$\dfrac{1}{2}$']
+---
+
+<Problem>
+Centers of adjacent faces of a unit cube are joined to form a regular octahedron. What is the volume of this octahedron?
+</Problem>
+
+<Solution>
+A unit cube has 6 faces. The centers of the 6 faces are the 6 vertices of the octahedron. Label the cube with vertices at coordinates 0 and 1. The face centers are at:
+$$\left(\tfrac{1}{2},\tfrac{1}{2},0\right),\; \left(\tfrac{1}{2},\tfrac{1}{2},1\right),\; \left(\tfrac{1}{2},0,\tfrac{1}{2}\right),\; \left(\tfrac{1}{2},1,\tfrac{1}{2}\right),\; \left(0,\tfrac{1}{2},\tfrac{1}{2}\right),\; \left(1,\tfrac{1}{2},\tfrac{1}{2}\right).$$
+
+Shifting by $\left(\tfrac{1}{2},\tfrac{1}{2},\tfrac{1}{2}\right)$, these become $(\pm\tfrac{1}{2}, 0, 0)$, $(0, \pm\tfrac{1}{2}, 0)$, $(0, 0, \pm\tfrac{1}{2})$ — a regular octahedron with "radius" $a = \tfrac{1}{2}$.
+
+A regular octahedron with vertices at distance $a$ from center along each axis has edge length $a\sqrt{2}$ and volume $\dfrac{\sqrt{2}}{3}(a\sqrt{2})^3 = \dfrac{4a^3\sqrt{2}}{3\sqrt{2}}$... 
+
+More directly: the volume of a regular octahedron with side length $s$ is $\dfrac{s^3\sqrt{2}}{3}$.
+
+The edge length here is the distance between two adjacent face centers, e.g., $\left(\tfrac{1}{2},\tfrac{1}{2},0\right)$ and $\left(\tfrac{1}{2},0,\tfrac{1}{2}\right)$:
+$$s = \sqrt{0 + \tfrac{1}{4} + \tfrac{1}{4}} = \frac{1}{\sqrt{2}}.$$
+
+Volume $= \dfrac{s^3\sqrt{2}}{3} = \dfrac{\left(\tfrac{1}{\sqrt{2}}\right)^3 \sqrt{2}}{3} = \dfrac{\tfrac{1}{2\sqrt{2}} \cdot \sqrt{2}}{3} = \dfrac{\tfrac{1}{2}}{3} = \dfrac{1}{6}$.
+
+Answer: **B**.
+</Solution>

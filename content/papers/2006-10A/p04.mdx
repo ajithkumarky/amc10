@@ -1,0 +1,25 @@
+---
+year: 2006
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 1
+answer: E
+choices: ["$17$", "$19$", "$21$", "$22$", "$23$"]
+---
+
+<Problem>
+A digital watch displays hours and minutes with AM and PM. What is the largest possible sum of the digits in the display?
+</Problem>
+
+<Solution>
+The display shows time in the format H:MM or HH:MM (hours 1–12, minutes 00–59).
+
+To maximize the digit sum, we want each digit as large as possible. The minutes can be at most 59, giving digits 5 and 9 (sum = 14). For the hours, we want the largest digit sum: 9 gives digit sum 9 (time 9:59), but the hour 9 is a single digit. In HH format, 10 gives 1+0 = 1, 11 gives 1+1 = 2, 12 gives 1+2 = 3.
+
+So the best hour is 9 (single digit, contributes 9). Total: $9 + 5 + 9 = 23$.
+
+Check: 9:59 is valid. Sum = $9 + 5 + 9 = 23$.
+
+Answer: **E**.
+</Solution>

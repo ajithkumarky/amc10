@@ -1,0 +1,49 @@
+---
+year: 2006
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: A
+choices: ['$\dfrac{1}{2}$', '$\dfrac{\sqrt{2}}{2}$', '$\dfrac{\sqrt{3}}{2}$', '$\sqrt{2}$', '$\dfrac{2\sqrt{3}}{3}$']
+---
+
+<Problem>
+In rectangle $ADEH$, points $B$ and $C$ trisect $\overline{AD}$, and points $G$ and $F$ trisect $\overline{HE}$. In addition, $AH = AC = 2$ and $AD = 3$. What is the area of quadrilateral $WXYZ$ shown in the figure?
+
+The rectangle has vertices $A, B, C, D$ along the top (left to right) and $H, G, F, E$ along the bottom (left to right). Four line segments are drawn: $\overline{AF}$, $\overline{BE}$, $\overline{DG}$, and $\overline{CH}$. These four segments intersect to form interior quadrilateral $WXYZ$, where $W$ is near the top, $X$ near the right, $Y$ near the bottom, $Z$ near the left.
+</Problem>
+
+<Solution>
+Set up coordinates: $H = (0,0)$, $E = (3,0)$, $A = (0,2)$, $D = (3,2)$. Then $B = (1,2)$, $C = (2,2)$, $G = (1,0)$, $F = (2,0)$.
+
+The four lines are:
+- $\overline{AF}$: from $A=(0,2)$ to $F=(2,0)$. Slope $= \dfrac{0-2}{2-0} = -1$. Equation: $y = -x + 2$.
+- $\overline{BE}$: from $B=(1,2)$ to $E=(3,0)$. Slope $= \dfrac{0-2}{3-1} = -1$. Equation: $y = -(x-1)+2 = -x+3$.
+- $\overline{DG}$: from $D=(3,2)$ to $G=(1,0)$. Slope $= \dfrac{0-2}{1-3} = 1$. Equation: $y = (x-1)$.
+- $\overline{CH}$: from $C=(2,2)$ to $H=(0,0)$. Slope $= \dfrac{2-0}{2-0} = 1$. Equation: $y = x$.
+
+Find the four vertices of $WXYZ$:
+
+$W$ = intersection of $\overline{AF}$ and $\overline{BE}$... these are parallel (both slope $-1$). So $W$ is the intersection of $\overline{AF}$ and $\overline{CH}$:
+$-x+2 = x \Rightarrow x = 1, y = 1$. So $Z = (1,1)$.
+
+$X$ = intersection of $\overline{BE}$ and $\overline{DG}$:
+$-x+3 = x-1 \Rightarrow 2x = 4 \Rightarrow x=2, y=1$. So $X = (2,1)$.
+
+$W$ = intersection of $\overline{AF}$ and $\overline{DG}$:
+$-x+2 = x-1 \Rightarrow 2x = 3 \Rightarrow x=\tfrac{3}{2}, y=\tfrac{1}{2}$. So $Y = \left(\tfrac{3}{2}, \tfrac{1}{2}\right)$.
+
+$W$ top vertex = intersection of $\overline{BE}$ and $\overline{CH}$:
+$-x+3 = x \Rightarrow x=\tfrac{3}{2}, y=\tfrac{3}{2}$. So $W = \left(\tfrac{3}{2}, \tfrac{3}{2}\right)$.
+
+The four vertices are $W=\left(\tfrac{3}{2},\tfrac{3}{2}\right)$, $X=(2,1)$, $Y=\left(\tfrac{3}{2},\tfrac{1}{2}\right)$, $Z=(1,1)$.
+
+This is a rhombus (by symmetry) with diagonals $WY$ (vertical) and $XZ$ (horizontal).
+
+$|WY| = \tfrac{3}{2} - \tfrac{1}{2} = 1$. $|XZ| = 2 - 1 = 1$.
+
+Area $= \dfrac{1}{2} \times 1 \times 1 = \dfrac{1}{2}$.
+
+Answer: **A**.
+</Solution>

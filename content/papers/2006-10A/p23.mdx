@@ -1,0 +1,34 @@
+---
+year: 2006
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: B
+choices: ['$13$', '$\dfrac{44}{3}$', '$\sqrt{221}$', '$\sqrt{255}$', '$\dfrac{55}{3}$']
+---
+
+<Problem>
+Circles with centers $A$ and $B$ have radii $3$ and $8$, respectively. A common internal tangent intersects the circles at $C$ and $D$, respectively. Lines $AB$ and $CD$ intersect at $E$, and $AE = 5$. What is $CD$?
+
+The two circles are on opposite sides of point $E$ on line $AB$. The tangent line through $E$ touches the circle centered at $A$ (radius 3) at point $C$, and the circle centered at $B$ (radius 8) at point $D$. Since it is an internal tangent, $E$ lies between $A$ and $B$ on segment $AB$.
+</Problem>
+
+<Solution>
+Since the tangent line from $E$ to circle $A$ has length $EC$, and $AE = 5$ with radius $AC = 3$:
+$$EC = \sqrt{AE^2 - AC^2} = \sqrt{25 - 9} = \sqrt{16} = 4.$$
+
+For the tangent from external point $E$ to circle $B$: two tangent segments from the same external point to a circle are equal, so we need $BE$.
+
+Since the tangent is internal, $E$ lies between $A$ and $B$. The tangent ratios from an external point satisfy $\dfrac{AE}{BE} = \dfrac{r_A}{r_B} = \dfrac{3}{8}$ (since $E$ divides $AB$ internally in the ratio of the radii for an internal tangent).
+
+With $AE = 5$ and $\dfrac{AE}{BE} = \dfrac{3}{8}$, we get $BE = \dfrac{8 \times 5}{3} = \dfrac{40}{3}$.
+
+Then:
+$$ED = \sqrt{BE^2 - BD^2} = \sqrt{\left(\frac{40}{3}\right)^2 - 8^2} = \sqrt{\frac{1600}{9} - 64} = \sqrt{\frac{1600 - 576}{9}} = \sqrt{\frac{1024}{9}} = \frac{32}{3}.$$
+
+Therefore:
+$$CD = CE + ED = 4 + \frac{32}{3} = \frac{12}{3} + \frac{32}{3} = \frac{44}{3}.$$
+
+Answer: **B**.
+</Solution>

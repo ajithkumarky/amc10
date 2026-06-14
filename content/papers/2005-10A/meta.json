@@ -1,0 +1,10 @@
+{
+  "year": 2005,
+  "ab": "10A",
+  "title": "AMC 10A 2005",
+  "date": "2005-02-01",
+  "source": "https://artofproblemsolving.com/wiki/index.php/2005_AMC_10A_Problems",
+  "skipped": [
+    { "n": 8, "reason": "complex Asymptote diagram with foot-of-perpendicular construction; faithful figure impractical and clean solution cannot be derived without the figure" }
+  ]
+}

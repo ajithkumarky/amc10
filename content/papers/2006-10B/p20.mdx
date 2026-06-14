@@ -1,0 +1,30 @@
+---
+year: 2006
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: E
+choices: ["4000", "4040", "4400", "$40{,}000$", "$40{,}400$"]
+---
+
+<Problem>
+In rectangle $ABCD$, we have $A = (6, -22)$, $B = (2006, 178)$, $D = (8, y)$, for some integer $y$. What is the area of rectangle $ABCD$?
+</Problem>
+
+<Solution>
+**Find side $AB$:** $\vec{AB} = (2006-6, 178-(-22)) = (2000, 200)$. The length $|AB| = \sqrt{2000^2 + 200^2} = 200\sqrt{101}$.
+
+**Side $AD$ must be perpendicular to $AB$:** A vector perpendicular to $(2000, 200)$ is $(-200, 2000)$ or $(1, -10)$ scaled. We need $D = A + t(-200, 2000)$ for some scalar $t$:
+$$D = (6 - 200t,\; -22 + 2000t).$$
+
+We know $D = (8, y)$, so $6 - 200t = 8 \Rightarrow t = -\dfrac{2}{200} = -\dfrac{1}{100}$.
+
+Then $y = -22 + 2000\cdot\left(-\dfrac{1}{100}\right) = -22 - 20 = -42$.
+
+**Length $AD$:** $\vec{AD} = (8-6, -42-(-22)) = (2, -20)$. Length $|AD| = \sqrt{4 + 400} = \sqrt{404} = 2\sqrt{101}$.
+
+**Area:** $|AB| \times |AD| = 200\sqrt{101} \times 2\sqrt{101} = 400 \times 101 = 40{,}400$.
+
+Answer: **E**.
+</Solution>

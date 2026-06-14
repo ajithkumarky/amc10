@@ -1,0 +1,30 @@
+---
+year: 2006
+paper: "10A"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 5
+answer: C
+choices: ["$5$", "$10$", "$30$", "$90$", "$210$"]
+---
+
+<Problem>
+Two farmers agree that pigs are worth $\textdollar 300$ and that goats are worth $\textdollar 210$. When one farmer owes the other money, he pays the debt in pigs or goats, with "change" received in the form of goats or pigs as necessary. What is the amount of the smallest positive debt that can be resolved in this way?
+</Problem>
+
+<Solution>
+A debt of $D$ dollars is resolvable if there exist non-negative integers $p, q, r, s$ such that:
+$$300p - 210q = D \quad \text{or equivalently} \quad 300p + 210r = D + 210q + 300s$$
+
+More precisely, $D$ can be expressed as $300p - 210q$ for integers $p, q$ (which may be negative, but in practice one farmer pays pigs and receives goats as change). The smallest positive value of $300p - 210q$ over all integers $p, q$ is $\gcd(300, 210)$.
+
+$$\gcd(300, 210) = \gcd(210, 90) = \gcd(90, 30) = 30.$$
+
+The smallest positive debt resolvable is $\textdollar 30$.
+
+Verify: $300 \times 1 - 210 \times 1 = 90 \neq 30$. Try $300 \times 3 - 210 \times 4 = 900 - 840 = 60$. Try $300 \times 7 - 210 \times 10 = 2100 - 2100 = 0$. Try $300 \times 3 - 210 \times 3 = 900 - 630 = 270$. 
+
+Check $\$30$: $210 \times 2 - 300 \times 1 = 420 - 300 = 120$; $300 \times 2 - 210 \times 2 = 600-420=180$; $210 \times 1 - 300 \times 0 = 210$. By Bezout: $\gcd(300,210)=30$, and $30 = 300 \times 3 - 210 \times \frac{870}{210}$... The Euclidean algorithm gives $30 = 300 \cdot (-2) + 210 \cdot 3$, i.e., Farmer A pays 3 goats and receives 2 pigs as change: $3 \times 210 - 2 \times 300 = 630 - 600 = 30$. ✓
+
+Answer: **C**.
+</Solution>

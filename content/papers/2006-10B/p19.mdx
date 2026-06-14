@@ -1,0 +1,34 @@
+---
+year: 2006
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: A
+choices: ['$\dfrac{\pi}{3}+1-\sqrt{3}$', '$\dfrac{\pi}{2}(2-\sqrt{3})$', '$\pi(2-\sqrt{3})$', '$\dfrac{\pi}{6}+\dfrac{\sqrt{3}+1}{2}$', '$\dfrac{\pi}{3}-1+\sqrt{3}$']
+---
+
+<Problem>
+A circle of radius $2$ is centered at $O$. Square $OABC$ has side length $1$. Sides $AB$ and $CB$ are extended past $B$ to meet the circle at $D$ and $E$, respectively. What is the area of the shaded region, which is bounded by $BD$, $BE$, and the minor arc connecting $D$ and $E$?
+
+Place $O$ at the origin, $A = (1,0)$, $C = (0,1)$, $B = (1,1)$. Side $AB$ (the vertical line $x=1$) extended meets the circle at $D = (1, \sqrt{3})$. Side $CB$ (the horizontal line $y=1$) extended meets the circle at $E = (\sqrt{3}, 1)$.
+</Problem>
+
+<Solution>
+With coordinates $O = (0,0)$, $B = (1,1)$, $D = (1,\sqrt{3})$, $E = (\sqrt{3},1)$:
+
+**Central angle for arc $DE$:** $D$ is at angle $60^\circ$ and $E$ is at angle $30^\circ$ on the circle of radius 2. The minor arc $DE$ subtends an angle of $30^\circ = \dfrac{\pi}{6}$ at $O$.
+
+**Circular segment above chord $DE$:** The arc bows away from $O$ and $B$ (both lie on the same side of chord $DE$). The segment between the arc and the chord has area:
+$$\text{Sector } ODE - \triangle ODE = \frac{1}{2}(4)\!\left(\frac{\pi}{6}\right) - \frac{1}{2}|1\cdot1 - \sqrt{3}\cdot\sqrt{3}| = \frac{\pi}{3} - \frac{1}{2}(2) = \frac{\pi}{3} - 1.$$
+
+**Area of triangle $BDE$:** Using the cross product with $B=(1,1)$, $D=(1,\sqrt{3})$, $E=(\sqrt{3},1)$:
+$$\text{Area} = \frac{1}{2}|(\vec{BD})\times(\vec{BE})| = \frac{1}{2}|(0)(\sqrt{3}-1) - (\sqrt{3}-1)(\sqrt{3}-1)\cdot(-1)|\ldots$$
+
+Directly: $\triangle BDE$ has base $BD = \sqrt{3}-1$ (vertical) and base $BE = \sqrt{3}-1$ (horizontal), with a right angle at $B$. Area $= \dfrac{1}{2}(\sqrt{3}-1)^2 = \dfrac{1}{2}(4-2\sqrt{3}) = 2-\sqrt{3}$.
+
+**Total shaded area** = circular segment + $\triangle BDE$:
+$$\left(\frac{\pi}{3} - 1\right) + (2 - \sqrt{3}) = \frac{\pi}{3} + 1 - \sqrt{3}.$$
+
+Answer: **A**.
+</Solution>

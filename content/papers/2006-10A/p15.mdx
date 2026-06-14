@@ -1,0 +1,28 @@
+---
+year: 2006
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: D
+choices: ["$29$", "$42$", "$45$", "$47$", "$50$"]
+---
+
+<Problem>
+Odell and Kershaw run for 30 minutes on a circular track. Odell runs clockwise at 250 m/min and uses the inner lane with a radius of 50 meters. Kershaw runs counterclockwise at 300 m/min and uses the outer lane with a radius of 60 meters, starting on the same radial line as Odell. How many times after the start do they pass each other?
+</Problem>
+
+<Solution>
+Since they run in opposite directions, they pass each other whenever the combined angle they have traveled (measured along their respective circles) equals a full circle relative to each other.
+
+Think of their angular speeds. Odell's angular speed: $\dfrac{250}{50} = 5$ rad/min (clockwise). Kershaw's angular speed: $\dfrac{300}{60} = 5$ rad/min (counterclockwise).
+
+Since they move in opposite directions, their combined angular closing rate is $5 + 5 = 10$ rad/min.
+
+They pass each other every time the combined angle increases by $2\pi$ radians. Number of times they pass in 30 minutes:
+$$\frac{10 \times 30}{2\pi} = \frac{300}{2\pi} \approx \frac{300}{6.2832} \approx 47.75.$$
+
+They pass $\lfloor 47.75 \rfloor = 47$ times after the start (not counting the initial moment at $t=0$).
+
+Answer: **D**.
+</Solution>
