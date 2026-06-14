@@ -1,0 +1,54 @@
+---
+year: 2020
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: D
+choices: ['$330$', '$340$', '$350$', '$360$', '$370$']
+---
+
+<Problem>
+Quadrilateral $ABCD$ satisfies $\angle ABC = \angle ACD = 90^\circ$, $AC = 20$, and $CD = 30$. Diagonals $\overline{AC}$ and $\overline{BD}$ intersect at point $E$, and $AE = 5$. What is the area of quadrilateral $ABCD$?
+</Problem>
+
+<Solution>
+**Setting up coordinates.** Place $A$ and $C$ on the $x$-axis with $A = (0, 0)$ and $C = (20, 0)$.
+
+**Finding $B$.** Since $\angle ABC = 90^\circ$, point $B$ lies on the circle with diameter $AC$. This circle has center $(10, 0)$ and radius $10$.
+
+**Finding $D$.** Since $\angle ACD = 90^\circ$, the angle at $C$ in triangle $ACD$ is $90^\circ$. So $CD \perp CA$. Since $CA$ lies along the $x$-axis, $CD$ is vertical: $D = (20, \pm 30)$. Take $D = (20, 30)$ (the other case gives the same area by symmetry).
+
+**Using the intersection point $E$.** Diagonals $AC$ and $BD$ meet at $E$ with $AE = 5$, so $E = (5, 0)$.
+
+Line $BD$ passes through $E = (5, 0)$ and $D = (20, 30)$. Its direction vector is $(15, 30)$, or simplified $(1, 2)$.
+
+Parametrize: $(5 + t, 2t)$. Point $B$ lies on the circle $(x-10)^2 + y^2 = 100$.
+
+$$(5 + t - 10)^2 + (2t)^2 = 100$$
+$$(t - 5)^2 + 4t^2 = 100$$
+$$t^2 - 10t + 25 + 4t^2 = 100$$
+$$5t^2 - 10t - 75 = 0$$
+$$t^2 - 2t - 15 = 0$$
+$$(t - 5)(t + 3) = 0.$$
+
+So $t = 5$ gives $B = (10, 10)$, and $t = -3$ gives $B = (2, -6)$.
+
+- If $t = 5$: $B = (10, 10)$. Check that $E$ is between $B$ and $D$: $B = (10,10)$, $E = (5,0)$, $D = (20,30)$. Along the line, $t$ goes from $5$ (at $B$) through... but wait, $E$ corresponds to $t = 0$. We need $E$ to be between $B$ and $D$: $B$ at $t=5$ and $D$ at $t=15$. $E$ at $t=0$ is not between them. So this case may not have $BD$ crossing $AC$ between $B$ and $D$.
+
+- If $t = -3$: $B = (2, -6)$. Then $B$ is at $t = -3$, $E$ at $t = 0$, $D$ at $t = 15$. So $E$ is indeed between $B$ and $D$. This is the valid case.
+
+**Computing the area of $ABCD$.**
+
+We have $A = (0,0)$, $B = (2,-6)$, $C = (20,0)$, $D = (20,30)$.
+
+Using the shoelace formula:
+
+$$\text{Area} = \frac{1}{2} |x_A(y_B - y_D) + x_B(y_C - y_A) + x_C(y_D - y_B) + x_D(y_A - y_C)|$$
+
+$$= \frac{1}{2} |0(-6 - 30) + 2(0 - 0) + 20(30 - (-6)) + 20(0 - 0)|$$
+
+$$= \frac{1}{2} |0 + 0 + 20 \cdot 36 + 0| = \frac{1}{2} \cdot 720 = 360.$$
+
+Answer: **D**.
+</Solution>

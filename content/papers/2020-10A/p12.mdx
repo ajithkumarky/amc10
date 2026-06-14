@@ -1,0 +1,37 @@
+---
+year: 2020
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: C
+choices: ["$48$", "$72$", "$96$", "$144$", "$192$"]
+---
+
+<Problem>
+Triangle $AMC$ is isosceles with $AM = AC$. Medians $\overline{MV}$ and $\overline{CU}$ are perpendicular to each other, and $MV = CU = 12$. What is the area of $\triangle AMC$?
+</Problem>
+
+<Solution>
+Let $P$ be the centroid (the intersection of the medians). The centroid divides each median in a $2\!:\!1$ ratio from the vertex, so:
+
+$$MP = \tfrac{2}{3}(12) = 8, \quad PV = 4, \quad CP = 8, \quad PU = 4.$$
+
+Place $P$ at the origin with $\overline{MV}$ along the $x$-axis and $\overline{CU}$ along the $y$-axis (they are perpendicular). Then:
+
+$$M = (-8,\, 0), \quad V = (4,\, 0), \quad C = (0,\, 8), \quad U = (0,\,-4).$$
+
+Since $V$ is the midpoint of $\overline{AC}$ and $U$ is the midpoint of $\overline{AM}$, we recover $A$:
+
+$$A = 2V - C = 2(4,0) - (0,8) = (8, -8).$$
+
+**Verify:** $U = \dfrac{A+M}{2} = \dfrac{(8,-8)+(-8,0)}{2} = (0,-4)$. ✓
+
+Also, $AM = \sqrt{(8-(-8))^2+(-8-0)^2} = \sqrt{256+64} = \sqrt{320}$ and $AC = \sqrt{(8-0)^2+(-8-8)^2} = \sqrt{64+256} = \sqrt{320}$, confirming $AM = AC$. ✓
+
+**Area** using the cross-product formula with $\vec{AM} = (-16,8)$ and $\vec{AC} = (-8,16)$:
+
+$$[\triangle AMC] = \tfrac{1}{2}|(-16)(16)-(8)(-8)| = \tfrac{1}{2}|-256+64| = \tfrac{192}{2} = 96.$$
+
+Answer: **C**.
+</Solution>

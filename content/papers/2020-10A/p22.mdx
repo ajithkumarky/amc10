@@ -1,0 +1,61 @@
+---
+year: 2020
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: A
+choices: ['$22$', '$23$', '$24$', '$25$', '$26$']
+---
+
+<Problem>
+For how many positive integers $n \le 1000$ is
+
+$$\left\lfloor \dfrac{998}{n} \right\rfloor + \left\lfloor \dfrac{999}{n} \right\rfloor + \left\lfloor \dfrac{1000}{n} \right\rfloor$$
+
+not divisible by $3$? (Recall that $\lfloor x \rfloor$ is the greatest integer less than or equal to $x$.)
+</Problem>
+
+<Solution>
+For any real $x$, write $x = q + \theta$ where $q = \lfloor x \rfloor$ and $0 \le \theta < 1$. The key identity is:
+
+$$\left\lfloor x \right\rfloor + \left\lfloor x + \frac{1}{3} \right\rfloor + \left\lfloor x + \frac{2}{3} \right\rfloor = \lfloor 3x \rfloor.$$
+
+But our three terms are $\lfloor 998/n \rfloor$, $\lfloor 999/n \rfloor$, $\lfloor 1000/n \rfloor$.
+
+**Case 1: $n$ does not divide any of $998, 999, 1000$.**
+
+Then $\lfloor 998/n \rfloor = \lfloor 999/n \rfloor = \lfloor 1000/n \rfloor$ (all three floors are equal, since there is no integer in the interval $(998/n, 1000/n]$ — this happens when no multiple of $n$ lies in $\{999, 1000\}$... actually we need no multiple of $n$ in $\{999, 1000, 1001\}$ minus overlap).
+
+More precisely, the three floors are equal (to some value $q$) if and only if $qn \le 998$ and $(q+1)n > 1000$, i.e., there is no multiple of $n$ in $\{999, 1000, 1001\}$... Actually the floors can differ by at most 1 each, and the sum $S = \lfloor 998/n \rfloor + \lfloor 999/n \rfloor + \lfloor 1000/n \rfloor$.
+
+If all three floors equal $q$, then $S = 3q \equiv 0 \pmod{3}$.
+
+If exactly one floor increases (one multiple of $n$ lies in $\{999, 1000\}$, or one of the fractions crosses an integer):
+
+The floor $\lfloor k/n \rfloor$ increases from $\lfloor (k-1)/n \rfloor$ by 1 exactly when $n \mid k$. So:
+- $\lfloor 999/n \rfloor > \lfloor 998/n \rfloor$ iff $n \mid 999$.
+- $\lfloor 1000/n \rfloor > \lfloor 999/n \rfloor$ iff $n \mid 1000$.
+
+**Sub-case A: $n \nmid 999$ and $n \nmid 1000$.** All three floors are equal (to $\lfloor 998/n \rfloor$). $S = 3q \equiv 0$. Divisible by 3.
+
+**Sub-case B: $n \mid 999$ but $n \nmid 1000$.** Let $q = 999/n$. Then $\lfloor 998/n \rfloor = q-1$, $\lfloor 999/n \rfloor = q$, $\lfloor 1000/n \rfloor = q$. So $S = (q-1) + q + q = 3q - 1 \equiv -1 \equiv 2 \pmod{3}$. Not divisible by 3.
+
+**Sub-case C: $n \nmid 999$ but $n \mid 1000$.** Let $q = 1000/n$. Then $\lfloor 998/n \rfloor = q - 1$, $\lfloor 999/n \rfloor = q-1$, $\lfloor 1000/n \rfloor = q$. So $S = (q-1) + (q-1) + q = 3q - 2 \equiv -2 \equiv 1 \pmod{3}$. Not divisible by 3.
+
+**Sub-case D: $n \mid 999$ and $n \mid 1000$.** Then $n \mid \gcd(999, 1000) = 1$, so $n = 1$. Let $q = 998$. Then $S = 998 + 999 + 1000 = 2997 = 3 \times 999$. Divisible by 3.
+
+So $S$ is NOT divisible by 3 exactly when $n \mid 999$ XOR $n \mid 1000$ (sub-cases B and C, excluding $n = 1$).
+
+**Count divisors of 999 with $n \le 1000$:** $999 = 3^3 \times 37$. Number of divisors: $(3+1)(1+1) = 8$. List: $1, 3, 9, 27, 37, 111, 333, 999$. All are $\le 1000$.
+
+Exclude $n = 1$ (sub-case D): 7 values from sub-case B.
+
+**Count divisors of 1000 with $n \le 1000$:** $1000 = 2^3 \times 5^3$. Number of divisors: $(3+1)(3+1) = 16$. List: $1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 125, 200, 250, 500, 1000$. All are $\le 1000$.
+
+Exclude $n = 1$: 15 values from sub-case C.
+
+**Total:** $7 + 15 = 22$.
+
+Answer: **A**.
+</Solution>

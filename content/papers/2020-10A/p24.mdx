@@ -1,0 +1,99 @@
+---
+year: 2020
+paper: "10A"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 5
+answer: C
+choices: ['$12$', '$15$', '$18$', '$21$', '$24$']
+---
+
+<Problem>
+Let $n$ be the least positive integer greater than $1000$ for which
+
+$$\gcd(63,\, n+120) = 21 \quad \text{and} \quad \gcd(n+63,\, 120) = 60.$$
+
+What is the sum of the digits of $n$?
+</Problem>
+
+<Solution>
+**Analyze the first condition: $\gcd(63, n+120) = 21$.**
+
+$63 = 3^2 \times 7$ and $21 = 3 \times 7$.
+
+$\gcd(63, n+120) = 21$ means:
+- $21 \mid (n+120)$, so $n + 120 \equiv 0 \pmod{21}$, i.e., $n \equiv -120 \equiv -120 + 6 \times 21 = 6 \pmod{21}$.
+- $63 \nmid (n+120)$, meaning $3^2 \times 7 \nmid (n+120)$, i.e., $63 \nmid (n+120)$. This means $n + 120 \not\equiv 0 \pmod{63}$, i.e., $n \not\equiv -120 \pmod{63}$.
+
+$-120 \equiv -120 + 2 \times 63 = 6 \pmod{63}$.
+
+So: $n \equiv 6 \pmod{21}$ but $n \not\equiv 6 \pmod{63}$.
+
+The residues mod 63 that satisfy $n \equiv 6 \pmod{21}$ are $6, 27, 48$ (mod 63). Excluding $6$, we need $n \equiv 27$ or $48 \pmod{63}$.
+
+**Analyze the second condition: $\gcd(n+63, 120) = 60$.**
+
+$120 = 2^3 \times 3 \times 5$ and $60 = 2^2 \times 3 \times 5$.
+
+$\gcd(n+63, 120) = 60$ means:
+- $60 \mid (n+63)$, so $n \equiv -63 \pmod{60}$.
+- $120 \nmid (n+63)$.
+
+$-63 \equiv -63 + 2 \times 60 = 57 \pmod{60}$.
+And $-63 \equiv -63 + 120 = 57 \pmod{120}$.
+
+So: $n \equiv 57 \pmod{60}$ but $n \not\equiv 57 \pmod{120}$.
+
+The residues mod 120 satisfying $n \equiv 57 \pmod{60}$ are $57$ and $117$. Excluding $57$, we need $n \equiv 117 \pmod{120}$.
+
+**Combine using CRT.** We need:
+- $n \equiv 27 \pmod{63}$ or $n \equiv 48 \pmod{63}$
+- $n \equiv 117 \pmod{120}$
+
+$\text{lcm}(63, 120) = \text{lcm}(9 \times 7, 8 \times 15) = \text{lcm}(63, 120)$. $63 = 3^2 \times 7$, $120 = 2^3 \times 3 \times 5$. $\text{lcm} = 2^3 \times 3^2 \times 5 \times 7 = 8 \times 9 \times 5 \times 7 = 2520$.
+
+**Sub-case 1: $n \equiv 27 \pmod{63}$ and $n \equiv 117 \pmod{120}$.**
+
+$n = 63a + 27 = 120b + 117$.
+$63a - 120b = 90$, or $7a - \frac{40b}{3} = 10$... let's use CRT directly.
+
+$n \equiv 27 \pmod{63}$ and $n \equiv 117 \pmod{120}$.
+
+Try $n = 120b + 117$. Need $120b + 117 \equiv 27 \pmod{63}$.
+$120 \equiv 120 - 63 = 57 \equiv 57 - 63 = -6 \pmod{63}$.
+$117 \equiv 117 - 63 = 54 \pmod{63}$.
+
+So: $-6b + 54 \equiv 27 \pmod{63}$, i.e., $-6b \equiv -27 \pmod{63}$, i.e., $6b \equiv 27 \pmod{63}$, i.e., $2b \equiv 9 \pmod{21}$.
+
+$\gcd(2, 21) = 1$, so multiply both sides by 11 (the inverse of 2 mod 21, since $2 \times 11 = 22 \equiv 1$):
+$b \equiv 99 \equiv 99 - 4 \times 21 = 99 - 84 = 15 \pmod{21}$.
+
+So $b = 21c + 15$, and $n = 120(21c + 15) + 117 = 2520c + 1800 + 117 = 2520c + 1917$.
+
+The smallest such $n > 1000$: $c = 0$ gives $n = 1917 > 1000$. ✓
+
+**Sub-case 2: $n \equiv 48 \pmod{63}$ and $n \equiv 117 \pmod{120}$.**
+
+$n = 120b + 117 \equiv 48 \pmod{63}$.
+$-6b + 54 \equiv 48 \pmod{63}$, i.e., $-6b \equiv -6 \pmod{63}$, i.e., $6b \equiv 6 \pmod{63}$, i.e., $2b \equiv 2 \pmod{21}$, i.e., $b \equiv 1 \pmod{21}$.
+
+So $b = 21c + 1$, $n = 120(21c+1) + 117 = 2520c + 237$.
+
+Smallest $n > 1000$: try $c = 1$: $n = 2520 + 237 = 2757 > 1917$.
+
+So the smallest $n > 1000$ is from sub-case 2 with $c = 0$ giving $n = 237$ (too small) or $c = 1$ giving $n = 2757$.
+
+Wait — sub-case 2: $c = 0$ gives $n = 237 < 1000$; $c = 1$ gives $2757$.
+
+Compare: Sub-case 1 gives $n = 1917$; Sub-case 2 gives $n = 2757$.
+
+The smallest $n > 1000$ is $n = 1917$.
+
+**Verify:** $1917 + 120 = 2037 = 3 \times 679 = 3 \times 7 \times 97 = 21 \times 97$. $\gcd(63, 2037) = \gcd(63, 21 \times 97)$. $63 = 21 \times 3$, so $\gcd(63, 2037) = 21 \times \gcd(3, 97) = 21 \times 1 = 21$. ✓
+
+$1917 + 63 = 1980$. $\gcd(1980, 120)$: $1980 = 120 \times 16 + 60$, so $\gcd(1980, 120) = \gcd(120, 60) = 60$. ✓
+
+**Sum of digits of 1917:** $1 + 9 + 1 + 7 = 18$.
+
+Answer: **C**.
+</Solution>

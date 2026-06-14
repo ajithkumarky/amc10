@@ -1,0 +1,41 @@
+---
+year: 2020
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: C
+choices: ["$1974.5$", "$1975.5$", "$1976.5$", "$1977.5$", "$1978.5$"]
+---
+
+<Problem>
+What is the median of the following list of $4040$ numbers?
+
+$$1, 2, 3, \ldots, 2020, 1^2, 2^2, 3^2, \ldots, 2020^2$$
+</Problem>
+
+<Solution>
+We have $4040$ numbers total, so the median is the average of the $2020$th and $2021$st values when the list is sorted.
+
+We need to count how many values in the combined sorted list are at most $x$.
+
+For any $x$ with $1 \le x \le 2020$:
+- The integers from $1$ to $2020$ contribute exactly $x$ values that are $\le x$.
+- The squares $1^2, 2^2, \ldots, 2020^2$ contribute $\lfloor \sqrt{x} \rfloor$ values that are $\le x$.
+
+So the number of elements $\le x$ is $x + \lfloor\sqrt{x}\rfloor$.
+
+We want the smallest $x$ such that $x + \lfloor\sqrt{x}\rfloor \ge 2020$.
+
+Testing: $\lfloor\sqrt{1976}\rfloor = 44$ (since $44^2 = 1936 \le 1976 < 2025 = 45^2$).
+
+$$1976 + 44 = 2020.$$
+
+So exactly $2020$ values in the sorted list are $\le 1976$, meaning the $2020$th element is $1976$.
+
+Similarly, $1977 + \lfloor\sqrt{1977}\rfloor = 1977 + 44 = 2021$, so the $2021$st element is $1977$.
+
+The median is $\dfrac{1976 + 1977}{2} = 1976.5$.
+
+Answer: **C**.
+</Solution>

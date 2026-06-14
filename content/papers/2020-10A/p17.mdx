@@ -1,0 +1,50 @@
+---
+year: 2020
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 4
+answer: E
+choices: ['$4900$', '$4950$', '$5000$', '$5050$', '$5100$']
+---
+
+<Problem>
+Define
+
+$$P(x) = (x - 1^2)(x - 2^2) \cdots (x - 100^2).$$
+
+How many integers $n$ are there such that $P(n) \le 0$?
+</Problem>
+
+<Solution>
+$P(x)$ is a degree-100 polynomial with roots at $1^2, 2^2, \ldots, 100^2$ (i.e., $1, 4, 9, 16, \ldots, 10000$). These are 100 distinct perfect squares.
+
+**When is $P(n) = 0$?** Exactly at the 100 roots: $n \in \{1, 4, 9, 16, \ldots, 10000\}$.
+
+**When is $P(n) < 0$?** The product of 100 factors is negative when an odd number of factors are negative. As $n$ increases through the real line, the sign of $P(n)$ changes at each root. Since the leading coefficient is positive and the degree is even, $P(n) > 0$ for very large or very small $n$.
+
+The sign pattern in the intervals between consecutive roots (ordered $1 < 4 < 9 < \cdots < 10000$):
+
+- $n < 1$: all 100 factors negative $\Rightarrow$ product positive (even number of negatives)
+- $1 < n < 4$: 99 factors negative $\Rightarrow$ product negative (valid)
+- $4 < n < 9$: 98 factors negative $\Rightarrow$ positive
+- Continuing: the intervals $(1^2, 2^2), (3^2, 4^2), (5^2, 6^2), \ldots, (99^2, 100^2)$ give a negative product (odd number of negative factors).
+
+There are exactly 50 such valid intervals: $(1,4), (9,16), (25,36), \ldots, (9801, 10000)$, i.e., the intervals $((2k-1)^2, (2k)^2)$ for $k = 1, 2, \ldots, 50$.
+
+**Count the integers in each valid interval $((2k-1)^2, (2k)^2)$:**
+
+The number of integers strictly between $(2k-1)^2$ and $(2k)^2$ is
+
+$$(2k)^2 - (2k-1)^2 - 1 = (4k^2) - (4k^2 - 4k + 1) - 1 = 4k - 2.$$
+
+**Sum over all 50 intervals:**
+
+$$\sum_{k=1}^{50} (4k - 2) = 4 \cdot \frac{50 \cdot 51}{2} - 2 \cdot 50 = 4 \cdot 1275 - 100 = 5100 - 100 = 5000.$$
+
+**Add the 100 roots where $P(n) = 0$:**
+
+$$5000 + 100 = 5100.$$
+
+Answer: **E**.
+</Solution>

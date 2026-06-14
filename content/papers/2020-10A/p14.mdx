@@ -1,0 +1,47 @@
+---
+year: 2020
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 3
+answer: D
+choices: ['$360$', '$400$', '$420$', '$440$', '$480$']
+---
+
+<Problem>
+Real numbers $x$ and $y$ satisfy $x + y = 4$ and $x \cdot y = -2$. What is the value of
+
+$$x + \frac{x^3}{y^2} + \frac{y^3}{x^2} + y?$$
+</Problem>
+
+<Solution>
+We want to evaluate $x + y + \dfrac{x^3}{y^2} + \dfrac{y^3}{x^2}$.
+
+We already know $x + y = 4$, so we need $\dfrac{x^3}{y^2} + \dfrac{y^3}{x^2}$.
+
+Combine over the common denominator $x^2 y^2$:
+
+$$\frac{x^3}{y^2} + \frac{y^3}{x^2} = \frac{x^5 + y^5}{x^2 y^2}.$$
+
+**Finding $x^2 y^2$.**
+
+$(xy)^2 = (-2)^2 = 4$, so $x^2 y^2 = 4$.
+
+**Finding $x^5 + y^5$.**
+
+Use Newton's identity approach. Let $p_k = x^k + y^k$, $s = x+y = 4$, $p = xy = -2$.
+
+- $p_1 = s = 4$
+- $p_2 = s \cdot p_1 - 2p = 4 \cdot 4 - 2(-2) = 16 + 4 = 20$
+- $p_3 = s \cdot p_2 - p \cdot p_1 = 4 \cdot 20 - (-2)(4) = 80 + 8 = 88$
+- $p_4 = s \cdot p_3 - p \cdot p_2 = 4 \cdot 88 - (-2)(20) = 352 + 40 = 392$
+- $p_5 = s \cdot p_4 - p \cdot p_3 = 4 \cdot 392 - (-2)(88) = 1568 + 176 = 1744$
+
+**Putting it together.**
+
+$$\frac{x^5 + y^5}{x^2 y^2} = \frac{1744}{4} = 436.$$
+
+Therefore the answer is $4 + 436 = 440$.
+
+Answer: **D**.
+</Solution>

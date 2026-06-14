@@ -1,0 +1,49 @@
+---
+year: 2020
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: E
+choices: ['$3$', '$5$', '$12$', '$18$', '$23$']
+---
+
+<Problem>
+A positive integer divisor of $12!$ is chosen at random. The probability that the divisor chosen is a perfect square can be expressed as $\dfrac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. What is $m + n$?
+</Problem>
+
+<Solution>
+**Step 1: Prime factorization of $12!$.**
+
+$$12! = 2^{10} \cdot 3^5 \cdot 5^2 \cdot 7 \cdot 11.$$
+
+Check the exponents:
+- Powers of 2: $\lfloor 12/2 \rfloor + \lfloor 12/4 \rfloor + \lfloor 12/8 \rfloor = 6 + 3 + 1 = 10$
+- Powers of 3: $\lfloor 12/3 \rfloor + \lfloor 12/9 \rfloor = 4 + 1 = 5$
+- Powers of 5: $\lfloor 12/5 \rfloor = 2$
+- Powers of 7: $\lfloor 12/7 \rfloor = 1$
+- Powers of 11: $\lfloor 12/11 \rfloor = 1$
+
+**Step 2: Count total divisors.**
+
+$$\tau(12!) = (10+1)(5+1)(2+1)(1+1)(1+1) = 11 \cdot 6 \cdot 3 \cdot 2 \cdot 2 = 792.$$
+
+**Step 3: Count perfect-square divisors.**
+
+A divisor $d = 2^a \cdot 3^b \cdot 5^c \cdot 7^e \cdot 11^f$ is a perfect square when all exponents are even.
+- $a$: even values in $\{0,2,4,6,8,10\}$ — 6 choices
+- $b$: even values in $\{0,2,4\}$ — 3 choices
+- $c$: even values in $\{0,2\}$ — 2 choices
+- $e$: even values in $\{0\}$ — 1 choice
+- $f$: even values in $\{0\}$ — 1 choice
+
+Total: $6 \cdot 3 \cdot 2 \cdot 1 \cdot 1 = 36$.
+
+**Step 4: Compute the probability.**
+
+$$P = \frac{36}{792} = \frac{1}{22}.$$
+
+Since $\gcd(1, 22) = 1$, we have $m = 1$ and $n = 22$, giving $m + n = 23$.
+
+Answer: **E**.
+</Solution>

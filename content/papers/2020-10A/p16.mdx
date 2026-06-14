@@ -1,0 +1,33 @@
+---
+year: 2020
+paper: "10A"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 4
+answer: B
+choices: ['$0.3$', '$0.4$', '$0.5$', '$0.6$', '$0.7$']
+---
+
+<Problem>
+A point is chosen at random within the square in the coordinate plane whose vertices are $(0, 0)$, $(2020, 0)$, $(2020, 2020)$, and $(0, 2020)$. The probability that the point is within $d$ units of a lattice point is $\tfrac{1}{2}$. (A point $(x, y)$ is a lattice point if $x$ and $y$ are both integers.) What is $d$ to the nearest tenth?
+</Problem>
+
+<Solution>
+The square has side length 2020, so its area is $2020^2$. Because the square contains $2021^2$ lattice points and the problem is periodic with period 1, we can reduce to a single unit cell: the $1 \times 1$ square $[0,1]^2$.
+
+Within this unit cell, the region within distance $d$ of the nearest lattice point (at a corner) is a quarter-disk of radius $d$ centered at each corner. Since there are four corners but each contributes a quarter-disk, the total area within distance $d$ of a lattice point is $\pi d^2$, provided the disks don't overlap (i.e., $d \le \tfrac{1}{2}$).
+
+We need this area to equal $\tfrac{1}{2}$:
+
+$$\pi d^2 = \frac{1}{2}$$
+
+$$d^2 = \frac{1}{2\pi}$$
+
+$$d = \frac{1}{\sqrt{2\pi}} = \sqrt{\frac{1}{2\pi}}.$$
+
+Numerically: $2\pi \approx 6.2832$, so $d \approx \sqrt{0.1592} \approx 0.3989 \approx 0.4$.
+
+We should verify $d \le 0.5$: since $0.4 < 0.5$, the disks don't overlap and our formula is valid.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,134 @@
+---
+year: 2020
+paper: "10A"
+topic: number-theory
+subtopic: number-bases
+difficulty: 5
+answer: C
+choices: ['$117$', '$136$', '$137$', '$273$', '$306$']
+---
+
+<Problem>
+There exists a unique strictly increasing sequence of nonnegative integers $a_1 < a_2 < \cdots < a_k$ such that
+
+$$\frac{2^{289}+1}{2^{17}+1} = 2^{a_1} + 2^{a_2} + \cdots + 2^{a_k}.$$
+
+What is $k$?
+</Problem>
+
+<Solution>
+**Simplify the fraction.** Use the factorization for $x = 2^{17}$:
+
+$$\frac{x^{17} + 1}{x + 1} = x^{16} - x^{15} + x^{14} - \cdots - x + 1 = \sum_{j=0}^{16} (-1)^j x^{16-j} = \sum_{j=0}^{16} (-x)^{16-j} \cdot \frac{1}{(-1)^0}.$$
+
+More precisely:
+$$\frac{x^{17}+1}{x+1} = x^{16} - x^{15} + x^{14} - x^{13} + \cdots + x^2 - x + 1.$$
+
+(This alternating sum has 17 terms: $x^{16}, -x^{15}, x^{14}, \ldots, -x, 1$.)
+
+With $x = 2^{17}$:
+$$\frac{2^{289}+1}{2^{17}+1} = (2^{17})^{16} - (2^{17})^{15} + (2^{17})^{14} - \cdots - (2^{17})^1 + 1.$$
+
+$$= 2^{272} - 2^{255} + 2^{238} - \cdots - 2^{17} + 1.$$
+
+This is an alternating sum with 17 terms.
+
+**Convert to a sum of distinct powers of 2.** We need to eliminate the negative terms. Use the identity $-2^m = 2^m \cdot (-1) = 2^m(2^1 - 2^1) $... Instead, use the binary representation.
+
+Notice that $-2^{17k} + 2^{17(k-1)} = -2^{17k} + 2^{17k - 17}$. We can write this using the formula:
+
+$$-2^m = -(2^m) = 1 + 2 + 4 + \cdots + 2^{m-1} - (2^m + 2^m) + \ldots$$
+
+Actually, use: $-2^a + 2^b$ where $b < a$: this equals $-(2^a - 2^b) = -(2^b)(2^{a-b} - 1) = -(2^b)(2^{a-b} - 1)$, which doesn't simplify nicely.
+
+A cleaner approach: use the binary representation of the whole expression. Notice:
+
+$$S = \sum_{j=0}^{16} (-1)^{16-j} (2^{17})^{16-j} = \sum_{i=0}^{16} (-1)^i 2^{17i}$$
+
+where $i = 16-j$.
+
+So $S = 1 - 2^{17} + 2^{34} - 2^{51} + \cdots + 2^{272}$ (alternating, 17 terms with positive leading term $2^{272}$).
+
+Group consecutive pairs to handle negatives:
+
+$$S = 2^{272} + (-2^{255} + 2^{238}) + (-2^{221} + 2^{204}) + \cdots + (-2^{17} + 1).$$
+
+There are 8 such pairs (from $i=0,1$ through $i=14,15$) plus the lone $2^{272}$ term.
+
+For each pair $(-2^{17(2m+1)} + 2^{17 \cdot 2m}) = 2^{34m}(-2^{17} + 1)$:
+
+$$-2^{17} + 1 = 1 - 2^{17}.$$
+
+In binary, $1 - 2^{17}$ is negative. We need to express $S$ purely as a sum of distinct powers.
+
+Use the identity $2^n - 1 = 1 + 2 + 4 + \cdots + 2^{n-1}$ and $-2^a = -2^a$. We use the "borrow" method:
+
+$$-2^{17} + 1 = -(2^{17} - 1) = -(1 + 2 + \cdots + 2^{16}).$$
+
+This is still negative. Instead, work with larger groupings.
+
+**Better approach: long division / geometric sum.**
+
+Let $Q = 2^{16} - 2^{15} + 2^{14} - \cdots - 2 + 1$. Multiply by $2^{17} + 1$:
+
+$(2^{17}+1) \cdot Q = 2^{17} \cdot Q + Q$. 
+
+$2^{17} \cdot Q = 2^{33} - 2^{32} + \cdots + 2^{18} - 2^{17}$.
+$Q = 2^{16} - 2^{15} + \cdots - 2 + 1$.
+
+Adding: the $-2^{17}$ and any cancellations... actually (by the factorization) this gives $2^{289}+1$, which confirms $Q = \frac{2^{289}+1}{2^{17}+1}$ — but $Q$ here was a degree-16 polynomial in $2^{17}$, not the original.
+
+Wait, let me redo. With $x = 2^{17}$:
+$$\frac{x^{17}+1}{x+1} = x^{16} - x^{15} + \cdots - x + 1 = \sum_{i=0}^{16}(-1)^i x^{16-i}.$$
+
+This is an alternating sum in $x = 2^{17}$. Let's compute it as a binary number.
+
+$S = 2^{272} - 2^{255} + 2^{238} - 2^{221} + 2^{204} - 2^{187} + 2^{170} - 2^{153} + 2^{136} - 2^{119} + 2^{102} - 2^{85} + 2^{68} - 2^{51} + 2^{34} - 2^{17} + 2^0.$
+
+Use the identity: $2^{2k} - 2^{2k-1} = 2^{2k-1}$ and for non-consecutive powers, $2^a - 2^b = 2^b(2^{a-b} - 1) = 2^b \sum_{j=0}^{a-b-1} 2^j$.
+
+Let's combine pairs from bottom up:
+$$2^0 - 2^{17} = -(2^{17} - 1) = -\sum_{j=0}^{16} 2^j.$$
+
+This gives a large negative number, which is wrong — $S$ must be positive.
+
+Let's instead work top-down. Group starting from the largest:
+
+$$(2^{272} - 2^{255}) = 2^{255}(2^{17} - 1) = 2^{255} \cdot (2^{17}-1).$$
+
+$2^{17}-1 = \underbrace{11\ldots1}_{17} $ in binary $= \sum_{j=0}^{16} 2^j$.
+
+So $2^{272} - 2^{255} = \sum_{j=0}^{16} 2^{255+j}$.
+
+Similarly $(2^{238} - 2^{221}) = \sum_{j=0}^{16} 2^{221+j}$, and so on.
+
+Now:
+$$S = \underbrace{(2^{272} - 2^{255})}_{17 \text{ bits}} + \underbrace{(2^{238} - 2^{221})}_{17 \text{ bits}} + \cdots + \underbrace{(2^{34} - 2^{17})}_{17 \text{ bits}} + 1$$
+
+Each pair $(2^{34k+16} - 2^{34k-1}) = $ ... let me rewrite more carefully.
+
+Group as: $(2^{272} - 2^{255})$, $(2^{238} - 2^{221})$, $(2^{204} - 2^{187})$, $(2^{170} - 2^{153})$, $(2^{136} - 2^{119})$, $(2^{102} - 2^{85})$, $(2^{68} - 2^{51})$, $(2^{34} - 2^{17})$, and the lone $+1$.
+
+Each pair $2^{17(2m)} - 2^{17(2m-1)} = 2^{17(2m-1)}(2^{17}-1) = \sum_{j=0}^{16} 2^{17(2m-1)+j}$ for $m = 1, 2, \ldots, 8$.
+
+Pair $m=8$: $m=8 \Rightarrow$ exponent base $= 17 \cdot 15 = 255$. Bits at $255, 256, \ldots, 271$ (17 bits).
+Pair $m=7$: base $= 17 \cdot 13 = 221$. Bits at $221, 222, \ldots, 237$ (17 bits).
+Pair $m=6$: base $= 17 \cdot 11 = 187$. Bits at $187, \ldots, 203$ (17 bits).
+Pair $m=5$: base $= 17 \cdot 9 = 153$. Bits at $153, \ldots, 169$ (17 bits).
+Pair $m=4$: base $= 17 \cdot 7 = 119$. Bits at $119, \ldots, 135$ (17 bits).
+Pair $m=3$: base $= 17 \cdot 5 = 85$. Bits at $85, \ldots, 101$ (17 bits).
+Pair $m=2$: base $= 17 \cdot 3 = 51$. Bits at $51, \ldots, 67$ (17 bits).
+Pair $m=1$: base $= 17 \cdot 1 = 17$. Bits at $17, \ldots, 33$ (17 bits).
+
+Plus the lone bit at $0$.
+
+Check that ranges don't overlap: the pairs cover $[255, 271], [221, 237], [187, 203], [153, 169], [119, 135], [85, 101], [51, 67], [17, 33]$, and $\{0\}$. These are all disjoint (gaps between consecutive ranges: e.g., $238-271 = 237 < 238$, meaning 237 is the top of the second group and 255 is the bottom of the first — no overlap).
+
+Wait: pair $m=8$ covers bits $255, \ldots, 271$ and pair $m=7$ covers $221, \ldots, 237$. Gap is $238, 239, \ldots, 254$ — no overlap. Good.
+
+So $S$ is a sum of $8 \times 17 + 1 = 136 + 1 = 137$ distinct powers of 2.
+
+Therefore $k = \boxed{137}$.
+
+Answer: **C**.
+</Solution>

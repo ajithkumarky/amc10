@@ -1,0 +1,35 @@
+---
+year: 2020
+paper: "10A"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 4
+answer: C
+choices: ['$48$', '$64$', '$96$', '$128$', '$192$']
+---
+
+<Problem>
+Let $(a, b, c, d)$ be an ordered quadruple of not necessarily distinct integers, each one of them in the set $\{0, 1, 2, 3\}$. For how many such quadruples is it true that $a \cdot d - b \cdot c$ is odd? (For example, $(0, 3, 1, 1)$ is one such quadruple, because $0 \cdot 1 - 3 \cdot 1 = -3$ is odd.)
+</Problem>
+
+<Solution>
+For $ad - bc$ to be odd, the two terms $ad$ and $bc$ must have different parities — one is even and one is odd. A product of two integers is odd if and only if both integers are odd.
+
+In $\{0, 1, 2, 3\}$: the odd integers are $1$ and $3$ (2 choices), the even integers are $0$ and $2$ (2 choices). Each element is even with probability $\tfrac{1}{2}$ and odd with probability $\tfrac{1}{2}$.
+
+**Case 1: $ad$ is odd and $bc$ is even.**
+
+- $ad$ odd: $a$ odd AND $d$ odd — $2 \times 2 = 4$ ways.
+- $bc$ even: at least one of $b, c$ is even. Total pairs $(b,c)$: $4^2 = 16$. Both odd: $2 \times 2 = 4$ ways. So even product: $16 - 4 = 12$ ways.
+- Subtotal: $4 \times 12 = 48$.
+
+**Case 2: $ad$ is even and $bc$ is odd.**
+
+- $ad$ even: $16 - 4 = 12$ ways.
+- $bc$ odd: $4$ ways.
+- Subtotal: $12 \times 4 = 48$.
+
+**Total:** $48 + 48 = 96$.
+
+Answer: **C**.
+</Solution>

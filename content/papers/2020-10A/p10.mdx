@@ -1,0 +1,35 @@
+---
+year: 2020
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 2
+answer: B
+choices: ["$644$", "$658$", "$664$", "$720$", "$749$"]
+---
+
+<Problem>
+Seven cubes, whose volumes are $1$, $8$, $27$, $64$, $125$, $216$, and $343$ cubic units, are stacked vertically to form a tower in which the volumes of the cubes decrease from bottom to top. Except for the bottom cube, the bottom face of each cube lies completely on top of the cube below it. What is the total surface area of the tower (including the bottom) in square units?
+</Problem>
+
+<Solution>
+The side lengths of the cubes are $1, 2, 3, 4, 5, 6, 7$ (from top to bottom respectively, since volumes are $1^3, 2^3, \ldots, 7^3$). The tower goes from largest (bottom, side $7$) to smallest (top, side $1$).
+
+**Strategy:** Start with the surface area if all cubes were separate, then subtract the hidden faces where cubes touch.
+
+If the cubes were separate, total surface area would be $\sum_{k=1}^{7} 6k^2 = 6(1+4+9+16+25+36+49) = 6 \cdot 140 = 840$.
+
+At each interface between cube $k+1$ (above) and cube $k$ (below), where cube $k+1$ has side $s_{k+1}$ and cube $k$ has side $s_k$ with $s_{k+1} < s_k$:
+- The bottom face of cube $k+1$ (area $s_{k+1}^2$) is hidden.
+- The top face of cube $k$ is partially covered: a $s_{k+1} \times s_{k+1}$ square is hidden.
+
+So at each interface, the hidden area is $2s_{k+1}^2$ (once from below and once from above, each $s_{k+1}^2$).
+
+The cubes from bottom to top have sides $7, 6, 5, 4, 3, 2, 1$. The six interfaces involve upper cubes with sides $6, 5, 4, 3, 2, 1$.
+
+Total hidden area $= 2(6^2 + 5^2 + 4^2 + 3^2 + 2^2 + 1^2) = 2(36+25+16+9+4+1) = 2 \cdot 91 = 182$.
+
+Total surface area $= 840 - 182 = 658$.
+
+Answer: **B**.
+</Solution>

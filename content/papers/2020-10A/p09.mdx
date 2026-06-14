@@ -1,0 +1,31 @@
+---
+year: 2020
+paper: "10A"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 2
+answer: B
+choices: ["$9$", "$18$", "$27$", "$36$", "$77$"]
+---
+
+<Problem>
+A single bench section at a school event can hold either $7$ adults or $11$ children. When $N$ bench sections are connected end to end, an equal number of adults and children seated together will occupy all the bench space. What is the least possible positive integer value of $N$?
+</Problem>
+
+<Solution>
+Suppose $a$ of the $N$ bench sections hold adults, and $c = N - a$ hold children. Then:
+- Adults seated: $7a$
+- Children seated: $11c = 11(N-a)$
+
+For equal numbers: $7a = 11(N-a)$, so $7a = 11N - 11a$, giving $18a = 11N$.
+
+This means $18 \mid 11N$. Since $\gcd(18, 11) = 1$, we need $18 \mid N$.
+
+The smallest positive integer value is $N = 18$.
+
+**Check:** $a = \dfrac{11 \cdot 18}{18} = 11$ sections for adults, $c = 18 - 11 = 7$ sections for children.
+- Adults: $7 \times 11 = 77$
+- Children: $11 \times 7 = 77$ ✓
+
+Answer: **B**.
+</Solution>

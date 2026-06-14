@@ -1,0 +1,94 @@
+---
+year: 2020
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 5
+answer: A
+choices: ['$12$', '$15$', '$17$', '$20$', '$25$']
+---
+
+<Problem>
+Let $T$ be the triangle in the coordinate plane with vertices $(0,0)$, $(4,0)$, and $(0,3)$. Consider the following five isometries (rigid transformations) of the plane: rotations of $90^\circ$, $180^\circ$, and $270^\circ$ counterclockwise around the origin, reflection across the $x$-axis, and reflection across the $y$-axis. How many of the $125$ sequences of three of these transformations (not necessarily distinct) will return $T$ to its original position? (For example, a $180^\circ$ rotation, followed by a reflection across the $x$-axis, followed by a reflection across the $y$-axis will return $T$ to its original position, but a $90^\circ$ rotation, followed by a reflection across the $x$-axis, followed by another reflection across the $x$-axis will not return $T$ to its original position.)
+</Problem>
+
+<Solution>
+Label the five transformations:
+- $R_1$: rotation $90^\circ$ CCW
+- $R_2$: rotation $180^\circ$
+- $R_3$: rotation $270^\circ$ CCW (= $90^\circ$ CW)
+- $X$: reflection across $x$-axis
+- $Y$: reflection across $y$-axis
+
+The composition of three of these must equal the identity transformation. The key observation is that triangle $T$ has vertices at $(0,0)$, $(4,0)$, $(0,3)$ — it is NOT isosceles in a symmetric way, so the only isometry fixing $T$ is the identity.
+
+**Group structure.** These five transformations generate a subgroup of the dihedral group $D_4$ (symmetries of the square). The full group generated includes:
+- Rotations by $0^\circ, 90^\circ, 180^\circ, 270^\circ$: $\{I, R_1, R_2, R_3\}$
+- Reflections: $X$ (across $x$-axis), $Y$ (across $y$-axis), and also $D_1$ (across $y=x$) and $D_2$ (across $y=-x$).
+
+We work in this group of order 8. To return $T$ to its original position, the composition must be the identity $I$.
+
+**Count triples $(f, g, h)$ from $\{R_1, R_2, R_3, X, Y\}$ with $f \circ g \circ h = I$**, i.e., $h = (f \circ g)^{-1} = g^{-1} \circ f^{-1}$.
+
+For each pair $(f, g)$, there is a unique $h = g^{-1} \circ f^{-1}$. This $h$ must belong to $\{R_1, R_2, R_3, X, Y\}$ (i.e., not $I$ and not $D_1, D_2$).
+
+The inverses: $R_1^{-1} = R_3$, $R_2^{-1} = R_2$, $R_3^{-1} = R_1$, $X^{-1} = X$, $Y^{-1} = Y$.
+
+We need to count pairs $(f, g)$ from $\{R_1, R_2, R_3, X, Y\}$ such that $g^{-1} f^{-1} \in \{R_1, R_2, R_3, X, Y\}$.
+
+Equivalently, $g^{-1} f^{-1} \notin \{I, D_1, D_2\}$.
+
+Total pairs: $5^2 = 25$. We subtract the pairs where $g^{-1} f^{-1} \in \{I, D_1, D_2\}$.
+
+**When is $g^{-1} f^{-1} = I$?** $f^{-1} = g$, i.e., $g = f^{-1}$. Pairs: $(R_1, R_3), (R_3, R_1), (R_2, R_2), (X, X), (Y, Y)$ — that's 5 pairs.
+
+**When is $g^{-1} f^{-1} = D_1$ (reflection across $y = x$)?**
+
+$D_1$ sends $(x,y) \to (y,x)$. We need $g^{-1} f^{-1} = D_1$.
+
+Let me build the Cayley table for the relevant group elements. Using the encoding:
+- $I$: identity
+- $R_1$: $90^\circ$ CCW: $(x,y) \to (-y, x)$
+- $R_2$: $180^\circ$: $(x,y) \to (-x,-y)$
+- $R_3$: $270^\circ$ CCW: $(x,y) \to (y,-x)$
+- $X$: $(x,y) \to (x,-y)$
+- $Y$: $(x,y) \to (-x,y)$
+- $D_1$: $(x,y) \to (y,x)$
+- $D_2$: $(x,y) \to (-y,-x)$
+
+For $g^{-1} f^{-1} = D_1$: equivalently $f^{-1} = g D_1$, so for each $g$, compute $g D_1$ and check if it equals some $f^{-1}$ in our set.
+
+$R_1 D_1$: $R_1(D_1(x,y)) = R_1(y,x) = (-x, y) = Y$. So $f^{-1} = Y$, $f = Y$. Pair $(f,g) = (Y, R_1)$.
+
+$R_2 D_1$: $R_2(y,x) = (-y,-x) = D_2$. $D_2 \notin \{R_1, R_2, R_3, X, Y\}^{-1}$. No pair.
+
+$R_3 D_1$: $R_3(y,x) = (x,-y) = X$. So $f^{-1} = X$, $f = X$. Pair $(f,g) = (X, R_3)$.
+
+$X D_1$: $X(y,x) = (y,-x) = R_3$. So $f^{-1} = R_3$, $f = R_1$. Pair $(f,g) = (R_1, X)$.
+
+$Y D_1$: $Y(y,x) = (-y,x) = R_1$. So $f^{-1} = R_1$, $f = R_3$. Pair $(f,g) = (R_3, Y)$.
+
+That gives 4 pairs where $g^{-1} f^{-1} = D_1$.
+
+**When is $g^{-1} f^{-1} = D_2$?** Similarly, $f^{-1} = g D_2$.
+
+$D_2$: $(x,y) \to (-y,-x)$.
+
+$R_1 D_2$: $R_1(-y,-x) = (x,-y) = X$... wait: $R_1(a,b) = (-b,a)$, so $R_1(-y,-x) = (x,-y) = X$. Pair $(f,g) = (X, R_1)$.
+
+$R_2 D_2$: $R_2(-y,-x) = (y,x) = D_1$. Not in our set.
+
+$R_3 D_2$: $R_3(-y,-x) = (-x,y) = Y$. So $f = Y$. Pair $(f,g) = (Y, R_3)$.
+
+$X D_2$: $X(-y,-x) = (-y,x) = R_1$. So $f^{-1} = R_1 \Rightarrow f = R_3$. Pair $(f,g) = (R_3, X)$.
+
+$Y D_2$: $Y(-y,-x) = (y,-x) = R_3$. So $f^{-1} = R_3 \Rightarrow f = R_1$. Pair $(f,g) = (R_1, Y)$.
+
+That gives 4 pairs where $g^{-1} f^{-1} = D_2$.
+
+**Total pairs to subtract:** $5 + 4 + 4 = 13$.
+
+**Valid pairs:** $25 - 13 = 12$.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,30 @@
+---
+year: 2020
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: B
+choices: ["$80$", "$100$", "$125$", "$200$", "$500$"]
+---
+
+<Problem>
+How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5$?
+</Problem>
+
+<Solution>
+A number is divisible by $5$ if and only if its last digit is $0$ or $5$. Since only even digits are allowed, the last digit must be $0$ (the only even digit that is also $0$ or $5$).
+
+So the units digit is fixed as $0$.
+
+The even digits are $0, 2, 4, 6, 8$.
+
+- **Thousands digit:** must be even and nonzero (can't be $0$ since the number must be a 4-digit number): choices are $2, 4, 6, 8$ — that's $4$ choices.
+- **Hundreds digit:** any even digit ($0, 2, 4, 6, 8$) — $5$ choices.
+- **Tens digit:** any even digit — $5$ choices.
+- **Units digit:** must be $0$ — $1$ choice.
+
+Total count: $4 \times 5 \times 5 \times 1 = 100$.
+
+Answer: **B**.
+</Solution>

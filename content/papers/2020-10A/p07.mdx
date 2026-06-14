@@ -1,0 +1,27 @@
+---
+year: 2020
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: C
+choices: ["$2$", "$5$", "$10$", "$25$", "$50$"]
+---
+
+<Problem>
+The $25$ integers from $-10$ to $14,$ inclusive, can be arranged to form a $5$-by-$5$ square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the numbers along each of the main diagonals are all the same. What is the value of this common sum?
+</Problem>
+
+<Solution>
+This is a magic square. The key insight is that the common row/column/diagonal sum equals the total sum divided by the number of rows.
+
+First, find the sum of all $25$ integers from $-10$ to $14$:
+
+$$\sum_{k=-10}^{14} k = \frac{25 \cdot (-10 + 14)}{2} = \frac{25 \cdot 4}{2} = 50.$$
+
+Since there are $5$ rows and each element appears in exactly one row, the common row sum is:
+
+$$\frac{50}{5} = 10.$$
+
+Answer: **C**.
+</Solution>
