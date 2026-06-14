@@ -1,0 +1,10 @@
+{
+  "year": 2015,
+  "ab": "10B",
+  "title": "AMC 10B 2015",
+  "date": "2015-02-25",
+  "source": "https://artofproblemsolving.com/wiki/index.php/2015_AMC_10B_Problems",
+  "skipped": [
+    { "n": 8, "reason": "answer choices are diagrams (orientations of the letter F) that cannot be represented as text" }
+  ]
+}

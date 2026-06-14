@@ -1,0 +1,33 @@
+---
+year: 2015
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: C
+choices: ["It is a negative number ending with a 1.", "It is a positive number ending with a 1.", "It is a negative number ending with a 5.", "It is a positive number ending with a 5.", "It is a negative number ending with a 0."]
+---
+
+<Problem>
+What is the sign and units digit of the product of all the odd negative integers strictly greater than $-2015$?
+</Problem>
+
+<Solution>
+The odd negative integers strictly greater than $-2015$ are $-1, -3, -5, \ldots, -2013$.
+
+**Count of terms:** These are $-1, -3, \ldots, -2013$. The positive versions are $1, 3, 5, \ldots, 2013$, which is $\dfrac{2013-1}{2}+1 = 1007$ terms.
+
+**Sign:** The product of 1007 negative numbers has sign $(-1)^{1007} = -1$, so the product is **negative**.
+
+**Units digit:** We need the units digit of $1 \times 3 \times 5 \times 7 \times 9 \times 11 \times \cdots \times 2013$.
+
+Since the product includes both $5$ and any even multiple... wait, all factors here are odd. But the list includes $5, 15, 25, \ldots$ as well as $\ldots$ Actually, we include the factor $5$ itself. Let's check: does the product include a multiple of 5? Yes: $5, 15, 25, \ldots, 2005$ are all in the list.
+
+The product includes $5$ and also $1, 3, 7, 9, \ldots$ The product includes the factor $5 \times$ (odd number), and also includes $25, 75, \ldots$ We only need the units digit.
+
+Since $5$ is a factor and all other factors are odd (not multiples of 2), the product $\equiv 0 \pmod{5}$. But is there a factor of 2? No — all factors are odd. So the product is divisible by 5 but not 2, meaning the units digit is **5**.
+
+The answer is a negative number ending with a 5.
+
+Answer: **C**.
+</Solution>

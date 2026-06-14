@@ -1,0 +1,34 @@
+---
+year: 2015
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 2
+answer: A
+choices: ['$-\dfrac{7}{30}$', '$-\dfrac{1}{6}$', "$0$", '$\dfrac{1}{6}$', '$\dfrac{7}{30}$']
+---
+
+<Problem>
+Consider the operation "minus the reciprocal of," defined by $a \diamond b = a - \dfrac{1}{b}$. What is $((1 \diamond 2) \diamond 3) - (1 \diamond (2 \diamond 3))$?
+</Problem>
+
+<Solution>
+Compute each piece step by step.
+
+**Left side:** $((1 \diamond 2) \diamond 3)$
+
+First: $1 \diamond 2 = 1 - \dfrac{1}{2} = \dfrac{1}{2}$.
+
+Then: $\dfrac{1}{2} \diamond 3 = \dfrac{1}{2} - \dfrac{1}{3} = \dfrac{3}{6} - \dfrac{2}{6} = \dfrac{1}{6}$.
+
+**Right side:** $1 \diamond (2 \diamond 3)$
+
+First: $2 \diamond 3 = 2 - \dfrac{1}{3} = \dfrac{5}{3}$.
+
+Then: $1 \diamond \dfrac{5}{3} = 1 - \dfrac{1}{5/3} = 1 - \dfrac{3}{5} = \dfrac{2}{5}$.
+
+**Difference:**
+$$\frac{1}{6} - \frac{2}{5} = \frac{5}{30} - \frac{12}{30} = -\frac{7}{30}.$$
+
+Answer: **A**.
+</Solution>

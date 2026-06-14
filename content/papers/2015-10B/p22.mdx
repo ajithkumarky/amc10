@@ -1,0 +1,54 @@
+---
+year: 2015
+paper: "10B"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 5
+answer: D
+choices: ["$3$", '$12-4\sqrt{5}$', '$\dfrac{5+2\sqrt{5}}{3}$', '$1+\sqrt{5}$', '$\dfrac{11+11\sqrt{5}}{10}$']
+---
+
+<Problem>
+In the figure shown below, $ABCDE$ is a regular pentagon and $AG = 1$. What is $FG + JH + CD$?
+
+The figure shows regular pentagon $ABCDE$ with all five diagonals drawn, forming a smaller regular pentagon $FGHIJ$ inside. Vertex $A$ is at the top, with $B$ at upper-right, $C$ at lower-right, $D$ at lower-left, $E$ at upper-left. The five diagonals intersect pairwise to create inner pentagon vertices: $F$ on diagonals $AD$ and $BE$, $G$ on diagonals $BE$ and $CA$, $H$ on diagonals $CA$ and $BD$, $I$ on diagonals $DB$ and $EC$, and $J$ on diagonals $EC$ and $DA$. The given length $AG = 1$ is the segment along diagonal $CA$ from vertex $A$ to intersection point $G$.
+</Problem>
+
+<Solution>
+In a regular pentagon with side length $s$, each diagonal has length $\phi s$ where $\phi = \dfrac{1+\sqrt{5}}{2}$ is the golden ratio.
+
+When two diagonals of a regular pentagon intersect, they divide each other in the golden ratio $\phi : 1$. Along diagonal $CA$, point $G$ (where diagonal $BE$ crosses $CA$) divides $CA$ so that the segment from $A$ to $G$ is the **longer** piece.
+
+The longer piece when a diagonal of length $\phi s$ is split in ratio $\phi:1$ equals $\dfrac{\phi \cdot \phi s}{\phi + 1} = \dfrac{\phi^2 s}{\phi^2} = s$.
+
+So $AG = s$. Since $AG = 1$, the side length is $s = 1$.
+
+**Finding the three quantities:**
+
+**$CD$** is a side of the outer pentagon: $CD = s = 1$.
+
+**$FG$** and **$JH$** are segments of diagonals inside the figure. From the labeling in the Asymptote code, $FG$ is a segment connecting adjacent intersection points on the inner pentagon. The side of the inner pentagon (formed by the intersections of all diagonals) equals $s/\phi^2 = 1/(\phi+1) = \phi - 1 = \dfrac{\sqrt{5}-1}{2}$.
+
+**$JH$** connects two non-adjacent vertices of the inner pentagon (it is a diagonal of the inner pentagon), so $JH = \phi \cdot FG = \phi \cdot \dfrac{\sqrt{5}-1}{2} = \dfrac{(1+\sqrt{5})(\sqrt{5}-1)}{4} = \dfrac{4}{4} = 1$.
+
+Therefore:
+$$FG + JH + CD = \frac{\sqrt{5}-1}{2} + 1 + 1 = 2 + \frac{\sqrt{5}-1}{2} = \frac{4 + \sqrt{5} - 1}{2} = \frac{3 + \sqrt{5}}{2}.$$
+
+Note that $\dfrac{3+\sqrt{5}}{2} = 1 + \dfrac{1+\sqrt{5}}{2} = 1 + \phi$. And from the golden ratio identity, $1 + \phi = \phi^2$, so the answer is $\phi^2 = \phi + 1$.
+
+Checking against the answer choices: choice D is $1 + \sqrt{5} \approx 3.236$, while our value $\approx 2.618$. Let me re-examine.
+
+Actually, re-reading the problem: $AG = 1$ where $G$ is the intersection of $BE$ and $CA$. The segment $AG$ is the **shorter** piece of diagonal $BE$ (from vertex $A$... but $A$ is not on $BE$). $A$ is a vertex and $G$ is the intersection of $CA$ and $BE$. So $AG$ is the piece of $CA$ from $A$ to $G$.
+
+The shorter piece of a diagonal split in ratio $\phi:1$ is $\dfrac{s \cdot \phi}{(\phi+1)} \cdot \dfrac{1}{\phi} = \dfrac{s}{\phi+1} = \dfrac{s}{\phi^2} = s(\phi-1) = \dfrac{s}{\phi}$.
+
+If $AG = s/\phi$ is the shorter piece, then $s = \phi \cdot AG = \phi$. So $s = \phi = \dfrac{1+\sqrt{5}}{2}$.
+
+$CD = s = \dfrac{1+\sqrt{5}}{2}$. $FG = s/\phi^2 = \phi/\phi^2 = 1/\phi = \phi - 1 = \dfrac{\sqrt{5}-1}{2}$.
+
+$JH$ (a diagonal of the inner pentagon) $= \phi \cdot FG = \phi(\phi-1) = \phi^2 - \phi = (\phi+1) - \phi = 1$.
+
+$$FG + JH + CD = \frac{\sqrt{5}-1}{2} + 1 + \frac{1+\sqrt{5}}{2} = \frac{\sqrt{5}-1+1+\sqrt{5}}{2} + 1 = \frac{2\sqrt{5}}{2} + 1 = \sqrt{5} + 1 = 1+\sqrt{5}.$$
+
+Answer: **D**.
+</Solution>

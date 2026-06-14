@@ -1,0 +1,31 @@
+---
+year: 2019
+paper: 10A
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 2
+answer: C
+choices: ["17", "25", "26", "27", "28"]
+source: "AMC 10A 2019 Problem 10"
+---
+
+<Problem>
+A rectangular floor that is $10$ feet wide and $17$ feet long is tiled with $170$ one-foot square tiles. A bug walks from one corner to the opposite corner in a straight line. Including the first and the last tile, how many tiles does the bug visit?
+</Problem>
+
+<Solution>
+Place the bug's path from $(0, 0)$ to $(17, 10)$. A bug walking in a straight line crosses a vertical grid line each time $x$ is an integer, and a horizontal grid line each time $y$ is an integer. Each crossing moves the bug into a new tile.
+
+The formula for the number of unit squares a diagonal crosses in an $m \times n$ rectangle is:
+$$m + n - \gcd(m, n).$$
+
+Here $m = 17$ and $n = 10$, and $\gcd(17, 10) = 1$ (since 17 is prime and doesn't divide 10).
+
+Number of tiles visited $= 17 + 10 - 1 = 26$.
+
+**Why the formula works:** Start with $m + n$ crossings total (17 vertical and 10 horizontal lines). Each time the bug crosses a grid point (where a vertical and horizontal line meet simultaneously), we'd double-count that crossing — but at a grid point, the bug moves diagonally into a new tile with just one step, not two. The number of grid points on the interior of the path (not counting the endpoints) equals $\gcd(m, n) - 1$, so we subtract $\gcd(m,n) - 1$ overcounts, giving $m + n - (\gcd(m,n) - 1) - 1 = m + n - \gcd(m,n)$.
+
+Since $\gcd(17, 10) = 1$, the bug never passes through an interior grid point, and the count is simply $17 + 10 - 1 = \boxed{26}$.
+
+Answer: **C**.
+</Solution>

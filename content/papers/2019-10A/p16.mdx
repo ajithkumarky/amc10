@@ -1,0 +1,41 @@
+---
+year: 2019
+paper: 10A
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: A
+choices: ['$4\pi\sqrt{3}$', '$7\pi$', '$\pi(3\sqrt{3}+2)$', '$10\pi(\sqrt{3}-1)$', '$\pi(\sqrt{3}+6)$']
+source: "AMC 10A 2019 Problem 16"
+---
+
+<Problem>
+The figure below shows $13$ circles of radius $1$ within a larger circle. All the intersections occur at points of tangency. The $13$ unit circles are arranged so that a central circle is surrounded by a ring of $6$ circles (forming a hexagonal pattern), and that ring is surrounded by another ring of $6$ circles at the outer layer. What is the area of the region inside the larger circle but outside all the circles of radius $1$?
+</Problem>
+
+<Solution>
+**Step 1: Find the radius of the large circle.**
+
+The 13 unit circles are packed in a hexagonal arrangement: 1 center circle, 6 inner-ring circles, and 6 outer-ring circles — but actually the Asymptote code shows 13 circles at specific positions. Looking at the code: there's a center at $(0,0)$, an inner ring at radius 2 (centers at $(\pm 2, 0)$, $(\pm 1, \pm\sqrt{3})$, giving 6 circles), and an outer ring at radius $2\sqrt{3}$ (centers at $(0, \pm 2\sqrt{3})$, $(\pm 3, \pm\sqrt{3})$, $(\pm 1, \pm\sqrt{3})$... let me recount).
+
+From the Asymptote code positions:
+- 1 circle at $(0,0)$
+- 4 circles at $(\pm 2, 0)$ and $(0, \pm 2\sqrt{3})$ (distance 2 and $2\sqrt{3}$ from origin)
+- 4 circles at $(\pm 1, \pm\sqrt{3})$ (distance 2 from origin)
+- 4 circles at $(\pm 3, \pm\sqrt{3})$ and $(\pm 1, \pm\sqrt{3})$
+
+Actually from the code: circles at $(-2,0),(0,0),(2,0),(1,\sqrt{3}),(3,\sqrt{3}),(-1,\sqrt{3}),(-3,\sqrt{3}),(1,-\sqrt{3}),(3,-\sqrt{3}),(-1,-\sqrt{3}),(-3,-\sqrt{3}),(0,2\sqrt{3}),(0,-2\sqrt{3})$. That's 13 circles.
+
+The largest circle has center $(0,0)$ and radius $2\sqrt{3}+1$ (to enclose all unit circles; the farthest centers are at distance $2\sqrt{3}$, so the large circle has radius $2\sqrt{3} + 1$).
+
+**Step 2: Area of the large circle.**
+$$R = 2\sqrt{3} + 1, \quad \text{Area} = \pi(2\sqrt{3}+1)^2 = \pi(12 + 4\sqrt{3} + 1) = \pi(13 + 4\sqrt{3}).$$
+
+**Step 3: Area of the 13 unit circles.**
+$$13 \times \pi(1)^2 = 13\pi.$$
+
+**Step 4: Shaded area.**
+$$\pi(13 + 4\sqrt{3}) - 13\pi = 4\pi\sqrt{3}.$$
+
+Answer: **A**.
+</Solution>

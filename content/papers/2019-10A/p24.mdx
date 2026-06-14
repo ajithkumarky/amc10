@@ -1,0 +1,48 @@
+---
+year: 2019
+paper: 10A
+topic: algebra
+subtopic: polynomials
+difficulty: 5
+answer: B
+choices: ["243", "244", "245", "246", "247"]
+source: "AMC 10A 2019 Problem 24"
+---
+
+<Problem>
+Let $p$, $q$, and $r$ be the distinct roots of the polynomial $x^3 - 22x^2 + 80x - 67$. It is given that there exist real numbers $A$, $B$, and $C$ such that $$\dfrac{1}{s^3 - 22s^2 + 80s - 67} = \dfrac{A}{s-p} + \dfrac{B}{s-q} + \dfrac{C}{s-r}$$for all $s \not\in \{p,q,r\}$. What is $\tfrac{1}{A}+\tfrac{1}{B}+\tfrac{1}{C}$?
+</Problem>
+
+<Solution>
+Since $p$, $q$, $r$ are the roots of $f(x) = x^3 - 22x^2 + 80x - 67$, we have $f(x) = (x-p)(x-q)(x-r)$.
+
+The partial fraction decomposition gives:
+$$A = \frac{1}{(p-q)(p-r)}, \quad B = \frac{1}{(q-p)(q-r)}, \quad C = \frac{1}{(r-p)(r-q)}.$$
+
+(Each coefficient equals $1$ over the product of differences from the other roots — the standard residue formula.)
+
+Therefore:
+$$\frac{1}{A} = (p-q)(p-r), \quad \frac{1}{B} = (q-p)(q-r), \quad \frac{1}{C} = (r-p)(r-q).$$
+
+We need:
+$$\frac{1}{A} + \frac{1}{B} + \frac{1}{C} = (p-q)(p-r) + (q-p)(q-r) + (r-p)(r-q).$$
+
+Expand each term:
+$$(p-q)(p-r) = p^2 - pr - pq + qr$$
+$$(q-p)(q-r) = q^2 - qr - pq + pr$$
+$$(r-p)(r-q) = r^2 - rq - pr + pq$$
+
+Sum:
+$$p^2 + q^2 + r^2 - pq - qr - pr.$$
+
+Now use Vieta's formulas for $x^3 - 22x^2 + 80x - 67$:
+$$p + q + r = 22, \quad pq + pr + qr = 80, \quad pqr = 67.$$
+
+We know:
+$$p^2 + q^2 + r^2 = (p+q+r)^2 - 2(pq+pr+qr) = 22^2 - 2(80) = 484 - 160 = 324.$$
+
+Therefore:
+$$\frac{1}{A} + \frac{1}{B} + \frac{1}{C} = 324 - 80 = \boxed{244}.$$
+
+Answer: **B**.
+</Solution>

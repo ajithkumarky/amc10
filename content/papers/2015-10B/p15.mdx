@@ -1,0 +1,42 @@
+---
+year: 2015
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: B
+choices: ["$41$", "$47$", "$59$", "$61$", "$66$"]
+---
+
+<Problem>
+The town of Hamlet has $3$ people for each horse, $4$ sheep for each cow, and $3$ ducks for each person. Which of the following could not possibly be the total number of people, horses, sheep, cows, and ducks in Hamlet?
+</Problem>
+
+<Solution>
+Let $h$ = number of horses, $k$ = number of cows. Then:
+- People = $3h$
+- Horses = $h$
+- Cows = $k$
+- Sheep = $4k$
+- Ducks = $3 \times \text{people} = 3(3h) = 9h$
+
+Total = $3h + h + k + 4k + 9h = 13h + 5k$.
+
+So the total must be expressible as $13h + 5k$ for non-negative integers $h, k$ (with $h, k \geq 0$, and all values positive means $h \geq 1$ since people $= 3h \geq 1$ requires $h \geq 1$, but let's check if $h=0$ or $k=0$ could work too).
+
+Check each answer choice:
+
+**(A) 41:** $13h + 5k = 41$. Try $h = 3$: $39 + 5k = 41 \Rightarrow 5k = 2$ — no. Try $h = 2$: $26 + 5k = 41 \Rightarrow 5k = 15 \Rightarrow k = 3$. Yes! Valid.
+
+**(B) 47:** $13h + 5k = 47$. Try $h=1$: $13 + 5k = 47 \Rightarrow 5k = 34$ — no. Try $h=2$: $26 + 5k = 47 \Rightarrow 5k = 21$ — no. Try $h=3$: $39 + 5k = 47 \Rightarrow 5k = 8$ — no. Try $h=0$: $5k = 47$ — no. No solution exists.
+
+**(C) 59:** Try $h=3$: $39 + 5k = 59 \Rightarrow 5k = 20 \Rightarrow k = 4$. Yes, valid.
+
+**(D) 61:** Try $h=2$: $26 + 5k = 61 \Rightarrow 5k = 35 \Rightarrow k = 7$. Yes, valid.
+
+**(E) 66:** Try $h=3$: $39 + 5k = 66 \Rightarrow 5k = 27$ — no. Try $h=1$: $13 + 5k = 66 \Rightarrow 5k = 53$ — no. Try $h=2$: $26 + 5k = 66 \Rightarrow 5k = 40 \Rightarrow k = 8$. Yes, valid.
+
+The impossible total is $47$.
+
+Answer: **B**.
+</Solution>

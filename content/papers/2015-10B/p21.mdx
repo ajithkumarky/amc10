@@ -1,0 +1,53 @@
+---
+year: 2015
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: D
+choices: ["$9$", "$11$", "$12$", "$13$", "$15$"]
+---
+
+<Problem>
+Cozy the Cat and Dash the Dog are going up a staircase with a certain number of steps. However, instead of walking up the steps one at a time, both Cozy and Dash jump. Cozy goes two steps up with each jump (though if necessary, he will just jump the last step). Dash goes five steps up with each jump (though if necessary, he will just jump the last steps if there are fewer than 5 steps left). Suppose Dash takes 19 fewer jumps than Cozy to reach the top of the staircase. Let $s$ denote the sum of all possible numbers of steps this staircase can have. What is the sum of the digits of $s$?
+</Problem>
+
+<Solution>
+Let $n$ be the number of steps.
+
+Cozy takes $\lceil n/2 \rceil$ jumps. Dash takes $\lceil n/5 \rceil$ jumps.
+
+We need $\lceil n/2 \rceil - \lceil n/5 \rceil = 19$.
+
+Write $n = 10q + r$ where $0 \leq r \leq 9$. We check each residue class $r$:
+
+$$\left\lceil \frac{n}{2} \right\rceil - \left\lceil \frac{n}{5} \right\rceil = 19.$$
+
+For $n = 10q + r$:
+- $\lceil n/2 \rceil = 5q + \lceil r/2 \rceil$
+- $\lceil n/5 \rceil = 2q + \lceil r/5 \rceil$
+
+Difference $= 3q + \lceil r/2 \rceil - \lceil r/5 \rceil = 19$.
+
+Compute $\lceil r/2 \rceil - \lceil r/5 \rceil$ for $r = 0, 1, \ldots, 9$:
+- $r=0$: $0 - 0 = 0$, so $3q = 19$ — no integer solution.
+- $r=1$: $1 - 1 = 0$, so $3q = 19$ — no.
+- $r=2$: $1 - 1 = 0$, so $3q = 19$ — no.
+- $r=3$: $2 - 1 = 1$, so $3q + 1 = 19 \Rightarrow q = 6$, $n = 63$.
+- $r=4$: $2 - 1 = 1$, so $3q + 1 = 19 \Rightarrow q = 6$, $n = 64$.
+- $r=5$: $3 - 1 = 2$, so $3q + 2 = 19 \Rightarrow q = \frac{17}{3}$ — no.
+- $r=6$: $3 - 2 = 1$, so $3q + 1 = 19 \Rightarrow q = 6$, $n = 66$.
+- $r=7$: $4 - 2 = 2$, so $3q + 2 = 19 \Rightarrow q = \frac{17}{3}$ — no.
+- $r=8$: $4 - 2 = 2$, so $3q + 2 = 19 \Rightarrow q = \frac{17}{3}$ — no.
+- $r=9$: $5 - 2 = 3$, so $3q + 3 = 19 \Rightarrow q = \frac{16}{3}$ — no.
+
+Valid values: $n = 63, 64, 66$.
+
+Verify $n = 63$: Cozy $= \lceil 63/2 \rceil = 32$; Dash $= \lceil 63/5 \rceil = 13$; difference $= 19$. ✓
+Verify $n = 64$: Cozy $= 32$; Dash $= 13$; difference $= 19$. ✓
+Verify $n = 66$: Cozy $= 33$; Dash $= \lceil 66/5 \rceil = 14$; difference $= 19$. ✓
+
+Sum $s = 63 + 64 + 66 = 193$. Sum of digits of $193 = 1 + 9 + 3 = 13$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,35 @@
+---
+year: 2015
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 2
+answer: B
+choices: ['$\dfrac{4\pi}{5}$', '$\dfrac{9\pi}{8}$', '$\dfrac{4\pi}{3}$', '$\dfrac{7\pi}{5}$', '$\dfrac{3\pi}{2}$']
+---
+
+<Problem>
+The shaded region below is called a shark's fin falcata, a figure studied by Leonardo da Vinci. It is bounded by the portion of the circle of radius $3$ and center $(0,0)$ that lies in the first quadrant, the portion of the circle with radius $\dfrac{3}{2}$ and center $\left(0,\dfrac{3}{2}\right)$ that lies in the first quadrant, and the line segment from $(0,0)$ to $(3,0)$. What is the area of the shark's fin falcata?
+
+The region is shaped like a shark's fin: the outer boundary is a quarter-circle of radius 3 (from $(3,0)$ to $(0,3)$), the inner boundary curves back via a semicircle of radius $\tfrac{3}{2}$ centered at $\left(0,\tfrac{3}{2}\right)$, and the base is the segment along the $x$-axis from $(0,0)$ to $(3,0)$.
+</Problem>
+
+<Solution>
+The shark's fin falcata is bounded by:
+- **Outer arc:** quarter-circle of radius 3, center $(0,0)$, from $(3,0)$ to $(0,3)$.
+- **Inner arc:** the portion of the circle with radius $\tfrac{3}{2}$, center $\left(0,\tfrac{3}{2}\right)$, in the first quadrant. This circle passes through $(0,0)$ (since the distance from center to origin is $\tfrac{3}{2}$) and $(0,3)$ (distance $= 3 - \tfrac{3}{2} = \tfrac{3}{2}$). So the inner arc goes from $(0,3)$ back to $(0,0)$ — it's a semicircle of radius $\tfrac{3}{2}$.
+- **Base:** segment along the $x$-axis.
+
+**Area computation:**
+
+Area of quarter-circle of radius 3:
+$$\frac{1}{4}\pi(3)^2 = \frac{9\pi}{4}.$$
+
+The inner semicircle of radius $\tfrac{3}{2}$ has area:
+$$\frac{1}{2}\pi\left(\frac{3}{2}\right)^2 = \frac{1}{2} \cdot \frac{9\pi}{4} = \frac{9\pi}{8}.$$
+
+The shark's fin region = (quarter-circle) $-$ (semicircle of inner curve):
+$$\frac{9\pi}{4} - \frac{9\pi}{8} = \frac{18\pi}{8} - \frac{9\pi}{8} = \frac{9\pi}{8}.$$
+
+Answer: **B**.
+</Solution>

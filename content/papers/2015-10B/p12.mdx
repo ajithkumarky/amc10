@@ -1,0 +1,30 @@
+---
+year: 2015
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 3
+answer: A
+choices: ["$11$", "$12$", "$13$", "$14$", "$15$"]
+---
+
+<Problem>
+For how many integers $x$ is the point $(x, -x)$ inside or on the circle of radius $10$ centered at $(5, 5)$?
+</Problem>
+
+<Solution>
+The point $(x, -x)$ is inside or on the circle when its distance from $(5, 5)$ is at most $10$:
+$$(x-5)^2 + (-x-5)^2 \leq 100.$$
+
+Expand:
+$$(x-5)^2 + (x+5)^2 \leq 100.$$
+$$(x^2 - 10x + 25) + (x^2 + 10x + 25) \leq 100.$$
+$$2x^2 + 50 \leq 100.$$
+$$2x^2 \leq 50.$$
+$$x^2 \leq 25.$$
+$$-5 \leq x \leq 5.$$
+
+The integers in this range are $-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5$, which is $\boxed{11}$ integers.
+
+Answer: **A**.
+</Solution>

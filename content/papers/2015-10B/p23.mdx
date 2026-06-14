@@ -1,0 +1,72 @@
+---
+year: 2015
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: B
+choices: ["$7$", "$8$", "$9$", "$10$", "$11$"]
+---
+
+<Problem>
+Let $n$ be a positive integer greater than $4$ such that the decimal representation of $n!$ ends in $k$ zeros and the decimal representation of $(2n)!$ ends in $3k$ zeros. Let $s$ denote the sum of the four least possible values of $n$. What is the sum of the digits of $s$?
+</Problem>
+
+<Solution>
+The number of trailing zeros in $m!$ equals the largest power of $10$ dividing $m!$, which equals $\nu_5(m!) = \left\lfloor \dfrac{m}{5} \right\rfloor + \left\lfloor \dfrac{m}{25} \right\rfloor + \left\lfloor \dfrac{m}{125} \right\rfloor + \cdots$
+
+We need $\nu_5((2n)!) = 3 \cdot \nu_5(n!)$.
+
+Using the formula: $\nu_5((2n)!) = \sum_{i \geq 1} \left\lfloor \dfrac{2n}{5^i} \right\rfloor$ and $\nu_5(n!) = \sum_{i \geq 1} \left\lfloor \dfrac{n}{5^i} \right\rfloor$.
+
+Note that $\left\lfloor \dfrac{2n}{5^i} \right\rfloor = 2\left\lfloor \dfrac{n}{5^i} \right\rfloor$ or $2\left\lfloor \dfrac{n}{5^i} \right\rfloor + 1$ depending on whether $n/5^i$ has fractional part $\geq 1/2$.
+
+So $\nu_5((2n)!) \geq 2 \cdot \nu_5(n!)$, with equality when no $n/5^i$ has fractional part $\geq 1/2$.
+
+We need $\nu_5((2n)!) = 3k = 3 \cdot \nu_5(n!)$, i.e., an extra $k$ beyond $2k$.
+
+The extra comes from the floor terms: for each $i$, if $\{n/5^i\} \geq 1/2$ (where $\{x\}$ is fractional part), then term $i$ contributes $+1$ extra.
+
+We need $\sum_{i \geq 1} \mathbf{1}\left[\{n/5^i\} \geq \tfrac{1}{2}\right] = k = \nu_5(n!)$.
+
+Let's write $n$ in terms of its base-5 representation. Let $n = \sum_{j=0}^{m} a_j 5^j$ with $0 \leq a_j \leq 4$. Then:
+$$\nu_5(n!) = \frac{n - s_5(n)}{4},$$
+where $s_5(n) = \sum a_j$ is the digit sum in base 5.
+
+The extra from the doubling: $\nu_5((2n)!) - 2\nu_5(n!) = \dfrac{2n - s_5(2n)}{4} - 2 \cdot \dfrac{n - s_5(n)}{4} = \dfrac{2s_5(n) - s_5(2n)}{4}$.
+
+We need this extra to equal $k = \nu_5(n!) = \dfrac{n - s_5(n)}{4}$:
+$$\frac{2s_5(n) - s_5(2n)}{4} = \frac{n - s_5(n)}{4}.$$
+$$2s_5(n) - s_5(2n) = n - s_5(n).$$
+$$3s_5(n) - s_5(2n) = n.$$
+
+When we double $n$ in base 5, each digit $a_j$ becomes $2a_j$ with carries. If no carries occur ($a_j \leq 2$ for all $j$), then $s_5(2n) = 2s_5(n)$ and the equation becomes $s_5(n) = n$, which requires $n < 5$ — contradicting $n > 4$.
+
+So carries must occur. When a digit $a_j = 3$: doubling gives $6 = 1 \cdot 5 + 1$, so the digit becomes $1$ and carry $1$ goes to next position. Net change in digit sum: $+1 - 3 = -2$, and carry adds $+1$ to next position's sum.
+
+When a digit $a_j = 4$: doubling gives $8 = 1 \cdot 5 + 3$, digit becomes $3$, carry $1$. Net: $+3 - 4 = -1$, carry $+1$.
+
+This analysis gets complex. Let's just test small values of $n > 4$.
+
+For each $n$, compute $k = \nu_5(n!)$ and check $\nu_5((2n)!) = 3k$.
+
+$n=5$: $k = 1$. $(2n)! = 10!$: $\nu_5(10!) = 2$. Need $3k = 3 \neq 2$. No.
+$n=6$: $k = 1$. $\nu_5(12!) = 2$. Need $3 \neq 2$. No.
+$n=7$: $k = 1$. $\nu_5(14!) = 2$. No.
+$n=8$: $k = 1$. $\nu_5(16!) = 3$. Need $3 = 3$. **Yes!**
+$n=9$: $k = 1$. $\nu_5(18!) = 3$. Yes! **Yes!**
+$n=10$: $k = 2$. $\nu_5(20!) = 4$. Need $6 \neq 4$. No.
+$n=11$: $k = 2$. $\nu_5(22!) = 4$. No.
+$n=12$: $k = 2$. $\nu_5(24!) = 4$. No.
+$n=13$: $k = 2$. $\nu_5(26!) = 6$. Need $6 = 6$. **Yes!**
+$n=14$: $k = 2$. $\nu_5(28!) = 6$. Yes! **Yes!**
+$n=15$: $k = 3$. $\nu_5(30!) = 7$. Need $9 \neq 7$. No.
+
+So the four least values are $n = 8, 9, 13, 14$.
+
+$s = 8 + 9 + 13 + 14 = 44$.
+
+Sum of digits of $s = 4 + 4 = 8$.
+
+Answer: **B**.
+</Solution>

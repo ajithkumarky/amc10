@@ -1,0 +1,37 @@
+---
+year: 2019
+paper: 10A
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: D
+choices: ["24", "288", "312", "1,260", "40,320"]
+source: "AMC 10A 2019 Problem 17"
+---
+
+<Problem>
+A child builds towers using identically shaped cubes of different colors. How many different towers with a height $8$ cubes can the child build with $2$ red cubes, $3$ blue cubes, and $4$ green cubes? (One cube will be left out.)
+</Problem>
+
+<Solution>
+We have $2 + 3 + 4 = 9$ cubes total and must choose 8 to build a tower (one is left out), then arrange the chosen 8 in a vertical sequence.
+
+The cube left out is one of the three colors:
+
+**Case 1: Leave out a red cube.**
+Remaining cubes: 1 red, 3 blue, 4 green — 8 cubes total.
+Number of arrangements: $\dfrac{8!}{1! \cdot 3! \cdot 4!} = \dfrac{40320}{6 \cdot 24} = \dfrac{40320}{144} = 280$.
+
+**Case 2: Leave out a blue cube.**
+Remaining cubes: 2 red, 2 blue, 4 green — 8 cubes total.
+Number of arrangements: $\dfrac{8!}{2! \cdot 2! \cdot 4!} = \dfrac{40320}{2 \cdot 2 \cdot 24} = \dfrac{40320}{96} = 420$.
+
+**Case 3: Leave out a green cube.**
+Remaining cubes: 2 red, 3 blue, 3 green — 8 cubes total.
+Number of arrangements: $\dfrac{8!}{2! \cdot 3! \cdot 3!} = \dfrac{40320}{2 \cdot 6 \cdot 6} = \dfrac{40320}{72} = 560$.
+
+**Total:**
+$$280 + 420 + 560 = \boxed{1260}.$$
+
+Answer: **D**.
+</Solution>

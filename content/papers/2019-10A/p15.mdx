@@ -1,0 +1,41 @@
+---
+year: 2019
+paper: 10A
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: E
+choices: ["2020", "4039", "6057", "6061", "8078"]
+source: "AMC 10A 2019 Problem 15"
+---
+
+<Problem>
+A sequence of numbers is defined recursively by $a_1 = 1$, $a_2 = \frac{3}{7}$, and $$a_n=\frac{a_{n-2} \cdot a_{n-1}}{2a_{n-2} - a_{n-1}}$$for all $n \geq 3$. Then $a_{2019}$ can be written as $\frac{p}{q}$, where $p$ and $q$ are relatively prime positive integers. What is $p+q$?
+</Problem>
+
+<Solution>
+The recurrence $a_n = \frac{a_{n-2} \cdot a_{n-1}}{2a_{n-2} - a_{n-1}}$ looks complex, but taking reciprocals simplifies it.
+
+Let $b_n = \frac{1}{a_n}$. Then:
+$$\frac{1}{a_n} = \frac{2a_{n-2} - a_{n-1}}{a_{n-2} \cdot a_{n-1}} = \frac{2}{a_{n-1}} - \frac{1}{a_{n-2}},$$
+so:
+$$b_n = 2b_{n-1} - b_{n-2}.$$
+
+This is a linear recurrence! Rearranging: $b_n - b_{n-1} = b_{n-1} - b_{n-2}$, meaning the differences are constant — the sequence $\{b_n\}$ is **arithmetic**.
+
+With $b_1 = \frac{1}{a_1} = 1$ and $b_2 = \frac{1}{a_2} = \frac{7}{3}$, the common difference is:
+$$d = b_2 - b_1 = \frac{7}{3} - 1 = \frac{4}{3}.$$
+
+So $b_n = 1 + (n-1) \cdot \frac{4}{3} = \frac{3 + 4(n-1)}{3} = \frac{4n - 1}{3}$.
+
+Therefore:
+$$b_{2019} = \frac{4(2019) - 1}{3} = \frac{8076 - 1}{3} = \frac{8075}{3}.$$
+
+Thus $a_{2019} = \frac{3}{8075}$.
+
+Check that $\gcd(3, 8075) = 1$: $8075 = 5^2 \times 17 \times 19$, which shares no factor with 3. ✓
+
+So $p = 3$, $q = 8075$, and $p + q = 3 + 8075 = \boxed{8078}$.
+
+Answer: **E**.
+</Solution>

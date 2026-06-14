@@ -1,0 +1,92 @@
+---
+year: 2015
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 5
+answer: D
+choices: ["$(-22,-13)$", "$(-13,-22)$", "$(-13,22)$", "$(13,-22)$", "$(22,-13)$"]
+---
+
+<Problem>
+Aaron the ant walks on the coordinate plane according to the following rules. He starts at the origin $p_0 = (0,0)$ facing to the east and walks one unit, arriving at $p_1 = (1,0)$. For $n = 1, 2, 3, \ldots$, right after arriving at the point $p_n$, if Aaron can turn $90^\circ$ left and walk one unit to an unvisited point $p_{n+1}$, he does that. Otherwise, he walks one unit straight ahead to reach $p_{n+1}$. Thus the sequence of points continues $p_2 = (1,1)$, $p_3 = (0,1)$, $p_4 = (-1,1)$, $p_5 = (-1,0)$, and so on in a counterclockwise spiral pattern. What is $p_{2015}$?
+</Problem>
+
+<Solution>
+The ant traces a counterclockwise square spiral. Let's identify the pattern.
+
+The spiral visits corners in groups. Track where each "layer" of the spiral ends:
+
+After walking the first stretch east 1 step, the sequence is:
+- Segment 1: 1 step east (ends at $p_1 = (1,0)$)
+- Segment 2: 1 step north (ends at $p_2 = (1,1)$)
+- Segment 3: 2 steps west (ends at $p_4 = (-1,1)$)
+- Segment 4: 2 steps south (ends at $p_6 = (-1,-1)$)
+- Segment 5: 3 steps east (ends at $p_9 = (2,-1)$)
+- Segment 6: 3 steps north (ends at $p_{12} = (2,2)$)
+- Segment 7: 4 steps west (ends at $p_{16} = (-2,2)$)
+- Segment 8: 4 steps south (ends at $p_{20} = (-2,-2)$)
+- Segment 9: 5 steps east (ends at $p_{25} = (3,-2)$)
+- Segment 10: 5 steps north (ends at $p_{30} = (3,3)$)
+- ...
+
+The segment lengths go: $1, 1, 2, 2, 3, 3, 4, 4, 5, 5, \ldots$
+
+Cumulative steps after $2k$ segments (two segments of length $k$, for $k = 1, 2, \ldots$):
+
+After segments of lengths $1,1,2,2,3,3,\ldots,k,k$: total steps $= 2(1+2+\cdots+k) = k(k+1)$.
+
+So $p_{k(k+1)}$ marks the end of the $2k$-th segment.
+
+The directions cycle: E, N, W, S, E, N, W, S, ...
+
+The corner points:
+- After segment 1 (1 step E): $p_1 = (1,0)$
+- After segment 2 (1 step N): $p_2 = (1,1)$
+- After segment 3 (2 steps W): $p_4 = (-1,1)$
+- After segment 4 (2 steps S): $p_6 = (-1,-1)$
+- After segment 5 (3 steps E): $p_9 = (2,-1)$
+- After segment 6 (3 steps N): $p_{12} = (2,2)$
+- After segment 7 (4 steps W): $p_{16} = (-2,2)$
+- After segment 8 (4 steps S): $p_{20} = (-2,-2)$
+- After segment 9 (5 steps E): $p_{25} = (3,-2)$
+
+Each "full ring" of 4 segments (E, N, W, S then E, N, W, S...) covers $4$ segments.
+
+After $4m$ segments (groups of 4 pairs, each pair of lengths), we've taken $2(1+2+\cdots+2m) = 2m(2m+1)$ steps. 
+
+Actually let me track by pairs of segments more carefully. Group segments in pairs $(2k-1, 2k)$ each of length $k$:
+
+- Pair 1 (k=1): E then N, 2 total steps, ending at $p_2 = (1,1)$.
+- Pair 2 (k=2): W then S, 4 total steps, ending at $p_6 = (-1,-1)$.
+- Pair 3 (k=3): E then N, 6 total steps, ending at $p_{12} = (2,2)$.
+- Pair 4 (k=4): W then S, 8 total steps, ending at $p_{20} = (-2,-2)$.
+- Pair 5 (k=5): E then N, 10 total steps, ending at $p_{30} = (3,3)$.
+- Pair 6 (k=6): W then S, 12 total steps, ending at $p_{42} = (-3,-3)$.
+
+After pair $2j$ (cumulative steps through $2j$ pairs): steps $= 2(1+2+\cdots+2j) = 2j(2j+1)$.
+
+After pair $2j-1$: steps $= 2(1+2+\cdots+(2j-1)) = (2j-1)(2j)$.
+
+End positions:
+- After pair $2j$ (W+S): $(-j, -j)$, step number $(2j)(2j+1)$.
+- After pair $2j-1$ (E+N): $(j, j)$, step number $(2j-1)(2j)$.
+
+Find which pair contains step 2015. We need the largest pair number $m$ such that cumulative steps $\leq 2015$:
+
+Steps after $m$ pairs $= m(m+1)$:
+- $m=44$: $44 \times 45 = 1980$
+- $m=45$: $45 \times 46 = 2070 > 2015$
+
+So 2015 falls within pair 45 (which has segments of length $k=45$). Pair 45 is odd (since $45$ is odd), so it consists of: segment of length 45 going **East**, then segment of length 45 going **North**.
+
+After pair 44 (even, W+S): position $= (-22, -22)$, at step 1980.
+
+**Segment 89** (the first segment of pair 45, going East, length 45):
+Steps 1981 through 2025. At step 1980 we're at $(-22, -22)$. Moving east:
+- Step 2015 is at position $(-22 + (2015 - 1980), -22) = (-22 + 35, -22) = (13, -22)$.
+
+So $p_{2015} = (13, -22)$.
+
+Answer: **D**.
+</Solution>

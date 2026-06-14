@@ -1,0 +1,45 @@
+---
+year: 2015
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: C
+choices: ['$\dfrac{9}{1000}$', '$\dfrac{1}{90}$', '$\dfrac{1}{80}$', '$\dfrac{1}{72}$', '$\dfrac{2}{121}$']
+---
+
+<Problem>
+Al, Bill, and Cal will each randomly be assigned a whole number from $1$ to $10$, inclusive, with no two of them getting the same number. What is the probability that Al's number will be a whole number multiple of Bill's and Bill's number will be a whole number multiple of Cal's?
+</Problem>
+
+<Solution>
+We need triples $(Al, Bill, Cal)$ where $Al$ is a multiple of $Bill$ and $Bill$ is a multiple of $Cal$, with all three values distinct and from $\{1, \ldots, 10\}$.
+
+We need chains $Cal \mid Bill \mid Al$ with three distinct values.
+
+List all valid chains $(Cal, Bill, Al)$:
+- $Cal = 1$: $Bill$ can be any of $1$–$10$ that divides $Al$, but $Cal \neq Bill$.
+  - $Bill = 2$: $Al \in \{4, 6, 8, 10\}$ (multiples of 2, distinct from 1 and 2): 4 choices.
+  - $Bill = 3$: $Al \in \{6, 9\}$: 2 choices.
+  - $Bill = 4$: $Al \in \{8\}$ (multiple of 4, $\leq 10$, not 1 or 4): 1 choice.
+  - $Bill = 5$: $Al \in \{10\}$: 1 choice.
+  - $Bill = 6, 7, 8, 9, 10$: No multiples $\leq 10$ other than themselves.
+  - Subtotal: $4+2+1+1 = 8$.
+- $Cal = 2$: $Bill$ is a multiple of 2 (and $\neq 2$): $Bill \in \{4, 6, 8, 10\}$.
+  - $Bill = 4$: $Al \in \{8\}$: 1 choice.
+  - $Bill = 6, 8, 10$: No multiples $\leq 10$ other than themselves.
+  - Subtotal: 1.
+- $Cal = 3$: $Bill$ is a multiple of 3, $\neq 3$: $Bill \in \{6, 9\}$.
+  - $Bill = 6$: Multiples of 6, not 3 or 6, $\leq 10$: none.
+  - $Bill = 9$: Multiples of 9, not 3 or 9, $\leq 10$: none.
+  - Subtotal: 0.
+- $Cal \geq 4$: $Bill$ would need to be $\geq 8$, and $Al \geq 16 > 10$. Subtotal: 0.
+
+Total valid ordered triples: $8 + 1 = 9$.
+
+Total equally likely ordered triples: $10 \times 9 \times 8 = 720$.
+
+$$P = \frac{9}{720} = \frac{1}{80}.$$
+
+Answer: **C**.
+</Solution>

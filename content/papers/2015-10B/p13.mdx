@@ -1,0 +1,39 @@
+---
+year: 2015
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: E
+choices: ["$20$", '$\dfrac{360}{17}$', '$\dfrac{107}{5}$', '$\dfrac{43}{2}$', '$\dfrac{281}{13}$']
+---
+
+<Problem>
+The line $12x + 5y = 60$ forms a triangle with the coordinate axes. What is the sum of the lengths of the altitudes of this triangle?
+</Problem>
+
+<Solution>
+The line $12x + 5y = 60$ intersects:
+- The $x$-axis at $(5, 0)$ (set $y=0$: $12x = 60$, $x = 5$).
+- The $y$-axis at $(0, 12)$ (set $x=0$: $5y = 60$, $y = 12$).
+
+The triangle has vertices $A = (0,0)$, $B = (5,0)$, $C = (0,12)$.
+
+**Side lengths:**
+- $AB = 5$ (along $x$-axis)
+- $AC = 12$ (along $y$-axis)
+- $BC = \sqrt{5^2 + 12^2} = \sqrt{25 + 144} = 13$
+
+**Area:** $\text{Area} = \dfrac{1}{2}(5)(12) = 30$.
+
+**Altitudes:** For each altitude $h$ to side of length $s$: $h = \dfrac{2 \cdot \text{Area}}{s}$.
+
+- Altitude to $AB$ (length 5): $h_1 = \dfrac{60}{5} = 12$
+- Altitude to $AC$ (length 12): $h_2 = \dfrac{60}{12} = 5$
+- Altitude to $BC$ (length 13): $h_3 = \dfrac{60}{13}$
+
+**Sum:**
+$$h_1 + h_2 + h_3 = 12 + 5 + \frac{60}{13} = 17 + \frac{60}{13} = \frac{221}{13} + \frac{60}{13} = \frac{281}{13}.$$
+
+Answer: **E**.
+</Solution>

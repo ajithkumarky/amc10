@@ -1,0 +1,40 @@
+---
+year: 2019
+paper: 10A
+topic: number-theory
+subtopic: number-bases
+difficulty: 4
+answer: D
+choices: ["13", "14", "15", "16", "17"]
+source: "AMC 10A 2019 Problem 18"
+---
+
+<Problem>
+For some positive integer $k$, the repeating base-$k$ representation of the (base-ten) fraction $\frac{7}{51}$ is $0.\overline{23}_k = 0.232323\ldots_k$. What is $k$?
+</Problem>
+
+<Solution>
+In base $k$, the repeating decimal $0.\overline{23}_k$ means the two-digit block "$23$" repeats. In base $k$, the digit "2" has value 2 and the digit "3" has value 3 (so we need $k > 3$).
+
+The value of $0.\overline{23}_k$ is computed by:
+$$0.\overline{23}_k = \frac{2k + 3}{k^2 - 1}.$$
+
+This is because a two-digit repeating block $\overline{ab}_k$ equals $\frac{ak+b}{k^2-1}$ (analogous to base 10 where $0.\overline{ab} = \frac{10a+b}{99}$).
+
+Set this equal to $\frac{7}{51}$:
+$$\frac{2k+3}{k^2-1} = \frac{7}{51}.$$
+
+Cross-multiply:
+$$51(2k+3) = 7(k^2-1)$$
+$$102k + 153 = 7k^2 - 7$$
+$$7k^2 - 102k - 160 = 0.$$
+
+Use the quadratic formula:
+$$k = \frac{102 \pm \sqrt{102^2 + 4 \cdot 7 \cdot 160}}{14} = \frac{102 \pm \sqrt{10404 + 4480}}{14} = \frac{102 \pm \sqrt{14884}}{14} = \frac{102 \pm 122}{14}.$$
+
+Taking the positive root: $k = \frac{102 + 122}{14} = \frac{224}{14} = 16$.
+
+Check: $\frac{2(16)+3}{16^2-1} = \frac{35}{255} = \frac{7}{51}$. ✓
+
+Answer: **D**.
+</Solution>

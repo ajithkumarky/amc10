@@ -1,0 +1,42 @@
+---
+year: 2019
+paper: 10A
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: D
+choices: ['$2\sqrt{3}$', "$4$", '$3\sqrt{2}$', '$2\sqrt{5}$', "$5$"]
+source: "AMC 10A 2019 Problem 21"
+---
+
+<Problem>
+A sphere with center $O$ has radius $6$. A triangle with sides of length $15$, $15$, and $24$ is situated in space so that each of its sides is tangent to the sphere. What is the distance between $O$ and the plane determined by the triangle?
+</Problem>
+
+<Solution>
+Since each side of the triangle is tangent to the sphere, the sphere's center $O$ is at distance $6$ (the radius) from each of the three sides (lines containing the sides). This means the projection of $O$ onto the plane of the triangle is the **incenter** of the triangle (the point equidistant from all three sides within the plane).
+
+**Step 1: Find the inradius of the triangle.**
+
+The triangle has sides $a = 15$, $b = 15$, $c = 24$.
+
+Semi-perimeter: $s = \frac{15 + 15 + 24}{2} = 27$.
+
+Area by Heron's formula:
+$$K = \sqrt{s(s-a)(s-b)(s-c)} = \sqrt{27 \cdot 12 \cdot 12 \cdot 3} = \sqrt{27 \cdot 144 \cdot 3} = \sqrt{11664} = 108.$$
+
+Inradius: $r = \frac{K}{s} = \frac{108}{27} = 4$.
+
+**Step 2: Find the distance from $O$ to the plane.**
+
+Let $h$ be the distance from $O$ to the plane. The distance from $O$ to each side of the triangle equals the sphere's radius, 6. But the distance from $O$ to a side (a line in the plane of the triangle) is:
+$$d = \sqrt{r_{\text{in}}^2 + h^2},$$
+where $r_{\text{in}} = 4$ is the in-plane distance from the incenter to each side.
+
+Wait — actually the distance from $O$ to a line (a side of the triangle) is $\sqrt{(\text{in-plane distance})^2 + h^2}$, where the in-plane distance is the inradius 4.
+
+Setting this equal to 6 (the sphere's radius):
+$$\sqrt{4^2 + h^2} = 6 \implies 16 + h^2 = 36 \implies h^2 = 20 \implies h = 2\sqrt{5}.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,37 @@
+---
+year: 2015
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: B
+choices: ['$\dfrac{75}{12}$', "$10$", "$12$", '$10\sqrt{2}$', "$15$"]
+---
+
+<Problem>
+When the centers of the faces of the right rectangular prism shown below are joined to create an octahedron, what is the volume of the octahedron?
+
+The prism has edge lengths $3$, $4$, and $5$.
+</Problem>
+
+<Solution>
+The prism has dimensions $3 \times 4 \times 5$. Place it with one corner at the origin, so vertices at $(0,0,0)$ to $(5,4,3)$.
+
+The centers of the six faces are:
+- Two faces perpendicular to $x$: $\left(0, 2, \tfrac{3}{2}\right)$ and $\left(5, 2, \tfrac{3}{2}\right)$
+- Two faces perpendicular to $y$: $\left(\tfrac{5}{2}, 0, \tfrac{3}{2}\right)$ and $\left(\tfrac{5}{2}, 4, \tfrac{3}{2}\right)$
+- Two faces perpendicular to $z$: $\left(\tfrac{5}{2}, 2, 0\right)$ and $\left(\tfrac{5}{2}, 2, 3\right)$
+
+The octahedron formed by these six points is not regular. We can compute its volume using the formula for an octahedron with three pairs of opposite vertices along the axes.
+
+Centering at the midpoint $\left(\tfrac{5}{2}, 2, \tfrac{3}{2}\right)$, the six vertices are at distances $\pm\tfrac{5}{2}$ in $x$, $\pm 2$ in $y$, and $\pm\tfrac{3}{2}$ in $z$ from the center.
+
+For a combinatorial octahedron with semi-axes $p, q, r$ (the vertices are at $(\pm p, 0, 0)$, $(0, \pm q, 0)$, $(0, 0, \pm r)$ relative to center), the volume is:
+$$V = \frac{4}{3}pqr.$$
+
+Here $p = \tfrac{5}{2}$, $q = 2$, $r = \tfrac{3}{2}$.
+
+$$V = \frac{4}{3} \cdot \frac{5}{2} \cdot 2 \cdot \frac{3}{2} = \frac{4}{3} \cdot \frac{5 \cdot 2 \cdot 3}{2 \cdot 1 \cdot 2} = \frac{4}{3} \cdot \frac{30}{4} = \frac{4}{3} \cdot \frac{15}{2} = \frac{60}{6} = 10.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,49 @@
+---
+year: 2019
+paper: 10A
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: B
+choices: ['$\dfrac{1}{3}$', '$\dfrac{7}{16}$', '$\dfrac{1}{2}$', '$\dfrac{9}{16}$', '$\dfrac{2}{3}$']
+source: "AMC 10A 2019 Problem 22"
+---
+
+<Problem>
+Real numbers between 0 and 1, inclusive, are chosen in the following manner. A fair coin is flipped. If it lands heads, then it is flipped again and the chosen number is 0 if the second flip is heads and 1 if the second flip is tails. On the other hand, if the first coin flip is tails, then the number is chosen uniformly at random from the closed interval $[0,1]$. Two random numbers $x$ and $y$ are chosen independently in this manner. What is the probability that $|x-y| > \tfrac{1}{2}$?
+</Problem>
+
+<Solution>
+Each number independently equals 0 with probability $\frac{1}{4}$, equals 1 with probability $\frac{1}{4}$, or is uniform on $[0,1]$ with probability $\frac{1}{2}$.
+
+There are $3 \times 3 = 9$ cases for the type of $(x,y)$. Let D = discrete (0 or 1), U = uniform.
+
+Label the types: $x$ is 0 (prob $\frac{1}{4}$), 1 (prob $\frac{1}{4}$), or $U$ (prob $\frac{1}{2}$); same for $y$.
+
+We compute $P(|x-y| > \frac{1}{2})$ by summing over all type-combinations:
+
+**Case (0, 0):** $|0-0| = 0$. Prob $= 0$. Weight: $\frac{1}{4} \cdot \frac{1}{4} = \frac{1}{16}$.
+
+**Case (0, 1):** $|0-1| = 1 > \frac{1}{2}$. Prob $= 1$. Weight: $\frac{1}{16}$.
+
+**Case (1, 0):** Same as (0,1). Prob $= 1$. Weight: $\frac{1}{16}$.
+
+**Case (1, 1):** $|1-1| = 0$. Prob $= 0$. Weight: $\frac{1}{16}$.
+
+**Case (0, U):** $|0 - U| > \frac{1}{2}$ iff $U > \frac{1}{2}$. Prob $= \frac{1}{2}$. Weight: $\frac{1}{4} \cdot \frac{1}{2} = \frac{1}{8}$.
+
+**Case (U, 0):** Same. Prob $= \frac{1}{2}$. Weight: $\frac{1}{8}$.
+
+**Case (1, U):** $|1 - U| > \frac{1}{2}$ iff $U < \frac{1}{2}$. Prob $= \frac{1}{2}$. Weight: $\frac{1}{8}$.
+
+**Case (U, 1):** Same. Prob $= \frac{1}{2}$. Weight: $\frac{1}{8}$.
+
+**Case (U, U):** $x$ and $y$ both uniform on $[0,1]$. $P(|x-y| > \frac{1}{2})$ over the unit square: the region where $|x-y| > \frac{1}{2}$ consists of two triangles with area $\frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{8}$ each, total area $\frac{1}{4}$. Weight: $\frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}$.
+
+**Total probability:**
+$$P = \frac{1}{16}(0) + \frac{1}{16}(1) + \frac{1}{16}(1) + \frac{1}{16}(0) + \frac{1}{8}\cdot\frac{1}{2} + \frac{1}{8}\cdot\frac{1}{2} + \frac{1}{8}\cdot\frac{1}{2} + \frac{1}{8}\cdot\frac{1}{2} + \frac{1}{4}\cdot\frac{1}{4}$$
+$$= 0 + \frac{1}{16} + \frac{1}{16} + 0 + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16}$$
+$$= \frac{7}{16}.$$
+
+Answer: **B**.
+</Solution>

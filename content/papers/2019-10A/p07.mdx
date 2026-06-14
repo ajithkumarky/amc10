@@ -1,0 +1,42 @@
+---
+year: 2019
+paper: 10A
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 2
+answer: C
+choices: ["4", '$4\sqrt{2}$', "6", "8", '$6\sqrt{2}$']
+source: "AMC 10A 2019 Problem 7"
+---
+
+<Problem>
+Two lines with slopes $\dfrac{1}{2}$ and $2$ intersect at $(2, 2)$. What is the area of the triangle enclosed by these two lines and the line $x + y = 10$?
+</Problem>
+
+<Solution>
+We find the three vertices of the triangle by intersecting the three lines pairwise.
+
+**Write the two lines through $(2, 2)$:**
+- Line $\ell_1$ (slope $\frac{1}{2}$): $y - 2 = \frac{1}{2}(x - 2) \Rightarrow y = \frac{x}{2} + 1$
+- Line $\ell_2$ (slope $2$): $y - 2 = 2(x - 2) \Rightarrow y = 2x - 2$
+
+**Vertex $A$:** intersection of $\ell_1$ and $\ell_2$ — that's the given point $(2, 2)$.
+
+**Vertex $B$:** intersection of $\ell_1$ and $x + y = 10$:
+$$\frac{x}{2} + 1 + x = 10 \Rightarrow \frac{3x}{2} = 9 \Rightarrow x = 6, \quad y = 4.$$
+So $B = (6, 4)$.
+
+**Vertex $C$:** intersection of $\ell_2$ and $x + y = 10$:
+$$2x - 2 + x = 10 \Rightarrow 3x = 12 \Rightarrow x = 4, \quad y = 6.$$
+So $C = (4, 6)$.
+
+**Area of triangle $ABC$** with $A = (2,2)$, $B = (6,4)$, $C = (4,6)$:
+
+Using the shoelace formula:
+$$\text{Area} = \frac{1}{2}|x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B)|$$
+$$= \frac{1}{2}|2(4-6) + 6(6-2) + 4(2-4)|$$
+$$= \frac{1}{2}|2(-2) + 6(4) + 4(-2)|$$
+$$= \frac{1}{2}|-4 + 24 - 8| = \frac{1}{2} \cdot 12 = 6.$$
+
+Answer: **C**.
+</Solution>

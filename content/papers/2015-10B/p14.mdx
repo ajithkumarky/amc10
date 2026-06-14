@@ -1,0 +1,32 @@
+---
+year: 2015
+paper: "10B"
+topic: algebra
+subtopic: quadratics
+difficulty: 3
+answer: D
+choices: ["$15$", "$15.5$", "$16$", "$16.5$", "$17$"]
+---
+
+<Problem>
+Let $a$, $b$, and $c$ be three distinct one-digit numbers. What is the maximum value of the sum of the roots of the equation $(x-a)(x-b) + (x-b)(x-c) = 0$?
+</Problem>
+
+<Solution>
+Factor out $(x - b)$:
+$$(x - b)[(x - a) + (x - c)] = 0.$$
+$$(x - b)(2x - a - c) = 0.$$
+
+The roots are $x = b$ and $x = \dfrac{a + c}{2}$.
+
+**Sum of roots:**
+$$b + \frac{a+c}{2} = \frac{2b + a + c}{2}.$$
+
+To maximize this, we want to maximize $2b + a + c$ with $a, b, c$ distinct digits from $\{1, 2, \ldots, 9\}$ (positive one-digit numbers; 0 is also one-digit but minimizes the sum).
+
+Since $b$ is counted twice, pick $b = 9$ (largest). Then pick $a = 8, c = 7$ (next two largest).
+
+$$\frac{2(9) + 8 + 7}{2} = \frac{18 + 15}{2} = \frac{33}{2} = 16.5.$$
+
+Answer: **D**.
+</Solution>

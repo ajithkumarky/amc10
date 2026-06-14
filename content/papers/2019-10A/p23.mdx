@@ -1,0 +1,58 @@
+---
+year: 2019
+paper: 10A
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: C
+choices: ["5743", "5885", "5979", "6001", "6011"]
+source: "AMC 10A 2019 Problem 23"
+---
+
+<Problem>
+Travis has to babysit the terrible Thompson triplets. Knowing that they love big numbers, Travis devises a counting game for them. First Tadd will say the number $1$, then Todd must say the next two numbers ($2$ and $3$), then Tucker must say the next three numbers ($4$, $5$, $6$), then Tadd must say the next four numbers ($7$, $8$, $9$, $10$), and the process continues to rotate through the three children in order, each saying one more number than the previous child did, until the number $10,000$ is reached. What is the $2019$th number said by Tadd?
+</Problem>
+
+<Solution>
+**Pattern of turns:** Each child says one more number than the previous child. Starting with Tadd saying 1 number, the sequence of turn sizes is $1, 2, 3, 4, 5, 6, 7, 8, 9, 10, \ldots$
+
+The children cycle: Tadd, Todd, Tucker, Tadd, Todd, Tucker, ...
+
+So Tadd speaks on turns $1, 4, 7, 10, \ldots$ — every third turn starting from turn 1.
+
+Tadd's $k$th turn is turn number $3k - 2$, and he says $3k - 2$ numbers on that turn (since the turn number equals the number of numbers said).
+
+**Numbers said before Tadd's $k$th turn:**
+The total numbers said in turns 1 through $3k-3$ is:
+$$1 + 2 + 3 + \cdots + (3k-3) = \frac{(3k-3)(3k-2)}{2}.$$
+
+During Tadd's $k$th turn, he says $3k-2$ numbers: from $\frac{(3k-3)(3k-2)}{2} + 1$ through $\frac{(3k-3)(3k-2)}{2} + (3k-2)$.
+
+**Finding the total count of numbers Tadd says up to his $k$th turn:**
+On his first turn: 1 number. On his second turn: 4 numbers. On his $k$th turn: $3k-2$ numbers.
+
+Total numbers Tadd says through his $k$th turn:
+$$\sum_{j=1}^{k}(3j-2) = 3\frac{k(k+1)}{2} - 2k = \frac{k(3k-1)}{2}.$$
+
+We want the 2019th number Tadd says, so we find which of his turns contains it.
+
+Find $k$ such that $\frac{k(3k-1)}{2} \geq 2019$ and $\frac{(k-1)(3k-4)}{2} < 2019$.
+
+Try $k = 37$: $\frac{37 \times 110}{2} = \frac{4070}{2} = 2035 \geq 2019$.
+Try $k = 36$: $\frac{36 \times 107}{2} = \frac{3852}{2} = 1926 < 2019$.
+
+So the 2019th number Tadd says is during his **37th turn**.
+
+After his 36th turn, Tadd has said 1926 numbers. The 2019th is the $(2019 - 1926) = 93$rd number on Tadd's 37th turn.
+
+**Tadd's 37th turn is turn number** $3(37) - 2 = 109$.
+
+The first number said in turn 109 is: total numbers said in turns 1 through 108, plus 1:
+$$1 + 2 + \cdots + 108 = \frac{108 \times 109}{2} = 5886.$$
+So turn 109 starts at number 5887.
+
+The 93rd number on Tadd's 37th turn is:
+$$5886 + 93 = 5979.$$
+
+Answer: **C**.
+</Solution>

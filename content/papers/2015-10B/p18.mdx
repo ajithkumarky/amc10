@@ -1,0 +1,30 @@
+---
+year: 2015
+paper: "10B"
+topic: counting-probability
+subtopic: expected-value
+difficulty: 4
+answer: D
+choices: ["$32$", "$40$", "$48$", "$56$", "$64$"]
+---
+
+<Problem>
+Johann has $64$ fair coins. He flips all the coins. Any coin that lands on tails is tossed again. Coins that land on tails on the second toss are tossed a third time. What is the expected number of coins that are now heads?
+</Problem>
+
+<Solution>
+Consider any single coin. It ends up as heads if:
+- It lands heads on the **first** toss (probability $\tfrac{1}{2}$), OR
+- It lands tails on the first toss, then heads on the **second** (probability $\tfrac{1}{2} \cdot \tfrac{1}{2} = \tfrac{1}{4}$), OR
+- It lands tails on both the first and second tosses, then heads on the **third** (probability $\tfrac{1}{4} \cdot \tfrac{1}{2} = \tfrac{1}{8}$), OR
+- It lands tails on all three tosses (probability $\tfrac{1}{8}$) — in this case it ends up tails.
+
+Wait — re-reading: coins landing tails the third time are NOT tossed a fourth time. So a coin ends up heads if it gets heads on toss 1, toss 2 (given tails on 1), or toss 3 (given tails on 1 and 2), and ends up tails only if it gets tails all three times.
+
+$$P(\text{heads}) = \frac{1}{2} + \frac{1}{4} + \frac{1}{8} = \frac{7}{8}.$$
+
+By linearity of expectation:
+$$E[\text{heads}] = 64 \times \frac{7}{8} = 56.$$
+
+Answer: **D**.
+</Solution>

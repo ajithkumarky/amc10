@@ -1,0 +1,40 @@
+---
+year: 2019
+paper: 10A
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: E
+choices: ['$\mu < d < M$', '$M < d < \mu$', '$d = M = \mu$', '$d < M < \mu$', '$d < \mu < M$']
+source: "AMC 10A 2019 Problem 12"
+---
+
+<Problem>
+Melanie computes the mean $\mu$, the median $M$, and the modes of the $365$ values that are the dates in the months of $2019$. Thus her data consists of $12$ $1\text{s}$, $12$ $2\text{s}$, . . . , $12$ $28\text{s}$, $11$ $29\text{s}$, $11$ $30\text{s}$, and $7$ $31\text{s}$. Let $d$ be the median of the modes. Which of the following statements is true?
+</Problem>
+
+<Solution>
+**Finding the modes:** The most frequent values are those appearing most often. Values 1 through 28 each appear 12 times; values 29 and 30 appear 11 times; value 31 appears 7 times. So the modes are $1, 2, 3, \ldots, 28$ (all appearing 12 times, the maximum frequency).
+
+**Median of the modes $d$:** The modes are $\{1, 2, \ldots, 28\}$, which is 28 values. The median of 28 values is the average of the 14th and 15th values: $d = \frac{14 + 15}{2} = 14.5$.
+
+**Computing the mean $\mu$:** Sum all 365 dates:
+$$\text{Sum} = 12(1 + 2 + \cdots + 28) + 11(29 + 30) + 7(31).$$
+$$= 12 \cdot \frac{28 \cdot 29}{2} + 11 \cdot 59 + 7 \cdot 31$$
+$$= 12 \cdot 406 + 649 + 217$$
+$$= 4872 + 649 + 217 = 5738.$$
+$$\mu = \frac{5738}{365} \approx 15.72.$$
+
+**Finding the median $M$:** The median is the 183rd value when all 365 values are listed in order. We accumulate counts:
+- Values 1–28 contribute $28 \times 12 = 336$ values.
+
+The 183rd value falls among the 1–28 range. After values 1 through $k$, the cumulative count is $12k$. We need $12k \geq 183$, so $k \geq 15.25$, meaning $k = 16$. The 183rd value is $\mathbf{16}$ (it's among the $12 \times 15 + 1 = 181$st through $12 \times 16 = 192$nd values).
+
+So $M = 16$.
+
+**Comparing:** $d = 14.5$, $\mu \approx 15.72$, $M = 16$.
+
+We have $d < \mu < M$.
+
+Answer: **E**.
+</Solution>

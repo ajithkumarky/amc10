@@ -1,0 +1,43 @@
+---
+year: 2019
+paper: 10A
+topic: algebra
+subtopic: sequences-series
+difficulty: 1
+answer: D
+choices: ["9", "25", "45", "90", "120"]
+source: "AMC 10A 2019 Problem 5"
+---
+
+<Problem>
+What is the greatest number of consecutive integers whose sum is $45$?
+</Problem>
+
+<Solution>
+A sequence of $k$ consecutive integers starting at $a$ has sum:
+$$a + (a+1) + \cdots + (a+k-1) = ka + \frac{k(k-1)}{2} = \frac{k(2a+k-1)}{2}.$$
+
+Setting this equal to 45:
+$$k(2a + k - 1) = 90.$$
+
+So $k$ must be a divisor of $90$, and $2a + k - 1 = \frac{90}{k}$ must give an integer $a$.
+
+Solving for $a$:
+$$a = \frac{\frac{90}{k} - k + 1}{2}.$$
+
+For $a$ to be an integer, $\frac{90}{k} - k + 1$ must be even, i.e., $\frac{90}{k} - k$ must be odd. This means $\frac{90}{k}$ and $k$ must have opposite parity.
+
+**Key insight:** the consecutive integers can be negative! The sum can include both negative and positive terms, so $a$ can be any integer (negative, zero, or positive).
+
+We want to maximize $k$. Try large values:
+
+- $k = 90$: $a = \frac{1 - 90 + 1}{2} = \frac{-88}{2} = -44$. Check parity: $90/90 = 1$ (odd), $k = 90$ (even) — opposite parity. ✓
+
+So $a = -44$ works! The sequence $-44, -43, \ldots, 45$ has $90$ terms and sums to 45 (the negative terms $-44$ through $-1$ cancel with positive terms $1$ through $44$, leaving $45$).
+
+- $k = 180$: $a = \frac{\frac{90}{180} - 180 + 1}{2} = \frac{0.5 - 179}{2}$, not an integer. ✗
+
+So the greatest number of consecutive integers is $\boxed{90}$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,59 @@
+---
+year: 2019
+paper: 10A
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: B
+choices: ['$\dfrac{1}{21}$', '$\dfrac{1}{14}$', '$\dfrac{5}{63}$', '$\dfrac{2}{21}$', '$\dfrac{1}{7}$']
+source: "AMC 10A 2019 Problem 20"
+---
+
+<Problem>
+The numbers $1, 2, \dots, 9$ are randomly placed into the $9$ squares of a $3 \times 3$ grid. Each square gets one number, and each of the numbers is used once. What is the probability that the sum of the numbers in each row and each column is odd?
+</Problem>
+
+<Solution>
+For the sum of a row or column to be odd, we need an odd count of odd numbers in each row and column (since odd + odd = even, even + even = even, odd + even + ... depends on parity count).
+
+Among $1, 2, \ldots, 9$, there are **5 odd** numbers ($1,3,5,7,9$) and **4 even** numbers ($2,4,6,8$).
+
+**Parity condition:** A row sum is odd iff the row contains 1 or 3 odd numbers. Similarly for columns.
+
+**Key constraint:** We need each of the 3 rows and 3 columns to have an odd sum. 
+
+Let's count odd numbers in each row. Let $r_i$ be the number of odd numbers in row $i$. We need $r_i$ odd for each $i \in \{1,2,3\}$, and $r_1 + r_2 + r_3 = 5$ (total odd numbers).
+
+If each $r_i$ is odd and they sum to 5: possibilities are $\{1,1,3\}$ or $\{1,3,1\}$ or $\{3,1,1\}$ or ... but $1+1+3 = 5$. Can we have $\{3,3,\ldots\}$? $3+3 = 6 > 5$, so the only odd partition of 5 into three odd parts each $\leq 3$ is $\{1,1,3\}$ in some order.
+
+Now check the column condition. With row distribution $(r_1, r_2, r_3)$ being a permutation of $(1,1,3)$, can each column also sum to odd?
+
+If row 3 has 3 odd numbers and rows 1, 2 each have 1 odd number, then each column must have an odd count of odd numbers from its entries in rows 1, 2, 3.
+
+In the row with 3 odds, all 3 positions get odd numbers — contributing 1 odd to each column. For the column sum to be odd, the two entries from rows 1 and 2 must contribute an even count (0 or 2) of odds to make the total odd. So each column needs 0 or 2 odds from the first two rows.
+
+Rows 1 and 2 together have $1 + 1 = 2$ odd numbers total, distributed among 6 cells (2 per column). For each column to get 0 or 2 odds from rows 1-2, and the total is 2 odds — we need exactly one column to get 2 odds and two columns to get 0 odds. Check: $2 + 0 + 0 = 2$ ✓.
+
+**Counting favorable arrangements:**
+
+Total arrangements: $9!$
+
+Favorable: Choose which row gets 3 odds: 3 ways. 
+
+Place odds in the 3-odd row: $\binom{3}{3} = 1$ way to choose which 3 of the 5 odds go there, times $3!$ arrangements = $\binom{5}{3} \times 3! = 10 \times 6 = 60$ ways. Actually, choose 3 odds from 5 for row 3: $\binom{5}{3}$ ways, arrange them: $3!$ ways.
+
+From the remaining 2 odds and 4 evens, we need exactly 1 column to get both odds in rows 1-2. Choose which column gets both odds: 3 ways. The 2 odds go into the 2 cells of that column in rows 1-2: $2!$ arrangements. The 4 evens fill the remaining 4 cells: $4!$ arrangements.
+
+Favorable count (for a fixed choice of "row 3 has all 3 odds"):
+$$\binom{5}{3} \times 3! \times 3 \times 2! \times 4! = 10 \times 6 \times 3 \times 2 \times 24 = 8640.$$
+
+But we chose row 3 specifically; actually any of the 3 rows can be the "3-odds" row, giving $3 \times 8640 = 25920$.
+
+Total arrangements: $9! = 362880$.
+
+Probability $= \dfrac{25920}{362880} = \dfrac{25920}{362880}$.
+
+Simplify: $\gcd(25920, 362880)$. $362880 / 25920 = 14$. So probability $= \dfrac{1}{14}$.
+
+Answer: **B**.
+</Solution>

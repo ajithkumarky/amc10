@@ -1,0 +1,34 @@
+---
+year: 2019
+paper: 10A
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: C
+choices: ["32", "36", "37", "39", "41"]
+source: "AMC 10A 2019 Problem 11"
+---
+
+<Problem>
+How many positive integer divisors of $201^9$ are perfect squares or perfect cubes (or both)?
+</Problem>
+
+<Solution>
+First, factor $201^9$. Since $201 = 3 \times 67$:
+$$201^9 = 3^9 \times 67^9.$$
+
+A divisor of $3^9 \times 67^9$ has the form $3^a \times 67^b$ where $0 \leq a \leq 9$ and $0 \leq b \leq 9$.
+
+We use inclusion-exclusion: count divisors that are perfect squares **plus** perfect cubes **minus** those that are both (perfect sixth powers).
+
+**Perfect square divisors** ($a$ and $b$ both even): $a \in \{0,2,4,6,8\}$ — 5 choices; $b \in \{0,2,4,6,8\}$ — 5 choices. Total: $5 \times 5 = 25$.
+
+**Perfect cube divisors** ($a$ and $b$ both multiples of 3): $a \in \{0,3,6,9\}$ — 4 choices; $b \in \{0,3,6,9\}$ — 4 choices. Total: $4 \times 4 = 16$.
+
+**Perfect sixth power divisors** ($a$ and $b$ both multiples of 6): $a \in \{0,6\}$ — 2 choices; $b \in \{0,6\}$ — 2 choices. Total: $2 \times 2 = 4$.
+
+By inclusion-exclusion:
+$$25 + 16 - 4 = \boxed{37}.$$
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,42 @@
+---
+year: 2015
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: E
+choices: ["Sunday", "Tuesday", "Thursday", "Friday", "Saturday"]
+---
+
+<Problem>
+Marley practices exactly one sport each day of the week. She runs three days a week but never on two consecutive days. On Monday she plays basketball and two days later golf. She swims and plays tennis, but she never plays tennis the day after running or swimming. Which day of the week does Marley swim?
+</Problem>
+
+<Solution>
+The week has 7 days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
+
+From the clues: Monday = basketball, Wednesday = golf. That leaves Tue, Thu, Fri, Sat, Sun for running (3 days), swimming, and tennis.
+
+Running 3 days with no two consecutive, on 5 remaining days (Tue, Thu, Fri, Sat, Sun). The constraint "no two consecutive" means we can't have Fri+Sat or Sat+Sun together (or Tue+Thu, but those aren't consecutive). We need 3 of the five days Tue, Thu, Fri, Sat, Sun, with no two consecutive days of the week.
+
+Possible run-days sets (checking adjacency in the week): Tue, Fri, Sun works (Tue-Wed gap, Fri-Sat consecutive — fails). Let's try:
+- Tue, Thu, Sat: gaps are 2 days apart each — no two consecutive. Valid.
+- Tue, Thu, Sun: valid.
+- Tue, Fri, Sun: Fri and Sat are adjacent, so Fri and Sun aren't — valid.
+- Thu, Sat, Tue: same as first.
+- Thu, Sun: only 2. Need 3.
+
+With Tue, Thu, Sat as running days, remaining days are Fri and Sun for swimming and tennis.
+
+Constraint: Marley never plays tennis the day after running or swimming. Running on Sat means the day after is Sun — so Sun cannot be tennis. Therefore Sun = swimming and Fri = tennis.
+
+Check "tennis not after running": Fri is not the day after any run day (run days are Tue, Thu, Sat; day after Thu is Fri — violation!).
+
+Try Tue, Thu, Sun as run days. Remaining: Fri, Sat for swimming and tennis. Day after Thu is Fri, so Fri cannot be tennis. Day after Sun is Mon (basketball), not an issue for tennis. So Fri = swimming, Sat = tennis. Check: Sat is not the day after a run day (run: Tue, Thu, Sun — day after Sun is Mon). Day after swimming (Fri) is Sat (tennis) — violates "no tennis the day after swimming." Fails.
+
+Try Tue, Fri, Sun. Remaining: Thu, Sat for swimming and tennis. Day after Tue is Wed (golf), day after Fri is Sat, day after Sun is Mon. So Sat cannot be tennis (day after Fri run). Thus Sat = swimming, Thu = tennis. Check: day after swimming (Sat) is Sun (run) — tennis is Thu, not the day after swim (Sat+1=Sun). Also tennis on Thu: day before Thu is Wed (golf), not run or swim. Valid!
+
+So swimming is on **Saturday**.
+
+Answer: **E**.
+</Solution>

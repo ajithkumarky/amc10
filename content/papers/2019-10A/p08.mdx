@@ -1,0 +1,39 @@
+---
+year: 2019
+paper: 10A
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 2
+answer: C
+choices: ["0", "1", "2", "3", "4"]
+source: "AMC 10A 2019 Problem 8"
+---
+
+<Problem>
+The figure below shows line $\ell$ with a regular, infinite, recurring pattern of squares and line segments.
+
+The pattern repeats with period 4 along line $\ell$. In each period: starting from a point on $\ell$, a unit square sits above $\ell$ (with vertices on $\ell$ and one unit above), followed by a diagonal segment going up-right from the top-right corner of that square. Then a unit square sits below $\ell$ (with vertices on $\ell$ and one unit below), followed by a diagonal segment going down-left from the bottom-left corner of that square. The diagonal segments each extend at 45°.
+
+How many of the following four kinds of rigid motion transformations of the plane in which this figure is drawn, other than the identity transformation, will transform this figure into itself?
+
+- some rotation around a point of line $\ell$
+- some translation in the direction parallel to line $\ell$
+- the reflection across line $\ell$
+- some reflection across a line perpendicular to line $\ell$
+</Problem>
+
+<Solution>
+We analyze each transformation in turn.
+
+**Translation parallel to $\ell$:** The figure has a repeating pattern with period 4 (each full period consists of one above-$\ell$ square with its diagonal, and one below-$\ell$ square with its diagonal). Translating by 4 units maps the figure to itself. ✓
+
+**Rotation around a point of $\ell$:** A 180° rotation about a point on $\ell$ swaps "above" and "below" the line. The above-$\ell$ squares and below-$\ell$ squares are offset along $\ell$ (the below-squares don't sit directly under the above-squares), so a 180° rotation maps squares above to a position that would need squares below, but the diagonal directions also flip. Checking carefully: a 180° rotation about the midpoint between an above-square and a below-square maps the pattern to itself, since each period has the correct structure. ✓
+
+**Reflection across $\ell$:** This flips above and below. The above-squares map to below, and the diagonal going up-right maps to a diagonal going down-right. But the actual diagonals go down-left (not down-right). So reflection across $\ell$ does **not** map the figure to itself. ✗
+
+**Reflection across a line perpendicular to $\ell$:** This reverses the left-right direction. An above-square with a diagonal going up-right would map to an above-square with a diagonal going up-left. But the figure only has diagonals going up-right from above-squares (and down-left from below-squares). So the reflected figure differs. ✗
+
+Exactly $2$ transformations work: translation parallel to $\ell$ and rotation by 180° about certain points on $\ell$.
+
+Answer: **C**.
+</Solution>

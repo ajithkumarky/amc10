@@ -1,0 +1,38 @@
+---
+year: 2019
+paper: 10A
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 2
+answer: C
+choices: ["1", "2", "3", "4", "5"]
+source: "AMC 10A 2019 Problem 6"
+---
+
+<Problem>
+For how many of the following types of quadrilaterals does there exist a point in the plane of the quadrilateral that is equidistant from all four vertices of the quadrilateral?
+
+- a square
+- a rectangle that is not a square
+- a rhombus that is not a square
+- a parallelogram that is not a rectangle or a rhombus
+- an isosceles trapezoid that is not a parallelogram
+</Problem>
+
+<Solution>
+A point equidistant from all four vertices of a quadrilateral is the circumcenter — the center of a circle passing through all four vertices. So we need to determine which quadrilaterals are **cyclic** (can be inscribed in a circle).
+
+**Square:** All four vertices lie on a circle (the circumscribed circle). ✓
+
+**Rectangle (not a square):** A rectangle has all right angles. The diagonal is a diameter of the circumscribed circle (since any angle inscribed in a semicircle is 90°). Both diagonals are equal and bisect each other, so the circumcenter is the intersection of the diagonals. ✓
+
+**Rhombus (not a square):** A rhombus has all sides equal, but its angles are not all right angles (since it's not a square). For a cyclic quadrilateral, opposite angles must sum to 180°. In a rhombus, opposite angles are equal, so we'd need each angle to equal 90° — making it a square. Contradiction. ✗
+
+**Parallelogram (not a rectangle or rhombus):** Same reasoning: opposite angles are equal, so both pairs must be 90° for the quadrilateral to be cyclic — but that makes it a rectangle. Contradiction. ✗
+
+**Isosceles trapezoid (not a parallelogram):** An isosceles trapezoid has the base angles equal and the legs equal. One can verify that opposite angles sum to 180°: if the two angles adjacent to one base are each $\alpha$, then the two angles adjacent to the other base are each $180° - \alpha$, so opposite angles sum to $\alpha + (180° - \alpha) = 180°$. ✓
+
+So exactly $3$ types work: the square, the rectangle, and the isosceles trapezoid.
+
+Answer: **C**.
+</Solution>

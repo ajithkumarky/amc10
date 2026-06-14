@@ -1,0 +1,38 @@
+---
+year: 2019
+paper: 10A
+topic: algebra
+subtopic: polynomials
+difficulty: 4
+answer: B
+choices: ["2017", "2018", "2019", "2020", "2021"]
+source: "AMC 10A 2019 Problem 19"
+---
+
+<Problem>
+What is the least possible value of $$(x+1)(x+2)(x+3)(x+4)+2019$$ where $x$ is a real number?
+</Problem>
+
+<Solution>
+The key trick is to pair the four factors symmetrically. Multiply the outer and inner pairs:
+
+$$(x+1)(x+4) = x^2 + 5x + 4$$
+$$(x+2)(x+3) = x^2 + 5x + 6$$
+
+Let $u = x^2 + 5x + 5$ (the average of these two). Then:
+$$(x+1)(x+4) = u - 1 \quad \text{and} \quad (x+2)(x+3) = u + 1.$$
+
+So the product becomes:
+$$(x+1)(x+2)(x+3)(x+4) = (u-1)(u+1) = u^2 - 1.$$
+
+The expression is then:
+$$u^2 - 1 + 2019 = u^2 + 2018.$$
+
+Since $u^2 \geq 0$, the minimum value occurs when $u = 0$, giving $0 + 2018 = 2018$.
+
+We need to verify $u = x^2 + 5x + 5 = 0$ has a real solution. The discriminant is $25 - 20 = 5 > 0$, so yes, $x = \frac{-5 \pm \sqrt{5}}{2}$ gives $u = 0$.
+
+The minimum value is $\boxed{2018}$.
+
+Answer: **B**.
+</Solution>
