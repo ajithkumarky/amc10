@@ -17,181 +17,27 @@ where each of the coefficients is either $0$ or $1$ and the system has a solutio
 </Problem>
 
 <Solution>
-Each equation has three coefficients $(a_i, b_i, c_i)$, each $0$ or $1$, so there are $2^3 = 8$ possible equations. A system of three equations is an ordered triple of these 8 equations, giving $8^3 = 512$ total systems.
+Each equation is a row vector in $\{0,1\}^3$, giving 8 possible equations. There are $8^3 = 512$ ordered systems in total. A system has only the trivial solution exactly when the $3\times3$ coefficient matrix is invertible over $\mathbb{R}$, so we count invertible matrices and subtract.
 
-We count systems that have **only** the trivial solution, then subtract from 512.
+**Invertible matrices require all three rows to be nonzero** (the zero row makes any matrix singular), so rows are chosen from the 7 nonzero vectors in $\{0,1\}^3$:
 
-**Counting systems with only the trivial solution.** A homogeneous system $Ax = 0$ has only the trivial solution if and only if the coefficient matrix $A$ has rank 3 (i.e., is invertible). Since our matrices are $3 \times 3$ with 0-1 entries, we need $\det(A) \neq 0$.
+$$A=(1,0,0),\ B=(0,1,0),\ C=(0,0,1),\ D=(1,1,0),\ E=(1,0,1),\ F=(0,1,1),\ G=(1,1,1).$$
 
-It's easier to count matrices with $\det(A) \neq 0$ over the reals (not just mod 2). Each row is one of the 8 vectors in $\{0,1\}^3$.
+No two of these are real scalar multiples of each other (a nonzero scalar multiple of a 0-1 vector with entries $\{0,\lambda\}$ lies in $\{0,1\}^3$ only if $\lambda=1$), so every pair is linearly independent. There are $7\times 6 = 42$ ordered linearly independent pairs.
 
-We need to count ordered triples of rows $(r_1, r_2, r_3)$ from $\{0,1\}^3$ that form an invertible matrix. The total is $8^3 = 512$.
+**Counting nonzero 0-1 vectors in the real span of each pair.** For a pair $(v_1,v_2)$, a third nonzero 0-1 vector $w$ lies in $\operatorname{span}_{\mathbb{R}}\{v_1,v_2\}$ iff $w = av_1+bv_2$ with all entries in $\{0,1\}$. Checking all 21 unordered pairs:
 
-The matrices that are **not** invertible (singular) are those where the rows are linearly dependent over $\mathbb{R}$.
+- **18 pairs** have exactly 3 nonzero 0-1 vectors in their real span (the two vectors themselves plus one more). These are all pairs except the three below.
+- **3 pairs** have exactly 2 nonzero 0-1 vectors in their real span — namely $(D,E)$, $(D,F)$, and $(E,F)$. For example, $a(1,1,0)+b(1,0,1)=(a+b,a,b)$; requiring each entry in $\{0,1\}$ forces $a+b\leq 1$, so only $(a,b)\in\{(1,0),(0,1)\}$ give nonzero vectors, yielding just $D$ and $E$.
 
-Let's count directly: how many ordered triples $(r_1, r_2, r_3) \in \{0,1\}^3$ give a singular matrix?
+**Counting ordered invertible triples** $(v_1,v_2,v_3)$: after choosing an ordered pair, we choose $v_3$ outside the span.
 
-**Strategy:** Count invertible matrices instead. The determinant of a 0-1 matrix of size $3 \times 3$ is nonzero iff the rows are linearly independent over $\mathbb{R}$.
+- The 18 good unordered pairs give $36$ ordered pairs; for each, $v_3$ has $7-3=4$ valid choices: $36\times4=144$.
+- The 3 bad unordered pairs give $6$ ordered pairs; for each, $v_3$ has $7-2=5$ valid choices: $6\times5=30$.
 
-The 8 possible rows are: $(0,0,0), (1,0,0), (0,1,0), (0,0,1), (1,1,0), (1,0,1), (0,1,1), (1,1,1)$.
+Total invertible matrices: $144+30=174$.
 
-For the system to have only the trivial solution, we need the three rows to be linearly independent. The zero row $(0,0,0)$ makes any matrix singular, so all three rows must be nonzero — choose from the 7 nonzero rows.
-
-We need to count ordered triples from the 7 nonzero rows that are linearly independent. Let's count ordered triples from all 8 rows that form invertible matrices (equivalently linearly independent sets, since rank 3 iff invertible for $3\times 3$):
-
-First, the zero row can't appear. So pick 3 rows from the 7 nonzero rows that are linearly independent.
-
-**Counting linearly independent triples from the 7 nonzero 0-1 vectors in $\mathbb{R}^3$:**
-
-The 7 nonzero vectors span $\mathbb{R}^3$ (the standard basis vectors are among them). We need ordered triples $(v_1, v_2, v_3)$ that are linearly independent.
-
-Count by complement: (ordered triples from 7 nonzero) $-$ (linearly dependent ordered triples from 7 nonzero).
-
-Total ordered triples from 7 nonzero: $7^3 = 343$.
-
-Linearly dependent ordered triples from 7 nonzero: these are triples where one vector is a linear combination of the others over $\mathbb{R}$.
-
-Let me instead directly count linearly independent ordered triples. 
-
-**Step 1:** Choose $v_1$: any of the 7 nonzero vectors. (7 choices)
-
-**Step 2:** Choose $v_2$ not parallel to $v_1$: $v_2$ must not be a scalar multiple of $v_1$. Among the 7 nonzero 0-1 vectors, the only scalar multiples within $\{0,1\}^3$ are the vector itself (scalar 1). So $v_2 \neq v_1$, but we also can't have $v_2 = \lambda v_1$ for $\lambda \neq 1$. Since all entries are 0 or 1, $\lambda v_1$ has entries in $\{0, \lambda\}$. For this to be in $\{0,1\}^3$, we need $\lambda = 0$ or $\lambda = 1$. $\lambda = 0$ gives the zero vector (excluded). So the only nonzero multiple of $v_1$ in $\{0,1\}^3$ is $v_1$ itself.
-
-Thus: $v_2$ can be any of the $7 - 1 = 6$ nonzero vectors different from $v_1$.
-
-**Step 3:** Choose $v_3$ not in the span of $\{v_1, v_2\}$. The span of two linearly independent vectors in $\mathbb{R}^3$ is a 2-dimensional subspace. We need to count how many of the 7 nonzero 0-1 vectors lie in this plane.
-
-This depends on which pair $(v_1, v_2)$ we chose. Let's think about it combinatorially.
-
-The number of linearly independent ordered triples equals:
-$$N = \sum_{\text{pairs } \{v_1,v_2\} \text{ lin. indep.}} 2 \cdot (\text{nonzero vectors not in span}\{v_1,v_2\})$$
-
-But it's easier to count the dependent triples among the 343 ordered triples from nonzero vectors.
-
-**Singular matrices (from nonzero rows):** A triple $(r_1, r_2, r_3)$ of nonzero 0-1 vectors is linearly dependent iff $r_3 \in \text{span}(r_1, r_2)$ or $r_1 \in \text{span}(r_2, r_3)$ or $r_2 \in \text{span}(r_1, r_3)$ — but for counting it's easier to ask: the three vectors are LD.
-
-Let me just directly enumerate. Actually, let me use the formula:
-
-Number of invertible $3\times 3$ 0-1 matrices = number of ordered bases of $\mathbb{R}^3$ from the 7 nonzero vectors.
-
-**Choosing an ordered basis from $\{0,1\}^3 \setminus \{(0,0,0)\}$:**
-
-- $v_1$: 7 choices.
-- $v_2$: must not be $\lambda v_1$. As shown above, the only nonzero scalar multiple of $v_1$ in the set is $v_1$ itself. So $v_2$ has $7-1=6$ choices.
-- $v_3$: must not be in $\text{span}(v_1, v_2)$. The 2D plane through $v_1, v_2$ contains how many 0-1 vectors?
-
-The plane spanned by two linearly independent 0-1 vectors contains all combinations $av_1 + bv_2$. For this to be a 0-1 vector, we need each entry of $av_1 + bv_2$ to be 0 or 1. This is hard in general, so let's count which pairs of nonzero 0-1 vectors have how many nonzero 0-1 vectors in their span.
-
-There are $\binom{7}{2} = 21$ unordered pairs of distinct nonzero 0-1 vectors (all linearly independent since no two are proportional).
-
-For each such pair, the span is a 2D subspace. We count how many of the 7 nonzero 0-1 vectors lie in this subspace.
-
-The 7 nonzero 0-1 vectors are: $e_1=(1,0,0)$, $e_2=(0,1,0)$, $e_3=(0,0,1)$, $e_1{+}e_2=(1,1,0)$, $e_1{+}e_3=(1,0,1)$, $e_2{+}e_3=(0,1,1)$, $e_1{+}e_2{+}e_3=(1,1,1)$.
-
-For each pair, determine how many other nonzero 0-1 vectors are in their span.
-
-Actually, note that the 7 nonzero 0-1 vectors are exactly the 7 nonzero vectors in $\mathbb{F}_2^3$ (over the field with 2 elements). Over $\mathbb{F}_2$, a 2D subspace contains exactly $2^2 - 1 = 3$ nonzero vectors. And over $\mathbb{R}$, the 2D span of two 0-1 vectors contains at most a few 0-1 vectors.
-
-Let me check: if the two vectors are over $\mathbb{F}_2$, any 2D $\mathbb{F}_2$-subspace contains 3 nonzero vectors. Over $\mathbb{R}$, the plane might contain more. But: the 0-1 integer points in a 2D real subspace include all integer combinations... Actually the key insight is that $\mathbb{F}_2$-linear combinations and $\mathbb{R}$-linear combinations both only produce 0-1 vectors in this case.
-
-Claim: A nonzero 0-1 vector $w$ is in $\text{span}_{\mathbb{R}}\{v_1, v_2\}$ iff it is in $\text{span}_{\mathbb{F}_2}\{v_1, v_2\}$, when all vectors have 0-1 entries. This is because the real span of 0-1 vectors can only contain 0-1 vectors that are $\mathbb{F}_2$-combinations (the real coefficients would need to be 0 or 1 for the result to remain 0-1). This can be verified case-by-case.
-
-So each pair of linearly independent nonzero 0-1 vectors spans exactly 3 nonzero 0-1 vectors (the two vectors themselves plus their $\mathbb{F}_2$-sum).
-
-Therefore, for each pair $(v_1, v_2)$: the span contains exactly 3 nonzero 0-1 vectors. So $v_3$ must not be one of these 3, leaving $7 - 3 = 4$ choices.
-
-**Total invertible ordered triples from nonzero rows:**
-$$7 \times 6 \times 4 = 168.$$
-
-**Systems with only trivial solution:** 168.
-
-**Systems with a nontrivial solution:** $512 - 168 = 344$.
-
-Wait, let me recheck. Total systems $= 8^3 = 512$. Systems where the matrix is invertible $= 168$. Systems with nontrivial solution $= 512 - 168 = 344$.
-
-Hmm, but the answer is B (338). Let me recheck the $v_3$ count.
-
-For $v_3$: it must not be in the $\mathbb{R}$-span of $v_1, v_2$, excluding the zero vector. The span contains exactly 3 nonzero 0-1 vectors and infinitely many other real vectors, but only 3 of the 7 nonzero choices for $v_3$ are in the span. However, we also need $v_3 \neq 0$, but we already restrict to nonzero.
-
-So $v_3$ has $7 - 3 = 4$ valid choices. And the count is $7 \times 6 \times 4 = 168$.
-
-But wait — I need to double-check the claim that every pair of distinct nonzero 0-1 vectors is linearly independent. If $v_1 = (1,0,0)$ and $v_2 = (2,0,0)$ — but $(2,0,0)$ is not a 0-1 vector. Indeed all 7 vectors have entries only 0 or 1, so no two are proportional (since $\lambda v_1 = v_2$ would require $\lambda$ = either 0 or 1 for each entry). So yes, all $\binom{7}{2}$ pairs are linearly independent.
-
-And for the span: take $v_1 = (1,0,0)$, $v_2 = (0,1,0)$. Their $\mathbb{F}_2$-sum is $(1,1,0)$. Real span: $a(1,0,0) + b(0,1,0) = (a,b,0)$. For this to be a 0-1 vector: $a,b \in \{0,1\}$ and $c = 0$. So nonzero 0-1 vectors in span: $(1,0,0), (0,1,0), (1,1,0)$ — exactly 3. ✓
-
-Take $v_1 = (1,1,0)$, $v_2 = (1,0,1)$. Sum: $(0,1,1)$. Span: $a(1,1,0) + b(1,0,1) = (a+b, a, b)$. For 0-1: $a,b \in \{0,1\}$ and $a+b \in \{0,1\}$, so $a+b \leq 1$. If $a=b=1$: $a+b=2$, not 0-1. So only $(a,b) \in \{(0,0),(1,0),(0,1)\}$ give 0-1 vectors: $(0,0,0), (1,1,0), (1,0,1)$. Nonzero: $(1,1,0)$ and $(1,0,1)$ — only 2! Not 3.
-
-So my claim was wrong. Let me recount properly.
-
-For the pair $(1,1,0)$ and $(1,0,1)$: the span contains only 2 nonzero 0-1 vectors (the two vectors themselves). Their $\mathbb{F}_2$-sum $(0,1,1)$ is NOT in the real span (since $a+b = 0$ and $a = 1$ gives $b = -1$, not $\{0,1\}$).
-
-So the count of nonzero 0-1 vectors in the span depends on the pair. I need to be more careful.
-
-Let me categorize all 21 pairs by how many nonzero 0-1 vectors are in their real span.
-
-For pair $(v_1, v_2)$, the real span $\{av_1 + bv_2 : a,b \in \mathbb{R}\}$ contains a nonzero 0-1 vector $w$ iff $w = av_1 + bv_2$ for some $a,b$ and all entries of $w$ are 0 or 1.
-
-Let me label the 7 vectors: $A=(1,0,0)$, $B=(0,1,0)$, $C=(0,0,1)$, $D=(1,1,0)$, $E=(1,0,1)$, $F=(0,1,1)$, $G=(1,1,1)$.
-
-For each pair, count nonzero 0-1 vectors in span (including the two vectors themselves):
-
-Pairs among $\{A,B,C\}$ (standard basis pairs): span is a coordinate plane.
-- $(A,B)$: span $= \{(a,b,0)\}$, nonzero 0-1 vectors: $A, B, D$ → 3.
-- $(A,C)$: span $= \{(a,0,c)\}$, nonzero 0-1 vectors: $A, C, E$ → 3.
-- $(B,C)$: span $= \{(0,b,c)\}$, nonzero 0-1 vectors: $B, C, F$ → 3.
-
-Pairs involving $G=(1,1,1)$:
-- $(A,G)$: $a(1,0,0)+b(1,1,1) = (a+b,b,b)$. For 0-1: $b \in \{0,1\}$, and $a+b \in \{0,1\}$. If $b=0$: $(a,0,0)$ nonzero 0-1 iff $a=1$ → $A$. If $b=1$: $(a+1,1,1)$ 0-1 iff $a+1 \in \{0,1\}$, so $a \in \{-1,0\}$. $a=-1$: $(0,1,1)=F$. $a=0$: $(1,1,1)=G$. So nonzero 0-1 vectors: $A, G, F$ → 3.
-- $(B,G)$: $a(0,1,0)+b(1,1,1) = (b,a+b,b)$. $b \in \{0,1\}$, $a+b \in \{0,1\}$. $b=0$: $(0,a,0)$, nonzero: $B$. $b=1$: $(1,a+1,1)$, $a+1 \in \{0,1\}$: $a=-1$ → $(1,0,1)=E$; $a=0$ → $(1,1,1)=G$. Nonzero: $B, G, E$ → 3.
-- $(C,G)$: similarly → $C, G, D$ → 3.
-- $(D,G)$: $a(1,1,0)+b(1,1,1)=(a+b,a+b,b)$. Entries: $b,a+b \in \{0,1\}$. $b=0$: $(a,a,0)$, 0-1 iff $a \in \{0,1\}$: nonzero → $D$. $b=1$: $(a+1,a+1,1)$, $a+1\in\{0,1\}$: $a=0$→$(1,1,1)=G$; $a=-1$→$(0,0,1)=C$. Nonzero: $D,G,C$ → 3.
-- $(E,G)$: $a(1,0,1)+b(1,1,1)=(a+b,b,a+b)$. $b,a+b \in \{0,1\}$. $b=0$: $(a,0,a)$, nonzero → $E$ ($a=1$). $b=1$: $(a+1,1,a+1)$, $a+1\in\{0,1\}$: $a=0$→$(1,1,1)=G$; $a=-1$→$(0,1,0)=B$. Nonzero: $E,G,B$ → 3.
-- $(F,G)$: similarly → $F,G,A$ → 3.
-
-Pairs $(D,E)$: $a(1,1,0)+b(1,0,1)=(a+b,a,b)$. $a,b,a+b \in \{0,1\}$. $a+b \leq 1$ so $(a,b) \in \{(0,0),(1,0),(0,1)\}$. Nonzero: $D=(1,1,0)$ (at $a=1,b=0$), $E=(1,0,1)$ (at $a=0,b=1$). Only 2. So the span contains only $D$ and $E$ as nonzero 0-1 vectors.
-
-$(D,F)$: $a(1,1,0)+b(0,1,1)=(a,a+b,b)$. $a,b \in \{0,1\}$, $a+b \in \{0,1\}$. Same: only $D$ and $F$.
-
-$(E,F)$: $a(1,0,1)+b(0,1,1)=(a,b,a+b)$. Same: only $E$ and $F$.
-
-$(A,D)$: $a(1,0,0)+b(1,1,0)=(a+b,b,0)$. $b,a+b \in \{0,1\}$, same constraint. $b=0$: nonzero → $A$. $b=1,a+b\in\{0,1\}$: $a=0$→$(1,1,0)=D$; $a=-1$→$(0,1,0)=B$. Nonzero: $A, D, B$ → 3.
-
-$(A,E)$: $a(1,0,0)+b(1,0,1)=(a+b,0,b)$. $b \in \{0,1\}$, $a+b \in \{0,1\}$. $b=0$: $A$. $b=1$: $(a+1,0,1)$, $a+1\in\{0,1\}$: $a=0$→$E$; $a=-1$→$(0,0,1)=C$. Nonzero: $A, E, C$ → 3.
-
-$(A,F)$: $a(1,0,0)+b(0,1,1)=(a,b,b)$. $a,b \in \{0,1\}$. Nonzero: $A(a=1,b=0)$, $F(a=0,b=1)$, and $(1,1,1)=G(a=1,b=1)$ → 3.
-
-$(B,D)$: $a(0,1,0)+b(1,1,0)=(b,a+b,0)$. $a,b,a+b\in\{0,1\}$, same constraint. $b=0$: $B$. $b=1$: $(1,a+1,0)$, $a+1\in\{0,1\}$: $a=0$→$D$; $a=-1$→$A$. Nonzero: $B,D,A$ → 3.
-
-$(B,E)$: $a(0,1,0)+b(1,0,1)=(b,a,b)$. $a,b\in\{0,1\}$. Nonzero: $B(a=1,b=0)$, $E(a=0,b=1)$, $G=(1,1,1)(a=1,b=1)$ → 3.
-
-$(B,F)$: $a(0,1,0)+b(0,1,1)=(0,a+b,b)$. $a+b,b\in\{0,1\}$, same constraint. $b=0$: $B$. $b=1$: $(0,a+1,1)$, $a+1\in\{0,1\}$: $a=0$→$F$; $a=-1$→$C$. Nonzero: $B,F,C$ → 3.
-
-$(C,D)$: $a(0,0,1)+b(1,1,0)=(b,b,a)$. $a,b\in\{0,1\}$. Nonzero: $C(a=1,b=0)$, $D(a=0,b=1)$, $G(a=1,b=1)$ → 3.
-
-$(C,E)$: $a(0,0,1)+b(1,0,1)=(b,0,a+b)$. $b,a+b\in\{0,1\}$, same constraint. $b=0$: $C$. $b=1$: $(1,0,a+1)$, $a+1\in\{0,1\}$: $a=0$→$E$; $a=-1$→$A$. Nonzero: $C,E,A$ → 3. (Same as $A,C,E$ pair already counted.)
-
-$(C,F)$: $a(0,0,1)+b(0,1,1)=(0,b,a+b)$. $b,a+b\in\{0,1\}$. $b=0$: $C$. $b=1$: $(0,1,a+1)$, $a+1\in\{0,1\}$: $a=0$→$F$; $a=-1$→$B$. Nonzero: $C,F,B$ → 3.
-
-Summary: Among the 21 pairs:
-- Pairs with exactly 2 nonzero 0-1 vectors in span: $(D,E)$, $(D,F)$, $(E,F)$ → 3 pairs.
-- Pairs with exactly 3 nonzero 0-1 vectors in span: the remaining 18 pairs.
-
-Now count ordered linearly independent triples:
-- For each of the 18 "good" pairs (3 vectors in span): $v_3$ has $7-3=4$ choices.
-- For each of the 3 "bad" pairs (2 vectors in span): $v_3$ has $7-2=5$ choices.
-
-Number of ordered pairs (both nonzero, linearly independent, but all are since no two are proportional):
-$7 \times 6 = 42$ ordered pairs.
-
-The 3 "bad" unordered pairs give $3 \times 2 = 6$ ordered pairs.
-The 18 "good" unordered pairs give $18 \times 2 = 36$ ordered pairs.
-
-Total invertible ordered triples:
-$$36 \times 4 + 6 \times 5 = 144 + 30 = 174.$$
-
-Hmm, that gives $512 - 174 = 338$. That matches answer B!
-
-Let me double-check: total ordered triples with only trivial solution = 174. Total systems = 512. Systems with nontrivial solution = $512 - 174 = 338$.
+**Systems with a nontrivial solution:** $512 - 174 = 338$.
 
 Answer: **B**.
 </Solution>

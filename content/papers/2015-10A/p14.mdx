@@ -13,23 +13,15 @@ The diagram shows the circular face of a clock with radius $20$ cm and a circula
 </Problem>
 
 <Solution>
-The disk (radius $10$) rolls around the outside of the clock (radius $20$). As the disk rolls without slipping, the arc length traveled along the clock face equals the arc length rolled on the disk.
+The small disk (radius $r = 10$) rolls clockwise around the outside of the clock face (radius $R = 20$) without slipping. We need to find the total rotation of the disk in the fixed (ground) frame.
 
-For the arrow to return to pointing upward, the disk must complete a whole number of full rotations. The circumference of the disk is $2\pi(10) = 20\pi$.
+When the disk's center has swept through angle $\theta$ around the clock center, the contact arc on the clock face has length $R\theta = 20\theta$. Rolling without slipping means the disk rotates $\dfrac{20\theta}{10} = 2\theta$ radians relative to the line joining the two centers. In addition, that line itself has rotated by $\theta$ (clockwise) in the fixed frame. Both contributions are in the same direction, so the disk's total rotation in the fixed frame is:
 
-However, as the disk rolls around a curved surface, there is an additional rotation due to the curvature of the path. When the disk's center travels around the clock, the disk rotates once extra per full trip around the clock (this is related to the coin rotation paradox).
+$$\phi = 2\theta + \theta = 3\theta.$$
 
-When the disk's center moves through an angle $\theta$ (as seen from the clock's center), the arc length along the clock face is $20\theta$. The disk rotates by $\dfrac{20\theta}{10} = 2\theta$ radians due to rolling, plus $\theta$ radians due to the revolution (the disk's center orbits the clock), giving a total rotation of $3\theta$ radians relative to the ground? 
+For the arrow to point upward again, the disk must complete a whole number of full turns: $3\theta = 2\pi k$ for a positive integer $k$. The smallest solution is $\theta = \dfrac{2\pi}{3}$, i.e., $120°$ clockwise from 12 o'clock.
 
-Wait — let me be more careful. The total rotation of the disk (in the fixed frame) when the center has moved by angle $\theta$ around the clock is: rotation due to rolling $= \dfrac{20\theta}{10} = 2\theta$ (clockwise), and the center has orbited by $\theta$ clockwise, giving total spin of $2\theta$ clockwise in the fixed frame (the orbital contribution and rolling combine, and the net rotation of the disk is $2\theta$ in the fixed frame — same direction as rolling).
-
-For the arrow to point up again, we need the total rotation to be $2\pi k$ for some positive integer $k$. So $2\theta = 2\pi k$, meaning $\theta = \pi k$. The smallest positive value is $\theta = \pi$ (half the clock, i.e., 6 o'clock)... but let me reconsider.
-
-Actually: the disk rolls on the outside. The number of disk rotations (in the fixed frame) when the center sweeps angle $\theta$ about the clock center is $\left(\dfrac{R+r}{r}\right)\theta / (2\pi)$ full rotations... no.
-
-The arc on the clock face is $R\theta = 20\theta$. The disk rolls this arc, rotating $\dfrac{20\theta}{10} = 2\theta$ radians relative to the line joining the centers. In the fixed frame, the disk also rotates by $\theta$ due to revolution (the line joining centers has rotated by $\theta$ clockwise). So total clockwise rotation in fixed frame $= 2\theta + \theta = 3\theta$.
-
-For the arrow to point up: $3\theta = 2\pi k$, so $\theta = \dfrac{2\pi k}{3}$. The smallest is $\theta = \dfrac{2\pi}{3}$, which is $120°$ from 12 o'clock going clockwise, landing at $4$ o'clock.
+Starting at 12 and moving $120°$ clockwise lands at the **4 o'clock** position.
 
 Answer: **C**.
 </Solution>

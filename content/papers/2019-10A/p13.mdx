@@ -14,53 +14,22 @@ Let $\triangle ABC$ be an isosceles triangle with $BC = AC$ and $\angle ACB = 40
 </Problem>
 
 <Solution>
-Since $\triangle ABC$ is isosceles with $BC = AC$ and $\angle ACB = 40°$, the base angles are:
+**Setup.** Since $\triangle ABC$ is isosceles with $BC = AC$ and $\angle ACB = 40°$:
 $$\angle ABC = \angle BAC = \frac{180° - 40°}{2} = 70°.$$
 
-**Key property:** $D$ and $E$ lie on the circle with diameter $\overline{BC}$. By Thales' theorem, any angle inscribed in a semicircle is 90°, so:
-$$\angle BDC = 90° \quad \text{and} \quad \angle BEC = 90°.$$
+**Thales' theorem.** $D$ lies on $\overline{AC}$ and on the circle with diameter $\overline{BC}$, so $\angle BDC = 90°$. Similarly, $E$ lies on $\overline{AB}$ and the circle, so $\angle BEC = 90°$.
 
-This means $CD \perp BD$ and $BE \perp CE$... wait, let's be more careful. $D$ is on $\overline{AC}$ and the circle, so $\angle BDC = 90°$ (angle in semicircle). $E$ is on $\overline{AB}$ and the circle, so $\angle BEC = 90°$.
+**Key angles.**
 
-**Finding angles in quadrilateral $BCDE$:**
+In $\triangle BDC$: $\angle BDC = 90°$ and $\angle DCB = \angle ACB = 40°$, so $\angle DBC = 50°$.
 
-In $\triangle BDC$: $\angle BDC = 90°$, $\angle DCB = \angle ACB = 40°$, so $\angle DBC = 50°$.
+In $\triangle BEC$: $\angle BEC = 90°$ and $\angle EBC = \angle ABC = 70°$, so $\angle ECB = 20°$.
 
-In $\triangle BEC$: $\angle BEC = 90°$, $\angle EBC = \angle ABC = 70°$, so $\angle ECB = 20°$.
+**Identifying $F$.** The vertices of quadrilateral $BCDE$ (in order) are $B$, $C$, $D$, $E$, so its diagonals are $\overline{BD}$ and $\overline{CE}$. Their intersection is $F$.
 
-**Finding $\angle BFC$:** $F$ is the intersection of diagonals $\overline{BE}$ and $\overline{CD}$ of quadrilateral $BCDE$.
-
-In $\triangle BCF$ (where $F$ is inside the quadrilateral):
-$$\angle FBC = \angle DBC = 50° \quad \text{(since } F \text{ lies on } BE \text{ and } BD = BE \text{ is a chord)}$$
-
-Wait — $F$ is the intersection of $BD$ (extended to $BE$? No.) Let me reconsider. The diagonals of $BCDE$ are $\overline{BE}$ and $\overline{CD}$.
-
-In $\triangle BCF$, the angles at $B$ and $C$ are $\angle FBC$ and $\angle FCB$:
-- $\angle FBC$ is the angle at $B$ in triangle $BCF$, which is part of $\angle ABC$. The diagonal $BE$ goes from $B$ toward $E$ on $\overline{AB}$... Actually $F$ lies on $\overline{CD}$ and on $\overline{BE}$.
-
-Looking at triangle $BFC$ where $F = \overline{BE} \cap \overline{CD}$:
-- At vertex $B$: $\angle CBF = \angle CBE$. Since $E$ is on $AB$ and the circle, $BE$ is a chord. $\angle CBE = \angle ABC = 70°$ (since $E$ is on ray $BA$).
-
-Hmm, let me reconsider. $E$ is on side $\overline{AB}$, so $\overline{BE}$ is part of $\overline{AB}$. So the diagonal $\overline{BE}$ of quadrilateral $BCDE$ is a segment of side $AB$.
-
-Then the diagonal $\overline{CD}$ intersects segment $\overline{BE}$ (part of $AB$) at point $F$.
-
-In triangle $BFC$:
-- $\angle FBC = \angle ABC = 70°$
-- $\angle BCF = \angle BCD$. Since $D$ is on $\overline{AC}$, $\overline{CD}$ is part of $\overline{CA}$. So $\angle BCD = \angle BCA = 40°$.
-
-Therefore:
-$$\angle BFC = 180° - \angle FBC - \angle BCF = 180° - 70° - 40° = 70°.$$
-
-That gives 70°, which is not among the choices. Let me reconsider which diagonals.
-
-**Reconsidering:** Quadrilateral $BCDE$ in order. Its vertices are $B$, $C$, $D$, $E$. The diagonals are $\overline{BD}$ and $\overline{CE}$.
-
-$F = \overline{BD} \cap \overline{CE}$.
-
-In $\triangle BCF$ (actually, consider $\triangle$ formed by $B$, $C$, $F$):
-At $B$: $\angle FBC = \angle DBC = 50°$ (from earlier: in $\triangle BDC$, $\angle DBC = 50°$).
-At $C$: $\angle FCB = \angle ECB = 20°$ (from earlier: in $\triangle BEC$, $\angle ECB = 20°$).
+**Computing $\angle BFC$.** In $\triangle BCF$:
+- $\angle FBC = \angle DBC = 50°$ (since $F$ lies on $\overline{BD}$),
+- $\angle FCB = \angle ECB = 20°$ (since $F$ lies on $\overline{CE}$).
 
 $$\angle BFC = 180° - 50° - 20° = 110°.$$
 

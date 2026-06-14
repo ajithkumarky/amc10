@@ -13,109 +13,35 @@ Jason rolls three fair standard six-sided dice. Then he looks at the rolls and c
 </Problem>
 
 <Solution>
-Jason wants to maximize the probability that the final sum is 7. He will choose the reroll strategy that gives the highest probability of success given what he currently sees.
+**Setting up win probabilities.** If Jason keeps a subset of dice summing to $k$ and rerolls $r$ remaining dice, his win probability is $P(\text{r dice sum to } 7-k)$. Let $p(r,s)$ denote this.
 
-**Setup.** After the initial roll, Jason sees values $(a, b, c)$. He can keep any subset and reroll the rest. Let $S$ denote the current sum and the kept dice sum $K$. If he keeps a subset summing to $k$ and rerolls $r$ dice, his win probability is $P(\text{sum of } r \text{ dice} = 7 - k)$.
+- Reroll 0 (keep all): win iff current sum is 7.
+- Reroll 1 (keep 2 summing to $k$): need one die to show $7-k$, so win prob $= \tfrac{1}{6}$ when $1 \le k \le 6$, else 0.
+- Reroll 2 (keep 1 die showing $k$): need two dice to sum to $7-k$. Since $p(2,s) = (s-1)/36$ for $s \le 7$, win prob $= (6-k)/36$.
+- Reroll 3 (keep none): $p(3,7) = 15/216 = 5/72$.
 
-Let $p(r, s)$ = probability that $r$ fair dice sum to $s$.
+**Comparing strategies.** The key comparison:
+$$\tfrac{1}{6} \approx 0.167 \;>\; \tfrac{5}{36} \approx 0.139 \;>\; \tfrac{5}{72} \approx 0.069.$$
 
-**Precompute win probabilities by kept sum $k$:**
+So keeping a pair (reroll 1) with sum $\le 6$ is optimal whenever possible. Jason rerolls exactly 2 dice only when no pair sums to $\le 6$ — i.e., every pair sums to $\ge 7$ — AND keeping one die beats rerolling all three.
 
-- Keep all 3 (reroll 0): win iff current sum is 7. Probability = 1 if sum = 7, else 0.
-- Keep 2 dice (reroll 1): need the 1 die to show $7 - k$. Win prob = $\frac{1}{6}$ if $1 \le 7-k \le 6$ (i.e., $1 \le k \le 6$), else 0.
-- Keep 1 die (reroll 2): need 2 dice to sum to $7 - k$. Win prob = $p(2, 7-k)$.
-- Keep none (reroll all 3): need 3 dice to sum to 7. Win prob = $p(3, 7) = \frac{15}{216} = \frac{5}{72}$.
+**When every pair sums to $\ge 7$:** If the pair sum $k \ge 7$, then $7-k \le 0$, so keeping a pair gives 0 win probability. Also, if all pairs sum to $\ge 7$, the total sum is $\ge 7 + \min(\text{third die}) \ge 8 > 7$, so keeping all three also gives 0. This leaves: keep 1 die (reroll 2) vs. reroll all 3.
 
-$p(2, s)$ for $s = 2, \ldots, 12$: number of ways = $(s-1)$ for $s \le 7$ and $(13-s)$ for $s \ge 7$ (divided by 36).
+Keeping the smallest die $a$ gives win prob $(6-a)/36$. This beats reroll-all ($5/72$) when $(6-a)/36 > 5/72$, i.e., $12-2a > 5$, i.e., $a \le 3$.
 
-For keep-1 scenarios, kept value is $k \in \{1,\ldots,6\}$, need $7 - k \in \{1, \ldots, 6\}$. $p(2, 7-k) = \frac{7-k-1}{36} = \frac{6-k}{36}$ for $k \le 5$ (since $7-k \ge 2$), and $p(2, 6) = \frac{5}{36}$ for $k=1$; actually $p(2,s) = (s-1)/36$ for $s \le 7$. So $p(2, 7-k) = (6-k)/36$.
+**Condition for rerolling exactly 2:** The two smallest dice satisfy $a + b \ge 7$, and $a \le 3$.
 
-- $k=1$: $p(2,6) = 5/36$
-- $k=2$: $p(2,5) = 4/36$
-- $k=3$: $p(2,4) = 3/36$
-- $k=4$: $p(2,3) = 2/36$
-- $k=5$: $p(2,2) = 1/36$
-- $k=6$: $p(2,1) = 0$
+**Counting ordered outcomes** with $a \le b \le c$, $a+b \ge 7$, $a \le 3$:
 
-For keep-2, the best win probability is $1/6$ (keep 2 dice summing to $k \in \{1,\ldots,6\}$).
+| $(a,b,c)$ unordered | Ordered arrangements |
+|---|---|
+| $(1,6,6)$ | 3 |
+| $(2,5,5)$, $(2,5,6)$, $(2,6,6)$ | $3+6+3 = 12$ |
+| $(3,4,4)$, $(3,4,5)$, $(3,4,6)$, $(3,5,5)$, $(3,5,6)$, $(3,6,6)$ | $3+6+6+3+6+3 = 27$ |
 
-**Jason's optimal strategy:** Given the initial roll $(a,b,c)$, Jason compares:
-- $P_0 = \mathbf{1}[\text{sum} = 7]$
-- Best $P_{\text{keep 2}} = \max_{i,j} \frac{1}{6} \cdot \mathbf{1}[1 \le 7 - (d_i + d_j) \le 6]$, where $d_i + d_j \in \{1,\ldots,6\}$
-- Best $P_{\text{keep 1}} = \max_i \frac{6 - d_i}{36}$, achieved by keeping the smallest die (value 1 is best: $5/36$)
-- $P_{\text{keep 0}} = 5/72 \approx 0.0694$
+Total: $3 + 12 + 27 = 42$ ordered outcomes.
 
-Comparing: $1/6 \approx 0.167 > 5/36 \approx 0.139 > 5/72 \approx 0.069$.
-
-So if Jason can keep 2 dice summing to $k \in \{1,\ldots,6\}$, he prefers rerolling 1 die over rerolling 2, since $1/6 > (6-k)/36$.
-
-Jason rerolls exactly 2 dice when:
-- The optimal action is to keep exactly 1 die (and reroll 2), meaning there exists a die to keep such that keeping it gives a higher win probability than all other options.
-
-Specifically, Jason rerolls 2 when the best strategy is "keep 1 die" — which happens when:
-1. The current sum is not 7 (otherwise keep all),
-2. No pair of dice sums to a value in $\{1,\ldots,6\}$ (otherwise keep a pair giving higher win prob),
-3. Keeping 1 die gives higher probability than rerolling all 3.
-
-Condition 2: a pair sums to $\le 6$ iff the pair has sum $\le 6$. The minimum sum of a pair of standard dice is $1+1=2$. So any pair with both dice $\le 5$ and sum $\le 6$ qualifies.
-
-Actually let me reconsider: Jason can keep any subset. He rerolls exactly 2 when the optimal number of rerolls is 2.
-
-Keep 2 (reroll 1) wins with prob $1/6$ when there's a pair summing to $k \in \{1,\ldots,6\}$.
-- Minimum pair sum: $1+1 = 2$, maximum that qualifies: pairs with sum $\le 6$.
-
-So Jason would reroll just 1 die (keep 2) whenever some pair sums to $\le 6$. Jason rerolls exactly 2 dice only when NO pair of dice sums to $\le 6$, i.e., every pair sums to $\ge 7$.
-
-Every pair sums to $\ge 7$ means: for all $i \ne j$, $d_i + d_j \ge 7$.
-
-For three dice values $a \le b \le c$, the minimum pair sum is $a + b \ge 7$, so $a + b \ge 7$. Since $a \ge 1$ and $b \ge 1$, and both are at most 6, $a + b \ge 7$ means at minimum $a \ge 1, b \ge 6$ (i.e., $a = 1, b = 6$) or larger. For $a + b \ge 7$ with $a \le b$: if $a = 1$, then $b \ge 6$, so $b = 6$; if $a = 2$, $b \ge 5$; if $a = 3$, $b \ge 4$; if $a = 4$, $b \ge 3$, so $b \ge 4$; etc. Actually with $a \le b$: $(a,b)$ can be $(1,6),(2,5),(2,6),(3,4),(3,5),(3,6),(4,4),(4,5),(4,6),(5,5),(5,6),(6,6)$.
-
-So we need $a + b \ge 7$ where $a = \min$ of the three dice. This means even the two smallest values must sum to $\ge 7$.
-
-Also, we still need to check: given every pair sums to $\ge 7$, is rerolling 2 dice better than rerolling all 3 or keeping all? If the current sum $\ne 7$ (reroll 0 wins with prob 0) and no pair is $\le 6$, then the best keep-1 choice gives win prob at most $(6-1)/36 = 5/36$ (keeping a die showing 1), which is $> 5/72$, so keep-1 (reroll 2) beats reroll-all.
-
-But wait — if the current sum is 7, Jason keeps all (rerolls 0). Let's check: if all pairs sum to $\ge 7$ and the total sum is 7, is that possible? $a + b + c = 7$ and $a + b \ge 7$ implies $c \le 0$, which is impossible. So if all pairs sum to $\ge 7$, the sum cannot be 7.
-
-**So Jason rerolls exactly 2 dice iff all three pairs sum to $\ge 7$, i.e., the two smallest values sum to $\ge 7$.**
-
-(This also assumes keeping 1 die beats rerolling all 3, which we showed above as long as there exists a die showing $\le 5$. If all three dice show 6, then $a + b = 12 \ge 7$, but keeping a 6 gives $p(2, 1) = 0$; Jason would then reroll all 3 with prob $5/72$. Actually keeping die = 6 means need remaining two to sum to 1, which is impossible. So for $(6,6,6)$, Jason should reroll all 3.)
-
-Hmm, let me reconsider $(6,6,6)$: pairs sum $= 12 \ge 7$, but keeping any single 6 gives 0 win probability, while rerolling all 3 gives $5/72 > 0$. So Jason rerolls all 3, NOT exactly 2.
-
-**Revised condition:** Jason rerolls exactly 2 when: all pairs sum to $\ge 7$ AND there exists a die value $d$ such that keeping that die gives win probability $> 5/72$, i.e., $(6-d)/36 > 5/72$, i.e., $6-d > 5/2$, i.e., $d < 3.5$, i.e., $d \le 3$.
-
-So at least one die must be $\le 3$ for keep-1 to beat reroll-all.
-
-Also check whether keeping the best single die is better than a 2-die keep when all pair sums $\ge 7$: we established there's no pair with sum $\le 6$, so no 2-die keep gives win prob $> 0$ for rerolling 1... wait, keep 2 means need the 1 remaining die to show $7 - k$ where $k$ is the pair sum. If pair sum $k \ge 7$, then $7 - k \le 0$, which is impossible for a die. So win prob from keeping a pair with sum $\ge 7$ is 0. Great — so keep-1 strictly beats keep-2 in this scenario (as long as some die $\le 3$).
-
-**Condition for rerolling exactly 2:** Minimum pair sum $\ge 7$ AND at least one die $\le 3$.
-
-Since $a \le b \le c$ and $a + b \ge 7$: $a \ge 7 - b \ge 7 - 6 = 1$ (always), and $a + b \ge 7$. For $a \le 3$: $a = 1$: need $b \ge 6 \Rightarrow b = 6$, then $c \ge 6 \Rightarrow c = 6$. Outcome: $(1,6,6)$.
-
-$a = 2$: need $b \ge 5$. With $a + b \ge 7$ and $a = 2$: $b \ge 5$. So $b \in \{5,6\}$, $c \ge b$.
-- $(2,5,c)$ with $c \ge 5$: $c \in \{5,6\}$.
-- $(2,6,6)$.
-
-$a = 3$: need $b \ge 4$. $b \in \{4,5,6\}$, $c \ge b$.
-- $(3,4,c)$: $c \ge 4$, $c \in \{4,5,6\}$.
-- $(3,5,c)$: $c \ge 5$, $c \in \{5,6\}$.
-- $(3,6,6)$.
-
-So the unordered outcomes $(a,b,c)$ with $a \le b \le c$, $a + b \ge 7$, $a \le 3$:
-- $(1,6,6)$
-- $(2,5,5), (2,5,6), (2,6,6)$
-- $(3,4,4), (3,4,5), (3,4,6), (3,5,5), (3,5,6), (3,6,6)$
-
-Count ordered outcomes:
-- $(1,6,6)$: $3!/2! = 3$ arrangements.
-- $(2,5,5)$: 3; $(2,5,6)$: 6; $(2,6,6)$: 3.
-- $(3,4,4)$: 3; $(3,4,5)$: 6; $(3,4,6)$: 6; $(3,5,5)$: 3; $(3,5,6)$: 6; $(3,6,6)$: 3.
-
-Total ordered outcomes: $3 + 3 + 6 + 3 + 3 + 6 + 6 + 3 + 6 + 3 = 42$.
-
-But wait — for $(1,6,6)$, the die showing 1 is the one to keep (gives $p(2,6) = 5/36$); for $(2,5,5)$, keep the 2 (gives $p(2,5) = 4/36$); etc. All these cases have $a \le 3$, confirming keep-1 is optimal.
-
-Probability = $\frac{42}{216} = \frac{7}{36}$.
+$$P = \frac{42}{216} = \frac{7}{36}.$$
 
 Answer: **A**.
 </Solution>
