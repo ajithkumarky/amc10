@@ -1,0 +1,24 @@
+---
+year: 2007
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: C
+choices: ["$3$", "$6$", "$8$", "$9$", "$12$"]
+---
+
+<Problem>
+A sphere is inscribed in a cube that has a surface area of $24$ square meters. A second cube is then inscribed within the sphere. What is the surface area in square meters of the inner cube?
+</Problem>
+
+<Solution>
+The outer cube has surface area 24, so each of its 6 faces has area $24/6 = 4$, giving side length $2$ meters. The inscribed sphere has diameter equal to the side length, so radius $r = 1$ meter.
+
+The inner cube is inscribed in the sphere of radius 1, meaning all 8 vertices of the inner cube lie on the sphere. If the inner cube has side length $s$, its space diagonal has length $s\sqrt{3}$, which equals the sphere's diameter $2r = 2$:
+$$s\sqrt{3} = 2 \implies s = \frac{2}{\sqrt{3}} = \frac{2\sqrt{3}}{3}.$$
+
+The surface area of the inner cube is $6s^2 = 6 \cdot \dfrac{4}{3} = 8$ square meters.
+
+Answer: **C**.
+</Solution>

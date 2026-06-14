@@ -1,0 +1,39 @@
+---
+year: 2007
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 2
+answer: D
+choices: ["$g$", "$h$", "$o$", "$s$", "$t$"]
+---
+
+<Problem>
+A cryptographic code is designed as follows. The first time a letter appears in a given message it is replaced by the letter that is $1$ place to its right in the alphabet (assuming that the letter $A$ is one place to the right of the letter $Z$). The second time this same letter appears in the given message, it is replaced by the letter that is $1+2$ places to the right, the third time it is replaced by the letter that is $1+2+3$ places to the right, and so on. For example, with this code the word "banana" becomes "cbodqg". What letter will replace the last letter $s$ in the message
+$$\text{``Lee's sis is a Mississippi miss, Chriss!''}?$$
+</Problem>
+
+<Solution>
+We need to count every occurrence of the letter $s$ in the message "Lee's sis is a Mississippi miss, Chriss!" (treating uppercase and lowercase as the same letter).
+
+Going through the message carefully:
+- Lee'**s** — 1st $s$
+- **s**i**s** — 2nd and 3rd $s$
+- i**s** — 4th $s$
+- Mi**ss**i**ss**ippi — 5th, 6th, 7th, 8th $s$
+- mi**ss** — 9th and 10th $s$
+- Chri**ss** — 11th and 12th $s$
+
+The last $s$ (in "Chriss!") is the **12th** occurrence.
+
+The $k$-th occurrence of a letter shifts it by $1 + 2 + \cdots + k = \dfrac{k(k+1)}{2}$ places to the right. For $k = 12$:
+$$\frac{12 \cdot 13}{2} = 78 \text{ places.}$$
+
+The letter $s$ is the 19th letter. Shifting 78 places right:
+$$19 + 78 = 97.$$
+Since there are 26 letters, take $97 \pmod{26}$: $97 = 3 \times 26 + 19$, so the remainder is $19$, which corresponds to $s$.
+
+The last $s$ is encoded as $s$.
+
+Answer: **D**.
+</Solution>

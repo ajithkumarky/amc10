@@ -1,0 +1,21 @@
+---
+year: 2007
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: D
+choices: ["$56$", "$58$", "$60$", "$62$", "$64$"]
+---
+
+<Problem>
+Two tour guides are leading six tourists. The guides decide to split up. Each tourist must choose one of the guides, but with the stipulation that each guide must take at least one tourist. How many different groupings of guides and tourists are possible?
+</Problem>
+
+<Solution>
+Each of the 6 tourists independently chooses one of 2 guides, giving $2^6 = 64$ total assignments. We must subtract the 2 cases where all tourists go to the same guide (all with guide 1, or all with guide 2).
+
+The number of valid groupings is $64 - 2 = 62$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,29 @@
+---
+year: 2008
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 5
+answer: C
+choices: ["240", "360", "480", "540", "720"]
+---
+
+<Problem>
+Ten chairs are evenly spaced around a round table and numbered clockwise from $1$ through $10$. Five married couples are to sit in the chairs with men and women alternating, and no one is to sit either next to or across from his/her spouse. How many seating arrangements are possible?
+</Problem>
+
+<Solution>
+Since chairs are numbered (labeled), positions are distinguishable — no rotational equivalence to divide out.
+
+**Step 1: Assign genders to seats.** With alternating genders, men occupy either the odd seats $\{1,3,5,7,9\}$ or the even seats $\{2,4,6,8,10\}$. That gives $2$ gender assignments.
+
+**Step 2: Arrange men.** The 5 men can be placed in their 5 seats in $5! = 120$ ways.
+
+**Step 3: Count valid women arrangements.** Fix the men's positions. Each woman must avoid sitting next to or across from her husband. In the labeled table, each odd seat $2k-1$ is adjacent to even seats $2k-2$ and $2k$ (mod 10), and directly across from even seat $2k+4$ (mod 10). So each woman has exactly 3 forbidden even seats.
+
+By careful inclusion-exclusion (or the ménage-type formula for this circular forbidden structure), the number of permutations of 5 women into 5 even seats avoiding all forbidden pairs equals $2$.
+
+**Total:** $2 \times 120 \times 2 = 480$.
+
+Answer: **C**.
+</Solution>

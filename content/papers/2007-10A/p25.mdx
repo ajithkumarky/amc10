@@ -1,0 +1,66 @@
+---
+year: 2007
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 5
+answer: D
+choices: ["$1$", "$2$", "$3$", "$4$", "$5$"]
+---
+
+<Problem>
+For each positive integer $n$, let $S(n)$ denote the sum of the digits of $n$. For how many values of $n$ is $n + S(n) + S(S(n)) = 2007$?
+</Problem>
+
+<Solution>
+Since $n \le 2007$, we have $n$ is at most a 4-digit number, so $S(n) \le 9+9+9+9 = 36$ and $S(S(n)) \le S(36) = 9$.
+
+Thus $n = 2007 - S(n) - S(S(n)) \ge 2007 - 36 - 9 = 1962$.
+
+So $n$ is between 1962 and 2006 (since $n < 2007$). For any $n$ in $[1962, 2006]$, $S(n) \le S(1999) = 28$ and $S(n) \ge S(1962) = 18$.
+
+With $S(n) \in [10, 28]$, we have $S(S(n)) \in [1, 10]$.
+
+We need $n + S(n) + S(S(n)) = 2007$. Note that $n \equiv 2007 - S(n) - S(S(n)) \pmod{9}$.
+
+Also, $n \equiv S(n) \pmod 9$ and $S(n) \equiv S(S(n)) \pmod 9$, so all three are congruent mod 9. Thus $3n \equiv 2007 \equiv 0 \pmod 9$, giving $n \equiv 0 \pmod 3$.
+
+Now search: $n$ ranges in $[1962, 2006]$, and $n \equiv 0 \pmod 3$.
+
+Let's check each candidate. For $n$ in $[1962, 2006]$ with $n \equiv 0 \pmod 3$: these are $1962, 1965, 1968, \ldots, 2004$. That's $\frac{2004-1962}{3} + 1 = 15$ values.
+
+For each, compute $S(n)$ then check if $n + S(n) + S(S(n)) = 2007$.
+
+$n = 1962$: $S = 1+9+6+2 = 18$, $S(S) = 9$, sum $= 1962 + 18 + 9 = 1989 \ne 2007$.
+
+$n = 1980$: $S = 1+9+8+0 = 18$, $S(S) = 9$, sum $= 1980 + 18 + 9 = 2007$. ✓
+
+$n = 1983$: $S = 21$, $S(S) = 3$, sum $= 1983 + 21 + 3 = 2007$. ✓
+
+$n = 1986$: $S = 24$, $S(S) = 6$, sum $= 1986 + 24 + 6 = 2016 \ne 2007$.
+
+$n = 1989$: $S = 27$, $S(S) = 9$, sum $= 1989 + 27 + 9 = 2025 \ne 2007$.
+
+$n = 1992$: $S = 21$, $S(S) = 3$, sum $= 1992 + 21 + 3 = 2016 \ne 2007$.
+
+$n = 1995$: $S = 24$, $S(S) = 6$, sum $= 1995 + 24 + 6 = 2025 \ne 2007$.
+
+$n = 1998$: $S = 27$, $S(S) = 9$, sum $= 1998 + 27 + 9 = 2034 \ne 2007$.
+
+$n = 2001$: $S = 3$, $S(S) = 3$, sum $= 2001 + 3 + 3 = 2007$. ✓
+
+$n = 2004$: $S = 6$, $S(S) = 6$, sum $= 2004 + 6 + 6 = 2016 \ne 2007$.
+
+We also need to check non-multiples of 3 more carefully — our mod 3 argument shows $n \equiv 0 \pmod 3$ is necessary, so those are the only candidates.
+
+Check the smaller values too:
+$n = 1965$: $S = 21$, $S(S) = 3$, sum $= 1965 + 21 + 3 = 1989 \ne 2007$.
+$n = 1968$: $S = 24$, $S(S) = 6$, sum $= 1968 + 24 + 6 = 1998 \ne 2007$.
+$n = 1971$: $S = 18$, $S(S) = 9$, sum $= 1971 + 18 + 9 = 1998 \ne 2007$.
+$n = 1974$: $S = 21$, $S(S) = 3$, sum $= 1974 + 21 + 3 = 1998 \ne 2007$.
+$n = 1977$: $S = 24$, $S(S) = 6$, sum $= 1977 + 24 + 6 = 2007$. ✓
+
+So the solutions are $n \in \{1977, 1980, 1983, 2001\}$ — that is $4$ values.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,25 @@
+---
+year: 2008
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: C
+choices: ["1", "7", "9", "16", "17"]
+---
+
+<Problem>
+A class collects $\textdollar 50$ to buy flowers for a classmate who is in the hospital. Roses cost $\textdollar 3$ each, and carnations cost $\textdollar 2$ each. No other flowers are to be used. How many different bouquets could be purchased for exactly $\textdollar 50$?
+</Problem>
+
+<Solution>
+We need non-negative integers $r$ (roses) and $c$ (carnations) with $3r + 2c = 50$.
+
+Solving for $c$: $c = \frac{50 - 3r}{2}$. For $c$ to be a non-negative integer, $50 - 3r$ must be even and non-negative. Since $50$ is even, $3r$ must be even, so $r$ must be even.
+
+Let $r = 2k$. Then $c = \frac{50 - 6k}{2} = 25 - 3k \geq 0$, giving $k \leq 8$.
+
+Also $r \geq 0$ means $k \geq 0$. So $k \in \{0, 1, 2, \ldots, 8\}$, giving $9$ bouquets.
+
+Answer: **C**.
+</Solution>

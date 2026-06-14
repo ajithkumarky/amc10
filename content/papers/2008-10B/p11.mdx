@@ -1,0 +1,29 @@
+---
+year: 2008
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: B
+choices: ["40", "53", "68", "88", "104"]
+---
+
+<Problem>
+Suppose that $(u_n)$ is a sequence of real numbers satisfying $u_{n+2} = 2u_{n+1} + u_n$, and that $u_3 = 9$ and $u_6 = 128$. What is $u_5$?
+</Problem>
+
+<Solution>
+Let $u_1 = a$ and $u_2 = b$. The recurrence gives:
+- $u_3 = 2b + a = 9$
+- $u_4 = 2u_3 + u_2 = 2(2b+a) + b = 5b + 2a$
+- $u_5 = 2u_4 + u_3 = 2(5b+2a) + (2b+a) = 12b + 5a$
+- $u_6 = 2u_5 + u_4 = 2(12b+5a) + (5b+2a) = 29b + 12a = 128$
+
+From $2b + a = 9$ we get $a = 9 - 2b$. Substituting:
+$$29b + 12(9-2b) = 128 \implies 29b + 108 - 24b = 128 \implies 5b = 20 \implies b = 4.$$
+
+Then $a = 9 - 8 = 1$, and:
+$$u_5 = 12(4) + 5(1) = 48 + 5 = 53.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,30 @@
+---
+year: 2007
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: C
+choices: ["$4444$", "$4494$", "$4944$", "$9444$", "$9944$"]
+---
+
+<Problem>
+Let $n$ denote the smallest positive integer that is divisible by both $4$ and $9,$ and whose base-$10$ representation consists of only $4$'s and $9$'s, with at least one of each. What are the last four digits of $n?$
+</Problem>
+
+<Solution>
+We need $n$ divisible by $\text{lcm}(4,9) = 36$, using only digits $4$ and $9$ (at least one of each).
+
+**Divisibility by 4:** Only the last two digits matter. Among $44, 49, 94, 99$, only $44 \equiv 0 \pmod{4}$. So $n$ must end in $44$.
+
+**Divisibility by 9:** The digit sum must be divisible by $9$. If $n$ has $a$ fours and $b$ nines, then digit sum $= 4a + 9b \equiv 4a \pmod{9}$. Since $\gcd(4,9)=1$, we need $9 \mid a$, so the minimum is $a = 9$ fours (with $b \ge 1$).
+
+**Smallest such number:** We want a 10-digit number (9 fours and 1 nine) that ends in $44$ and is as small as possible. Since $n$ ends in $44$, the single $9$ must appear in one of digits 1 through 8 (from the left). To minimize $n$, we push the $9$ as far right as possible (making the leading digits small, i.e., all 4). The rightmost valid position for the $9$ is digit 7 (from left), giving:
+$$n = 4444444944.$$
+
+This ends in $4944$, which is the last four digits.
+
+(Placing the $9$ any earlier — digit 6, 5, … — gives a larger number since the 9 appears earlier in the string; placing it at position 8 or later would make the last two digits $94$ or $49$, not $44$.)
+
+Answer: **C**.
+</Solution>

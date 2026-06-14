@@ -1,0 +1,30 @@
+---
+year: 2007
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: B
+choices: ["$32$", '$22+12\sqrt{2}$', '$16+16\sqrt{3}$', "$48$", '$36+16\sqrt{2}$']
+---
+
+<Problem>
+Four circles of radius $1$ are each tangent to two sides of a square and externally tangent to a circle of radius $2$, as shown. What is the area of the square?
+
+Each small circle of radius 1 sits in a corner of the square, tangent to both sides of that corner and externally tangent to the large circle of radius 2 at the center. The label "2" indicates the radius of the central circle, and "1" indicates the radius of each corner circle.
+</Problem>
+
+<Solution>
+Place the center of the large circle at the origin. Each small circle of radius 1 is in a corner, tangent to both sides of the square, so its center is at distance 1 from each side — meaning its center is at $(\pm d, \pm d)$ for some value $d$, where $d$ is the distance from center to the inside of each side minus 1. Actually, if the square has half-side length $s$ (so side $2s$), the center of a corner circle is at $(\pm(s-1), \pm(s-1))$.
+
+The distance between the center of the large circle (at the origin) and a corner circle center at $(s-1, s-1)$ must equal $2 + 1 = 3$ (external tangency):
+$$\sqrt{(s-1)^2 + (s-1)^2} = 3$$
+$$(s-1)\sqrt{2} = 3$$
+$$s - 1 = \frac{3}{\sqrt{2}} = \frac{3\sqrt{2}}{2}$$
+$$s = 1 + \frac{3\sqrt{2}}{2}.$$
+
+The side length of the square is $2s = 2 + 3\sqrt{2}$, so the area is:
+$$(2 + 3\sqrt{2})^2 = 4 + 12\sqrt{2} + 18 = 22 + 12\sqrt{2}.$$
+
+Answer: **B**.
+</Solution>

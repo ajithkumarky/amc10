@@ -1,0 +1,25 @@
+---
+year: 2008
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: A
+choices: ["$3/8$", "$1/2$", "$43/72$", "$5/8$", "$2/3$"]
+---
+
+<Problem>
+Two fair coins are to be tossed once. For each head that results, one fair die is to be rolled. What is the probability that the sum of the die rolls is odd? (Note that if no die is rolled, the sum is $0$.)
+</Problem>
+
+<Solution>
+Let $H$ be the number of heads. The coin outcomes and their probabilities are:
+
+- $H = 0$ (TT): probability $1/4$. Sum $= 0$ (even). Contributes $0$ to odd-sum probability.
+- $H = 1$ (HT or TH): probability $1/2$. Roll one die; sum is odd with probability $1/2$. Contribution: $\frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}$.
+- $H = 2$ (HH): probability $1/4$. Roll two dice; sum is odd iff exactly one die is odd, which has probability $\frac{1}{2}$ (either die 1 odd and die 2 even, or vice versa). Contribution: $\frac{1}{4} \cdot \frac{1}{2} = \frac{1}{8}$.
+
+Total probability of odd sum: $0 + \frac{1}{4} + \frac{1}{8} = \frac{3}{8}$.
+
+Answer: **A**.
+</Solution>

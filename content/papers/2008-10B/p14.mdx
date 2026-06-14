@@ -1,0 +1,28 @@
+---
+year: 2008
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 3
+answer: B
+choices: ['$\left(-\dfrac{10}{3}\sqrt{3},\, 5\right)$', '$\left(-\dfrac{5}{3}\sqrt{3},\, 5\right)$', '$\left(\sqrt{3},\, 5\right)$', '$\left(\dfrac{5}{3}\sqrt{3},\, 5\right)$', '$\left(\dfrac{10}{3}\sqrt{3},\, 5\right)$']
+---
+
+<Problem>
+Triangle $OAB$ has $O = (0,0)$, $B = (5,0)$, and $A$ in the first quadrant. In addition, $\angle ABO = 90^\circ$ and $\angle AOB = 30^\circ$. Suppose that $OA$ is rotated $90^\circ$ counterclockwise about $O$. What are the coordinates of the image of $A$?
+</Problem>
+
+<Solution>
+Since $\angle AOB = 30^\circ$ and $B = (5, 0)$, the point $A$ lies along the ray from $O$ at angle $30^\circ$.
+
+With $\angle ABO = 90^\circ$, triangle $OAB$ is right-angled at $B$, so $AB \perp OB$. Since $OB$ lies along the $x$-axis, $AB$ is vertical. Thus $A$ has the same $x$-coordinate as $B$, giving $A = (5, y)$ for some $y > 0$.
+
+Since $\angle AOB = 30^\circ$: $\tan 30^\circ = \frac{AB}{OB} = \frac{y}{5}$, so $y = 5\tan 30^\circ = \frac{5}{\sqrt{3}} = \frac{5\sqrt{3}}{3}$.
+
+Thus $A = \left(5, \frac{5\sqrt{3}}{3}\right)$.
+
+Rotating a point $(x, y)$ by $90^\circ$ counterclockwise gives $(-y, x)$:
+$$A' = \left(-\frac{5\sqrt{3}}{3}, 5\right).$$
+
+Answer: **B**.
+</Solution>

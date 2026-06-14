@@ -1,0 +1,35 @@
+---
+year: 2008
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: D
+choices: ["$92$", "$94$", "$96$", "$98$", "$100$"]
+---
+
+<Problem>
+Trapezoid $ABCD$ has bases $\overline{AB}$ and $\overline{CD}$ and diagonals intersecting at $K$. Suppose that $AB = 9$, $DC = 12$, and the area of $\triangle AKD$ is $24$. What is the area of trapezoid $ABCD$?
+</Problem>
+
+<Solution>
+Since $AB \parallel CD$, triangles $AKB$ and $DKC$ are similar with ratio $AB:DC = 9:12 = 3:4$.
+
+This means $KB:KD = 3:4$.
+
+**Find all four triangle areas.**
+
+$\triangle AKB$ and $\triangle AKD$ share vertex $A$, so their areas are in ratio $KB:KD = 3:4$:
+$$[\triangle AKB] = [\triangle AKD] \cdot \frac{3}{4} = 24 \cdot \frac{3}{4} = 18.$$
+
+$\triangle DKC$ is similar to $\triangle AKB$ with ratio $4:3$, so their areas are in ratio $16:9$:
+$$[\triangle DKC] = 18 \cdot \frac{16}{9} = 32.$$
+
+$\triangle BKC$ and $\triangle DKC$ share vertex $C$, with $KB:KD = 3:4$:
+$$[\triangle BKC] = 32 \cdot \frac{3}{4} = 24.$$
+
+**Total area:**
+$$18 + 24 + 32 + 24 = 98.$$
+
+Answer: **D**.
+</Solution>

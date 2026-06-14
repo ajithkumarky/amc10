@@ -1,0 +1,25 @@
+---
+year: 2008
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: A
+choices: ["6", "12", "24", "32", "36"]
+---
+
+<Problem>
+For the positive integer $n$, let $\langle n\rangle$ denote the sum of all the positive divisors of $n$ with the exception of $n$ itself. For example, $\langle 4\rangle=1+2=3$ and $\langle 12 \rangle =1+2+3+4+6=16$. What is $\langle\langle\langle 6\rangle\rangle\rangle$?
+</Problem>
+
+<Solution>
+Compute step by step.
+
+$\langle 6\rangle$: the proper divisors of $6$ are $1, 2, 3$, so $\langle 6\rangle = 6$.
+
+$\langle 6\rangle = 6$, so $\langle\langle 6\rangle\rangle = \langle 6\rangle = 6$.
+
+$\langle\langle\langle 6\rangle\rangle\rangle = \langle 6\rangle = 6$.
+
+Answer: **A**.
+</Solution>

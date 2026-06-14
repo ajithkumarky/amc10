@@ -1,0 +1,27 @@
+---
+year: 2007
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: D
+choices: ["$3$", "$7$", "$13$", "$37$", "$43$"]
+---
+
+<Problem>
+A finite sequence of three-digit integers has the property that the tens and units digits of each term are, respectively, the hundreds and tens digits of the next term, and the tens and units digits of the last term are, respectively, the hundreds and tens digits of the first term. For example, such a sequence might begin with the terms 247, 475, and 756 and end with the term 824. Let $S$ be the sum of all the terms in the sequence. What is the largest prime factor that always divides $S$?
+</Problem>
+
+<Solution>
+Let the digits of the sequence cycle through digits $d_1, d_2, d_3, \ldots, d_n$ (with wraparound). Each term is three consecutive digits: the $i$-th term is $\overline{d_i d_{i+1} d_{i+2}} = 100d_i + 10d_{i+1} + d_{i+2}$ (indices mod $n$).
+
+The sum of all $n$ terms is:
+$$S = \sum_{i=1}^{n} (100d_i + 10d_{i+1} + d_{i+2}).$$
+
+Since the indices wrap around, each digit $d_j$ appears exactly once in the hundreds place, once in the tens place, and once in the units place across all $n$ terms:
+$$S = (100 + 10 + 1)\sum_{j=1}^{n} d_j = 111 \sum_{j=1}^{n} d_j.$$
+
+Now $111 = 3 \times 37$. The sum $\sum d_j$ is some positive integer, so $S$ is always divisible by both 3 and 37. The largest prime that always divides $S$ is $37$.
+
+Answer: **D**.
+</Solution>

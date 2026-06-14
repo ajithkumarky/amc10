@@ -1,0 +1,26 @@
+---
+year: 2008
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: A
+choices: ['$\dfrac{\sqrt{6}}{2}$', '$\dfrac{5}{4}$', '$\sqrt{2}$', '$\dfrac{5}{8}$', '$\dfrac{3}{4}$']
+---
+
+<Problem>
+A cube with side length $1$ is sliced by a plane that passes through two diagonally opposite vertices $A$ and $C$ and the midpoints $B$ and $D$ of two opposite edges not containing $A$ or $C$. What is the area of quadrilateral $ABCD$?
+</Problem>
+
+<Solution>
+Place the cube with $A = (0,0,0)$ and $C = (1,1,1)$. Choose $B$ and $D$ as the midpoints of opposite edges that don't contain $A$ or $C$: $B = (1, 0, \tfrac{1}{2})$ and $D = (0, 1, \tfrac{1}{2})$.
+
+**Verify $ABCD$ is a parallelogram:** $\vec{AB} = (1, 0, \tfrac{1}{2})$ and $\vec{DC} = C - D = (1, 0, \tfrac{1}{2}) = \vec{AB}$, so $AB \parallel DC$ with equal length.
+
+**Area via cross product:**
+$$\vec{AB} \times \vec{AD} = (1, 0, \tfrac{1}{2}) \times (0, 1, \tfrac{1}{2}) = \left(-\tfrac{1}{2},\,-\tfrac{1}{2},\,1\right).$$
+
+$$\text{Area} = \left|\vec{AB} \times \vec{AD}\right| = \sqrt{\tfrac{1}{4} + \tfrac{1}{4} + 1} = \sqrt{\tfrac{3}{2}} = \frac{\sqrt{6}}{2}.$$
+
+Answer: **A**.
+</Solution>

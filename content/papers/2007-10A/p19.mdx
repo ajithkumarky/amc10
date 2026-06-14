@@ -1,0 +1,68 @@
+---
+year: 2007
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: C
+choices: ['$2\sqrt{2}+1$', '$3\sqrt{2}$', '$2\sqrt{2}+2$', '$3\sqrt{2}+1$', '$3\sqrt{2}+2$']
+---
+
+<Problem>
+A paint brush is swept along both diagonals of a square to produce the symmetric painted area, as shown. Half the area of the square is painted. What is the ratio of the side length of the square to the brush width?
+
+The painted region consists of two diagonal bands crossing the square, each of width $w$ (the brush width), centered on each diagonal. Their union covers exactly half the square's area.
+</Problem>
+
+<Solution>
+Let the square have side length $s$ and the brush width be $w$. Each diagonal band has width $w$ measured perpendicularly, and the bands cross at the center forming an X-shape.
+
+Each diagonal has length $s\sqrt{2}$. The area of one diagonal band (a rectangle of width $w$ and length $s\sqrt{2}$, clipped to the square) is approximately $ws\sqrt{2}$, but we must subtract the overlap at the center.
+
+The two bands intersect in a small square (rotated 45°) with diagonal $w\sqrt{2}$, so the overlap area is $w^2$.
+
+Total painted area:
+$$2 \cdot ws\sqrt{2} - w^2 = \frac{s^2}{2}.$$
+
+However, this formula assumed the full band fits inside the square. We also need to account for the four triangular corners cut off where the band exits the square corners. Each band extends the full diagonal, so the clipping at the $\pm 45°$ corners removes triangles. Each corner triangle has legs $\dfrac{w}{2\sin 45°} \cdot \cos 45° $... 
+
+Let's set up more carefully. The band along one diagonal extends from corner to corner. At each corner, the band exits the square — but since the diagonal goes corner to corner, the band is entirely within the square except near the corners where the width $w$ causes it to stick out. The area of the band within the square is the full parallelogram area minus four corner triangles, each a right triangle with legs $w/(2\sin 45°) = w/\sqrt{2}$, area $= \frac{1}{2}(w/\sqrt{2})^2 = w^2/4$. Four such triangles total area $w^2$.
+
+So each band's area inside the square: $ws\sqrt{2} - w^2$.
+
+The two bands' union: $2(ws\sqrt{2} - w^2) - w^2 = 2ws\sqrt{2} - 3w^2$.
+
+(The overlap at center is a square with diagonal $w\sqrt{2}$, area $w^2$.)
+
+Setting equal to $s^2/2$:
+$$2ws\sqrt{2} - 3w^2 = \frac{s^2}{2}.$$
+
+Let $r = s/w$:
+$$2r\sqrt{2} - 3 = \frac{r^2}{2}.$$
+$$r^2 - 4r\sqrt{2} + 6 = 0.$$
+$$r = \frac{4\sqrt{2} \pm \sqrt{32 - 24}}{2} = \frac{4\sqrt{2} \pm \sqrt{8}}{2} = \frac{4\sqrt{2} \pm 2\sqrt{2}}{2}.$$
+
+Taking the larger root (since we need a valid square with $s > w$):
+$$r = \frac{6\sqrt{2}}{2} = 3\sqrt{2}$$
+or the smaller root $r = \sqrt{2}$ (too small — the brush would be wider than the diagonal).
+
+Check $r = 2\sqrt{2} + 2$: that would require $r^2 = (2\sqrt{2}+2)^2 = 8 + 8\sqrt{2} + 4 = 12 + 8\sqrt{2}$, but $3\sqrt{2}$ gives $r^2 = 18$. Let's verify the equation: $18 - 4(3\sqrt{2})\sqrt{2} + 6 = 18 - 24 + 6 = 0$. Yes, $r = 3\sqrt{2}$ satisfies it.
+
+But $3\sqrt{2}$ is answer (B). Let me recheck the corner triangle calculation.
+
+At each corner, the band sticks out as a right isosceles triangle with legs $w/2 \div \sin 45° = w/\sqrt{2}$. Wait — the half-width of the band perpendicular to the diagonal is $w/2$. The portion cut off at the corner: the diagonal hits the corner vertex exactly, and the band of perpendicular half-width $w/2$ extends beyond. The triangular portion beyond the corner has legs equal to $(w/2)/\sin 45° = w/\sqrt{2}$ each (since the sides of the square make 45° with the diagonal). Area of one cut triangle: $\frac{1}{2}(w/\sqrt{2})^2 = w^2/4$. Four corners, but only 4 per band... wait, there are only 2 corners per diagonal. So each band has 2 cut-off triangles: total cut $= 2 \cdot w^2/4 = w^2/2$.
+
+Each band area inside square: $ws\sqrt{2} - w^2/2$.
+
+Union of two bands: $2(ws\sqrt{2} - w^2/2) - w^2 = 2ws\sqrt{2} - w^2 - w^2 = 2ws\sqrt{2} - 2w^2$.
+
+Setting equal to $s^2/2$:
+$$2ws\sqrt{2} - 2w^2 = \frac{s^2}{2}.$$
+
+Let $r = s/w$: $2r\sqrt{2} - 2 = r^2/2$, so $r^2 - 4r\sqrt{2} + 4 = 0$.
+$$r = \frac{4\sqrt{2} \pm \sqrt{32 - 16}}{2} = \frac{4\sqrt{2} \pm 4}{2} = 2\sqrt{2} \pm 2.$$
+
+Taking the larger root: $r = 2\sqrt{2} + 2$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,29 @@
+---
+year: 2008
+paper: "10A"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 5
+answer: B
+choices: ["$20$", "$40$", "$60$", "$160$", "$320$"]
+---
+
+<Problem>
+Two subsets of the set $S=\lbrace a,b,c,d,e\rbrace$ are to be chosen so that their union is $S$ and their intersection contains exactly two elements. In how many ways can this be done, assuming that the order in which the subsets are chosen does not matter?
+</Problem>
+
+<Solution>
+Each element of $S$ must end up in the union, so each element is in at least one of the two subsets. We also require exactly 2 elements in the intersection (in both subsets).
+
+**Step 1: Choose the 2 elements in the intersection.** There are $\binom{5}{2} = 10$ ways.
+
+**Step 2: Distribute the remaining 3 elements.** Each of the remaining 3 elements must be in at least one subset but not both. So each must go to exactly one of the two subsets (not both, since that would put it in the intersection; not neither, since that would remove it from the union). This gives $2^3 = 8$ ways — but this counts ordered pairs (which subset gets each element).
+
+**Step 3: Account for unordered subsets.** The two subsets are unordered. However, can the two subsets be identical? They would be identical only if all 3 remaining elements are split identically — but since each remaining element goes to exactly one subset, identical subsets would require all 3 in neither, which is impossible. So the two subsets are always distinct, and we divide by $2$:
+
+$$\frac{8}{2} = 4 \text{ ways to distribute the remaining 3 elements.}$$
+
+**Total:** $10 \times 4 = 40$.
+
+Answer: **B**.
+</Solution>

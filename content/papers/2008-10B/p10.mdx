@@ -1,0 +1,26 @@
+---
+year: 2008
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 2
+answer: A
+choices: ['$\sqrt{10}$', '$7/2$', '$\sqrt{14}$', '$\sqrt{15}$', '$4$']
+---
+
+<Problem>
+Points $A$ and $B$ are on a circle of radius $5$ and $AB = 6$. Point $C$ is the midpoint of the minor arc $AB$. What is the length of the line segment $AC$?
+</Problem>
+
+<Solution>
+Place the circle with center $O$ at the origin. Since $AB = 6$ and the radius is $5$, the perpendicular from $O$ to $AB$ has length $\sqrt{25 - 9} = 4$.
+
+Set coordinates: $A = (-3, 4)$, $B = (3, 4)$, and the midpoint of the minor arc is $C = (0, -5)$ (the point on the circle directly below the chord, on the minor arc side).
+
+Wait — the minor arc is the shorter arc. Since the perpendicular from $O$ to $AB$ hits the chord at $(0, 4)$, the minor arc is on the side closer to the chord. The midpoint of the minor arc is at $(0, 5)$ (above the chord on the circle), and $C = (0, 5)$.
+
+Then:
+$$AC = \sqrt{(0-(-3))^2 + (5-4)^2} = \sqrt{9 + 1} = \sqrt{10}.$$
+
+Answer: **A**.
+</Solution>

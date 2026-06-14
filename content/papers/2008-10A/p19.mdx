@@ -1,0 +1,36 @@
+---
+year: 2008
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: C
+choices:
+  - '$(2\sqrt{3}+\sqrt{5})\pi$'
+  - '$6\pi$'
+  - '$(3+\sqrt{10})\pi$'
+  - '$(\sqrt{3}+2\sqrt{5})\pi$'
+  - '$2\sqrt{10}\pi$'
+---
+
+<Problem>
+Rectangle $PQRS$ lies in a plane with $PQ=RS=2$ and $QR=SP=6$. The rectangle is rotated $90^\circ$ clockwise about $R$, then rotated $90^\circ$ clockwise about the point $S$ moved to after the first rotation. What is the length of the path traveled by point $P$?
+</Problem>
+
+<Solution>
+Place the rectangle so $R = (0,0)$, $Q = (6,0)$, $P = (6,2)$, $S = (0,2)$ (so $QR = SP = 6$ and $PQ = RS = 2$).
+
+**First rotation:** $90^\circ$ clockwise about $R = (0,0)$. The rule is $(x,y) \mapsto (y,-x)$.
+- $P = (6,2) \mapsto P' = (2,-6)$.
+- $S = (0,2) \mapsto S' = (2,0)$.
+- Arc radius $= |RP| = \sqrt{36+4} = \sqrt{40}$.
+- Arc length $= \frac{\pi}{2}\sqrt{40} = \sqrt{10}\,\pi$.
+
+**Second rotation:** $90^\circ$ clockwise about $S' = (2,0)$.
+- $|S'P'| = |(2-2,\,-6-0)| = 6$.
+- Arc length $= \frac{\pi}{2} \cdot 6 = 3\pi$.
+
+**Total path length:** $\sqrt{10}\,\pi + 3\pi = (3 + \sqrt{10})\pi$.
+
+Answer: **C**.
+</Solution>

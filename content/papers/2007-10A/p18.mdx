@@ -1,0 +1,45 @@
+---
+year: 2007
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: C
+choices: ['$\dfrac{44}{3}$', '$16$', '$\dfrac{88}{5}$', '$20$', '$\dfrac{62}{3}$']
+---
+
+<Problem>
+Consider the 12-sided polygon $ABCDEFGHIJKL$, as shown. Each of its sides has length $4$, and each two consecutive sides form a right angle. Suppose that $\overline{AG}$ and $\overline{CH}$ meet at $M$. What is the area of quadrilateral $ABCM$?
+
+The polygon is a plus-sign shape (a cross) made of unit squares scaled to side 4. Reading the vertices in order: $A$ is upper-left of the top-left notch, going clockwise. Based on the Asymptote code, the coordinates (scaled by 4) give: $A=(4,12)$, $B=(8,12)$, $C=(8,8)$, $D=(12,8)$, $E=(12,4)$, $F=(8,4)$, $G=(8,0)$, $H=(4,0)$, $I=(4,4)$, $J=(0,4)$, $K=(0,8)$, $L=(4,8)$.
+</Problem>
+
+<Solution>
+Using the coordinates from the Asymptote code (scaled by 4): $A=(4,12)$, $B=(8,12)$, $C=(8,8)$, $D=(12,8)$, $E=(12,4)$, $F=(8,4)$, $G=(8,0)$, $H=(4,0)$, with unit = 4.
+
+**Find point $M$** — the intersection of $\overline{AG}$ and $\overline{CH}$.
+
+Line $AG$: from $A=(4,12)$ to $G=(8,0)$. Direction: $(4,-12)$, slope $= -3$. Equation: $y - 12 = -3(x-4) \Rightarrow y = -3x + 24$.
+
+Line $CH$: from $C=(8,8)$ to $H=(4,0)$. Direction: $(-4,-8)$, slope $= 2$. Equation: $y - 8 = 2(x-8) \Rightarrow y = 2x - 8$.
+
+Intersection: $-3x + 24 = 2x - 8 \Rightarrow 32 = 5x \Rightarrow x = \dfrac{32}{5}$, $y = 2 \cdot \dfrac{32}{5} - 8 = \dfrac{64}{5} - \dfrac{40}{5} = \dfrac{24}{5}$.
+
+So $M = \left(\dfrac{32}{5}, \dfrac{24}{5}\right)$.
+
+**Area of quadrilateral $ABCM$** with vertices $A=(4,12)$, $B=(8,12)$, $C=(8,8)$, $M=\left(\dfrac{32}{5}, \dfrac{24}{5}\right)$, using the shoelace formula:
+
+$$\text{Area} = \frac{1}{2} |x_A(y_B - y_M) + x_B(y_C - y_A) + x_C(y_M - y_B) + x_M(y_A - y_C)|$$
+
+$$= \frac{1}{2} \left|4\!\left(12 - \frac{24}{5}\right) + 8(8 - 12) + 8\!\left(\frac{24}{5} - 12\right) + \frac{32}{5}(12 - 8)\right|$$
+
+$$= \frac{1}{2} \left|4 \cdot \frac{36}{5} + 8(-4) + 8 \cdot \left(-\frac{36}{5}\right) + \frac{32}{5} \cdot 4\right|$$
+
+$$= \frac{1}{2} \left|\frac{144}{5} - 32 - \frac{288}{5} + \frac{128}{5}\right|$$
+
+$$= \frac{1}{2} \left|\frac{144 - 288 + 128}{5} - 32\right|$$
+
+$$= \frac{1}{2} \left|\frac{-16}{5} - 32\right| = \frac{1}{2} \cdot \frac{176}{5} = \frac{88}{5}.$$
+
+Answer: **C**.
+</Solution>

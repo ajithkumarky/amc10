@@ -1,0 +1,38 @@
+---
+year: 2008
+paper: "10B"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 5
+answer: B
+choices: ["1", "2", "3", "4", "5"]
+---
+
+<Problem>
+A rectangular floor measures $a$ by $b$ feet, where $a$ and $b$ are positive integers with $b > a$. An artist paints a rectangle on the floor with the sides of the rectangle parallel to the sides of the floor. The unpainted part of the floor forms a border of width $1$ foot around the painted rectangle and occupies half of the area of the entire floor. How many possibilities are there for the ordered pair $(a, b)$?
+</Problem>
+
+<Solution>
+The painted rectangle has dimensions $(a-2)$ by $(b-2)$ (the 1-foot border removes 1 foot from each side). The unpainted area is half the total:
+$$ab - (a-2)(b-2) = \frac{ab}{2}.$$
+
+Expand: $ab - (ab - 2a - 2b + 4) = \frac{ab}{2}$, so $2a + 2b - 4 = \frac{ab}{2}$.
+
+Multiply by 2: $4a + 4b - 8 = ab$, which rearranges to:
+$$ab - 4a - 4b + 8 = 0 \implies (a-4)(b-4) = 8.$$
+
+We also need $a \geq 3$ (so the painted region has positive dimensions: $a - 2 \geq 1$) and $b > a$.
+
+Factor pairs of $8$ with both factors having the same sign: $(1,8), (2,4), (4,2), (8,1), (-1,-8), (-2,-4)$, etc. We need $a - 4$ and $b - 4$ to be integers with $(a-4)(b-4) = 8$, $a \geq 3$, and $b > a > 0$.
+
+If $a - 4 = -1$, $b - 4 = -8$: $a = 3$, $b = -4$. Invalid ($b < 0$).
+If $a - 4 = -2$, $b - 4 = -4$: $a = 2$, $b = 0$. Invalid.
+If $a - 4 = 1$, $b - 4 = 8$: $a = 5$, $b = 12$. Valid ($b > a \geq 3$).
+If $a - 4 = 2$, $b - 4 = 4$: $a = 6$, $b = 8$. Valid.
+If $a - 4 = 4$, $b - 4 = 2$: $a = 8$, $b = 6$. But $b < a$, invalid.
+If $a - 4 = 8$, $b - 4 = 1$: $a = 12$, $b = 5$. But $b < a$, invalid.
+
+There are $2$ valid ordered pairs: $(5, 12)$ and $(6, 8)$.
+
+Answer: **B**.
+</Solution>

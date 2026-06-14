@@ -1,0 +1,30 @@
+---
+year: 2007
+paper: "10B"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 5
+answer: B
+choices: ['$\dfrac{3}{2}$', '$\dfrac{60}{37}$', '$\dfrac{12}{7}$', '$\dfrac{23}{13}$', '$2$']
+---
+
+<Problem>
+Right $\triangle ABC$ has $AB = 3$, $BC = 4$, and $AC = 5.$ Square $XYZW$ is inscribed in $\triangle ABC$ with $X$ and $Y$ on $\overline{AC}$, $W$ on $\overline{AB}$, and $Z$ on $\overline{BC}.$ What is the side length of the square?
+</Problem>
+
+<Solution>
+Place $A$ at the origin, $C = (5, 0)$ along the $x$-axis. The right angle is at $B$; we find $B$ using $AB = 3$ and $BC = 4$. The foot from $B$ to $AC$ lies at distance $AB^2/AC = 9/5$ from $A$, so $B = (9/5, 12/5)$.
+
+Let the side length of the square be $s$. Since $X$ and $Y$ lie on $AC$ (the $x$-axis), the square has its base on $AC$ with $Y = (x, 0)$, $X = (x+s, 0)$, $Z = (x+s, s)$, $W = (x, s)$ for some $x$.
+
+**Condition: $W$ lies on $\overline{AB}.$** Line $AB$ goes from $(0,0)$ to $(9/5, 12/5)$, with slope $\frac{12/5}{9/5} = \frac{4}{3}$. Its equation: $y = \frac{4}{3}x$. At height $s$: $x_W = \frac{3s}{4}$, so $W = \left(\frac{3s}{4}, s\right)$.
+
+**Condition: $Z$ lies on $\overline{BC}.$** Line $BC$ goes from $B=(9/5, 12/5)$ to $C=(5, 0)$. Direction: $(5-9/5, 0-12/5) = (16/5, -12/5)$, slope $= -\frac{12}{16} = -\frac{3}{4}$. Equation through $C=(5,0)$: $y = -\frac{3}{4}(x - 5)$. At height $s$: $-\frac{3}{4}(x_Z - 5) = s$, so $x_Z = 5 - \frac{4s}{3}$.
+
+**Since $XYZW$ is a square with side $s$:** $x_Z = x_W + s$:
+$$5 - \frac{4s}{3} = \frac{3s}{4} + s.$$
+$$5 = \frac{3s}{4} + s + \frac{4s}{3} = s\left(\frac{3}{4} + 1 + \frac{4}{3}\right) = s\cdot\frac{9 + 12 + 16}{12} = \frac{37s}{12}.$$
+$$s = \frac{60}{37}.$$
+
+Answer: **B**.
+</Solution>

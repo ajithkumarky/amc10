@@ -1,0 +1,62 @@
+---
+year: 2008
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: C
+choices: ["$75$", "$80$", "$85$", "$90$", "$95$"]
+---
+
+<Problem>
+Quadrilateral $ABCD$ has $AB = BC = CD$, $\angle ABC = 70^\circ$, and $\angle BCD = 170^\circ$. What is the measure of angle $BAD$?
+</Problem>
+
+<Solution>
+Let $AB = BC = CD = 1$. We need $\angle BAD$.
+
+**Locate the key triangle.** Since $AB = BC$, triangle $ABC$ is isosceles. With $\angle ABC = 70^\circ$, we have $\angle BAC = \angle BCA = 55^\circ$.
+
+Since $BC = CD$, triangle $BCD$ is isosceles. With $\angle BCD = 170^\circ$, we have $\angle CBD = \angle CDB = 5^\circ$.
+
+**Find diagonal $BD$.** In triangle $BCD$, by the law of sines:
+$$BD = 2 \cdot BC \cdot \sin(\angle BCD / 2) = 2\sin 85^\circ.$$
+
+Wait — use the law of sines properly: $\frac{BD}{\sin 170^\circ} = \frac{CD}{\sin 5^\circ}$, so $BD = \frac{\sin 170^\circ}{\sin 5^\circ} = \frac{\sin 10^\circ}{\sin 5^\circ} = 2\cos 5^\circ$ (using $\sin 170° = \sin 10°$ and $\sin 10° = 2\sin 5°\cos 5°$).
+
+In triangle $ABC$: $\frac{AC}{\sin 70^\circ} = \frac{AB}{\sin 55^\circ}$, so $AC = \frac{\sin 70^\circ}{\sin 55^\circ}$.
+
+**Use diagonal AC in triangle ACD.** This approach grows complex. Instead, use the result directly via angle chasing.
+
+$\angle ABD = \angle ABC - \angle CBD = 70^\circ - 5^\circ = 65^\circ$.
+
+In triangle $ABD$: $AB = 1$, $BD = 2\cos 5^\circ$, $\angle ABD = 65^\circ$. By law of sines: $\frac{AD}{\sin 65^\circ} = \frac{BD}{\sin \angle BAD}$.
+
+But we also have $\angle BAD + \angle ADB = 180^\circ - 65^\circ = 115^\circ$.
+
+Since $AB = 1$ and the configuration is symmetric in a specific way, note that $\angle ACD = \angle BCD - \angle BCA = 170^\circ - 55^\circ = 115^\circ$.
+
+In triangle $ACD$: $AC = \frac{\sin 70^\circ}{\sin 55^\circ}$, $CD = 1$, $\angle ACD = 115^\circ$. The sum of angles gives $\angle CAD + \angle CDA = 65^\circ$.
+
+The total $\angle BAD = \angle BAC + \angle CAD = 55^\circ + \angle CAD$.
+
+Using law of sines in triangle $ACD$: $\frac{AD}{\sin 115^\circ} = \frac{CD}{\sin \angle CAD}$, so $\sin \angle CAD = \frac{\sin 115^\circ}{AD}$.
+
+This requires knowing $AD$. From triangle $ABD$ (law of cosines):
+$$AD^2 = AB^2 + BD^2 - 2 \cdot AB \cdot BD \cdot \cos 65^\circ = 1 + 4\cos^2 5^\circ - 4\cos 5^\circ \cos 65^\circ.$$
+
+Since $\cos 65^\circ = \sin 25^\circ$ and $4\cos 5^\circ \cos 65^\circ = 2(\cos 60^\circ + \cos 70^\circ) = 1 + 2\cos 70^\circ$:
+$$AD^2 = 1 + 4\cos^2 5^\circ - 1 - 2\cos 70^\circ = 4\cos^2 5^\circ - 2\cos 70^\circ.$$
+
+Using $4\cos^2 5^\circ = 2(1 + \cos 10^\circ)$ and $\cos 70^\circ = \sin 20^\circ$:
+$$AD^2 = 2 + 2\cos 10^\circ - 2\sin 20^\circ = 2 + 2\cos 10^\circ - 4\sin 10^\circ \cos 10^\circ = 2 + 2\cos 10^\circ(1 - 2\sin 10^\circ).$$
+
+Numerically: $\cos 5^\circ \approx 0.9962$, $BD \approx 1.9924$, $\cos 65^\circ \approx 0.4226$.
+$AD^2 \approx 1 + 3.970 - 4(0.9962)(0.4226) \approx 4.970 - 1.684 \approx 3.286$, so $AD \approx 1.813$.
+
+In triangle $ACD$: $\sin \angle CAD = \frac{CD \sin 115^\circ}{AD} = \frac{\sin 115^\circ}{1.813} \approx \frac{0.9063}{1.813} \approx 0.5000$.
+
+So $\angle CAD = 30^\circ$, and $\angle BAD = 55^\circ + 30^\circ = 85^\circ$.
+
+Answer: **C**.
+</Solution>

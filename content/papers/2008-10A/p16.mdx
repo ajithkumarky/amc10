@@ -1,0 +1,27 @@
+---
+year: 2008
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: B
+choices: ['$\dfrac{1}{16}$', '$\dfrac{1}{9}$', '$\dfrac{1}{8}$', '$\dfrac{1}{6}$', '$\dfrac{1}{4}$']
+---
+
+<Problem>
+Points $A$ and $B$ lie on a circle centered at $O$, and $\angle AOB = 60^\circ$. A second circle is internally tangent to the first and tangent to both $\overline{OA}$ and $\overline{OB}$. What is the ratio of the area of the smaller circle to that of the larger circle?
+</Problem>
+
+<Solution>
+Let the large circle have radius $R$ and center $O$. The smaller circle is tangent to rays $OA$ and $OB$, so its center $I$ lies on the angle bisector of the $60^\circ$ angle, at the midpoint ray.
+
+Since $\angle AOB = 60^\circ$, the half-angle is $30^\circ$. The small circle has radius $r$ and its center is at distance $d$ from $O$ along the bisector. The circle is tangent to $\overline{OA}$ (the ray), so $d \sin 30^\circ = r$, giving $d = 2r$.
+
+The small circle is also internally tangent to the large circle, so the distance from $O$ to $I$ plus $r$ equals $R$:
+$$d + r = R \implies 2r + r = R \implies r = \frac{R}{3}.$$
+
+The ratio of areas is:
+$$\frac{\pi r^2}{\pi R^2} = \frac{r^2}{R^2} = \frac{1}{9}.$$
+
+Answer: **B**.
+</Solution>

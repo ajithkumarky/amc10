@@ -1,0 +1,36 @@
+---
+year: 2007
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: D
+choices: ["$12$", "$16$", "$18$", "$20$", "$25$"]
+---
+
+<Problem>
+On the trip home from the meeting where this AMC10 was constructed, the Contest Chair noted that his airport parking receipt had digits of the form $bbcac,$ where $0 \le a < b < c \le 9,$ and $b$ was the average of $a$ and $c.$ How many different five-digit numbers satisfy all these properties?
+</Problem>
+
+<Solution>
+We need $0 \le a < b < c \le 9$ with $b = \dfrac{a+c}{2}$, so $a + c = 2b$ (meaning $a$ and $c$ have the same parity as each other, and $b$ is their average).
+
+Also, the number $bbcac$ is a five-digit number, so the leading digit $b \ne 0$, meaning $b \ge 1$. Since $a < b$, we have $a \ge 0$, and since $b \ge 1$ and $a < b$, this is automatically satisfied.
+
+We count pairs $(a, c)$ with the same parity, $a < c$, and $b = (a+c)/2$ satisfying $a < b < c$ (which is automatic when $a < c$ and $b$ is their average). We just need $b \ge 1$ (i.e., $b \ne 0$).
+
+Since $b = (a+c)/2 \ge 1$ requires $a + c \ge 2$. Also $a \ge 0$ and $a < b$, so $a < (a+c)/2$, which gives $a < c$ (already required).
+
+Count by the common difference $d = b - a = c - b$ where $d \ge 1$ (since $a < b < c$). Then $c = a + 2d$ and $b = a + d$. We need $c \le 9$: $a + 2d \le 9$.
+
+For each $d \ge 1$: $a$ ranges from $0$ to $9 - 2d$, giving $10 - 2d$ choices (as long as $10 - 2d \ge 1$, i.e., $d \le 4$). We also need $b \ge 1$, i.e., $a + d \ge 1$. Since $d \ge 1$ and $a \ge 0$, this is always true.
+
+- $d = 1$: $a \in \{0,1,\ldots,7\}$ → $8$ triples.
+- $d = 2$: $a \in \{0,1,\ldots,5\}$ → $6$ triples.
+- $d = 3$: $a \in \{0,1,2,3\}$ → $4$ triples.
+- $d = 4$: $a \in \{0,1\}$ → $2$ triples.
+
+Total: $8 + 6 + 4 + 2 = 20$.
+
+Answer: **D**.
+</Solution>

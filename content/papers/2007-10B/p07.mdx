@@ -1,0 +1,40 @@
+---
+year: 2007
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 2
+answer: E
+choices: ["$90$", "$108$", "$120$", "$144$", "$150$"]
+---
+
+<Problem>
+All sides of the convex pentagon $ABCDE$ are of equal length, and $\angle A = \angle B = 90^\circ.$ What is the degree measure of $\angle E?$
+</Problem>
+
+<Solution>
+The sum of interior angles of any pentagon is $(5-2) \times 180^\circ = 540^\circ$.
+
+We know $\angle A = \angle B = 90^\circ$, so the remaining three angles $\angle C + \angle D + \angle E = 540^\circ - 90^\circ - 90^\circ = 360^\circ$.
+
+Since all sides are equal and $\angle A = \angle B = 90^\circ$, the pentagon has a line of symmetry through $E$ and the midpoint of $AB$. This forces $\angle C = \angle D$. Thus:
+$$2\angle C + \angle E = 360^\circ.$$
+
+To find the relationship between $\angle C$ and $\angle E$, set up coordinates. Place $A$ at the origin with $AB$ along the $x$-axis. Since $\angle A = 90^\circ$ and all sides have length $s$, side $AE$ goes straight up. Place $A = (0,0)$, $B = (s,0)$, $E = (0,s)$, $D = (s, s+h)$ for some height $h$ (by symmetry), $C = (s, ?)$ — wait, use symmetry directly.
+
+Let the side length be $1$. With $A=(0,0)$, $B=(1,0)$, and $\angle A = \angle B = 90^\circ$: side $AE$ is perpendicular to $AB$ so $E$ lies along the $y$-axis from $A$; side $BC$ is perpendicular to $AB$ so $C$ lies along the vertical from $B$.
+
+So $E = (0,1)$ and $C = (1,1)$. Now $DE$ and $DC$ each have length $1$, and by symmetry $D = (1/2, 1 + \sqrt{3}/2)$ (equidistant from $E$ and $C$ at distance $1$).
+
+Check: $|DE|^2 = (1/2)^2 + (\sqrt{3}/2)^2 = 1/4 + 3/4 = 1$. Correct.
+
+Now find $\angle E$ at vertex $E = (0,1)$ between sides $EA$ and $ED$:
+- Vector $EA = A - E = (0,-1)$, pointing downward.
+- Vector $ED = D - E = (1/2, \sqrt{3}/2)$.
+
+$$\cos(\angle E) = \frac{(0)(1/2) + (-1)(\sqrt{3}/2)}{1 \cdot 1} = -\frac{\sqrt{3}}{2}.$$
+
+So $\angle E = 150^\circ$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,23 @@
+---
+year: 2008
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: B
+choices: ["2008", "4015", "4016", "4,030,056", "4,032,064"]
+---
+
+<Problem>
+For each positive integer $n$, the mean of the first $n$ terms of a sequence is $n$. What is the 2008th term of the sequence?
+</Problem>
+
+<Solution>
+Let $S_n$ denote the sum of the first $n$ terms. We are told $S_n / n = n$, so $S_n = n^2$.
+
+The $n$th term is $a_n = S_n - S_{n-1} = n^2 - (n-1)^2 = 2n - 1$.
+
+Therefore $a_{2008} = 2(2008) - 1 = 4015$.
+
+Answer: **B**.
+</Solution>

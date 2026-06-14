@@ -1,0 +1,35 @@
+---
+year: 2008
+paper: "10A"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: D
+choices: ["$0$", "$2$", "$4$", "$6$", "$8$"]
+---
+
+<Problem>
+Let $k={2008}^{2}+{2}^{2008}$. What is the units digit of $k^2+2^k$?
+</Problem>
+
+<Solution>
+**Find the units digit of $k$.**
+
+- $2008^2$: units digit of $8^2 = 64$ is $4$.
+- $2^{2008}$: the units digits of powers of 2 cycle with period 4: $2,4,8,6,\ldots$ Since $2008 \equiv 0 \pmod{4}$, the units digit of $2^{2008}$ is $6$.
+- Units digit of $k = 4 + 6 = 10$, so units digit of $k$ is $0$.
+
+**Find the units digit of $k^2$.**
+
+Units digit of $k$ is $0$, so units digit of $k^2$ is $0$.
+
+**Find the units digit of $2^k$.**
+
+We need $k \pmod{4}$. Since $k$ ends in $0$, we have $k \equiv 0 \pmod{4}$ (any number ending in $0$ is divisible by 10, hence by 4 — we need to verify: $k = 2008^2 + 2^{2008}$). 
+
+$2008^2 \equiv 0 \pmod{4}$ (since $2008$ is even). $2^{2008} \equiv 0 \pmod{4}$ (since $2008 \geq 2$). So $k \equiv 0 \pmod{4}$, and the units digit of $2^k$ is $6$.
+
+**Units digit of $k^2 + 2^k$:** $0 + 6 = 6$.
+
+Answer: **D**.
+</Solution>

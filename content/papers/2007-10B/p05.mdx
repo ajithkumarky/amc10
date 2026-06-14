@@ -1,0 +1,43 @@
+---
+year: 2007
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 1
+answer: D
+choices: [
+  "All Dramps are Brafs and are Crups.",
+  "All Brafs are Crups and are Dramps.",
+  "All Arogs are Crups and are Dramps.",
+  "All Crups are Arogs and are Brafs.",
+  "All Arogs are Dramps and some Arogs may not be Crups."
+]
+---
+
+<Problem>
+In a certain land, all Arogs are Brafs, all Crups are Brafs, all Dramps are Arogs, and all Crups are Dramps. Which of the following statements is implied by these facts?
+
+$\textbf{(A)}$ All Dramps are Brafs and are Crups.
+
+$\textbf{(B)}$ All Brafs are Crups and are Dramps.
+
+$\textbf{(C)}$ All Arogs are Crups and are Dramps.
+
+$\textbf{(D)}$ All Crups are Arogs and are Brafs.
+
+$\textbf{(E)}$ All Arogs are Dramps and some Arogs may not be Crups.
+</Problem>
+
+<Solution>
+Map the given rules as set inclusions:
+- Dramps $\subseteq$ Arogs
+- Arogs $\subseteq$ Brafs
+- Crups $\subseteq$ Dramps
+- Crups $\subseteq$ Brafs
+
+From "all Crups are Dramps" and "all Dramps are Arogs," it follows that all Crups are Arogs. Combined with "all Arogs are Brafs," all Crups are also Brafs. So **all Crups are Arogs and are Brafs**, which is choice (D).
+
+The other choices fail: (A) is wrong because Dramps need not be Crups; (B) is wrong because not all Brafs need be Crups; (C) is wrong because Arogs need not be Dramps (the inclusion runs the other way); (E) is wrong because we cannot conclude Arogs are Dramps.
+
+Answer: **D**.
+</Solution>

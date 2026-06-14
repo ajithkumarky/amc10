@@ -1,0 +1,27 @@
+---
+year: 2007
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: B
+choices: ['$\sqrt{2}$', '$1+\sqrt{2}$', '$\sqrt{6}$', '$3$', '$2+\sqrt{2}$']
+---
+
+<Problem>
+A circle of radius $1$ is surrounded by $4$ circles of radius $r$ as shown. The 4 outer circles are arranged symmetrically so each is tangent to the central circle and to two adjacent outer circles. What is $r?$
+</Problem>
+
+<Solution>
+By symmetry, the centers of the 4 outer circles lie at the corners of a square. Each outer circle is tangent to the central circle (radius $1$), so the distance from the center of the central circle to each outer circle's center is $1 + r$.
+
+Each outer circle is also tangent to its two neighbors. The centers of adjacent outer circles are distance $2r$ apart (since they are externally tangent).
+
+The 4 outer centers form a square with diagonal $2(1+r)$, so each side of that square has length $\dfrac{2(1+r)}{\sqrt{2}} = (1+r)\sqrt{2}$. This side length must equal $2r$:
+$$(1+r)\sqrt{2} = 2r.$$
+$$\sqrt{2} + r\sqrt{2} = 2r.$$
+$$\sqrt{2} = 2r - r\sqrt{2} = r(2 - \sqrt{2}).$$
+$$r = \frac{\sqrt{2}}{2 - \sqrt{2}} = \frac{\sqrt{2}(2+\sqrt{2})}{(2-\sqrt{2})(2+\sqrt{2})} = \frac{2\sqrt{2} + 2}{4 - 2} = \frac{2\sqrt{2}+2}{2} = 1 + \sqrt{2}.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,25 @@
+---
+year: 2007
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: D
+choices: ["$15$", "$30$", "$50$", "$60$", "$5700$"]
+---
+
+<Problem>
+Suppose that $m$ and $n$ are positive integers such that $75m = n^{3}$. What is the minimum possible value of $m + n$?
+</Problem>
+
+<Solution>
+Factor: $75 = 3 \cdot 5^2$. For $75m = n^3$, we need $n^3$ to be divisible by $3 \cdot 5^2$. Since $n^3$ is a perfect cube, all prime exponents in $n^3$ must be multiples of 3.
+
+Currently $75 = 3^1 \cdot 5^2$. We need the exponent of 3 to be a multiple of 3, and the exponent of 5 to be a multiple of 3. The smallest such values are exponents 3 and 3 respectively, giving $n^3 = 3^3 \cdot 5^3 = (15)^3$.
+
+So $n = 15$ and $m = \dfrac{n^3}{75} = \dfrac{3375}{75} = 45$.
+
+Therefore $m + n = 45 + 15 = 60$.
+
+Answer: **D**.
+</Solution>

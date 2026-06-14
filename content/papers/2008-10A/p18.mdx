@@ -1,0 +1,33 @@
+---
+year: 2008
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: B
+choices: ['$\dfrac{57}{4}$', '$\dfrac{59}{4}$', '$\dfrac{61}{4}$', '$\dfrac{63}{4}$', '$\dfrac{65}{4}$']
+---
+
+<Problem>
+A right triangle has perimeter 32 and area 20. What is the length of its hypotenuse?
+</Problem>
+
+<Solution>
+Let the legs be $a$ and $b$ and the hypotenuse be $c$.
+
+From the given:
+- $a + b + c = 32$, so $a + b = 32 - c$.
+- $\frac{1}{2}ab = 20$, so $ab = 40$.
+- $a^2 + b^2 = c^2$ (Pythagorean theorem).
+
+Now $(a+b)^2 = a^2 + 2ab + b^2 = c^2 + 80$.
+
+Substituting $a + b = 32 - c$:
+$$(32 - c)^2 = c^2 + 80$$
+$$1024 - 64c + c^2 = c^2 + 80$$
+$$1024 - 64c = 80$$
+$$64c = 944$$
+$$c = \frac{944}{64} = \frac{59}{4}.$$
+
+Answer: **B**.
+</Solution>

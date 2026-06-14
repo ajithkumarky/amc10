@@ -1,0 +1,33 @@
+---
+year: 2007
+paper: "10A"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 5
+answer: B
+choices: ["$3$", "$4$", "$6$", "$9$", "$12$"]
+---
+
+<Problem>
+How many ordered pairs $(m, n)$ of positive integers, with $m \ge n$, have the property that their squares differ by $96$?
+</Problem>
+
+<Solution>
+We need $m^2 - n^2 = 96$, i.e., $(m+n)(m-n) = 96$. Let $m + n = a$ and $m - n = b$, where $a, b$ are positive integers with $a > b$, $a \cdot b = 96$, and $a \equiv b \pmod{2}$ (since $a$ and $b$ must have the same parity for $m = (a+b)/2$ and $n = (a-b)/2$ to be integers). Also $m \ge n \ge 1$ requires $b \ge 1$ and $a > b$.
+
+Find all factor pairs $(a, b)$ of 96 with $a > b \ge 1$ and $a \equiv b \pmod 2$:
+
+Factor pairs of 96 (with $a > b$): $(96,1), (48,2), (32,3), (24,4), (16,6), (12,8)$.
+
+Check same parity:
+- $(96, 1)$: even, odd — different parity. Skip.
+- $(48, 2)$: even, even — same parity. $m = 25, n = 23$. Valid.
+- $(32, 3)$: even, odd — different. Skip.
+- $(24, 4)$: even, even — same. $m = 14, n = 10$. Valid.
+- $(16, 6)$: even, even — same. $m = 11, n = 5$. Valid.
+- $(12, 8)$: even, even — same. $m = 10, n = 2$. Valid.
+
+There are $4$ valid pairs.
+
+Answer: **B**.
+</Solution>

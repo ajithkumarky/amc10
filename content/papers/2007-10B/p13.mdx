@@ -1,0 +1,27 @@
+---
+year: 2007
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: D
+choices: ['$\pi - 2$', '$\dfrac{\pi}{2}$', '$\dfrac{\pi\sqrt{3}}{3}$', '$2(\pi - 2)$', '$\pi$']
+---
+
+<Problem>
+Two circles of radius $2$ are centered at $(2,0)$ and at $(0,2).$ What is the area of the intersection of the interiors of the two circles?
+</Problem>
+
+<Solution>
+The two circles have centers $O_1 = (2,0)$ and $O_2 = (0,2)$, each with radius $2$. The distance between centers is $|O_1 O_2| = \sqrt{4 + 4} = 2\sqrt{2}$.
+
+The intersection area of two circles of radius $r$ whose centers are distance $d$ apart equals $2r^2 \cos^{-1}\!\left(\dfrac{d}{2r}\right) - \dfrac{d}{2}\sqrt{4r^2 - d^2}$.
+
+With $r = 2$ and $d = 2\sqrt{2}$:
+$$\frac{d}{2r} = \frac{2\sqrt{2}}{4} = \frac{\sqrt{2}}{2}, \quad \cos^{-1}\!\left(\frac{\sqrt{2}}{2}\right) = \frac{\pi}{4}.$$
+$$\sqrt{4r^2 - d^2} = \sqrt{16 - 8} = \sqrt{8} = 2\sqrt{2}.$$
+
+$$\text{Area} = 2(4)\cdot\frac{\pi}{4} - \frac{2\sqrt{2}}{2}\cdot 2\sqrt{2} = 2\pi - \sqrt{2}\cdot 2\sqrt{2} = 2\pi - 4 = 2(\pi - 2).$$
+
+Answer: **D**.
+</Solution>

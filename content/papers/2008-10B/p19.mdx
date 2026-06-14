@@ -1,0 +1,30 @@
+---
+year: 2008
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: E
+choices: ['$24\pi - 36\sqrt{2}$', '$24\pi - 24\sqrt{3}$', '$36\pi - 36\sqrt{3}$', '$36\pi - 24\sqrt{2}$', '$48\pi - 36\sqrt{3}$']
+---
+
+<Problem>
+A cylindrical tank with radius $4$ feet and height $9$ feet is lying on its side. The tank is filled with water to a depth of $2$ feet. What is the volume of water, in cubic feet?
+</Problem>
+
+<Solution>
+The cylinder lies on its side, so its cross-section is a circle of radius $4$. The water depth is $2$ feet, measured from the bottom of the circular cross-section.
+
+The cross-sectional area of water is the area of a circular segment with chord at height $y = 2 - 4 = -2$ from the center (since the center of the circle is $4$ feet above the floor when lying on its side, and the water reaches height $2$, so the water surface is $2$ feet above the lowest point, which is $2 - 4 = -2$ feet below the center).
+
+For a circle of radius $r = 4$ with the water surface at distance $d = 2$ below the center (i.e., the center is at height $4$ from the bottom, water at height $2$, so the chord is $4 - 2 = 2$ units below center):
+
+The half-angle $\theta$ satisfies $\cos\theta = 2/4 = 1/2$, so $\theta = 60^\circ = \pi/3$.
+
+The area of the circular segment (the region below the chord) is:
+$$A = r^2(\theta - \sin\theta\cos\theta) = 16\left(\frac{\pi}{3} - \frac{\sqrt{3}}{2} \cdot \frac{1}{2}\right) = 16\left(\frac{\pi}{3} - \frac{\sqrt{3}}{4}\right) = \frac{16\pi}{3} - 4\sqrt{3}.$$
+
+Volume $=$ length $\times$ area $= 9 \times \left(\frac{16\pi}{3} - 4\sqrt{3}\right) = 48\pi - 36\sqrt{3}$.
+
+Answer: **E**.
+</Solution>

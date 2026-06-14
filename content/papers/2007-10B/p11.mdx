@@ -1,0 +1,32 @@
+---
+year: 2007
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: C
+choices: ['$2\pi$', '$\dfrac{5}{2}\pi$', '$\dfrac{81}{32}\pi$', '$3\pi$', '$\dfrac{7}{2}\pi$']
+---
+
+<Problem>
+A circle passes through the three vertices of an isosceles triangle that has two sides of length $3$ and a base of length $2.$ What is the area of this circle?
+</Problem>
+
+<Solution>
+Place the isosceles triangle with base $BC = 2$ along the $x$-axis, centered at the origin: $B = (-1, 0)$, $C = (1, 0)$. The apex $A$ lies on the $y$-axis. Since $AB = AC = 3$:
+$$AB^2 = 1 + h^2 = 9 \implies h = \sqrt{8} = 2\sqrt{2}.$$
+So $A = (0, 2\sqrt{2})$.
+
+The circumcircle is centered at $(0, k)$ on the $y$-axis by symmetry. Using the distance from the center to $B = (-1, 0)$:
+$$R^2 = 1 + k^2.$$
+Using the distance from the center to $A = (0, 2\sqrt{2})$:
+$$R^2 = (2\sqrt{2} - k)^2 = 8 - 4\sqrt{2}k + k^2.$$
+
+Setting equal: $1 + k^2 = 8 - 4\sqrt{2}k + k^2$, so $4\sqrt{2}k = 7$, giving $k = \dfrac{7}{4\sqrt{2}}$.
+
+$$R^2 = 1 + k^2 = 1 + \frac{49}{32} = \frac{32 + 49}{32} = \frac{81}{32}.$$
+
+The area of the circle is $\pi R^2 = \dfrac{81}{32}\pi$.
+
+Answer: **C**.
+</Solution>

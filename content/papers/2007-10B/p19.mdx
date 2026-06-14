@@ -1,0 +1,27 @@
+---
+year: 2007
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: C
+choices: ['$\dfrac{1}{3}$', '$\dfrac{4}{9}$', '$\dfrac{1}{2}$', '$\dfrac{5}{9}$', '$\dfrac{2}{3}$']
+---
+
+<Problem>
+The wheel shown is spun twice. The wheel has 6 equal sectors labeled $1, 2, 3, 6, 7, 9$. The randomly determined numbers opposite the pointer are recorded. The first number is divided by $4,$ and the second number is divided by $5.$ The first remainder designates a column, and the second remainder designates a row on the checkerboard shown (columns and rows each labeled $1$–$3$ and $1$–$4$ respectively). What is the probability that the pair of numbers designates a shaded square?
+</Problem>
+
+<Solution>
+**Column distribution (first spin mod 4):** The six wheel values give remainders $1, 2, 3, 2, 3, 1$, so each column 1, 2, 3 is equally likely with probability $\tfrac{1}{3}$.
+
+**Row distribution (second spin mod 5):** The remainders are $1, 2, 3, 1, 2, 4$, so row 1 has probability $\tfrac{1}{3}$, row 2 has probability $\tfrac{1}{3}$, row 3 has probability $\tfrac{1}{6}$, row 4 has probability $\tfrac{1}{6}$.
+
+**Shaded squares from the diagram:** The 6 shaded cells are $(1,3)$, $(2,4)$, $(2,2)$, $(3,3)$, $(1,1)$, $(3,1)$.
+
+**Total probability:**
+$$P = \frac{1}{3}\Bigl[P(\text{row}=3) + P(\text{row}=4) + P(\text{row}=2) + P(\text{row}=3) + P(\text{row}=1) + P(\text{row}=1)\Bigr]$$
+$$= \frac{1}{3}\!\left[\frac{1}{6}+\frac{1}{6}+\frac{1}{3}+\frac{1}{6}+\frac{1}{3}+\frac{1}{3}\right] = \frac{1}{3}\cdot\frac{3}{2} = \frac{1}{2}.$$
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,43 @@
+---
+year: 2007
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 1
+answer: B
+choices: ['$\textdollar 1.76$', '$\textdollar 5.84$', '$\textdollar 6.00$', '$\textdollar 6.16$', '$\textdollar 6.32$']
+---
+
+<Problem>
+A school store sells 7 pencils and 8 notebooks for $\textdollar 4.15$. It also sells 5 pencils and 3 notebooks for $\textdollar 1.77$. How much do 16 pencils and 10 notebooks cost?
+</Problem>
+
+<Solution>
+Notice that $16$ pencils and $10$ notebooks is $(7 + 5)$ pencils and $(8 + 3) - 1$ notebook... let's look for a linear combination directly.
+
+We want $16p + 10n$. We have:
+- Equation 1: $7p + 8n = 4.15$
+- Equation 2: $5p + 3n = 1.77$
+
+Adding the two equations: $12p + 11n = 5.92$. That doesn't directly give us what we need.
+
+Try $a(7p + 8n) + b(5p + 3n) = 16p + 10n$:
+- $7a + 5b = 16$
+- $8a + 3b = 10$
+
+From the second equation: $b = \frac{10 - 8a}{3}$. Substituting: $7a + 5 \cdot \frac{10 - 8a}{3} = 16 \Rightarrow 21a + 50 - 40a = 48 \Rightarrow -19a = -2 \Rightarrow a = \frac{2}{19}$.
+
+This gives non-integer coefficients. Instead, just solve the system.
+
+From Equation 2: $5p + 3n = 1.77$, so $n = \frac{1.77 - 5p}{3}$.
+
+Substitute into Equation 1: $7p + 8 \cdot \frac{1.77 - 5p}{3} = 4.15$.
+
+Multiply through by 3: $21p + 14.16 - 40p = 12.45 \Rightarrow -19p = -1.71 \Rightarrow p = 0.09$.
+
+Then $n = \frac{1.77 - 0.45}{3} = \frac{1.32}{3} = 0.44$.
+
+Therefore $16p + 10n = 16(0.09) + 10(0.44) = 1.44 + 4.40 = 5.84$.
+
+Answer: **B**.
+</Solution>

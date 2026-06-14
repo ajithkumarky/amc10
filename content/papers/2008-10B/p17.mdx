@@ -1,0 +1,21 @@
+---
+year: 2008
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: B
+choices: ["$0.063$", "$0.189$", "$0.233$", "$0.333$", "$0.441$"]
+---
+
+<Problem>
+A poll shows that $70\%$ of all voters approve of the mayor's work. On three separate occasions a pollster selects a voter at random. What is the probability that on exactly one of these three occasions the voter approves of the mayor's work?
+</Problem>
+
+<Solution>
+This is a binomial probability with $n = 3$ trials, success probability $p = 0.7$, and we want exactly $k = 1$ success.
+
+$$P(X = 1) = \binom{3}{1}(0.7)^1(0.3)^2 = 3 \cdot 0.7 \cdot 0.09 = 3 \cdot 0.063 = 0.189.$$
+
+Answer: **B**.
+</Solution>

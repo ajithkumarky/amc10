@@ -1,0 +1,33 @@
+---
+year: 2007
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: E
+choices: ['$\dfrac{3}{8}$', '$\dfrac{7}{16}$', '$\dfrac{1}{2}$', '$\dfrac{9}{16}$', '$\dfrac{5}{8}$']
+---
+
+<Problem>
+Integers $a, b, c,$ and $d$, not necessarily distinct, are chosen independently and at random from 0 to 2007, inclusive. What is the probability that $ad - bc$ is even?
+</Problem>
+
+<Solution>
+$ad - bc$ is even if and only if $ad$ and $bc$ have the same parity (both even or both odd).
+
+Among 0 through 2007 (2008 integers: 1004 even, 1004 odd), the probability that a randomly chosen integer is odd is $\dfrac{1004}{2008} = \dfrac{1}{2}$, and even is $\dfrac{1}{2}$.
+
+A product of two integers is odd only when both are odd; otherwise it is even.
+
+$P(\text{product odd}) = \dfrac{1}{2} \cdot \dfrac{1}{2} = \dfrac{1}{4}$, so $P(\text{product even}) = \dfrac{3}{4}$.
+
+Now compute $P(ad \text{ and } bc \text{ same parity})$:
+
+$$P(\text{both odd}) = \frac{1}{4} \cdot \frac{1}{4} = \frac{1}{16}.$$
+
+$$P(\text{both even}) = \frac{3}{4} \cdot \frac{3}{4} = \frac{9}{16}.$$
+
+$$P(ad - bc \text{ even}) = \frac{1}{16} + \frac{9}{16} = \frac{10}{16} = \frac{5}{8}.$$
+
+Answer: **E**.
+</Solution>

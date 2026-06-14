@@ -1,0 +1,26 @@
+---
+year: 2007
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: E
+choices: ['$2$', '$2+\sqrt{2}$', '$1+2\sqrt{2}$', '$4$', '$4+2\sqrt{2}$']
+---
+
+<Problem>
+A pyramid with a square base is cut by a plane that is parallel to its base and $2$ units from the base. The surface area of the smaller pyramid that is cut from the top is half the surface area of the original pyramid. What is the altitude of the original pyramid?
+</Problem>
+
+<Solution>
+Let the original pyramid have square base side length $a$ and altitude $h$. The cutting plane is $2$ units above the base, so it is $h - 2$ units below the apex. By similar triangles, the smaller (top) pyramid is similar to the original with ratio $k = \dfrac{h-2}{h}$.
+
+For similar pyramids, all linear dimensions scale by $k$, so surface areas scale by $k^2$:
+$$k^2 = \frac{1}{2} \implies k = \frac{1}{\sqrt{2}}.$$
+
+Therefore:
+$$\frac{h-2}{h} = \frac{1}{\sqrt{2}} \implies h - 2 = \frac{h}{\sqrt{2}} \implies h\!\left(1 - \frac{1}{\sqrt{2}}\right) = 2.$$
+$$h = \frac{2}{1 - \frac{1}{\sqrt{2}}} = \frac{2\sqrt{2}}{\sqrt{2} - 1} = \frac{2\sqrt{2}(\sqrt{2}+1)}{(\sqrt{2}-1)(\sqrt{2}+1)} = \frac{2\sqrt{2}(\sqrt{2}+1)}{1} = 2(2 + \sqrt{2}) = 4 + 2\sqrt{2}.$$
+
+Answer: **E**.
+</Solution>

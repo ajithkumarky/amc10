@@ -1,0 +1,27 @@
+---
+year: 2007
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: C
+choices: ["$100$", "$125$", "$600$", "$2300$", "$3600$"]
+---
+
+<Problem>
+A set of $25$ square blocks is arranged into a $5 \times 5$ square. How many different combinations of $3$ blocks can be selected from that set so that no two are in the same row or column?
+</Problem>
+
+<Solution>
+We must choose 3 blocks from a $5 \times 5$ grid such that no two share a row or column.
+
+**Step 1 — Choose which 3 rows** the blocks will occupy: $\dbinom{5}{3} = 10$ ways.
+
+**Step 2 — Choose which 3 columns** the blocks will occupy: $\dbinom{5}{3} = 10$ ways.
+
+**Step 3 — Assign the 3 chosen rows to the 3 chosen columns:** this is a bijection between the row set and the column set, so there are $3! = 6$ ways.
+
+Total: $10 \times 10 \times 6 = 600$.
+
+Answer: **C**.
+</Solution>

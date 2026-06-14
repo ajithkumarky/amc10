@@ -1,0 +1,65 @@
+---
+year: 2008
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: C
+choices:
+  - '$2\sqrt{5}-\sqrt{3}$'
+  - '$3$'
+  - '$\dfrac{3\sqrt{7}-\sqrt{3}}{2}$'
+  - '$2\sqrt{3}$'
+  - '$\dfrac{5+2\sqrt{3}}{2}$'
+---
+
+<Problem>
+A round table has radius $4$. Six rectangular place mats are placed on the table. Each place mat has width $1$ and length $x$. They are positioned so that each mat has two corners on the edge of the table, these two corners being endpoints of the same side of length $x$. Furthermore, the mats are positioned so that the inner corners each touch an inner corner of an adjacent mat. What is $x$?
+</Problem>
+
+<Solution>
+By symmetry, the six mats are arranged with 6-fold rotational symmetry. Focus on one mat.
+
+**Set up coordinates.** Place the circle of radius 4 at the origin. One mat has its outer edge (length $x$) as a chord of the circle, and its width is 1 (so the inner edge is a parallel chord at distance 1 from the outer edge).
+
+The outer edge is a chord of the circle at some distance $d$ from the center. The inner edge is at distance $d + 1$ from the center.
+
+**Use symmetry.** The 6 mats are equally spaced, so adjacent mats are rotated $60^\circ$ apart. An inner corner of one mat must coincide with an inner corner of the adjacent mat.
+
+Let the outer edge of one mat lie along a horizontal chord. The two outer corners are at distance 4 from the center, and the outer edge has length $x$. If the chord is at height $h$ from the center:
+$$\left(\frac{x}{2}\right)^2 + h^2 = 16, \quad \text{so } x = 2\sqrt{16 - h^2}.$$
+
+The mat has width 1, so the inner edge is at height $h + 1$. The two inner corners are at $\left(\pm \frac{x}{2}, h+1\right)$.
+
+**Inner corner condition.** By 6-fold symmetry, the inner corner of the next mat (rotated $60^\circ$) must coincide with the inner corner of this mat. The inner corner of this mat is at $\left(-\frac{x}{2}, h+1\right)$ (the left inner corner). After rotating by $-60^\circ$, the right inner corner of the adjacent mat maps to the left inner corner of this mat.
+
+The right inner corner of this mat at $\left(\frac{x}{2}, h+1\right)$, when rotated by $60^\circ$, must equal $\left(-\frac{x}{2}, h+1\right)$.
+
+Rotating $\left(\frac{x}{2}, h+1\right)$ by $60^\circ$:
+$$\left(\frac{x}{2}\cos 60^\circ - (h+1)\sin 60^\circ,\; \frac{x}{2}\sin 60^\circ + (h+1)\cos 60^\circ\right)$$
+$$= \left(\frac{x}{4} - \frac{(h+1)\sqrt{3}}{2},\; \frac{x\sqrt{3}}{4} + \frac{h+1}{2}\right).$$
+
+Setting this equal to $\left(-\frac{x}{2}, h+1\right)$:
+
+**From the $y$-coordinate:**
+$$\frac{x\sqrt{3}}{4} + \frac{h+1}{2} = h+1 \implies \frac{x\sqrt{3}}{4} = \frac{h+1}{2} \implies h+1 = \frac{x\sqrt{3}}{2}.$$
+
+**From the $x$-coordinate:**
+$$\frac{x}{4} - \frac{(h+1)\sqrt{3}}{2} = -\frac{x}{2}.$$
+Substitute $h+1 = \frac{x\sqrt{3}}{2}$:
+$$\frac{x}{4} - \frac{\frac{x\sqrt{3}}{2}\cdot\sqrt{3}}{2} = -\frac{x}{2} \implies \frac{x}{4} - \frac{3x}{4} = -\frac{x}{2} \implies -\frac{x}{2} = -\frac{x}{2}. \checkmark$$
+
+So $h = \frac{x\sqrt{3}}{2} - 1$.
+
+**Use the circle equation** $\left(\frac{x}{2}\right)^2 + h^2 = 16$:
+$$\frac{x^2}{4} + \left(\frac{x\sqrt{3}}{2} - 1\right)^2 = 16.$$
+$$\frac{x^2}{4} + \frac{3x^2}{4} - x\sqrt{3} + 1 = 16.$$
+$$x^2 - x\sqrt{3} + 1 = 16.$$
+$$x^2 - \sqrt{3}\,x - 15 = 0.$$
+
+$$x = \frac{\sqrt{3} \pm \sqrt{3 + 60}}{2} = \frac{\sqrt{3} \pm \sqrt{63}}{2} = \frac{\sqrt{3} \pm 3\sqrt{7}}{2}.$$
+
+Taking the positive root: $x = \dfrac{\sqrt{3} + 3\sqrt{7}}{2} = \dfrac{3\sqrt{7} + \sqrt{3}}{2}$.
+
+Answer: **C**.
+</Solution>

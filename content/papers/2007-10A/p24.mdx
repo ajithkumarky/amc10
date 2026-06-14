@@ -1,0 +1,106 @@
+---
+year: 2007
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: B
+choices: ['$\dfrac{8\sqrt{2}}{3}$', '$8\sqrt{2}-4-\pi$', '$4\sqrt{2}$', '$4\sqrt{2}+\dfrac{\pi}{8}$', '$8\sqrt{2}-2-\dfrac{\pi}{2}$']
+---
+
+<Problem>
+Circles centered at $A$ and $B$ each have radius $2$, as shown. Point $O$ is the midpoint of $\overline{AB}$, and $OA = 2\sqrt{2}$. Segments $OC$ and $OD$ are tangent to the circles centered at $A$ and $B$, respectively, and $EF$ is a common external tangent. What is the area of the shaded region $ECODF$?
+
+Circle $A$ is at the left with center $A$, circle $B$ is at the right with center $B$. $O$ is the midpoint of $AB$ with $OA = OB = 2\sqrt{2}$. From $O$, segment $OC$ is tangent to circle $A$ (touching it at $C$) and $OD$ is tangent to circle $B$ (touching at $D$). Line $EF$ is the common external tangent above, tangent to circle $A$ at $E$ and to circle $B$ at $F$. The shaded region $ECODF$ is bounded by segment $OC$, arc $CE$ on circle $A$, segment $EF$, arc $FD$ on circle $B$, and segment $DO$.
+</Problem>
+
+<Solution>
+Set up coordinates: $O = (0,0)$, $A = (-2\sqrt{2}, 0)$, $B = (2\sqrt{2}, 0)$.
+
+**Tangent length from $O$ to circle $A$:** $OA = 2\sqrt{2}$, radius $= 2$.
+$$OC = \sqrt{OA^2 - r^2} = \sqrt{8 - 4} = 2.$$
+
+**Angle $\angle COA$:** $\sin(\angle COA) = r/OA = 2/(2\sqrt{2}) = 1/\sqrt{2}$, so $\angle COA = 45°$.
+
+**Common external tangent $EF$:** Since the circles have equal radii, $EF$ is horizontal, tangent at the top. The tangent point on circle $A$ is $E = (-2\sqrt{2}, 2)$ (directly above $A$), and $F = (2\sqrt{2}, 2)$ (directly above $B$). Length $EF = |AB| = 4\sqrt{2}$.
+
+**Area of region $ECODF$:** Decompose as follows.
+
+The region consists of:
+- Triangle $OAE$ (with arc $EC$ removed and sector $AEC$ added)... let's use the quadrilateral minus sectors approach.
+
+Consider the quadrilateral $OAEF B O$ minus circular sectors, but the region $ECODF$ has curved boundaries. Think of it as:
+
+Area($ECODF$) = Area(polygon $OAEFBO$) minus the two sectors (arc $CE$ on circle $A$ and arc $FD$ on circle $B$) minus triangle areas... 
+
+Let me compute directly by breaking into parts.
+
+**Area of triangle $OAE$:** $O=(0,0)$, $A=(-2\sqrt{2},0)$, $E=(-2\sqrt{2},2)$. Area $= \frac{1}{2}|base \times height| = \frac{1}{2} \cdot 2\sqrt{2} \cdot 2 = 2\sqrt{2}$.
+
+**Sector $EAC$** in circle $A$: $E$ is directly above $A$ (angle 90° from horizontal), and $C$ is the tangent point from $O$. The angle from $A$ to $E$ is 90°, and from $A$ to $C$: since $\angle OAC = 90°$ (radius to tangent point is perpendicular to tangent), and $O$ is to the right of $A$, $C$ is above the line $AO$ at angle $90°$ from $AO$. The angle $\angle EAC$: $E$ is at angle 90° (straight up) from $A$, $C$ is at angle $90°$ from $AO$ direction (which is 0° i.e. pointing right). So $C$ is at angle 90° from $A$ — but that's the same as $E$? No: $C$ is in the direction perpendicular to $OC$ from $A$, which is $45°$ above the line $AO$.
+
+$O$ is to the right of $A$. The direction from $A$ to $O$ is 0° (rightward). The tangent point $C$ satisfies $AC \perp OC$ and $AC = 2$, $OC = 2$, $OA = 2\sqrt{2}$. The angle $\angle OAC$: $\cos(\angle OAC) = AC/OA = 2/(2\sqrt{2}) = 1/\sqrt{2}$, so $\angle OAC = 45°$. Thus $C$ is at $45°$ above the line $AO$ from $A$, meaning $C$ is at direction $45°$ from $A$.
+
+$E$ is directly above $A$ (direction $90°$). So arc $EC$ (going from $E$ at $90°$ to $C$ at $45°$, clockwise) subtends $45° = \pi/4$ at $A$.
+
+Sector $EAC$ area $= \frac{1}{2}r^2\theta = \frac{1}{2} \cdot 4 \cdot \frac{\pi}{4} = \frac{\pi}{2}$.
+
+By symmetry, sector $FBD$ also has area $\frac{\pi}{2}$.
+
+**Now compute area of $ECODF$:**
+
+The region can be viewed as:
+- Rectangle-ish region from $E$ to $F$ at top, $O$ at bottom: quadrilateral $E$-$F$-$O$ with the arcs.
+
+Alternative: area = Area(triangle $OAE$) + Area(triangle $OBF$) + Area(rectangle $AEFB$) minus sectors $EAC$ and $FBD$ minus triangles $OAC$ and $OBD$.
+
+$A=(-2\sqrt{2},0)$, $B=(2\sqrt{2},0)$, $E=(-2\sqrt{2},2)$, $F=(2\sqrt{2},2)$.
+
+Area of trapezoid $OAEFBO$... actually let me use the shoelace on the bounding polygon $O$, $C$, $E$, $F$, $D$, $O$ (with arcs replaced by straight lines), then adjust for arcs.
+
+**Straight-line polygon $OCEFD$O:**
+$C$ is at angle $45°$ from $A = (-2\sqrt{2}, 0)$ at distance 2: $C = (-2\sqrt{2} + 2\cos 45°, 2\sin 45°) = (-2\sqrt{2} + \sqrt{2}, \sqrt{2}) = (-\sqrt{2}, \sqrt{2})$.
+
+By symmetry $D = (\sqrt{2}, \sqrt{2})$.
+
+Shoelace on $O(0,0)$, $C(-\sqrt{2},\sqrt{2})$, $E(-2\sqrt{2},2)$, $F(2\sqrt{2},2)$, $D(\sqrt{2},\sqrt{2})$:
+
+$$\text{Area} = \frac{1}{2}|x_O(y_C - y_D) + x_C(y_E - y_O) + x_E(y_F - y_C) + x_F(y_D - y_E) + x_D(y_O - y_F)|$$
+
+$$= \frac{1}{2}|0(\sqrt{2}-\sqrt{2}) + (-\sqrt{2})(2-0) + (-2\sqrt{2})(\sqrt{2} - 2 - \sqrt{2}) + 2\sqrt{2}(\sqrt{2}-2) + \sqrt{2}(0-2)|$$
+
+Wait, let me use the standard shoelace properly:
+
+$$2A = \sum_i (x_i y_{i+1} - x_{i+1} y_i)$$
+
+Vertices in order: $O(0,0)$, $C(-\sqrt{2},\sqrt{2})$, $E(-2\sqrt{2},2)$, $F(2\sqrt{2},2)$, $D(\sqrt{2},\sqrt{2})$, back to $O(0,0)$:
+
+$$= (0\cdot\sqrt{2} - (-\sqrt{2})\cdot 0) + ((-\sqrt{2})\cdot 2 - (-2\sqrt{2})\cdot\sqrt{2}) + ((-2\sqrt{2})\cdot 2 - 2\sqrt{2}\cdot 2) + (2\sqrt{2}\cdot\sqrt{2} - \sqrt{2}\cdot 2) + (\sqrt{2}\cdot 0 - 0\cdot\sqrt{2})$$
+
+$$= (0 - 0) + (-2\sqrt{2} + 2\cdot 2) + (-4\sqrt{2} - 4\sqrt{2}) + (4 - 2\sqrt{2}) + 0$$
+
+$$= 0 + (-2\sqrt{2} + 4) + (-8\sqrt{2}) + (4 - 2\sqrt{2})$$
+
+$$= 8 - 12\sqrt{2}.$$
+
+That's negative, so $|2A| = 12\sqrt{2} - 8$, giving straight-line polygon area $= 6\sqrt{2} - 4$.
+
+Now the arcs: arc $CE$ (on circle $A$) bulges outward (away from $O$), so the actual shaded region is larger than the polygon by the two circular segments.
+
+Each arc subtends $45°$ at its center. The circular segment area (arc minus chord) for each:
+$$\text{segment} = \frac{1}{2}r^2(\theta - \sin\theta) = \frac{1}{2}\cdot 4\cdot\left(\frac{\pi}{4} - \sin 45°\right) = 2\left(\frac{\pi}{4} - \frac{\sqrt{2}}{2}\right) = \frac{\pi}{2} - \sqrt{2}.$$
+
+Two such segments: $\pi - 2\sqrt{2}$.
+
+Total shaded area $= (6\sqrt{2} - 4) + (\pi - 2\sqrt{2}) = 4\sqrt{2} - 4 + \pi$.
+
+Hmm, that doesn't match any answer. Let me reconsider whether the arcs are inside or outside the polygon.
+
+The arc $CE$ goes from $C = (-\sqrt{2}, \sqrt{2})$ to $E = (-2\sqrt{2}, 2)$ along circle $A$ centered at $(-2\sqrt{2}, 0)$. Both $C$ and $E$ are on this circle. The arc lies to the right of the chord $CE$ (farther from $A$, i.e., the minor arc closer to $O$), or to the left (closer to $A$, the major arc)? Since the region $ECODF$ is bounded by the arc from $C$ to $E$ that's part of the boundary between $O$ and the exterior, the relevant arc curves toward $O$ (inward), making the shaded region smaller than the polygon.
+
+So: shaded area $= (6\sqrt{2} - 4) - (\pi - 2\sqrt{2}) = 8\sqrt{2} - 4 - \pi$.
+
+This matches answer **B**: $8\sqrt{2} - 4 - \pi$.
+
+Answer: **B**.
+</Solution>
