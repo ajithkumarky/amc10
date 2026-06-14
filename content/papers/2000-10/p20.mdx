@@ -1,0 +1,40 @@
+---
+year: 2000
+paper: "10"
+topic: algebra
+subtopic: polynomials
+difficulty: 4
+answer: C
+choices: ["49", "59", "69", "79", "89"]
+---
+
+<Problem>
+Let $A$, $M$, and $C$ be nonnegative integers such that $A + M + C = 10$. What is the maximum value of $A \cdot M \cdot C + A \cdot M + M \cdot C + C \cdot A$?
+</Problem>
+
+<Solution>
+Notice that the expression factors nicely:
+$$AMC + AM + MC + CA = AMC + AM + C(M + A).$$
+
+Alternatively, observe:
+$$(A+1)(M+1)(C+1) = AMC + AM + AC + MC + A + M + C + 1.$$
+
+So:
+$$AMC + AM + MC + CA = (A+1)(M+1)(C+1) - (A + M + C) - 1 = (A+1)(M+1)(C+1) - 11.$$
+
+We need to maximize $(A+1)(M+1)(C+1)$ subject to $A + M + C = 10$ with $A, M, C$ nonneg integers.
+
+Let $a = A+1$, $b = M+1$, $c = C+1$, so $a + b + c = 13$ with $a, b, c \geq 1$ positive integers.
+
+Maximize $abc$ subject to $a + b + c = 13$. By AM-GM, the product is maximized when the values are as equal as possible. $13 = 4 + 4 + 5$, giving $abc = 4 \times 4 \times 5 = 80$.
+
+(Other splits: $3 \times 5 \times 5 = 75$, $4 \times 4 \times 5 = 80$, $3 \times 4 \times 6 = 72$, $2 \times 5 \times 6 = 60$.)
+
+Maximum of $(A+1)(M+1)(C+1) = 80$, achieved at $(A, M, C) = (3, 3, 4)$ (in some order).
+
+Maximum value $= 80 - 11 = 69$.
+
+Verify: $A = 3, M = 3, C = 4$: $AMC + AM + MC + CA = 36 + 9 + 12 + 12 = 69$. Correct.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,37 @@
+---
+year: 2002
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 4
+answer: B
+choices: ["$0$", "$1$", "$4$", "$7$", "$8$"]
+---
+
+<Problem>
+Let $a$, $b$, and $c$ be real numbers such that $a-7b+8c=4$ and $8a+4b-c=7$. Then $a^2-b^2+c^2$ is
+</Problem>
+
+<Solution>
+The system has two equations in three unknowns, so solutions form a line. Parameterize by $b$: solve the $2 \times 2$ system in $a$ and $c$.
+
+From $a + 8c = 4 + 7b$ and $8a - c = 7 - 4b$, multiply the first by $8$ and add to the second:
+
+$$65c = 8(4+7b) + (-(7-4b)) \cdot (-1)$$
+
+More directly — multiply the first equation by $8$: $8a + 64c = 32 + 56b$. Subtract the second equation ($8a - c = 7-4b$):
+
+$$65c = 25 + 60b \implies c = \frac{5 + 12b}{13}.$$
+
+Then $a = (4+7b) - 8c = (4+7b) - \frac{8(5+12b)}{13} = \frac{52+91b - 40 - 96b}{13} = \frac{12 - 5b}{13}$.
+
+Now compute:
+
+$$a^2 - b^2 + c^2 = \frac{(12-5b)^2 + (5+12b)^2}{169} - b^2$$
+$$= \frac{144 - 120b + 25b^2 + 25 + 120b + 144b^2}{169} - b^2$$
+$$= \frac{169 + 169b^2}{169} - b^2 = 1 + b^2 - b^2 = 1.$$
+
+The expression equals $1$ for every solution.
+
+Answer: **B**.
+</Solution>

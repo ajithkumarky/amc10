@@ -1,0 +1,31 @@
+---
+year: 2002
+paper: "10A"
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 1
+answer: B
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+According to the standard convention for exponentiation,
+
+$$2^{2^{2^2}} = 2^{\left(2^{\left(2^2\right)}\right)} = 2^{16} = 65{,}536.$$
+
+If the order in which the exponentiations are performed is changed, how many **other** values are possible?
+</Problem>
+
+<Solution>
+The expression $2^{2^{2^2}}$ involves three exponentiations. The standard (right-to-left) evaluation gives $2^{16} = 65{,}536$. We can parenthesize three exponentiations in $5$ ways total (Catalan number $C_3 = 5$), but the base is always $2$ and all four numbers are $2$, so we check them all:
+
+1. $((2^2)^2)^2 = (4^2)^2 = 16^2 = 256$
+2. $(2^2)^{(2^2)} = 4^4 = 256$
+3. $(2^{(2^2)})^2 = (2^4)^2 = 16^2 = 256$
+4. $2^{((2^2)^2)} = 2^{16} = 65{,}536$ (same as standard)
+5. $2^{(2^{(2^2)})} = 2^{16} = 65{,}536$ (standard)
+
+The only values that appear are $256$ and $65{,}536$. Since $65{,}536$ is the standard value, the only **other** value is $256$. That is $1$ other value.
+
+Answer: **B**.
+</Solution>

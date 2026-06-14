@@ -1,0 +1,29 @@
+---
+year: 2002
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 2
+answer: A
+choices: ["$B = W$", "$W = R$", "$B = R$", "$3B = 2R$", "$2R = W$"]
+---
+
+<Problem>
+Betsy designed a flag using blue triangles, small white squares, and a red center square. Let $B$ be the total area of the blue triangles, $W$ the total area of the white squares, and $R$ the area of the red square.
+
+The flag consists of a large outer square. Inside it, a red square sits at the center. Between the red square and the outer boundary, white squares (tilted $45°$) are arranged along each side. The remaining regions are blue triangles.
+</Problem>
+
+<Solution>
+Assign coordinates. From the Asymptote source, the outer square has vertices $(\pm 4, \pm 4)$, giving side $8$ and area $64$. The red center square has vertices $(\pm 2, \pm 2)$, giving side $4$ and area $R = 16$.
+
+The white squares are rotated $45°$. Each has diagonal $2$ (fitting between the red and outer squares), so side $\sqrt{2}$ and area $2$. The Asymptote code draws $3$ white squares per side of the flag, and there are $4$ sides, giving $12$ white squares total:
+$$W = 12 \times 2 = 24.$$
+
+The blue area is everything in the outer square not covered by red or white:
+$$B = 64 - R - W = 64 - 16 - 24 = 24.$$
+
+Since $B = 24 = W$, we have $B = W$.
+
+Answer: **A**.
+</Solution>

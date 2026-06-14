@@ -1,0 +1,25 @@
+---
+year: 2001
+paper: "10"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: D
+choices: ['$\dfrac{3}{10}$', '$\dfrac{2}{5}$', '$\dfrac{1}{2}$', '$\dfrac{3}{5}$', '$\dfrac{7}{10}$']
+---
+
+<Problem>
+A box contains exactly five chips, three red and two white. Chips are randomly removed one at a time without replacement until all the red chips are drawn or all the white chips are drawn. What is the probability that the last chip drawn is white?
+</Problem>
+
+<Solution>
+Consider all $5!/(3!\,2!)=10$ equally likely orderings of the 5 chips. The process stops the moment every chip of one color has been drawn. The key observation is:
+
+The last chip drawn is white $\iff$ the process stops by exhausting the white chips $\iff$ the 2nd white chip is drawn before the 3rd red chip $\iff$ the 5th chip (last in the full ordering) is red.
+
+Why? If the 5th chip is red, then the 3rd red sits at position 5, while the 2nd white must be at some position $\leq 4$; we stop at the 2nd white, so the last chip drawn is white. Conversely, if the 5th chip is white, the 2nd white is at position 5 and the 3rd red is at some position $\leq 4$; we stop at the 3rd red, so the last chip drawn is red.
+
+Since each of the 5 chips is equally likely to be last, the probability the 5th chip is red is $\dfrac{3}{5}$.
+
+Answer: **D**.
+</Solution>

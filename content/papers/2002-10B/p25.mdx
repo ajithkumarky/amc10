@@ -1,0 +1,31 @@
+---
+year: 2002
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 5
+answer: A
+choices: ["$4$", "$5$", "$6$", "$7$", "$8$"]
+---
+
+<Problem>
+When $15$ is appended to a list of integers, the mean is increased by $2$. When $1$ is appended to the enlarged list, the mean of the enlarged list is decreased by $1$. How many integers were in the original list?
+</Problem>
+
+<Solution>
+Let the original list have $n$ integers with mean $\mu$.
+
+**After appending 15:** The new list has $n+1$ integers with mean $\mu + 2$, so
+
+$$\frac{n\mu + 15}{n+1} = \mu + 2 \implies n\mu + 15 = n\mu + 2n + \mu + 2 \implies \mu = 13 - 2n. \tag{1}$$
+
+**After appending 1 to that list:** The list now has $n+2$ integers. The sum of the $n+1$ element list is $(n+1)(\mu+2)$, and appending $1$ gives mean $(\mu+2)-1 = \mu+1$, so
+
+$$\frac{(n+1)(\mu+2) + 1}{n+2} = \mu + 1 \implies (n+1)(\mu+2) + 1 = (n+2)(\mu+1).$$
+
+Expanding: $n\mu + 2n + \mu + 3 = n\mu + n + 2\mu + 2$, which simplifies to $n + 1 = \mu$. $\tag{2}$
+
+Substituting (2) into (1): $n + 1 = 13 - 2n \Rightarrow 3n = 12 \Rightarrow n = 4$.
+
+Answer: **A**.
+</Solution>

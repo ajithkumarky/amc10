@@ -1,0 +1,31 @@
+---
+year: 2000
+paper: "10"
+topic: algebra
+subtopic: functions
+difficulty: 3
+answer: E
+choices: ["$-2$", "$-\\dfrac{1}{2}$", "$\\dfrac{1}{3}$", "$\\dfrac{1}{2}$", "$2$"]
+---
+
+<Problem>
+Two non-zero real numbers, $a$ and $b$, satisfy $ab = a - b$. Find a possible value of $\dfrac{a}{b} + \dfrac{b}{a} - ab$.
+</Problem>
+
+<Solution>
+From $ab = a - b$, we can find expressions for $\frac{a}{b}$ and $\frac{b}{a}$.
+
+Divide both sides of $ab = a - b$ by $b$:
+$$a = \frac{a}{b} - 1 \implies \frac{a}{b} = a + 1.$$
+
+Divide both sides of $ab = a - b$ by $a$:
+$$b = 1 - \frac{b}{a} \implies \frac{b}{a} = 1 - b.$$
+
+Therefore:
+$$\frac{a}{b} + \frac{b}{a} - ab = (a + 1) + (1 - b) - ab = a - b + 2 - ab.$$
+
+But $ab = a - b$, so $a - b = ab$:
+$$= ab + 2 - ab = 2.$$
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,45 @@
+---
+year: 2002
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: C
+choices: ["$10$", "$11$", "$18$", "$19$", "$20$"]
+---
+
+<Problem>
+A set of tiles numbered $1$ through $100$ is modified repeatedly by the following operation: remove all tiles numbered with a perfect square, and renumber the remaining tiles consecutively starting with $1$. How many times must the operation be performed to reduce the number of tiles in the set to one?
+</Problem>
+
+<Solution>
+Let $f(n)$ be the number of tiles after one operation starting from $n$ tiles: we remove the $\lfloor \sqrt{n} \rfloor$ perfect squares $1, 4, 9, \ldots, \lfloor\sqrt{n}\rfloor^2$, leaving $n - \lfloor\sqrt{n}\rfloor$ tiles.
+
+Track the number of tiles after each operation:
+
+| Step | Tiles | $\lfloor\sqrt{n}\rfloor$ | Removed |
+|------|-------|--------------------------|---------|
+| 0 | 100 | 10 | 10 |
+| 1 | 90 | 9 | 9 |
+| 2 | 81 | 9 | 9 |
+| 3 | 72 | 8 | 8 |
+| 4 | 64 | 8 | 8 |
+| 5 | 56 | 7 | 7 |
+| 6 | 49 | 7 | 7 |
+| 7 | 42 | 6 | 6 |
+| 8 | 36 | 6 | 6 |
+| 9 | 30 | 5 | 5 |
+| 10 | 25 | 5 | 5 |
+| 11 | 20 | 4 | 4 |
+| 12 | 16 | 4 | 4 |
+| 13 | 12 | 3 | 3 |
+| 14 | 9 | 3 | 3 |
+| 15 | 6 | 2 | 2 |
+| 16 | 4 | 2 | 2 |
+| 17 | 2 | 1 | 1 |
+| 18 | 1 | — | — |
+
+After $18$ operations the set has exactly $1$ tile.
+
+Answer: **C**.
+</Solution>

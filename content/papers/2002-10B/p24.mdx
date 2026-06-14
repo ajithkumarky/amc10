@@ -1,0 +1,30 @@
+---
+year: 2002
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: D
+choices: ["$5$", "$6$", "$7.5$", "$10$", "$15$"]
+---
+
+<Problem>
+Riders on a Ferris wheel travel in a circle in a vertical plane. A particular wheel has radius $20$ feet and revolves at the constant rate of one revolution per minute. How many seconds does it take a rider to travel from the bottom of the wheel to a point $10$ vertical feet above the bottom?
+</Problem>
+
+<Solution>
+Set up coordinates with the center of the wheel at the origin. The rider starts at the bottom: position $(0, -20)$.
+
+At time $t$ (in seconds), the rider has traveled through an angle $\theta$ from the bottom. Measuring $\theta$ from the bottom going counterclockwise, the rider's height above the center is $-20\cos\theta$ (since at the bottom $\theta=0$, height $= -20$).
+
+Height above the bottom $= (-20\cos\theta) - (-20) = 20(1 - \cos\theta)$.
+
+We want this to equal $10$:
+$$20(1-\cos\theta) = 10 \implies \cos\theta = \frac{1}{2} \implies \theta = \frac{\pi}{3} \text{ (i.e., } 60°).$$
+
+The wheel completes one full revolution ($2\pi$ radians) in $60$ seconds. The time to travel through angle $\theta = \pi/3$ is:
+
+$$t = \frac{\pi/3}{2\pi} \times 60 = \frac{1}{6} \times 60 = 10 \text{ seconds}.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,31 @@
+---
+year: 2001
+paper: "10"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: D
+choices: ["6", "14", "21", "28", "42"]
+---
+
+<Problem>
+Suppose that $n$ is the product of three consecutive integers and that $n$ is divisible by $7$. Which of the following is not necessarily a divisor of $n$?
+</Problem>
+
+<Solution>
+Let the three consecutive integers be $k-1$, $k$, $k+1$, so $n = (k-1)k(k+1)$.
+
+Among any three consecutive integers, one is divisible by 3 and at least one is divisible by 2 (in fact, at least one is divisible by 2 and among three consecutive integers, we always have a multiple of 2 — actually, if $k$ is even then $k$ contributes a factor of 2; if $k$ is odd then both $k-1$ and $k+1$ are even, giving a factor of at least 4). In any case, $n$ is always divisible by $6$.
+
+Since $n$ is given to be divisible by 7, $n$ is divisible by $7$.
+
+Combined: $n$ is always divisible by $6$ and by $7$, so by $42$.
+
+- **6**: Always divides $n$ (product of 3 consecutive integers is always divisible by $3! = 6$). ✓
+- **14**: $n$ is divisible by 2 (from divisibility by 6) and by 7 (given), so by 14. ✓
+- **21**: $n$ is divisible by 3 (from divisibility by 6) and by 7 (given), so by 21. ✓
+- **42**: $n$ is divisible by 6 and by 7, so by 42. ✓
+- **28**: Requires $n$ divisible by $4$. But $n$ need not be divisible by 4. For example, $n = 5 \times 6 \times 7 = 210 = 2 \times 3 \times 5 \times 7$, which is divisible by 7 but not by 4, so not by 28.
+
+Answer: **D**.
+</Solution>

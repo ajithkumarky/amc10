@@ -1,0 +1,31 @@
+---
+year: 2000
+paper: "10"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 4
+answer: D
+choices: ['$\dfrac{1}{2m+1}$', '$m$', '$1-m$', '$\dfrac{1}{4m}$', '$\dfrac{1}{8m^2}$']
+---
+
+<Problem>
+Through a point on the hypotenuse of a right triangle, lines are drawn parallel to the legs of the triangle so that the triangle is divided into a square and two smaller right triangles. The area of one of the two small right triangles is $m$ times the area of the square. The ratio of the area of the other small right triangle to the area of the square is
+</Problem>
+
+<Solution>
+Let the right angle be at the origin with legs of length $a$ (along the $x$-axis) and $b$ (along the $y$-axis). The lines parallel to the legs through a point on the hypotenuse create a square of side $s$ at the corner, a small right triangle with legs $s$ and $a-s$ (along the base), and a small right triangle with legs $s$ and $b-s$ (along the height).
+
+The corner of the square opposite the right angle is $(s,s)$, which must lie on the hypotenuse $\dfrac{x}{a}+\dfrac{y}{b}=1$, giving
+
+$$\frac{1}{a}+\frac{1}{b}=\frac{1}{s}. \tag{$*$}$$
+
+The area of the first small triangle is $\dfrac{1}{2}s(a-s)=m\cdot s^2$, so $a-s=2ms$ and $a=s(1+2m)$.
+
+Substituting into $(*)$: $\dfrac{1}{b}=\dfrac{1}{s}-\dfrac{1}{s(1+2m)}=\dfrac{1}{s}\cdot\dfrac{2m}{1+2m}$, so $b=\dfrac{s(1+2m)}{2m}$.
+
+The ratio of the second triangle's area to the square's area is
+
+$$\frac{\tfrac{1}{2}s(b-s)}{s^2}=\frac{b-s}{2s}=\frac{\dfrac{s(1+2m)}{2m}-s}{2s}=\frac{\dfrac{1}{2m}}{2}=\frac{1}{4m}.$$
+
+Answer: **D**.
+</Solution>

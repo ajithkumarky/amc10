@@ -1,0 +1,63 @@
+---
+year: 2001
+paper: "10"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 5
+answer: D
+choices: ["43", "44", "45", "46", "47"]
+---
+
+<Problem>
+In the magic square shown, the sums of the numbers in each row, column, and diagonal are the same. Five of these numbers are represented by $v$, $w$, $x$, $y$, and $z$. Find $y + z$.
+
+The $3 \times 3$ magic square has the following entries (row by row, top to bottom):
+- Row 3 (top): $v$, $24$, $w$
+- Row 2 (middle): $18$, $x$, $y$
+- Row 1 (bottom): $25$, $z$, $21$
+</Problem>
+
+<Solution>
+**Find the magic sum.**
+
+The bottom row gives: $25 + z + 21 = 46 + z$.
+
+We need another equation. The known entries are $25$, $24$, $21$, $18$, and the magic sum $M$ satisfies $3M = $ (sum of all 9 entries).
+
+From the bottom row: $M = 46 + z$.
+From the middle row: $18 + x + y = M$.
+From the top row: $v + 24 + w = M$.
+
+**Use the diagonal.** The main diagonal (top-left to bottom-right): $v + x + 21 = M$.
+The anti-diagonal (top-right to bottom-left): $w + x + 25 = M$.
+
+From these: $v + x + 21 = w + x + 25$, so $v = w + 4$.
+
+**Use columns.**
+- Left column: $v + 18 + 25 = M \implies v + 43 = M$.
+- Right column: $w + y + 21 = M$.
+- Middle column: $24 + x + z = M$.
+
+From the left column: $M = v + 43$.
+From the bottom row: $M = 46 + z$.
+
+So $v + 43 = 46 + z \implies v = z + 3$.
+
+From main diagonal: $v + x + 21 = M = v + 43 \implies x + 21 = 43 \implies x = 22$.
+
+From middle column: $24 + 22 + z = M = 46 + z$. This gives $46 + z = 46 + z$. ✓ (consistent but no new info).
+
+From middle row: $18 + 22 + y = M = 46 + z \implies 40 + y = 46 + z \implies y = z + 6$.
+
+From right column: $w + y + 21 = 46 + z$.
+
+Since $v = w + 4$ and $v = z + 3$: $w = v - 4 = z + 3 - 4 = z - 1$.
+
+Substitute: $(z - 1) + (z + 6) + 21 = 46 + z$.
+$$2z + 26 = 46 + z \implies z = 20.$$
+
+Therefore $y = z + 6 = 26$, and:
+$$y + z = 26 + 20 = 46.$$
+
+Answer: **D**.
+</Solution>

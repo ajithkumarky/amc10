@@ -1,0 +1,43 @@
+---
+year: 2001
+paper: "10"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: D
+choices: ["50", "52", "54", "56", "58"]
+---
+
+<Problem>
+The plane is tiled by congruent squares and congruent pentagons as indicated below. The percent of the plane that is enclosed by the pentagons is closest to
+
+<svg viewBox="0 0 140 140" width="220" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="120" height="120" fill="none" stroke="#00e5ff" />
+  <rect x="10" y="90" width="40" height="40" fill="#00e5ff" fillOpacity="0.2" stroke="#00e5ff" />
+  <rect x="90" y="90" width="40" height="40" fill="#00e5ff" fillOpacity="0.2" stroke="#00e5ff" />
+  <rect x="90" y="10" width="40" height="40" fill="#00e5ff" fillOpacity="0.2" stroke="#00e5ff" />
+  <rect x="10" y="10" width="40" height="40" fill="#00e5ff" fillOpacity="0.2" stroke="#00e5ff" />
+  <line x1="50" y1="90" x2="90" y2="50" stroke="#00e5ff" />
+  <line x1="90" y1="90" x2="50" y2="50" stroke="#00e5ff" />
+</svg>
+
+In the repeating $3\times 3$ block shown, the four shaded $1\times 1$ regions are the small squares, and the rest of the block is divided into four congruent pentagons.
+</Problem>
+
+<Solution>
+Look at one repeating tile and let the side of a small square be $a$. The tile is a $3a \times 3a$ block, so its total area is
+
+$$(3a)^2 = 9a^2.$$
+
+Within the tile there are $4$ small squares, with total area
+
+$$4a^2.$$
+
+Everything else is taken up by the pentagons, so the pentagons cover
+
+$$9a^2 - 4a^2 = 5a^2.$$
+
+Thus the fraction of the plane covered by pentagons is $\dfrac{5a^2}{9a^2} = \dfrac{5}{9} = 55.\overline{5}\%$, whose closest value among the choices is $56\%$.
+
+Answer: **D**.
+</Solution>

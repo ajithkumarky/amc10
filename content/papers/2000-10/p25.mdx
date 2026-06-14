@@ -1,0 +1,55 @@
+---
+year: 2000
+paper: "10"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: A
+choices: ["Thursday", "Friday", "Saturday", "Sunday", "Monday"]
+---
+
+<Problem>
+In year $N$, the $300^\text{th}$ day of the year is a Tuesday. In year $N+1$, the $200^\text{th}$ day is also a Tuesday. On what day of the week did the $100^\text{th}$ day of year $N-1$ occur?
+</Problem>
+
+<Solution>
+We use the fact that the days advance by $1$ per day, and we track differences modulo $7$.
+
+**From day 300 of year $N$ to day 200 of year $N+1$:**
+
+If year $N$ is not a leap year, it has 365 days. From day 300 of year $N$ to day 300 of year $N+1$ is 365 days, and from day 300 to day 200 of year $N+1$ is $365 - 100 = 265$ days.
+
+If year $N$ is a leap year, it has 366 days, so this span is $366 - 100 = 266$ days.
+
+Both days are Tuesday, so the number of days between them must be $\equiv 0 \pmod 7$.
+
+Check: $265 = 7 \times 37 + 6 \equiv 6 \pmod 7$. Not divisible by 7.
+
+Check: $266 = 7 \times 38 \equiv 0 \pmod 7$. Divisible by 7!
+
+So year $N$ is a leap year (366 days).
+
+**From day 100 of year $N-1$ to day 300 of year $N$:**
+
+From day 100 of year $N-1$ to the end of year $N-1$: $(D_{N-1} - 100)$ days, where $D_{N-1}$ is the number of days in year $N-1$.
+
+Then to day 300 of year $N$: another 300 days.
+
+Total: $(D_{N-1} - 100) + 300 = D_{N-1} + 200$ days.
+
+Day 300 of year $N$ is Tuesday. Day 100 of year $N-1$ was $D_{N-1} + 200$ days earlier, so it was $(D_{N-1} + 200) \pmod 7$ days before Tuesday.
+
+Since year $N$ is a leap year, year $N-1$ is not (assuming no century-year complications). So $D_{N-1} = 365$.
+
+Days between: $365 + 200 = 565$.
+
+$565 \div 7 = 80$ remainder $5$. So $565 \equiv 5 \pmod 7$.
+
+Day 100 of year $N-1$ was $5$ days before Tuesday.
+
+Counting back $5$ days from Tuesday: Monday (1), Sunday (2), Saturday (3), Friday (4), Thursday (5).
+
+Day 100 of year $N-1$ was a **Thursday**.
+
+Answer: **A**.
+</Solution>

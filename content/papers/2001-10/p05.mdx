@@ -1,0 +1,32 @@
+---
+year: 2001
+paper: "10"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 1
+answer: D
+choices: ["3", "4", "5", "6", "7"]
+---
+
+<Problem>
+The twelve pentominoes are the twelve distinct shapes made by joining five unit squares edge-to-edge. How many of the twelve pentominoes have at least one line of reflectional symmetry?
+</Problem>
+
+<Solution>
+The twelve pentominoes are traditionally labeled F, I, L, N, P, T, U, V, W, X, Y, Z.
+
+Checking each for reflectional symmetry (a line that maps the shape onto itself):
+
+- **I**: symmetric (vertical axis through the middle). ✓
+- **T**: symmetric (vertical axis through the top square). ✓
+- **U**: symmetric (vertical axis through the middle column). ✓
+- **V**: symmetric (diagonal axis at 45°). ✓
+- **W**: symmetric (diagonal axis). ✓
+- **X**: symmetric (multiple axes). ✓
+
+The asymmetric ones (no line of symmetry) are: F, L, N, P, Y, Z — that is 6 pentominoes without symmetry.
+
+So the number with at least one line of reflectional symmetry is $12 - 6 = 6$.
+
+Answer: **D**.
+</Solution>

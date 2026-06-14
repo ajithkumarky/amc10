@@ -1,0 +1,36 @@
+---
+year: 2002
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: E
+choices: ["$2$ divides $n$", "$3$ divides $n$", "$6$ divides $n$", "$7$ divides $n$", "$n > 84$"]
+---
+
+<Problem>
+Let $n$ be a positive integer such that $\dfrac{1}{2}+\dfrac{1}{3}+\dfrac{1}{7}+\dfrac{1}{n}$ is an integer. Which of the following statements is **not** true?
+</Problem>
+
+<Solution>
+Compute $\dfrac{1}{2}+\dfrac{1}{3}+\dfrac{1}{7} = \dfrac{21+14+6}{42} = \dfrac{41}{42}$.
+
+So we need $\dfrac{41}{42} + \dfrac{1}{n}$ to be an integer, meaning $\dfrac{1}{n} = k - \dfrac{41}{42}$ for some positive integer $k$.
+
+Since $\dfrac{41}{42} < 1$, the smallest integer $k$ can be is $1$, giving:
+
+$$\frac{1}{n} = 1 - \frac{41}{42} = \frac{1}{42}, \quad \text{so } n = 42.$$
+
+For $k \geq 2$: $\dfrac{1}{n} = k - \dfrac{41}{42} \geq 2 - \dfrac{41}{42} = \dfrac{43}{42} > 1$, which means $n < 1$ — impossible for a positive integer.
+
+Therefore $n = 42$ is the **only** solution.
+
+Now check each statement about $n = 42$:
+- (A) $2 \mid 42$: true.
+- (B) $3 \mid 42$: true.
+- (C) $6 \mid 42$: true.
+- (D) $7 \mid 42$: true.
+- (E) $n > 84$: $42 > 84$ is **false**.
+
+Answer: **E**.
+</Solution>

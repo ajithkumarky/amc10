@@ -1,0 +1,30 @@
+---
+year: 2002
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: B
+choices: ["$24$", "$26$", "$28$", "$30$", "$32$"]
+---
+
+<Problem>
+Let $\triangle XOY$ be a right-angled triangle with $\angle XOY = 90°$. Let $M$ and $N$ be the midpoints of the legs $OX$ and $OY$, respectively. Given $XN = 19$ and $YM = 22$, find $XY$.
+</Problem>
+
+<Solution>
+Place $O$ at the origin, $X = (a, 0)$, $Y = (0, b)$.
+
+Then $M$ is the midpoint of $OX$, so $M = (a/2, 0)$, and $N$ is the midpoint of $OY$, so $N = (0, b/2)$.
+
+Using the given lengths:
+$$XN^2 = a^2 + \frac{b^2}{4} = 19^2 = 361.$$
+$$YM^2 = \frac{a^2}{4} + b^2 = 22^2 = 484.$$
+
+Add these two equations:
+$$\frac{5a^2}{4} + \frac{5b^2}{4} = 845 \implies a^2 + b^2 = \frac{845 \times 4}{5} = 676.$$
+
+Therefore $XY = \sqrt{a^2 + b^2} = \sqrt{676} = 26$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,43 @@
+---
+year: 2002
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: D
+choices: ["$15/2$", "$8$", "$17/2$", "$9$", "$19/2$"]
+---
+
+<Problem>
+Points $A, B, C, D$ lie on a line, in that order, with $AB = CD$ and $BC = 12$. Point $E$ is not on the line, and $BE = CE = 10$. The perimeter of $\triangle AED$ is twice the perimeter of $\triangle BEC$. Find $AB$.
+</Problem>
+
+<Solution>
+Let $AB = CD = x$. Then $AD = AB + BC + CD = 2x + 12$.
+
+Since $BE = CE = 10$ and $B, C$ are symmetric about the midpoint $M$ of $BC$, point $E$ lies on the perpendicular bisector of $BC$. Place $B = (0,0)$, $C = (12,0)$, $M = (6,0)$, so $E = (6, h)$ where $h^2 + 36 = 100$, giving $h = 8$.
+
+**Perimeter of $\triangle BEC$:** $BE + CE + BC = 10 + 10 + 12 = 32$.
+
+**Perimeter of $\triangle AED$:** We need $AE$ and $DE$.
+
+Place $A = (-x, 0)$ and $D = (12+x, 0)$. Then:
+$$AE = \sqrt{(6-(-x))^2 + 64} = \sqrt{(6+x)^2 + 64}$$
+$$DE = \sqrt{(12+x-6)^2 + 64} = \sqrt{(6+x)^2 + 64}.$$
+
+So $AE = DE$ (as expected by symmetry). Let $s = \sqrt{(6+x)^2+64}$.
+
+Perimeter of $\triangle AED = AE + DE + AD = 2s + 2x + 12$.
+
+Setting this equal to $2 \times 32 = 64$:
+$$2s + 2x + 12 = 64 \implies s + x = 26 \implies s = 26 - x.$$
+
+Squaring: $(6+x)^2 + 64 = (26-x)^2$.
+
+$$36 + 12x + x^2 + 64 = 676 - 52x + x^2$$
+$$100 + 12x = 676 - 52x$$
+$$64x = 576$$
+$$x = 9.$$
+
+Answer: **D**.
+</Solution>

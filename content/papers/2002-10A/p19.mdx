@@ -1,0 +1,33 @@
+---
+year: 2002
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: E
+choices: ['$2\pi/3$', '$2\pi$', '$5\pi/2$', '$8\pi/3$', '$3\pi$']
+---
+
+<Problem>
+Spot's doghouse has a regular hexagonal base that measures one yard on each side. He is tethered to a vertex with a two-yard rope. What is the area, in square yards, of the region outside of the doghouse that Spot can reach?
+</Problem>
+
+<Solution>
+The doghouse is a regular hexagon with side $1$, and Spot is tied at one vertex $V$ with a rope of length $2$.
+
+**Main arc at $V$:** The interior angle of a regular hexagon is $120°$, so the exterior angle at $V$ is $360° - 120° = 240°$. Spot can swing a $240°$ arc of radius $2$ around $V$ (the $120°$ is blocked by the doghouse).
+
+Area of this sector $= \dfrac{240}{360} \pi (2)^2 = \dfrac{2}{3} \cdot 4\pi = \dfrac{8\pi}{3}$.
+
+**Wrapping around corners:** After the rope goes around an adjacent vertex, $2 - 1 = 1$ yard of rope remains. Each adjacent vertex has an exterior angle of $60°$ (the hexagon turns $60°$ at each side from the outside perspective — the exterior supplement of the $120°$ interior angle at consecutive vertices is $360° - 120° - 180° = 60°$).
+
+There are two adjacent vertices (one on each side), each giving a $60°$ sector of radius $1$:
+
+Area from each $= \dfrac{60}{360} \pi (1)^2 = \dfrac{\pi}{6}$.
+
+Two such sectors: $2 \times \dfrac{\pi}{6} = \dfrac{\pi}{3}$.
+
+**Total area:** $\dfrac{8\pi}{3} + \dfrac{\pi}{3} = \dfrac{9\pi}{3} = 3\pi$.
+
+Answer: **E**.
+</Solution>

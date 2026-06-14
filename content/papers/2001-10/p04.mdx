@@ -1,0 +1,23 @@
+---
+year: 2001
+paper: "10"
+topic: geometry
+subtopic: circles
+difficulty: 1
+answer: E
+choices: ["2", "3", "4", "5", "6"]
+---
+
+<Problem>
+What is the maximum number of possible points of intersection of a circle and a triangle?
+</Problem>
+
+<Solution>
+A triangle has 3 sides, each of which is a line segment. A circle can intersect any line in at most 2 points, so a circle can intersect any single side of the triangle in at most 2 points.
+
+With 3 sides, the maximum number of intersections is $3 \times 2 = 6$.
+
+This maximum is achievable: imagine a circle large enough to cross each of the three sides twice (entering and exiting through each side). For example, a circle centered at the centroid with just the right radius will cross all three sides twice.
+
+Answer: **E**.
+</Solution>

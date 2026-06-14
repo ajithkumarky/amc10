@@ -1,0 +1,45 @@
+---
+year: 2002
+paper: "10A"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: C
+choices: ["$182$", "$195$", "$210$", "$234$", "$260$"]
+---
+
+<Problem>
+In trapezoid $ABCD$ with bases $\overline{AB}$ and $\overline{CD}$, we have $AB = 52$, $BC = 12$, $CD = 39$, and $DA = 5$. The area of $ABCD$ is
+
+<svg viewBox="0 0 200 90" width="300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#00e5ff" strokeWidth="1.5">
+  <polygon points="10,80 190,80 150,20 30,20" stroke="#00e5ff" fill="none"/>
+  <text x="3" y="85" fontSize="11" fill="#00e5ff" stroke="none">A</text>
+  <text x="192" y="85" fontSize="11" fill="#00e5ff" stroke="none">B</text>
+  <text x="153" y="17" fontSize="11" fill="#00e5ff" stroke="none">C</text>
+  <text x="20" y="17" fontSize="11" fill="#00e5ff" stroke="none">D</text>
+  <text x="95" y="92" fontSize="10" fill="#00e5ff" stroke="none">52</text>
+  <text x="80" y="14" fontSize="10" fill="#00e5ff" stroke="none">39</text>
+  <text x="178" y="55" fontSize="10" fill="#00e5ff" stroke="none">12</text>
+  <text x="2" y="55" fontSize="10" fill="#00e5ff" stroke="none">5</text>
+</svg>
+</Problem>
+
+<Solution>
+Place $A = (0, 0)$ and $B = (52, 0)$. Since $CD \parallel AB$ and $CD = 39$, place $D = (d, h)$ and $C = (d + 39, h)$ for some height $h > 0$.
+
+From $DA = 5$: $d^2 + h^2 = 25$.
+
+From $BC = 12$: $(52 - (d+39))^2 + h^2 = 144$, i.e., $(13 - d)^2 + h^2 = 144$.
+
+Subtract the first equation from the second:
+$$(13-d)^2 - d^2 = 144 - 25 = 119$$
+$$169 - 26d + d^2 - d^2 = 119$$
+$$169 - 26d = 119$$
+$$26d = 50 \implies d = \frac{25}{13}.$$
+
+Then $h^2 = 25 - d^2 = 25 - \dfrac{625}{169} = \dfrac{4225 - 625}{169} = \dfrac{3600}{169}$, so $h = \dfrac{60}{13}$.
+
+Area of trapezoid $= \dfrac{1}{2}(AB + CD) \cdot h = \dfrac{1}{2}(52 + 39) \cdot \dfrac{60}{13} = \dfrac{1}{2} \cdot 91 \cdot \dfrac{60}{13} = \dfrac{91 \cdot 30}{13} = 7 \cdot 30 = 210$.
+
+Answer: **C**.
+</Solution>

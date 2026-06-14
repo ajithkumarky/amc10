@@ -1,0 +1,40 @@
+---
+year: 2000
+paper: "10"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: B
+choices: ['$3+\dfrac{\sqrt{3}}{3}$', '$2+\dfrac{4\sqrt{3}}{3}$', '$2+2\sqrt{2}$', '$\dfrac{3+3\sqrt{5}}{2}$', '$2+\dfrac{5\sqrt{3}}{3}$']
+---
+
+<Problem>
+In rectangle $ABCD$, $AD = 1$, $P$ is on $\overline{AB}$, and $\overline{DB}$ and $\overline{DP}$ trisect $\angle ADC$. What is the perimeter of $\triangle BDP$?
+
+The rectangle has $A$ at the top-left, $B$ at the top-right, $C$ at the bottom-right, $D$ at the bottom-left. $AD = 1$ is the left side (height). $P$ is a point on the top side $AB$ between $A$ and $B$. Lines $DP$ and $DB$ divide the right angle $\angle ADC$ into three equal $30°$ angles.
+</Problem>
+
+<Solution>
+Since $\angle ADC = 90°$ is trisected by $DP$ and $DB$, we have $\angle ADP = 30°$, $\angle PDB = 30°$, and $\angle BDC = 30°$.
+
+**Finding $AB$ (width of rectangle):** In right triangle $ADC$, $\tan(\angle ADC) = \infty$ — but $\angle BDC = 30°$, so in right triangle $BDC$ with $DC = AB$ and $BC = AD = 1$:
+$$\tan(30°) = \frac{BC}{DC} = \frac{1}{DC} \implies DC = \frac{1}{\tan 30°} = \sqrt{3}.$$
+
+So $AB = DC = \sqrt{3}$.
+
+**Finding $AP$:** $\angle ADP = 30°$. In right triangle $ADP$ with $AD = 1$:
+$$\tan(30°) = \frac{AP}{AD} = \frac{AP}{1} \implies AP = \tan(30°) = \frac{1}{\sqrt{3}} = \frac{\sqrt{3}}{3}.$$
+
+**Finding $BP$:** $BP = AB - AP = \sqrt{3} - \frac{\sqrt{3}}{3} = \frac{3\sqrt{3} - \sqrt{3}}{3} = \frac{2\sqrt{3}}{3}$.
+
+**Lengths of triangle sides:**
+
+$DB$: In right triangle $BDC$, $DB = \frac{BC}{\sin(30°)} = \frac{1}{1/2} = 2$.
+
+$DP$: In right triangle $ADP$, $DP = \frac{AD}{\cos(30°)} = \frac{1}{\sqrt{3}/2} = \frac{2}{\sqrt{3}} = \frac{2\sqrt{3}}{3}$.
+
+**Perimeter of $\triangle BDP$:**
+$$BP + DP + DB = \frac{2\sqrt{3}}{3} + \frac{2\sqrt{3}}{3} + 2 = \frac{4\sqrt{3}}{3} + 2 = 2 + \frac{4\sqrt{3}}{3}.$$
+
+Answer: **B**.
+</Solution>

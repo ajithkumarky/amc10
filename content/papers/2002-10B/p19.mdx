@@ -1,0 +1,30 @@
+---
+year: 2002
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: C
+choices: ["$0.0001$", "$0.001$", "$0.01$", "$0.1$", "$1$"]
+---
+
+<Problem>
+Suppose that $\{a_n\}$ is an arithmetic sequence with
+$$a_1+a_2+\cdots+a_{100}=100 \text{ and } a_{101}+a_{102}+\cdots+a_{200}=200.$$
+What is the value of $a_2 - a_1$?
+</Problem>
+
+<Solution>
+Let the common difference be $d = a_2 - a_1$.
+
+The sum of the first $100$ terms of an arithmetic sequence is $S_1 = 100a_1 + d\dfrac{100 \cdot 99}{2} = 100a_1 + 4950d = 100$.
+
+The terms $a_{101}$ through $a_{200}$ form another block of $100$ consecutive terms. We have $a_{101} = a_1 + 100d$, and the sum is:
+$$\sum_{k=101}^{200} a_k = 100a_{101} + d\frac{100 \cdot 99}{2} = 100(a_1 + 100d) + 4950d = 100a_1 + 10000d + 4950d = 100a_1 + 14950d = 200.$$
+
+Subtracting the first equation from the second:
+$$(100a_1 + 14950d) - (100a_1 + 4950d) = 200 - 100$$
+$$10000d = 100 \implies d = \frac{100}{10000} = 0.01.$$
+
+Answer: **C**.
+</Solution>

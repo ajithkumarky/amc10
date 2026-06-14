@@ -1,0 +1,57 @@
+---
+year: 2000
+paper: "10"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 3
+answer: C
+choices: ["71", "76", "80", "82", "91"]
+---
+
+<Problem>
+Mrs. Walter gave an exam in a mathematics class of five students. She entered the scores in random order into a spreadsheet, which recalculated the class average after each score was entered. Mrs. Walter noticed that after each score was entered, the average was always an integer. The scores (listed in ascending order) were $71$, $76$, $80$, $82$, and $91$. What was the last score Mrs. Walter entered?
+</Problem>
+
+<Solution>
+For each running average to be an integer, the running partial sums must be divisible by the number of scores entered so far.
+
+The total sum is $71 + 76 + 80 + 82 + 91 = 400$.
+
+Let the scores be entered in order $s_1, s_2, s_3, s_4, s_5$.
+
+- After 1 score: $s_1$ must be divisible by 1. Always true.
+- After 2 scores: $s_1 + s_2$ divisible by 2, so $s_1 + s_2$ is even.
+- After 3 scores: $s_1 + s_2 + s_3$ divisible by 3.
+- After 4 scores: $s_1 + s_2 + s_3 + s_4$ divisible by 4.
+- After 5 scores: $400$ divisible by 5. $400/5 = 80$. True.
+
+The last score is $s_5 = 400 - (s_1 + s_2 + s_3 + s_4)$, where $s_1+s_2+s_3+s_4$ must be divisible by 4.
+
+So the sum of the first four scores must be divisible by 4. That means:
+$$400 - s_5 \equiv 0 \pmod{4} \implies s_5 \equiv 400 \equiv 0 \pmod{4}.$$
+
+Check which scores are divisible by 4:
+- $71$: $71 = 4 \times 17 + 3$. No.
+- $76$: $76 = 4 \times 19$. Yes.
+- $80$: $80 = 4 \times 20$. Yes.
+- $82$: $82 = 4 \times 20 + 2$. No.
+- $91$: $91 = 4 \times 22 + 3$. No.
+
+So $s_5$ is either $76$ or $80$.
+
+Now check the condition mod 3: $s_1 + s_2 + s_3 \equiv 0 \pmod 3$, which means $s_4 + s_5 \equiv 400 \equiv 1 \pmod 3$ (since $400 = 3 \times 133 + 1$).
+
+**Case $s_5 = 76$:** Then $s_4 \equiv 1 - 76 \equiv 1 - 1 = 0 \pmod 3$. Scores divisible by 3 among $\{71, 80, 82, 91\}$: $81$ is not in the list. Check: $71 \equiv 2$, $80 \equiv 2$, $82 \equiv 1$, $91 \equiv 1 \pmod 3$. None is $\equiv 0 \pmod 3$. So no valid $s_4$ — Case $s_5 = 76$ fails.
+
+**Case $s_5 = 80$:** Then $s_4 \equiv 1 - 80 \equiv 1 - 2 = -1 \equiv 2 \pmod 3$. Scores $\equiv 2 \pmod 3$ among $\{71, 76, 82, 91\}$: $71 \equiv 2$. Yes! So $s_4 = 71$.
+
+Verify this is consistent: first three scores are $\{76, 82, 91\}$, sum $= 249 = 3 \times 83$. Divisible by 3. Good.
+
+Also check mod 2: $s_1 + s_2$ must be even. Among $\{76, 82, 91\}$, both $76$ and $82$ are even and $91$ is odd. Any pair from two evens gives an even sum, and an even plus an odd gives an odd sum. So $s_1$ and $s_2$ must both be even: e.g., $s_1 = 76, s_2 = 82$ (or vice versa), and $s_3 = 91$.
+
+One valid ordering: $76, 82, 91, 71, 80$ — running averages $76, 79, 83, 80, 80$. All integers.
+
+The last score entered is $\mathbf{80}$.
+
+Answer: **C**.
+</Solution>

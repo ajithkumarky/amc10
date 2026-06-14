@@ -1,0 +1,37 @@
+---
+year: 2000
+paper: "10"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 4
+answer: D
+choices: ['$\$3.13$', '$\$5.13$', '$\$6.30$', '$\$7.45$', '$\$9.07$']
+---
+
+<Problem>
+Boris has an incredible coin changing machine. When he puts in a quarter, it returns five nickels; when he puts in a nickel, it returns five pennies; and when he puts in a penny, it returns five quarters. Boris starts with just one penny. Which of the following amounts could Boris have after using the machine repeatedly?
+</Problem>
+
+<Solution>
+Let's track the number of each coin in terms of cents. Boris starts with $1$ penny $= 1$ cent.
+
+Each operation:
+- Quarter $(25¢)$ in $\to$ five nickels $(25¢)$ out: net change in coin count $= +4$ coins, value unchanged.
+- Nickel $(5¢)$ in $\to$ five pennies $(5¢)$ out: net change $= +4$ coins, value unchanged.
+- Penny $(1¢)$ in $\to$ five quarters $(125¢)$ out: net change $+4$ coins, value increases by $124¢$.
+
+Starting value: $1¢$. Each time we insert a penny, the value increases by $124¢$. The other operations preserve value.
+
+After inserting a penny $k$ times, total value $= 1 + 124k$ cents.
+
+Check each answer (in cents):
+- $\$3.13 = 313¢$: $313 - 1 = 312$. $312 / 124 = 2.516\ldots$ Not an integer.
+- $\$5.13 = 513¢$: $513 - 1 = 512$. $512 / 124 = 4.129\ldots$ Not an integer.
+- $\$6.30 = 630¢$: $630 - 1 = 629$. $629 / 124 = 5.073\ldots$ Not an integer.
+- $\$7.45 = 745¢$: $745 - 1 = 744$. $744 / 124 = 6$. Yes! An integer.
+- $\$9.07 = 907¢$: $907 - 1 = 906$. $906 / 124 = 7.306\ldots$ Not an integer.
+
+We also need to verify that Boris can actually reach $745¢$. Starting with $1$ penny, he can insert that penny to get $5$ quarters ($125¢$ total), then continue inserting pennies obtained from nickels. The key constraint is that Boris always needs pennies to increase his value, and he can always get pennies by converting nickels (which he gets from quarters). Since he can reach any state of the form $1 + 124k$ cents with enough operations, $k = 6$ is achievable.
+
+Answer: **D**.
+</Solution>

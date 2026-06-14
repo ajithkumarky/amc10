@@ -1,0 +1,33 @@
+---
+year: 2002
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 2
+answer: D
+choices: ["$112$", "$113$", "$114$", "$115$", "$116$"]
+---
+
+<Problem>
+Using the letters $A$, $M$, $O$, $S$, and $U$, we can form five-letter "words". If these "words" are arranged in alphabetical order, then the "word" $USAMO$ occupies position
+</Problem>
+
+<Solution>
+In alphabetical order, the five letters rank as $A < M < O < S < U$.
+
+Count words that come before $USAMO$:
+
+**Words starting with $A$, $M$, $O$, or $S$** (the 4 letters before $U$): each gives $4! = 24$ words, for $4 \times 24 = 96$ total.
+
+**Words starting with $U$, then $A$, $M$, or $O$** (the 3 letters before $S$ in the remaining set $\{A,M,O,S\}$): each gives $3! = 6$ words, for $3 \times 6 = 18$ total.
+
+**Words starting with $US$, then $A$ or $M$** (the 2 letters before $A$... but $A$ is the smallest). The remaining letters after $US$ are $\{A,M,O\}$. Words starting with $USA$ come before $USM$ and $USO$. But $USAMO$ itself starts with $USA$, so we look within $USA\ldots$
+
+**Words starting with $USA$**: remaining letters are $M$ and $O$. Words: $USAMO$ ($M$ before $O$) and $USAOM$. So $USAMO$ is the first word starting with $USA$ — zero words starting with $USA$ precede it.
+
+Total words before $USAMO$: $96 + 18 + 0 = 114$.
+
+Therefore $USAMO$ is in position $\mathbf{115}$.
+
+Answer: **D**.
+</Solution>

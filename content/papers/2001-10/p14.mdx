@@ -1,0 +1,38 @@
+---
+year: 2001
+paper: "10"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 3
+answer: A
+choices: ['$\textdollar 782$', '$\textdollar 986$', '$\textdollar 1158$', '$\textdollar 1219$', '$\textdollar 1449$']
+---
+
+<Problem>
+A charity sells $140$ benefit tickets for a total of $\$2001$. Some tickets sell for full price (a whole dollar amount), and the rest sell for half price. How much money is raised by the full-price tickets?
+</Problem>
+
+<Solution>
+Let the full price be $p$ dollars (a positive integer), let $f$ be the number of full-price tickets, and let $h = 140 - f$ be the number of half-price tickets.
+
+The total revenue is:
+$$pf + \frac{p}{2}(140 - f) = 2001.$$
+
+Multiply through by 2:
+$$2pf + p(140 - f) = 4002.$$
+$$pf + 140p = 4002.$$
+$$p(f + 140) = 4002.$$
+
+Factor $4002 = 2 \times 3 \times 23 \times 29$.
+
+We need $f + 140$ to be a factor of $4002$ with $0 < f < 140$ (so $140 < f + 140 < 280$) and $p = \dfrac{4002}{f+140}$ a positive integer.
+
+Factors of $4002$ between 141 and 279: check divisors.
+$4002 / 174 = 23$ (since $174 = 2 \times 3 \times 29$, and $23 \times 174 = 4002$). ✓
+
+So $f + 140 = 174$, giving $f = 34$ and $p = 23$.
+
+Revenue from full-price tickets: $pf = 23 \times 34 = 782$.
+
+Answer: **A**.
+</Solution>

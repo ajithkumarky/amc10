@@ -1,0 +1,52 @@
+---
+year: 2002
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 4
+answer: C
+choices: ['$4+2\sqrt{2}$', '$6+\sqrt{2}$', '$4+3\sqrt{2}$', '$3+4\sqrt{2}$', '$8+\sqrt{2}$']
+---
+
+<Problem>
+A regular octagon $ABCDEFGH$ has sides of length two. Find the area of $\triangle ADG$.
+</Problem>
+
+<Solution>
+Place the regular octagon with center at the origin. A regular octagon with side length $2$ has vertices at angles $\frac{2\pi k}{8} = \frac{\pi k}{4}$ for $k = 0, 1, \ldots, 7$.
+
+The circumradius $R$ of a regular octagon with side $s$ satisfies $s = 2R\sin(\pi/8)$. Since $\sin(\pi/8) = \sin 22.5° = \frac{\sqrt{2-\sqrt{2}}}{2}$, this gets complicated. Let's use coordinates directly.
+
+For a regular octagon with side $2$, set up with flat sides at top and bottom. Label vertices $A$ through $H$ in order. The interior angle of a regular octagon is $135°$.
+
+Using the cut-corner approach: start with a square of side $a$ and cut isoceles right triangles of leg $t$ from each corner to get an octagon with side $s = t\sqrt{2}$ (the diagonal cuts) and side $a - 2t$ (the straight sides). For all sides equal: $t\sqrt{2} = a - 2t$, so $t(\sqrt{2}+2) = a$, giving $t = \frac{a}{\sqrt{2}+2} = a\frac{\sqrt{2}-2}{2-4} = a\frac{2-\sqrt{2}}{2}$.
+
+With $s = 2$: $t\sqrt{2} = 2 \Rightarrow t = \sqrt{2}$, and $a = 2 + 2\sqrt{2}$.
+
+Place the octagon with the square from $-(1+\sqrt{2})$ to $(1+\sqrt{2})$ in both $x$ and $y$. The vertices in order starting from the bottom-right cut, going counterclockwise:
+
+Let $c = 1 + \sqrt{2}$. The 8 vertices are:
+- $A = (c, 1)$, $B = (1, c)$, $C = (-1, c)$, $D = (-c, 1)$, $E = (-c,-1)$, $F = (-1,-c)$, $G = (1,-c)$, $H = (c,-1)$.
+
+So $A = (1+\sqrt{2},\, 1)$, $D = (-(1+\sqrt{2}),\, 1)$, $G = (1,\, -(1+\sqrt{2}))$.
+
+Area of $\triangle ADG$ with these three vertices using the shoelace formula:
+
+$$\text{Area} = \frac{1}{2}|x_A(y_D - y_G) + x_D(y_G - y_A) + x_G(y_A - y_D)|$$
+
+Let $c = 1+\sqrt{2}$:
+- $x_A = c$, $y_A = 1$
+- $x_D = -c$, $y_D = 1$  
+- $x_G = 1$, $y_G = -c$
+
+$$= \frac{1}{2}|c(1-(-c)) + (-c)((-c)-1) + 1(1-1)|$$
+$$= \frac{1}{2}|c(1+c) + (-c)(-c-1) + 0|$$
+$$= \frac{1}{2}|c(1+c) + c(c+1)|$$
+$$= \frac{1}{2} \cdot 2c(1+c) = c(1+c).$$
+
+With $c = 1+\sqrt{2}$:
+$$c(1+c) = (1+\sqrt{2})(1 + 1+\sqrt{2}) = (1+\sqrt{2})(2+\sqrt{2}).$$
+$$= 2 + \sqrt{2} + 2\sqrt{2} + 2 = 4 + 3\sqrt{2}.$$
+
+Answer: **C**.
+</Solution>

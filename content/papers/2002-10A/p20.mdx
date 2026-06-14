@@ -1,0 +1,29 @@
+---
+year: 2002
+paper: "10A"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 4
+answer: D
+choices: ["$5/4$", "$4/3$", "$3/2$", "$5/3$", "$2$"]
+---
+
+<Problem>
+Points $A, B, C, D, E$ and $F$ lie, in that order, on $\overline{AF}$, dividing it into five segments, each of length $1$. Point $G$ is not on line $AF$. Point $H$ lies on $\overline{GD}$, and point $J$ lies on $\overline{GF}$. The line segments $\overline{HC}$, $\overline{JE}$, and $\overline{AG}$ are parallel. Find $HC/JE$.
+</Problem>
+
+<Solution>
+Set up coordinates with $A = (0,0)$, $B = (1,0)$, $C = (2,0)$, $D = (3,0)$, $E = (4,0)$, $F = (5,0)$, and $G = (g_x, g_y)$ with $g_y \ne 0$.
+
+Since $\overline{HC}$, $\overline{JE}$, and $\overline{AG}$ are all parallel to each other, and $\overline{AG}$ goes from $A=(0,0)$ to $G$, these parallel segments are all in the direction of $\vec{AG}$.
+
+**Finding $H$:** $H$ is on $\overline{GD}$ such that $\overline{HC}$ is parallel to $\overline{AG}$. Parameterize $\overline{GD}$: points $(1-t)G + tD$ for $t \in [0,1]$. $H$ lies on the line through $C = (2,0)$ parallel to $AG$. By similar triangles in triangle $GAD$: $\overline{HC}$ parallel to $\overline{AG}$ with $C$ on $\overline{AD}$ at distance $AC = 2$ from $A$ and $CD = 1$ from $D$, so $C$ divides $\overline{AD}$ in ratio $AC:CD = 2:1$. By similar triangles, $H$ divides $\overline{GD}$ in ratio $GH:HD = 2:1$, meaning $H$ is $\frac{1}{3}$ of the way from $G$ to $D$... 
+
+More carefully: since $HC \parallel AG$ and $H$ on $GD$, $C$ on $AD$, by similar triangles in $\triangle GAD$: $\dfrac{HC}{AG} = \dfrac{CD}{AD} = \dfrac{1}{3}$.
+
+**Finding $J$:** $J$ is on $\overline{GF}$ such that $\overline{JE}$ is parallel to $\overline{AG}$. With $E$ on $\overline{AF}$ at $AE = 4$, $EF = 1$, so $E$ divides $\overline{AF}$ with $EF:AF = 1:5$. By similar triangles in $\triangle GAF$: $\dfrac{JE}{AG} = \dfrac{EF}{AF} = \dfrac{1}{5}$.
+
+**Ratio:** $\dfrac{HC}{JE} = \dfrac{(1/3) \cdot AG}{(1/5) \cdot AG} = \dfrac{1/3}{1/5} = \dfrac{5}{3}$.
+
+Answer: **D**.
+</Solution>

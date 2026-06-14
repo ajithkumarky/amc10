@@ -1,0 +1,33 @@
+---
+year: 2002
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: B
+choices: ["none", "one", "two", "more than two, but finitely many", "infinitely many"]
+---
+
+<Problem>
+For how many positive integers $n$ is $n^2-3n+2$ a prime number?
+</Problem>
+
+<Solution>
+Factor: $n^2 - 3n + 2 = (n-1)(n-2)$.
+
+For a product of two integers to be prime, one factor must be $\pm 1$ and the other must be $\pm p$ (the prime).
+
+Since $n$ is a positive integer, both factors $n-1$ and $n-2$ are integers with $n-1 = (n-2)+1$, so they differ by $1$.
+
+For $(n-1)(n-2)$ to be a positive prime, we need exactly one factor to equal $1$ and the other to be prime, or one factor $-1$ and the other $-p$ (negative prime, not valid since we need a positive result).
+
+- If $n-2 = 1$ (i.e., $n=3$): $(n-1)(n-2) = 2 \cdot 1 = 2$. This is prime. ✓
+- If $n-1 = 1$ (i.e., $n=2$): $(n-1)(n-2) = 1 \cdot 0 = 0$. Not prime.
+- If $n-2 = -1$ (i.e., $n=1$): $(n-1)(n-2) = 0 \cdot (-1) = 0$. Not prime.
+
+For $n \geq 4$: both $n-1 \geq 3$ and $n-2 \geq 2$, so the product is composite.
+
+Only $n = 3$ works, giving exactly **one** value.
+
+Answer: **B**.
+</Solution>

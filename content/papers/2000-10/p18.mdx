@@ -1,0 +1,32 @@
+---
+year: 2000
+paper: "10"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: C
+choices: ["24", "27", "39", "40", "42"]
+---
+
+<Problem>
+Charlyn walks completely around the boundary of a square whose sides are each $5$ km long. From any point on her path she can see exactly $1$ km horizontally in all directions. What is the area of the region consisting of all points Charlyn can see during her walk, expressed in square kilometers and rounded to the nearest whole number?
+</Problem>
+
+<Solution>
+The visible region consists of all points within $1$ km of the square's perimeter.
+
+This region can be decomposed into:
+
+**Inside the square:** The strip within $1$ km of any side, on the interior. This is the square of side $5$ minus the inner square of side $3$ (which is more than $1$ km from all sides):
+$$5^2 - 3^2 = 25 - 9 = 16 \text{ km}^2.$$
+
+**Outside the square:** The strip within $1$ km of the boundary, on the exterior. This consists of:
+- Four rectangles along each side, each $5 \times 1$: total area $4 \times 5 \times 1 = 20$ km$^2$.
+- Four quarter-circles at the corners, each with radius $1$: together they form one full circle of radius $1$: area $\pi \cdot 1^2 = \pi$ km$^2$.
+
+Total visible area $= 16 + 20 + \pi = 36 + \pi \approx 36 + 3.14159 \approx 39.14$.
+
+Rounded to the nearest whole number: $\mathbf{39}$.
+
+Answer: **C**.
+</Solution>

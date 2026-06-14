@@ -1,0 +1,36 @@
+---
+year: 2000
+paper: "10"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: C
+choices: ["21", "60", "119", "180", "231"]
+---
+
+<Problem>
+Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?
+</Problem>
+
+<Solution>
+The primes between $4$ and $18$ are: $5, 7, 11, 13, 17$.
+
+For two primes $p$ and $q$, we compute $pq - (p + q) = pq - p - q$.
+
+A useful factoring: $pq - p - q = (p-1)(q-1) - 1$.
+
+We check which answer choice can be expressed as $(p-1)(q-1) - 1$ for two distinct primes from $\{5, 7, 11, 13, 17\}$.
+
+The values of $p - 1$ are $4, 6, 10, 12, 16$.
+
+Check each answer:
+- $21$: $(p-1)(q-1) = 22$. Factor pairs of $22$: $(2,11), (1,22)$. Neither pair consists of two values from $\{4,6,10,12,16\}$.
+- $60$: $(p-1)(q-1) = 61$. $61$ is prime, so only $1 \times 61$. No.
+- $119$: $(p-1)(q-1) = 120$. Check: $10 \times 12 = 120$. Yes! $p - 1 = 10 \Rightarrow p = 11$ and $q - 1 = 12 \Rightarrow q = 13$. Both are prime and in range.
+- $180$: $(p-1)(q-1) = 181$. $181$ is prime. No.
+- $231$: $(p-1)(q-1) = 232 = 8 \times 29$. Neither $8$ nor $29$ is in $\{4,6,10,12,16\}$. (Also $4 \times 58$, $16 \times 14.5$, none work.) No.
+
+Verify: $11 \times 13 - (11 + 13) = 143 - 24 = 119$. Correct.
+
+Answer: **C**.
+</Solution>

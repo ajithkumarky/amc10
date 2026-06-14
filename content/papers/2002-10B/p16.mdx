@@ -1,0 +1,39 @@
+---
+year: 2002
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: D
+choices: ["$1$", "$2$", "$3$", "$4$", "$10$"]
+---
+
+<Problem>
+For how many integers $n$ is $\dfrac{n}{20-n}$ the square of an integer?
+</Problem>
+
+<Solution>
+Let $\dfrac{n}{20-n} = k^2$ for some integer $k$ (where $20 - n \neq 0$, i.e., $n \neq 20$).
+
+Then $n = k^2(20 - n) = 20k^2 - k^2 n$, so $n(1 + k^2) = 20k^2$, giving:
+
+$$n = \frac{20k^2}{1+k^2}.$$
+
+We need $n$ to be an integer, so $(1+k^2) \mid 20k^2$.
+
+Since $\gcd(k^2, 1+k^2) = \gcd(k^2, 1) = 1$ (any common divisor of $k^2$ and $1+k^2$ also divides their difference $1$), we need $(1+k^2) \mid 20$.
+
+The positive divisors of $20$ are $1, 2, 4, 5, 10, 20$. We need $1 + k^2$ to be one of these, so $k^2 \in \{0, 1, 3, 4, 9, 19\}$.
+
+Perfect squares in this set: $k^2 = 0$ (k=0), $k^2 = 1$ (k=±1), $k^2 = 4$ (k=±2), $k^2 = 9$ (k=±3).
+
+For each valid $k$:
+- $k = 0$: $n = 0$. Check: $\frac{0}{20} = 0 = 0^2$. ✓
+- $k = \pm 1$: $n = \frac{20}{2} = 10$. Check: $\frac{10}{10} = 1 = 1^2$. ✓
+- $k = \pm 2$: $n = \frac{80}{5} = 16$. Check: $\frac{16}{4} = 4 = 2^2$. ✓
+- $k = \pm 3$: $n = \frac{180}{10} = 18$. Check: $\frac{18}{2} = 9 = 3^2$. ✓
+
+But $n$ depends only on $k^2$, so positive and negative $k$ give the same $n$. The distinct values of $n$ are $0, 10, 16, 18$ — that is $4$ values.
+
+Answer: **D**.
+</Solution>

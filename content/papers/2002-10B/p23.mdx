@@ -1,0 +1,30 @@
+---
+year: 2002
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: D
+choices: ["$45$", "$56$", "$67$", "$78$", "$89$"]
+---
+
+<Problem>
+Let $\{a_k\}$ be a sequence of integers such that $a_1=1$ and $a_{m+n}=a_m+a_n+mn$, for all positive integers $m$ and $n$. Then $a_{12}$ is
+</Problem>
+
+<Solution>
+The functional equation $a_{m+n} = a_m + a_n + mn$ suggests that $a_n$ is close to a quadratic. 
+
+Guess $a_n = \frac{n(n+1)}{2} + cn$ for some constant. Check: $a_1 = 1 + c = 1 \Rightarrow c = 0$, so try $a_n = \frac{n(n+1)}{2}$.
+
+Verify: $a_{m+n} = \frac{(m+n)(m+n+1)}{2}$ and $a_m + a_n + mn = \frac{m(m+1)}{2} + \frac{n(n+1)}{2} + mn$.
+
+$$a_m + a_n + mn = \frac{m^2+m+n^2+n}{2} + mn = \frac{m^2 + n^2 + m + n + 2mn}{2} = \frac{(m+n)^2 + (m+n)}{2} = \frac{(m+n)(m+n+1)}{2}.$$
+
+This equals $a_{m+n}$. ✓ And $a_1 = \frac{1 \cdot 2}{2} = 1$. ✓
+
+Therefore:
+$$a_{12} = \frac{12 \cdot 13}{2} = 78.$$
+
+Answer: **D**.
+</Solution>

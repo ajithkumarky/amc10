@@ -1,0 +1,37 @@
+---
+year: 2000
+paper: "10"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 1
+answer: B
+choices: ["0", "1", "2", "3", "4"]
+---
+
+<Problem>
+Points $M$ and $N$ are the midpoints of sides $PA$ and $PB$ of $\triangle PAB$. As $P$ moves along a line that is parallel to side $AB$, how many of the four quantities listed below change?
+
+(a) the length of the segment $MN$
+
+(b) the perimeter of $\triangle PAB$
+
+(c) the area of $\triangle PAB$
+
+(d) the area of trapezoid $ABNM$
+
+The figure shows triangle $PAB$ with $P$ at the top, $A$ at the lower left, $B$ at the lower right, and $M$, $N$ the midpoints of $PA$ and $PB$ respectively, forming a smaller triangle at the top and a trapezoid $ABNM$ below.
+</Problem>
+
+<Solution>
+By the Midpoint (Midsegment) Theorem, $MN \parallel AB$ and $MN = \frac{1}{2} AB$. Since $AB$ is fixed, **$MN$ does not change**. So (a) stays constant.
+
+As $P$ moves along a line parallel to $AB$, the height of $\triangle PAB$ from $P$ to $AB$ stays the same (since $P$ remains at a fixed distance from line $AB$). Therefore the **area of $\triangle PAB$** is constant: $\frac{1}{2} \cdot AB \cdot h$ with both $AB$ and $h$ fixed. So (c) stays constant.
+
+Since the area of $\triangle PAB$ is fixed and the area of $\triangle PMN = \frac{1}{4}$ of the area of $\triangle PAB$ (by the midpoint theorem, the ratio of similarity is $\frac{1}{2}$, so area ratio is $\frac{1}{4}$), the area of trapezoid $ABNM = \frac{3}{4}$ of the area of $\triangle PAB$, which is also constant. So (d) stays constant.
+
+The **perimeter of $\triangle PAB$** equals $PA + PB + AB$. As $P$ moves laterally (along the parallel line), $PA$ and $PB$ change (the triangle gets more or less skewed), so $PA + PB$ changes. Thus (b) changes.
+
+Exactly $\mathbf{1}$ quantity changes.
+
+Answer: **B**.
+</Solution>

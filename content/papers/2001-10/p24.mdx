@@ -1,0 +1,35 @@
+---
+year: 2001
+paper: "10"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: B
+choices: ["$12$", "$12.25$", "$12.5$", "$12.75$", "$13$"]
+---
+
+<Problem>
+In trapezoid $ABCD$, $\overline{AB}$ and $\overline{CD}$ are perpendicular to $\overline{AD}$, with $AB + CD = BC$, $AB < CD$, and $AD = 7$. What is $AB \cdot CD$?
+</Problem>
+
+<Solution>
+Since $AB \perp AD$ and $CD \perp AD$, both $AB$ and $CD$ are vertical sides. The trapezoid has $AD$ as its horizontal base, $AB$ and $CD$ as its two vertical legs, and $BC$ as the slanted top.
+
+Set up coordinates: $A = (0, 0)$, $D = (7, 0)$, $B = (0, AB)$, $C = (7, CD)$.
+
+The length of $BC$:
+$$BC = \sqrt{(7-0)^2 + (CD - AB)^2} = \sqrt{49 + (CD - AB)^2}.$$
+
+The condition $AB + CD = BC$ gives:
+$$AB + CD = \sqrt{49 + (CD - AB)^2}.$$
+
+Let $s = AB + CD$ and $d = CD - AB$ (with $d > 0$ since $AB < CD$). Then:
+$$s = \sqrt{49 + d^2}.$$
+$$s^2 = 49 + d^2.$$
+$$(AB + CD)^2 = 49 + (CD - AB)^2.$$
+$$AB^2 + 2 \cdot AB \cdot CD + CD^2 = 49 + CD^2 - 2 \cdot AB \cdot CD + AB^2.$$
+$$4 \cdot AB \cdot CD = 49.$$
+$$AB \cdot CD = \frac{49}{4} = 12.25.$$
+
+Answer: **B**.
+</Solution>

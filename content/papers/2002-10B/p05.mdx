@@ -1,0 +1,40 @@
+---
+year: 2002
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 2
+answer: E
+choices: ['$3\pi$', '$4\pi$', '$6\pi$', '$9\pi$', '$12\pi$']
+---
+
+<Problem>
+Circles of radius $2$ and $3$ are externally tangent and are circumscribed by a third circle. Find the area of the shaded region (the area inside the large circle but outside both small circles).
+
+The two small circles have radii $3$ and $2$. Their centers are $5$ apart (since they are externally tangent). The large circle is centered at the point on the line between the centers at equal distance from both circles' far edges.
+</Problem>
+
+<Solution>
+Since the two small circles are externally tangent, their centers are $3 + 2 = 5$ apart. Place the center of the circle of radius $3$ at $(-2, 0)$ and the center of the circle of radius $2$ at $(3, 0)$.
+
+The large circumscribed circle must be tangent to both small circles internally, so its center lies on the line through $(-2,0)$ and $(3,0)$, i.e., on the $x$-axis at some point $(x_0, 0)$.
+
+Let $R$ be the radius of the large circle. Then:
+- Distance from $(x_0,0)$ to $(-2,0)$ equals $R - 3$, so $x_0 + 2 = R - 3$.
+- Distance from $(x_0,0)$ to $(3,0)$ equals $R - 2$, so $R - 2 - (x_0 - 3) = x_0$ ... 
+
+Let me set up correctly. The large circle has center $(x_0, 0)$ and radius $R$. Internally tangent means:
+$$|x_0 - (-2)| = R - 3 \quad \text{and} \quad |x_0 - 3| = R - 2.$$
+
+Assuming $x_0$ is between the two centers or to the left: $(x_0 + 2) = R - 3$ and $(3 - x_0) = R - 2$ if $x_0 < 3$.
+
+Adding: $(x_0+2) + (3-x_0) = (R-3)+(R-2) \Rightarrow 5 = 2R - 5 \Rightarrow R = 5$.
+
+Then $x_0 = R - 3 - 2 = 5 - 5 = 0$.
+
+The large circle has radius $5$. The shaded area is:
+
+$$\pi(5)^2 - \pi(3)^2 - \pi(2)^2 = 25\pi - 9\pi - 4\pi = 12\pi.$$
+
+Answer: **E**.
+</Solution>

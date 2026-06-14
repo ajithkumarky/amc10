@@ -1,0 +1,29 @@
+---
+year: 2002
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: B
+choices: ["$12$", "$13$", "$14$", "$15$", "$16$"]
+---
+
+<Problem>
+Jamal wants to store $30$ computer files on floppy disks, each of which has a capacity of $1.44$ MB. Three of his files require $0.8$ MB each, $12$ more require $0.7$ MB each, and the remaining $15$ require $0.4$ MB each. No file can be split between floppy disks. What is the minimal number of floppy disks that will hold all the files?
+</Problem>
+
+<Solution>
+**Categorize the files:** Large ($0.8$ MB, 3 files), Medium ($0.7$ MB, 12 files), Small ($0.4$ MB, 15 files). Disk capacity: $1.44$ MB.
+
+**Large files:** A $0.8$ MB file leaves $0.64$ MB free — not enough for another large or medium file, but enough for one small file ($0.4$ MB), leaving $0.24$ MB (not enough for another). So pair each large file with one small file: $3$ disks, using $3$ large + $3$ small files.
+
+**Remaining:** $12$ medium ($0.7$ MB) + $12$ small ($0.4$ MB).
+
+Two medium files need $1.4$ MB $\le 1.44$ MB. So we can fit $2$ medium files per disk. That takes $6$ disks for all $12$ medium files, with $0.04$ MB free per disk — not enough for a small file.
+
+**Remaining small files:** $12$ small files, each $0.4$ MB. Three fit per disk ($1.2$ MB $\le 1.44$ MB). $12 \div 3 = 4$ disks.
+
+**Total:** $3 + 6 + 4 = 13$ disks.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,26 @@
+---
+year: 2002
+paper: "10B"
+topic: algebra
+subtopic: quadratics
+difficulty: 2
+answer: C
+choices: ["$(-2,1)$", "$(-1,2)$", "$(1,-2)$", "$(2,-1)$", "$(4,4)$"]
+---
+
+<Problem>
+Suppose that $a$ and $b$ are nonzero real numbers, and that the equation $x^2+ax+b=0$ has solutions $a$ and $b$. What is the pair $(a,b)$?
+</Problem>
+
+<Solution>
+By Vieta's formulas, since $a$ and $b$ are the two roots of $x^2 + ax + b = 0$:
+$$a + b = -a \quad \text{and} \quad ab = b.$$
+
+From $ab = b$ and $b \neq 0$: divide both sides by $b$ to get $a = 1$.
+
+From $a + b = -a$: $1 + b = -1$, so $b = -2$.
+
+Check: $x^2 + x - 2 = (x+2)(x-1) = 0$ has roots $x = 1 = a$ and $x = -2 = b$. ✓
+
+Answer: **C**.
+</Solution>

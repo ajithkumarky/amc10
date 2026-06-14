@@ -1,0 +1,32 @@
+---
+year: 2001
+paper: "10"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: B
+choices: ['$\dfrac{8}{3}$', '$\dfrac{30}{11}$', '$3$', '$\dfrac{25}{8}$', '$\dfrac{7}{2}$']
+---
+
+<Problem>
+A right circular cylinder with its diameter equal to its height is inscribed in a right circular cone. The cone has diameter $10$ and altitude $12$, and the axes of the cylinder and cone coincide. Find the radius of the cylinder.
+</Problem>
+
+<Solution>
+Let $r$ be the radius of the cylinder. Since the diameter equals the height, the height of the cylinder is $2r$.
+
+The cone has base radius $5$ and height $12$. Taking a cross-section through the axis, the cone appears as a triangle: the apex is at height $12$ directly above the center of the base.
+
+The slant side of the cone goes from the apex $(0, 12)$ down to the base edge $(5, 0)$. The equation of this slant edge is:
+$$\frac{x}{5} + \frac{y}{12} = 1 \implies y = 12\left(1 - \frac{x}{5}\right).$$
+
+The top rim of the inscribed cylinder is at radius $r$ and height $2r$ (the cylinder's top face). This rim must touch the cone's slant side:
+$$2r = 12\left(1 - \frac{r}{5}\right).$$
+$$2r = 12 - \frac{12r}{5}.$$
+$$2r + \frac{12r}{5} = 12.$$
+$$\frac{10r + 12r}{5} = 12.$$
+$$\frac{22r}{5} = 12.$$
+$$r = \frac{60}{22} = \frac{30}{11}.$$
+
+Answer: **B**.
+</Solution>

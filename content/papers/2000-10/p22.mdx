@@ -1,0 +1,38 @@
+---
+year: 2000
+paper: "10"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 5
+answer: C
+choices: ["3", "4", "5", "6", "7"]
+---
+
+<Problem>
+One morning each member of Angela's family drank an 8-ounce mixture of coffee with milk. The amounts of coffee and milk varied from cup to cup, but were never zero. Angela drank a quarter of the total amount of milk and a sixth of the total amount of coffee. How many people are in the family?
+</Problem>
+
+<Solution>
+Let $n$ be the number of people in the family. Let $T_m$ be the total milk consumed and $T_c$ the total coffee consumed.
+
+Since each person drank 8 ounces:
+$$n \times 8 = T_m + T_c \implies T_m + T_c = 8n.$$
+
+Angela drank $\frac{T_m}{4}$ ounces of milk and $\frac{T_c}{6}$ ounces of coffee, and her total is 8 ounces:
+$$\frac{T_m}{4} + \frac{T_c}{6} = 8.$$
+
+Multiply through by 12:
+$$3T_m + 2T_c = 96.$$
+
+From $T_m + T_c = 8n$, we get $T_c = 8n - T_m$. Substituting:
+$$3T_m + 2(8n - T_m) = 96 \implies T_m + 16n = 96 \implies T_m = 96 - 16n.$$
+
+And $T_c = 8n - T_m = 8n - (96 - 16n) = 24n - 96$.
+
+Since $T_m > 0$ and $T_c > 0$ (each cup has nonzero amounts of both):
+$$96 - 16n > 0 \implies n < 6, \quad \text{and} \quad 24n - 96 > 0 \implies n > 4.$$
+
+So $4 < n < 6$, meaning $n = 5$.
+
+Answer: **C**.
+</Solution>

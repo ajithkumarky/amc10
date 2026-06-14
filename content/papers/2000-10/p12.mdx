@@ -1,0 +1,37 @@
+---
+year: 2000
+paper: "10"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: C
+choices: ["10401", "19801", "20201", "39801", "40801"]
+---
+
+<Problem>
+Figures $0$, $1$, $2$, and $3$ consist of $1$, $5$, $13$, and $25$ nonoverlapping unit squares, respectively. If the pattern were continued, how many nonoverlapping unit squares would there be in figure 100?
+
+The figures form a cross-like pattern: Figure 0 is a single square. Each subsequent figure adds a ring of squares around the previous shape in a plus/cross pattern, growing by adding squares on four sides.
+</Problem>
+
+<Solution>
+The sequence of square counts is $1, 5, 13, 25, \ldots$
+
+Find the differences: $5-1=4$, $13-5=8$, $25-13=12$. The differences increase by $4$ each time, so the second differences are constant at $4$.
+
+This means the count is a quadratic function of the figure number $n$. Let $f(n) = an^2 + bn + c$.
+
+From $f(0) = 1$: $c = 1$.
+From $f(1) = 5$: $a + b + 1 = 5$, so $a + b = 4$.
+From $f(2) = 13$: $4a + 2b + 1 = 13$, so $4a + 2b = 12$, giving $2a + b = 6$.
+
+Subtracting: $a = 2$, then $b = 2$.
+
+So $f(n) = 2n^2 + 2n + 1$.
+
+Check: $f(3) = 18 + 6 + 1 = 25$. Correct.
+
+$$f(100) = 2(100)^2 + 2(100) + 1 = 20000 + 200 + 1 = 20201.$$
+
+Answer: **C**.
+</Solution>

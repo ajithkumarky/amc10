@@ -1,0 +1,28 @@
+---
+year: 2001
+paper: "10"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: C
+choices: ["396", "404", "800", "$10{,}000$", "$10{,}404$"]
+---
+
+<Problem>
+Consider a dark center square surrounded by rings of unit squares. The first ring around the center square contains $8$ unit squares. The second ring contains $16$ unit squares. If we continue this process, the number of unit squares in the $100$th ring is
+</Problem>
+
+<Solution>
+The $k$th ring consists of the unit squares in the $(2k+1) \times (2k+1)$ square minus those in the $(2k-1) \times (2k-1)$ square.
+
+The number of squares in the $k$th ring is:
+$$(2k+1)^2 - (2k-1)^2.$$
+
+Using the difference of squares: $(2k+1+2k-1)(2k+1-2k+1) = (4k)(2) = 8k$.
+
+For the 100th ring: $8 \times 100 = 800$.
+
+We can verify: ring 1 has $8(1) = 8$ squares ✓, ring 2 has $8(2) = 16$ squares ✓.
+
+Answer: **C**.
+</Solution>

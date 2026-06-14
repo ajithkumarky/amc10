@@ -1,0 +1,44 @@
+---
+year: 2001
+paper: "10"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: B
+choices: ["768", "801", "934", "1067", "1167"]
+---
+
+<Problem>
+How many positive integers not exceeding $2001$ are multiples of $3$ or $4$ but not $5$?
+</Problem>
+
+<Solution>
+We use inclusion-exclusion. Let:
+- $A$ = multiples of 3 up to 2001
+- $B$ = multiples of 4 up to 2001
+- $C$ = multiples of 5 up to 2001
+
+We want $|A \cup B| - |A \cup B \cap C|$, or equivalently $|(A \cup B) \setminus C|$.
+
+**Step 1: Count multiples of 3 or 4 up to 2001.**
+
+$$|A| = \left\lfloor \frac{2001}{3} \right\rfloor = 667$$
+$$|B| = \left\lfloor \frac{2001}{4} \right\rfloor = 500$$
+$$|A \cap B| = \left\lfloor \frac{2001}{12} \right\rfloor = 166$$
+$$|A \cup B| = 667 + 500 - 166 = 1001.$$
+
+**Step 2: Subtract those also divisible by 5.**
+
+We need multiples of (3 or 4) AND 5, i.e., multiples of 15 or 20.
+
+$$|\text{mult of 15}| = \left\lfloor \frac{2001}{15} \right\rfloor = 133$$
+$$|\text{mult of 20}| = \left\lfloor \frac{2001}{20} \right\rfloor = 100$$
+$$|\text{mult of 60}| = \left\lfloor \frac{2001}{60} \right\rfloor = 33$$
+$$|\text{mult of 15 or 20}| = 133 + 100 - 33 = 200.$$
+
+**Step 3: Final count.**
+
+$$1001 - 200 = 801.$$
+
+Answer: **B**.
+</Solution>

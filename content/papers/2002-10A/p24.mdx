@@ -1,0 +1,53 @@
+---
+year: 2002
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: A
+choices: ["$2/5$", "$9/20$", "$1/2$", "$11/20$", "$24/25$"]
+---
+
+<Problem>
+Tina randomly selects two distinct numbers from the set $\{1, 2, 3, 4, 5\}$, and Sergio randomly selects a number from the set $\{1, 2, \ldots, 10\}$. The probability that Sergio's number is larger than the sum of the two numbers chosen by Tina is
+</Problem>
+
+<Solution>
+Tina's possible pairs and their sums:
+
+| Pair | Sum |
+|------|-----|
+| $\{1,2\}$ | 3 |
+| $\{1,3\}$ | 4 |
+| $\{1,4\}$ | 5 |
+| $\{1,5\}$ | 6 |
+| $\{2,3\}$ | 5 |
+| $\{2,4\}$ | 6 |
+| $\{2,5\}$ | 7 |
+| $\{3,4\}$ | 7 |
+| $\{3,5\}$ | 8 |
+| $\{4,5\}$ | 9 |
+
+There are $\binom{5}{2} = 10$ equally likely pairs. For each pair, the number of values of Sergio's pick (from $\{1,\ldots,10\}$) that are strictly greater than the sum:
+
+| Sum $s$ | Count of Sergio's values $> s$ |
+|---------|-------------------------------|
+| 3 | 7 |
+| 4 | 6 |
+| 5 | 5 |
+| 5 | 5 |
+| 6 | 4 |
+| 6 | 4 |
+| 7 | 3 |
+| 7 | 3 |
+| 8 | 2 |
+| 9 | 1 |
+
+Total favorable outcomes $= 7+6+5+5+4+4+3+3+2+1 = 40$.
+
+Total outcomes $= 10 \times 10 = 100$.
+
+Probability $= \dfrac{40}{100} = \dfrac{2}{5}$.
+
+Answer: **A**.
+</Solution>

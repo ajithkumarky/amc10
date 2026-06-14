@@ -1,0 +1,72 @@
+---
+year: 2000
+paper: "10"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: E
+choices: ["3", "6", "9", "17", "20"]
+---
+
+<Problem>
+When the mean, median, and mode of the list $10, 2, 5, 2, 4, 2, x$ are arranged in increasing order, they form a non-constant arithmetic progression. What is the sum of all possible real values of $x$?
+</Problem>
+
+<Solution>
+The list is $\{10, 2, 5, 2, 4, 2, x\}$ (7 values).
+
+**Mode:** $2$ appears three times, more than any other value (assuming $x \neq 2$; if $x = 2$, mode is still $2$). So the mode is $2$.
+
+**Mean:** $\frac{10 + 2 + 5 + 2 + 4 + 2 + x}{7} = \frac{25 + x}{7}$.
+
+**Median:** Sort the known values (excluding $x$): $2, 2, 2, 4, 5, 10$. With $x$ inserted, the 4th value (middle of 7) is the median.
+
+**Case 1: $x \leq 2$.** Sorted list: $x, 2, 2, 2, 4, 5, 10$. Median $= 2$.
+
+Then mode $=$ median $= 2$. An arithmetic progression with mode $= 2$ and median $= 2$ requires all three equal (constant), but the problem says non-constant. So no solution here.
+
+**Case 2: $2 < x \leq 4$.** Sorted: $2, 2, 2, x, 4, 5, 10$. Median $= x$.
+
+The three values are mode $= 2$, median $= x$, mean $= \frac{25+x}{7}$.
+
+For an arithmetic progression (in increasing order): since mode $= 2 \leq x$ = median, we need $2 \leq x \leq \frac{25+x}{7}$ (mean is largest) or $2 \leq \frac{25+x}{7} \leq x$.
+
+Check: mean $= \frac{25+x}{7}$. For $2 < x \leq 4$: mean $= \frac{25+x}{7}$. At $x = 4$: mean $= \frac{29}{7} \approx 4.14 > 4 = x$. At $x = 2$: mean $= \frac{27}{7} \approx 3.86 > 2$. So mean $> x$ in this range.
+
+Order: $2 \leq x \leq \frac{25+x}{7}$. For AP: $x - 2 = \frac{25+x}{7} - x$.
+$$x - 2 = \frac{25 + x - 7x}{7} = \frac{25 - 6x}{7}.$$
+$$7x - 14 = 25 - 6x \implies 13x = 39 \implies x = 3.$$
+
+Check: $x = 3 \in (2, 4]$. Mode $= 2$, median $= 3$, mean $= \frac{28}{7} = 4$. Sequence $2, 3, 4$: AP with common difference $1$. Non-constant. Valid.
+
+**Case 3: $4 < x \leq 5$.** Sorted: $2, 2, 2, 4, x, 5, 10$. Median $= 4$.
+
+Values: mode $= 2$, median $= 4$, mean $= \frac{25+x}{7}$.
+
+For AP in order $2, 4, \frac{25+x}{7}$: $4 - 2 = \frac{25+x}{7} - 4$.
+$$2 = \frac{25 + x - 28}{7} = \frac{x - 3}{7} \implies x - 3 = 14 \implies x = 17.$$
+
+But $x = 17 \notin (4, 5]$. No solution here.
+
+Also check if mean could be between mode and median: $2 \leq \frac{25+x}{7} \leq 4$ requires $25 + x \leq 28$, i.e., $x \leq 3$. Not in this range.
+
+**Case 4: $5 < x \leq 10$.** Sorted: $2, 2, 2, 4, 5, x, 10$. Median $= 4$.
+
+Same mode and median as Case 3. Same equation gives $x = 17$, not in $(5, 10]$.
+
+**Case 5: $x > 10$.** Sorted: $2, 2, 2, 4, 5, 10, x$. Median $= 4$.
+
+Same mode $= 2$, median $= 4$, mean $= \frac{25+x}{7}$.
+
+For AP: $4 - 2 = \frac{25+x}{7} - 4 \implies x = 17$.
+
+Check: $x = 17 > 10$. Mode $= 2$, median $= 4$, mean $= \frac{42}{7} = 6$. Sequence $2, 4, 6$: AP with common difference $2$. Non-constant. Valid.
+
+Also check if mean could be smallest: $\frac{25+x}{7} \leq 2 \implies x \leq -11$, not in this range.
+
+**Summary of valid solutions:** $x = 3$ and $x = 17$.
+
+Sum $= 3 + 17 = 20$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,26 @@
+---
+year: 2001
+paper: "10"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: E
+choices: ["2", "3", "6", "8", "9"]
+---
+
+<Problem>
+Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits of the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a two-digit number such that $N = P(N) + S(N)$. What is the units digit of $N$?
+</Problem>
+
+<Solution>
+Let $N$ have tens digit $a$ and units digit $b$, so $N = 10a + b$ with $1 \leq a \leq 9$ and $0 \leq b \leq 9$.
+
+Then $P(N) = ab$ and $S(N) = a + b$, so the condition becomes:
+$$10a + b = ab + a + b.$$
+
+Simplifying: $10a = ab + a$, so $9a = ab$, giving $9 = b$ (since $a \neq 0$).
+
+So the units digit of $N$ is $\mathbf{9}$. (Any two-digit number ending in 9 works: for example, $N = 19$ gives $P(19) + S(19) = 9 + 10 = 19$. $\checkmark$)
+
+Answer: **E**.
+</Solution>

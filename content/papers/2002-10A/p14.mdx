@@ -1,0 +1,27 @@
+---
+year: 2002
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: B
+choices: ["$0$", "$1$", "$2$", "$4$", "more than 4"]
+---
+
+<Problem>
+Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is
+</Problem>
+
+<Solution>
+Let the two prime roots be $p$ and $q$. By Vieta's formulas:
+- $p + q = 63$
+- $pq = k$
+
+Since $63$ is odd, one of $p, q$ must be even and the other odd. The only even prime is $2$, so one root is $2$ and the other is $61$.
+
+Check: $61$ is prime (not divisible by $2, 3, 5, 7$; $\sqrt{61} < 8$). Yes, $61$ is prime.
+
+So $k = 2 \times 61 = 122$ is the only possibility. There is exactly $1$ value of $k$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,30 @@
+---
+year: 2002
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 1
+answer: E
+choices: ["$4$", "$6$", "$9$", "$12$", "infinitely many"]
+---
+
+<Problem>
+For how many positive integers $m$ does there exist at least one positive integer $n$ such that $mn \le m + n$?
+</Problem>
+
+<Solution>
+Rearrange the inequality $mn \le m + n$:
+
+$$mn - m - n \le 0 \implies mn - m - n + 1 \le 1 \implies (m-1)(n-1) \le 1.$$
+
+Since $m$ and $n$ are positive integers, both $m-1 \ge 0$ and $n-1 \ge 0$. So $(m-1)(n-1) \le 1$ with non-negative integer factors.
+
+- If $m = 1$: $(m-1)(n-1) = 0 \le 1$ for **every** positive integer $n$. Works.
+- If $m \ge 2$: we need $(m-1)(n-1) \le 1$. Since $m-1 \ge 1$, we need $n-1 \le \frac{1}{m-1}$. For $m = 2$, $n - 1 \le 1$ so $n = 1$ or $n = 2$ works. For $m \ge 3$, $m - 1 \ge 2$ so $(m-1)(n-1) \ge 2$ for any $n \ge 2$, and $n=1$ gives $(m-1)(0) = 0 \le 1$. So $n = 1$ works for all $m$.
+
+In fact, $n = 1$ gives $(m-1)(0) = 0 \le 1$ for every positive integer $m$. So every positive integer $m$ has at least one valid $n$, namely $n = 1$.
+
+There are infinitely many such $m$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,33 @@
+---
+year: 2002
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: B
+choices: ["$7$", "$14$", "$21$", "$28$", "$35$"]
+---
+
+<Problem>
+The number $25^{64} \cdot 64^{25}$ is the square of a positive integer $N$. In decimal representation, the sum of the digits of $N$ is
+</Problem>
+
+<Solution>
+Write $25 = 5^2$ and $64 = 2^6$:
+
+$$25^{64} \cdot 64^{25} = 5^{128} \cdot 2^{150}.$$
+
+Since this equals $N^2$:
+
+$$N^2 = 2^{150} \cdot 5^{128} = 2^{22} \cdot (2 \cdot 5)^{128} \cdot 5^0 \cdot \ldots$$
+
+More precisely: $N^2 = 2^{150} \cdot 5^{128} = 2^{22} \cdot (10)^{128}$.
+
+So $N = 2^{11} \cdot 10^{64} = 2048 \cdot 10^{64}$.
+
+In decimal, $N = 2048\underbrace{00\cdots0}_{64}$.
+
+The sum of digits of $N$ is $2 + 0 + 4 + 8 = 14$.
+
+Answer: **B**.
+</Solution>

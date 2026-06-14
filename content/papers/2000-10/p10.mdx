@@ -1,0 +1,30 @@
+---
+year: 2000
+paper: "10"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: D
+choices: ["2", "4", "6", "8", "10"]
+---
+
+<Problem>
+The sides of a triangle with positive area have lengths $4$, $6$, and $x$. The sides of a second triangle with positive area have lengths $4$, $6$, and $y$. What is the smallest positive number that is **not** a possible value of $|x - y|$?
+</Problem>
+
+<Solution>
+By the triangle inequality, the third side of a triangle with sides $4$ and $6$ must satisfy:
+$$|6 - 4| < x < 6 + 4 \implies 2 < x < 10.$$
+
+So both $x$ and $y$ lie in the open interval $(2, 10)$.
+
+The difference $|x - y|$ can range from $0$ (exclusive, since a zero difference is possible when $x = y$, but we need to check if values close to $0$ and up to near $8$ are achievable) up to values approaching $|10 - 2| = 8$ but never reaching $8$.
+
+More precisely, $|x - y|$ can be any value in $[0, 8)$:
+- We can make $|x - y|$ as close to $0$ as we want (take $x$ and $y$ close together).
+- We can approach $8$ but not reach it: as $x \to 10^-$ and $y \to 2^+$, $|x - y| \to 8$.
+
+So any value in $[0, 8)$ is achievable, but $8$ itself is not achievable. Since the question asks for the smallest **positive** number not achievable, and all values in $(0, 8)$ are achievable, the answer is $8$.
+
+Answer: **D**.
+</Solution>

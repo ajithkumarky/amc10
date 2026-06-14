@@ -1,0 +1,32 @@
+---
+year: 2002
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: D
+choices: ["$60$", "$72$", "$84$", "$90$", "$96$"]
+---
+
+<Problem>
+A $3 \times 3 \times 3$ cube is formed by gluing together $27$ standard cubical dice. (On a standard die, the sum of the numbers on any pair of opposite faces is $7$.) The smallest possible sum of all the numbers showing on the surface of the $3 \times 3 \times 3$ cube is
+</Problem>
+
+<Solution>
+Classify the 27 small dice by how many faces are visible:
+- **8 corner dice:** 3 faces visible each
+- **12 edge dice:** 2 faces visible each
+- **6 face-center dice:** 1 face visible each
+- **1 center die:** 0 faces visible
+
+**Corner dice (3 faces visible):** The three visible faces share a vertex. On a standard die, opposite face pairs sum to 7: $(1,6),(2,5),(3,4)$. Three faces meeting at a vertex come one from each pair. The minimum sum of three such faces is $1+2+3 = 6$.
+
+**Edge dice (2 faces visible):** Two visible faces come from two different opposite pairs. Minimum sum is $1+2 = 3$.
+
+**Face-center dice (1 face visible):** Minimum showing face is $1$.
+
+**Total minimum:**
+$$8 \times 6 + 12 \times 3 + 6 \times 1 = 48 + 36 + 6 = 90.$$
+
+Answer: **D**.
+</Solution>

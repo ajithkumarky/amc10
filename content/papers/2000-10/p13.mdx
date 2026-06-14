@@ -1,0 +1,41 @@
+---
+year: 2000
+paper: "10"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: B
+choices: ["0", "1", "$5! \\cdot 4! \\cdot 3! \\cdot 2! \\cdot 1!$", "$\\dfrac{15!}{5! \\cdot 4! \\cdot 3! \\cdot 2! \\cdot 1!}$", "$15!$"]
+---
+
+<Problem>
+There are 5 yellow pegs, 4 red pegs, 3 green pegs, 2 blue pegs, and 1 orange peg to be placed on a triangular peg board. In how many ways can the pegs be placed so that no horizontal row or vertical column contains two pegs of the same color?
+
+The peg board is a triangular grid with 5 rows: row 1 (bottom) has 5 pegs, row 2 has 4, row 3 has 3, row 4 has 2, row 5 (top) has 1 peg, for 15 pegs total.
+</Problem>
+
+<Solution>
+The triangular board has rows of sizes $5, 4, 3, 2, 1$ (bottom to top) and columns of sizes $1, 2, 3, 4, 5$ (left to right).
+
+We have 5 yellows, 4 reds, 3 greens, 2 blues, 1 orange — matching the row sizes exactly.
+
+The constraint says no two pegs of the same color in any row or column.
+
+Since there are 5 yellow pegs and 5 columns, and no column can have two yellows, each column must contain exactly one yellow peg. The yellow pegs occupy one peg per column.
+
+But each column $k$ (from left, for $k = 1, \ldots, 5$) has exactly $k$ pegs (in rows 1 through $k$). So column 1 has 1 peg, column 2 has 2, etc.
+
+Similarly, the row constraint means no two pegs of the same color in any row. Row 1 (bottom, 5 pegs) has one peg from each column — if all 5 yellows must be in different columns and different rows, but there are only 5 rows and 5 yellows, each row must contain exactly one yellow.
+
+Row 1 (5 positions, one per column) must have exactly one yellow. Each row has one yellow. This uniquely forces yellow peg placement: row $i$ column $j$ for some bijection. But the constraint (exactly one per row, one per column) means yellows form a permutation matrix restricted to valid positions.
+
+In fact, the unique valid arrangement places each color entirely in one row. Color with $k$ pegs goes in row with $k$ positions, filling exactly that row. The only arrangement with no repeated color in any row is to put each color in one row. Then the column constraint requires that within each row, all pegs are different colors — which is automatically satisfied since each row has one color.
+
+But we also need each column to have at most one peg of each color. Since each color occupies exactly one row, and a column intersects each row at most once, each color appears at most once per column. So the column constraint is automatically satisfied too!
+
+The only question is: in how many ways can we assign colors to rows and arrange them? The color with 5 pegs must go in the 5-peg row (only one such row), 4-peg color in the 4-peg row, etc. — each assignment is forced. Within each row, the pegs of that color must be placed in the columns of that row, but since they're all the same color, no further choice matters (the pegs of the same color are identical in color).
+
+So there is exactly $\mathbf{1}$ valid arrangement.
+
+Answer: **B**.
+</Solution>
