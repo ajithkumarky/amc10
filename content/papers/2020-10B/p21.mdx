@@ -1,0 +1,263 @@
+---
+year: 2020
+paper: "10B"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 5
+answer: B
+choices: ['$\dfrac{7}{3}$', '$8-4\sqrt{2}$', '$1+\sqrt{2}$', '$\dfrac{7}{4}\sqrt{2}$', '$2\sqrt{2}$']
+---
+
+<Problem>
+In square $ABCD$, points $E$ and $H$ lie on $\overline{AB}$ and $\overline{DA}$, respectively, so that $AE = AH$. Points $F$ and $G$ lie on $\overline{BC}$ and $\overline{CD}$, respectively, and points $I$ and $J$ lie on $\overline{EH}$ so that $\overline{FI} \perp \overline{EH}$ and $\overline{GJ} \perp \overline{EH}$.
+
+(The figure shows square $ABCD$ with diagonal-like segment $EH$ cutting off corner $A$, and perpendiculars from $F$ on $BC$ and $G$ on $CD$ meeting $EH$ at $I$ and $J$ respectively.)
+
+Triangle $AEH$, quadrilateral $BFIE$, quadrilateral $DHJG$, and pentagon $FCGJI$ each has area $1$. What is $FI^2$?
+</Problem>
+
+<Solution>
+Let the square $ABCD$ have side length $s$. Place $A = (0,0)$, $B = (s,0)$, $C = (s,s)$, $D = (0,s)$.
+
+Since $AE = AH$, let $AE = AH = a$. So $E = (a, 0)$ on $AB$ and $H = (0, a)$ on $DA$.
+
+**Area conditions:**
+
+Total area of square $= 4 \cdot 1 = 4$, so $s^2 = 4$ and $s = 2$.
+
+Area of triangle $AEH = \frac{1}{2}a^2 = 1$, so $a^2 = 2$, giving $a = \sqrt{2}$.
+
+So $E = (\sqrt{2}, 0)$ and $H = (0, \sqrt{2})$. The square has side $s = 2$.
+
+**Line $EH$:**
+
+$EH$ goes from $E = (\sqrt{2}, 0)$ to $H = (0, \sqrt{2})$. Its equation: $x + y = \sqrt{2}$. Direction vector: $(-1, 1)/\sqrt{2}$. The line has slope $-1$.
+
+**Finding $F$ on $BC$ and $G$ on $CD$:**
+
+$F$ is on $BC$: $F = (2, f)$ for some $f \in [0, 2]$.
+$G$ is on $CD$: $G = (g, 2)$ for some $g \in [0, 2]$.
+
+$FI \perp EH$: since $EH$ has direction $(-1,1)$, the perpendicular direction is $(1,1)$. So the line through $F = (2, f)$ perpendicular to $EH$ has direction $(1,1)$, i.e., points of the form $(2+t, f+t)$. $I$ is the intersection with line $EH$ (i.e., $x + y = \sqrt{2}$):
+$(2+t) + (f+t) = \sqrt{2}$, so $2t = \sqrt{2} - 2 - f$, giving $t = \frac{\sqrt{2}-2-f}{2}$.
+
+$$I = \left(2 + \frac{\sqrt{2}-2-f}{2},\ f + \frac{\sqrt{2}-2-f}{2}\right) = \left(\frac{\sqrt{2}+2-f}{2},\ \frac{\sqrt{2}-2+f}{2}\right).$$
+
+Length $FI$: $|FI|^2 = 2t^2 \cdot$... actually $|FI| = |t|\sqrt{2}$ since direction is $(1,1)/\sqrt{2}\cdot\sqrt{2}=1$... direction vector $(1,1)$ has magnitude $\sqrt{2}$, so $|FI| = |t|\sqrt{2}$.
+
+$FI^2 = 2t^2 = 2\left(\frac{\sqrt{2}-2-f}{2}\right)^2 = \frac{(\sqrt{2}-2-f)^2}{2}$.
+
+Similarly, $G = (g, 2)$ and $J$ is on $EH$ with $GJ \perp EH$:
+$J = \left(\frac{\sqrt{2}-2+g}{2},\ \frac{\sqrt{2}+2-g}{2}\right)$, and $GJ^2 = \frac{(\sqrt{2}-2-g)^2}{2}$.
+
+By the symmetry of the figure (the square has a symmetry swapping $B \leftrightarrow D$ and $F \leftrightarrow G$), we expect $f = g$. Let's verify using the area conditions.
+
+**Area of quadrilateral $BFIE$:**
+
+Vertices: $B=(2,0)$, $F=(2,f)$, $I=\left(\frac{\sqrt{2}+2-f}{2}, \frac{\sqrt{2}-2+f}{2}\right)$, $E=(\sqrt{2},0)$.
+
+Using the shoelace formula:
+$$\text{Area} = \frac{1}{2}|x_B(y_F - y_E) + x_F(y_I - y_B) + x_I(y_E - y_F) + x_E(y_B - y_I)|$$
+
+Let me denote $I = (I_x, I_y)$ for clarity.
+$= \frac{1}{2}|2(f-0) + 2(I_y - 0) + I_x(0 - f) + \sqrt{2}(0 - I_y)|$
+$= \frac{1}{2}|2f + 2I_y - f \cdot I_x - \sqrt{2}\cdot I_y|$
+
+Substituting $I_x = \frac{\sqrt{2}+2-f}{2}$ and $I_y = \frac{\sqrt{2}-2+f}{2}$:
+
+$f \cdot I_x = f\cdot\frac{\sqrt{2}+2-f}{2}$
+
+$2I_y = \sqrt{2}-2+f$
+
+$\sqrt{2}\cdot I_y = \sqrt{2}\cdot\frac{\sqrt{2}-2+f}{2} = \frac{2-2\sqrt{2}+\sqrt{2}f}{2}$
+
+Area of $BFIE$:
+$= \frac{1}{2}\left|2f + (\sqrt{2}-2+f) - \frac{f(\sqrt{2}+2-f)}{2} - \frac{2-2\sqrt{2}+\sqrt{2}f}{2}\right|$
+
+$= \frac{1}{2}\left|3f + \sqrt{2} - 2 - \frac{f\sqrt{2}+2f-f^2 + 2 - 2\sqrt{2} + \sqrt{2}f}{2}\right|$
+
+$= \frac{1}{2}\left|3f + \sqrt{2} - 2 - \frac{2\sqrt{2}f + 2f - f^2 + 2 - 2\sqrt{2}}{2}\right|$
+
+Let me use a simpler approach. The square has area $4$ and is divided into $4$ regions each of area $1$. 
+
+By symmetry of the symmetric setup ($f = g$), quadrilateral $BFIE$ and $DHJG$ have the same area. We've set each equal to $1$, and indeed by the $45°$ symmetry of the figure (reflecting across the main diagonal $AC$) we get $f = g$.
+
+**Area of $BFIE$ by decomposition:**
+
+Area($BFIE$) = Area($ABE$) + Area($B$-strip from $E$ to $F$ to $I$) ... This is getting messy. Let me use coordinates directly.
+
+Shoelace for $BFIE$ ($B=(2,0)$, $F=(2,f)$, $I=(I_x,I_y)$, $E=(\sqrt{2},0)$):
+
+$\text{Area} = \frac{1}{2}|(x_B y_F - x_F y_B) + (x_F y_I - x_I y_F) + (x_I y_E - x_E y_I) + (x_E y_B - x_B y_E)|$
+
+$= \frac{1}{2}|(2f - 0) + (2I_y - I_x f) + (0 - \sqrt{2}I_y) + (0 - 0)|$
+
+$= \frac{1}{2}|2f + 2I_y - I_x f - \sqrt{2}I_y|$
+
+Substitute $I_x = \frac{\sqrt{2}+2-f}{2}$, $I_y = \frac{\sqrt{2}-2+f}{2}$:
+
+$2I_y = \sqrt{2} - 2 + f$
+
+$I_x f = \frac{f(\sqrt{2}+2-f)}{2}$
+
+$\sqrt{2}I_y = \frac{\sqrt{2}(\sqrt{2}-2+f)}{2} = \frac{2-2\sqrt{2}+\sqrt{2}f}{2}$
+
+$\text{Area} = \frac{1}{2}\left|2f + \sqrt{2}-2+f - \frac{f(\sqrt{2}+2-f)}{2} - \frac{2-2\sqrt{2}+\sqrt{2}f}{2}\right|$
+
+$= \frac{1}{2}\left|3f + \sqrt{2} - 2 - \frac{f\sqrt{2}+2f-f^2 + 2-2\sqrt{2}+\sqrt{2}f}{2}\right|$
+
+$= \frac{1}{2}\left|3f + \sqrt{2} - 2 - \frac{2\sqrt{2}f + 2f - f^2 + 2-2\sqrt{2}}{2}\right|$
+
+Multiply through by $2$:
+
+$= \frac{1}{4}\left|6f + 2\sqrt{2} - 4 - 2\sqrt{2}f - 2f + f^2 - 2 + 2\sqrt{2}\right|$
+
+$= \frac{1}{4}\left|f^2 + (6-2\sqrt{2}-2)f + (4\sqrt{2}-6)\right|$
+
+$= \frac{1}{4}\left|f^2 + (4-2\sqrt{2})f + (4\sqrt{2}-6)\right|$
+
+Set equal to $1$:
+$f^2 + (4-2\sqrt{2})f + (4\sqrt{2}-6) = 4$
+
+$f^2 + (4-2\sqrt{2})f + (4\sqrt{2}-10) = 0$
+
+Using the quadratic formula:
+$f = \frac{-(4-2\sqrt{2}) \pm \sqrt{(4-2\sqrt{2})^2 - 4(4\sqrt{2}-10)}}{2}$
+
+$(4-2\sqrt{2})^2 = 16 - 16\sqrt{2} + 8 = 24 - 16\sqrt{2}$
+
+$4(4\sqrt{2}-10) = 16\sqrt{2} - 40$
+
+Discriminant $= 24 - 16\sqrt{2} - 16\sqrt{2} + 40 = 64 - 32\sqrt{2} = 32(2-\sqrt{2})$
+
+$\sqrt{32(2-\sqrt{2})} = 4\sqrt{2}\sqrt{2-\sqrt{2}}$
+
+Hmm, this is getting complicated. Let me try a different approach.
+
+**Alternative: use area ratios.**
+
+Area(pentagon $FCGJI$) = 1. Pentagon $FCGJI$ has vertices $F=(2,f)$, $C=(2,2)$, $G=(g,2)$, $J$, $I$.
+
+Total area $= 4 = $ Area($AEH$) + Area($BFIE$) + Area($DHJG$) + Area($FCGJI$) $= 1+1+1+1$. Good.
+
+By symmetry $f = g$ (the problem is symmetric under reflection across diagonal $AC$, which swaps $B$ and $D$, $E$ and $H$, $F$ and $G$, $I$ and $J$). So $f = g$.
+
+Area($BFIE$) using the trapezoid approach: $BFIE$ has two parallel sides? $BE$ is along the $x$-axis from $(2,0)$ to $(\sqrt{2},0)$, length $2-\sqrt{2}$. $FI$ is perpendicular to $EH$...
+
+Actually, let me use the direct formula for the area in terms of $f$.
+
+Since $s=2$ and $a=\sqrt{2}$: The line $EH$ has equation $x+y=\sqrt{2}$. The perpendicular from $F=(2,f)$ to this line has foot $I$, and the distance $FI = \frac{|2+f-\sqrt{2}|}{\sqrt{2}} = \frac{2+f-\sqrt{2}}{\sqrt{2}}$ (assuming $f > \sqrt{2}-2$, which holds since $f>0$).
+
+The region $BFIE$: note that $B=(2,0)$, $E=(\sqrt{2},0)$, and $I$ and $F$ are obtained by drawing the perpendicular from $F$ to $EH$. The region $BFIE$ is a right trapezoid: $BE$ is horizontal (length $2-\sqrt{2}$), $BF$ is vertical (length $f$), and the other two sides are $EI$ (along $EH$) and $FI$ (perpendicular to $EH$).
+
+Length $EI$: $E = (\sqrt{2},0)$, $I = \left(\frac{\sqrt{2}+2-f}{2}, \frac{\sqrt{2}-2+f}{2}\right)$.
+$EI = \sqrt{\left(\frac{\sqrt{2}+2-f}{2}-\sqrt{2}\right)^2 + \left(\frac{\sqrt{2}-2+f}{2}\right)^2}$
+$= \sqrt{\left(\frac{2-f-\sqrt{2}}{2}\right)^2 + \left(\frac{\sqrt{2}-2+f}{2}\right)^2}$
+$= \sqrt{2\left(\frac{2-f-\sqrt{2}}{2}\right)^2} = \frac{|2-f-\sqrt{2}|}{\sqrt{2}} \cdot \sqrt{2} = |2-f-\sqrt{2}|$
+
+Wait: $\frac{\sqrt{2}+2-f}{2}-\sqrt{2} = \frac{2-f-\sqrt{2}}{2}$ and $\frac{\sqrt{2}-2+f}{2}-0 = \frac{\sqrt{2}-2+f}{2}$.
+
+These two differences: $\frac{2-f-\sqrt{2}}{2}$ and $\frac{\sqrt{2}-2+f}{2} = -\frac{2-f-\sqrt{2}}{2}$.
+
+So $EI = \sqrt{2\cdot\left(\frac{2-f-\sqrt{2}}{2}\right)^2} = \frac{|2-f-\sqrt{2}|}{\sqrt{2}}\cdot \sqrt{2} = |2-f-\sqrt{2}|$.
+
+For $f < 2-\sqrt{2} \approx 0.59$: $EI = 2-f-\sqrt{2}$. For $f > 2-\sqrt{2}$: $EI = f+\sqrt{2}-2$.
+
+The region $BFIE$ is bounded by $B=(2,0)$, $E=(\sqrt{2},0)$ (bottom), $I$ (on line $EH$), $F=(2,f)$ (right). It is a quadrilateral. Area using shoelace:
+
+Area $= \frac{1}{2}|(2\cdot f - 2\cdot 0) + (2\cdot I_y - I_x\cdot f) + (I_x\cdot 0 - \sqrt{2}\cdot I_y) + (\sqrt{2}\cdot 0 - 2\cdot 0)|$
+
+$= \frac{1}{2}|2f + 2I_y - I_x f - \sqrt{2}I_y|$ (same as before)
+
+Substituting $I_x + I_y = \sqrt{2}$ (since $I$ is on line $EH$: $I_x + I_y = \sqrt{2}$):
+$I_x = \frac{\sqrt{2}+2-f}{2}$, $I_y = \frac{\sqrt{2}-2+f}{2}$.
+
+$2I_y - \sqrt{2}I_y = I_y(2-\sqrt{2}) = \frac{(\sqrt{2}-2+f)(2-\sqrt{2})}{2}$
+
+$I_xf = \frac{f(\sqrt{2}+2-f)}{2}$
+
+Area $= \frac{1}{2}\left|2f + \frac{(\sqrt{2}-2+f)(2-\sqrt{2})}{2} - \frac{f(\sqrt{2}+2-f)}{2}\right|$
+
+$= \frac{1}{2}\left|2f + \frac{(2-\sqrt{2})(f+\sqrt{2}-2) - f(\sqrt{2}+2-f)}{2}\right|$
+
+Let $u = 2-\sqrt{2}$ for brevity:
+Numerator inside: $(u)(f - u) - f(\sqrt{2}+f-f) $... let me just expand directly.
+
+$(2-\sqrt{2})(f+\sqrt{2}-2) = (2-\sqrt{2})f + (2-\sqrt{2})(\sqrt{2}-2) = (2-\sqrt{2})f - (2-\sqrt{2})^2$
+$(2-\sqrt{2})^2 = 4-4\sqrt{2}+2 = 6-4\sqrt{2}$
+
+$f(\sqrt{2}+2-f) = f\sqrt{2}+2f-f^2$
+
+Numerator: $(2-\sqrt{2})f - (6-4\sqrt{2}) - f\sqrt{2} - 2f + f^2$
+$= f(2-\sqrt{2}-\sqrt{2}-2) - 6+4\sqrt{2} + f^2$
+$= f(-2\sqrt{2}) - 6+4\sqrt{2} + f^2$
+$= f^2 - 2\sqrt{2}f + 4\sqrt{2} - 6$
+
+Area $= \frac{1}{2}\left|2f + \frac{f^2-2\sqrt{2}f+4\sqrt{2}-6}{2}\right| = \frac{1}{4}|4f + f^2-2\sqrt{2}f+4\sqrt{2}-6|$
+$= \frac{1}{4}|f^2 + (4-2\sqrt{2})f + 4\sqrt{2}-6|$
+
+Set this equal to $1$:
+$f^2 + (4-2\sqrt{2})f + 4\sqrt{2}-6 = 4$
+$f^2 + (4-2\sqrt{2})f + 4\sqrt{2}-10 = 0$
+
+Discriminant: $(4-2\sqrt{2})^2 - 4(4\sqrt{2}-10) = 24-16\sqrt{2} - 16\sqrt{2}+40 = 64-32\sqrt{2}$
+
+$f = \frac{-(4-2\sqrt{2}) + \sqrt{64-32\sqrt{2}}}{2}$ (taking the positive root since $f>0$)
+
+$\sqrt{64-32\sqrt{2}} = \sqrt{32(2-\sqrt{2})} = 4\sqrt{2}\cdot\sqrt{2-\sqrt{2}}$
+
+Hmm, let's try to simplify $\sqrt{2-\sqrt{2}}$. Note $2-\sqrt{2} \approx 0.586$, so $\sqrt{2-\sqrt{2}} \approx 0.765$.
+
+Then $f \approx \frac{-(4-2.828) + 4\cdot1.414\cdot0.765}{2} \approx \frac{-1.172 + 4.328}{2} \approx \frac{3.156}{2} \approx 1.578$.
+
+**Now compute $FI^2$:**
+
+$FI^2 = \frac{(2+f-\sqrt{2})^2}{2}$
+
+With $f \approx 1.578$: $2+f-\sqrt{2} \approx 2+1.578-1.414 = 2.164$, so $FI^2 \approx \frac{2.164^2}{2} \approx \frac{4.683}{2} \approx 2.34$.
+
+Check the answer choices:
+- (A) $7/3 \approx 2.33$
+- (B) $8-4\sqrt{2} \approx 8-5.66 = 2.34$
+- (C) $1+\sqrt{2} \approx 2.41$
+- (D) $\frac{7}{4}\sqrt{2} \approx 2.47$
+- (E) $2\sqrt{2} \approx 2.83$
+
+The numerical value $\approx 2.34$ matches **(B)** $8-4\sqrt{2}$.
+
+Let's verify algebraically. We need to show $FI^2 = 8-4\sqrt{2}$.
+
+$FI^2 = \frac{(2+f-\sqrt{2})^2}{2} = 8-4\sqrt{2}$
+
+$\Rightarrow (2+f-\sqrt{2})^2 = 16-8\sqrt{2}$
+
+$\Rightarrow 2+f-\sqrt{2} = \sqrt{16-8\sqrt{2}} = 2\sqrt{4-2\sqrt{2}}$
+
+$\Rightarrow f = 2\sqrt{4-2\sqrt{2}} - 2 + \sqrt{2}$
+
+Let's verify that this $f$ satisfies the quadratic $f^2 + (4-2\sqrt{2})f + 4\sqrt{2}-10 = 0$.
+
+Let $f = 2\sqrt{4-2\sqrt{2}} + \sqrt{2} - 2$. Let $v = \sqrt{4-2\sqrt{2}}$, so $v^2 = 4-2\sqrt{2}$ and $f = 2v+\sqrt{2}-2$.
+
+$f^2 = (2v+\sqrt{2}-2)^2 = 4v^2 + 2 + 4 + 4\sqrt{2}v - 8v - 4\sqrt{2}$
+
+Wait: $(2v+\sqrt{2}-2)^2 = 4v^2 + (\sqrt{2})^2 + 4 + 2\cdot2v\cdot\sqrt{2} + 2\cdot2v\cdot(-2) + 2\cdot\sqrt{2}\cdot(-2)$
+$= 4(4-2\sqrt{2}) + 2 + 4 + 4\sqrt{2}v - 8v - 4\sqrt{2}$
+$= 16-8\sqrt{2}+6+4\sqrt{2}v-8v-4\sqrt{2}$
+$= 22-12\sqrt{2}+(4\sqrt{2}-8)v$
+
+$(4-2\sqrt{2})f = (4-2\sqrt{2})(2v+\sqrt{2}-2) = 8v+4\sqrt{2}-8-4\sqrt{2}v-2\cdot2+2\sqrt{2}\cdot2$
+Wait: $(4-2\sqrt{2})(2v) = (8-4\sqrt{2})v$ and $(4-2\sqrt{2})(\sqrt{2}-2) = 4\sqrt{2}-8-2\cdot2+4\sqrt{2} = 8\sqrt{2}-8-4 = 8\sqrt{2}-12$.
+
+$(4-2\sqrt{2})f = (8-4\sqrt{2})v + 8\sqrt{2}-12$
+
+$f^2+(4-2\sqrt{2})f = 22-12\sqrt{2}+(4\sqrt{2}-8)v + (8-4\sqrt{2})v + 8\sqrt{2}-12$
+$= 22-12\sqrt{2}+8\sqrt{2}-12 + [(4\sqrt{2}-8)+(8-4\sqrt{2})]v$
+$= 10-4\sqrt{2} + 0\cdot v = 10-4\sqrt{2}$
+
+So $f^2+(4-2\sqrt{2})f+4\sqrt{2}-10 = 10-4\sqrt{2}+4\sqrt{2}-10 = 0$. ✓
+
+Therefore $FI^2 = 8-4\sqrt{2}$.
+
+Answer: **B**.
+</Solution>

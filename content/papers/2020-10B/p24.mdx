@@ -1,0 +1,73 @@
+---
+year: 2020
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: C
+choices: ['$2$', '$4$', '$6$', '$30$', '$32$']
+---
+
+<Problem>
+How many positive integers $n$ satisfy
+$$\dfrac{n+1000}{70} = \lfloor \sqrt{n} \rfloor?$$
+(Recall that $\lfloor x \rfloor$ is the greatest integer not exceeding $x$.)
+</Problem>
+
+<Solution>
+Let $k = \lfloor\sqrt{n}\rfloor$, so $k$ is a non-negative integer with $k^2 \le n < (k+1)^2$.
+
+The equation becomes $\dfrac{n+1000}{70} = k$, so $n = 70k - 1000$.
+
+**Conditions on $k$:**
+
+1. $n$ must be a positive integer: $70k - 1000 > 0 \Rightarrow k > \frac{1000}{70} = \frac{100}{7} \approx 14.29$, so $k \ge 15$.
+
+2. $k^2 \le n < (k+1)^2$:
+   - Lower bound: $70k - 1000 \ge k^2 \Rightarrow k^2 - 70k + 1000 \le 0$.
+   - Upper bound: $70k - 1000 < (k+1)^2 = k^2 + 2k + 1 \Rightarrow 0 < k^2 - 68k + 1001$.
+
+**Solving the lower bound inequality $k^2 - 70k + 1000 \le 0$:**
+
+Roots: $k = \frac{70 \pm \sqrt{4900 - 4000}}{2} = \frac{70 \pm \sqrt{900}}{2} = \frac{70 \pm 30}{2}$.
+
+Roots: $k = 20$ and $k = 50$.
+
+So $20 \le k \le 50$.
+
+Combined with $k \ge 15$: we need $20 \le k \le 50$.
+
+**Solving the upper bound inequality $k^2 - 68k + 1001 > 0$:**
+
+Roots: $k = \frac{68 \pm \sqrt{4624 - 4004}}{2} = \frac{68 \pm \sqrt{620}}{2}$.
+
+$\sqrt{620} \approx 24.9$, so roots $\approx \frac{68 \pm 24.9}{2}$: approximately $21.55$ and $46.45$.
+
+So $k^2 - 68k + 1001 > 0$ when $k < 21.55$ or $k > 46.45$, i.e., $k \le 21$ or $k \ge 47$.
+
+Wait, let me double-check: at $k=22$: $484 - 1496 + 1001 = -11 < 0$. So the inequality $> 0$ fails for $22 \le k \le 46$.
+
+**Combining both conditions:** $20 \le k \le 50$ AND ($k \le 21$ or $k \ge 47$).
+
+Valid $k$ values:
+- $k \in \{20, 21\}$ (from $k \le 21$, intersected with $k \ge 20$).
+- $k \in \{47, 48, 49, 50\}$ (from $k \ge 47$, intersected with $k \le 50$).
+
+That's $2 + 4 = 6$ values of $k$.
+
+Let's verify a few:
+
+$k=20$: $n = 70(20)-1000 = 400$. Check: $\lfloor\sqrt{400}\rfloor = 20$. ✓ And $\frac{400+1000}{70} = \frac{1400}{70} = 20$. ✓
+
+$k=21$: $n = 70(21)-1000 = 470$. $\lfloor\sqrt{470}\rfloor = \lfloor 21.67\rfloor = 21$. ✓ $\frac{1470}{70}=21$. ✓
+
+$k=47$: $n = 70(47)-1000 = 3290-1000 = 2290$. $\lfloor\sqrt{2290}\rfloor = \lfloor 47.85\rfloor = 47$. ✓ $\frac{3290}{70}=47$. ✓
+
+$k=50$: $n = 70(50)-1000 = 2500$. $\lfloor\sqrt{2500}\rfloor = 50$. ✓ $\frac{3500}{70}=50$. ✓
+
+$k=22$: $n = 70(22)-1000 = 540$. $\lfloor\sqrt{540}\rfloor = \lfloor23.24\rfloor = 23 \ne 22$. ✗ (The upper bound fails here.)
+
+Total valid $n$: $\boxed{6}$.
+
+Answer: **C**.
+</Solution>

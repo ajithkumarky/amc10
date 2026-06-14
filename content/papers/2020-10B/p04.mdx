@@ -1,0 +1,28 @@
+---
+year: 2020
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: D
+choices: ["2", "3", "5", "7", "11"]
+---
+
+<Problem>
+The acute angles of a right triangle are $a^{\circ}$ and $b^{\circ}$, where $a > b$ and both $a$ and $b$ are prime numbers. What is the least possible value of $b$?
+</Problem>
+
+<Solution>
+Since the three angles of a triangle sum to $180°$ and one angle is $90°$, we need $a + b = 90$ with $a > b$ and both prime.
+
+We want to minimize $b$, so we want to maximize $a$. Try small values of $b$ and check whether $a = 90 - b$ is also prime:
+
+- $b = 2$: $a = 88 = 8 \times 11$. Not prime.
+- $b = 3$: $a = 87 = 3 \times 29$. Not prime.
+- $b = 5$: $a = 85 = 5 \times 17$. Not prime.
+- $b = 7$: $a = 83$. Is $83$ prime? Check: not divisible by $2, 3, 5, 7$ (since $\sqrt{83} < 10$). Yes, $83$ is prime!
+
+So the least possible value of $b$ is $7$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,31 @@
+---
+year: 2020
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: A
+choices: ['Bela will always win.', 'Jenn will always win.', 'Bela will win if and only if $n$ is odd.', 'Jenn will win if and only if $n$ is odd.', 'Jenn will win if and only if $n > 8$.']
+---
+
+<Problem>
+Bela and Jenn play the following game on the closed interval $[0, n]$ of the real number line, where $n$ is a fixed integer greater than $4$. They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval $[0, n]$. Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?
+</Problem>
+
+<Solution>
+**Key insight: Bela plays the midpoint first.**
+
+Bela's winning strategy is to choose $x = n/2$ (the midpoint of $[0, n]$) on the first move.
+
+After Bela places $n/2$, the interval splits into two symmetric sub-intervals on which further play can occur: roughly $[0, n/2 - 1)$ and $(n/2 + 1, n]$ — but more precisely, any future number must be more than $1$ unit from all placed numbers.
+
+**Symmetry strategy.** After Bela plays $n/2$, the remaining available region is symmetric about $n/2$. Whenever Jenn plays a number $y$, Bela responds with $n - y$ (its mirror image about $n/2$). This is always a valid move because:
+1. $|n - y - n/2| = |n/2 - y| = |y - n/2| > 1$ since Jenn's move was more than $1$ from $n/2$.
+2. For any previously placed number $z$, we have $|(n-y) - (n-z)| = |z - y| > 1$, so $n-y$ is also more than $1$ from $n-z$.
+
+Therefore, every time Jenn can make a move, Bela can always mirror it. This means Jenn can never be the last one to move — whenever Jenn has a valid move, Bela will too. Thus Jenn will be the first one unable to move.
+
+**Bela always wins**, regardless of whether $n$ is even, odd, or any particular value (as long as $n > 4$ so that $n/2$ is a valid first choice and the game is non-trivial).
+
+Answer: **A**.
+</Solution>

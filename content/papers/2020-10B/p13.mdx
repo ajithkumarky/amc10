@@ -1,0 +1,88 @@
+---
+year: 2020
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: B
+choices: ["$(-1030, -994)$", "$(-1030, -990)$", "$(-1026, -994)$", "$(-1026, -990)$", "$(-1022, -994)$"]
+---
+
+<Problem>
+Andy the Ant lives on a coordinate plane and is currently at $(-20, 20)$ facing east (that is, in the positive $x$-direction). Andy moves $1$ unit and then turns $90°$ left. From there, Andy moves $2$ units (north) and then turns $90°$ left. He then moves $3$ units (west) and again turns $90°$ left. Andy continues his progress, increasing his distance each time by $1$ unit and always turning left. What is the location of the point where Andy makes the $2020$th left turn?
+</Problem>
+
+<Solution>
+Let's identify the pattern. Andy starts at $(-20, 20)$ facing east. After each move of $k$ units, he turns left. The directions cycle: east, north, west, south, east, north, $\ldots$ (a left turn from east is north, from north is west, from west is south, from south is east).
+
+Let's group moves in sets of 4 (one full cycle of directions). After moves $4m+1, 4m+2, 4m+3, 4m+4$ (for $m = 0, 1, 2, \ldots$), the directions are E, N, W, S respectively.
+
+**Net displacement per group of 4 moves (starting from group index $m$, steps $4m+1$ through $4m+4$):**
+
+- East: $+(4m+1)$ in $x$
+- North: $+(4m+2)$ in $y$
+- West: $-(4m+3)$ in $x$
+- South: $-(4m+4)$ in $y$
+
+Net $x$-change: $(4m+1) - (4m+3) = -2$.
+Net $y$-change: $(4m+2) - (4m+4) = -2$.
+
+So each group of 4 moves shifts the position by $(-2, -2)$, regardless of $m$. This is very clean!
+
+**Finding position after $2020$ turns:**
+
+Andy makes his $k$th left turn after moving $k$ units, ending at the "turn point" for turn $k$.
+
+After $2020$ moves (each followed by a turn), we can compute the position.
+
+After $4 \times 505 = 2020$ moves, we've completed exactly $505$ full groups of 4.
+
+Starting position: $(-20, 20)$.
+After $505$ groups: displacement is $505 \times (-2, -2) = (-1010, -1010)$.
+
+But wait — we also need to add the displacements from each individual move within the groups. Let me be more careful.
+
+Position after turn $2020$ = starting position + sum of all 2020 displacement vectors.
+
+The displacements are: $+1$ east, $+2$ north, $-3$ west (i.e., $-3$ in $x$), $-4$ south (i.e., $-4$ in $y$), $+5$ east, $+6$ north, $\ldots$
+
+Let me compute $x$ and $y$ coordinates separately.
+
+**$x$-coordinate** (moves in x: east = positive, west = negative):
+Steps contributing to $x$: move 1 (E), move 3 (W), move 5 (E), move 7 (W), $\ldots$, i.e., odd-numbered moves.
+
+Move $2j-1$ (the $j$th odd step): direction alternates E, W, E, W, $\ldots$, so step $2j-1$ goes East if $j$ is odd, West if $j$ is even.
+
+For $2020$ total moves, there are $1010$ odd-numbered moves and $1010$ even-numbered moves.
+
+$x$-displacement = (sum of odd moves in east direction) $-$ (sum of odd moves in west direction).
+
+The odd-numbered steps are $1, 3, 5, \ldots, 2019$ (that's $1010$ steps).
+East steps: $1, 5, 9, \ldots$ (every 4th step: $1, 5, 9, \ldots$). These are $1 + 4k$ for $k = 0, 1, \ldots, 504$, giving $505$ values.
+West steps: $3, 7, 11, \ldots$ (these are $3 + 4k$ for $k = 0, 1, \ldots, 504$), giving $505$ values.
+
+East sum: $\sum_{k=0}^{504}(1 + 4k) = 505 + 4 \cdot \frac{504 \cdot 505}{2} = 505 + 2 \cdot 504 \cdot 505 = 505(1 + 1008) = 505 \times 1009$.
+
+West sum: $\sum_{k=0}^{504}(3 + 4k) = 505 \cdot 3 + 4 \cdot \frac{504 \cdot 505}{2} = 505 \cdot 3 + 2 \cdot 504 \cdot 505 = 505(3 + 1008) = 505 \times 1011$.
+
+$x$-displacement $= 505 \times 1009 - 505 \times 1011 = 505(1009 - 1011) = 505 \times (-2) = -1010$.
+
+Final $x$-coordinate: $-20 + (-1010) = -1030$.
+
+**$y$-coordinate** (moves in y: north = positive, south = negative):
+Even-numbered moves: $2, 4, 6, \ldots, 2020$.
+North steps: $2, 6, 10, \ldots = 2 + 4k$ for $k = 0, \ldots, 504$, giving $505$ values.
+South steps: $4, 8, 12, \ldots = 4 + 4k$ for $k = 0, \ldots, 504$, giving $505$ values.
+
+North sum: $\sum_{k=0}^{504}(2 + 4k) = 505 \cdot 2 + 4 \cdot \frac{504 \cdot 505}{2} = 505(2 + 1008) = 505 \times 1010$.
+
+South sum: $\sum_{k=0}^{504}(4 + 4k) = 505 \cdot 4 + 4 \cdot \frac{504 \cdot 505}{2} = 505(4 + 1008) = 505 \times 1012$.
+
+$y$-displacement $= 505 \times 1010 - 505 \times 1012 = 505(-2) = -1010$.
+
+Final $y$-coordinate: $20 + (-1010) = -990$.
+
+The $2020$th left turn happens at $\mathbf{(-1030, -990)}$.
+
+Answer: **B**.
+</Solution>

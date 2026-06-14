@@ -1,0 +1,96 @@
+---
+year: 2020
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: A
+choices: ['$112$', '$128$', '$144$', '$172$', '$184$']
+---
+
+<Problem>
+Let $D(n)$ denote the number of ways of writing the positive integer $n$ as a product
+$$n = f_1 \cdot f_2 \cdots f_k,$$
+where $k \ge 1$, the $f_i$ are integers strictly greater than $1$, and the order in which the factors are listed matters (that is, two representations that differ only in the order of the factors are counted as distinct). For example, the number $6$ can be written as $6$, $2\cdot3$, and $3\cdot2$, so $D(6)=3$. What is $D(96)$?
+</Problem>
+
+<Solution>
+First factorize $96$: $96 = 2^5 \cdot 3$.
+
+We need ordered factorizations of $96$ into factors $\ge 2$.
+
+**Approach: recursion $D(n) = \sum_{d | n,\, 2 \le d \le n} D(n/d)$ with $D(1) = 1$.**
+
+Let's compute $D$ for the relevant divisors of $96 = 2^5 \cdot 3$. The divisors $> 1$ of $96$ are: $2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96$.
+
+We'll compute $D$ for each by building up:
+
+$D(2) = 1$ (just "$2$").
+$D(3) = 1$.
+$D(4) = D(1)\cdot(\text{ways to factor 4}) $... no wait, $D(4) = $ number of ordered factorizations. $4=4$ or $4=2\cdot2$. $D(4)=2$.
+$D(6) = 3$ (given: $6$; $2\cdot3$; $3\cdot2$).
+$D(8)$: $8$; $2\cdot4$; $4\cdot2$; $2\cdot2\cdot2$. $D(8)=4$.
+$D(12)$: factors $\ge2$ of $12$: split as first factor $\times$ rest.
+- First factor $2$: $D(6)=3$ ways for the rest.
+- First factor $3$: $D(4)=2$.
+- First factor $4$: $D(3)=1$.
+- First factor $6$: $D(2)=1$.
+- First factor $12$: $D(1)=1$.
+$D(12) = 3+2+1+1+1=8$.
+
+$D(16)$:
+- First $2$: $D(8)=4$.
+- First $4$: $D(4)=2$.
+- First $8$: $D(2)=1$.
+- First $16$: $D(1)=1$.
+$D(16)=4+2+1+1=8$.
+
+$D(24)$:
+- First $2$: $D(12)=8$.
+- First $3$: $D(8)=4$.
+- First $4$: $D(6)=3$.
+- First $6$: $D(4)=2$.
+- First $8$: $D(3)=1$.
+- First $12$: $D(2)=1$.
+- First $24$: $D(1)=1$.
+$D(24)=8+4+3+2+1+1+1=20$.
+
+$D(32)$:
+- First $2$: $D(16)=8$.
+- First $4$: $D(8)=4$.
+- First $8$: $D(4)=2$.
+- First $16$: $D(2)=1$.
+- First $32$: $D(1)=1$.
+$D(32)=8+4+2+1+1=16$.
+
+$D(48)$:
+- First $2$: $D(24)=20$.
+- First $3$: $D(16)=8$.
+- First $4$: $D(12)=8$.
+- First $6$: $D(8)=4$.
+- First $8$: $D(6)=3$.
+- First $12$: $D(4)=2$.
+- First $16$: $D(3)=1$.
+- First $24$: $D(2)=1$.
+- First $48$: $D(1)=1$.
+$D(48)=20+8+8+4+3+2+1+1+1=48$.
+
+$D(96)$: Divisors of $96$ that are $\ge 2$: $2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96$.
+- First $2$: $D(48)=48$.
+- First $3$: $D(32)=16$.
+- First $4$: $D(24)=20$.
+- First $6$: $D(16)=8$.
+- First $8$: $D(12)=8$.
+- First $12$: $D(8)=4$.
+- First $16$: $D(6)=3$.
+- First $24$: $D(4)=2$.
+- First $32$: $D(3)=1$.
+- First $48$: $D(2)=1$.
+- First $96$: $D(1)=1$.
+
+$D(96) = 48+16+20+8+8+4+3+2+1+1+1 = 112$.
+
+Let's add carefully: $48+16=64$; $64+20=84$; $84+8=92$; $92+8=100$; $100+4=104$; $104+3=107$; $107+2=109$; $109+1=110$; $110+1=111$; $111+1=112$.
+
+Answer: **A**.
+</Solution>

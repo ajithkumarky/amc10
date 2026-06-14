@@ -1,0 +1,33 @@
+---
+year: 2020
+paper: "10B"
+topic: algebra
+subtopic: quadratics
+difficulty: 2
+answer: D
+choices: ["1", "2", "3", "4", "infinitely many"]
+---
+
+<Problem>
+How many ordered pairs of integers $(x, y)$ satisfy the equation
+$$x^{2020} + y^2 = 2y?$$
+</Problem>
+
+<Solution>
+Rearrange by completing the square in $y$:
+
+$$x^{2020} + y^2 - 2y = 0$$
+$$x^{2020} + (y - 1)^2 = 1.$$
+
+Both $x^{2020}$ and $(y-1)^2$ are non-negative. Their sum equals $1$, so we need two non-negative values that add to $1$.
+
+**Case A: $x^{2020} = 0$ and $(y-1)^2 = 1$.**
+$x = 0$, and $y - 1 = \pm 1$, giving $y = 0$ or $y = 2$. That's $2$ solutions: $(0, 0)$ and $(0, 2)$.
+
+**Case B: $x^{2020} = 1$ and $(y-1)^2 = 0$.**
+$y = 1$, and $x^{2020} = 1$. Since the exponent $2020$ is even, $x = 1$ or $x = -1$. That's $2$ solutions: $(1, 1)$ and $(-1, 1)$.
+
+In total there are $2 + 2 = 4$ ordered pairs.
+
+Answer: **D**.
+</Solution>

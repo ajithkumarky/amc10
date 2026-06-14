@@ -1,0 +1,35 @@
+---
+year: 2020
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: D
+choices: ['$\dfrac{1}{8}$', '$\dfrac{5}{36}$', '$\dfrac{14}{45}$', '$\dfrac{25}{63}$', '$\dfrac{1}{2}$']
+---
+
+<Problem>
+Ms. Carr asks her students to read any $5$ of the $10$ books on a reading list. Harold randomly selects $5$ books from this list, and Betty does the same. What is the probability that there are exactly $2$ books that they both select?
+</Problem>
+
+<Solution>
+The total number of ways Harold can choose his 5 books is $\binom{10}{5} = 252$. Betty independently does the same, so the total number of pairs of choices is $252^2$.
+
+For the favorable outcomes, we need exactly $2$ books in common:
+
+1. Choose the $2$ books both select: $\binom{10}{2} = 45$ ways.
+2. Harold picks $3$ more from the remaining $8$ books: $\binom{8}{3} = 56$ ways.
+3. Betty picks $3$ more from the $8 - 3 = 5$ books Harold did not pick (to ensure no additional overlap): $\binom{5}{3} = 10$ ways.
+
+Favorable outcomes: $45 \times 56 \times 10 = 25{,}200$.
+
+Probability:
+$$\frac{25{,}200}{252^2} = \frac{25{,}200}{63{,}504} = \frac{25{,}200}{63{,}504}.$$
+
+Simplify: divide numerator and denominator by $25{,}200$:
+$$\frac{1}{63{,}504/25{,}200} = \frac{25200}{63504}.$$
+
+Let's simplify by finding GCD. Divide both by $504$: $25200/504 = 50$ and $63504/504 = 126$. So we get $\dfrac{50}{126} = \dfrac{25}{63}$.
+
+Answer: **D**.
+</Solution>

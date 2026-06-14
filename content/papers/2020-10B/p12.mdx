@@ -1,0 +1,51 @@
+---
+year: 2020
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: D
+choices: ["23", "24", "25", "26", "27"]
+---
+
+<Problem>
+The decimal representation of
+$$\frac{1}{20^{20}}$$
+consists of a string of zeros after the decimal point, followed by a $9$ and then several more digits. How many zeros are in that initial string of zeros after the decimal point?
+</Problem>
+
+<Solution>
+Write $20^{20} = (4 \cdot 5)^{20} = 4^{20} \cdot 5^{20} = 2^{40} \cdot 5^{20}$.
+
+To convert to a denominator that is a power of $10$, multiply numerator and denominator by $2^{20}$:
+
+$$\frac{1}{2^{40} \cdot 5^{20}} = \frac{2^{20}}{2^{40} \cdot 5^{20} \cdot 2^{20}} = \frac{2^{20}}{2^{60} \cdot 5^{20}} = \frac{2^{20}}{10^{20} \cdot 2^{40}}.$$
+
+Wait, let's redo this cleanly. We want to write $\dfrac{1}{20^{20}}$ with denominator $10^k$.
+
+$$\frac{1}{20^{20}} = \frac{1}{2^{40} \cdot 5^{20}}.$$
+
+Multiply top and bottom by $5^{20}$... that doesn't work cleanly. Instead multiply by $2^{20}$ (to balance the powers of 2 and 5):
+
+$$\frac{1}{2^{40} \cdot 5^{20}} = \frac{2^{20}}{2^{60} \cdot 5^{20} \cdot 2^{0}}$$
+
+Let me think more carefully. We need the denominator to be a power of $10 = 2 \cdot 5$. We have $2^{40} \cdot 5^{20}$. Multiply numerator and denominator by $5^{20}$ to get $10^{40}$ in the denominator... but $2^{40} \cdot 5^{20} \cdot 5^{20} = 2^{40} \cdot 5^{40} = 10^{40}$:
+
+$$\frac{1}{20^{20}} = \frac{5^{20}}{10^{40}}.$$
+
+So the decimal is $\dfrac{5^{20}}{10^{40}}$. Now $5^{20} = (5^{20})$. We need to know how many digits $5^{20}$ has.
+
+$5^{20} = \dfrac{10^{20}}{2^{20}}$. Since $2^{10} = 1024$, $2^{20} = 1{,}048{,}576$, which has $7$ digits. So $5^{20} = \dfrac{10^{20}}{2^{20}} \approx \dfrac{10^{20}}{10^{6.02}} = 10^{13.98}$, meaning $5^{20}$ has $14$ digits.
+
+More precisely: $\log_{10}(5^{20}) = 20 \log_{10} 5 = 20(1 - \log_{10} 2) = 20(1 - 0.30103) = 20 \times 0.69897 = 13.9794$.
+
+So $5^{20}$ has $\lfloor 13.9794 \rfloor + 1 = 14$ digits.
+
+The fraction $\dfrac{5^{20}}{10^{40}}$ is a number with $14$ significant digits, placed $40$ decimal places after the decimal point. The first digit of $5^{20}$ (the leading digit) starts at position $40 - 14 + 1 = 27$ after the decimal point.
+
+To confirm the leading digit is $9$: $5^{20} = 5^{20}$. Since $10^{13.9794}$, the leading digit is $\lfloor 10^{0.9794} \rfloor = \lfloor 9.54 \rfloor = 9$. Indeed the first non-zero digit is $9$. ✓
+
+The number of leading zeros is $40 - 14 = 26$.
+
+Answer: **D**.
+</Solution>

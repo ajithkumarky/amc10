@@ -1,0 +1,32 @@
+---
+year: 2020
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: D
+choices: ["2", "4", "6", "8", "12"]
+---
+
+<Problem>
+Points $P$ and $Q$ lie in a plane with $PQ = 8$. How many locations for point $R$ in this plane are there such that the triangle with vertices $P$, $Q$, and $R$ is a right triangle with area $12$ square units?
+</Problem>
+
+<Solution>
+The area of a right triangle is $\frac{1}{2} \cdot (\text{leg}_1) \cdot (\text{leg}_2) = 12$, so $\text{leg}_1 \cdot \text{leg}_2 = 24$.
+
+We consider three cases based on which vertex holds the right angle.
+
+**Case 1: Right angle at $R$.**
+Then $PR$ and $QR$ are the two legs, and $PQ = 8$ is the hypotenuse. We need $R$ such that $\angle PRQ = 90°$. By Thales' theorem, $R$ lies on the circle with diameter $PQ$. Additionally, the area condition gives $\frac{1}{2} \cdot PR \cdot QR = 12$, so $PR \cdot QR = 24$. Let $PR = a$ and $QR = b$; then $a^2 + b^2 = 64$ and $ab = 24$. From $(a+b)^2 = a^2 + 2ab + b^2 = 64 + 48 = 112$, so $a+b = 4\sqrt{7}$, and $(a-b)^2 = 64 - 48 = 16$, so $|a-b| = 4$. Since $a,b > 0$ and satisfy $a+b = 4\sqrt{7} > 0$, both are positive. There are $2$ such points $R$ (one on each side of line $PQ$).
+
+**Case 2: Right angle at $P$.**
+The legs are $PQ = 8$ and $PR$. Area $= \frac{1}{2} \cdot 8 \cdot PR = 12$ gives $PR = 3$. The point $R$ must lie on the line through $P$ perpendicular to $PQ$ at distance $3$ from $P$. There are $2$ such points (one on each side of $PQ$).
+
+**Case 3: Right angle at $Q$.**
+By symmetry with Case 2, $QR = 3$ and there are $2$ such points.
+
+Total: $2 + 2 + 2 = 8$ locations.
+
+Answer: **D**.
+</Solution>

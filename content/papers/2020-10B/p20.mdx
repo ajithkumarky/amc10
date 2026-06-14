@@ -1,0 +1,46 @@
+---
+year: 2020
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: B
+choices: ['$6$', '$19$', '$24$', '$26$', '$38$']
+---
+
+<Problem>
+Let $B$ be a right rectangular prism (box) with edge lengths $1$, $3$, and $4$, together with its interior. For real $r \geq 0$, let $S(r)$ be the set of points in $3$-dimensional space that lie within a distance $r$ of some point in $B$. The volume of $S(r)$ can be expressed as $ar^3 + br^2 + cr + d$, where $a$, $b$, $c$, and $d$ are positive real numbers. What is $\dfrac{bc}{ad}$?
+</Problem>
+
+<Solution>
+The set $S(r)$ is the Minkowski sum of the box $B$ with a ball of radius $r$. Its volume equals the volume of the box plus the volumes contributed by the faces, edges, and corners.
+
+**Components of $S(r)$:**
+
+1. **The box itself:** volume $= 1 \cdot 3 \cdot 4 = 12$.
+
+2. **Face extensions:** Each face extends outward by $r$, forming a rectangular slab. For a box with dimensions $l \times w \times h$:
+   - Two $1 \times 3$ faces: each slab has volume $1 \cdot 3 \cdot r$, total $2 \cdot 3r = 6r$.
+   - Two $1 \times 4$ faces: each slab has volume $1 \cdot 4 \cdot r$, total $2 \cdot 4r = 8r$.
+   - Two $3 \times 4$ faces: each slab has volume $3 \cdot 4 \cdot r$, total $2 \cdot 12r = 24r$.
+   - Total face contribution: $(6 + 8 + 24)r = 38r$.
+
+3. **Edge extensions:** Each edge of the box, when expanded, contributes a quarter-cylinder (since the dihedral angle at each edge of a rectangular box is $90°$, which is $1/4$ of $2\pi$). For an edge of length $\ell$, the contribution is $\frac{1}{4}\pi r^2 \cdot \ell$.
+   - The box has $4$ edges of length $1$, $4$ edges of length $3$, and $4$ edges of length $4$.
+   - Total edge lengths: $4(1) + 4(3) + 4(4) = 4 + 12 + 16 = 32$.
+   - Total edge contribution: $\frac{1}{4}\pi r^2 \cdot 32 = 8\pi r^2$.
+
+4. **Corner extensions:** Each corner of the box contributes a $1/8$ sphere (since the solid angle at each corner of a rectangular box is $\frac{1}{8}$ of a full sphere). The box has $8$ corners, so the total corner contribution is $8 \cdot \frac{1}{8} \cdot \frac{4}{3}\pi r^3 = \frac{4}{3}\pi r^3$.
+
+**Total volume:**
+
+$$V(r) = \frac{4\pi}{3}r^3 + 8\pi r^2 + 38r + 12.$$
+
+So $a = \dfrac{4\pi}{3}$, $b = 8\pi$, $c = 38$, $d = 12$.
+
+**Compute $\dfrac{bc}{ad}$:**
+
+$$\frac{bc}{ad} = \frac{8\pi \cdot 38}{\dfrac{4\pi}{3} \cdot 12} = \frac{304\pi}{16\pi} = \frac{304}{16} = 19.$$
+
+Answer: **B**.
+</Solution>

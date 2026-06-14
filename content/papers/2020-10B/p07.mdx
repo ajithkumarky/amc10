@@ -1,0 +1,30 @@
+---
+year: 2020
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: A
+choices: ["7", "8", "9", "10", "12"]
+---
+
+<Problem>
+How many positive even multiples of $3$ less than $2020$ are perfect squares?
+</Problem>
+
+<Solution>
+We need positive integers $n$ such that:
+1. $n$ is a perfect square,
+2. $n$ is a multiple of $3$,
+3. $n$ is even (a multiple of $2$),
+4. $n < 2020$.
+
+Conditions 2 and 3 together mean $n$ is a multiple of $\text{lcm}(2,3) = 6$. Since $n$ is also a perfect square, $n$ must be divisible by $6^2 = 36$ (every prime in the factorization must appear to an even power). So $n$ must be a multiple of $36$ that is a perfect square.
+
+The perfect squares that are multiples of $36$ are exactly $(6k)^2 = 36k^2$ for positive integers $k$. We need:
+$$36k^2 < 2020 \implies k^2 < 56.1\ldots \implies k \le 7.$$
+
+The values are $k = 1, 2, 3, 4, 5, 6, 7$, giving $7$ numbers.
+
+Answer: **A**.
+</Solution>

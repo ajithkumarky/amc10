@@ -1,0 +1,27 @@
+---
+year: 2020
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: B
+choices: ["50", "55", "60", "65", "70"]
+---
+
+<Problem>
+Driving along a highway, Megan noticed that her odometer showed $15951$ (miles). This number is a palindrome — it reads the same forward and backward. Then $2$ hours later, the odometer displayed the next higher palindrome. What was her average speed, in miles per hour, during this $2$-hour period?
+</Problem>
+
+<Solution>
+We need to find the next palindrome after $15951$.
+
+A 5-digit palindrome has the form $\overline{abcba}$. Currently $a=1, b=5, c=9$.
+
+To get the next palindrome, try incrementing $c$ (the middle digit): $c = 9$ is already the maximum, so we must increment $b$ to $6$ and reset $c$ to $0$. That gives $16061$.
+
+The distance traveled is $16061 - 15951 = 110$ miles in $2$ hours.
+
+Average speed $= \dfrac{110}{2} = 55$ miles per hour.
+
+Answer: **B**.
+</Solution>

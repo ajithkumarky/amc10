@@ -1,0 +1,37 @@
+---
+year: 2020
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 2
+answer: C
+choices: ['$3\pi\sqrt{5}$', '$4\pi\sqrt{3}$', '$3\pi\sqrt{7}$', '$6\pi\sqrt{3}$', '$6\pi\sqrt{7}$']
+---
+
+<Problem>
+A three-quarter sector of a circle of radius $4$ inches together with its interior can be rolled up to form the lateral surface area of a right circular cone by taping together along the two radii shown. What is the volume of the cone in cubic inches?
+
+(The sector has radius $4$ and central angle $270°$.)
+</Problem>
+
+<Solution>
+When the sector is rolled into a cone, the radius of the sector ($4$ inches) becomes the **slant height** $\ell$ of the cone, and the arc length of the sector becomes the **circumference of the base** of the cone.
+
+**Finding the base radius $r$:**
+
+Arc length of a $270°$ sector of radius $4$:
+$$\text{arc} = \frac{270}{360} \cdot 2\pi \cdot 4 = \frac{3}{4} \cdot 8\pi = 6\pi.$$
+
+This equals the circumference of the cone's base: $2\pi r = 6\pi$, so $r = 3$.
+
+**Finding the height $h$:**
+
+Using the Pythagorean theorem with $\ell = 4$ and $r = 3$:
+$$h = \sqrt{\ell^2 - r^2} = \sqrt{16 - 9} = \sqrt{7}.$$
+
+**Volume of the cone:**
+
+$$V = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi (9)\sqrt{7} = 3\pi\sqrt{7}.$$
+
+Answer: **C**.
+</Solution>

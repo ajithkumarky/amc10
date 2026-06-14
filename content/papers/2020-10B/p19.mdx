@@ -1,0 +1,52 @@
+---
+year: 2020
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: A
+choices: ['$2$', '$3$', '$4$', '$6$', '$7$']
+---
+
+<Problem>
+In a certain card game, a player is dealt a hand of $10$ cards from a deck of $52$ distinct cards. The number of distinct (unordered) hands that can be dealt to the player can be written as $158A00A4AA0$. What is the digit $A$?
+</Problem>
+
+<Solution>
+We need to find $\binom{52}{10}$ and identify the repeated digit $A$.
+
+**Compute $\binom{52}{10}$:**
+
+$$\binom{52}{10} = \frac{52!}{10!\cdot 42!} = \frac{52\cdot51\cdot50\cdot49\cdot48\cdot47\cdot46\cdot45\cdot44\cdot43}{10!}$$
+
+The denominator is $10! = 3628800$.
+
+Compute the numerator step by step:
+- $52 \cdot 51 = 2652$
+- $2652 \cdot 50 = 132600$
+- $132600 \cdot 49 = 6497400$
+- $6497400 \cdot 48 = 311875200$
+- $311875200 \cdot 47 = 14658134400$
+- $14658134400 \cdot 46 = 674274182400$
+- $674274182400 \cdot 45 = 30342338208000$
+- $30342338208000 \cdot 44 = 1335062841152000$
+- $1335062841152000 \cdot 43 = 57407702169536000$
+
+Now divide by $3628800$:
+
+$$\binom{52}{10} = \frac{57407702169536000}{3628800}$$
+
+Let's simplify incrementally. Divide numerator and denominator step by step, or use the standard fact:
+
+$$\binom{52}{10} = 15820024220$$
+
+Let's verify the digit pattern. The problem states the answer is $158A00A4AA0$, an 11-digit number.
+
+$15820024220$ has 11 digits. Matching: $1\,5\,8\,2\,0\,0\,2\,4\,2\,2\,0$.
+
+Comparing to $1\,5\,8\,A\,0\,0\,A\,4\,A\,A\,0$: all four $A$'s equal $2$.
+
+Therefore $A = 2$.
+
+Answer: **A**.
+</Solution>

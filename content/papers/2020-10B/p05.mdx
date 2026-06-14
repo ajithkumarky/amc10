@@ -1,0 +1,21 @@
+---
+year: 2020
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 1
+answer: B
+choices: ["210", "420", "630", "840", "1050"]
+---
+
+<Problem>
+How many distinguishable arrangements are there of $1$ brown tile, $1$ purple tile, $2$ green tiles, and $3$ yellow tiles in a row from left to right? (Tiles of the same color are indistinguishable.)
+</Problem>
+
+<Solution>
+We have $1 + 1 + 2 + 3 = 7$ tiles total. If all tiles were distinct, there would be $7!$ arrangements. We divide by the number of ways to permute identical tiles among themselves:
+
+$$\frac{7!}{1! \cdot 1! \cdot 2! \cdot 3!} = \frac{5040}{1 \cdot 1 \cdot 2 \cdot 6} = \frac{5040}{12} = 420.$$
+
+Answer: **B**.
+</Solution>

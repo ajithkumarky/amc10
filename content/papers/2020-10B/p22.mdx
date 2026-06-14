@@ -1,0 +1,53 @@
+---
+year: 2020
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: D
+choices: ['$100$', '$101$', '$200$', '$201$', '$202$']
+---
+
+<Problem>
+What is the remainder when $2^{202} + 202$ is divided by $2^{101} + 2^{51} + 1$?
+</Problem>
+
+<Solution>
+Let $x = 2^{51}$. Then:
+
+$$2^{101} = 2^{51}\cdot 2^{50} = x\cdot 2^{50}, \quad 2^{202} = (2^{101})^2 = (x\cdot 2^{50})^2.$$
+
+This substitution makes things messy. Let's try $y = 2^{51}$ and express everything in terms of $y$.
+
+$2^{101} = 2^{51}\cdot 2^{50} = y\cdot 2^{50}$. Hmm, $50$ is not a multiple of $51$.
+
+**Better substitution:** Let $t = 2^{101}$. Then $2^{202} = t^2$ and the divisor is $t + 2^{51} + 1$. Also $2^{51} = 2^{101}/2^{50} = t/2^{50}$... not clean.
+
+**Polynomial approach:** Let $u = 2^{51}$. Then $2^{101} = u^2/2$ — not an integer power. Let's try $u = 2^{101}$. Then $2^{51} = \sqrt{u}/\sqrt{2}$... still awkward.
+
+**Direct modular approach:** Let $m = 2^{101} + 2^{51} + 1$. We want $2^{202} + 202 \pmod{m}$.
+
+Since $2^{101} \equiv -2^{51} - 1 \pmod{m}$, we have:
+
+$2^{202} = (2^{101})^2 \equiv (-2^{51}-1)^2 = 2^{102} + 2^{52} + 1 \pmod{m}$.
+
+Now we need to reduce $2^{102} + 2^{52} + 1 \pmod{m}$ where $m = 2^{101}+2^{51}+1$.
+
+$2^{102} + 2^{52} + 1 = 2\cdot2^{101} + 2\cdot2^{51} + 1$
+
+$= 2(2^{101}+2^{51}+1) - 2 - 2 + 1 + 1$
+
+Wait: $2\cdot2^{101}+2\cdot2^{51}+1 = 2(2^{101}+2^{51}+1) - 2\cdot1 + 1 - 0$
+
+Actually: $2(2^{101}+2^{51}+1) = 2^{102}+2^{52}+2$. So
+
+$2^{102}+2^{52}+1 = 2(2^{101}+2^{51}+1) - 2 + 1 = 2m - 1$.
+
+Therefore $2^{202} \equiv 2m - 1 \equiv -1 \pmod{m}$.
+
+So $2^{202} + 202 \equiv -1 + 202 = 201 \pmod{m}$.
+
+We should check $201 < m$. Since $m = 2^{101}+2^{51}+1 \gg 201$, yes the remainder is $201$.
+
+Answer: **D**.
+</Solution>
