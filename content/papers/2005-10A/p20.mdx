@@ -13,53 +13,17 @@ An equiangular octagon has four sides of length $1$ and four sides of length $\d
 </Problem>
 
 <Solution>
-An equiangular octagon has all interior angles equal to $\frac{(8-2)\cdot 180°}{8} = 135°$.
+An equiangular octagon has all interior angles equal to $135°$, so consecutive sides meet at $45°$ turns. The sides alternate between length $1$ and $\dfrac{\sqrt{2}}{2}$, and the eight directions (in $45°$ steps) are $0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°$.
 
-The sides alternate: $1, \frac{\sqrt{2}}{2}, 1, \frac{\sqrt{2}}{2}, \ldots$ Place the octagon on a coordinate grid. Each successive side turns $45°$ outward (exterior angle $= 45°$). Starting rightward along a side of length $1$, the direction rotates by $45°$ at each vertex.
+Assign the length-$1$ sides to the $0°$, $90°$, $180°$, $270°$ directions and the $\dfrac{\sqrt{2}}{2}$ sides to the $45°$, $135°$, $225°$, $315°$ directions. Each diagonal side contributes $\dfrac{\sqrt{2}}{2} \cdot \cos 45° = \dfrac{1}{2}$ in each coordinate direction. Tracing vertices from $(0,0)$:
 
-**Strategy:** Enclose the octagon in a rectangle and subtract corners.
+$$V_0=(0,0),\quad V_1=(1,0),\quad V_2=\!\left(\tfrac{3}{2},\tfrac{1}{2}\right),\quad V_3=\!\left(\tfrac{3}{2},\tfrac{3}{2}\right),\quad V_4=\!\left(1,2\right),$$
+$$V_5=(0,2),\quad V_6=\!\left(-\tfrac{1}{2},\tfrac{3}{2}\right),\quad V_7=\!\left(-\tfrac{1}{2},\tfrac{1}{2}\right).$$
 
-The horizontal extent: sides in the $0°$ and $180°$ directions contribute length $1$ each, and sides at $\pm 45°$ contribute $\frac{\sqrt{2}}{2}\cos 45° = \frac{1}{2}$ each. Total width $= 1 + \frac{1}{2} + 1 + \frac{1}{2}... $
+Applying the Shoelace formula $\text{Area} = \tfrac{1}{2}\bigl|\sum_i x_i(y_{i+1}-y_{i-1})\bigr|$:
 
-Let's track $x$-displacement for each side (directions are $0°,45°,90°,135°,180°,225°,270°,315°$):
-
-Sides in order: length $1$ at $0°$, length $\frac{\sqrt{2}}{2}$ at $45°$, length $1$ at $90°$, length $\frac{\sqrt{2}}{2}$ at $135°$, length $1$ at $180°$, length $\frac{\sqrt{2}}{2}$ at $225°$, length $1$ at $270°$, length $\frac{\sqrt{2}}{2}$ at $315°$.
-
-$x$-widths: $1$, $\frac{\sqrt{2}}{2}\cdot\frac{\sqrt{2}}{2}=\frac{1}{2}$, $0$, $-\frac{1}{2}$, $-1$, $-\frac{1}{2}$, $0$, $\frac{1}{2}$. Total $= 0$. ✓
-
-Bounding rectangle: width $= 1 + \frac{1}{2} = \frac{3}{2}$, height $= 1 + \frac{1}{2} = \frac{3}{2}$.
-
-Wait, the enclosing rectangle has width $= $ (max $x$) $-$ (min $x$). Following the vertices from $(0,0)$:
-- $(0,0) \to (1,0) \to (1+\frac{1}{2}, \frac{1}{2}) \to (1+\frac{1}{2}, \frac{1}{2}+1) \to (1, \frac{3}{2}+\frac{1}{2})=(1,2)$
-
-Hmm, let me redo with exact coordinates. Start at $(0,0)$, going in direction $0°$:
-
-$V_0=(0,0)$, $V_1=(1,0)$ (right, length 1),
-$V_2=(1+\frac{1}{2}, \frac{1}{2})$ (direction $45°$, length $\frac{\sqrt{2}}{2}$: $\Delta x=\Delta y=\frac{1}{2}$),
-$V_3=(\frac{3}{2},\frac{3}{2})$ (direction $90°$, length $1$: $\Delta y=1$),
-$V_4=(\frac{3}{2}-\frac{1}{2},\frac{3}{2}+\frac{1}{2})=(1,2)$ (direction $135°$, length $\frac{\sqrt{2}}{2}$: $\Delta x=-\frac{1}{2},\Delta y=\frac{1}{2}$),
-$V_5=(0,2)$ (direction $180°$, length $1$: $\Delta x=-1$),
-$V_6=(-\frac{1}{2},\frac{3}{2})$ (direction $225°$: $\Delta x=-\frac{1}{2},\Delta y=-\frac{1}{2}$),
-$V_7=(-\frac{1}{2},\frac{1}{2})$ (direction $270°$, length $1$: $\Delta y=-1$),
-$V_8=(0,0)$ (direction $315°$: $\Delta x=\frac{1}{2},\Delta y=-\frac{1}{2}$). ✓
-
-Now use the Shoelace formula with vertices $(0,0),(1,0),(\frac{3}{2},\frac{1}{2}),(\frac{3}{2},\frac{3}{2}),(1,2),(0,2),(-\frac{1}{2},\frac{3}{2}),(-\frac{1}{2},\frac{1}{2})$:
-
-$$\text{Area} = \tfrac{1}{2}|x_0(y_1-y_7)+x_1(y_2-y_0)+x_2(y_3-y_1)+x_3(y_4-y_2)+x_4(y_5-y_3)+x_5(y_6-y_4)+x_6(y_7-y_5)+x_7(y_0-y_6)|$$
-
-Computing term by term:
-- $x_0(y_1-y_7) = 0(0-\frac{1}{2})=0$
-- $x_1(y_2-y_0) = 1(\frac{1}{2}-0)=\frac{1}{2}$
-- $x_2(y_3-y_1) = \frac{3}{2}(\frac{3}{2}-0)=\frac{9}{4}$
-- $x_3(y_4-y_2) = \frac{3}{2}(2-\frac{1}{2})=\frac{3}{2}\cdot\frac{3}{2}=\frac{9}{4}$
-- $x_4(y_5-y_3) = 1(2-\frac{3}{2})=\frac{1}{2}$
-- $x_5(y_6-y_4) = 0(\frac{3}{2}-2)=0$
-- $x_6(y_7-y_5) = -\frac{1}{2}(\frac{1}{2}-2)=-\frac{1}{2}\cdot(-\frac{3}{2})=\frac{3}{4}$
-- $x_7(y_0-y_6) = -\frac{1}{2}(0-\frac{3}{2})=\frac{3}{4}$
-
-Sum $= 0+\frac{1}{2}+\frac{9}{4}+\frac{9}{4}+\frac{1}{2}+0+\frac{3}{4}+\frac{3}{4} = 1 + \frac{18}{4} + \frac{6}{4} = 1 + \frac{24}{4} = 1 + 6 = 7$.
-
-Area $= \frac{1}{2}\cdot 7 = \frac{7}{2}$.
+$$= \tfrac{1}{2}\!\left|0 + 1\!\cdot\!\tfrac{1}{2} + \tfrac{3}{2}\!\cdot\!\tfrac{3}{2} + \tfrac{3}{2}\!\cdot\!\tfrac{3}{2} + 1\!\cdot\!\tfrac{1}{2} + 0 + \left(-\tfrac{1}{2}\right)\!\cdot\!\left(-\tfrac{3}{2}\right) + \left(-\tfrac{1}{2}\right)\!\cdot\!\left(-\tfrac{3}{2}\right)\right|$$
+$$= \tfrac{1}{2}\!\left(\tfrac{1}{2} + \tfrac{9}{4} + \tfrac{9}{4} + \tfrac{1}{2} + \tfrac{3}{4} + \tfrac{3}{4}\right) = \tfrac{1}{2}\cdot 7 = \tfrac{7}{2}.$$
 
 Answer: **A**.
 </Solution>

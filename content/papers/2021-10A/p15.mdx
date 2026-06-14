@@ -13,31 +13,13 @@ Values for $A, B, C,$ and $D$ are to be selected from $\{1, 2, 3, 4, 5, 6\}$ wit
 </Problem>
 
 <Solution>
-The parabolas $y = Ax^2 + B$ and $y = Cx^2 + D$ intersect when $(A - C)x^2 = D - B$ has a real solution.
+The parabolas $y = Ax^2 + B$ and $y = Cx^2 + D$ intersect when $(A-C)x^2 = D-B$ has a real solution. Since all four values are distinct, $A \neq C$, so this requires $x^2 = \dfrac{D-B}{A-C} \geq 0$, i.e., $D-B$ and $A-C$ must have the same sign.
 
-**Case $A = C$:** Not possible since we choose without replacement.
+**Total unordered assignments.** Choose 4 distinct values from $\{1,\ldots,6\}$: $\binom{6}{4} = 15$ subsets. Each subset admits $4! = 24$ ordered assignments to $(A,B,C,D)$; dividing by $2$ for the unordered pair of curves gives $12$ unordered assignments per subset, for $15 \times 12 = 180$ total.
 
-**Case $A \neq C$:** The equation becomes $x^2 = \dfrac{D - B}{A - C}$. This has a real solution exactly when $\dfrac{D-B}{A-C} \geq 0$, i.e., $D - B$ and $A - C$ have the same sign (or $D = B$, but that's also impossible since all values are distinct).
+**Symmetry argument.** For a fixed 4-element subset, swapping $B \leftrightarrow D$ (while keeping $A$ and $C$) maps every intersecting assignment to a non-intersecting one and vice versa (since $\frac{D-B}{A-C} > 0 \iff \frac{B-D}{A-C} < 0$). This involution pairs intersecting and non-intersecting assignments, so exactly half of the $12$ assignments per subset produce intersection.
 
-So the parabolas intersect if and only if $\dfrac{D - B}{A - C} > 0$, meaning either:
-- $D > B$ and $A > C$, or
-- $D < B$ and $A < C$.
-
-**Counting unordered pairs.** Since the problem treats $\{A, B\}$ and $\{C, D\}$ as unordered (swapping the two curves gives the same choice), we count unordered partitions of 4 distinct values from $\{1,\ldots,6\}$ into two pairs $(A, B)$ and $(C, D)$ where the intersection condition holds.
-
-**Total ordered assignments.** First choose 4 values from 6: $\binom{6}{4} = 15$ ways. Then assign them as $A, B, C, D$ in $4! = 24$ ways, giving $15 \times 24 = 360$ ordered assignments. Since swapping the two curves gives the same unordered pair, there are $360/2 = 180$ unordered pairs total.
-
-**Count non-intersecting pairs.** These fail when $\dfrac{D-B}{A-C} < 0$, i.e., $D > B$ and $A < C$, or $D < B$ and $A > C$.
-
-Given any choice of 4 values $\{w, x, y, z\}$ with $w < x < y < z$, consider all ways to assign two as $(A, B)$ and two as $(C, D)$. The 4 values split into two pairs in $3$ ways (partition into 2 pairs of 2), and each unordered pair-of-pairs can be assigned as $(A,B),(C,D)$ or swapped — but since unordered, we just count the $3$ pairings. For each pairing of values into $\{A,B\}$ and $\{C,D\}$, there are $2 \times 2 = 4$ ordered ways to assign within each pair, but the two curves are unordered so we divide by 2, giving $4 \times 2 / 2$... let me redo this cleanly.
-
-**Cleaner approach.** Fix 4 distinct values from $\{1,\ldots,6\}$. We must assign two to be $A$ and $B$ (order matters: $A$ is the squared coefficient, $B$ is the constant), and the other two to be $C$ and $D$; the two curves are unordered. The number of unordered assignments is $\dfrac{4!}{2} / 1 = \dfrac{4!}{2} = 12$... 
-
-Actually: ordered assignments of 4 values to $(A,B,C,D)$: $4! = 24$. Dividing by 2 for unordered curves: $12$ per 4-value set. Total: $15 \times 12 = 180$. ✓
-
-For each of the $15$ four-element subsets, count intersecting assignments out of 12. By symmetry (swapping $B \leftrightarrow D$ or $A \leftrightarrow C$ maps intersecting to non-intersecting), exactly half intersect: $12/2 = 6$ per subset... but this requires checking the symmetry argument.
-
-Setting $f(A,B,C,D) = \text{intersect}$ iff $(D-B)/(A-C)>0$. Swapping $B$ and $D$: $(B - D)/(A - C) > 0$ iff $-(D-B)/(A-C)>0$ — flips. So exactly half of the $12$ assignments per subset are intersecting, giving $15 \times 6 = 90$.
+The number of valid choices is $15 \times 6 = 90$.
 
 Answer: **C**.
 </Solution>

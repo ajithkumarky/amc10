@@ -13,76 +13,22 @@ Let $ABCDEF$ be an equiangular hexagon. The lines $AB$, $CD$, and $EF$ determine
 </Problem>
 
 <Solution>
-**Equiangular hexagon.** All interior angles equal $120°$. In such a hexagon with side lengths $a, b, c, d, e, f$ (in order $AB, BC, CD, DE, EF, FA$), opposite sides satisfy $a + b = d + e$, $b + c = e + f$, $c + d = f + a$ (so opposite sides have equal sum).
+Label the sides $a = AB,\, b = BC,\, c = CD,\, d = DE,\, e = EF,\, f = FA$. An equiangular hexagon (all interior angles $120°$) satisfies the closure relations $a+b = d+e$, $b+c = e+f$, $c+d = f+a$, from which $e = a+b-d$ and $f = c+d-a$.
 
-The sides also satisfy $a - d = e - b = c - f$ (each pair of opposite sides differs by a constant).
+Extending alternate pairs of sides of an equiangular hexagon produces two equilateral triangles. The triangle from lines $AB, CD, EF$ has side $s_1 = a+b+c$, and the triangle from lines $BC, DE, FA$ has side $s_2 = b+c+d$.
 
-The two triangles formed are equilateral (since all alternate sides of an equiangular hexagon, when extended, form an equilateral triangle).
+For an equilateral triangle with side $s$, area $= \dfrac{s^2\sqrt{3}}{4}$:
 
-**Triangle 1** (formed by lines $AB$, $CD$, $EF$): This equilateral triangle has side length $a + b + c$ (the sides alternate: $AB$ extended meets $CD$ extended at a vertex, etc.). Actually the side of this triangle equals $a + b + c$... let me be precise.
+$$\frac{s_1^2\sqrt{3}}{4} = 192\sqrt{3} \implies s_1^2 = 768 \implies s_1 = 16\sqrt{3},$$
+$$\frac{s_2^2\sqrt{3}}{4} = 324\sqrt{3} \implies s_2^2 = 1296 \implies s_2 = 36.$$
 
-For an equiangular hexagon with sides $a,b,c,d,e,f$, the triangle formed by extending sides $AB, CD, EF$ has side length $s_1 = a + b + c = d + e + f$ (by the constraint $a+b+c = d+e+f$, which follows from opposite-side sum relations). Actually $s_1 = a + b + c$? Let's verify:
+The perimeter is:
+$$P = a+b+c+d+e+f = (a+b+c) + d + (a+b-d) + (c+d-a) = (a+b+c) + (b+c+d) = s_1 + s_2 - (b+c) + (b+c).$$
 
-The triangle formed by $AB$, $CD$, $EF$ has side length $s_1 = a + b + c$. Wait — each side of the big triangle consists of one side of the hexagon plus two "extensions." The extension at each vertex of the equilateral triangle equals one of the hexagon sides. Specifically, the side of the big equilateral triangle formed by lines $AB, CD, EF$ equals $AB + BC + CD = a + b + c$ (the sum of alternating sides going around). Hmm, let me just use the area formula.
+Computing directly:
+$$P = (a+b+c) + d + e + f = s_1 + d + (a+b-d) + (c+d-a) = s_1 + b+c+d = 16\sqrt{3} + 36.$$
 
-For an equilateral triangle with side $s$, area $= \dfrac{s^2 \sqrt{3}}{4}$.
-
-Triangle 1 area $= 192\sqrt{3}$: $\dfrac{s_1^2 \sqrt{3}}{4} = 192\sqrt{3} \Rightarrow s_1^2 = 768 \Rightarrow s_1 = 16\sqrt{3}$.
-
-Triangle 2 area $= 324\sqrt{3}$: $\dfrac{s_2^2 \sqrt{3}}{4} = 324\sqrt{3} \Rightarrow s_2^2 = 1296 \Rightarrow s_2 = 36$.
-
-**Side labeling.** For an equiangular hexagon with sides $a,b,c,d,e,f$:
-- Triangle formed by $AB, CD, EF$ has side $s_1 = a + b + c$ (these three alternate sides sum to the big triangle's side). Actually: from the known result, the triangle formed by extending the "odd" sides has side length equal to the sum of those three sides: $s_1 = a + c + e$. Let me use the standard result.
-
-Standard result: the equilateral triangle formed by extending sides $AB$, $CD$, $EF$ has side length $a + b + c$... I need to be careful.
-
-Using the standard formula: if the hexagon has sides $a_1, a_2, a_3, a_4, a_5, a_6$ (alternating), the triangle from extending sides $1,3,5$ has side $s = a_1 + a_2 + a_3$ and the triangle from sides $2,4,6$ has side $t = a_2 + a_3 + a_4$.
-
-Actually for the equiangular hexagon $ABCDEF$ with $AB=a, BC=b, CD=c, DE=d, EF=e, FA=f$:
-
-The triangle formed by lines $AB, CD, EF$ (alternate sides 1,3,5) has side $s_1 = a + b + c$ (the sum $AB + BC + CD$, which is the "path length" between the two vertices of the big triangle along the hexagon).
-
-So $s_1 = a + b + c = 16\sqrt{3}$ and $s_2 = b + c + d = 36$.
-
-Also, the constraint: $a + b = d + e$, $b + c = e + f$, $c + d = f + a$, which also gives $a + b + c + d + e + f = s_1 + s_2 - (b+c)$ ... let me derive the perimeter.
-
-Perimeter $= a+b+c+d+e+f$. From $a+b+c = s_1$ and $b+c+d = s_2$: subtracting gives $a - d = s_1 - s_2$. 
-
-For an equiangular hexagon, we also know $d + e + f = s_1$ (the other triangle formed by $AB, CD, EF$ gives the same side, since it's equilateral): NO — $d+e+f$ is NOT the same as $a+b+c$ in general (the hexagon need not be centrally symmetric).
-
-Let me reconsider: the two triangles are formed differently.
-
-**Correct formulation.** An equiangular hexagon has all angles $120°$. The sides $a,b,c,d,e,f$ satisfy:
-$$a + b = d + e, \quad b+c = e+f, \quad c+d = f+a.$$
-(These ensure the hexagon closes up.)
-
-The triangle formed by lines $AB$, $CD$, $EF$ has equilateral side $= a + b + c$ ... I believe the correct formula is that this triangle has side $s_1 = a + b + c = d + e + f$ (they must be equal by the closure relations). Let's check: $a+b+c$ vs $d+e+f$. Sum of all sides $= a+b+c+d+e+f$. Adding the three constraint equations: $2(a+b+c+d+e+f) = 2(a+b+c+d+e+f)$ — tautology. So $a+b+c$ need not equal $d+e+f$.
-
-Let me look at this differently. In an equiangular hexagon, extending sides $AB, CD, EF$ (which are parallel to each other in pairs when the hexagon is regular — actually the three pairs $(AB, DE)$, $(BC, EF)$, $(CD, FA)$ are parallel). Lines $AB$, $CD$, $EF$ form a triangle (they are NOT parallel). 
-
-The side of the equilateral triangle formed by $AB, CD, EF$ is $a + b + c$ (where I'm using the path $A \to B \to C \to D$ along the hexagon, and the segment $AD$ equals $a+b+c$ in the equilateral triangle's side... this is the standard result for equiangular hexagons).
-
-Standard result confirmed: $s_1 = a+b+c$, $s_2 = d+e+f$ for the two triangles? No — the two triangles are determined by alternate sets of sides. Triangle 1 by $AB, CD, EF$ has side $s_1$; triangle 2 by $BC, DE, FA$ has side $s_2$.
-
-For an equiangular hexagon, the triangle formed by extending sides $AB, CD, EF$ has side length:
-$$s_1 = a + b + c \quad \text{(from standard geometry of equiangular hexagons)}.$$
-And the triangle from $BC, DE, FA$:
-$$s_2 = b + c + d.$$
-
-So $s_1 = a+b+c = 16\sqrt{3}$ and $s_2 = b+c+d = 36$.
-
-Perimeter $= a+b+c+d+e+f$. We need more relations. From the constraint $a+b = d+e$: $e = a+b-d$. From $b+c = e+f$: $f = b+c-e = b+c-(a+b-d) = c+d-a$. From $c+d = f+a$: $c+d = (c+d-a)+a = c+d$ ✓.
-
-So the free parameters are $a, b, c, d$ with $a+b+c = 16\sqrt{3}$ and $b+c+d = 36$. Then $e = a+b-d$ and $f = c+d-a$.
-
-Perimeter $= a+b+c+d+e+f = (a+b+c) + d + (a+b-d) + (c+d-a) = (a+b+c) + d + a+b-d+c+d-a = (a+b+c) + (a+b+c) + d - ... $
-
-Let me just compute:
-$$P = a+b+c+d+e+f = (a+b+c) + d + (a+b-d) + (c+d-a) = 16\sqrt{3} + d + a + b - d + c + d - a = 16\sqrt{3} + b + c + d = 16\sqrt{3} + 36.$$
-
-So $P = 36 + 16\sqrt{3}$.
-
-Therefore $m = 36$, $n = 16$, $p = 3$, and $m+n+p = 36+16+3 = 55$.
+Thus $m = 36$, $n = 16$, $p = 3$, and $m+n+p = 36+16+3 = 55$.
 
 Answer: **C**.
 </Solution>

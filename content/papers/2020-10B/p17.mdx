@@ -13,137 +13,33 @@ There are $10$ people standing equally spaced around a circle. Each person knows
 </Problem>
 
 <Solution>
-Label the people $0, 1, 2, \ldots, 9$ around the circle. The "know each other" relationships are:
-- Adjacent pairs: $\{0,1\}, \{1,2\}, \{2,3\}, \{3,4\}, \{4,5\}, \{5,6\}, \{6,7\}, \{7,8\}, \{8,9\}, \{9,0\}$ (10 pairs)
-- Opposite pairs: $\{0,5\}, \{1,6\}, \{2,7\}, \{3,8\}, \{4,9\}$ (5 pairs)
+Label the people $0, 1, 2, \ldots, 9$ around the circle. Each person knows their two neighbors and the person directly opposite, giving 10 adjacent edges and 5 opposite edges. We count 5-edge perfect matchings using only these edges.
 
-We need a perfect matching using only these $15$ edges.
+Branch on the partner of person $0$ (who can pair with $1$, $5$, or $9$):
 
-**Case 1: All 5 opposite pairs are used.**
+**Case A: $0$ pairs with $5$ (the opposite pair $\{0,5\}$).**
 
-The only way to use all 5 opposite pairs is the matching $\{0,5\},\{1,6\},\{2,7\},\{3,8\},\{4,9\}$. That is $1$ matching.
+Branch on the partner of $9$ (can pair with $8$ or $4$):
+- $9$–$8$: vertex $4$ is forced to pair with $3$; then $\{1,2\},\{6,7\}$ or $\{1,6\},\{2,7\}$ — giving **2** matchings.
+- $9$–$4$: vertex $8$ can pair with $7$ or $3$:
+  - $8$–$7$: forces $\{2,3\},\{1,6\}$ — **1** matching.
+  - $8$–$3$: vertex $7$ pairs with $6$ or $2$, each valid — **2** matchings.
 
-**Case 2: Exactly 0 opposite pairs used (all adjacent).**
+Case A subtotal: $2 + 1 + 2 = \mathbf{5}$ matchings.
 
-We need a perfect matching of $\{0,1,\ldots,9\}$ using only edges of the 10-cycle. A perfect matching of a $2k$-cycle using only cycle edges consists of choosing alternating edges. For a $10$-cycle there are exactly $2$ such matchings: the "even" edges $\{0,1\},\{2,3\},\{4,5\},\{6,7\},\{8,9\}$ and the "odd" edges $\{1,2\},\{3,4\},\{5,6\},\{7,8\},\{9,0\}$.
+**Case B: $0$ pairs with $1$.**
 
-**Case 3: Some but not all opposite pairs used.**
+Branch on the partner of $9$ (can pair with $8$ or $4$):
+- $9$–$8$: vertex $5$ pairs with $4$ or $6$; each choice forces the rest uniquely — **2** matchings.
+- $9$–$4$: vertex $5$ is forced to pair with $6$; then vertex $8$ pairs with $7$ or $3$, each valid — **2** matchings.
 
-Suppose exactly $k$ opposite pairs are used, with $1 \le k \le 4$. Each opposite pair $\{i, i+5\}$ removes two people from the circle, splitting or modifying the remaining adjacency structure.
+Case B subtotal: $2 + 2 = \mathbf{4}$ matchings.
 
-If we use opposite pair $\{0,5\}$, the remaining $8$ people are $1,2,3,4,6,7,8,9$ with adjacency edges $\{1,2\},\{2,3\},\{3,4\},\{6,7\},\{7,8\},\{8,9\}$ (the edges $\{4,5\}$ and $\{5,6\}$ and $\{9,0\}$ and $\{0,1\}$ are lost). This creates two separate paths: $1-2-3-4$ and $6-7-8-9$.
+**Case C: $0$ pairs with $9$.**
 
-If we don't use any other opposite pairs, we must perfectly match each path using only adjacent edges. A path of 4 vertices has a unique perfect matching from adjacent edges (alternate: use $\{1,2\},\{3,4\}$ and $\{6,7\},\{8,9\}$, or use $\{2,3\}$ and $\{7,8\}$ — but $\{2,3\}$ alone doesn't perfectly match the 4-path because vertices $1$ and $4$ would be left). Path $1-2-3-4$: the only perfect matchings using adjacent edges are $\{1,2\},\{3,4\}$ or $\{2,3\}$ — but $\{2,3\}$ leaves $1$ and $4$ unmatched. So only $\{1,2\},\{3,4\}$ works. Similarly for $6-7-8-9$: only $\{6,7\},\{8,9\}$.
+By the reflection symmetry swapping $1 \leftrightarrow 9$, $2 \leftrightarrow 8$, $3 \leftrightarrow 7$, $4 \leftrightarrow 6$, Case C is identical in structure to Case B — **4** matchings.
 
-But wait — the remaining people also have opposite pairs available: $\{1,6\},\{2,7\},\{3,8\},\{4,9\}$. So in Case 3, we must decide which of these to use.
-
-This gets complex. Let me think more carefully by considering which sets of opposite pairs can be included in a valid perfect matching.
-
-The 5 opposite pairs partition into a natural structure. Removing opposite pair $\{i, i+5\}$ from the circle disconnects the remaining adjacency into two paths.
-
-**Systematic case analysis:**
-
-Let $S$ be the set of opposite pairs used. If $|S| = k$, the chosen opposite pairs cut the circle into at most $k$ arcs (between the removed vertices). For the remaining $10-2k$ people to be perfectly matched using adjacent edges, each arc must have even length.
-
-The 10-cycle has positions $0,1,\ldots,9$. If we use the opposite pair $\{i, i+5\}$, we remove positions $i$ and $i+5$ from the circle, which splits the remaining cycle into two arcs. The arc from $i+1$ to $i+4$ (length 4) and arc from $i+6$ to $i+9 \equiv i-1$ (length 4). Both arcs have length 4 (even), so each can be perfectly matched with adjacent edges — in exactly $1$ way each (as shown above for the path $1-2-3-4$).
-
-More generally, the 5 opposite pairs are $\{0,5\},\{1,6\},\{2,7\},\{3,8\},\{4,9\}$. If we use a subset $S$ of these opposite pairs, we must check that the remaining adjacency arcs each have even length, and count the number of ways to match those arcs.
-
-Using opposite pair $\{i,i+5\}$ and $\{j,j+5\}$ simultaneously: the arcs between them may have odd lengths unless the pairs are chosen carefully. 
-
-Let's encode: label opposite pairs as $P_0=\{0,5\}, P_1=\{1,6\}, P_2=\{2,7\}, P_3=\{3,8\}, P_4=\{4,9\}$. If we select pairs $P_{i_1}, P_{i_2}, \ldots$, the remaining vertices form arcs. Arc between $P_a$ and $P_b$ (consecutive selected pairs, say $a < b$) contains vertices $a+1, a+2, \ldots, b-1$ and their opposites $a+6, \ldots, b+4$ — but they're split by the removed vertices. Specifically the arc on one side contains $b - a - 1$ vertices, and must be even, so $b - a$ must be odd.
-
-For a subset $S \subseteq \{0,1,2,3,4\}$ of size $k$, the $k$ chosen pairs create $k$ arcs on each side of the circle (imagine the circle of 5 opposite-pair slots $0,1,2,3,4$ arranged around). The arc between consecutive selected pairs at positions $a$ and $b$ has $b-a-1$ "gap" units, needing $b-a$ odd. By parity, this means consecutive gaps must alternate even/odd values, which requires $k$ to be even — OR we can think of it differently.
-
-Actually, since we go around the 5-cycle of pair-slots, each gap $g_i = $ (number of non-selected pairs between consecutive selected pairs). For the arc to have even length, we need $g_i$ to be odd (since arc length $= 2g_i + $ something... let me recount).
-
-Between two consecutive selected pairs $P_a$ and $P_b$ (with $b > a$, no selected pairs in between), the arc on one side has vertices $a+1, a+2, \ldots, b-1$ — that's $b-a-1$ vertices. For perfect matching, we need $b-a-1$ even, i.e., $b-a$ odd.
-
-The $k$ gaps (in the circular arrangement of 5 slots) must all be odd and sum to $5-k$. Sum of $k$ odd numbers $\equiv k \pmod{2}$. So $5-k \equiv k \pmod{2}$, giving $5 \equiv 2k \pmod 2$, i.e., $1 \equiv 0 \pmod 2$. Contradiction! So **no** subset of size $1 \le k \le 4$ works.
-
-Wait, I think I'm over-complicating this. Let me recount the arc length more carefully.
-
-When we remove $P_a = \{a, a+5\}$ and $P_b = \{b, b+5\}$ ($a < b$), the arc from $a+1$ to $b-1$ on one side has $b-a-1$ vertices, and the arc from $b+1$ to $a-1+10=a+9$ on the other side has $(a+5) - (b+1) + (a+4) - (b+5+1) \ldots$ Hmm, I need to be more careful.
-
-Let me just enumerate directly for $k=1,2,3,4$:
-
-**$k=1$:** Using 1 opposite pair, say $P_0 = \{0,5\}$. Remaining: $\{1,2,3,4,6,7,8,9\}$. Arc 1: $1-2-3-4$ (4 vertices). Arc 2: $6-7-8-9$ (4 vertices). Each 4-path has exactly 1 perfect matching with adjacent edges. So matching: $\{0,5\}, \{1,2\},\{3,4\},\{6,7\},\{8,9\}$. That's $1$ matching per opposite pair, and by symmetry each of the 5 opposite pairs gives 1 matching, total $5$ matchings. But wait — I should check if these matchings are distinct. Yes, each uses a different opposite pair. 
-
-Actually wait — do opposite pairs $\{1,6\}$ etc. show up in these matchings? Let me check: for $P_0$ selected, remaining pairs are only adjacent: $\{1,2\},\{3,4\},\{6,7\},\{8,9\}$. That's valid.
-
-**$k=2$:** Two opposite pairs. Consider $P_0, P_1$: remove $\{0,5\}$ and $\{1,6\}$. Remaining: $\{2,3,4,7,8,9\}$. Arcs: $2-3-4$ (3 vertices, odd — can't perfect match!) So this doesn't work.
-
-Consider $P_0, P_2$: remove $\{0,5\}$ and $\{2,7\}$. Remaining: $\{1,3,4,6,8,9\}$. Adjacencies: $\{3,4\}, \{8,9\}$ and isolated $1$ (only neighbor was $0$ or $2$), isolated $6$ (neighbors were $5$ or $7$). Can't match.
-
-So for $k=2$: need gaps of odd size. Gaps (in the 5-slot circle) between chosen slots: if slots $a$ and $b$ are chosen ($b > a$), gaps are $b-a-1$ and $5-(b-a)-1 = 4-(b-a)$. For both to give even-length arcs: need $b-a-1$ even (i.e., $b-a$ odd) AND $4-(b-a)$ even (i.e., $b-a$ even). Contradiction — so **no** $k=2$ subset works.
-
-**$k=3$:** Three slots chosen from $\{0,1,2,3,4\}$ in a 5-cycle. The three gaps sum to $5-3=2$ (total non-chosen). For all arcs to have even vertex counts, we need all gaps $g_i$ (between chosen slots) to be odd. But sum of $3$ odd numbers is odd, and $2$ is even. Contradiction. So **no** $k=3$ subset works.
-
-**$k=4$:** Four slots chosen, one gap of size $5-4-1 = 0$... gaps sum to $1$. Need all $4$ gaps odd — impossible since they'd sum to at least $4$. **No** $k=4$ subset works.
-
-Wait, let me redo $k=4$: remove 4 opposite pairs, keeping 1 non-chosen. Four slots chosen from 5, one gap of size 0, three gaps. Hmm: 4 chosen slots leave 1 unchosen slot; the 4 gaps between consecutive chosen slots (in circular order) include one gap of 0 (two chosen slots adjacent in the 5-slot circle) ... Actually all 4 chosen slots are 4 out of 5 arranged in a circle, leaving 1 uncovered. The gaps: 3 gaps of size 0 and 1 gap of size 1? No — the chosen slots among $\{0,1,2,3,4\}$ are $4$ of them; say $\{0,1,2,3\}$ are chosen, $4$ is not. Circular gaps between consecutive chosen pairs: $0\to1$: gap 0 (adjacent), $1\to2$: gap 0, $2\to3$: gap 0, $3\to0$: gap 1 (the unchosen slot $4$ is between them). So arcs have lengths $-1, -1, -1, $ ... this doesn't make sense for lengths.
-
-Let me recount arc lengths for $k=4$, using $P_0,P_1,P_2,P_3$ (remove positions $0,1,2,3,5,6,7,8$). Remaining: $\{4, 9\}$. These are adjacent ($9$ is next to $0$ which is removed, and $4$ is adjacent to $3$ which is removed; $9$ and $0$ are adjacent but $0$ is removed; $4$ and $9$ are opposite — that's pair $P_4$!). So the only remaining adjacency of $4$ and $9$ is: are they adjacent in the circle? $4$ and $5$ are adjacent, but $5$ is removed. $4$ and $3$ are adjacent, but $3$ is removed. $9$ and $8$ are adjacent, but $8$ is removed. $9$ and $0$ are adjacent, but $0$ is removed. So $4$ and $9$ are NOT adjacent in the circle — they're opposite. They can't be matched by an adjacent edge. So this $k=4$ case fails to produce a valid matching. Similarly for all $k=4$ subsets.
-
-**Summary:** Valid matchings come from $k=0$ (2 matchings) and $k=1$ (5 matchings) and $k=5$ (1 matching). Total $= 2 + 5 + 1 = \mathbf{8}$? That doesn't match the answer choices.
-
-Hmm, I've made an error. Let me reconsider $k=1$ — I claimed each selected opposite pair yields exactly 1 valid matching, but let me recheck: are there matchings with $k=1$ that also use OTHER non-adjacent edges? No — the only allowed edges are adjacent or opposite. If we use exactly 1 opposite pair, the remaining 8 people must all be matched by adjacent edges. I showed that each choice of opposite pair yields exactly 1 such matching (the two 4-paths each have a unique adjacent matching). So $5$ matchings for $k=1$.
-
-But wait: for $k=1$, say $P_0=\{0,5\}$. Remaining: $1,2,3,4,6,7,8,9$. Could we also use the opposite pair $\{2,7\}$ or $\{3,8\}$ in ADDITION? No — I'm in the $k=1$ case where exactly $1$ opposite pair is used. But $\{2,7\}$ would be a second opposite pair. I need to separately check $k=2,3,4$ cases.
-
-I showed $k=2,3,4$ all lead to contradictions. So total = $2 + 5 + 1 = 8$. But the answer choices are $11,12,13,14,15$. I must have missed some cases.
-
-Let me reconsider. For $k=2$: perhaps some pairs of opposite pairs DO allow a valid matching if we allow using additional opposite pairs in the unmatched arcs... wait, no. In $k=2$ I'm fixing exactly $2$ opposite pairs.
-
-Actually the issue is that "arcs" can ALSO use opposite-pair edges among the remaining people! I was wrong to assume that the remaining people must use only adjacent edges. The remaining 6 people (for $k=2$) can use their own opposite-pair edges if they are still among the remaining people.
-
-For $k=2$ using $P_0,P_2$ (remove $\{0,5\}$ and $\{2,7\}$): remaining are $\{1,3,4,6,8,9\}$. The "know each other" edges among these 6 people: adjacent pairs $\{3,4\},\{8,9\}$ (others involve removed people), opposite pairs $\{1,6\},\{3,8\},\{4,9\}$ (since $1$ and $6$ are across the circle, $3$ and $8$ are across, $4$ and $9$ are across). So edges available: $\{3,4\},\{8,9\},\{1,6\},\{3,8\},\{4,9\}$. We need a perfect matching on $\{1,3,4,6,8,9\}$ using these edges.
-
-Vertex $1$: only edge is $\{1,6\}$. So $1$ must pair with $6$. Then remaining: $\{3,4,8,9\}$ with edges $\{3,4\},\{8,9\},\{3,8\},\{4,9\}$. Matchings: $\{3,4\},\{8,9\}$ or $\{3,8\},\{4,9\}$. Two matchings!
-
-So $k=2$ with $P_0, P_2$ gives $2$ matchings: one is $\{0,5\},\{2,7\},\{1,6\},\{3,4\},\{8,9\}$ and one is $\{0,5\},\{2,7\},\{1,6\},\{3,8\},\{4,9\}$. But the second uses $3$ opposite pairs total ($P_0,P_2,P_1,P_3$) — no wait, $\{3,8\}$ and $\{4,9\}$ are opposite pairs, so the second matching actually uses $k=4$ opposite pairs: $P_0,P_1,P_2,P_3$. I was double-counting cases.
-
-I need to count all perfect matchings directly without categorizing by $k$. Let me restart.
-
-**Direct enumeration:**
-
-Edges: 10 adjacent + 5 opposite = 15 total. We need 5-edge perfect matchings.
-
-Observe that person $0$ must be matched to one of $1, 5, 9$ (their neighbors and opposite). Let's branch on the partner of person $0$.
-
-**Sub-case A: $0$ paired with $5$.**
-
-Remaining: $\{1,2,3,4,6,7,8,9\}$. Vertex $1$: edges to $\{2, 6\}$ (neighbor $0$ removed, neighbor $2$ available, opposite $6$). Vertex $9$: edges to $\{8\}$ (neighbor $0$ removed, opposite $4$ available). Wait, $9$'s opposite is $4$. So $9$ can pair with $8$ or $4$.
-
-Branch on $9$'s partner:
-- $9-8$: remaining $\{1,2,3,4,6,7\}$. Vertex $4$: edges $\{3\}$ (since $5$ removed, $9$ removed, opposite $9$ removed). Only edge: $\{3,4\}$. Remaining: $\{1,2,6,7\}$. Vertex $1$: edges $\{2, 6\}$. Branch:
-  - $1-2$: remaining $\{6,7\}$. Pair $\{6,7\}$. Valid! Matching: $\{0,5\},\{8,9\},\{3,4\},\{1,2\},\{6,7\}$.
-  - $1-6$: remaining $\{2,7\}$. Pair $\{2,7\}$. Valid! Matching: $\{0,5\},\{8,9\},\{3,4\},\{1,6\},\{2,7\}$.
-- $9-4$: remaining $\{1,2,3,6,7,8\}$. Vertex $8$: edges $\{7\}$ (neighbors: $7$ and $9$; $9$ removed; opposite $3$). So $8-7$ or $8-3$.
-  - $8-7$: remaining $\{1,2,3,6\}$. Vertex $3$: edges $\{2, 8\}$ but $8$ removed; so $\{2\}$. Pair $3-2$. Remaining $\{1,6\}$. Pair $\{1,6\}$. Valid! Matching: $\{0,5\},\{4,9\},\{7,8\},\{2,3\},\{1,6\}$.
-  - $8-3$: remaining $\{1,2,6,7\}$. Vertex $7$: edges $\{6\}$ ($8$ removed, opposite $2$; $2$ available). So $7-6$ or $7-2$.
-    - $7-6$: remaining $\{1,2\}$. Pair $\{1,2\}$. Valid! Matching: $\{0,5\},\{4,9\},\{3,8\},\{6,7\},\{1,2\}$.
-    - $7-2$: remaining $\{1,6\}$. Pair $\{1,6\}$. Valid! Matching: $\{0,5\},\{4,9\},\{3,8\},\{2,7\},\{1,6\}$.
-
-Sub-case A total so far: $5$ matchings.
-
-**Sub-case B: $0$ paired with $1$.**
-
-Remaining: $\{2,3,4,5,6,7,8,9\}$. Vertex $9$: edges $\{8\}$ (neighbor $0$ removed, opposite $4$). So $9-8$ or $9-4$.
-- $9-8$: remaining $\{2,3,4,5,6,7\}$. Vertex $5$: edges $\{4,6\}$ (neighbors $4,6$; opposite $0$ removed). Branch:
-  - $5-4$: remaining $\{2,3,6,7\}$. Vertex $6$: edges $\{7\}$ ($5$ removed, opposite $1$ removed). Pair $6-7$. Remaining $\{2,3\}$. Pair $\{2,3\}$. Valid! Matching: $\{0,1\},\{8,9\},\{4,5\},\{6,7\},\{2,3\}$.
-  - $5-6$: remaining $\{2,3,4,7\}$. Vertex $4$: edges $\{3\}$ ($5$ removed, opposite $9$ removed). Pair $4-3$. Remaining $\{2,7\}$. Pair $\{2,7\}$. Valid! Matching: $\{0,1\},\{8,9\},\{5,6\},\{3,4\},\{2,7\}$.
-- $9-4$: remaining $\{2,3,5,6,7,8\}$. Vertex $5$: edges $\{6\}$ ($4$ removed, opposite $0$ removed). Pair $5-6$. Remaining $\{2,3,7,8\}$. Vertex $8$: edges $\{7, 3\}$ ($9$ removed). Branch:
-  - $8-7$: remaining $\{2,3\}$. Pair $\{2,3\}$. Valid! Matching: $\{0,1\},\{4,9\},\{5,6\},\{7,8\},\{2,3\}$.
-  - $8-3$: remaining $\{2,7\}$. Pair $\{2,7\}$. Valid! Matching: $\{0,1\},\{4,9\},\{5,6\},\{3,8\},\{2,7\}$.
-
-Sub-case B: $4$ matchings.
-
-**Sub-case C: $0$ paired with $9$.**
-
-By the cyclic symmetry ($1 \leftrightarrow 9$, $2 \leftrightarrow 8$, etc.), sub-case C is symmetric to sub-case B. So $4$ matchings.
-
-**Total: $5 + 4 + 4 = 13$.**
+**Total:** $5 + 4 + 4 = \mathbf{13}$.
 
 Answer: **C**.
 </Solution>

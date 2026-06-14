@@ -13,19 +13,13 @@ Three distinct vertices of a cube are chosen at random. What is the probability 
 </Problem>
 
 <Solution>
-A cube has $8$ vertices. The number of ways to choose $3$ is $\binom{8}{3} = 56$.
+A cube has $8$ vertices, so there are $\binom{8}{3} = 56$ equally likely triples.
 
-We need to count triples that lie on a face or a "diagonal plane" that does NOT pass through the interior.
+A plane through 3 vertices contains interior points of the cube unless it lies entirely on a face. The only planes containing 3 or more cube vertices that avoid the interior are the 6 face planes (any other plane through 3 cube vertices cuts through the interior). Each face has $\binom{4}{3} = 4$ vertex triples, giving $6 \times 4 = 24$ triples that lie on a face.
 
-A plane through 3 vertices does NOT contain interior points exactly when the three points are coplanar with a face of the cube (or a plane that is tangent to the cube, touching only a face or edge). Actually, for a cube, the only planes containing 3 or more vertices that avoid the interior are the 6 face planes and the 6 diagonal planes (each containing 4 vertices, cutting through edges but not the interior... wait, diagonal planes do cut through the interior).
+The remaining $56 - 24 = 32$ triples determine planes that pass through the interior, so the probability is
 
-Let me reconsider. A plane "contains points inside the cube" means the plane intersects the interior (open set). The planes that do NOT intersect the interior are exactly the 6 face planes. (Any other plane through 3 cube vertices will intersect the interior.)
-
-Each face has $\binom{4}{3} = 4$ triples of vertices. With 6 faces: $6 \times 4 = 24$ triples lie on a face.
-
-Triples NOT on any face: $56 - 24 = 32$.
-
-Probability the plane contains interior points $= \dfrac{32}{56} = \dfrac{4}{7}$.
+$$\frac{32}{56} = \frac{4}{7}.$$
 
 Answer: **C**.
 </Solution>

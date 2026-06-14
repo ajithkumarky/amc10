@@ -18,32 +18,15 @@ Call a positive integer $\textbf{monotonous}$ if it is a one-digit number or its
 </Problem>
 
 <Solution>
-A strictly increasing sequence of digits uses digits from $\{1, 2, \ldots, 9\}$ (no leading zeros needed; actually any subset of $\{0,1,\ldots,9\}$ with a nonzero first digit works for the increasing case).
+Every monotonous number corresponds uniquely to a nonempty subset of digits arranged in order — increasing or decreasing.
 
-**Strictly increasing numbers:** Each such number corresponds to choosing a subset of $\{1, 2, \ldots, 9\}$ of size $\geq 1$ (digits $0$ cannot lead, and in a strictly increasing sequence $0$ could only appear first, but then it would be a leading zero — so exclude $0$). Actually, we can include $0$ if it's not the leading digit, but in strictly increasing order $0$ would be the leftmost digit, making it a leading zero. So strictly increasing numbers use subsets of $\{1,2,\ldots,9\}$.
+**Strictly increasing numbers** use digits from $\{1, 2, \ldots, 9\}$ (digit $0$ cannot begin a number, and in increasing order it would be the leading digit). Each nonempty subset of $\{1,\ldots,9\}$ gives exactly one increasing number, yielding $2^9 - 1 = 511$ numbers. This count includes all $9$ single-digit numbers $1$–$9$.
 
-Number of nonempty subsets of $\{1,\ldots,9\}$: $2^9 - 1 = 511$.
+**Strictly decreasing numbers with $\geq 2$ digits** can use any subset of $\{0, 1, \ldots, 9\}$ of size $\geq 2$, since the largest digit always leads (no leading-zero issue). The count is $2^{10} - 1 - 10 = 1013$ numbers.
 
-**Strictly decreasing numbers:** A strictly decreasing sequence can use any subset of $\{0,1,\ldots,9\}$ of size $\geq 2$ (the largest digit comes first, so no leading zero issue as long as the first digit is nonzero — but in a decreasing sequence, the first digit is the largest, which is $\geq 1$ as long as the subset has size $\geq 2$ or contains a nonzero element).
+These two sets are disjoint: the $511$ increasing numbers include all $9$ single-digit numbers (which are not in the decreasing-multi-digit set), and no multi-digit number is both strictly increasing and strictly decreasing.
 
-For 1-digit decreasing: the single digits $1$–$9$ (not $0$ since $0$ isn't a positive integer by itself — wait, the problem says positive integer, and $0$ is not positive). Actually single-digit numbers are already counted as $1$–$9$.
-
-For strictly decreasing with $\geq 2$ digits: choose any subset of $\{0,1,\ldots,9\}$ of size $\geq 2$ — the digits arranged in decreasing order form a valid number (the leading digit is the max, which is $\geq 1$). Number of subsets of $\{0,\ldots,9\}$ of size $\geq 2$: $2^{10} - 1 - 10 = 1013$.
-
-**Single-digit numbers (1–9):** These are monotonous. There are $9$ of them. They're counted in both the increasing and decreasing cases above (as single-element subsets of $\{1,\ldots,9\}$).
-
-**Total (avoiding double-counting single-digit numbers):**
-$$\underbrace{511}_{\text{increasing}} + \underbrace{1013}_{\text{decreasing}} + \underbrace{9}_{\text{single-digit}} = 1533.$$
-
-Wait — I need to re-examine. The increasing count of $511$ already includes all single-element subsets of $\{1,\ldots,9\}$ (9 of them, the single-digit numbers). The decreasing count of $1013$ includes subsets of size $\geq 2$, so it doesn't double-count single-digit numbers. But single-digit numbers were supposed to be counted once, and they appear once in the increasing count.
-
-Let me recount cleanly:
-- Strictly increasing (length $\geq 1$, digits from $\{1,\ldots,9\}$): $2^9 - 1 = 511$ numbers. (Each nonempty subset of $\{1,\ldots,9\}$ gives exactly one increasing number.)
-- Strictly decreasing (length $\geq 2$, digits from $\{0,\ldots,9\}$): subsets of size $\geq 2$ from $\{0,\ldots,9\}$: $\binom{10}{2} + \binom{10}{3} + \cdots + \binom{10}{10} = 2^{10} - 1 - 10 = 1013$ numbers.
-
-The $511$ increasing numbers include the $9$ single-digit numbers $\{1\},\ldots,\{9\}$. The $1013$ decreasing numbers have length $\geq 2$, so no overlap with the $9$ single-digit numbers. No overlap between increasing and decreasing multi-digit numbers either (a number can't be both).
-
-Total monotonous: $511 + 1013 = 1524$.
+$$\text{Total} = 511 + 1013 = 1524.$$
 
 Answer: **B**.
 </Solution>

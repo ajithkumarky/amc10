@@ -13,78 +13,27 @@ Bernardo and Silvia play the following game. An integer between 0 and 999, inclu
 </Problem>
 
 <Solution>
-Bernardo wins if he is the last one to produce a number less than 1000, meaning when he doubles his input to get a value $\geq 1000$, but more precisely, Bernardo wins if, at some step, he produces $2x < 1000$ and then Silvia would produce $2x + 50 < 1000$... Actually, Bernardo wins if Silvia is the first to produce a number $\geq 1000$ (she can't produce that as a valid move), OR if Bernardo himself produces a number $\geq 1000$ but Silvia already failed.
+Starting from $N$, the sequence of outputs alternates Bernardo (doubles) then Silvia (adds 50). The value after Bernardo's $k$-th turn and Silvia's $k$-th turn can be written explicitly:
 
-More carefully: Bernardo wins if he produces the LAST number below 1000. So Silvia produces a number $\geq 1000$ (fails) or Bernardo produces $\geq 1000$ after Silvia's last valid move.
+- Bernardo's $k$-th output: $2^k N + 50(2^{k-1} + 2^{k-2} + \cdots + 1) \cdot 2 - 50 = 2^k N + 50(2^k - 2)$
 
-Let's trace the game backward. Working backwards: Bernardo wins at some step if he doubles to get a number $\geq 1000$, meaning his input is $\geq 500$. So if Bernardo receives $x \geq 500$, he doubles to $2x \geq 1000$ and wins (he "produces" $2x \geq 1000$... but the problem says "the last person who produces a number LESS than 1000").
+Working out the first few values gives a cleaner pattern. Bernardo wins when he produces the last number below 1000 and then Silvia's next output meets or exceeds 1000. Silvia's output after Bernardo's $k$-th turn is Bernardo's $k$-th output plus 50, so the condition is:
 
-Re-reading: the winner produces the last number that is still less than 1000. So Bernardo wins if he is the last to produce something below 1000 before someone produces $\geq 1000$.
+$$B_k < 1000 \le B_k + 50 \implies 950 \le B_k \le 999,$$
 
-If Bernardo receives $x$ and $2x \geq 1000$ (i.e., $x \geq 500$), then Bernardo cannot produce a number below 1000 at this step — but actually Silvia just passed him $x$, and Silvia produced $x$ (which is $< 1000$ for valid moves). So Silvia wins if she passes Bernardo $x$ and $2x \geq 1000$. Bernardo wins if Silvia passes him $x < 500$ (so $2x < 1000$) and then Silvia receives $2x + 50$ and $2x + 50 \geq 1000$ (i.e., $2x \geq 950$, $x \geq 475$). So Bernardo wins if $475 \leq x < 500$ when Bernardo receives from Silvia.
+where $B_k$ is Bernardo's $k$-th output. Tracking $B_k$ explicitly:
 
-Working backwards through the game:
+| $k$ | $B_k$ | Win condition on $N$ |
+|-----|--------|----------------------|
+| 1 | $2N$ | $475 \le N \le 499$ |
+| 2 | $4N+100$ | $213 \le N \le 224$ |
+| 3 | $8N+300$ | $82 \le N \le 87$ |
+| 4 | $16N+700$ | $16 \le N \le 18$ |
+| 5 | $32N+1500$ | impossible ($1500>999$) |
 
-Let $B_k$ = set of values Bernardo can receive from Silvia on round $k$ such that Bernardo wins.
+In each range, one must also verify that all earlier outputs stay below 1000, which holds automatically for those small values of $N$. The smallest winning $N$ is therefore $N = 16$.
 
-**Bernardo wins in round 1** (Bernardo doubles the initial $N$ once, then Silvia fails): Bernardo receives $N$, passes $2N$ to Silvia. Silvia adds 50: $2N + 50$. If $2N + 50 \geq 1000$ and $2N < 1000$: $475 \leq N \leq 499$.
-
-**Bernardo wins in round 2**: Bernardo receives $N$, passes $2N < 1000$ to Silvia. Silvia passes $2N+50 < 1000$ to Bernardo. Bernardo passes $2(2N+50) < 1000$ to Silvia. Silvia passes $2(2N+50)+50 = 4N+150 \geq 1000$ (i.e., $4N \geq 850$, $N \geq 212.5$, so $N \geq 213$). Also need $4N+100 < 1000$: $4N < 900$, $N \leq 224$. So Bernardo wins with $213 \leq N \leq 224$ (and $2N < 1000$, $2N+50 < 1000$ automatically hold for these values).
-
-**Bernardo wins in round 3**: After 3 full Bernardo turns. Working backward:
-After round 2 backward condition was $475 \leq \text{Bernardo's input} \leq 499$. That input came from Silvia adding 50: so Silvia received $x$ with $425 \leq x \leq 449$ (so $x+50$ is in range). That $x$ was doubled by Bernardo: so Bernardo received $y$ with $212.5 \leq y \leq 224.5$, i.e., $213 \leq y \leq 224$. That came from Silvia: Silvia received $z$ with $163 \leq z \leq 174$ (since $z+50 = y$). Bernardo doubled initial $N$: $2N \in [163, 174]$, so $N \in [81.5, 87]$, i.e., $N \in \{82, 83, ..., 87\}$.
-
-Wait, let me redo this more carefully with a backward-induction table. The game sequence for initial value $N$ is:
-
-$N \to 2N \to 2N+50 \to 4N+100 \to 4N+150 \to 8N+300 \to 8N+350 \to 16N+700 \to 16N+750 \to \ldots$
-
-Each Bernardo step doubles; each Silvia step adds 50.
-
-Bernardo wins if he produces the last number $< 1000$. The sequence of values after Bernardo's turns:
-- After Bernardo's 1st turn: $2N$
-- After Bernardo's 2nd turn: $4N + 100$
-- After Bernardo's 3rd turn: $8N + 300$
-- After Bernardo's 4th turn: $16N + 700$
-- After Bernardo's 5th turn: $32N + 1500$
-
-After Silvia's turns (values she passes to Bernardo):
-- After Silvia's 1st turn: $2N + 50$
-- After Silvia's 2nd turn: $4N + 150$
-- After Silvia's 3rd turn: $8N + 350$
-- After Silvia's 4th turn: $16N + 750$
-
-Bernardo wins if Silvia is the next to produce $\geq 1000$. That means Bernardo's last output $< 1000$ and then Silvia's output $\geq 1000$.
-
-After Bernardo's $k$-th turn (all previous values $< 1000$), Silvia produces $(\text{Bernardo's } k\text{th output}) + 50 \geq 1000$.
-
-Using the formulas above:
-- $k=1$: $2N < 1000$ and $2N+50 \geq 1000 \Rightarrow N \in [475, 499]$. Min = 475.
-- $k=2$: $4N+100 < 1000$ and $4N+150 \geq 1000 \Rightarrow N \in [212.5, 224.9...]$ → $N \in [213, 224]$. Also need $2N<1000$ (auto) and $2N+50<1000$ (auto for $N\leq 224$). Min = 213.
-- $k=3$: $8N+300 < 1000$ and $8N+350 \geq 1000 \Rightarrow N \in [81.25, 87.5]$ → $N \in [82, 87]$. All previous $<1000$ auto. Min = 82.
-- $k=4$: $16N+700 < 1000$ and $16N+750 \geq 1000 \Rightarrow N \in [15.625, 18.75]$ → $N \in [16, 18]$. Min = 16.
-- $k=5$: $32N+1500 < 1000$ impossible since $1500 > 1000$.
-
-So winning values include $[16,18]$, $[82,87]$, $[213,224]$, $[475,499]$.
-
-The smallest $N$ that results in a Bernardo win is $N = 16$.
-
-But wait — we also need all intermediate values to be $< 1000$ (otherwise the game would have ended earlier). For $k=4$ with $N=16$:
-- Bernardo's 1st output: $2(16)=32 < 1000$ ✓
-- Silvia's 1st output: $32+50=82 < 1000$ ✓  
-- Bernardo's 2nd output: $2(82)=164 < 1000$ ✓
-- Silvia's 2nd output: $164+50=214 < 1000$ ✓
-- Bernardo's 3rd output: $2(214)=428 < 1000$ ✓
-- Silvia's 3rd output: $428+50=478 < 1000$ ✓
-- Bernardo's 4th output: $2(478)=956 < 1000$ ✓
-- Silvia's 4th output: $956+50=1006 \geq 1000$ ✗ (Silvia fails)
-
-So Bernardo wins with $N=16$. 
-
-But wait: Is $N=0$ a winning value? Check: $2(0)=0$, $0+50=50$, $2(50)=100$, $100+50=150$, $\ldots$ continuing: $300, 350, 700, 750, 1500 \geq 1000$. The last number $<1000$ produced is $750$ by Silvia. So Silvia produces 750 (the last $<1000$) then Bernardo gets 750, doubles to 1500. Wait: 1500 $\geq$ 1000, so Bernardo fails. Silvia wins. So $N=0$ is not a Bernardo win.
-
-The smallest Bernardo win is $N = 16$.
-
-Sum of digits: $1 + 6 = 7$.
+Verification: $16 \to 32 \to 82 \to 164 \to 214 \to 428 \to 478 \to 956 \to 1006$. Bernardo produces 956 (the last value below 1000), then Silvia produces 1006, so Bernardo wins. The sum of digits of $16$ is $1+6=7$.
 
 Answer: **A**.
 </Solution>

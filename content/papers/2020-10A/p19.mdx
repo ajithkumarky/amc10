@@ -15,72 +15,18 @@ As shown in the figure below, a regular dodecahedron (the polyhedron consisting 
 </Problem>
 
 <Solution>
-Label the faces: $T$ = top face, $T_1, T_2, T_3, T_4, T_5$ = top ring (in order around the dodecahedron), $B_1, B_2, B_3, B_4, B_5$ = bottom ring, $B$ = bottom face. The adjacency rules are:
+Label the faces: $T$ (top), $T_1,\ldots,T_5$ (top ring, cyclically adjacent), $B_1,\ldots,B_5$ (bottom ring, cyclically adjacent), $B$ (bottom). The adjacency rules are: $T$ connects to every $T_i$; each $T_i$ connects to its two neighbors in the top ring and to two adjacent bottom-ring faces; each $B_j$ connects to two top-ring faces and to $B$; no move from the bottom ring back to the top ring is allowed.
 
-- $T$ is adjacent to all of $T_1, \ldots, T_5$.
-- Each $T_i$ is adjacent to $T$ and to two bottom-ring faces (specifically $B_i$ and $B_{i-1}$, indices mod 5).
-- Each $B_i$ is adjacent to two top-ring faces ($T_i$ and $T_{i+1}$) and to $B$.
-- Moves from the bottom ring back to the top ring are forbidden.
+Every valid path has the form $T \to T_{i_1} \to \cdots \to T_{i_s} \to B_{j_1} \to \cdots \to B_{j_t} \to B$ (with $s,t \ge 1$), where the $T$-portion is a simple directed path along the top 5-cycle and the $B$-portion is a simple directed path along the bottom 5-cycle.
 
-A valid path goes: $T \to$ (some subset of top-ring faces, in some order) $\to$ (some subset of bottom-ring faces, in some order) $\to B$.
+**Counting top-ring paths.** The first step from $T$ is any of 5 faces; from there the path continues along the 5-cycle. From a fixed starting face, the path can have length 1 (stop immediately) or extend in either direction for 1 to 4 more steps, giving $1 + 2 + 2 + 2 + 2 = 9$ directed simple paths per starting face. Total top-ring paths: $5 \times 9 = 45$.
 
-**Choosing which top-ring faces to visit.** We can visit between 1 and 5 faces in the top ring. We must enter the bottom ring through some top-ring face and go to $B$ from some bottom-ring face.
+**Transition.** Each top-ring path ends at some $T_{i_s}$, which is adjacent to exactly 2 bottom-ring faces. Each gives 2 entry choices.
 
-Let us think about it differently. The path is:
-$$T \to T_{i_1} \to T_{i_2} \to \cdots \to T_{i_s} \to B_{j_1} \to B_{j_2} \to \cdots \to B_{j_t} \to B$$
+**Counting bottom-ring paths.** By the same 5-cycle argument, from any entry face $B_j$ there are 9 directed simple paths in the bottom ring (all lengths 1 through 5, in either direction), each ending at a face adjacent to $B$ (since every $B_j$ is adjacent to $B$, the path can stop at any bottom-ring face).
 
-where $s \ge 1$, $t \ge 1$. The top-ring portion must be a path among consecutive $T$-faces (since each $T_i$ is adjacent to $T_{i-1}$ and $T_{i+1}$ in the ring, as well as $T$). The first step from $T$ can go to any $T_i$; subsequent steps in the top ring must move to an adjacent unvisited $T$-face.
-
-Actually, the key adjacency detail from the dodecahedron geometry: in the top ring, consecutive faces $T_i$ and $T_{i+1}$ share an edge, so the path among top-ring faces must form a contiguous arc. Similarly in the bottom ring.
-
-**Counting paths in the top ring:** Starting at any $T_i$, the path in the top ring is a sequence of distinct consecutive faces (a "walk" along the pentagon ring that doesn't backtrack). This is equivalent to choosing a contiguous arc in the 5-cycle.
-
-The number of paths in the top ring starting from $T$ that visit at least one $T$-face and then transition to the bottom ring is: for each choice of starting face $T_i$ (5 choices), the path in the top ring can extend in one direction or both for some length. Each such sequence is a contiguous arc.
-
-Let's count arc sequences: a path of length $s$ in the top ring is a sequence $T_{i}, T_{i+1}, \ldots$ or $T_{i}, T_{i-1}, \ldots$ (indices mod 5). For each starting point $T_i$ (first face after $T$), the subsequent top-ring moves form a directed path along the 5-cycle. The number of such directed paths of length $s-1$ (number of additional top-ring faces after the first) that are valid sequences on a 5-cycle is 2 for each length $1 \le s-1 \le 4$ (go left or right), except length 0 (no extension) gives 1 path and length 5 would close the cycle (not valid here).
-
-Actually, let me use the known structure more directly.
-
-**Key insight:** The path from $T$ to $B$ consists of:
-1. A contiguous arc of top-ring faces: choose 1 to 5 top-ring faces forming a contiguous arc (there are $5 \cdot 1 = 5$ arcs of length 1, $5 \cdot 1 = 5$ arcs of length 2 in each direction... actually for a 5-cycle there are exactly 5 arcs of each length 1 through 5; but length 5 uses all faces).
-
-The transition from the top ring to the bottom ring: the last top-ring face visited is adjacent to 2 bottom-ring faces. Choose one of them.
-
-Then in the bottom ring, the path is a directed arc along the bottom 5-cycle from the entered face to $B$. The bottom ring is also a 5-cycle. The path in the bottom ring must end at a face adjacent to $B$ (all bottom-ring faces are adjacent to $B$), so it can stop at any point.
-
-Let's count more carefully using the symmetry. The top and bottom ring structures are identical 5-cycles. 
-
-**Top-ring paths:** A path in the top ring starting from $T$ is a sequence $T_{i_1}, T_{i_2}, \ldots, T_{i_s}$ where each consecutive pair is adjacent in the top ring. The starting face $T_{i_1}$ can be any of 5, and from there each step goes to one of (at most) 2 adjacent unvisited faces. 
-
-- Length 1: 5 paths (just $T_i$)
-- Length 2: each $T_i$ has 2 neighbors, but both unvisited: $5 \times 2 = 10$ paths
-- Length 3: from a length-2 path $T_i, T_{i+1}$, the next can only go to $T_{i+2}$ (the other neighbor $T_{i-1}$ was the starting face's other neighbor, still unvisited but the path direction is fixed): actually both endpoints can extend. For a path $T_i \to T_{i+1}$, the next step is $T_{i+2}$ (since $T_i$ is visited). For a path $T_i \to T_{i-1}$, the next step is $T_{i-2}$. So $5 \times 2 = 10$ paths of length 3.
-- Length 4: similarly $5 \times 2 = 10$ paths.
-- Length 5: only $5 \times 2 = 10$ paths... wait, but length 5 uses all 5 top-ring faces. A Hamiltonian path on a 5-cycle: for each starting vertex, there are 2 Hamiltonian paths (go clockwise or counterclockwise). So $5 \times 2 = 10$.
-
-Wait, let me recount. For a 5-cycle with vertices $1,2,3,4,5$, starting from vertex 1:
-- Length 1: just vertex 1 (1 path)
-- Length 2: $1 \to 2$ or $1 \to 5$ (2 paths)
-- Length 3: $1 \to 2 \to 3$ or $1 \to 5 \to 4$ (2 paths)
-- Length 4: $1 \to 2 \to 3 \to 4$ or $1 \to 5 \to 4 \to 3$ (2 paths)
-- Length 5: $1 \to 2 \to 3 \to 4 \to 5$ or $1 \to 5 \to 4 \to 3 \to 2$ (2 paths)
-
-So from a fixed starting vertex $T_{i_1}$: $1 + 2 + 2 + 2 + 2 = 9$ top-ring paths.
-
-Total top-ring paths: $5 \times 9 = 45$? No — the starting vertex can be any of 5, and each has 9 options, giving 45. But the exit from the top ring depends on the last face visited.
-
-**Transition to bottom ring:** The last top-ring face $T_{i_s}$ is adjacent to $B_{i_s}$ and $B_{i_s - 1}$. The path enters one of these two bottom-ring faces. So each top-ring path gives 2 choices for the entry into the bottom ring.
-
-**Bottom-ring paths from the entry face to $B$:** Once at bottom-ring face $B_j$, the path in the bottom ring is a sequence of distinct consecutive faces ending anywhere (since all $B_j$ are adjacent to $B$), and then goes to $B$. This is the same structure as the top ring: from $B_j$, the number of paths in the bottom ring is 9 (by the same count as above: paths of length 1 through 5 starting at $B_j$).
-
-So the total count is:
-$$(\text{top-ring paths}) \times (\text{bottom-entry choices per path}) \times (\text{bottom-ring paths}).$$
-
-But wait — this overcounts because the entry point into the bottom ring affects which bottom-ring paths are available. Let me re-examine.
-
-For each top-ring path ending at $T_{i_s}$: choose entry point $B_j$ (2 choices). From $B_j$, count paths in the bottom ring: by the same logic as the top ring, there are 9 directed simple paths starting at $B_j$ in the bottom 5-cycle.
-
-Total = $45 \times 2 \times 9 = 810$.
+**Total:**
+$$45 \times 2 \times 9 = 810.$$
 
 Answer: **E**.
 </Solution>

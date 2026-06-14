@@ -14,28 +14,11 @@ The figure below shows $13$ circles of radius $1$ within a larger circle. All th
 </Problem>
 
 <Solution>
-**Step 1: Find the radius of the large circle.**
+The 13 unit circles are arranged with centers at $(0,0)$, six inner-ring centers at distance $2$ from the origin (two tangent unit circles have centers $2$ apart), and six outer-ring centers at distance $2\sqrt{3}$ from the origin. The large enclosing circle has its center at the origin and must reach the farthest unit-circle centers plus their radius $1$, giving:
+$$R = 2\sqrt{3} + 1.$$
 
-The 13 unit circles are packed in a hexagonal arrangement: 1 center circle, 6 inner-ring circles, and 6 outer-ring circles — but actually the Asymptote code shows 13 circles at specific positions. Looking at the code: there's a center at $(0,0)$, an inner ring at radius 2 (centers at $(\pm 2, 0)$, $(\pm 1, \pm\sqrt{3})$, giving 6 circles), and an outer ring at radius $2\sqrt{3}$ (centers at $(0, \pm 2\sqrt{3})$, $(\pm 3, \pm\sqrt{3})$, $(\pm 1, \pm\sqrt{3})$... let me recount).
-
-From the Asymptote code positions:
-- 1 circle at $(0,0)$
-- 4 circles at $(\pm 2, 0)$ and $(0, \pm 2\sqrt{3})$ (distance 2 and $2\sqrt{3}$ from origin)
-- 4 circles at $(\pm 1, \pm\sqrt{3})$ (distance 2 from origin)
-- 4 circles at $(\pm 3, \pm\sqrt{3})$ and $(\pm 1, \pm\sqrt{3})$
-
-Actually from the code: circles at $(-2,0),(0,0),(2,0),(1,\sqrt{3}),(3,\sqrt{3}),(-1,\sqrt{3}),(-3,\sqrt{3}),(1,-\sqrt{3}),(3,-\sqrt{3}),(-1,-\sqrt{3}),(-3,-\sqrt{3}),(0,2\sqrt{3}),(0,-2\sqrt{3})$. That's 13 circles.
-
-The largest circle has center $(0,0)$ and radius $2\sqrt{3}+1$ (to enclose all unit circles; the farthest centers are at distance $2\sqrt{3}$, so the large circle has radius $2\sqrt{3} + 1$).
-
-**Step 2: Area of the large circle.**
-$$R = 2\sqrt{3} + 1, \quad \text{Area} = \pi(2\sqrt{3}+1)^2 = \pi(12 + 4\sqrt{3} + 1) = \pi(13 + 4\sqrt{3}).$$
-
-**Step 3: Area of the 13 unit circles.**
-$$13 \times \pi(1)^2 = 13\pi.$$
-
-**Step 4: Shaded area.**
-$$\pi(13 + 4\sqrt{3}) - 13\pi = 4\pi\sqrt{3}.$$
+Area of the large circle minus area of the 13 unit circles:
+$$\pi R^2 - 13\pi = \pi(2\sqrt{3}+1)^2 - 13\pi = \pi(12 + 4\sqrt{3} + 1) - 13\pi = \pi(13 + 4\sqrt{3}) - 13\pi = 4\pi\sqrt{3}.$$
 
 Answer: **A**.
 </Solution>

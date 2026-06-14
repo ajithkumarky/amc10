@@ -13,113 +13,13 @@ Sara makes a staircase out of toothpicks. A $3$-step staircase uses $18$ toothpi
 </Problem>
 
 <Solution>
-Let's find the pattern. For an $n$-step staircase, the $k$-th step (from bottom) contributes a column of $k$ squares. Each square uses 4 sides, but shared sides are counted once between adjacent squares. 
+For an $n$-step staircase, column $k$ (for $k = 1, \ldots, n$) has $k$ squares stacked vertically. Count toothpicks by reading off the Asymptote drawing pattern: there are $\sum_{i=0}^{n-1}(n-i+1)$ horizontal toothpicks and the same number of vertical toothpicks by symmetry, giving
 
-A cleaner approach: count toothpicks directly for small cases.
+$$T(n) = 2\left(\frac{(n+1)(n+2)}{2} - 1\right) = (n+1)(n+2) - 2 = n^2 + 3n.$$
 
-- 1-step: 1 square = 4 toothpicks
-- 2-step: We add a column of 2 squares to the right of the 1-step. The new squares share a left wall with the existing staircase. Adding 2 squares stacked vertically in a new column requires $3$ horizontal and $3$ vertical toothpicks minus sharing... 
+Check: $T(3) = 9 + 9 = 18$ ✓. Setting $T(n) = 180$:
 
-Let's just find the formula from the given data. For $n = 3$, the total is $18$.
-
-For an $n$-step staircase, the $k$-th column (from left) has $k$ unit squares stacked vertically. The toothpicks needed:
-- Horizontal toothpicks: In column $k$, there are $k$ horizontal toothpicks on top of each square plus $1$ on the bottom (actually $k+1$ horizontal lines, each of width $1$). Total horizontal: $\sum_{k=1}^{n}(k+1) = \frac{n(n+1)}{2} + n$.
-- Vertical toothpicks: In column $k$, there are $k$ squares, needing $k+1$ vertical lines (left and right of each square); but the left side of column $k+1$ is shared with the right of column $k$. Only column $n$ has a free right edge. Total vertical: $(n+1)$ for the leftmost column side, then $n$ column interiors each height... 
-
-Let me use the known formula directly. The number of toothpicks in an $n$-step staircase is:
-$$T(n) = \frac{3n^2 + 5n}{2}.$$
-
-Check: $T(3) = \frac{27 + 15}{2} = \frac{42}{2} = 21$. That's not $18$.
-
-Let me recount by adding steps one at a time:
-- $T(1) = 4$ (one square: 4 toothpicks)
-- $T(2) = 4 + $ (new column of 2 squares): adding 2 squares on the right of the first, stacked. The left wall is shared: we add $2$ horizontal tops + $1$ horizontal bottom + $3$ verticals on the right... actually $= 4 + (2 \cdot 2 + 3) = 4 + 7$? Check a simpler way.
-
-For a staircase with $n$ steps, the total squares is $1 + 2 + \cdots + n = \frac{n(n+1)}{2}$.
-
-With $\frac{n(n+1)}{2}$ unit squares arranged in a staircase, the toothpick count follows by counting interior vs boundary edges. 
-
-Given $T(3) = 18$, let me find $T(1)$ and $T(2)$ to get the recurrence:
-- $T(1) = 4$
-- Adding step 2 (a column of 2 new squares on top of step 1): $T(2) = 4 + (3 \cdot 2 + 1) = 4 + 7 = 11$
-
-Wait, let me think again. When we go from an $n$-step to an $(n+1)$-step staircase, we add a new column of $n+1$ squares at the right. This new column shares one vertical wall with the previous rightmost column. The new squares contribute:
-- $(n+2)$ horizontal toothpicks (top of each new square plus one bottom)
-- $(n+1)$ new vertical toothpicks on the right (we don't re-add the shared left wall)
-- Total added: $(n+2) + (n+1) = 2n + 3$
-
-So $T(n) = T(n-1) + 2n + 1$... let's verify: $T(1) = 4$, $T(2) = 4 + 2(2)+1 = 4 + 5$? That gives $9$, not matching $T(3) = 18$.
-
-Let me directly compute: $T(3) = 18$ is given. The sequence satisfies $T(n) = T(n-1) + 2n + 1$ starting from some base. With $T(3) = 18$: $T(2) = 18 - 7 = 11$, $T(1) = 11 - 5 = 6$. But $T(1) = 6$ means a 1-step staircase uses $6$ toothpicks — a single square with $4$? No: let me look at the 3-step picture differently.
-
-Actually for the picture given, the 3-step staircase has steps going up: column 1 has height 1, column 2 has height 2, column 3 has height 3. The recurrence going from step $k-1$ to step $k$: we add a column of $k$ squares. The left wall of the new column is new (the staircase is growing upward/rightward so there's no shared wall from previous column — wait, but the new column is placed to the right, sharing a wall with the column of height $k-1$).
-
-The new column of $k$ squares (sharing its left wall with the right wall of the previous column of height $k-1$):
-- $k+1$ horizontal toothpicks for the new column (the $k-1$ shared horizontal toothpicks on the left part are already there, but actually vertical is shared)
-- Actually the shared side is vertical: $k-1$ vertical segments are shared with the previous column.
-- New column adds: $(k+1)$ horizontal + $(k+1)$ right-side verticals + $1$ left-side vertical above the previous column height = $(k+1) + k + 1 + 1$? 
-
-This is getting complicated. Let me just use the formula that fits the data.
-
-$T(n) = an^2 + bn + c$. From:
-- $T(3) = 18$
-- $T(2) = ?$, $T(1) = ?$
-
-Actually: try $T(n) = \frac{3n(n+1)}{2} + n$... no. Let's use $T(n) = \frac{n(3n+7)}{2}$:
-- $T(3) = \frac{3 \cdot 16}{2} = 24$. Nope.
-
-Try $T(n) = 3\frac{n(n+1)}{2} = \frac{3n^2+3n}{2}$:
-- $T(3) = \frac{27+9}{2} = 18$. ✓
-
-So $T(n) = \frac{3n(n+1)}{2}$. Let's verify $T(1) = 3$, $T(2) = 9$, $T(3) = 18$ — these make sense given the staircase picture.
-
-We need $T(n) = 180$:
-$$\frac{3n(n+1)}{2} = 180 \implies n(n+1) = 120 \implies n^2 + n - 120 = 0.$$
-
-Discriminant: $1 + 480 = 481$. Hmm, $\sqrt{481}$ is not an integer ($21^2=441$, $22^2=484$). Let me recheck.
-
-If $T(n) = \frac{3n(n+1)}{2}$ and $T(1) = 3$: but a 1-step staircase should be a single row of 1 square. Looking at the Asymptote code: the 3-step staircase has toothpicks represented as ellipses (horizontal and vertical), and the picture shows a staircase where step $j$ (from bottom) has $j$ columns of toothpicks. Actually the code draws $h$ (horizontal) and $v$ (vertical) for $i = 0,1,2$ and $j = 0,\ldots,3-i$. So it's filling in an actual staircase shape with $1 + 2 + 3 = 6$ squares.
-
-Let me count toothpicks for the staircase with $6$ unit squares arranged as a staircase (3 steps):
-
-Columns (left to right): height 3, height 2, height 1 (or equivalently rows from bottom: width 3, width 2, width 1).
-
-Horizontal toothpicks:
-- Row 1 (bottom): 3 horizontal segments across width 3
-- Row 2: 2 horizontal segments (top of row 1, spanning width 2)
-- Row 3: 1 horizontal segment (top of row 2)
-- Row 4: 1 horizontal segment (top of row 3, only leftmost column)
-
-Wait, I need to be more careful. Let me label columns $1,2,3$ from left, where column $i$ has height $4-i$ (so column 1 has 3 squares, column 2 has 2, column 3 has 1).
-
-Horizontal toothpicks in column $i$: $4-i+1 = 5-i$ horizontal lines, each of length 1. But adjacent columns share horizontal lines only at the same height... actually horizontal toothpicks span continuously.
-
-Let me just count directly for 3 steps (staircase where row $k$ from top has $k$ squares, i.e., like a lower-left triangle):
-
-Horizontal toothpicks:
-- Level 0 (bottom of all): $3$ (spanning all 3 columns)
-- Level 1: $3$ (top of row 1 = bottom of row 2, but the staircase only has rows to the left)
-
-Actually this depends on orientation. Let me just try a different formula: a staircase of $n$ steps with the right-angle at the bottom-left has:
-
-Horizontal: $\sum_{k=1}^{n}(k+1) = \frac{(n+1)(n+2)}{2} - 1$... 
-
-I'll use a cleaner approach. Looking at the Asymptote code: `for i=0 to 2, for j=0 to 3-i`, drawing `shift((i,j))*h` (a horizontal toothpick at position $(i,j)$) and `shift((j,i))*v` (a vertical toothpick at $(j,i)$). 
-
-For $n=3$: horizontal toothpicks at $(i,j)$ for $i \in \{0,1,2\}$, $j \in \{0, \ldots, 3-i\}$: that's $4+3+2 = 9$ horizontal toothpicks. Vertical toothpicks at $(j,i)$ for same range: also $9$. Total: $18$ ✓.
-
-For general $n$: horizontal toothpicks are at positions $(i,j)$ for $i = 0,\ldots,n-1$ and $j = 0,\ldots,n-i$. Count $= \sum_{i=0}^{n-1}(n-i+1) = \sum_{k=2}^{n+1}k = \frac{(n+1)(n+2)}{2} - 1$.
-
-By symmetry the same for vertical. Total $= 2\left(\frac{(n+1)(n+2)}{2} - 1\right) = (n+1)(n+2) - 2 = n^2 + 3n$.
-
-Check: $T(3) = 9 + 9 - 2 = 16$? No: $n^2 + 3n = 9 + 9 = 18$ ✓ (I forgot I already subtracted the $-2$... let me redo: $(n+1)(n+2) - 2 = 4 \cdot 5 - 2 = 18$ ✓ for $n=3$.)
-
-So $T(n) = n^2 + 3n$. Set $T(n) = 180$:
-$$n^2 + 3n = 180 \implies n^2 + 3n - 180 = 0.$$
-
-Using the quadratic formula: $n = \frac{-3 + \sqrt{9 + 720}}{2} = \frac{-3 + \sqrt{729}}{2} = \frac{-3 + 27}{2} = \frac{24}{2} = 12$.
-
-The staircase has $\boxed{12}$ steps.
+$$n^2 + 3n - 180 = 0 \implies n = \frac{-3 + \sqrt{9 + 720}}{2} = \frac{-3 + \sqrt{729}}{2} = \frac{-3 + 27}{2} = 12.$$
 
 Answer: **C**.
 </Solution>

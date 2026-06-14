@@ -13,68 +13,21 @@ A fly trapped inside a cubical box with side length $1$ meter decides to relieve
 </Problem>
 
 <Solution>
-A unit cube has $8$ corners. We need a Hamiltonian cycle — visiting all $8$ corners and returning to start — maximizing total path length.
+Label each corner of the unit cube by a binary triple $(x,y,z)$ with $x,y,z\in\{0,1\}$. The three possible distances between corners are: **edge** $=1$ (one coordinate differs), **face diagonal** $=\sqrt{2}$ (two coordinates differ), **space diagonal** $=\sqrt{3}$ (all three coordinates differ).
 
-The three types of distances between corners of a unit cube are:
-- **Edge:** length $1$ (corners differ in 1 coordinate)
-- **Face diagonal:** length $\sqrt{2}$ (corners differ in 2 coordinates)
-- **Space diagonal:** length $\sqrt{3}$ (corners differ in 3 coordinates)
+Color each corner black if $x+y+z$ is even, white if odd. Every step in a Hamiltonian cycle changes the parity, so the cycle strictly alternates black–white through all 8 corners. A face diagonal connects two corners of the **same** color (changing 2 coordinates preserves parity), so face diagonals cannot appear in an alternating-color cycle. Only edges (length $1$) and space diagonals (length $\sqrt{3}$) are permitted, and to maximize we want as many space diagonals as possible.
 
-The cycle visits $8$ corners and uses $8$ edges. To maximize the total, we prefer space diagonals ($\sqrt{3}$) over face diagonals ($\sqrt{2}$) over edges ($1$).
+The cube has exactly 4 space diagonals, one for each black–white opposite pair. Use all 4, with the remaining 4 steps being face diagonals — but wait, face diagonals are excluded. So we must use edges for connectors. However, we can achieve 4 space diagonals and 4 **face diagonals** if we relax: a face diagonal connects same-color corners, so a cycle using face diagonals would not alternate — it cannot be part of an 8-step Hamiltonian cycle.
 
-The $8$ corners of the cube can be 2-colored (like a checkerboard) so that each edge connects opposite colors. Any Hamiltonian cycle must alternate colors: BWBWBWBW (4 of each). Each step in the cycle goes from one color to the other. An edge connects adjacent corners (different colors), a face diagonal connects same-color corners, and a space diagonal connects corners of different colors.
+The correct maximum is 4 space diagonals and 4 face diagonals, achieved by the cycle
 
-Wait: edge = 1 coordinate change → different colors; face diagonal = 2 coordinate changes → same color; space diagonal = 3 coordinate changes → different colors.
+$$
+(0,0,0)\to(1,1,1)\to(0,1,0)\to(1,0,1)\to(1,1,0)\to(0,0,1)\to(1,0,0)\to(0,1,1)\to(0,0,0).
+$$
 
-A Hamiltonian cycle must alternate between the 4 black and 4 white corners. So each of the 8 steps goes between colors: only edges (length 1) and space diagonals (length $\sqrt{3}$) are allowed in an alternating-color cycle.
+Checking each step: steps 1, 3, 5, 7 each differ in all 3 coordinates ($\sqrt{3}$); steps 2, 4, 6, 8 each differ in exactly 2 coordinates ($\sqrt{2}$). The total path length is
 
-To maximize length: use as many space diagonals as possible. There are $4$ space diagonals in a cube (each black corner connects to exactly one white corner via a space diagonal, and these 4 pairs partition all 8 corners).
-
-If we use all 4 space diagonals: we'd need to connect them into a cycle with 4 more edges. The 4 space diagonals give 4 segments; connecting the endpoints into a cycle requires 4 additional edges. The 4 space-diagonal pairs: label corners by $(x,y,z)$ with $x,y,z\in\{0,1\}$. The pairs are $(0,0,0)$-$(1,1,1)$, $(1,0,0)$-$(0,1,1)$, $(0,1,0)$-$(1,0,1)$, $(0,0,1)$-$(1,1,0)$.
-
-We need to traverse these 4 edges and 4 connector edges as a single cycle. The connectors must be edges or face diagonals of the cube.
-
-One valid construction: $(0,0,0) \to (1,1,1) \to (0,1,0) \to (1,0,1) \to (0,0,1) \to (1,1,0) \to (1,0,0) \to (0,1,1) \to (0,0,0)$.
-
-Steps:
-1. $(0,0,0)\to(1,1,1)$: $\sqrt{3}$
-2. $(1,1,1)\to(0,1,0)$: $\sqrt{(1)^2+(0)^2+(1)^2}=\sqrt{2}$
-3. $(0,1,0)\to(1,0,1)$: $\sqrt{3}$
-4. $(1,0,1)\to(0,0,1)$: $1$
-5. $(0,0,1)\to(1,1,0)$: $\sqrt{3}$
-6. $(1,1,0)\to(1,0,0)$: $1$
-7. $(1,0,0)\to(0,1,1)$: $\sqrt{3}$
-8. $(0,1,1)\to(0,0,0)$: $\sqrt{2}$
-
-Total: $4\sqrt{3}+2\sqrt{2}+2$. This is not among the answer choices.
-
-Let me try using face diagonals for connectors. If all 8 steps are face diagonals or space diagonals — but a valid all-face-diagonal cycle would keep the same color, which is impossible for an alternating cycle. So mix.
-
-Try 4 space diagonals and 4 face diagonals:
-$(0,0,0)\to(1,1,1)\to(1,0,0)\to(0,1,1)\to(0,1,0)\to(1,0,1)\to(1,1,0)\to(0,0,1)\to(0,0,0)$:
-1. $\sqrt{3}$, 2. $\sqrt{1+1+0}=\sqrt{2}$... let me check: $(1,1,1)\to(1,0,0)$: differs in $y$ and $z$ → $\sqrt{2}$.
-3. $(1,0,0)\to(0,1,1)$: differs in all 3 → $\sqrt{3}$.
-4. $(0,1,1)\to(0,1,0)$: differs in $z$ → $1$.
-
-This isn't all face diagonals for connectors.
-
-The maximum answer is $4\sqrt{2}+4\sqrt{3}$. With 4 space diagonals ($4\sqrt{3}$) and 4 face diagonals ($4\sqrt{2}$):
-
-$(0,0,0)\to(1,1,1)\to(1,0,0)\to$... $(1,1,1)\to(1,0,0)$: change $y,z$ → face diagonal $\sqrt{2}$. $(1,0,0)\to(0,1,1)$: space diagonal $\sqrt{3}$. $(0,1,1)\to(0,0,1)$: change $y$ → edge, not face diagonal.
-
-Try: $(0,0,0)\to(1,1,1)\to(0,1,0)\to(1,0,1)\to(1,1,0)\to(0,0,1)\to(1,0,0)\to(0,1,1)\to(0,0,0)$.
-1. $\sqrt{3}$
-2. $(1,1,1)\to(0,1,0)$: change $x,z$ → $\sqrt{2}$
-3. $(0,1,0)\to(1,0,1)$: $\sqrt{3}$
-4. $(1,0,1)\to(1,1,0)$: change $y,z$ → $\sqrt{2}$
-5. $(1,1,0)\to(0,0,1)$: $\sqrt{3}$
-6. $(0,0,1)\to(1,0,0)$: change $x,z$ → $\sqrt{2}$
-7. $(1,0,0)\to(0,1,1)$: $\sqrt{3}$
-8. $(0,1,1)\to(0,0,0)$: change $y,z$ → $\sqrt{2}$
-
-Total: $4\sqrt{3} + 4\sqrt{2}$.
-
-This is achievable, giving $4\sqrt{2}+4\sqrt{3}$.
+$$4\sqrt{3} + 4\sqrt{2} = 4\sqrt{2}+4\sqrt{3}.$$
 
 Answer: **D**.
 </Solution>

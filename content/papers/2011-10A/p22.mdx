@@ -13,39 +13,13 @@ Each vertex of convex pentagon $ABCDE$ is to be assigned a color. There are $6$ 
 </Problem>
 
 <Solution>
-In a convex pentagon $ABCDE$, the diagonals connect every pair of non-adjacent vertices. The adjacencies (edges) are $AB, BC, CD, DE, EA$. The diagonals connect $AC, BD, CE, DA, EB$.
+Label the five vertices $A,B,C,D,E$. The constraint applies only to diagonal endpoints (not to adjacent vertices connected by sides). The five diagonals of the pentagon are $AC, CE, EB, BD, DA$, which form a 5-cycle $A$–$C$–$E$–$B$–$D$–$A$. The number of proper colorings of a cycle $C_5$ with $k$ colors is given by the chromatic polynomial:
 
-So the constraint "ends of each diagonal have different colors" means non-adjacent vertices must have different colors. Since adjacent vertices are NOT constrained by the diagonal rule, we only need non-adjacent pairs to differ.
+$$P(C_5,k) = (k-1)^5 + (-1)^5(k-1) = (k-1)\bigl[(k-1)^4 - 1\bigr].$$
 
-Combined with the diagonal constraint: in a pentagon, every pair of vertices is connected by either an edge or a diagonal. The graph where we need different colors is therefore the complete graph $K_5$ (both adjacent and non-adjacent vertices must differ)... 
+With $k=6$:
 
-Wait — the problem says only diagonal endpoints must differ, not edge endpoints. So the constraint graph consists of only the $5$ diagonals.
-
-The diagonal graph of a pentagon: vertex $A$ is connected to $C$ and $D$; vertex $B$ to $D$ and $E$; $C$ to $E$ and $A$; $D$ to $A$ and $B$; $E$ to $B$ and $C$. This is the Petersen-like graph — actually this is the pentagon's diagonal graph, which is the Petersen graph's inner pentagram, i.e., also a $5$-cycle ($A$–$C$–$E$–$B$–$D$–$A$).
-
-So we need a proper coloring of a $5$-cycle with $6$ colors where endpoints of each of the $5$ diagonal edges differ.
-
-The chromatic polynomial of $C_5$ (5-cycle) with $k$ colors is:
-$$P(C_5, k) = (k-1)^5 + (k-1).$$
-
-With $k = 6$:
-$$P(C_5, 6) = 5^5 + 5 = 3125 + 5 = 3130.$$
-
-Hmm, that's not among the choices. Let me reconsider the structure.
-
-The diagonal graph: $A$ connects to $C$ and $D$. Is it a $5$-cycle? $A$–$C$–$E$–$B$–$D$–$A$: check edges: $AC$ ✓, $CE$ ✓, $EB$ ✓, $BD$ ✓, $DA$ ✓. Yes, the $5$ diagonals form a $5$-cycle.
-
-But we also still need to count the vertex colorings of the pentagon subject to the diagonal constraints. No constraint on adjacent vertices.
-
-The number of ways to color the $5$ vertices with $6$ colors such that each of the $5$ diagonal pairs gets different colors = chromatic polynomial of $C_5$ at $k=6 = 3130$. Still not matching.
-
-Let me reconsider: perhaps both edges AND diagonals are constrained. Rereading: "the ends of each diagonal must have different colors." Only diagonals. But perhaps the answer $3120$ corresponds to our formula with a slight variant.
-
-Actually, let me recount: $5^5 + 5 = 3125 + 5 = 3130$. The answer $3120 = 3130 - 10$? Let me recheck the chromatic polynomial: $P(C_n, k) = (k-1)^n + (-1)^n(k-1)$.
-
-For $n=5$: $P = (k-1)^5 + (-1)^5(k-1) = (k-1)^5 - (k-1) = (k-1)[(k-1)^4 - 1]$.
-
-With $k=6$: $5 \cdot (625 - 1) = 5 \cdot 624 = 3120$.
+$$P(C_5,6) = 5\cdot(5^4-1) = 5\cdot 624 = 3120.$$
 
 Answer: **C**.
 </Solution>

@@ -13,42 +13,22 @@ A cube is constructed from $4$ white unit cubes and $4$ blue unit cubes. How man
 </Problem>
 
 <Solution>
-We use Burnside's lemma. The rotation group of the cube acting on the 8 positions of a $2 \times 2 \times 2$ cube has $|G| = 24$ elements. We count the number of colorings (4 white, 4 blue) fixed by each rotation.
+We apply Burnside's lemma with the rotation group of the cube ($|G|=24$) acting on the 8 corner positions. We count, for each rotation, the number of colorings (4 white, 4 blue) left fixed by that rotation, then divide by 24.
 
-The total number of ways to color 8 positions with 4 white and 4 blue (without symmetry) is $\binom{8}{4} = 70$.
+The 24 rotations fall into 5 conjugacy classes:
 
-By Burnside's lemma, the number of distinct colorings is:
-$$\frac{1}{|G|}\sum_{g \in G} |X^g|,$$
-where $X^g$ is the set of colorings fixed by rotation $g$.
+**Identity (1 rotation).** All $\binom{8}{4}=70$ colorings are fixed. Contribution: $70$.
 
-The 24 rotations of the cube are:
-- **1 identity** (fixes all 70 colorings): contribution $70$.
-- **6 face rotations by $90°$ and $270°$** (around axes through opposite face centers): A $90°$ rotation cycles 4 positions in the top layer and 4 in the bottom layer as two 4-cycles. For a coloring to be fixed, all 4 positions in each cycle must have the same color. But each cycle has 4 positions all the same color, so we need 0 or 4 from each cycle. With 4W+4B: either top cycle all W and bottom all B, or top all B and bottom all W: 2 fixed colorings each. Contribution: $6 \times 2 = 12$.
-- **3 face rotations by $180°$** (around axes through opposite face centers): A $180°$ rotation swaps pairs. The 8 positions form 4 orbits of size 2. For a coloring to be fixed, each pair must be same color. We need to assign W/B to 4 pairs with exactly 2 pairs W and 2 pairs B: $\binom{4}{2} = 6$. Contribution: $3 \times 6 = 18$.
-- **8 vertex rotations by $120°$ and $240°$** (around main diagonals): Each rotation cycles 3 positions and fixes 1? Actually in a $2 \times 2 \times 2$ cube, a $120°$ rotation around a main diagonal permutes the 8 small cubes as two 4-cycles? No.
+**Face rotations by $90°$/$270°$ (6 rotations).** Each cycles the 4 top positions and 4 bottom positions in two separate 4-cycles. A fixed coloring requires each 4-cycle to be monochromatic; the only 4W+4B assignments have one cycle all-white and the other all-blue: 2 colorings fixed each. Contribution: $6\times 2=12$.
 
-Let me reconsider. A $120°$ rotation around the main diagonal of a cube (from one vertex to the opposite vertex) acts on the 8 vertices. The two fixed vertices stay (but they are vertices of the $2\times 2\times 2$ large cube). The remaining 6 vertices split into two 3-cycles.
+**Face rotations by $180°$ (3 rotations).** Each pairs the 8 positions into 4 transpositions. A fixed coloring assigns the same color to each paired positions; choosing which 2 of the 4 pairs are white gives $\binom{4}{2}=6$ fixed colorings each. Contribution: $3\times 6=18$.
 
-For the $2 \times 2 \times 2$ cube, the 8 unit cubes are at the 8 corners. A vertex rotation by $120°$ around the diagonal from corner $(0,0,0)$ to $(1,1,1)$ (top-right-back to bottom-left-front, say) cycles three adjacent corners of $(0,0,0)$: $(1,0,0) \to (0,1,0) \to (0,0,1) \to (1,0,0)$, and three adjacent corners of $(1,1,1)$: $(0,1,1) \to (1,0,1) \to (1,1,0) \to (0,1,1)$. The corners $(0,0,0)$ and $(1,1,1)$ are fixed.
+**Vertex rotations by $120°$/$240°$ (8 rotations).** A $120°$ rotation around a main diagonal fixes the 2 corner positions on that diagonal and cycles the remaining 6 positions as two 3-cycles. For a fixed coloring each 3-cycle must be monochromatic; with 4W+4B, the two fixed positions and two 3-cycles (of size 1,1,3,3) must total 4 white. The only distributions are: (fixed$_1$=W, fixed$_2$=B, 3-cycle A=W, 3-cycle B=B) and (W$\leftrightarrow$B), giving $2\times 2=4$ colorings fixed each. Contribution: $8\times 4=32$.
 
-So: 2 fixed positions and two 3-cycles. For a coloring to be fixed: each 3-cycle must be monochromatic. With 2 fixed + 2 groups of 3: possible colorings: assign colors to the 2 fixed and 2 3-cycles with 4W+4B.
+**Edge rotations by $180°$ (6 rotations).** Each pairs the 8 positions into 4 transpositions. Same as face $180°$: $\binom{4}{2}=6$ fixed colorings each. Contribution: $6\times 6=36$.
 
-Assign W/B to: position 1 (fixed), position 2 (fixed), group A (3 cubes), group B (3 cubes).
-
-Total: $1 + 1 + 3 + 3 = 8$ "effective units". We need exactly 4W from combinations: $1w + 1w + 3w + 0w = $ impossible (that's 5 if both singles white and group A white), etc.
-
-Enumerate: $(c_1, c_2, c_A, c_B)$ where each is W or B, and total whites = 4:
-- $c_A = W, c_B = B$: 3W from group A, 0W from group B. Need $1$ more W from $c_1, c_2$: both W and B (1W each), so $(W,B,W,B)$ and $(B,W,W,B)$: 2 colorings.
-- $c_A = B, c_B = W$: 0W from group A, 3W from group B. Need 1W from fixed: same, 2 colorings.
-- $c_A = W, c_B = W$: 6W total from groups — too many.
-- $c_A = B, c_B = B$: 0W from groups. Need 4W from 2 fixed positions — impossible ($\max = 2$).
-
-So 4 colorings fixed per vertex rotation. 8 vertex rotations: contribution $8 \times 4 = 32$.
-
-- **6 edge rotations by $180°$** (around axes through midpoints of opposite edges): Each such rotation acts on the 8 corners as four 2-cycles (swapping pairs). For a coloring to be fixed, each pair must be same color. We need exactly 2 pairs white and 2 pairs blue: $\binom{4}{2} = 6$. Contribution: $6 \times 6 = 36$.
-
-**Total by Burnside:**
-$$\frac{70 + 12 + 18 + 32 + 36}{24} = \frac{168}{24} = 7.$$
+**Burnside count:**
+$$\frac{70+12+18+32+36}{24}=\frac{168}{24}=7.$$
 
 Answer: **A**.
 </Solution>

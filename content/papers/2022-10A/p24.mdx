@@ -13,364 +13,74 @@ How many strings of length $5$ formed from the digits $0, 1, 2, 3, 4$ are there 
 </Problem>
 
 <Solution>
-Let $c_j$ = number of digits in the string that are less than $j$, for $j = 1, 2, 3, 4$. Note:
-- Digits $< 1$: only $0$. So $c_1 = $ (number of $0$s).
-- Digits $< 2$: $0$ or $1$. So $c_2 = $ (number of $0$s and $1$s).
-- Digits $< 3$: $0, 1,$ or $2$. So $c_3 = $ (number of $0$s, $1$s, $2$s).
-- Digits $< 4$: $0, 1, 2,$ or $3$. So $c_4 = $ (number of non-$4$ digits).
-
-The condition is $c_j \geq j$ for $j = 1, 2, 3, 4$.
-
-Let $n_k$ = number of times digit $k$ appears ($k = 0,1,2,3,4$), so $n_0+n_1+n_2+n_3+n_4 = 5$.
-
-The conditions become:
-- $c_1 = n_0 \geq 1$,
-- $c_2 = n_0 + n_1 \geq 2$,
-- $c_3 = n_0 + n_1 + n_2 \geq 3$,
-- $c_4 = n_0 + n_1 + n_2 + n_3 \geq 4$, equivalently $n_4 \leq 1$.
-
-**Reformulate.** Let $a_k = n_k$ for $k = 0,1,2,3,4$, all non-negative integers summing to $5$. The constraints:
-1. $a_0 \geq 1$,
-2. $a_0 + a_1 \geq 2$,
-3. $a_0 + a_1 + a_2 \geq 3$,
-4. $a_4 \leq 1$.
-
-The number of strings with a given $(a_0, a_1, a_2, a_3, a_4)$ is $\dfrac{5!}{a_0! a_1! a_2! a_3! a_4!}$.
-
-**Complementary counting via inclusion-exclusion is complex; instead, iterate over $a_4$.** Since $a_4 \in \{0, 1\}$:
-
-**Case $a_4 = 0$:** $(a_0,a_1,a_2,a_3)$ are non-negative integers summing to $5$, with $a_0 \geq 1$, $a_0+a_1 \geq 2$, $a_0+a_1+a_2 \geq 3$.
-
-**Case $a_4 = 1$:** $(a_0,a_1,a_2,a_3)$ sum to $4$, same constraints.
-
-For each case, let $s = 5$ or $4$ (the sum). We need:
-- $a_0 \geq 1$,
-- $a_0 + a_1 \geq 2 \Rightarrow$ if $a_0 = 1$, then $a_1 \geq 1$; if $a_0 \geq 2$, no constraint on $a_1$,
-- $a_0 + a_1 + a_2 \geq 3$.
-
-This is still complex, so let's iterate over $a_0$ directly.
-
-**Case $a_4 = 0$, iterate over $a_0 \geq 1$:**
-
-For $a_0 = k$ ($k \geq 1$): remaining $5-k$ split among $(a_1, a_2, a_3)$ with $a_1+a_2+a_3 = 5-k$, $a_1 \geq \max(0, 2-k)$, $a_1+a_2 \geq \max(0, 3-k)$.
-
-Let me enumerate small cases. I'll count the valid $(a_0,a_1,a_2,a_3)$ tuples and their multinomials.
-
-Actually, it's cleaner to enumerate all valid compositions and compute multinomials. Let me think of it differently.
-
-A valid string has: $n_0 \geq 1$, $n_0+n_1 \geq 2$, $n_0+n_1+n_2 \geq 3$, $n_4 \leq 1$.
-
-Equivalently, define $b_1 = n_0 \geq 1$, $b_2 = n_0+n_1 \geq 2$, $b_3 = n_0+n_1+n_2 \geq 3$, $b_4 = n_0+n_1+n_2+n_3 \geq 4$. The "partial sums" $b_j \geq j$ is the condition.
-
-This means: if we write the 5 digits in non-decreasing order as $d_1 \leq d_2 \leq d_3 \leq d_4 \leq d_5$, the conditions say $d_j < j$ for $j = 1,2,3,4$ (because $d_j < j$ iff at least $j$ of the digits are $< j$). Wait: $d_j < j$ means the $j$-th smallest digit is $< j$, which is equivalent to at least $j$ digits being $< j$.
-
-So the condition is: $d_j < j$ for all $j = 1,2,3,4$ (where $d_1 \leq d_2 \leq \ldots \leq d_5$ is the sorted string, and digits are from $\{0,1,2,3,4\}$). For $j=1$: $d_1 < 1$, so $d_1 = 0$. For $j=2$: $d_2 < 2$, so $d_2 \in \{0,1\}$. For $j=3$: $d_3 < 3$, so $d_3 \in \{0,1,2\}$. For $j=4$: $d_4 < 4$, so $d_4 \in \{0,1,2,3\}$.
-
-No constraint on $d_5$: $d_5 \in \{0,1,2,3,4\}$.
-
-**Count sorted strings $(d_1 \leq d_2 \leq d_3 \leq d_4 \leq d_5)$ with:**
-$$d_1 = 0, \quad d_2 \in \{0,1\}, \quad d_3 \in \{0,1,2\}, \quad d_4 \in \{0,1,2,3\}, \quad d_5 \in \{0,1,2,3,4\},$$
-$$d_1 \leq d_2 \leq d_3 \leq d_4 \leq d_5.$$
-
-So $0 = d_1 \leq d_2 \leq d_3 \leq d_4 \leq d_5$, with $d_2 \leq 1$, $d_3 \leq 2$, $d_4 \leq 3$, $d_5 \leq 4$.
-
-Each such sorted string corresponds to $\dfrac{5!}{n_0! n_1! n_2! n_3! n_4!}$ actual strings.
-
-Let me enumerate by $(d_2, d_3, d_4, d_5)$ (since $d_1=0$):
-
-Actually let me enumerate $d_2$:
-
-**$d_2 = 0$** ($d_1=d_2=0$, $d_3 \in \{0,1,2\}$):
-  - $d_3 = 0$: $d_4 \in \{0,1,2,3\}$, $d_5 \geq d_4$, $d_5 \leq 4$.
-    - $(0,0,0,0,0)$: $1$ string, multinomial $\frac{5!}{5!}=1$.
-    - $(0,0,0,0,k)$ for $k=1,2,3,4$: $4$ sorted tuples, each $\frac{5!}{4!1!}=5$. Total $20$.
-    - Wait, I should just count them. $d_4 = 0$: $d_5 \in \{0,1,2,3,4\}$: 5 sorted tuples $\{(0,0,0,0,0), (0,0,0,0,1),(0,0,0,0,2),(0,0,0,0,3),(0,0,0,0,4)\}$.
-    - $d_4 = 1$: $d_5 \in \{1,2,3,4\}$: 4 sorted tuples.
-    - $d_4 = 2$: $d_5 \in \{2,3,4\}$: 3 tuples.
-    - $d_4 = 3$: $d_5 \in \{3,4\}$: 2 tuples.
-    - Subtotal $d_3=0$: $5+4+3+2 = 14$ sorted tuples.
-  - $d_3 = 1$: $d_4 \in \{1,2,3\}$:
-    - $d_4=1$: $d_5 \in \{1,2,3,4\}$: 4.
-    - $d_4=2$: $d_5 \in \{2,3,4\}$: 3.
-    - $d_4=3$: $d_5 \in \{3,4\}$: 2.
-    - Subtotal: $4+3+2=9$.
-  - $d_3 = 2$: $d_4 \in \{2,3\}$:
-    - $d_4=2$: $d_5 \in \{2,3,4\}$: 3.
-    - $d_4=3$: $d_5 \in \{3,4\}$: 2.
-    - Subtotal: $5$.
-
-**$d_2 = 1$** ($d_1=0, d_2=1$, $d_3 \in \{1,2\}$):
-  - $d_3=1$: $d_4 \in \{1,2,3\}$:
-    - $d_4=1$: $d_5 \in \{1,2,3,4\}$: 4.
-    - $d_4=2$: $d_5 \in \{2,3,4\}$: 3.
-    - $d_4=3$: $d_5 \in \{3,4\}$: 2.
-    - Subtotal: $9$.
-  - $d_3=2$: $d_4 \in \{2,3\}$:
-    - $d_4=2$: $d_5 \in \{2,3,4\}$: 3.
-    - $d_4=3$: $d_5 \in \{3,4\}$: 2.
-    - Subtotal: $5$.
-
-Grand total of sorted tuples: $(14+9+5) + (9+5) = 28 + 14 = 42$.
-
-**Convert sorted tuples to actual strings.** Each sorted tuple $(n_0$ zeros, $n_1$ ones, ..., $n_4$ fours) gives $\dfrac{5!}{n_0! n_1! n_2! n_3! n_4!}$ strings. This is tedious but necessary. Let me compute by enumerating the multinomials.
-
-Actually there's a slicker method. The number of strings (ordered) satisfying the condition equals the number of words of length 5 over $\{0,1,2,3,4\}$ where $d_j < j$ for $j=1,2,3,4$ in the sorted order — this is equivalent to counting lattice paths or using the ballot problem.
-
-The condition "$d_j < j$ for $j=1,...,4$" on sorted digits is the condition that the multiset of 5 digits is a "ballot sequence" of sorts. 
-
-Let me use a cleaner combinatorial identity. The number of such strings equals $5^4 = 625$? No, let me think. 
-
-Actually, notice the condition: $d_1 = 0$, $d_2 \leq 1$, $d_3 \leq 2$, $d_4 \leq 3$, $d_5 \leq 4$. This means the digit $k$ can appear in at most position $k+1$ through $5$ as the minimum. 
-
-The number of such strings equals the number of functions $f: \{1,...,5\} \to \{0,...,4\}$ (i.e., sequences) such that when sorted, the $j$-th smallest is $< j$. 
-
-By a generalization of the ballot problem or a direct bijection: these are exactly the sequences where the sorted version satisfies the constraints. By a known result (related to parking functions or similar), the count is $4^4 = 256$? Let me just compute directly.
-
-Computing the multinomial sum over the 42 sorted tuples:
-
-For each sorted tuple $(d_1,d_2,d_3,d_4,d_5)$ with $d_1=0$, let me group by digit multiset and compute $\dfrac{5!}{n_0!n_1!n_2!n_3!n_4!}$:
-
-This is a lot of cases. Let me use the complement. Total strings with $d_1=0$: $d_1$ is fixed as $0$; the remaining 4 digits can be anything from $\{0,...,4\}$, so $5^4 = 625$ total strings. But we also need $d_2 \leq 1$, $d_3 \leq 2$, $d_4 \leq 3$ in the sorted order.
-
-By inclusion-exclusion on the constraints:
-- Total with $d_1 = 0$ (i.e., at least one $0$): computed differently...
-
-Hmm, I realize the constraints on sorted positions are complex. Let me just compute the answer via a different approach.
-
-**Alternative: direct counting.** For each string position by position. The condition is equivalent to: for each $j \in \{1,2,3,4\}$, among the first (smallest) $j$ digits of the sorted string, all must be $< j$.
-
-A cleaner equivalent: the string, interpreted as a sequence of digits, corresponds (by a bijection) to... Actually, the standard answer to this problem is $1296 = 6^4$.
-
-Notice: the condition "$d_j < j$ for $j=1,...,4$" in the sorted sequence of a 5-digit string over $\{0,...,4\}$ is equivalent to saying the string is a "parking function of length 5 extended." 
-
-For parking functions of length $n$: a sequence $(a_1,...,a_n)$ of positive integers is a parking function if the sorted sequence satisfies $a_{\sigma(j)} \leq j$. Here our condition is $d_j \leq j-1$ (i.e., $d_j < j$), which for $j=1,...,4$ is exactly the parking function condition for $n=4$ applied to the first four sorted digits. The fifth digit is free.
-
-A classical result: the number of parking functions of length $n$ is $(n+1)^{n-1}$. For length $4$: $(5)^3 = 125$... not matching our structure.
-
-Let me just directly verify by careful case analysis. I'll count each sorted multiset and its multinomial coefficient.
-
-From the sorted tuples above, I'll systematically compute:
-
-The sorted tuples with $d_1=0$ are all $(0, d_2, d_3, d_4, d_5)$ with $0 \leq d_2 \leq 1$, $d_2 \leq d_3 \leq 2$, $d_3 \leq d_4 \leq 3$, $d_4 \leq d_5 \leq 4$.
-
-The number of ordered strings is:
-$$\sum_{\text{valid sorted tuples}} \frac{5!}{n_0! n_1! n_2! n_3! n_4!}.$$
-
-Let me enumerate by $(n_0, n_1, n_2, n_3, n_4)$ (digit frequencies), noting $n_0 \geq 1$:
-
-Rather than full enumeration, note the answer is $\mathbf{1296}$. Let me verify: $1296 = 6^4$. 
-
-Actually the condition can be rephrased as: for each digit $k \in \{0,1,2,3,4\}$, the digit $k$ appears at most $5-k$ times (since if $k$ appears more than $5-k$ times, then $d_{k+1} \geq k$, violating $d_{k+1} < k+1$... wait, let me check.
-
-If digit $k$ appears $m_k$ times, and we sort the string, then the $(n_0+n_1+\cdots+n_{k-1}+1)$-th through $(n_0+\cdots+n_k)$-th sorted values are all $k$. The condition $d_j < j$ for $j = n_0+n_1+\cdots+n_{k-1}+1$ requires $k < n_0+\cdots+n_{k-1}+1$, i.e., $n_0+n_1+\cdots+n_{k-1} \geq k$.
-
-Let $C_k = n_0 + n_1 + \cdots + n_{k-1}$ (number of digits strictly less than $k$). The condition $C_k \geq k$ for $k=1,2,3,4$: 
-
-- $C_1 = n_0 \geq 1$,
-- $C_2 = n_0+n_1 \geq 2$,
-- $C_3 = n_0+n_1+n_2 \geq 3$,
-- $C_4 = n_0+n_1+n_2+n_3 \geq 4$, i.e., $n_4 \leq 1$.
-
-Now I'll count using the complement. Total strings: $5^5 = 3125$. But counting by inclusion-exclusion on violations is complex.
-
-Let me try a direct recursive/DP approach. Let $f(j, r)$ = number of ways to choose the digits $d_1, \ldots, d_5$ at positions up through choosing digit value $j$ (i.e., $n_0, \ldots, n_j$ already chosen), with $r$ positions remaining. Actually let's count the number of valid compositions $(n_0, n_1, n_2, n_3, n_4)$ with $n_k \geq 0$, $\sum n_k = 5$, $C_1 \geq 1$, $C_2 \geq 2$, $C_3 \geq 3$, $C_4 \geq 4$.
-
-Equivalently, let $m_k = C_{k+1} - C_k = n_k$ for $k \geq 0$. We need $C_k = \sum_{i<k} m_i \geq k$ for $k=1,2,3,4$. Sum $= 5$.
-
-This is a stars-and-bars with lower bounds. Let $C_k' = C_k - k$ (excess), so $C_k' \geq 0$. Then $n_k = C_{k+1} - C_k = (C_{k+1}' + k+1) - (C_k' + k) = C_{k+1}' - C_k' + 1 \geq 0$, so $C_{k+1}' \geq C_k' - 1$. And $\sum_{k=0}^{4} n_k = 5$.
-
-This substitution gets complicated. Let me instead do a direct computer-like enumeration:
-
-I need to count (multiset, then multiply by multinomial). Valid $(n_0, n_1, n_2, n_3, n_4)$ satisfying the conditions. Let me iterate:
-
-$n_0$: from $1$ to $5$ (since $n_0 \geq 1$).
-$n_1$: from $\max(0, 2-n_0)$ to $5-n_0$.
-$n_2$: from $\max(0, 3-n_0-n_1)$ to $5-n_0-n_1$.
-$n_3$: from $\max(0, 4-n_0-n_1-n_2)$ to $5-n_0-n_1-n_2$.
-$n_4 = 5 - n_0 - n_1 - n_2 - n_3$ (must be $\leq 1$, i.e., $n_0+n_1+n_2+n_3 \geq 4$).
-
-Let me enumerate $(n_0, n_1, n_2, n_3, n_4)$ and compute $\frac{5!}{n_0!n_1!n_2!n_3!n_4!}$:
-
-$n_0=1$:
-  $n_1 \geq 1$:
-  - $n_1=1$: $n_2 \geq 1$:
-    - $n_2=1$: $n_3 \geq 1$, $n_0+n_1+n_2+n_3 = 3+n_3 \geq 4 \Rightarrow n_3 \geq 1$.
-      - $n_3=1$: $n_4=1$. $(1,1,1,1,1)$: $5!=120$.
-      - $n_3=2$: $n_4=0$. $(1,1,1,2,0)$: $\frac{120}{1\cdot1\cdot1\cdot2\cdot1}=60$.
-    - $n_2=2$: $n_0+n_1+n_2=4$, $n_3 \geq 0$, $n_3+n_4 = 1$, $n_3 \geq 0$.
-      - $n_3=0$: $n_4=1$ but $n_0+n_1+n_2+n_3 = 4 \geq 4$ ✓. $(1,1,2,0,1)$: $\frac{120}{1\cdot1\cdot2\cdot1\cdot1}=60$.
-      - $n_3=1$: $n_4=0$. $(1,1,2,1,0)$: $\frac{120}{1\cdot1\cdot2\cdot1\cdot1}=60$.
-    - $n_2=3$: $n_0+n_1+n_2=5$, $n_3=n_4=0$. $(1,1,3,0,0)$: $\frac{120}{1\cdot1\cdot6\cdot1\cdot1}=20$.
-  - $n_1=2$: $n_2 \geq 0$:
-    - $n_2=0$: $n_0+n_1+n_2=3$, $n_3 \geq 1$, $n_3+n_4=2$, $n_3 \geq 1$.
-      - $n_3=1$: $n_4=1$. $(1,2,0,1,1)$: $\frac{120}{1\cdot2\cdot1\cdot1\cdot1}=60$.
-      - $n_3=2$: $n_4=0$. $(1,2,0,2,0)$: $\frac{120}{1\cdot2\cdot1\cdot2\cdot1}=30$.
-    - $n_2=1$: $n_0+n_1+n_2=4$, $n_3 \geq 0$, $n_3+n_4=1$.
-      - $n_3=0$: $(1,2,1,0,1)$: $\frac{120}{1\cdot2\cdot1\cdot1\cdot1}=60$.
-      - $n_3=1$: $(1,2,1,1,0)$: $\frac{120}{1\cdot2\cdot1\cdot1\cdot1}=60$.
-    - $n_2=2$: $n_0+n_1+n_2=5$, $n_3=n_4=0$. $(1,2,2,0,0)$: $\frac{120}{1\cdot2\cdot2\cdot1\cdot1}=30$.
-  - $n_1=3$: $n_2 \geq 0$, $n_0+n_1 = 4$:
-    - $n_2=0$: $n_0+n_1+n_2=4$, $n_3 \geq 0$, $n_3+n_4=1$.
-      - $(1,3,0,0,1)$: $\frac{120}{1\cdot6\cdot1\cdot1\cdot1}=20$.
-      - $(1,3,0,1,0)$: $\frac{120}{1\cdot6\cdot1\cdot1\cdot1}=20$.
-    - $n_2=1$: $n_0+n_1+n_2=5$. $(1,3,1,0,0)$: $\frac{120}{1\cdot6\cdot1\cdot1\cdot1}=20$.
-  - $n_1=4$: $n_0+n_1=5$, $n_2=n_3=n_4=0$. But $n_0+n_1+n_2+n_3 = 5 \geq 4$ ✓. $(1,4,0,0,0)$: $\frac{120}{1\cdot24\cdot1\cdot1\cdot1}=5$.
-
-$n_0=2$:
-  $n_1 \geq 0$:
-  - $n_1=0$: $n_2 \geq 1$ (need $C_3=n_0+n_1+n_2 \geq 3$, so $n_2 \geq 1$):
-    - $n_2=1$: $C_3=3$, $n_3 \geq 1$, $n_3+n_4=2$.
-      - $(2,0,1,1,1)$: $\frac{120}{2\cdot1\cdot1\cdot1\cdot1}=60$.
-      - $(2,0,1,2,0)$: $\frac{120}{2\cdot1\cdot1\cdot2\cdot1}=30$.
-    - $n_2=2$: $C_3=4$, $n_3 \geq 0$, $n_3+n_4=1$.
-      - $(2,0,2,0,1)$: $\frac{120}{2\cdot1\cdot2\cdot1\cdot1}=30$.
-      - $(2,0,2,1,0)$: $\frac{120}{2\cdot1\cdot2\cdot1\cdot1}=30$.
-    - $n_2=3$: $C_3=5$, $n_3=n_4=0$. $(2,0,3,0,0)$: $\frac{120}{2\cdot1\cdot6\cdot1\cdot1}=10$.
-  - $n_1=1$: $C_2=3$, $n_2 \geq 0$, $C_3 = 3+n_2 \geq 3$ ✓ always:
-    - $n_2=0$: $n_3 \geq 1$, $n_3+n_4=2$.
-      - $(2,1,0,1,1)$: $\frac{120}{2\cdot1\cdot1\cdot1\cdot1}=60$.
-      - $(2,1,0,2,0)$: $\frac{120}{2\cdot1\cdot1\cdot2\cdot1}=30$.
-    - $n_2=1$: $n_3 \geq 0$, $n_3+n_4=1$.
-      - $(2,1,1,0,1)$: $\frac{120}{2\cdot1\cdot1\cdot1\cdot1}=60$.
-      - $(2,1,1,1,0)$: $\frac{120}{2\cdot1\cdot1\cdot1\cdot1}=60$.
-    - $n_2=2$: $n_3+n_4=0$. $(2,1,2,0,0)$: $\frac{120}{2\cdot1\cdot2\cdot1\cdot1}=30$.
-  - $n_1=2$: $C_2=4$, $n_2 \geq 0$, $n_2+n_3+n_4=1$:
-    - $n_2=0$: $n_3 \geq 0$, $n_3+n_4=1$.
-      - $(2,2,0,0,1)$: $\frac{120}{2\cdot2\cdot1\cdot1\cdot1}=30$.
-      - $(2,2,0,1,0)$: $\frac{120}{2\cdot2\cdot1\cdot1\cdot1}=30$.
-    - $n_2=1$: $n_3=n_4=0$. $(2,2,1,0,0)$: $\frac{120}{2\cdot2\cdot1\cdot1\cdot1}=30$.
-  - $n_1=3$: $n_0+n_1=5$, $n_2=n_3=n_4=0$. $(2,3,0,0,0)$: $\frac{120}{2\cdot6\cdot1\cdot1\cdot1}=10$.
-
-$n_0=3$:
-  $n_1 \geq 0$:
-  - $n_1=0$: $C_3=3+n_2$, need $\geq 3$ always. $n_2+n_3+n_4=2$, $n_3+n_4 \geq$ need $C_4=3+n_2+n_3 \geq 4 \Rightarrow n_2+n_3 \geq 1$.
-    - $n_2=0$: $n_3 \geq 1$, $n_3+n_4=2$.
-      - $(3,0,0,1,1)$: $\frac{120}{6\cdot1\cdot1\cdot1\cdot1}=20$.
-      - $(3,0,0,2,0)$: $\frac{120}{6\cdot1\cdot1\cdot2\cdot1}=10$.
-    - $n_2=1$: $n_3+n_4=1$.
-      - $(3,0,1,0,1)$: $\frac{120}{6\cdot1\cdot1\cdot1\cdot1}=20$.
-      - $(3,0,1,1,0)$: $\frac{120}{6\cdot1\cdot1\cdot1\cdot1}=20$.
-    - $n_2=2$: $n_3=n_4=0$. $(3,0,2,0,0)$: $\frac{120}{6\cdot1\cdot2\cdot1\cdot1}=10$.
-  - $n_1=1$: $n_2+n_3+n_4=1$, $C_4=4+n_3 \geq 4$ ✓.
-    - $n_2=0$: $n_3+n_4=1$.
-      - $(3,1,0,0,1)$: $\frac{120}{6\cdot1\cdot1\cdot1\cdot1}=20$.
-      - $(3,1,0,1,0)$: $\frac{120}{6\cdot1\cdot1\cdot1\cdot1}=20$.
-    - $n_2=1$: $n_3=n_4=0$. $(3,1,1,0,0)$: $\frac{120}{6\cdot1\cdot1\cdot1\cdot1}=20$.
-  - $n_1=2$: $n_2=n_3=n_4=0$. $(3,2,0,0,0)$: $\frac{120}{6\cdot2\cdot1\cdot1\cdot1}=10$.
-
-$n_0=4$:
-  $n_1+n_2+n_3+n_4=1$, $C_4 = 4+n_3 \geq 4$ ✓ always.
-  - $n_1=1, n_2=n_3=n_4=0$: $(4,1,0,0,0)$: $\frac{120}{24\cdot1\cdot1\cdot1\cdot1}=5$.
-  - $n_2=1$: $(4,0,1,0,0)$: $\frac{120}{24\cdot1\cdot1\cdot1\cdot1}=5$.
-  - $n_3=1$: $(4,0,0,1,0)$: $\frac{120}{24\cdot1\cdot1\cdot1\cdot1}=5$.
-  - $n_4=1$: $(4,0,0,0,1)$: $\frac{120}{24\cdot1\cdot1\cdot1\cdot1}=5$.
-
-$n_0=5$:
-  $(5,0,0,0,0)$: $\frac{120}{120}=1$.
-
-Now sum all the multinomials:
-
-$n_0=1$: $120+60+60+60+60+30+60+60+30+20+30+20+60+30+5 = ?$
-
-Let me add group by group:
-- $(1,1,1,1,1)$: 120
-- $(1,1,1,2,0)$: 60
-- $(1,1,2,0,1)$: 60
-- $(1,1,2,1,0)$: 60
-- $(1,1,3,0,0)$: 20
-- $(1,2,0,1,1)$: 60
-- $(1,2,0,2,0)$: 30
-- $(1,2,1,0,1)$: 60
-- $(1,2,1,1,0)$: 60
-- $(1,2,2,0,0)$: 30
-- $(1,3,0,0,1)$: 20
-- $(1,3,0,1,0)$: 20
-- $(1,3,1,0,0)$: 20
-- $(1,4,0,0,0)$: 5
-
-Subtotal $n_0=1$: $120+60+60+60+20+60+30+60+60+30+20+20+20+5 = 625$.
-
-$n_0=2$:
-- $(2,0,1,1,1)$: 60
-- $(2,0,1,2,0)$: 30
-- $(2,0,2,0,1)$: 30
-- $(2,0,2,1,0)$: 30
-- $(2,0,3,0,0)$: 10
-- $(2,1,0,1,1)$: 60
-- $(2,1,0,2,0)$: 30
-- $(2,1,1,0,1)$: 60
-- $(2,1,1,1,0)$: 60
-- $(2,1,2,0,0)$: 30
-- $(2,2,0,0,1)$: 30
-- $(2,2,0,1,0)$: 30
-- $(2,2,1,0,0)$: 30
-- $(2,3,0,0,0)$: 10
-
-Subtotal $n_0=2$: $60+30+30+30+10+60+30+60+60+30+30+30+30+10 = 490$.
-
-$n_0=3$:
-- $(3,0,0,1,1)$: 20
-- $(3,0,0,2,0)$: 10
-- $(3,0,1,0,1)$: 20
-- $(3,0,1,1,0)$: 20
-- $(3,0,2,0,0)$: 10
-- $(3,1,0,0,1)$: 20
-- $(3,1,0,1,0)$: 20
-- $(3,1,1,0,0)$: 20
-- $(3,2,0,0,0)$: 10
-
-Subtotal $n_0=3$: $20+10+20+20+10+20+20+20+10 = 150$.
-
-$n_0=4$:
-- $(4,1,0,0,0)$: 5
-- $(4,0,1,0,0)$: 5
-- $(4,0,0,1,0)$: 5
-- $(4,0,0,0,1)$: 5
-
-Subtotal $n_0=4$: $20$.
-
-$n_0=5$: $1$.
-
-**Grand total: $625 + 490 + 150 + 20 + 1 = 1286$.**
-
-Hmm, that gives 1286, not 1296. Let me recheck. I may have missed some cases. Let me recheck $n_0=1$, $n_1=0$: need $C_2 = n_0 + n_1 = 1 \geq 2$? No! $n_1=0$ gives $C_2 = 1 < 2$. So I should NOT have $n_1=0$ when $n_0=1$.
-
-Wait, I wrote "$n_1 \geq 1$" for $n_0=1$. Let me recheck $n_0=2$: $C_2 = n_0 + n_1 = 2 + n_1 \geq 2$ ✓ for all $n_1 \geq 0$. Good. And $n_0=3, n_1=0$: $C_2 = 3 \geq 2$ ✓.
-
-Let me recheck $n_0=1$. I listed $n_1 \geq 1$. But did I miss $n_1 \geq 2$ cases? Let me recount carefully:
-
-For $n_0=1$, the sub-cases were $n_1 \in \{1,2,3,4\}$. Let me re-add:
-
-$120+60+60+60+20$: sum for $n_1=1$ cases: $120+60+60+20 = 260$ (I had $(1,1,1,1,1), (1,1,1,2,0), (1,1,2,0,1), (1,1,2,1,0), (1,1,3,0,0)$). Wait, let me recount: $120+60+60+60+20 = 320$.
-
-Hmm, I had 5 entries for $n_1=1$: $(1,1,1,1,1)=120$, $(1,1,1,2,0)=60$, $(1,1,2,0,1)=60$, $(1,1,2,1,0)=60$, $(1,1,3,0,0)=20$. Sum: $320$.
-
-For $n_1=2$: $(1,2,0,1,1)=60$, $(1,2,0,2,0)=30$, $(1,2,1,0,1)=60$, $(1,2,1,1,0)=60$, $(1,2,2,0,0)=30$. Sum: $240$.
-
-For $n_1=3$: $(1,3,0,0,1)=20$, $(1,3,0,1,0)=20$, $(1,3,1,0,0)=20$. Sum: $60$.
-
-For $n_1=4$: $(1,4,0,0,0)=5$.
-
-Subtotal $n_0=1$: $320+240+60+5=625$.
-
-Re-add $n_0=2$ carefully:
-$(2,0,1,1,1)=60$, $(2,0,1,2,0)=30$, $(2,0,2,0,1)=30$, $(2,0,2,1,0)=30$, $(2,0,3,0,0)=10$: sum $= 160$.
-$(2,1,0,1,1)=60$, $(2,1,0,2,0)=30$, $(2,1,1,0,1)=60$, $(2,1,1,1,0)=60$, $(2,1,2,0,0)=30$: sum $= 240$.
-$(2,2,0,0,1)=30$, $(2,2,0,1,0)=30$, $(2,2,1,0,0)=30$: sum $= 90$.
-$(2,3,0,0,0)=10$.
-Subtotal: $160+240+90+10=500$.
-
-Re-add $n_0=3$ carefully:
-$n_1=0$: $(3,0,0,1,1)=20$, $(3,0,0,2,0)=10$, $(3,0,1,0,1)=20$, $(3,0,1,1,0)=20$, $(3,0,2,0,0)=10$. Sum $= 80$.
-$n_1=1$: $(3,1,0,0,1)=20$, $(3,1,0,1,0)=20$, $(3,1,1,0,0)=20$. Sum $= 60$.
-$n_1=2$: $(3,2,0,0,0)=10$.
-Subtotal: $80+60+10=150$.
-
-$n_0=4$: $20$. $n_0=5$: $1$.
-
-Total: $625+500+150+20+1 = 1296$.
-
-I had a subtraction error earlier in the $n_0=2$ case. The correct total is $\mathbf{1296}$.
+Let $n_k$ = number of times digit $k$ appears in the string ($k=0,1,2,3,4$), so $\sum n_k = 5$. The condition "at least $j$ digits are less than $j$" translates to:
+$$n_0 \geq 1, \quad n_0+n_1 \geq 2, \quad n_0+n_1+n_2 \geq 3, \quad n_0+n_1+n_2+n_3 \geq 4 \;(\text{i.e., }n_4 \leq 1).$$
+
+Each frequency tuple $(n_0,n_1,n_2,n_3,n_4)$ contributes $\dfrac{5!}{n_0!\,n_1!\,n_2!\,n_3!\,n_4!}$ ordered strings. Enumerate all valid tuples and sum their multinomials:
+
+**$n_0=1$** (so $n_1 \geq 1$, $n_1+n_2 \geq 1$, $n_1+n_2+n_3 \geq 2$, $n_4 \leq 1$):
+
+| $(n_0,n_1,n_2,n_3,n_4)$ | count |
+|---|---|
+| $(1,1,1,1,1)$ | $120$ |
+| $(1,1,1,2,0)$ | $60$ |
+| $(1,1,2,0,1)$ | $60$ |
+| $(1,1,2,1,0)$ | $60$ |
+| $(1,1,3,0,0)$ | $20$ |
+| $(1,2,0,1,1)$ | $60$ |
+| $(1,2,0,2,0)$ | $30$ |
+| $(1,2,1,0,1)$ | $60$ |
+| $(1,2,1,1,0)$ | $60$ |
+| $(1,2,2,0,0)$ | $30$ |
+| $(1,3,0,0,1)$ | $20$ |
+| $(1,3,0,1,0)$ | $20$ |
+| $(1,3,1,0,0)$ | $20$ |
+| $(1,4,0,0,0)$ | $5$ |
+
+Subtotal: $\mathbf{625}$.
+
+**$n_0=2$** (so $n_1+n_2 \geq 1$ when $n_1=0$; $n_1+n_2+n_3 \geq 2$ when $n_0+n_1+n_2 < 4$):
+
+| $(n_0,n_1,n_2,n_3,n_4)$ | count |
+|---|---|
+| $(2,0,1,1,1)$ | $60$ |
+| $(2,0,1,2,0)$ | $30$ |
+| $(2,0,2,0,1)$ | $30$ |
+| $(2,0,2,1,0)$ | $30$ |
+| $(2,0,3,0,0)$ | $10$ |
+| $(2,1,0,1,1)$ | $60$ |
+| $(2,1,0,2,0)$ | $30$ |
+| $(2,1,1,0,1)$ | $60$ |
+| $(2,1,1,1,0)$ | $60$ |
+| $(2,1,2,0,0)$ | $30$ |
+| $(2,2,0,0,1)$ | $30$ |
+| $(2,2,0,1,0)$ | $30$ |
+| $(2,2,1,0,0)$ | $30$ |
+| $(2,3,0,0,0)$ | $10$ |
+
+Subtotal: $160+240+90+10 = \mathbf{500}$.
+
+**$n_0=3$**:
+
+| $(n_0,n_1,n_2,n_3,n_4)$ | count |
+|---|---|
+| $(3,0,0,1,1)$ | $20$ |
+| $(3,0,0,2,0)$ | $10$ |
+| $(3,0,1,0,1)$ | $20$ |
+| $(3,0,1,1,0)$ | $20$ |
+| $(3,0,2,0,0)$ | $10$ |
+| $(3,1,0,0,1)$ | $20$ |
+| $(3,1,0,1,0)$ | $20$ |
+| $(3,1,1,0,0)$ | $20$ |
+| $(3,2,0,0,0)$ | $10$ |
+
+Subtotal: $80+60+10 = \mathbf{150}$.
+
+**$n_0=4$**: tuples $(4,1,0,0,0), (4,0,1,0,0), (4,0,0,1,0), (4,0,0,0,1)$, each giving $5$. Subtotal: $\mathbf{20}$.
+
+**$n_0=5$**: $(5,0,0,0,0)$ gives $1$. Subtotal: $\mathbf{1}$.
+
+**Grand total:** $625 + 500 + 150 + 20 + 1 = \mathbf{1296}$.
 
 Answer: **E**.
 </Solution>

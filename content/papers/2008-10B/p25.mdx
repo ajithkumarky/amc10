@@ -13,95 +13,21 @@ Michael walks at the rate of $5$ feet per second on a long straight path. Trash 
 </Problem>
 
 <Solution>
-Set time $t = 0$ when Michael is at pail 0 and the truck just leaves pail 1 (200 feet ahead of Michael).
+Set $t = 0$ when Michael is at pail 0 and the truck just leaves pail 1 (200 feet ahead). Michael's position: $x_M(t) = 5t$. The truck drives 200 feet in $200/10 = 20$ seconds, then stops 30 seconds — a 50-second cycle per pail. Starting from pail 1 at $t=0$: the truck arrives at pail $k+1$ at $t = 20k$ and departs at $t = 50k$ (for $k = 0, 1, 2, \ldots$), so it stops at pail $k+2$ (position $200(k+2)$) during $t \in [50k+20,\, 50k+50]$.
 
-**Truck's motion:** The truck drives from pail $k$ to pail $k+1$ in $200/10 = 20$ seconds, then waits 30 seconds — cycle of 50 seconds per pail.
+**Meetings at stops:** Michael reaches pail $k+2$ at $t = 40(k+2)$. For this to fall in $[50k+20,\, 50k+50]$:
+- Left: $50k+20 \leq 40k+80 \Rightarrow k \leq 6$.
+- Right: $40k+80 \leq 50k+50 \Rightarrow k \geq 3$.
 
-At $t = 0$: truck is at position 200, moving.
-The truck reaches pail 2 at $t = 20$, leaves pail 2 at $t = 50$.
-The truck reaches pail 3 at $t = 70$, leaves pail 3 at $t = 100$.
-The truck reaches pail $k+1$ at $t = 20k$, leaves at $t = 50k$ (for $k = 0, 1, 2, \ldots$).
+So $k \in \{3,4,5,6\}$, giving meetings at pails 5, 6, 7, 8 at times $t = 200, 240, 280, 320$.
 
-So the truck's position: during $[50k, 50k+20]$, it drives from $200(k+1)$ to $200(k+2)$: position $= 200(k+1) + 10(t - 50k)$.
-During $[50k+20, 50(k+1)]$, it waits at $200(k+2)$.
+**Meetings while moving:** During $[50k, 50k+20]$ the truck moves from position $200(k+1)$ at speed 10. Setting $5t = 200(k+1)+10(t-50k)$ gives $t = 60k-40$. For this to lie in $[50k, 50k+20]$:
+- Left: $50k \leq 60k-40 \Rightarrow k \geq 4$.
+- Right: $60k-40 \leq 50k+20 \Rightarrow k \leq 6$.
 
-**Michael's position:** $x_M(t) = 5t$.
+So $k \in \{4,5,6\}$, giving meetings at $t = 200, 260, 320$.
 
-**Meetings occur when $x_M = x_{\text{truck}}$:**
-
-During truck's waiting phase at pail $k+2$ (position $200(k+2)$), the truck waits from $t = 50k+20$ to $t = 50k+50$. Michael reaches $200(k+2)$ at $t = 200(k+2)/5 = 40(k+2)$.
-
-For Michael to meet the truck at pail $k+2$ during its stop:
-$$50k + 20 \leq 40(k+2) \leq 50k + 50.$$
-Left: $50k + 20 \leq 40k + 80 \implies 10k \leq 60 \implies k \leq 6$.
-Right: $40k + 80 \leq 50k + 50 \implies 30 \leq 10k \implies k \geq 3$.
-
-So $k \in \{3, 4, 5, 6\}$ gives meetings at pails $5, 6, 7, 8$ — that's 4 meetings.
-
-Also check if Michael catches the truck while it's moving. During $[50k, 50k+20]$, the truck moves from $200(k+1)$ at speed 10 and Michael moves at speed 5. They meet when $5t = 200(k+1) + 10(t-50k)$, giving $5t = 200k + 200 + 10t - 500k$, so $-5t = -300k + 200$, thus $t = 60k - 40$.
-
-For this to be in $[50k, 50k+20]$: $50k \leq 60k-40 \leq 50k+20$. Left: $40 \leq 10k \implies k \geq 4$. Right: $60k-40 \leq 50k+20 \implies 10k \leq 60 \implies k \leq 6$.
-
-So $k \in \{4, 5, 6\}$ gives 3 additional meetings while the truck is moving.
-
-Wait — but these may conflict with the waiting-phase meetings. Let me check: for $k=4$: truck moving meeting at $t = 200$. Michael at pail 8 ($200 \times 8 / 5 = 320$ sec) — these are distinct. At $t = 200$, Michael is at $5(200) = 1000$ feet, truck is at $200(5) + 10(200 - 200) = 1000$ feet. Yes, they meet at $t=200$ between pails 5 and 6.
-
-For $k = 3$: $t = 60(3)-40 = 140$. Check: in $[150, 170]$? No, 140 is not in $[150, 170]$. So $k=3$ doesn't yield a moving meeting.
-
-Moving meetings: $k \in \{4, 5, 6\}$ at $t = 200, 260, 320$.
-Waiting meetings: $k \in \{3, 4, 5, 6\}$ at pails $5, 6, 7, 8$ at $t = 160, 200, 240, 280$.
-
-But $k=4$ gives $t=200$ for both? At $t=200$: moving meeting says truck is at 1000 ft; Michael at 1000 ft. Pail 5 is at 1000 ft. Waiting meeting says Michael meets truck at pail 5+1=6 (pail index $k+2 = 6$, position 1200). So these are different events.
-
-Total distinct meeting times: $t = 160, 200, 200, 240, 260, 280, 320$.
-
-Hmm, $t=200$ appears twice — one meeting while moving ($k=4$) and one while waiting ($k=3$, pail 5). At $t=200$: truck moving phase $k=4$ says truck at 1000 ft; waiting phase $k=3$ (pail 5 at 1000 ft) runs from $t=170$ to $t=200$. Both put the truck at 1000 feet at $t=200$ — same meeting.
-
-So the $k=4$ moving meeting coincides with the end of the $k=3$ waiting meeting. That's one meeting at $t=200$.
-
-Similarly check $k=5$ moving ($t=260$): truck at position $200(6)+10(260-250)=1200+100=1300$ ft. Michael at $5(260)=1300$ ft. Pail 6 is at 1200 ft, pail 7 at 1400 ft. This is between pails — a pure moving meeting. And $k=4$ waiting: pail 6, at $t=40(6)=240$. These are distinct.
-
-Final distinct meetings: $t = 160, 200, 240, 260, 280, 320$ — that is $\mathbf{5}$ meetings (since $t=200$ is one event).
-
-Wait — let me recount: $160, 200, 240, 260, 280, 320$ is 6 values.
-
-But also check whether the truck catches Michael again or moves away permanently. At $t=320$ (pail meeting at position $200 \times 8 = 1600$, $k=6$, pail 8): Michael at $5(320)=1600$. Truck waiting at pail 8 from $t=50(6)+20=320$ to $t=350$. Michael arrives exactly at $t=320$ — valid meeting.
-
-For $k=7$ moving: $t=60(7)-40=380$. In $[350,370]$? No, 380 > 370. No more moving meetings.
-For $k=7$ waiting: $40(9)=360$. In $[370, 400]$? No, 360 < 370. No more waiting meetings.
-
-So all meetings occur at $t \in \{160, 200, 240, 260, 280, 320\}$ — but we said $t=200$ was one meeting (coincidence of moving end/waiting start). That's 6 values, so the answer should be 5 total meetings.
-
-Hmm, let me recount more carefully. We have the separate list:
-- Waiting meetings ($k=3,4,5,6$): $t = 160, 200, 240, 280$.
-- Moving meetings ($k=4,5,6$): $t = 200, 260, 320$.
-
-$t=200$ appears in both lists — one actual meeting. So distinct meeting times: $\{160, 200, 240, 260, 280, 320\}$ — 6 distinct times but $t=200$ is double-counted, giving $4 + 3 - 1 = 6$ meetings.
-
-Answer: **B** (5 meetings).
-
-Rechecking: The problem says Michael and the truck "meet" — at $t=200$, Michael and truck are both at 1000 feet. This is one meeting. Distinct times: $160, 200, 240, 260, 280, 320$ — that is 6 time values with no duplicates after the $t=200$ reconciliation. So 6 meetings? But the answer key says B = 5.
-
-Let me recheck: at $t = 200$, the waiting analysis ($k=3$, pail $k+2 = 5$, position $200 \times 5 = 1000$): truck waits at pail 5 from $t = 50(3)+20=170$ to $t=50(4)=200$. Michael arrives at $t=40(5)=200$ — meets the truck at the end of the stop. The moving analysis ($k=4$): truck leaves pail 5 at $t=200$ and is at position 1000. Michael is at 1000. This is the same event. So $t=200$ is indeed counted once.
-
-So we have 6 distinct meetings. But answer is B=5. Let me check whether $t=160$ truly works.
-
-$k=3$ waiting: pail $k+2=5$ at position 1000. Truck waits from $t=170$ to $t=200$. Michael at pail 5 at $t=200$. But I said $k=3$ gives $t = 40(k+2) = 40(5) = 200$, not 160.
-
-Wait, I made an error. Let me redo the waiting meeting times:
-
-For $k \in \{3,4,5,6\}$, Michael meets the truck at pail $k+2$ at time $t = 40(k+2)$:
-- $k=3$: pail 5, $t = 40(5) = 200$
-- $k=4$: pail 6, $t = 40(6) = 240$
-- $k=5$: pail 7, $t = 40(7) = 280$
-- $k=6$: pail 8, $t = 40(8) = 320$
-
-Moving meetings at $t = 60k - 40$ for $k \in \{4,5,6\}$:
-- $k=4$: $t = 200$
-- $k=5$: $t = 260$
-- $k=6$: $t = 320$
-
-Distinct meeting times: $\{200, 240, 260, 280, 320\}$ — exactly 5 distinct meetings.
+**Deduplication:** At $t=200$, the truck is exactly at pail 5 (position 1000), which is simultaneously the end of the $k=3$ stop and the start of the $k=4$ driving phase — one meeting. At $t=320$, similarly one meeting at pail 8. The full set of distinct meeting times is $\{200, 240, 260, 280, 320\}$ — exactly 5 meetings.
 
 Answer: **B**.
 </Solution>
