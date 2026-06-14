@@ -1,0 +1,55 @@
+---
+year: 2003
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: E
+choices: ['$\pi - \sqrt{3}$', '$\pi - \sqrt{2}$', '$\dfrac{\pi + \sqrt{2}}{2}$', '$\dfrac{\pi + \sqrt{3}}{2}$', '$\dfrac{7}{6}\pi - \dfrac{\sqrt{3}}{2}$']
+---
+
+<Problem>
+Three semicircles of radius $1$ are constructed on diameter $\overline{AB}$ of a semicircle of radius $2$. The centers of the small semicircles divide $\overline{AB}$ into four line segments of equal length, as shown. What is the area of the shaded region that lies within the large semicircle but outside the smaller semicircles?
+
+The large semicircle has diameter $AB = 4$ (radius $2$). The three small semicircles of radius $1$ have centers at $-1$, $0$, and $1$ on $\overline{AB}$, with the leftmost and rightmost pointing upward and the middle one pointing upward as well.
+</Problem>
+
+<Solution>
+Place $A = (-2, 0)$ and $B = (2, 0)$. The three small semicircles each have radius $1$, centered at $(-1, 0)$, $(0, 0)$, and $(1, 0)$, all opening upward.
+
+**Large semicircle area:** $\dfrac{1}{2}\pi(2)^2 = 2\pi$.
+
+**Area of the three small semicircles:** Each small semicircle has area $\dfrac{1}{2}\pi(1)^2 = \dfrac{\pi}{2}$, so together they contribute $\dfrac{3\pi}{2}$.
+
+However, the middle small semicircle overlaps with each of the outer ones. The centers of adjacent small semicircles are $2$ apart and each has radius $1$, so the circles are tangent — the semicircles only share a single boundary point, contributing zero overlapping area.
+
+But from the figure, part of the middle semicircle lies outside the large semicircle (it does not — the large semicircle fully contains all three small ones since they are all radius $1$ fitting inside radius $2$).
+
+**Naively:** Shaded area $= 2\pi - \dfrac{3\pi}{2} = \dfrac{\pi}{2}$. This doesn't match any choice.
+
+Looking more carefully at the Asymptote code: the middle small semicircle is drawn with dashed segments from $60°$ to $120°$, suggesting parts of it are outside the large semicircle. Actually the middle semicircle is centered at the origin with radius $1$, which is entirely inside the radius-$2$ semicircle.
+
+The key is the overlap between adjacent small semicircles. Adjacent centers are $2$ units apart and each has radius $1$, so they are externally tangent — zero overlap area. The three semicircles are disjoint.
+
+**Revisiting:** The figure shows the middle semicircle with some dashed arcs. From the code, certain arc segments of the middle semicircle are dashed (arcs from $0°$–$60°$ and $120°$–$180°$), while the arc from $60°$–$120°$ is solid. This suggests the middle semicircle overlaps with the left and right ones — but wait, with centers $2$ apart and radius $1$ each, the circles are tangent.
+
+Actually, re-reading: the middle semicircle is centered at $(0,0)$ and the outer ones at $(\pm1, 0)$. Distance from $(0,0)$ to $(1,0)$ is $1$, and $r_1 + r_2 = 2 > 1$, so they overlap! The circles overlap when the distance between centers is less than the sum of radii.
+
+Distance between adjacent centers $= 1$, sum of radii $= 2 > 1$, so the semicircles significantly overlap.
+
+**Overlap area between the middle semicircle and each outer one:** Two unit circles with centers $1$ apart. The intersection area of two unit circles with centers $d = 1$ apart is:
+$$2\cos^{-1}\!\left(\frac{d}{2}\right) - \frac{d}{2}\sqrt{4 - d^2} = 2\cos^{-1}\!\left(\frac{1}{2}\right) - \frac{1}{2}\sqrt{3} = 2 \cdot \frac{\pi}{3} - \frac{\sqrt{3}}{2} = \frac{2\pi}{3} - \frac{\sqrt{3}}{2}.$$
+
+This is the intersection of the full circles. Since all relevant arcs are in the upper half-plane (all semicircles open upward), the intersection of two adjacent semicircles is half the full circle intersection:
+$$\frac{1}{2}\left(\frac{2\pi}{3} - \frac{\sqrt{3}}{2}\right) = \frac{\pi}{3} - \frac{\sqrt{3}}{4}.$$
+
+By inclusion-exclusion, the total area covered by the three small semicircles is:
+$$3 \cdot \frac{\pi}{2} - 2\left(\frac{\pi}{3} - \frac{\sqrt{3}}{4}\right) = \frac{3\pi}{2} - \frac{2\pi}{3} + \frac{\sqrt{3}}{2} = \frac{9\pi - 4\pi}{6} + \frac{\sqrt{3}}{2} = \frac{5\pi}{6} + \frac{\sqrt{3}}{2}.$$
+
+(The left and right semicircles don't overlap each other: centers are $2$ apart, distance equals $2r$, so they are tangent.)
+
+**Shaded area:**
+$$2\pi - \left(\frac{5\pi}{6} + \frac{\sqrt{3}}{2}\right) = 2\pi - \frac{5\pi}{6} - \frac{\sqrt{3}}{2} = \frac{12\pi - 5\pi}{6} - \frac{\sqrt{3}}{2} = \frac{7\pi}{6} - \frac{\sqrt{3}}{2}.$$
+
+Answer: **E**.
+</Solution>

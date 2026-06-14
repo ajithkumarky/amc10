@@ -1,0 +1,27 @@
+---
+year: 2003
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: B
+choices: ["$27$", "$30$", "$33$", "$81$", "$90$"]
+---
+
+<Problem>
+How many distinct four-digit numbers are divisible by $3$ and have $23$ as their last two digits?
+</Problem>
+
+<Solution>
+A four-digit number with last two digits $23$ has the form $\overline{ab23}$, where $ab$ ranges from $10$ to $99$ (since the full number must be four digits: $1000$ to $9999$).
+
+This number equals $100 \cdot \overline{ab} + 23$, where $\overline{ab}$ is a two-digit number from $10$ to $99$.
+
+For divisibility by $3$, the digit sum must be divisible by $3$. The digit sum is $a + b + 2 + 3 = a + b + 5$, so we need $a + b + 5 \equiv 0 \pmod{3}$, i.e., $a + b \equiv 1 \pmod{3}$.
+
+We need to count two-digit numbers $\overline{ab}$ (i.e., $a \in \{1,\ldots,9\}$, $b \in \{0,\ldots,9\}$) with $a + b \equiv 1 \pmod{3}$.
+
+There are $90$ two-digit numbers total ($10$ through $99$). Exactly one-third of them satisfy any given residue condition mod $3$, so the count is $90/3 = 30$.
+
+Answer: **B**.
+</Solution>

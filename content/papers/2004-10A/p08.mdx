@@ -1,0 +1,35 @@
+---
+year: 2004
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: B
+choices: ["$36$", "$37$", "$38$", "$39$", "$40$"]
+---
+
+<Problem>
+A game is played with tokens according to the following rule. In each round, the player with the most tokens gives one token to each of the other players and also places one token in the discard pile. The game ends when some player runs out of tokens. Players $A$, $B$, and $C$ start with $15$, $14$, and $13$ tokens, respectively. How many rounds will there be in the game?
+</Problem>
+
+<Solution>
+In each round, the player with the most tokens loses $3$ tokens (gives $1$ to each of the other two, plus $1$ to discard), while each of the other two players gains $1$ token.
+
+Starting: $A = 15$, $B = 14$, $C = 13$. Total tokens decrease by $1$ per round.
+
+Notice the pattern: after $3$ rounds, the players rotate who has the most tokens. Let's track one full cycle of $3$ rounds:
+
+Round 1 ($A$ gives): $A: 15-3=12$, $B: 14+1=15$, $C: 13+1=14$. State: $(12, 15, 14)$.
+
+Round 2 ($B$ gives): $A: 12+1=13$, $B: 15-3=12$, $C: 14+1=15$. State: $(13, 12, 15)$.
+
+Round 3 ($C$ gives): $A: 13+1=14$, $B: 12+1=13$, $C: 15-3=12$. State: $(14, 13, 12)$.
+
+After 3 rounds the state is $(14, 13, 12)$ — each player has exactly $1$ fewer token than at the start. After $3k$ rounds: $(15-k, 14-k, 13-k)$.
+
+The game ends when someone reaches $0$. The smallest count after $3k$ rounds is $13 - k$. Setting $13 - k = 0$ gives $k = 13$, so after $39$ rounds the state is $(2, 1, 0)$.
+
+But we need to check: after $36$ rounds (state $(3, 2, 1)$), round $37$ has $A$ giving: $(0, 3, 2)$. Player $A$ now has $0$ tokens — the game ends after round $37$.
+
+Answer: **B**.
+</Solution>

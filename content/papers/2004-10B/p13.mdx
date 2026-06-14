@@ -1,0 +1,33 @@
+---
+year: 2004
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 3
+answer: B
+choices: ["7", "8", "9", "10", "11"]
+---
+
+<Problem>
+In the United States, coins have the following thicknesses: penny, $1.55$ mm; nickel, $1.95$ mm; dime, $1.35$ mm; quarter, $1.75$ mm. If a stack of these coins is exactly $14$ mm high, how many coins are in the stack?
+</Problem>
+
+<Solution>
+Let $p, n, d, q$ be the number of pennies, nickels, dimes, and quarters. We need:
+$$1.55p + 1.95n + 1.35d + 1.75q = 14.$$
+
+Multiply through by 20 to clear decimals:
+$$31p + 39n + 27d + 35q = 280.$$
+
+Note all coefficients are odd, so $31p + 39n + 27d + 35q \equiv p + n + d + q \pmod{2}$.
+
+Since $280$ is even, $p + n + d + q$ must be even, so the total number of coins is even.
+
+Now check which answer choices are even: 8 and 10.
+
+**Try 8 coins:** We need the average thickness to be $14/8 = 1.75$ mm, which is exactly the thickness of a quarter. So 8 quarters would work. Indeed, $8 \times 1.75 = 14$. This is a valid stack of 8 coins!
+
+**Verify 10 coins would require:** average $1.4$ mm per coin, which is less than the thinnest coin (dime at 1.35 mm) — plausible but let's confirm 8 works first. Since $8 \times 1.75 = 14$ works exactly, the answer is 8.
+
+Answer: **B**.
+</Solution>

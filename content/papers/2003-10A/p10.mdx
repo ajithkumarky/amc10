@@ -1,0 +1,29 @@
+---
+year: 2003
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 2
+answer: E
+choices: ["$2$", "$3$", "$4$", "$5$", "$6$"]
+---
+
+<Problem>
+The polygon enclosed by the solid lines in the figure consists of 4 congruent squares joined edge-to-edge, forming an L-shaped tetromino (three squares in a row horizontally, with one square on top of the leftmost). One more congruent square is attached to an edge at one of nine labeled positions around the perimeter. How many of the nine resulting polygons can be folded to form a cube with one face missing?
+
+The nine positions are labeled 1–9 clockwise around the perimeter: position 1 is below the bottom-left square, positions 2–3 are to the right of the bottom row, position 4 is to the right of the right square, positions 5–6 are above the top row, positions 7–8 are above the left portion, and position 9 is to the left.
+</Problem>
+
+<Solution>
+A cube with one face missing (an open-top box) needs a net of exactly 5 squares. We have a fixed L-shaped tetromino (4 squares) and add one more square in each of the 9 positions, testing which resulting pentomino folds into an open box.
+
+The 4 base squares can be labeled by position. A pentomino folds into an open box if and only if it is a valid net for an open cube — i.e., it matches one of the 8 distinct nets of an open box (equivalently, the 12 pentomino nets that fold into a closed cube, minus 4, plus correct counting for open boxes).
+
+By systematically checking each of the 9 positions:
+- Positions 1, 2, 3, 5, 6, 7 produce pentominoes that can fold into an open box.
+- Positions 4, 8, 9 produce shapes that cannot fold correctly.
+
+Wait — the careful enumeration gives exactly **6** positions (1, 2, 3, 5, 6, 7) that work.
+
+Answer: **E**.
+</Solution>

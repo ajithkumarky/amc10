@@ -1,0 +1,55 @@
+---
+year: 2004
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: D
+choices: ['$\dfrac{2+\sqrt{5}}{2}$', '$\sqrt{5}$', '$\sqrt{6}$', '$\dfrac{5}{2}$', '$5-\sqrt{5}$']
+---
+
+<Problem>
+Square $ABCD$ has side length $2$. A semicircle with diameter $\overline{AB}$ is constructed inside the square, and the tangent to the semicircle from $C$ intersects side $\overline{AD}$ at $E$. What is the length of $\overline{CE}$?
+</Problem>
+
+<Solution>
+Set up coordinates: $A = (0,0)$, $B = (2,0)$, $C = (2,2)$, $D = (0,2)$. The semicircle has center $O = (1,0)$ and radius $1$, lying above $AB$ inside the square.
+
+The tangent from $C = (2,2)$ to the semicircle touches the circle at some point $T$. By the tangent-length formula:
+$$CT = \sqrt{CO^2 - r^2} = \sqrt{(2-1)^2 + (2-0)^2 - 1} = \sqrt{1 + 4 - 1} = \sqrt{4} = 2.$$
+
+Now, $E$ lies on side $AD$ (the segment from $A=(0,0)$ to $D=(0,2)$), so $E = (0, t)$ for some $0 \leq t \leq 2$.
+
+Since $E$ lies on line $CE$ which is tangent to the semicircle, and $E$ is on the y-axis, we can also find $ET$ using the tangent length from $E$:
+$$ET = \sqrt{EO^2 - 1} = \sqrt{(0-1)^2 + (t-0)^2 - 1} = \sqrt{t^2}.$$
+
+So $ET = t$.
+
+The tangent line from $C$ to the semicircle also passes through $E$. So $C$, $E$, and $T$ are collinear with $ET + TC = EC$ (if $E$ is outside the tangent point from $C$'s perspective). Actually, both $C$ and $E$ are external to the circle and the same tangent line touches at $T$, so both $CT$ and $ET$ are tangent lengths from their respective points.
+
+Thus: $CE = CT + TE$ or $CE = |CT - TE|$. Since $E$ is between $C$ and the tangent point or not — let's use the direct formula.
+
+From $E=(0,t)$ to $C=(2,2)$: $CE = \sqrt{4 + (2-t)^2}$.
+
+Using power of a point: tangent from $E=(0,t)$ has length $ET = t$ (computed above, assuming $t > 0$).
+
+The line $CE$ has direction from $C=(2,2)$ to $E=(0,t)$: slope $= \dfrac{t-2}{0-2} = \dfrac{2-t}{2}$.
+
+For this line to be tangent to the circle (center $(1,0)$, radius $1$), the distance from $(1,0)$ to the line equals $1$.
+
+Line through $C=(2,2)$ and $E=(0,t)$: parametrically, or in standard form. The line passes through $(0,t)$ with slope $\dfrac{2-t}{2}$:
+$$y - t = \frac{2-t}{2}(x - 0) \implies (2-t)x - 2y + 2t = 0.$$
+
+Distance from $(1,0)$:
+$$\frac{|(2-t)(1) - 2(0) + 2t|}{\sqrt{(2-t)^2 + 4}} = \frac{|2-t+2t|}{\sqrt{(2-t)^2+4}} = \frac{|t+2|}{\sqrt{(t-2)^2+4}} = 1.$$
+
+So $(t+2)^2 = (t-2)^2 + 4$:
+$$t^2 + 4t + 4 = t^2 - 4t + 4 + 4.$$
+$$8t = 4 \implies t = \frac{1}{2}.$$
+
+So $E = \left(0, \dfrac{1}{2}\right)$.
+
+$$CE = \sqrt{(2-0)^2 + \left(2 - \frac{1}{2}\right)^2} = \sqrt{4 + \frac{9}{4}} = \sqrt{\frac{25}{4}} = \frac{5}{2}.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,27 @@
+---
+year: 2004
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: D
+choices: ["$\\dfrac{2+\\sqrt{6}}{3}$", "$2$", "$\\dfrac{2+3\\sqrt{2}}{2}$", "$\\dfrac{3+2\\sqrt{3}}{3}$", "$\\dfrac{3+\\sqrt{3}}{2}$"]
+---
+
+<Problem>
+Three circles of radius $1$ are externally tangent to each other and internally tangent to a larger circle. What is the radius of the large circle?
+</Problem>
+
+<Solution>
+The three unit circles are mutually externally tangent, so the distance between any two of their centers is $1 + 1 = 2$. Their centers form an equilateral triangle with side length 2.
+
+The circumradius of this equilateral triangle (distance from centroid to each vertex) is:
+$$r_{\text{triangle}} = \frac{2}{\sqrt{3}} = \frac{2\sqrt{3}}{3}.$$
+
+The large circle is internally tangent to each unit circle, so the distance from the large circle's center to each unit circle's center equals $R - 1$, where $R$ is the large radius. By symmetry, the large circle's center coincides with the centroid of the equilateral triangle.
+
+Therefore:
+$$R - 1 = \frac{2\sqrt{3}}{3} \implies R = 1 + \frac{2\sqrt{3}}{3} = \frac{3 + 2\sqrt{3}}{3}.$$
+
+Answer: **D**.
+</Solution>

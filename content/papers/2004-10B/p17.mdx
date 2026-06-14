@@ -1,0 +1,31 @@
+---
+year: 2004
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 4
+answer: B
+choices: ["9", "18", "27", "36", "45"]
+---
+
+<Problem>
+The two digits in Jack's age are the same as the digits in Bill's age, but in reverse order. In five years Jack will be twice as old as Bill will be then. What is the difference in their current ages?
+</Problem>
+
+<Solution>
+Let Jack's age be $10a + b$ and Bill's age be $10b + a$, where $a$ and $b$ are digits with $a \neq b$.
+
+In five years:
+$$\text{Jack} + 5 = 2(\text{Bill} + 5)$$
+$$10a + b + 5 = 2(10b + a + 5)$$
+$$10a + b + 5 = 20b + 2a + 10$$
+$$8a = 19b + 5.$$
+
+Testing $b = 1$: $8a = 24 \Rightarrow a = 3$. Jack is $31$, Bill is $13$.
+
+Check: In 5 years, Jack is $36$ and Bill is $18$. Indeed $36 = 2 \times 18$. $\checkmark$
+
+The difference in their current ages: $31 - 13 = 18$.
+
+Answer: **B**.
+</Solution>

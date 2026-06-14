@@ -1,0 +1,29 @@
+---
+year: 2003
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: B
+choices: ["$1$", "$2$", "$3$", "$4$", "$5$"]
+---
+
+<Problem>
+How many non-congruent triangles with perimeter $7$ have integer side lengths?
+</Problem>
+
+<Solution>
+Let the sides be integers $a \leq b \leq c$ with $a + b + c = 7$. The triangle inequality requires $a + b > c$.
+
+Since $a + b + c = 7$, we have $a + b = 7 - c$, so the triangle inequality becomes $7 - c > c$, giving $c < 3.5$, i.e., $c \leq 3$.
+
+Also, $c \geq \lceil 7/3 \rceil$, and since $a \geq 1$, $b \geq a$, $c \geq b$, we need $3c \geq 7$, so $c \geq 3$.
+
+Therefore $c = 3$. Then $a + b = 4$ with $1 \leq a \leq b \leq 3$:
+- $a = 1, b = 3$: sides $1, 3, 3$. Check: $1 + 3 > 3$. Valid.
+- $a = 2, b = 2$: sides $2, 2, 3$. Check: $2 + 2 > 3$. Valid.
+
+There are exactly $2$ non-congruent triangles.
+
+Answer: **B**.
+</Solution>

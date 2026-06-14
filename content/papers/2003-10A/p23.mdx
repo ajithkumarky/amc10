@@ -1,0 +1,29 @@
+---
+year: 2003
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: C
+choices: ["$1{,}004{,}004$", "$1{,}005{,}006$", "$1{,}507{,}509$", "$3{,}015{,}018$", "$6{,}021{,}018$"]
+---
+
+<Problem>
+A large equilateral triangle is constructed by using toothpicks to create rows of small equilateral triangles. For example, with $3$ rows of small congruent equilateral triangles, there are $5$ small triangles in the base row. How many toothpicks would be needed to construct a large equilateral triangle if the base row consists of $2003$ small equilateral triangles?
+</Problem>
+
+<Solution>
+**Number of rows.** A large triangle with $k$ rows has $2k-1$ small triangles in its base row. Setting $2k-1 = 2003$ gives $k = 1002$ rows.
+
+**Count by upward-pointing triangles.** The small triangles come in two orientations: upward-pointing $\triangle$ and downward-pointing $\nabla$. Row $i$ (counting from the top) contains exactly $i$ upward-pointing triangles, so the total number of upward triangles is
+
+$$1 + 2 + \cdots + 1002 = \frac{1002 \cdot 1003}{2} = 502{,}503.$$
+
+**Why this counts every toothpick once.** Each of the three sides of an upward-pointing triangle is shared only with a *downward*-pointing triangle (or is on the outer boundary) — never with another upward triangle. So if we give each upward triangle its $3$ toothpicks, every toothpick in the figure is counted exactly once.
+
+Therefore the number of toothpicks is
+
+$$3 \times 502{,}503 = 1{,}507{,}509.$$
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,57 @@
+---
+year: 2004
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: D
+choices: ["$\\dfrac{1}{8}$", "$\\dfrac{2}{9}$", "$\\dfrac{3}{10}$", "$\\dfrac{4}{11}$", "$\\dfrac{5}{12}$"]
+---
+
+<Problem>
+In $\triangle ABC$, points $D$ and $E$ lie on $BC$ and $AC$, respectively. If $AD$ and $BE$ intersect at $T$ so that $\dfrac{AT}{DT} = 3$ and $\dfrac{BT}{ET} = 4$, what is $\dfrac{CD}{BD}$?
+</Problem>
+
+<Solution>
+Use mass point or area ratios.
+
+By the property of cevians, if cevians $AD$ and $BE$ meet at $T$ with $AT/DT = 3$ and $BT/ET = 4$, then by the ratio theorem (or vectors):
+
+Express $T$ as a point on $AD$: $T$ divides $AD$ with $AT:TD = 3:1$, so $T = \frac{1 \cdot A + 3 \cdot D}{4}$... actually $T = \frac{3D + 1A}{4}$ means $T = A + \frac{3}{4}(D - A)$, i.e., $\vec{OT} = \frac{1}{4}\vec{A} + \frac{3}{4}\vec{D}$.
+
+Also $T$ divides $BE$ with $BT:TE = 4:1$, so $\vec{OT} = \frac{1}{5}\vec{E} + \frac{4}{5}\vec{B}$.
+
+Let $D$ divide $BC$ such that $BD:DC = m:1$, so $\vec{D} = \frac{1 \cdot B + m \cdot C}{m+1}$.
+
+Let $E$ divide $AC$ such that $AE:EC = p:1$, so $\vec{E} = \frac{1 \cdot A + p \cdot C}{p+1}$ ... actually let me use the formula directly.
+
+By Ceva's theorem and the given ratios, use the result: in a triangle where cevians $AD$ and $BE$ intersect at $T$:
+
+$$\frac{AT}{TD} = \frac{[ABT] + [ACT]}{[BCT]} = \frac{[ABC] - [BCT]}{[BCT]}.$$
+
+So $\frac{AT}{TD} = 3$ means $[BCT] = \frac{1}{4}[ABC]$.
+
+Similarly, $\frac{BT}{TE} = 4$ means $[ACT] = \frac{1}{5}[ABC]$.
+
+Then $[ABT] = [ABC] - [BCT] - [ACT] = [ABC]\left(1 - \frac{1}{4} - \frac{1}{5}\right) = [ABC] \cdot \frac{11}{20}$.
+
+Now, $\dfrac{CD}{BD} = \dfrac{[ACD]}{[ABD]}$. Since $D$ is on $BC$:
+
+$[ACD] / [ABD] = CD/BD$.
+
+Also, $[ABD] = [ABT] + [BDT]$ and $[ACD] = [ACT] + [CDT]$.
+
+Since $[BCT]/[BCT] = 1$, and $T$ divides $DT:AT = 1:3$ on $AD$, the areas $[ABT]/[BDT] = AT/DT = 3$ (same base $BT$... actually same base from $B$).
+
+Triangles $ABT$ and $DBT$ share base $BT$, with heights from $A$ and $D$, so $[ABT]/[DBT] = AT/DT = 3/1$.
+
+Thus $[DBT] = [ABT]/3 = \frac{11}{60}[ABC]$.
+
+Then $[ABD] = [ABT] + [DBT] = \frac{11}{20}[ABC] + \frac{11}{60}[ABC] = \frac{33 + 11}{60}[ABC] = \frac{44}{60}[ABC] = \frac{11}{15}[ABC]$.
+
+And $[ACD] = [ABC] - [ABD] = [ABC]\left(1 - \frac{11}{15}\right) = \frac{4}{15}[ABC]$.
+
+Therefore $\dfrac{CD}{BD} = \dfrac{[ACD]}{[ABD]} = \dfrac{4/15}{11/15} = \dfrac{4}{11}$.
+
+Answer: **D**.
+</Solution>

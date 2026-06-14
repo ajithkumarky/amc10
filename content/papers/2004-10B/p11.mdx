@@ -1,0 +1,35 @@
+---
+year: 2004
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: C
+choices: ["$\\dfrac{1}{2}$", "$\\dfrac{47}{64}$", "$\\dfrac{3}{4}$", "$\\dfrac{55}{64}$", "$\\dfrac{7}{8}$"]
+---
+
+<Problem>
+Two eight-sided dice each have faces numbered $1$ through $8$. When the dice are rolled, each face has an equal probability of appearing on the top. What is the probability that the product of the two top numbers is greater than their sum?
+</Problem>
+
+<Solution>
+Let the two numbers be $a$ and $b$. We want $ab > a + b$, which rearranges to $ab - a - b > 0$, or $(a-1)(b-1) > 1$.
+
+$(a-1)(b-1) > 1$ fails exactly when $(a-1)(b-1) \leq 1$, meaning $(a-1)(b-1) = 0$ or $(a-1)(b-1) = 1$.
+
+**Case 1: $(a-1)(b-1) = 0$** — at least one of $a, b$ equals 1.
+- $a = 1$: 8 pairs $(1,1),(1,2),\ldots,(1,8)$.
+- $b = 1$: 8 pairs.
+- Both $= 1$: 1 pair (counted twice).
+- Total: $8 + 8 - 1 = 15$ pairs.
+
+**Case 2: $(a-1)(b-1) = 1$** — both factors equal 1, so $a = 2$ and $b = 2$: 1 pair.
+
+Total "bad" pairs: $15 + 1 = 16$.
+
+Total pairs: $8 \times 8 = 64$.
+
+Probability of product $>$ sum: $1 - \dfrac{16}{64} = 1 - \dfrac{1}{4} = \dfrac{3}{4}$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,69 @@
+---
+year: 2003
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: D
+choices: ['$1 - \dfrac{\sqrt{2}}{2}$', '$\dfrac{\sqrt{2}}{4}$', '$\sqrt{2} - 1$', '$\dfrac{1}{2}$', '$\dfrac{1+\sqrt{2}}{4}$']
+---
+
+<Problem>
+A regular octagon $ABCDEFGH$ has an area of one square unit. What is the area of the rectangle $ABEF$?
+
+The vertices are labeled consecutively: $A$ at top-left, $B$ at top-right, $C$ at right-upper, $D$ at right-lower, $E$ at bottom-right, $F$ at bottom-left, $G$ at left-lower, $H$ at left-upper.
+</Problem>
+
+<Solution>
+A regular octagon can be viewed as a square with four corner triangles cut off. Let the side length of the octagon be $s$. Then the corner triangles are isosceles right triangles with legs $\ell = \dfrac{s}{\sqrt{2}}$.
+
+The octagon fits inside a square of side $s + 2\ell = s + s\sqrt{2} = s(1+\sqrt{2})$.
+
+Area of the octagon:
+$$[s(1+\sqrt{2})]^2 - 4 \cdot \frac{1}{2}\ell^2 = s^2(1+\sqrt{2})^2 - 2 \cdot \frac{s^2}{2} = s^2(1+\sqrt{2})^2 - s^2 = s^2[(1+\sqrt{2})^2 - 1].$$
+$$(1+\sqrt{2})^2 - 1 = 1 + 2\sqrt{2} + 2 - 1 = 2 + 2\sqrt{2} = 2(1+\sqrt{2}).$$
+
+So the octagon area $= 2s^2(1+\sqrt{2}) = 1$, giving $s^2 = \dfrac{1}{2(1+\sqrt{2})}$.
+
+**Rectangle $ABEF$:** $AB$ and $EF$ are sides of the octagon (length $s$), and $AF$ (= $BE$) spans from $A$ to $F$. In the octagon, going from $A$ to $B$ to $C$ to $D$ to $E$: the width of the bounding square is $s(1+\sqrt{2})$, and the rectangle $ABEF$ has:
+- Width (= $AB$ = $EF$) $= s$
+- Height (= $AH + HG + GF$ projected... 
+
+Let me use coordinates. Place the octagon centered at origin with vertices at angles $22.5° + 45°k$ for $k = 0, \ldots, 7$, each at distance $1$ from center (unit circumradius).
+
+$A = (\cos 112.5°, \sin 112.5°)$, $B = (\cos 67.5°, \sin 67.5°)$, $E = (\cos 292.5°, \sin 292.5°)$, $F = (\cos 247.5°, \sin 247.5°)$.
+
+Note $\cos 67.5° = \sin 22.5°$ and $\sin 67.5° = \cos 22.5°$.
+
+$AB = EF = $ side length $s = 2\sin(22.5°)$ (chord of a unit circle subtending $45°$).
+
+$AE$ = distance from $A$ to $E$: $A$ and $E$ are separated by $3$ steps (at angles $112.5°$ and $292.5°$, which are $180°$ apart!). So $AE$ is a diameter $= 2$.
+
+Wait: $A$ is at $112.5°$ and $E$ is at $292.5°$. The angle between them is $292.5° - 112.5° = 180°$. So $A$ and $E$ are diametrically opposite, and $AE = 2R = 2$.
+
+Similarly $B$ is at $67.5°$ and $F$ is at $247.5°$, also $180°$ apart, so $BF = 2$.
+
+Rectangle $ABEF$: $AB \parallel FE$ and $AE \parallel BF$... but $AE$ and $BF$ are diameters, so $ABEF$ is a rectangle with sides $AB = s = 2\sin 22.5°$ and $AE = 2$ ... that's not right for a rectangle.
+
+Actually $ABEF$ has vertices $A, B, E, F$. Let me check if it's truly a rectangle. $AB$ and $FE$ are parallel sides (both sides of the octagon), and $AF$ and $BE$ are the other sides.
+
+$A = (\cos 112.5°, \sin 112.5°)$, $F = (\cos 247.5°, \sin 247.5°)$.
+
+The height of the rectangle (length of $AF$) is the straight-line distance from $A$ to $F$.
+
+By symmetry of the octagon, the rectangle $ABEF$ has width $= AB = s$ and height $= AF$.
+
+$AF$ spans from angle $112.5°$ to $247.5°$, a separation of $135°$:
+$$AF = 2\sin(67.5°) = 2\cos(22.5°).$$
+
+Area of rectangle $ABEF = AB \times AF = 2\sin(22.5°) \times 2\cos(22.5°) = 2\sin(45°) = 2 \cdot \frac{\sqrt{2}}{2} = \sqrt{2}$.
+
+But this is the area when the circumradius is $1$. The octagon area with $R=1$ is $2\sqrt{2}$.
+
+So the fraction of the octagon that is rectangle $ABEF$:
+$$\frac{\sqrt{2}}{2\sqrt{2}} = \frac{1}{2}.$$
+
+Since the total octagon area is $1$, the area of rectangle $ABEF = \dfrac{1}{2}$.
+
+Answer: **D**.
+</Solution>

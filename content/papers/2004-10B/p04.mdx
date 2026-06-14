@@ -1,0 +1,29 @@
+---
+year: 2004
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: B
+choices: ["6", "12", "24", "144", "720"]
+---
+
+<Problem>
+A standard six-sided die is rolled, and $P$ is the product of the five numbers that are visible. What is the largest number that is certain to divide $P$?
+</Problem>
+
+<Solution>
+The six faces of a standard die show 1, 2, 3, 4, 5, 6. When rolled, one face is on the bottom and the five visible faces have product $P = \frac{6!}{\text{bottom face}} = \frac{720}{\text{bottom face}}$.
+
+Since the bottom face can be any of 1–6, $P$ takes the values $720, 360, 240, 180, 144, 120$ depending on which face is down.
+
+We need the largest number dividing ALL of these. Compute $\gcd(720, 360, 240, 180, 144, 120)$.
+
+The minimum is 120. Check: does 120 divide all? $720/120=6$, $360/120=3$, $240/120=2$, $180/120=1.5$ — no! $180 = 720/4$ and $120 \nmid 180$.
+
+Work with $\gcd$: $\gcd(720, 360) = 360$, $\gcd(360, 240) = 120$, $\gcd(120, 180) = 60$, $\gcd(60, 144) = 12$, $\gcd(12, 120) = 12$.
+
+So the largest number guaranteed to divide $P$ is $\mathbf{12}$.
+
+Answer: **B**.
+</Solution>

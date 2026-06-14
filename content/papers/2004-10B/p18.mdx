@@ -1,0 +1,37 @@
+---
+year: 2004
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: E
+choices: ["$\\dfrac{1}{4}$", "$\\dfrac{9}{25}$", "$\\dfrac{3}{8}$", "$\\dfrac{11}{25}$", "$\\dfrac{7}{16}$"]
+---
+
+<Problem>
+In the right triangle $\triangle ACE$, we have $AC = 12$, $CE = 16$, and $EA = 20$. Points $B$, $D$, and $F$ are located on $AC$, $CE$, and $EA$, respectively, so that $AB = 3$, $CD = 4$, and $EF = 5$. What is the ratio of the area of $\triangle BDF$ to that of $\triangle ACE$?
+
+In the figure, $C$ is the right angle. On side $AC$: $AB = 3$ and $BC = 9$. On side $CE$: $CD = 4$ and $DE = 12$. On side $EA$: $EF = 5$ and $FA = 15$.
+</Problem>
+
+<Solution>
+The area of $\triangle ACE$ is $\frac{1}{2}(12)(16) = 96$.
+
+Subtract the areas of three corner triangles from $\triangle ACE$:
+
+**Triangle $ABC$** (right angle at $C$, but actually using the formula for a triangle within a larger triangle):
+
+Use the formula: for a triangle with one vertex of $\triangle ACE$ and the other two on the sides, the area fraction equals the product of the ratios of the sides.
+
+- $\triangle ABF$ has vertices $A$, $B$ on $AC$, and $F$ on $EA$. The area is $\frac{1}{2} \cdot AB \cdot AF \cdot \sin(\angle A)$. Since $\sin A = CE/EA = 16/20 = 4/5$ and $AB = 3$, $AF = 15$: area $= \frac{1}{2}(3)(15)(4/5) = 18$.
+
+- $\triangle BCD$ has vertices $B$ on $AC$, $C$, and $D$ on $CE$. Right angle at $C$: area $= \frac{1}{2}(BC)(CD) = \frac{1}{2}(9)(4) = 18$.
+
+- $\triangle DEF$ has vertices $D$ on $CE$, $E$, and $F$ on $EA$. $\sin E = AC/EA = 12/20 = 3/5$ and $DE = 12$, $EF = 5$: area $= \frac{1}{2}(12)(5)(3/5) = 18$.
+
+Area of $\triangle BDF = 96 - 18 - 18 - 18 = 42$.
+
+Ratio: $\dfrac{42}{96} = \dfrac{7}{16}$.
+
+Answer: **E**.
+</Solution>

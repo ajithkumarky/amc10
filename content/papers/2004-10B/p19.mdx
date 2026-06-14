@@ -1,0 +1,38 @@
+---
+year: 2004
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: C
+choices: ["$-2004$", "$-2$", "$0$", "$4003$", "$6007$"]
+---
+
+<Problem>
+In the sequence $2001$, $2002$, $2003$, $\ldots$, each term after the third is found by subtracting the previous term from the sum of the two terms that precede that term. For example, the fourth term is $2001 + 2002 - 2003 = 2000$. What is the $2004^{\text{th}}$ term in this sequence?
+</Problem>
+
+<Solution>
+Let the first three terms be $a_1 = 2001$, $a_2 = 2002$, $a_3 = 2003$. The recurrence is $a_n = a_{n-2} + a_{n-1} - a_{n-2} $... more carefully: $a_n = a_{n-3} + a_{n-2} - a_{n-1}$.
+
+Compute the first several terms:
+- $a_1 = 2001$
+- $a_2 = 2002$
+- $a_3 = 2003$
+- $a_4 = 2001 + 2002 - 2003 = 2000$
+- $a_5 = 2002 + 2003 - 2000 = 2005$
+- $a_6 = 2003 + 2000 - 2005 = 1998$
+- $a_7 = 2000 + 2005 - 1998 = 2007$
+- $a_8 = 2005 + 1998 - 2007 = 1996$
+- $a_9 = 1998 + 2007 - 1996 = 2009$
+- $a_{10} = 2007 + 1996 - 2009 = 1994$
+
+Looking at odd-indexed terms: 2001, 2003, 2005, 2007, 2009, … increasing by 2.
+Looking at even-indexed terms: 2002, 2000, 1998, 1996, 1994, … decreasing by 2.
+
+$a_{2004}$ is even-indexed. The even terms are $a_{2k} = 2002 - 2(k-1) = 2004 - 2k$.
+
+For $k = 1002$: $a_{2004} = 2004 - 2(1002) = 2004 - 2004 = 0$.
+
+Answer: **C**.
+</Solution>

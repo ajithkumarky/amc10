@@ -1,0 +1,29 @@
+---
+year: 2003
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: E
+choices: ["$3$", "$4$", "$6$", "$9$", "$10$"]
+---
+
+<Problem>
+Let $\clubsuit(x)$ denote the sum of the digits of the positive integer $x$. For example, $\clubsuit(8)=8$ and $\clubsuit(123)=1+2+3=6$. For how many two-digit values of $x$ is $\clubsuit(\clubsuit(x))=3$?
+</Problem>
+
+<Solution>
+For a two-digit number $x$, the digit sum $\clubsuit(x)$ ranges from $1$ (for $x=10$) to $18$ (for $x=99$).
+
+We need $\clubsuit(\clubsuit(x)) = 3$. Since $\clubsuit(x)$ is between $1$ and $18$, we need $\clubsuit(x)$ to be a number in that range whose digit sum is $3$. Those are: $3, 12$.
+
+(Note: $\clubsuit(x) = 3$ gives $\clubsuit(3) = 3$ ✓; $\clubsuit(x) = 12$ gives $\clubsuit(12) = 3$ ✓. The value $21$ would also work but $\clubsuit(x) \le 18$.)
+
+**Case 1: $\clubsuit(x) = 3$.** Two-digit numbers with digit sum $3$: $12, 21, 30$. That is $3$ values.
+
+**Case 2: $\clubsuit(x) = 12$.** Two-digit numbers with digit sum $12$: $39, 48, 57, 66, 75, 84, 93$. That is $7$ values.
+
+Total $= 3 + 7 = 10$.
+
+Answer: **E**.
+</Solution>

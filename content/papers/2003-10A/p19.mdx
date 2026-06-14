@@ -1,0 +1,40 @@
+---
+year: 2003
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: C
+choices: ['$\dfrac{1}{6}\pi-\dfrac{\sqrt{3}}{4}$', '$\dfrac{\sqrt{3}}{4}-\dfrac{1}{12}\pi$', '$\dfrac{\sqrt{3}}{4}-\dfrac{1}{24}\pi$', '$\dfrac{\sqrt{3}}{4}+\dfrac{1}{24}\pi$', '$\dfrac{\sqrt{3}}{4}+\dfrac{1}{12}\pi$']
+---
+
+<Problem>
+A semicircle of diameter $1$ sits at the top of a semicircle of diameter $2$, as shown. The smaller semicircle's diameter lies along a chord of the larger semicircle. The shaded area inside the smaller semicircle and outside the larger semicircle is called a lune. Determine the area of this lune.
+
+The diameter of the smaller semicircle (length $1$) is a horizontal chord of the larger semicircle (diameter $2$, radius $1$). The chord is at height $\sqrt{3}/2$ above the center of the large semicircle (since the chord of length $1$ is at distance $\sqrt{1^2 - (1/2)^2} = \sqrt{3}/2$ from the center).
+</Problem>
+
+<Solution>
+Set up coordinates with the center of the large semicircle at the origin. The large semicircle has radius $1$; its diameter lies on the $x$-axis and the semicircle is the upper half.
+
+The smaller semicircle has diameter $1$, so radius $\frac{1}{2}$. Its flat diameter is a horizontal chord of the large circle. The chord endpoints satisfy $x^2 + y^2 = 1$ and the chord has length $1$, so the half-chord is $\frac{1}{2}$ and the height is $y = \sqrt{1 - (1/2)^2} = \frac{\sqrt{3}}{2}$.
+
+The smaller semicircle sits on top of this chord, so its center is at $\left(0, \frac{\sqrt{3}}{2}\right)$ and it arcs upward.
+
+**Area of lune** = (area of small semicircle) $-$ (area of circular segment of large circle cut off by the chord).
+
+**Small semicircle area:**
+$$\frac{1}{2}\pi\left(\frac{1}{2}\right)^2 = \frac{\pi}{8}.$$
+
+**Circular segment of large circle:** The chord is at height $\frac{\sqrt{3}}{2}$, cutting off a small cap from the top of the large semicircle.
+
+The half-angle $\theta$ satisfies $\cos\theta = \frac{\sqrt{3}/2}{1} = \frac{\sqrt{3}}{2}$, so $\theta = \frac{\pi}{6}$. The full central angle is $2\theta = \frac{\pi}{3}$.
+
+Area of circular segment $=$ area of sector $-$ area of triangle:
+$$\frac{1}{2}r^2(2\theta) - \frac{1}{2}r^2\sin(2\theta) = \frac{1}{2}(1)^2\cdot\frac{\pi}{3} - \frac{1}{2}(1)^2\sin\frac{\pi}{3} = \frac{\pi}{6} - \frac{\sqrt{3}}{4}.$$
+
+**Lune area:**
+$$\frac{\pi}{8} - \left(\frac{\pi}{6} - \frac{\sqrt{3}}{4}\right) = \frac{\pi}{8} - \frac{\pi}{6} + \frac{\sqrt{3}}{4} = \frac{3\pi - 4\pi}{24} + \frac{\sqrt{3}}{4} = -\frac{\pi}{24} + \frac{\sqrt{3}}{4} = \frac{\sqrt{3}}{4} - \frac{1}{24}\pi.$$
+
+Answer: **C**.
+</Solution>

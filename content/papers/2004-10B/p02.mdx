@@ -1,0 +1,25 @@
+---
+year: 2004
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 1
+answer: B
+choices: ["10", "18", "19", "20", "30"]
+---
+
+<Problem>
+How many two-digit positive integers have at least one $7$ as a digit?
+</Problem>
+
+<Solution>
+Count the two-digit numbers (10–99) with at least one digit equal to 7.
+
+**Numbers with 7 in the tens place:** 70, 71, 72, 73, 74, 75, 76, 77, 78, 79 — that is 10 numbers.
+
+**Numbers with 7 in the units place:** 17, 27, 37, 47, 57, 67, 77, 87, 97 — that is 9 numbers.
+
+The number 77 is counted in both groups. By inclusion-exclusion: $10 + 9 - 1 = 18$.
+
+Answer: **B**.
+</Solution>

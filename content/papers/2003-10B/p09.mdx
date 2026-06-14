@@ -1,0 +1,28 @@
+---
+year: 2003
+paper: "10B"
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 2
+answer: B
+choices: ["$2$", "$3$", "$5$", "$6$", "$9$"]
+---
+
+<Problem>
+Find the value of $x$ that satisfies the equation
+$$25^{-2} = \frac{5^{48/x}}{5^{26/x} \cdot 25^{17/x}}.$$
+</Problem>
+
+<Solution>
+Rewrite everything as a power of $5$. Since $25 = 5^2$:
+
+Left side: $25^{-2} = 5^{-4}$.
+
+Right side: $25^{17/x} = 5^{34/x}$, so
+$$\frac{5^{48/x}}{5^{26/x} \cdot 5^{34/x}} = 5^{48/x - 26/x - 34/x} = 5^{(48-26-34)/x} = 5^{-12/x}.$$
+
+Setting exponents equal:
+$$-4 = \frac{-12}{x} \implies x = \frac{-12}{-4} = 3.$$
+
+Answer: **B**.
+</Solution>

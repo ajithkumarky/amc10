@@ -1,0 +1,67 @@
+---
+year: 2003
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 5
+answer: B
+choices: ["March 8", "March 9", "March 10", "March 20", "March 21"]
+---
+
+<Problem>
+A clock chimes once at $30$ minutes past each hour and chimes on the hour according to the hour. For example, at $1\text{ PM}$ there is one chime and at noon and midnight there are twelve chimes. Starting at $11\text{:}15\text{ AM}$ on February $26, 2003$, on what date will the $2003\text{rd}$ chime occur?
+</Problem>
+
+<Solution>
+**Chimes in a 12-hour period:** The clock chimes $1+2+3+\cdots+12 = 78$ times on the hours, plus $12$ half-hour chimes (one per hour), for a total of $78 + 12 = 90$ chimes per $12$-hour period.
+
+**Chimes in a full day:** $90 \times 2 = 180$ chimes per day.
+
+**Starting point:** $11\text{:}15$ AM on Feb 26. The next chimes are at $11\text{:}30$ AM (1 chime) and $12\text{:}00$ PM (12 chimes), etc.
+
+**Chimes from 11:15 AM onward on Feb 26:**
+- $11\text{:}30$ AM: $1$ chime
+- $12\text{:}00$ PM: $12$ chimes
+- $12\text{:}30$ PM: $1$ chime
+- $1\text{:}00$ PM: $1$ chime
+- $\vdots$
+- $11\text{:}00$ PM: $11$ chimes
+- $11\text{:}30$ PM: $1$ chime
+- $12\text{:}00$ AM (midnight): $12$ chimes
+
+From $11\text{:}30$ AM to midnight (end of Feb 26), we have a partial $12$-hour block: from $11\text{:}30$ AM to $12\text{:}00$ noon is the $11\text{:}30$ half-chime, then the full $12$-hour PM block, then the midnight chimes.
+
+More cleanly: from $11\text{:}15$ AM, the remaining chimes on Feb 26 (up to and including midnight):
+- Remaining in the $12\text{:}00$ AM–$11\text{:}59$ AM block: the $11\text{:}30$ AM chime ($1$) = $1$
+- Full $12\text{:}00$ PM–$11\text{:}59$ PM block: $90$ chimes
+- Midnight ($12\text{:}00$ AM): $12$ chimes
+
+Actually, let me count from $11\text{:}30$ AM Feb 26 directly. The number of complete days from $11\text{:}30$ AM onward is cleaner.
+
+**From 11:30 AM on Feb 26 (first chime):**
+
+Chimes in each $12$-hour cycle = $90$. The $2003$rd chime from the start happens at chime number $2003$.
+
+Since we start at $11\text{:}30$ AM, the first two chimes at $11\text{:}30$ AM and $12\text{:}00$ PM give $1 + 12 = 13$ chimes. Then each full $24$-hour day gives $180$ chimes.
+
+We want when cumulative chimes reach $2003$.
+
+$2003 \div 180 = 11$ remainder $23$. So after $11$ full days ($11 \times 180 = 1980$ chimes), we need $2003 - 1980 = 23$ more chimes.
+
+$11$ days after $11\text{:}30$ AM Feb $26$ = $11\text{:}30$ AM March $9$.
+
+Now we count $23$ chimes starting from $11\text{:}30$ AM March $9$:
+- $11\text{:}30$ AM: $1$ chime (total: $1$)
+- $12\text{:}00$ PM: $12$ chimes (total: $13$)
+- $12\text{:}30$ PM: $1$ chime (total: $14$)
+- $1\text{:}00$ PM: $1$ chime (total: $15$)
+- $1\text{:}30$ PM: $1$ chime (total: $16$)
+- $2\text{:}00$ PM: $2$ chimes (total: $18$)
+- $2\text{:}30$ PM: $1$ chime (total: $19$)
+- $3\text{:}00$ PM: $3$ chimes (total: $22$)
+- $3\text{:}30$ PM: $1$ chime (total: $23$) ✓
+
+The $2003$rd chime occurs at $3\text{:}30$ PM on **March 9**.
+
+Answer: **B**.
+</Solution>

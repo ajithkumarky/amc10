@@ -1,0 +1,30 @@
+---
+year: 2004
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: C
+choices: ["$120$", "$180$", "$240$", "$360$", "$480$"]
+---
+
+<Problem>
+A white cylindrical silo has a diameter of $30$ feet and a height of $80$ feet. A red stripe with a horizontal width of $3$ feet is painted on the silo, making two complete revolutions around it. What is the area of the stripe in square feet?
+</Problem>
+
+<Solution>
+The key insight is to unroll the cylinder into a flat rectangle. When unrolled, the cylinder becomes a rectangle with width equal to the circumference $\pi \cdot 30 = 30\pi$ feet and height $80$ feet.
+
+The stripe, which makes two complete revolutions with a constant horizontal width of $3$ feet, becomes a slanted parallelogram (or band) on the unrolled rectangle.
+
+On the unrolled cylinder, the stripe makes $2$ complete wraps, so horizontally it spans the full width $30\pi$ twice — but we only care about area. The horizontal width of the stripe is $3$ feet everywhere. The stripe covers the full height of $80$ feet since it makes two complete revolutions.
+
+Actually, think of it this way: the stripe has a constant horizontal width of $3$ feet, and it wraps twice around the cylinder. At any given height, the stripe covers a horizontal arc of length $3$ feet (not $3$ feet of arc, but $3$ feet of horizontal projection). The area element is straightforward: for the unrolled rectangle, the stripe is a slanted band of horizontal width $3$ feet spanning the full height $80$ feet.
+
+Since the horizontal width on the surface is $3$ feet and the band spans the full height of $80$ feet (two revolutions covering the whole height), the area of the stripe is:
+$$\text{Area} = \text{horizontal width} \times \text{height} = 3 \times 80 = 240 \text{ square feet}.$$
+
+This result follows because when you unroll the cylinder, the area of the stripe equals the area of the corresponding parallelogram, which has base equal to the height of the cylinder ($80$ ft) and the stripe's horizontal dimension ($3$ ft) gives a width that, when integrated across the surface, yields exactly $3 \times 80$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,33 @@
+---
+year: 2004
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: B
+choices: ["$\\dfrac{9}{8}$", "$\\dfrac{5}{3}$", "$2$", "$\\dfrac{17}{7}$", "$\\dfrac{5}{2}$"]
+---
+
+<Problem>
+In $\triangle ABC$ we have $AB = 7$, $AC = 8$, and $BC = 9$. Point $D$ is on the circumscribed circle of the triangle so that $AD$ bisects $\angle BAC$. What is the value of $\dfrac{AD}{CD}$?
+</Problem>
+
+<Solution>
+Since $AD$ bisects $\angle BAC$ and $D$ is on the circumcircle, $D$ is the midpoint of arc $BC$ not containing $A$.
+
+**Key property:** Since $D$ is the midpoint of arc $BC$, we have $DB = DC$.
+
+**Finding $AD$:** Use the angle bisector length with the extended law of sines / Ptolemy's theorem.
+
+By the angle bisector, $D$ is equidistant from $B$ and $C$ on the circle: $DB = DC$.
+
+Apply Ptolemy's theorem to cyclic quadrilateral $ABDC$ (with $D$ on arc $BC$ not containing $A$, order around circle: $A, B, D, C$):
+$$AD \cdot BC = AB \cdot DC + AC \cdot BD.$$
+
+Since $DB = DC$, let $DB = DC = x$:
+$$9 \cdot AD = 7x + 8x = 15x \implies AD = \frac{15x}{9} = \frac{5x}{3}.$$
+
+Therefore $\dfrac{AD}{CD} = \dfrac{5x/3}{x} = \dfrac{5}{3}$.
+
+Answer: **B**.
+</Solution>

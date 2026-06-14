@@ -1,0 +1,27 @@
+---
+year: 2003
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 2
+answer: B
+choices: ["$35$", "$38$", "$40$", "$42$", "$136$"]
+---
+
+<Problem>
+The symbolism $\lfloor x \rfloor$ denotes the largest integer not exceeding $x$. For example, $\lfloor 3 \rfloor = 3$ and $\lfloor 9/2 \rfloor = 4$. Compute
+$$\lfloor \sqrt{1} \rfloor + \lfloor \sqrt{2} \rfloor + \lfloor \sqrt{3} \rfloor + \cdots + \lfloor \sqrt{16} \rfloor.$$
+</Problem>
+
+<Solution>
+Group by the value of $\lfloor \sqrt{n} \rfloor$:
+
+- $\lfloor \sqrt{n} \rfloor = 1$ for $n = 1, 2, 3$ (3 terms, each contributing $1$): total $= 3$
+- $\lfloor \sqrt{n} \rfloor = 2$ for $n = 4, 5, 6, 7, 8$ (5 terms, each contributing $2$): total $= 10$
+- $\lfloor \sqrt{n} \rfloor = 3$ for $n = 9, 10, 11, 12, 13, 14, 15$ (7 terms, each contributing $3$): total $= 21$
+- $\lfloor \sqrt{16} \rfloor = 4$ (1 term): total $= 4$
+
+Sum $= 3 + 10 + 21 + 4 = 38$.
+
+Answer: **B**.
+</Solution>

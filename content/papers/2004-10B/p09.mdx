@@ -1,0 +1,30 @@
+---
+year: 2004
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 2
+answer: B
+choices: ["$200+25\\pi$", "$100+75\\pi$", "$75+100\\pi$", "$100+100\\pi$", "$100+125\\pi$"]
+---
+
+<Problem>
+A square has sides of length $10$, and a circle centered at one of its vertices has radius $10$. What is the area of the union of the regions enclosed by the square and the circle?
+</Problem>
+
+<Solution>
+Place the square with vertices at $(0,0)$, $(10,0)$, $(10,10)$, $(0,10)$, and center the circle at $(0,0)$ with radius 10.
+
+The circle passes through the two adjacent vertices $(10,0)$ and $(0,10)$ of the square, so the entire square lies inside the circle (every point of the square is within distance 10 from the origin since the farthest point, the opposite corner $(10,10)$, has distance $10\sqrt{2} > 10$... wait — the corner $(10,10)$ has distance $\sqrt{200} \approx 14.1 > 10$, so the square is NOT entirely inside the circle).
+
+**Area of union = Area of square + Area of circle outside the square.**
+
+The circle has center at a corner of the square. The interior of the square occupies a $90°$ sector (one-quarter) of the circle's area. The part of the circle inside the square is a quarter-circle of radius 10.
+
+Area of circle inside square $= \frac{1}{4}\pi(10^2) = 25\pi$.
+
+Area of union $=$ Area(square) $+$ Area(circle) $-$ Area(circle $\cap$ square)
+$$= 100 + 100\pi - 25\pi = 100 + 75\pi.$$
+
+Answer: **B**.
+</Solution>

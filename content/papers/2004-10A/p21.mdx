@@ -1,0 +1,51 @@
+---
+year: 2004
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: B
+choices: ['$\dfrac{\pi}{8}$', '$\dfrac{\pi}{7}$', '$\dfrac{\pi}{6}$', '$\dfrac{\pi}{5}$', '$\dfrac{\pi}{4}$']
+---
+
+<Problem>
+Two distinct lines pass through the center of three concentric circles of radii $3$, $2$, and $1$. The area of the shaded region in the diagram is $\dfrac{8}{13}$ of the area of the unshaded region. The two lines form an acute angle $\theta$ (in radians) at the center, creating sectors. The shading alternates: within the innermost circle ($r=1$), the sectors along the acute angle are shaded; between $r=1$ and $r=2$, the sectors along the obtuse angle are shaded; between $r=2$ and $r=3$, the sectors along the acute angle are shaded. What is $\theta$?
+</Problem>
+
+<Solution>
+Let $\theta$ be the acute angle between the two lines ($0 < \theta < \pi/2$). The two lines create four sectors at each ring, with angle pairs $\theta, \pi - \theta, \theta, \pi - \theta$ going around (the two lines create two angles of measure $\theta$ and two of $\pi - \theta$ in the full circle).
+
+The "acute" sectors together subtend $2\theta$ in angle, and the "obtuse" sectors subtend $2(\pi - \theta)$.
+
+From the diagram's shading pattern:
+- Innermost disk ($r \leq 1$): the $2\theta$-sectors are shaded.
+- Annulus $1 < r \leq 2$: the $2(\pi - \theta)$-sectors are shaded.
+- Annulus $2 < r \leq 3$: the $2\theta$-sectors are shaded.
+
+Computing areas (using $A = \frac{1}{2}r^2 \cdot \text{angle}$ for sectors):
+
+Shaded area:
+$$= \frac{1}{2}(1)^2 \cdot 2\theta + \frac{1}{2}(2^2 - 1^2) \cdot 2(\pi-\theta) + \frac{1}{2}(3^2 - 2^2) \cdot 2\theta$$
+$$= \theta + 3(2)(\pi - \theta)/... $$
+
+Let me use the ring areas directly. Area of full disk of radius $r$ is $\pi r^2$.
+
+- Inner disk area $= \pi(1)^2 = \pi$. Shaded fraction $= \dfrac{2\theta}{2\pi} = \dfrac{\theta}{\pi}$. Shaded $= \theta$.
+- Middle annulus area $= \pi(4-1) = 3\pi$. Shaded fraction $= \dfrac{\pi - \theta}{\pi}$. Shaded $= 3(\pi - \theta)$.
+- Outer annulus area $= \pi(9-4) = 5\pi$. Shaded fraction $= \dfrac{\theta}{\pi}$. Shaded $= 5\theta$.
+
+Total shaded $= \theta + 3(\pi - \theta) + 5\theta = 3\theta + 3\pi - 3\theta + 5\theta = 5\theta + 3\pi - 3\theta$... let me recompute:
+$$= \theta + 3\pi - 3\theta + 5\theta = 3\theta + 3\pi - 3\theta... $$
+$$= \theta + 3(\pi - \theta) + 5\theta = \theta + 3\pi - 3\theta + 5\theta = 3\theta + 3\pi.$$
+
+Total area $= \pi(9) = 9\pi$. Total unshaded $= 9\pi - (3\theta + 3\pi) = 6\pi - 3\theta$.
+
+Given: shaded $= \dfrac{8}{13}$ of unshaded:
+$$3\theta + 3\pi = \frac{8}{13}(6\pi - 3\theta).$$
+$$13(3\theta + 3\pi) = 8(6\pi - 3\theta).$$
+$$39\theta + 39\pi = 48\pi - 24\theta.$$
+$$63\theta = 9\pi.$$
+$$\theta = \frac{9\pi}{63} = \frac{\pi}{7}.$$
+
+Answer: **B**.
+</Solution>

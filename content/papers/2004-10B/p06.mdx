@@ -1,0 +1,30 @@
+---
+year: 2004
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: C
+choices: ["$98! \\cdot 99!$", "$98! \\cdot 100!$", "$99! \\cdot 100!$", "$99! \\cdot 101!$", "$100! \\cdot 101!$"]
+---
+
+<Problem>
+Which of the following numbers is a perfect square?
+
+$\textbf{(A)}\ 98! \cdot 99! \qquad \textbf{(B)}\ 98! \cdot 100! \qquad \textbf{(C)}\ 99! \cdot 100! \qquad \textbf{(D)}\ 99! \cdot 101! \qquad \textbf{(E)}\ 100! \cdot 101!$
+</Problem>
+
+<Solution>
+A product $n! \cdot m!$ is a perfect square when all prime exponents in its factorization are even.
+
+Note that $(n!)^2$ is always a perfect square. So check whether each option equals a factorial squared times a perfect square.
+
+Write each option using $n! \cdot (n+1)! = n! \cdot (n+1) \cdot n! = (n+1) \cdot (n!)^2$:
+
+- $\textbf{(A)}$ $98! \cdot 99! = 99 \cdot (98!)^2$ — is $99$ a perfect square? No ($99 = 9 \cdot 11$).
+- $\textbf{(B)}$ $98! \cdot 100! = 98! \cdot 100 \cdot 99! = 100 \cdot (99!)(98!)$ — rewrite: $= 100 \cdot 99 \cdot (98!)^2$. Is $9900$ a perfect square? $9900 = 4 \cdot 9 \cdot 275 = 4 \cdot 9 \cdot 25 \cdot 11$, so $9900 = (2 \cdot 3 \cdot 5)^2 \cdot 11$. Not a perfect square.
+- $\textbf{(C)}$ $99! \cdot 100! = 100 \cdot (99!)^2$. Is $100$ a perfect square? Yes, $100 = 10^2$.
+- Therefore $99! \cdot 100! = (10 \cdot 99!)^2$, which is a perfect square.
+
+Answer: **C**.
+</Solution>

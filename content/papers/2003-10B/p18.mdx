@@ -1,0 +1,33 @@
+---
+year: 2003
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: D
+choices: ["$3$", "$5$", "$11$", "$15$", "$165$"]
+---
+
+<Problem>
+What is the largest integer that is a divisor of
+$$(n+1)(n+3)(n+5)(n+7)(n+9)$$
+for all positive even integers $n$?
+</Problem>
+
+<Solution>
+When $n$ is a positive even integer, each of $n+1, n+3, n+5, n+7, n+9$ is odd. These five numbers form a sequence of five consecutive odd integers.
+
+**Divisibility by 3:** Among any three consecutive odd integers, exactly one is divisible by $3$. Among five consecutive odd integers, at least one (in fact, at least one and possibly two) must be divisible by $3$. So the product is always divisible by $3$.
+
+**Divisibility by 5:** Among any five consecutive odd integers, exactly one is divisible by $5$. So the product is always divisible by $5$.
+
+**Divisibility by 15:** Both conditions hold simultaneously, so $15 \mid (n+1)(n+3)(n+5)(n+7)(n+9)$ for all positive even $n$.
+
+**Check $n = 2$:** $(3)(5)(7)(9)(11) = 10395 = 15 \times 693$. ✓
+
+**Why not $165 = 3 \times 5 \times 11$?** For $n = 2$: $10395 / 11 = 945$, which is divisible by $11$. For $n = 4$: $(5)(7)(9)(11)(13) = 45045$. Is $45045$ divisible by $11$? $45045 / 11 = 4095$. Yes. For $n = 20$: $(21)(23)(25)(27)(29) = 21 \times 23 \times 25 \times 27 \times 29$. None of these is divisible by $11$ (checking: $21 = 3\times7$, $23$ prime, $25=5^2$, $27=3^3$, $29$ prime). So $11 \nmid$ the product when $n=20$.
+
+Therefore the largest guaranteed divisor is $15$.
+
+Answer: **D**.
+</Solution>

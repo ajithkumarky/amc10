@@ -1,0 +1,23 @@
+---
+year: 2004
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: C
+choices: ["$24$", "$256$", "$768$", "$40{,}320$", "$120{,}960$"]
+---
+
+<Problem>
+Henry's Hamburger Heaven offers its hamburgers with the following condiments: ketchup, mustard, mayonnaise, tomato, lettuce, pickles, cheese, and onions. A customer can choose one, two, or three meat patties, and any collection of condiments. How many different kinds of hamburgers can be ordered?
+</Problem>
+
+<Solution>
+There are $3$ choices for the number of patties (one, two, or three).
+
+There are $8$ condiments, and any subset is allowed (including none), giving $2^8 = 256$ condiment combinations.
+
+By the multiplication principle, the total number of different hamburgers is $3 \times 256 = 768$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,31 @@
+---
+year: 2003
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 1
+answer: A
+choices: ["$108$", "$115$", "$132$", "$144$", "$156$"]
+---
+
+<Problem>
+Rose fills each of the rectangular and square regions of her rectangular flower bed with a different type of flower. The lengths, in feet, of the rectangular regions in her flower bed are as shown in the figure. She plants one flower per square foot in each region. Asters cost $\textdollar 1$ each, begonias $\textdollar 1.50$ each, cannas $\textdollar 2$ each, dahlias $\textdollar 2.50$ each, and Easter lilies $\textdollar 3$ each. What is the least possible cost, in dollars, for her garden?
+
+The $11 \times 6$ foot flower bed is divided into five regions with areas as follows: a bottom-left strip $6 \times 1 = 6$ sq ft, a tall left block $4 \times 5 = 20$ sq ft, a top-right rectangle $7 \times 3 = 21$ sq ft, a bottom-right rectangle $5 \times 3 = 15$ sq ft, and a center square $2 \times 2 = 4$ sq ft.
+</Problem>
+
+<Solution>
+The five regions have areas $4, 6, 15, 20, 21$ square feet. To minimize cost, plant the cheapest flowers in the largest regions. Sorting by decreasing area and assigning increasing price:
+
+| Region (sq ft) | Flower | Price per flower | Cost |
+|---|---|---|---|
+| 21 | Asters | $\textdollar 1.00$ | $\textdollar 21.00$ |
+| 20 | Begonias | $\textdollar 1.50$ | $\textdollar 30.00$ |
+| 15 | Cannas | $\textdollar 2.00$ | $\textdollar 30.00$ |
+| 6 | Dahlias | $\textdollar 2.50$ | $\textdollar 15.00$ |
+| 4 | Easter lilies | $\textdollar 3.00$ | $\textdollar 12.00$ |
+
+Total $= 21 + 30 + 30 + 15 + 12 = \textdollar 108$.
+
+Answer: **A**.
+</Solution>

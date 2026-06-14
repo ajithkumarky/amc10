@@ -1,0 +1,25 @@
+---
+year: 2003
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: E
+choices: ["$4$", "$5$", "$6$", "$7$", "$8$"]
+---
+
+<Problem>
+A restaurant offers three desserts, and exactly twice as many appetizers as main courses. A dinner consists of an appetizer, a main course, and a dessert. What is the least number of main courses that a restaurant should offer so that a customer could have a different dinner each night in the year $2003$?
+</Problem>
+
+<Solution>
+Let $m$ be the number of main courses. Then there are $2m$ appetizers and $3$ desserts. The total number of distinct dinners is:
+$$m \times 2m \times 3 = 6m^2.$$
+
+The year $2003$ is not a leap year, so it has $365$ days. We need:
+$$6m^2 \ge 365 \implies m^2 \ge \frac{365}{6} \approx 60.83 \implies m \ge 8 \text{ (since } 7^2 = 49 < 60.83 \text{ and } 8^2 = 64 > 60.83\text{)}.$$
+
+The least value is $m = 8$.
+
+Answer: **E**.
+</Solution>

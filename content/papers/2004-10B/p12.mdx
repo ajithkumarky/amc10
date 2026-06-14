@@ -1,0 +1,31 @@
+---
+year: 2004
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: A
+choices: ["$\\pi a^2$", "$\\pi b^2$", "$\\pi c^2$", "$\\pi d^2$", "$\\pi e^2$"]
+---
+
+<Problem>
+An annulus is the region between two concentric circles. The concentric circles have radii $b$ and $c$, with $b > c$. Let $OX$ be a radius of the larger circle, let $XZ$ be tangent to the smaller circle at $Z$, and let $OY$ be the radius of the larger circle that contains $Z$. Let $a = XZ$, $d = YZ$, and $e = XY$. What is the area of the annulus?
+
+In the figure: $O$ is the common center, $X$ is on the larger circle, $Z$ is on the smaller circle with $OZ \perp XZ$, and $Y$ is on the larger circle with $O$, $Z$, $Y$ collinear.
+</Problem>
+
+<Solution>
+The area of the annulus is $\pi b^2 - \pi c^2$.
+
+Since $XZ$ is tangent to the smaller circle at $Z$, we have $OZ \perp XZ$, so triangle $OXZ$ is a right triangle with:
+- hypotenuse $OX = b$ (radius of larger circle),
+- leg $OZ = c$ (radius of smaller circle),
+- leg $XZ = a$.
+
+By the Pythagorean theorem: $a^2 + c^2 = b^2$, so $b^2 - c^2 = a^2$.
+
+Therefore the area of the annulus is:
+$$\pi b^2 - \pi c^2 = \pi(b^2 - c^2) = \pi a^2.$$
+
+Answer: **A**.
+</Solution>

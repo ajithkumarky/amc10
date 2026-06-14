@@ -1,0 +1,26 @@
+---
+year: 2003
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: C
+choices: ['$\dfrac{1}{6}$', '$\dfrac{33}{100}$', '$\dfrac{17}{50}$', '$\dfrac{1}{2}$', '$\dfrac{18}{25}$']
+---
+
+<Problem>
+What is the probability that an integer in the set $\{1,2,3,\ldots,100\}$ is divisible by $2$ and not divisible by $3$?
+</Problem>
+
+<Solution>
+Count integers from $1$ to $100$ that are divisible by $2$ but not by $3$.
+
+- Divisible by $2$: $\lfloor 100/2 \rfloor = 50$ numbers.
+- Divisible by both $2$ and $3$ (i.e., by $6$): $\lfloor 100/6 \rfloor = 16$ numbers.
+
+Divisible by $2$ but not $3$: $50 - 16 = 34$.
+
+The probability is $\dfrac{34}{100} = \dfrac{17}{50}$.
+
+Answer: **C**.
+</Solution>

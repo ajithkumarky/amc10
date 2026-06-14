@@ -1,0 +1,42 @@
+---
+year: 2004
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: D
+choices: ['$\dfrac{2}{3}$', '$\dfrac{\sqrt{3}}{2}$', '$\dfrac{7}{8}$', '$\dfrac{8}{9}$', '$\dfrac{1+\sqrt{3}}{3}$']
+---
+
+<Problem>
+Circles $A$, $B$, and $C$ are externally tangent to each other, and internally tangent to circle $D$. Circles $B$ and $C$ are congruent. Circle $A$ has radius $1$ and passes through the center of $D$. What is the radius of circle $B$?
+</Problem>
+
+<Solution>
+Since circle $A$ has radius $1$ and passes through the center of circle $D$, and $A$ is internally tangent to $D$, the radius of $D$ equals $1 + 1 = 2$ (the center of $D$ lies on circle $A$, so $|O_D - O_A| = 1 = r_D - r_A$, giving $r_D = 2$).
+
+Place $O_D$ at the origin. Then $O_A$ is at distance $r_D - r_A = 1$ from $O_D$, so $O_A = (-1, 0)$.
+
+Let $r$ be the radius of $B$ (and $C$). By symmetry, $O_B$ and $O_C$ are symmetric about the x-axis. Let $O_B = (x, y)$ with $y > 0$.
+
+$B$ is internally tangent to $D$: $|O_D - O_B| = r_D - r = 2 - r$, so $x^2 + y^2 = (2-r)^2$.
+
+$B$ is externally tangent to $A$: $|O_A - O_B| = r_A + r = 1 + r$, so $(x+1)^2 + y^2 = (1+r)^2$.
+
+Subtracting the first equation from the second:
+$$(x+1)^2 - x^2 = (1+r)^2 - (2-r)^2.$$
+$$2x + 1 = (1 + 2r + r^2) - (4 - 4r + r^2) = 6r - 3.$$
+$$2x = 6r - 4 \implies x = 3r - 2.$$
+
+$B$ and $C$ are externally tangent to each other: $|O_B - O_C| = 2r$, so $2y = 2r$ (since $O_B$ and $O_C$ are reflections across the x-axis), giving $y = r$.
+
+From $x^2 + y^2 = (2-r)^2$:
+$$(3r-2)^2 + r^2 = (2-r)^2.$$
+$$9r^2 - 12r + 4 + r^2 = 4 - 4r + r^2.$$
+$$9r^2 - 12r + r^2 + 4r = 0.$$
+$$9r^2 - 8r = 0.$$
+$$r(9r - 8) = 0.$$
+$$r = \frac{8}{9}.$$
+
+Answer: **D**.
+</Solution>

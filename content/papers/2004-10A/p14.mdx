@@ -1,0 +1,34 @@
+---
+year: 2004
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: A
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+The average value of all the pennies, nickels, dimes, and quarters in Paula's purse is $20$ cents. If she had one more quarter, the average would be $21$ cents. How many dimes does she have in her purse?
+</Problem>
+
+<Solution>
+Let $n$ be the number of coins currently in her purse and $S$ the total value in cents. Then:
+$$\frac{S}{n} = 20 \implies S = 20n.$$
+
+With one more quarter ($25$ cents):
+$$\frac{S + 25}{n + 1} = 21 \implies S + 25 = 21(n+1) = 21n + 21.$$
+
+Substituting $S = 20n$:
+$$20n + 25 = 21n + 21 \implies n = 4.$$
+
+So Paula has $4$ coins worth a total of $80$ cents. The only way to make $80$ cents with $4$ coins using pennies, nickels, dimes, and quarters, where the average is $20$ cents each, is four $20$-cent... but there's no $20$-cent coin. We need four coins summing to $80$ cents.
+
+With $4$ quarters: $100 \neq 80$. Try $3$ quarters $+ 1$ nickel $= 80$ cents. Yes! $3(25) + 5 = 80$. This uses $0$ dimes.
+
+(No other combination of 4 coins from pennies/nickels/dimes/quarters sums to $80$ and contains $0$ dimes — verify: $2$ quarters $+$ dime $+$ something: $50+10+x=80 \Rightarrow x=20$, not a valid coin. $2$ quarters $+$ dime $+$ dime: $70 \neq 80$. The solution $3$ quarters $+$ nickel is the unique valid one.)
+
+Paula has $0$ dimes.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,31 @@
+---
+year: 2003
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: D
+choices: ["$25$", "$34$", "$351$", "$407$", "$900$"]
+---
+
+<Problem>
+Given that $3^8 \cdot 5^2 = a^b$, where both $a$ and $b$ are positive integers, find the smallest possible value for $a+b$.
+</Problem>
+
+<Solution>
+We have $3^8 \cdot 5^2 = a^b$. We need $a^b$ to factor as $3^8 \cdot 5^2$, so $a$ must be of the form $3^s \cdot 5^t$ and $b$ must divide both $8$ and $2$ (so that the exponents are integers). Actually, $b$ divides $\gcd(8, 2) = 2$ or we pick any factoring.
+
+More carefully: if $b = 1$, then $a = 3^8 \cdot 5^2 = 6561 \cdot 25 = 164025$, giving $a + b = 164026$.
+
+If $b = 2$, then $a^2 = 3^8 \cdot 5^2$, so $a = 3^4 \cdot 5 = 81 \cdot 5 = 405$, giving $a + b = 407$.
+
+If $b = 4$, then $a^4 = 3^8 \cdot 5^2$. But $5^2$ must be a fourth power, so $5^{2/4}$ is not an integer. This fails.
+
+If $b = 8$, then $a^8 = 3^8 \cdot 5^2$ requires $5^{2/8}$, not an integer. Fails.
+
+The only valid options with integer $a$ are $b = 1$ (huge sum) and $b = 2$ (giving $a+b = 407$).
+
+Among the answer choices, $407$ is option D.
+
+Answer: **D**.
+</Solution>

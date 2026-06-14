@@ -1,0 +1,40 @@
+---
+year: 2003
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: C
+choices: ['$\dfrac{1}{8}$', '$\dfrac{5}{32}$', '$\dfrac{9}{32}$', '$\dfrac{3}{8}$', '$\dfrac{7}{16}$']
+---
+
+<Problem>
+A bag contains two red beads and two green beads. You reach into the bag and pull out a bead, replacing it with a red bead regardless of the color you pulled out. What is the probability that all beads in the bag are red after three such replacements?
+</Problem>
+
+<Solution>
+Track the number of red beads in the bag (always $4$ beads total). Initially there are $2$ red beads.
+
+After each draw-and-replace: if you draw a green bead, the count of red beads increases by $1$; if you draw a red bead, the count stays the same (you remove a red and replace with a red).
+
+We need all $4$ beads red after $3$ replacements, so we need to reach $4$ red beads. Starting from $2$ red, we need at least $2$ green beads drawn in the $3$ rounds (to increase red count from $2$ to $4$).
+
+Let state $k$ = number of red beads. Transition: from state $k$, probability $\dfrac{k}{4}$ of drawing red (stay at $k$) and $\dfrac{4-k}{4}$ of drawing green (move to $k+1$).
+
+We must end at state $4$ after $3$ steps starting from state $2$. We need to go $2 \to \cdots \to 4$, gaining $2$ in $3$ steps (each step gains $0$ or $1$).
+
+Let's enumerate paths:
+
+**Path $2 \to 3 \to 4 \to 4$:**
+$$P = \frac{2}{4} \cdot \frac{1}{4} \cdot \frac{4}{4} = \frac{1}{2} \cdot \frac{1}{4} \cdot 1 = \frac{1}{8}.$$
+
+**Path $2 \to 2 \to 3 \to 4$:**
+$$P = \frac{2}{4} \cdot \frac{2}{4} \cdot \frac{1}{4} = \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{4} = \frac{1}{16}.$$
+
+**Path $2 \to 3 \to 3 \to 4$:**
+$$P = \frac{2}{4} \cdot \frac{3}{4} \cdot \frac{1}{4} = \frac{1}{2} \cdot \frac{3}{4} \cdot \frac{1}{4} = \frac{3}{32}.$$
+
+Total probability $= \dfrac{1}{8} + \dfrac{1}{16} + \dfrac{3}{32} = \dfrac{4}{32} + \dfrac{2}{32} + \dfrac{3}{32} = \dfrac{9}{32}$.
+
+Answer: **C**.
+</Solution>

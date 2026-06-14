@@ -1,0 +1,28 @@
+---
+year: 2004
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 2
+answer: C
+choices: ["$96$", "$98$", "$100$", "$101$", "$134$"]
+---
+
+<Problem>
+A grocer stacks oranges in a pyramid-like stack whose rectangular base is $5$ oranges by $8$ oranges. Each orange above the first level rests in a pocket formed by four oranges below. The stack is completed by a single row of oranges. How many oranges are in the stack?
+</Problem>
+
+<Solution>
+Each level up, both dimensions decrease by $1$. The base is $5 \times 8$, and the top is a $1 \times 4$ row (since $5 - 1 = 4$ levels up brings us to $1 \times 4$, the next level would be $0 \times 3$ which is empty, confirming the stack has $5$ levels).
+
+The levels from bottom to top are:
+- Level 1: $5 \times 8 = 40$
+- Level 2: $4 \times 7 = 28$
+- Level 3: $3 \times 6 = 18$
+- Level 4: $2 \times 5 = 10$
+- Level 5: $1 \times 4 = 4$
+
+Total: $40 + 28 + 18 + 10 + 4 = 100$.
+
+Answer: **C**.
+</Solution>

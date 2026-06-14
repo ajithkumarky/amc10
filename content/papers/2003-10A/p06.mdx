@@ -1,0 +1,35 @@
+---
+year: 2003
+paper: "10A"
+topic: algebra
+subtopic: functions
+difficulty: 2
+answer: C
+choices: ["$x \\heartsuit y = y \\heartsuit x$ for all $x$ and $y$", "$2(x \\heartsuit y) = (2x) \\heartsuit (2y)$ for all $x$ and $y$", "$x \\heartsuit 0 = x$ for all $x$", "$x \\heartsuit x = 0$ for all $x$", "$x \\heartsuit y > 0$ if $x \\neq y$"]
+---
+
+<Problem>
+Define $x \heartsuit y$ to be $|x-y|$ for all real numbers $x$ and $y$. Which of the following statements is not true?
+
+- **(A)** $x \heartsuit y = y \heartsuit x$ for all $x$ and $y$
+- **(B)** $2(x \heartsuit y) = (2x) \heartsuit (2y)$ for all $x$ and $y$
+- **(C)** $x \heartsuit 0 = x$ for all $x$
+- **(D)** $x \heartsuit x = 0$ for all $x$
+- **(E)** $x \heartsuit y > 0$ if $x \neq y$
+</Problem>
+
+<Solution>
+Check each statement with $x \heartsuit y = |x - y|$:
+
+**(A)** $|x - y| = |y - x|$. True (absolute value is symmetric).
+
+**(B)** $2|x - y| = |2x - 2y|$. True.
+
+**(C)** $x \heartsuit 0 = |x - 0| = |x|$, not $x$ in general. For example, $(-3) \heartsuit 0 = |-3| = 3 \neq -3$. **Not true.**
+
+**(D)** $x \heartsuit x = |x - x| = 0$. True.
+
+**(E)** $|x - y| > 0$ whenever $x \neq y$. True.
+
+Answer: **C**.
+</Solution>

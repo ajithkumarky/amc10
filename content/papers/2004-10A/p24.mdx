@@ -1,0 +1,30 @@
+---
+year: 2004
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: D
+choices: ["$1$", "$2^{99}$", "$2^{100}$", "$2^{4950}$", "$2^{9999}$"]
+---
+
+<Problem>
+Let $f$ be a function with the following properties:
+
+(i) $f(1) = 1$, and
+
+(ii) $f(2n) = n \cdot f(n)$ for any positive integer $n$.
+
+What is the value of $f(2^{100})$?
+</Problem>
+
+<Solution>
+Apply the recurrence repeatedly:
+$$f(2^{100}) = 2^{99} \cdot f(2^{99}) = 2^{99} \cdot 2^{98} \cdot f(2^{98}) = 2^{99} \cdot 2^{98} \cdot 2^{97} \cdots 2^1 \cdot f(2^1).$$
+
+And $f(2) = f(2 \cdot 1) = 1 \cdot f(1) = 1$.
+
+So $f(2^{100}) = 2^{99} \cdot 2^{98} \cdots 2^1 \cdot f(2) = 2^{99+98+\cdots+1} \cdot 1 = 2^{99 \cdot 100/2} = 2^{4950}$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,42 @@
+---
+year: 2004
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: D
+choices: ['$\dfrac{4}{3}$', '$\dfrac{3}{2}$', '$\sqrt{3}$', '$2$', '$1+\sqrt{3}$']
+---
+
+<Problem>
+Points $E$ and $F$ are located on square $ABCD$ so that $\triangle BEF$ is equilateral. What is the ratio of the area of $\triangle DEF$ to that of $\triangle ABE$?
+</Problem>
+
+<Solution>
+Let the square have side length $1$, with $A = (0,0)$, $B = (1,0)$, $C = (1,1)$, $D = (0,1)$. By symmetry of the equilateral triangle centered at $B$, $E$ lies on side $AD$ and $F$ lies on side $CD$.
+
+Let $AE = x$, so $E = (0, x)$ and $BE = \sqrt{1 + x^2}$. Since $\triangle BEF$ is equilateral and symmetric about the diagonal through $B$, we also have $CF = x$, so $F = (1-x, 1)$ and $BF = \sqrt{x^2 + 1}$. Good, $BE = BF$. ✓
+
+For the triangle to be equilateral, $EF = BE$:
+$$EF^2 = (1-x-0)^2 + (1-x)^2 = (1-x)^2 + (1-x)^2 = 2(1-x)^2.$$
+$$BE^2 = 1 + x^2.$$
+
+Setting equal: $2(1-x)^2 = 1 + x^2$
+$$2 - 4x + 2x^2 = 1 + x^2 \implies x^2 - 4x + 1 = 0 \implies x = 2 - \sqrt{3}.$$
+(Taking the root in $(0,1)$.)
+
+**Area of $\triangle ABE$:** base $AB = 1$, height $= x = 2-\sqrt{3}$, so $[\triangle ABE] = \dfrac{1}{2}(2-\sqrt{3})$.
+
+**Area of $\triangle DEF$:** $D = (0,1)$, $E = (0, 2-\sqrt{3})$, $F = (1-(2-\sqrt{3}), 1) = (\sqrt{3}-1, 1)$.
+
+$DE = 1 - (2-\sqrt{3}) = \sqrt{3}-1$ (vertical segment on side $AD$).
+$DF = \sqrt{3}-1$ (horizontal segment on side $DC$).
+
+$\triangle DEF$ is a right triangle with legs $DE = DF = \sqrt{3}-1$:
+$$[\triangle DEF] = \frac{1}{2}(\sqrt{3}-1)^2 = \frac{1}{2}(4-2\sqrt{3}) = 2 - \sqrt{3}.$$
+
+**Ratio:**
+$$\frac{[\triangle DEF]}{[\triangle ABE]} = \frac{2-\sqrt{3}}{\frac{1}{2}(2-\sqrt{3})} = 2.$$
+
+Answer: **D**.
+</Solution>

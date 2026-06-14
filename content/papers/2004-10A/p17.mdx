@@ -1,0 +1,42 @@
+---
+year: 2004
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: C
+choices: ["$250$", "$300$", "$350$", "$400$", "$500$"]
+---
+
+<Problem>
+Brenda and Sally run in opposite directions on a circular track, starting at diametrically opposite points. They first meet after Brenda has run $100$ meters. They next meet after Sally has run $150$ meters past their first meeting point. Each girl runs at a constant speed. What is the length of the track in meters?
+</Problem>
+
+<Solution>
+Let the track length be $L$ meters. They start at diametrically opposite points, so they are initially $L/2$ apart (in each direction).
+
+**First meeting:** They run toward each other, covering $L/2$ total. Brenda runs $100$ meters, so Sally runs $L/2 - 100$ meters.
+
+Their speed ratio: $v_B : v_S = 100 : (L/2 - 100)$.
+
+**Second meeting:** From the first meeting, they continue and must together cover a full lap $L$ before meeting again. By the time of their second meeting, the total distance run by both (since the start) is $\frac{3L}{2}$.
+
+From the second meeting condition: Sally runs $150$ meters between the first and second meeting points. In the same time, Brenda runs some distance $d_B$ such that $150 + d_B = L$ (together they cover one full lap). So $d_B = L - 150$.
+
+Using the speed ratio:
+$$\frac{v_B}{v_S} = \frac{d_B}{150} = \frac{L - 150}{150}.$$
+
+But from the first meeting: $\dfrac{v_B}{v_S} = \dfrac{100}{L/2 - 100}$.
+
+Setting equal:
+$$\frac{L - 150}{150} = \frac{100}{L/2 - 100}.$$
+
+Cross-multiplying:
+$$(L-150)(L/2 - 100) = 15000.$$
+$$\frac{L^2}{2} - 100L - \frac{150L}{2} + 15000 = 15000.$$
+$$\frac{L^2}{2} - 100L - 75L = 0.$$
+$$\frac{L^2}{2} = 175L.$$
+$$L = 350.$$
+
+Answer: **C**.
+</Solution>

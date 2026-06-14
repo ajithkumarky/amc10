@@ -1,0 +1,29 @@
+---
+year: 2003
+paper: "10A"
+topic: number-theory
+subtopic: number-bases
+difficulty: 4
+answer: E
+choices: ["$0.3$", "$0.4$", "$0.5$", "$0.6$", "$0.7$"]
+---
+
+<Problem>
+A base-10 three digit number $n$ is selected at random. Which of the following is closest to the probability that the base-9 representation and the base-11 representation of $n$ are both three-digit numerals?
+</Problem>
+
+<Solution>
+Three-digit base-10 numbers run from $100$ to $999$, a total of $900$ numbers.
+
+**Base-9 three-digit:** The smallest 3-digit base-9 number is $100_9 = 81$ and the largest is $888_9 = 8 \cdot 81 + 8 \cdot 9 + 8 = 728$. So $n$ must satisfy $81 \leq n \leq 728$. Combined with $100 \leq n \leq 999$: $100 \leq n \leq 728$.
+
+**Base-11 three-digit:** The smallest 3-digit base-11 number is $100_{11} = 121$ and the largest is $(10)(10)(10)_{11}$... actually $AAA_{11}$ where $A = 10$: $10 \cdot 121 + 10 \cdot 11 + 10 = 1330$. So $n$ must satisfy $121 \leq n \leq 1330$. Combined with $100 \leq n \leq 999$: $121 \leq n \leq 999$.
+
+**Both conditions:** $\max(100, 121) \leq n \leq \min(728, 999)$, giving $121 \leq n \leq 728$.
+
+Count: $728 - 121 + 1 = 608$.
+
+Probability: $\dfrac{608}{900} \approx 0.676$, which is closest to $0.7$.
+
+Answer: **E**.
+</Solution>

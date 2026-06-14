@@ -1,0 +1,47 @@
+---
+year: 2004
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: B
+choices: ["$\\dfrac{1}{4}$", "$\\dfrac{5}{16}$", "$\\dfrac{3}{8}$", "$\\dfrac{7}{16}$", "$\\dfrac{1}{2}$"]
+---
+
+<Problem>
+Each face of a cube is painted either red or blue, each with probability $\frac{1}{2}$. The color of each face is determined independently. What is the probability that the painted cube can be placed on a horizontal surface so that the four vertical faces are all the same color?
+</Problem>
+
+<Solution>
+There are $2^6 = 64$ equally likely colorings. We need the number of colorings where some set of four faces forming a "band" around the cube are all the same color.
+
+A cube has three axes; for each axis the four faces perpendicular to it form a band of 4 faces. We want at least one of the three bands to be monochromatic (all red or all blue).
+
+Let $A_i$ = event that band $i$ is all red, $B_i$ = event that band $i$ is all blue.
+
+**For a given axis:** The 4 band faces are all red: probability $(1/2)^4 = 1/16$. Count: 4 those faces $\times$ the remaining 2 faces free = $2^2 = 4$ colorings. All blue: also 4 colorings. But if all 4 are red AND all 4 are blue — impossible. So for one axis: $4 + 4 = 8$ good colorings.
+
+By inclusion-exclusion over the three axes (each pair of bands shares 0 faces — actually two different bands share exactly 0 common faces since bands are defined by different axes and each band covers 4 of 6 faces... wait, the three bands each cover 4 faces, but the total faces are 6. Two bands share $4 + 4 - 6 = 2$ faces).
+
+Let me count directly using inclusion-exclusion. 
+
+$|A_i|$: axis-$i$ band all red: $1 \cdot 1 \cdot 1 \cdot 1 \cdot$ (2 remaining free) $= 4$.
+Similarly $|B_i| = 4$ for all blue.
+
+Events for different axes: axes $i$ and $j$ share 2 faces. $A_i \cap A_j$: all 4+4 = 8 faces monochromatic red but they overlap in 2 faces, so actually band $i$ (4 faces) all red AND band $j$ (4 faces) all red means all 6 faces are red (since the two bands together cover all 6 faces). So $|A_i \cap A_j| = 1$ (all-red cube).
+
+Pairs $(A_i, B_j)$ with $i \neq j$: band $i$ all red and band $j$ all blue, but they share 2 faces which must be both red and blue — impossible. So $|A_i \cap B_j| = 0$ for $i \neq j$.
+
+$A_i \cap A_j \cap A_k$: all 6 faces red, 1 coloring.
+
+Applying inclusion-exclusion for the event "some band is monochromatic":
+- $\sum |A_i| + |B_i| = 3(4+4) = 24$
+- $\sum_{i<j} |A_i \cap A_j| + |B_i \cap B_j| + |A_i \cap B_j| + |B_i \cap A_j|$: each pair of axes gives $|A_i \cap A_j| = 1$, $|B_i \cap B_j| = 1$, cross terms $= 0$. Three pairs: $3(1+1) = 6$.
+- Triple intersections: $|A_1 \cap A_2 \cap A_3| = 1$, $|B_1 \cap B_2 \cap B_3| = 1$, mixed = 0. Total: 2.
+
+By inclusion-exclusion: $24 - 6 + 2 = 20$.
+
+Probability: $20/64 = 5/16$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,29 @@
+---
+year: 2003
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: E
+choices: ["$10$", "$11$", "$12$", "$13$", "$14$"]
+---
+
+<Problem>
+The sum of the two 5-digit numbers $AMC10$ and $AMC12$ is $123422$. What is $A+M+C$?
+</Problem>
+
+<Solution>
+Here $AMC10$ and $AMC12$ represent 5-digit numbers where $A$, $M$, $C$ are digits. In place-value notation:
+$$AMC10 = 10000A + 1000M + 100C + 10, \quad AMC12 = 10000A + 1000M + 100C + 12.$$
+
+Their sum is:
+$$2(10000A + 1000M + 100C) + 22 = 123422.$$
+
+So:
+$$2(10000A + 1000M + 100C) = 123400,$$
+$$10000A + 1000M + 100C = 61700.$$
+
+Therefore $A = 6$, $M = 1$, $C = 7$, and $A + M + C = 6 + 1 + 7 = 14$.
+
+Answer: **E**.
+</Solution>

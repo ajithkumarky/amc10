@@ -1,0 +1,38 @@
+---
+year: 2003
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: B
+choices: ["$16$", "$20$", "$24$", "$28$", "$30$"]
+---
+
+<Problem>
+In rectangle $ABCD$, we have $AB = 8$, $BC = 9$, $H$ is on $\overline{BC}$ with $BH = 6$, $E$ is on $\overline{AD}$ with $DE = 4$, line $EC$ intersects line $AH$ at $G$, and $F$ is on line $AD$ with $GF \perp AF$. Find the length $GF$.
+
+Place coordinates: $D = (0,0)$, $A = (9,0)$, $B = (9,8)$, $C = (0,8)$. Then $E = (4,0)$ (since $DE = 4$) and $H = (3,8)$ (since $BH = 6$ means $H$ is $6$ from $B$ along $BC$ toward $C$). Point $F$ is on line $AD$ (the $x$-axis) extended beyond $D$, and $G$ is the intersection of lines $EC$ and $AH$ above the rectangle.
+</Problem>
+
+<Solution>
+Use coordinates: $D = (0,0)$, $A = (9,0)$, $B = (9,8)$, $C = (0,8)$, $E = (4,0)$, $H = (3,8)$.
+
+**Line $EC$:** from $E = (4,0)$ to $C = (0,8)$.
+Slope $= \dfrac{8-0}{0-4} = -2$. Equation: $y - 0 = -2(x-4)$, i.e., $y = -2x + 8$.
+
+**Line $AH$:** from $A = (9,0)$ to $H = (3,8)$.
+Slope $= \dfrac{8-0}{3-9} = \dfrac{8}{-6} = -\dfrac{4}{3}$. Equation: $y - 0 = -\dfrac{4}{3}(x-9)$, i.e., $y = -\dfrac{4}{3}x + 12$.
+
+**Intersection $G$:** Set equal:
+$$-2x + 8 = -\frac{4}{3}x + 12.$$
+$$-2x + \frac{4}{3}x = 4 \implies -\frac{2}{3}x = 4 \implies x = -6.$$
+$$y = -2(-6) + 8 = 20.$$
+So $G = (-6, 20)$.
+
+**Point $F$:** $F$ is on line $AD$ (the $x$-axis, $y = 0$) with $GF \perp AF$. Since $A = (9,0)$ and $F$ is on the $x$-axis, $\overrightarrow{AF}$ is horizontal. For $GF \perp AF$, $GF$ must be vertical, so $F$ has the same $x$-coordinate as $G$: $F = (-6, 0)$.
+
+**Length $GF$:**
+$$GF = |20 - 0| = 20.$$
+
+Answer: **B**.
+</Solution>

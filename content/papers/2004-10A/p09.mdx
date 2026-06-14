@@ -1,0 +1,41 @@
+---
+year: 2004
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 2
+answer: B
+choices: ["$2$", "$4$", "$5$", "$8$", "$9$"]
+---
+
+<Problem>
+In the figure, $\angle EAB$ and $\angle ABC$ are right angles, $AB = 4$, $BC = 6$, $AE = 8$, and $AC$ and $BE$ intersect at $D$. What is the difference between the areas of $\triangle ADE$ and $\triangle BDC$?
+
+Place $A$ at the origin, $B = (4, 0)$, $C = (4, 6)$, $E = (0, 8)$, with right angles at $A$ and $B$.
+</Problem>
+
+<Solution>
+The area of the entire figure $ABCE$ (a quadrilateral) can be computed directly. Since $\angle EAB = \angle ABC = 90°$, the shape is a trapezoid with parallel sides $AE = 8$ and $BC = 6$, and height $AB = 4$:
+$$[\text{trapezoid } ABCE] = \frac{1}{2}(AE + BC) \cdot AB = \frac{1}{2}(8 + 6) \cdot 4 = 28.$$
+
+The quadrilateral is divided by diagonals $AC$ and $BE$ into four triangles: $\triangle ADE$, $\triangle ADB$, $\triangle BDC$, and $\triangle DCE$... wait, the diagonals are $AC$ and $BE$, which split $ABCE$ into $\triangle ABD$ (with vertices $A$, $B$, $D$) — actually into triangles $\triangle EDA$, $\triangle EDB$... Let me use coordinates.
+
+$A = (0,0)$, $B = (4,0)$, $C = (4,6)$, $E = (0,8)$.
+
+Line $AC$: from $(0,0)$ to $(4,6)$, slope $= 3/2$, equation $y = \frac{3}{2}x$.
+
+Line $BE$: from $(4,0)$ to $(0,8)$, slope $= \frac{8-0}{0-4} = -2$, equation $y = -2(x-4) = -2x + 8$.
+
+Intersection $D$: $\frac{3}{2}x = -2x + 8 \Rightarrow \frac{7}{2}x = 8 \Rightarrow x = \frac{16}{7}$, $y = \frac{24}{7}$.
+
+$[\triangle ADE]$: vertices $A=(0,0)$, $D=(16/7, 24/7)$, $E=(0,8)$.
+$$= \frac{1}{2}|x_A(y_D - y_E) + x_D(y_E - y_A) + x_E(y_A - y_D)|= \frac{1}{2}\left|0 + \frac{16}{7}\cdot 8 + 0\right| = \frac{1}{2}\cdot\frac{128}{7} = \frac{64}{7}.$$
+
+$[\triangle BDC]$: vertices $B=(4,0)$, $D=(16/7,24/7)$, $C=(4,6)$.
+$$= \frac{1}{2}|4(24/7 - 6) + 16/7\cdot(6 - 0) + 4(0 - 24/7)|= \frac{1}{2}\left|4\cdot(-18/7) + 16/7\cdot 6 + 4\cdot(-24/7)\right|$$
+$$= \frac{1}{2}\left|\frac{-72 + 96 - 96}{7}\right| = \frac{1}{2}\cdot\frac{72}{7} = \frac{36}{7}.$$
+
+Difference: $\dfrac{64}{7} - \dfrac{36}{7} = \dfrac{28}{7} = 4$.
+
+Answer: **B**.
+</Solution>

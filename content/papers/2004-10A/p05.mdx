@@ -1,0 +1,23 @@
+---
+year: 2004
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 1
+answer: C
+choices: ['$\dfrac{1}{21}$', '$\dfrac{1}{14}$', '$\dfrac{2}{21}$', '$\dfrac{1}{7}$', '$\dfrac{2}{7}$']
+---
+
+<Problem>
+A set of three points is randomly chosen from the $3 \times 3$ grid of $9$ points shown (with points at coordinates $(i,j)$ for $i,j \in \{0,1,2\}$). Each three-point set has the same probability of being chosen. What is the probability that the points lie on the same straight line?
+</Problem>
+
+<Solution>
+The total number of ways to choose $3$ points from $9$ is $\dbinom{9}{3} = 84$.
+
+We count the collinear sets. There are three horizontal rows, three vertical columns, and two main diagonals — that gives $3 + 3 + 2 = 8$ lines through exactly $3$ grid points. Each contributes exactly $\dbinom{3}{3} = 1$ collinear triple, so there are $8$ collinear sets.
+
+The probability is $\dfrac{8}{84} = \dfrac{2}{21}$.
+
+Answer: **C**.
+</Solution>

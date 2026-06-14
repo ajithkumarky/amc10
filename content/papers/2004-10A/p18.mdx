@@ -1,0 +1,34 @@
+---
+year: 2004
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: A
+choices: ["$1$", "$4$", "$36$", "$49$", "$81$"]
+---
+
+<Problem>
+A sequence of three real numbers forms an arithmetic progression with a first term of $9$. If $2$ is added to the second term and $20$ is added to the third term, the three resulting numbers form a geometric progression. What is the smallest possible value for the third term of the geometric progression?
+</Problem>
+
+<Solution>
+Let the arithmetic progression be $9, 9+d, 9+2d$ for some common difference $d$.
+
+After the modifications, the geometric progression is $9, 9+d+2, 9+2d+20 = 9, d+11, 2d+29$.
+
+For a geometric progression, the square of the middle term equals the product of the outer terms:
+$$(d+11)^2 = 9(2d+29).$$
+$$d^2 + 22d + 121 = 18d + 261.$$
+$$d^2 + 4d - 140 = 0.$$
+$$(d+14)(d-10) = 0.$$
+$$d = -14 \text{ or } d = 10.$$
+
+The third term of the geometric progression is $2d + 29$:
+- $d = -14$: third term $= 2(-14) + 29 = 1$.
+- $d = 10$: third term $= 2(10) + 29 = 49$.
+
+The smallest possible value is $1$.
+
+Answer: **A**.
+</Solution>

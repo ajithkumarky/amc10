@@ -1,0 +1,29 @@
+---
+year: 2004
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 1
+answer: D
+choices: ["5", "6", "8", "9", "10"]
+---
+
+<Problem>
+In the expression $c \cdot a^b - d$, the values of $a$, $b$, $c$, and $d$ are $0$, $1$, $2$, and $3$, although not necessarily in that order. What is the maximum possible value of the result?
+</Problem>
+
+<Solution>
+We want to maximize $c \cdot a^b - d$. To do this, make $c \cdot a^b$ large and $d$ small (so $d = 0$).
+
+With $d = 0$, we maximize $c \cdot a^b$ using the remaining values 1, 2, 3 for $a$, $b$, $c$.
+
+Try the most promising assignments:
+- $a=3, b=2, c=1$: $1 \cdot 3^2 - 0 = 9$
+- $a=2, b=3, c=1$: $1 \cdot 2^3 - 0 = 8$
+- $a=3, b=1, c=2$: $2 \cdot 3^1 - 0 = 6$
+- $a=2, b=1, c=3$: $3 \cdot 2^1 - 0 = 6$
+
+The maximum is $9$, achieved with $a=3, b=2, c=1, d=0$.
+
+Answer: **D**.
+</Solution>

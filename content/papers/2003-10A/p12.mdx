@@ -1,0 +1,25 @@
+---
+year: 2003
+paper: "10A"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 2
+answer: A
+choices: ['$\dfrac{1}{8}$', '$\dfrac{1}{4}$', '$\dfrac{3}{8}$', '$\dfrac{1}{2}$', '$\dfrac{3}{4}$']
+---
+
+<Problem>
+A point $(x,y)$ is randomly picked from inside the rectangle with vertices $(0,0)$, $(4,0)$, $(4,1)$, and $(0,1)$. What is the probability that $x < y$?
+</Problem>
+
+<Solution>
+The rectangle has dimensions $4 \times 1$ (width 4, height 1), so its area is $4$.
+
+The region where $x < y$ is above the line $y = x$. Within the rectangle ($0 \leq x \leq 4$, $0 \leq y \leq 1$), the line $y = x$ enters at the origin and exits at $(1, 1)$ (since for $x > 1$, we'd need $y > 1$, which is outside the rectangle).
+
+The region $x < y$ within the rectangle is the triangle with vertices $(0,0)$, $(0,1)$, and $(1,1)$. Its area is $\frac{1}{2} \cdot 1 \cdot 1 = \frac{1}{2}$.
+
+The probability is $\dfrac{1/2}{4} = \dfrac{1}{8}$.
+
+Answer: **A**.
+</Solution>

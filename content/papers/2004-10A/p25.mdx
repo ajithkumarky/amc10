@@ -1,0 +1,32 @@
+---
+year: 2004
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: B
+choices: ['$3+\dfrac{\sqrt{30}}{2}$', '$3+\dfrac{\sqrt{69}}{3}$', '$3+\dfrac{\sqrt{123}}{4}$', '$\dfrac{52}{9}$', '$3+2\sqrt{2}$']
+---
+
+<Problem>
+Three mutually tangent spheres of radius $1$ rest on a horizontal plane. A sphere of radius $2$ rests on them. What is the distance from the plane to the top of the larger sphere?
+</Problem>
+
+<Solution>
+Each small sphere of radius $1$ rests on the plane, so its center is at height $1$. The centers of the three small spheres form an equilateral triangle (since all three are mutually tangent with radius $1$, the distance between any two centers is $1+1=2$). So the triangle has side length $2$.
+
+The centroid of an equilateral triangle with side $s$ is at distance $\dfrac{s}{\sqrt{3}}$ from each vertex. With $s = 2$: centroid is at distance $\dfrac{2}{\sqrt{3}}$ from each small sphere's center.
+
+The large sphere has radius $2$. It rests on the three small spheres, so its center is at distance $2 + 1 = 3$ from each small sphere's center.
+
+Let $h$ be the height of the large sphere's center above the plane. The distance from the large sphere's center to a small sphere's center is:
+$$\sqrt{\left(\frac{2}{\sqrt{3}}\right)^2 + (h - 1)^2} = 3.$$
+$$\frac{4}{3} + (h-1)^2 = 9.$$
+$$(h-1)^2 = 9 - \frac{4}{3} = \frac{23}{3}.$$
+$$h - 1 = \sqrt{\frac{23}{3}} = \frac{\sqrt{69}}{3}.$$
+$$h = 1 + \frac{\sqrt{69}}{3}.$$
+
+The top of the large sphere is at height $h + 2 = 3 + \dfrac{\sqrt{69}}{3}$.
+
+Answer: **B**.
+</Solution>
