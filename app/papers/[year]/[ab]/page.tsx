@@ -76,7 +76,7 @@ export default async function PaperPage({
               item.kind === 'p' ? (
                 <div key={item.n} className="space-y-2">
                   <div className="font-mono text-[11px] uppercase tracking-widest text-cyber-cyan">
-                    {`// PROBLEM ${item.n} · ANSWER: ${item.p.answer}`}
+                    {`// PROBLEM ${item.n}`}
                   </div>
                   <RenderMdx source={item.p.body} />
                 </div>
