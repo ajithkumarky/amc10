@@ -1,0 +1,28 @@
+---
+year: 2011
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: C
+choices: ["17", "18", "25", "26", "43"]
+---
+
+<Problem>
+In the eight-term sequence $A, B, C, D, E, F, G, H$, the value of $C$ is $5$ and the sum of any three consecutive terms is $30$. What is $A + H$?
+</Problem>
+
+<Solution>
+Since any three consecutive terms sum to $30$:
+$$A + B + C = 30 \implies A + B = 25.$$
+$$B + C + D = 30 \implies B + D = 25 \implies D = 25 - B.$$
+$$C + D + E = 30 \implies E = 30 - C - D = 30 - 5 - D.$$
+
+The key insight: from $A + B + C = 30$ and $B + C + D = 30$, we get $D = A$. Similarly, every term that is 3 positions apart is equal: $A = D = G$ and $B = E = H$ and $C = F$.
+
+So $A + H = A + B$.
+
+From $A + B + C = 30$ and $C = 5$: $A + B = 25$.
+
+Answer: **C**.
+</Solution>

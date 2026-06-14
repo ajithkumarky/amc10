@@ -1,0 +1,63 @@
+---
+year: 2011
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: D
+choices: ['$\dfrac{1509}{8}$', '$\dfrac{1509}{32}$', '$\dfrac{1509}{64}$', '$\dfrac{1509}{128}$', '$\dfrac{1509}{256}$']
+---
+
+<Problem>
+Let $T_1$ be a triangle with sides $2011, 2012,$ and $2013$. For $n \ge 1$, if $T_n = \triangle ABC$ and $D, E,$ and $F$ are the points of tangency of the incircle of $\triangle ABC$ to the sides $AB, BC$ and $AC,$ respectively, then $T_{n+1}$ is a triangle with side lengths $AD, BE,$ and $CF,$ if it exists. What is the perimeter of the last triangle in the sequence $(T_n)$?
+</Problem>
+
+<Solution>
+For a triangle with sides $a$, $b$, $c$ and semiperimeter $s = \frac{a+b+c}{2}$, the tangent lengths from each vertex are $s-a$, $s-b$, $s-c$.
+
+Label $T_1$ with sides $a_1 = 2011$, $b_1 = 2012$, $c_1 = 2013$. Let $s_1 = \frac{a_1+b_1+c_1}{2} = 3018$.
+
+The sides of $T_2$ are the tangent lengths:
+$$a_2 = s_1 - a_1 = 3018 - 2011 = 1007,$$
+$$b_2 = s_1 - b_1 = 3018 - 2012 = 1006,$$
+$$c_2 = s_1 - c_1 = 3018 - 2013 = 1005.$$
+
+So $T_2$ has sides $1005, 1006, 1007$ and perimeter $3018$. The new semiperimeter $s_2 = \frac{3018}{2} = 1509$.
+
+The sides of $T_3$:
+$$a_3 = s_2 - a_2 = 1509 - 1007 = 502,$$
+$$b_3 = s_2 - b_2 = 1509 - 1006 = 503,$$
+$$c_3 = s_2 - c_2 = 1509 - 1005 = 504.$$
+
+Sides $502, 503, 504$, perimeter $1509$, semiperimeter $s_3 = \frac{1509}{2}$.
+
+The sides of $T_4$:
+$$a_4 = \frac{1509}{2} - 504 = \frac{1509 - 1008}{2} = \frac{501}{2},$$
+$$b_4 = \frac{1509}{2} - 503 = \frac{503}{2},$$
+$$c_4 = \frac{1509}{2} - 502 = \frac{505}{2}.$$
+
+Perimeter of $T_4 = \frac{501+503+505}{2} = \frac{1509}{2}$, semiperimeter $= \frac{1509}{4}$.
+
+The pattern: each step, the perimeter halves. The sides of each $T_n$ for $n \ge 2$ are three consecutive values (or half-integers), and the perimeter is $\frac{1509}{2^{n-2}}$ for $n \ge 2$.
+
+For the triangle to exist, all three "new sides" (which are $s - a$, $s - b$, $s - c$) must be positive. This requires $s > \max(a,b,c)$, i.e., $a + b > c$ (the triangle inequality). When the three sides are consecutive integers $m-1, m, m+1$, the triangle inequality gives $m-1 + m > m+1$, i.e., $m > 2$. When the sides are $\frac{1509}{2^k}\cdot r$ for some pattern, the triangle degenerates when the largest side equals or exceeds the sum of the other two.
+
+Let's track when the triangle fails. If sides are $m-1, m, m+1$, the operation gives sides $\frac{(m-1)+m+(m+1)}{2} - (m+1) = \frac{3m}{2} - (m+1) = \frac{m-2}{2}$, $\frac{m}{2}$, $\frac{m+2}{2}$. These are valid as long as $\frac{m-2}{2} > 0$, i.e., $m > 2$.
+
+For $T_3$: sides $502, 503, 504$ — all positive, valid. For $T_4$: sides $\frac{501}{2}, \frac{503}{2}, \frac{505}{2}$ — valid. For $T_5$: from semiperimeter $\frac{1509}{4}$, sides become $\frac{1509}{4} - \frac{505}{2} = \frac{1509 - 1010}{4} = \frac{499}{4}$; $\frac{1509 - 1006}{4} = \frac{503}{4}$; $\frac{1509 - 1002}{4} = \frac{507}{4}$. Valid.
+
+The general sides at step $n$ (for $n \ge 3$) are $\frac{1509 - 2k}{2^{n-3}}, \frac{1509}{2^{n-3}}, \frac{1509+2k}{2^{n-3}}$ for some $k$ growing with $n$... Let me track the differences instead.
+
+The sides at each step are $m-d$, $m$, $m+d$ where $d=1$ for $T_3$, and after applying the operation: new sides are $\frac{3m}{2}-(m+d)=\frac{m-2d}{2}$, $\frac{m}{2}$, $\frac{m+2d}{2}$.
+
+So $m \to \frac{m}{2}$ and $d \to d$ (the "deviation" stays constant at $1$ in the $m$ units... actually $m$ halves but $d$ stays the same absolute value). Starting from $T_3$ with $m=503$, $d=1$: after each step $m$ halves. The triangle fails when $m - 2d \le 0$, i.e., $m \le 2d = 2$.
+
+At $T_3$: $m = 503$. At $T_n$ for $n \ge 3$: $m = \frac{503}{2^{n-3}}$. The triangle fails when $\frac{503}{2^{n-3}} \le 2$, i.e., $2^{n-3} \ge \frac{503}{2} = 251.5$, so $2^{n-3} \ge 256 = 2^8$, i.e., $n \ge 11$.
+
+So $T_{10}$ exists (last valid triangle) and $T_{11}$ does not. The perimeter of $T_{10}$:
+
+The perimeter halves at each step starting from $T_3$ (perimeter $1509$). From $T_3$ to $T_{10}$ is $7$ steps of halving:
+$$\text{Perimeter of } T_{10} = \frac{1509}{2^7} = \frac{1509}{128}.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,28 @@
+---
+year: 2012
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: C
+choices: ['$\dfrac{31}{16}$', '$2$', '$\dfrac{17}{8}$', '$3$', '$\dfrac{65}{16}$']
+---
+
+<Problem>
+An *iterative average* of the numbers $1$, $2$, $3$, $4$, and $5$ is computed the following way. Arrange the five numbers in some order. Find the mean of the first two numbers, then find the mean of that with the third number, then the mean of that with the fourth number, and finally the mean of that with the fifth number. What is the difference between the largest and smallest possible values that can be obtained using this procedure?
+</Problem>
+
+<Solution>
+If the numbers are arranged as $a_1, a_2, a_3, a_4, a_5$, the iterative average is:
+$$\frac{\frac{\frac{\frac{a_1+a_2}{2}+a_3}{2}+a_4}{2}+a_5}{2} = \frac{a_1}{16}+\frac{a_2}{16}+\frac{a_3}{8}+\frac{a_4}{4}+\frac{a_5}{2}.$$
+
+The weights are $\frac{1}{16}, \frac{1}{16}, \frac{1}{8}, \frac{1}{4}, \frac{1}{2}$ (summing to 1). To maximize, assign the largest weight to the largest number: put 5 last (weight $\frac{1}{2}$), 4 fourth (weight $\frac{1}{4}$), 3 third (weight $\frac{1}{8}$), then 1 and 2 in the first two positions (weight $\frac{1}{16}$ each):
+$$\text{Max} = \frac{1}{16}+\frac{2}{16}+\frac{3}{8}+\frac{4}{4}+\frac{5}{2} = \frac{1+2}{16}+\frac{6}{16}+\frac{16}{16}+\frac{40}{16} = \frac{65}{16}.$$
+
+To minimize, assign the largest weight to the smallest number: put 1 last, 2 fourth, 3 third, then 4 and 5 first:
+$$\text{Min} = \frac{4}{16}+\frac{5}{16}+\frac{3}{8}+\frac{2}{4}+\frac{1}{2} = \frac{4+5}{16}+\frac{6}{16}+\frac{8}{16}+\frac{8}{16} = \frac{31}{16}.$$
+
+The difference is $\frac{65}{16} - \frac{31}{16} = \frac{34}{16} = \frac{17}{8}$.
+
+Answer: **C**.
+</Solution>

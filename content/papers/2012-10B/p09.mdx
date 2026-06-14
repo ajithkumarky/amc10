@@ -1,0 +1,27 @@
+---
+year: 2012
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 2
+answer: A
+choices: ["1", "2", "3", "4", "5"]
+---
+
+<Problem>
+Two integers have a sum of 26. When two more integers are added to the first two integers the sum is 41. Finally when two more integers are added to the sum of the previous four integers the sum is 57. What is the minimum number of odd integers among the 6 integers?
+</Problem>
+
+<Solution>
+Let the three pairs have sums $S_1 = 26$, $S_2 = 41 - 26 = 15$, and $S_3 = 57 - 41 = 16$.
+
+For a pair of integers to have an even sum, both must be even or both must be odd. For a pair to have an odd sum, one must be even and one must be odd.
+
+- $S_1 = 26$ (even): either 0 or 2 odd integers in this pair.
+- $S_2 = 15$ (odd): exactly 1 odd integer in this pair.
+- $S_3 = 16$ (even): either 0 or 2 odd integers in this pair.
+
+To minimize the total number of odd integers: take 0 odds from pair 1, 1 odd from pair 2, and 0 odds from pair 3. This gives a minimum of $0 + 1 + 0 = 1$ odd integer.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,41 @@
+---
+year: 2011
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 4
+answer: C
+choices: ['$\dfrac{\sqrt{3}}{3}$', '$\dfrac{\sqrt{3}}{2}$', '$\dfrac{2\sqrt{3}}{3}$', '$1+\dfrac{\sqrt{3}}{3}$', '$2$']
+---
+
+<Problem>
+Rhombus $ABCD$ has side length $2$ and $\angle B = 120^\circ$. Region $R$ consists of all points inside the rhombus that are closer to vertex $B$ than any of the other three vertices. What is the area of $R$?
+</Problem>
+
+<Solution>
+Place $B = (0,0)$, $C = (2,0)$, $D = (1,\sqrt{3})$, $A = (-1,\sqrt{3})$ (so $\angle B = 120^\circ$ and all sides have length $2$).
+
+Region $R$ is the Voronoi cell of $B$ restricted to the rhombus interior, bounded by three perpendicular bisectors.
+
+**Perpendicular bisector of $BC$** ($B=(0,0)$, $C=(2,0)$): midpoint $(1,0)$, bisector is $x = 1$.
+
+**Perpendicular bisector of $BD$** ($B=(0,0)$, $D=(1,\sqrt{3})$): midpoint $\left(\frac{1}{2},\frac{\sqrt{3}}{2}\right)$, normal direction $(1,\sqrt{3})$, equation $x + \sqrt{3}y = 2$.
+
+**Perpendicular bisector of $BA$** ($B=(0,0)$, $A=(-1,\sqrt{3})$): midpoint $\left(-\frac{1}{2},\frac{\sqrt{3}}{2}\right)$, normal direction $(-1,\sqrt{3})$, equation $-x + \sqrt{3}y = 2$, i.e., $x - \sqrt{3}y + 2 = 0$.
+
+**Vertices of region $R$:**
+- $B = (0,0)$ itself.
+- $M_{BC} = (1,0)$: midpoint of edge $BC$, where the bisector of $BC$ meets the rhombus boundary.
+- Intersection of bisectors of $BC$ and $BD$: $x=1$ and $x+\sqrt{3}y=2$ give $y=\frac{1}{\sqrt{3}}=\frac{\sqrt{3}}{3}$. Point $Q=\left(1,\frac{\sqrt{3}}{3}\right)$.
+- Intersection of bisectors of $BD$ and $BA$: $x+\sqrt{3}y=2$ and $-x+\sqrt{3}y=2$ give $x=0$, $y=\frac{2}{\sqrt{3}}=\frac{2\sqrt{3}}{3}$. Point $P=\left(0,\frac{2\sqrt{3}}{3}\right)$.
+- $M_{BA} = \left(-\frac{1}{2},\frac{\sqrt{3}}{2}\right)$: midpoint of edge $BA$, where the bisector of $BA$ meets the boundary.
+
+**Area by shoelace** (vertices in order $B, M_{BC}, Q, P, M_{BA}$):
+
+$$2A = (0\cdot0-1\cdot0)+(1\cdot\tfrac{\sqrt{3}}{3}-1\cdot0)+(1\cdot\tfrac{2\sqrt{3}}{3}-0\cdot\tfrac{\sqrt{3}}{3})+(0\cdot\tfrac{\sqrt{3}}{2}-(-\tfrac{1}{2})\cdot\tfrac{2\sqrt{3}}{3})+((-\tfrac{1}{2})\cdot0-0\cdot\tfrac{\sqrt{3}}{2})$$
+$$= 0 + \frac{\sqrt{3}}{3} + \frac{2\sqrt{3}}{3} + \frac{\sqrt{3}}{3} + 0 = \frac{4\sqrt{3}}{3}.$$
+
+$$A = \frac{2\sqrt{3}}{3}.$$
+
+Answer: **C**.
+</Solution>

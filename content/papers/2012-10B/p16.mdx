@@ -1,0 +1,33 @@
+---
+year: 2012
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: A
+choices: ['$10\pi+4\sqrt{3}$', '$13\pi-\sqrt{3}$', '$12\pi+\sqrt{3}$', '$10\pi+9$', '$13\pi$']
+---
+
+<Problem>
+Three circles with radius 2 are mutually tangent. What is the total area of the circles and the region bounded by them?
+
+The three circles each have radius 2 and are arranged so that each pair is externally tangent. The region bounded by them is the curved triangle enclosed between the three circles.
+</Problem>
+
+<Solution>
+The centers of the three mutually tangent circles form an equilateral triangle with side length $2 + 2 = 4$ (since each pair of circles is externally tangent, the distance between centers equals the sum of radii).
+
+**Area of the equilateral triangle** with side 4:
+$$A_{\triangle} = \frac{\sqrt{3}}{4} \cdot 4^2 = 4\sqrt{3}.$$
+
+**Area of the three circular sectors** inside the triangle: each angle of the equilateral triangle is $60°$, so each sector has central angle $60° = \frac{\pi}{3}$ radians and radius 2.
+$$3 \times \frac{1}{6}\pi r^2 = 3 \times \frac{1}{6}\pi(4) = 2\pi.$$
+
+**Area of the curved triangular region** between the circles:
+$$A_{\text{gap}} = A_{\triangle} - 3 \times \text{(sector)} = 4\sqrt{3} - 2\pi.$$
+
+**Total area** = area of 3 full circles + area of gap:
+$$3\pi r^2 + (4\sqrt{3} - 2\pi) = 12\pi + 4\sqrt{3} - 2\pi = 10\pi + 4\sqrt{3}.$$
+
+Answer: **A**.
+</Solution>

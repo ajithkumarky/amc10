@@ -1,0 +1,40 @@
+---
+year: 2012
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: A
+choices: ['$\dfrac{49}{512}$', '$\dfrac{7}{64}$', '$\dfrac{121}{1024}$', '$\dfrac{81}{512}$', '$\dfrac{9}{32}$']
+---
+
+<Problem>
+A $3 \times 3$ square is partitioned into $9$ unit squares. Each unit square is painted either white or black with each color being equally likely, chosen independently and at random. The square is then rotated $90°$ clockwise about its center, and every white square in a position formerly occupied by a black square is painted black. The colors of all other squares are left unchanged. What is the probability the grid is now entirely black?
+</Problem>
+
+<Solution>
+Label the 9 squares by position. When rotated $90°$ clockwise, the center square maps to itself, while the 8 outer squares form two orbits of size 4:
+- **Corner orbit:** top-left $\to$ top-right $\to$ bottom-right $\to$ bottom-left $\to$ top-left.
+- **Edge orbit:** top $\to$ right $\to$ bottom $\to$ left $\to$ top.
+
+**Center square:** After the operation, it stays in the same position. The rule says: if the rotated position was formerly black, a white square there gets painted black. Since the center maps to itself: if it was white and its old position (itself) was black — impossible since it was white. So the center is black after the operation only if it was originally black. Probability: $\frac{1}{2}$.
+
+**Each orbit of 4:** Label positions in an orbit as $1 \to 2 \to 3 \to 4 \to 1$ (under $90°$ clockwise rotation). After rotation, position $i$ receives the square that was at position $i-1$. The operation then makes position $i$ black if EITHER:
+- The square that moved there was black (stays black), OR
+- The square that moved there was white AND position $i$ was originally black (gets painted black).
+
+Position $i$ is white after the operation only if the square from position $i-1$ was white AND position $i$ was originally white.
+
+For all 4 positions in the orbit to be black, we need: for each $i$, it is NOT the case that both (square at $i-1$) and (square at $i$) are white.
+
+In other words, no two consecutive positions in the cycle (under the rotation order) can both be white. The number of binary strings of length 4 on a cycle with no two consecutive whites:
+
+Possible configurations of 4 positions (W = white, B = black) with no two consecutive whites in the cyclic order: BBBB, WBBB, BWBB, BBWB, BBBW, WBWB, BWBW — that's $7$ configurations out of $2^4 = 16$.
+
+Each of the two outer orbits independently has probability $\frac{7}{16}$ of ending all-black.
+
+**Total probability:**
+$$\frac{1}{2} \times \frac{7}{16} \times \frac{7}{16} = \frac{49}{512}.$$
+
+Answer: **A**.
+</Solution>

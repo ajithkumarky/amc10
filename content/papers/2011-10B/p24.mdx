@@ -1,0 +1,36 @@
+---
+year: 2011
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: B
+choices: ['$\dfrac{51}{101}$', '$\dfrac{50}{99}$', '$\dfrac{51}{100}$', '$\dfrac{52}{101}$', '$\dfrac{13}{25}$']
+---
+
+<Problem>
+A lattice point in an $xy$-coordinate system is any point $(x, y)$ where both $x$ and $y$ are integers. The graph of $y = mx + 2$ passes through no lattice point with $0 < x \le 100$ for all $m$ such that $\frac{1}{2} < m < a$. What is the maximum possible value of $a$?
+</Problem>
+
+<Solution>
+The line $y = mx + 2$ passes through a lattice point $(x, y)$ with $0 < x \le 100$ if and only if $mx = y - 2$ is an integer, i.e., $m = \frac{y-2}{x}$ for some integer $y$ and integer $x$ with $1 \le x \le 100$.
+
+So we need: none of the rational numbers $\frac{n}{x}$ (where $n$ is any integer and $1 \le x \le 100$) lie in the interval $\left(\frac{1}{2}, a\right)$.
+
+Equivalently, $a$ is at most the smallest rational number of the form $\frac{n}{x}$ (with $1 \le x \le 100$, $n$ a positive integer) that is strictly greater than $\frac{1}{2}$.
+
+We want the smallest fraction $\frac{n}{x} > \frac{1}{2}$ with $1 \le x \le 100$, i.e., $\frac{n}{x} > \frac{1}{2}$ means $2n > x$, so $n \ge \lfloor\frac{x}{2}\rfloor + 1$. The smallest such fraction greater than $\frac{1}{2}$ is found by minimizing $\frac{n}{x} - \frac{1}{2} = \frac{2n - x}{2x}$, which means minimizing $\frac{2n-x}{2x}$. For a given $x$, the smallest valid $n$ is $\lceil\frac{x+1}{2}\rceil$:
+
+- If $x$ is even, $x = 2k$: smallest $n = k+1$, giving $\frac{k+1}{2k} = \frac{1}{2} + \frac{1}{2x}$.
+- If $x$ is odd, $x = 2k+1$: smallest $n = k+1$, giving $\frac{k+1}{2k+1} = \frac{1}{2} + \frac{1}{2(2k+1)}$.
+
+To minimize $\frac{n}{x}$ over all $x \in [1,100]$, we want to maximize $x$:
+- Largest even $x \le 100$: $x = 100$, giving $\frac{51}{100}$.
+- Largest odd $x \le 100$: $x = 99$, giving $\frac{50}{99}$.
+
+Compare: $\frac{51}{100} = 0.51$ and $\frac{50}{99} \approx 0.5051$. The smaller is $\frac{50}{99}$.
+
+So the maximum value of $a$ is $\dfrac{50}{99}$.
+
+Answer: **B**.
+</Solution>

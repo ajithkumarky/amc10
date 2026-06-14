@@ -1,0 +1,41 @@
+---
+year: 2011
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 4
+answer: A
+choices: ['$\dfrac{\sqrt{2}-1}{2}$', '$\dfrac{1}{4}$', '$\dfrac{2-\sqrt{2}}{2}$', '$\dfrac{\sqrt{2}}{4}$', '$2-\sqrt{2}$']
+---
+
+<Problem>
+A dart board is a regular octagon divided into regions as shown. Suppose that a dart thrown at the board is equally likely to land anywhere on the board. What is the probability that the dart lands within the center square?
+
+The octagon is divided by lines connecting midpoints of opposite sides, creating a center square surrounded by triangular and rectangular regions.
+</Problem>
+
+<Solution>
+Let the side length of the regular octagon be $s$. Place the octagon with vertices at the coordinates corresponding to side length $1$.
+
+For a regular octagon with side length $1$, the vertices are at positions like $(1, 0)$, $\left(\frac{1+\sqrt{2}}{1}, \ldots\right)$ — more precisely, using the coordinates from the problem: $A=(0,1)$, $B=(1,0)$, $C=(1+\sqrt{2},0)$, $D=(2+\sqrt{2},1)$, $E=(2+\sqrt{2},1+\sqrt{2})$, $F=(1+\sqrt{2},2+\sqrt{2})$, $G=(1,2+\sqrt{2})$, $H=(0,1+\sqrt{2})$.
+
+The side length here is $1$ (e.g., $AB = \sqrt{1^2+1^2}/\sqrt{...}$ — actually $AB = \sqrt{(1-0)^2+(0-1)^2} = \sqrt{2}$, so the side length is $\sqrt{2}$; the horizontal/vertical sides have length $\sqrt{2}$ as well since $BC = \sqrt{2}$... let me recompute: $BC$ goes from $(1,0)$ to $(1+\sqrt{2},0)$, so $|BC| = \sqrt{2}$. And $AB$ goes from $(0,1)$ to $(1,0)$, so $|AB| = \sqrt{2}$. Yes, all sides have length $\sqrt{2}$).
+
+The diagonals drawn connect: $A$ to $D$, $B$ to $G$, $C$ to $F$, $E$ to $H$.
+
+The center square is formed by the intersection of these four lines. By symmetry, the center square has vertices at the midpoints. The center of the octagon is at $(1+\frac{\sqrt{2}}{2}, 1+\frac{\sqrt{2}}{2})$.
+
+The diagonal $AD$ goes from $(0,1)$ to $(2+\sqrt{2},1)$ — that's a horizontal line $y=1$. The diagonal $EH$ goes from $(2+\sqrt{2},1+\sqrt{2})$ to $(0,1+\sqrt{2})$ — horizontal line $y = 1+\sqrt{2}$. The diagonal $BG$ goes from $(1,0)$ to $(1,2+\sqrt{2})$ — vertical line $x=1$. The diagonal $CF$ goes from $(1+\sqrt{2},0)$ to $(1+\sqrt{2},2+\sqrt{2})$ — vertical line $x = 1+\sqrt{2}$.
+
+The center square is the region $1 \le x \le 1+\sqrt{2}$, $1 \le y \le 1+\sqrt{2}$, which has side length $\sqrt{2}$ and area $(\sqrt{2})^2 = 2$.
+
+The area of the regular octagon with side length $\sqrt{2}$ is $2(1+\sqrt{2})s^2$ where $s$ is the side length: $2(1+\sqrt{2})(\sqrt{2})^2 = 2(1+\sqrt{2})(2) = 4(1+\sqrt{2}) = 4 + 4\sqrt{2}$.
+
+Alternatively, the octagon spans from $x=0$ to $x=2+\sqrt{2}$ and $y=0$ to $y=2+\sqrt{2}$. Its area equals the area of the $(2+\sqrt{2})^2$ square minus four corner right triangles each with legs $1$:
+$$(2+\sqrt{2})^2 - 4 \cdot \frac{1}{2}(1)(1) = (4 + 4\sqrt{2} + 2) - 2 = 4 + 4\sqrt{2}.$$
+
+The probability is:
+$$\frac{2}{4+4\sqrt{2}} = \frac{2}{4(1+\sqrt{2})} = \frac{1}{2(1+\sqrt{2})} = \frac{1}{2} \cdot \frac{\sqrt{2}-1}{(\sqrt{2}+1)(\sqrt{2}-1)} = \frac{\sqrt{2}-1}{2}.$$
+
+Answer: **A**.
+</Solution>

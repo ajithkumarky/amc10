@@ -1,0 +1,31 @@
+---
+year: 2011
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: B
+choices: ["7", "11", "17", "23", "77"]
+---
+
+<Problem>
+A majority of the $30$ students in Ms. Deameanor's class bought pencils at the school bookstore. Each of these students bought the same number of pencils, and this number was greater than $1$. The cost of a pencil in cents was greater than the number of pencils each student bought, and the total cost of all the pencils was $\$17.71$. What was the cost of a pencil in cents?
+</Problem>
+
+<Solution>
+The total cost is $1771$ cents. Factor $1771$:
+$$1771 = 7 \times 11 \times 23.$$
+
+The total cost equals (number of students who bought) $\times$ (pencils per student) $\times$ (cost per pencil). Let $s$ = students, $p$ = pencils per student, $c$ = cost per pencil in cents. Then $s \cdot p \cdot c = 1771$.
+
+Constraints:
+- $s > 15$ (majority of 30), so $s \geq 16$.
+- $p \geq 2$ (greater than 1).
+- $c > p$ (cost per pencil exceeds number each student bought).
+
+The factorizations of $1771 = 7 \times 11 \times 23$ with $s > 15$ require $s$ to use one of the prime factors. Since $s > 15$ and $7, 11 < 15$ don't work alone, we try $s = 23$: then $p \cdot c = 7 \times 11 = 77$. With $p \geq 2$ and $c > p$: if $p = 7$ and $c = 11$, then $c > p$ ✓ and $s = 23 > 15$ ✓.
+
+The cost of a pencil is $11$ cents.
+
+Answer: **B**.
+</Solution>

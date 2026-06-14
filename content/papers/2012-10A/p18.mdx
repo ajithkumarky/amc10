@@ -1,0 +1,33 @@
+---
+year: 2012
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: E
+choices: ['$2\pi+6$', '$2\pi+4\sqrt{3}$', '$3\pi+4$', '$2\pi+3\sqrt{3}+2$', '$\pi+6\sqrt{3}$']
+---
+
+<Problem>
+The closed curve in the figure is made up of $9$ congruent circular arcs each of length $\frac{2\pi}{3}$, where each of the centers of the corresponding circles is among the vertices of a regular hexagon of side $2$. What is the area enclosed by the curve?
+
+The curve has $6$ outward-bulging arcs (two arcs centered at each of $3$ alternating hexagon vertices) and $3$ inward-cutting arcs (one arc centered at each of the other $3$ vertices).
+</Problem>
+
+<Solution>
+**Step 1: Find the arc radius.** From the Asymptote source, the arc radius is half the hexagon side: $r = 1$. The arc length is $r\theta = 1 \cdot \frac{2\pi}{3} = \frac{2\pi}{3}$ ✓, so $\theta = \frac{2\pi}{3}$ ($120°$).
+
+**Step 2: Decompose the area.** Start with the regular hexagon of side $2$, which has area $6\sqrt{3}$.
+
+The $6$ outward arcs each add a circular segment, and the $3$ inward arcs each remove a circular segment. Each segment corresponds to a $120°$ arc of a unit circle, with segment area:
+$$\text{sector} - \text{triangle} = \tfrac{1}{2}r^2\theta - \tfrac{1}{2}r^2\sin\theta = \tfrac{1}{2}\!\left(\tfrac{2\pi}{3} - \sin 120°\right) = \tfrac{\pi}{3} - \tfrac{\sqrt{3}}{4}.$$
+
+**Step 3: Account for triangular corner regions.** Each of the $3$ outward-bulge vertices hosts $2$ arcs that together, along with the vertex itself, enclose a small equilateral triangle of side $1$ (area $\frac{\sqrt{3}}{4}$) that lies outside the hexagon but inside the curve. These $3$ triangles must be added separately.
+
+**Step 4: Total area.**
+$$6\sqrt{3} + 6\!\left(\tfrac{\pi}{3} - \tfrac{\sqrt{3}}{4}\right) - 3\!\left(\tfrac{\pi}{3} - \tfrac{\sqrt{3}}{4}\right) + 3\!\cdot\tfrac{\sqrt{3}}{4}$$
+$$= 6\sqrt{3} + 3\!\left(\tfrac{\pi}{3} - \tfrac{\sqrt{3}}{4}\right) + \tfrac{3\sqrt{3}}{4}$$
+$$= 6\sqrt{3} + \pi - \tfrac{3\sqrt{3}}{4} + \tfrac{3\sqrt{3}}{4} = \pi + 6\sqrt{3}.$$
+
+Answer: **E**.
+</Solution>

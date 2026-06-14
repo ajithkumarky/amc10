@@ -1,0 +1,51 @@
+---
+year: 2011
+paper: "10A"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 4
+answer: E
+choices: ["42%", "47%", "52%", "57%", "62%"]
+---
+
+<Problem>
+In 1991 the population of a town was a perfect square. Ten years later, after an increase of $150$ people, the population was $9$ more than a perfect square. Now, in 2011, with an increase of another $150$ people, the population is once again a perfect square. Which of the following is closest to the percent growth of the town's population during this twenty-year period?
+</Problem>
+
+<Solution>
+Let the 1991 population be $n^2$. In 2001 it is $n^2 + 150 = m^2 + 9$, so $m^2 = n^2 + 141$. In 2011 it is $n^2 + 300 = k^2$.
+
+From $k^2 - n^2 = 300$: $(k-n)(k+n) = 300$.
+
+Also $(n^2 + 141) = m^2$, so $n^2 - m^2 = -141$, meaning $(m-n)(m+n) = 141 = 3 \times 47$.
+
+Since $m$ and $n$ are positive integers with $m > n$: $m - n = 1$ and $m + n = 141$, giving $m = 71$, $n = 70$.
+
+Check: $n^2 = 4900$, $n^2 + 141 = 5041 = 71^2$ ✓.
+
+Now $k^2 = 4900 + 300 = 5200$. Is $5200$ a perfect square? $\sqrt{5200} \approx 72.1$, not a perfect square. So try other factor pairs of $300 = (k-n)(k+n)$ with $k,n$ same parity.
+
+$(k-n)(k+n) = 300$: try $k - n = 2, k + n = 150 \Rightarrow k = 76, n = 74$. Then $n^2 = 5476$, $n^2 + 141 = 5617$. Is $5617 = m^2 + 9$? $m^2 = 5608$, not a perfect square.
+
+Try $k - n = 6, k + n = 50 \Rightarrow k = 28, n = 22$. Then $n^2 = 484$, $n^2 + 141 = 625 = 25^2$. But $625 = m^2 + 9 \Rightarrow m^2 = 616$, not a perfect square.
+
+Try $k - n = 10, k + n = 30 \Rightarrow k = 20, n = 10$. Then $n^2 = 100$, $n^2 + 141 = 241$. $241 - 9 = 232$, not a perfect square.
+
+Going back: for $n = 70$: $k^2 = 5200$ isn't a perfect square. But perhaps the problem intends the 2011 population to be $n^2 + 300$ and we should find a valid $n$. Let me try allowing larger values.
+
+For $(k-n)(k+n) = 300$ with $k-n = 4, k+n = 75$: not integer parity. $k - n = 6, k + n = 50$: done above. $k - n = 12, k + n = 25$: not same parity.
+
+Try $n = 70$ again: the 2011 population is $5200$. Even though $5200$ isn't a perfect square, perhaps the problem's conditions determine $n = 70$ uniquely via the 2001 constraint, and the 2011 population of $5200$ is meant to be "once again a perfect square" approximately. Let's check if perhaps $n$ is determined differently.
+
+Actually with $m^2 - n^2 = 141 = 3 \times 47$, the only factoring with positive integers is $(m-n, m+n) = (1, 141)$ giving $(m,n) = (71,70)$. So $n^2 = 4900$ (1991), and 2011 population $= 5200$. The nearest perfect square is $72^2 = 5184$ or $73^2 = 5329$. This means the problem likely intends a larger population where the numbers work out, so let's use $n = 70$ as the solution.
+
+**Percent growth:** $\dfrac{5200 - 4900}{4900} = \dfrac{300}{4900} = \dfrac{3}{49} \approx 6.1\%$. That's too small. 
+
+Re-examining: perhaps $(m-n, m+n) = (3, 47)$ giving $m = 25, n = 22$.
+
+Check: $n^2 = 484$, $m^2 = 625$, $m^2 - n^2 = 141$ ✓. 2001 population $= 484 + 150 = 634 = 625 + 9$ ✓. 2011 population $= 484 + 300 = 784 = 28^2$ ✓.
+
+Percent growth: $\dfrac{784 - 484}{484} = \dfrac{300}{484} \approx 61.98\% \approx 62\%$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,31 @@
+---
+year: 2011
+paper: "10B"
+topic: algebra
+subtopic: quadratics
+difficulty: 4
+answer: A
+choices: ["$-64$", "$-24$", "$-9$", "$24$", "$576$"]
+---
+
+<Problem>
+What is the product of all the roots of the equation $$\sqrt{5|x|+8} = \sqrt{x^2-16}.$$
+</Problem>
+
+<Solution>
+Square both sides (both sides must be non-negative, so squaring is valid when solutions exist):
+$$5|x| + 8 = x^2 - 16 \implies x^2 - 5|x| - 24 = 0.$$
+
+Let $u = |x| \ge 0$:
+$$u^2 - 5u - 24 = 0 \implies (u-8)(u+3) = 0.$$
+
+So $u = 8$ or $u = -3$. Since $u = |x| \ge 0$, only $u = 8$ works, giving $|x| = 8$, so $x = 8$ or $x = -8$.
+
+**Verify both solutions exist (the right side must be non-negative):**
+- $x = 8$: $\sqrt{5(8)+8} = \sqrt{48}$ and $\sqrt{64-16} = \sqrt{48}$. Valid.
+- $x = -8$: $\sqrt{5(8)+8} = \sqrt{48}$ and $\sqrt{64-16} = \sqrt{48}$. Valid.
+
+The product of all roots is $8 \times (-8) = -64$.
+
+Answer: **A**.
+</Solution>

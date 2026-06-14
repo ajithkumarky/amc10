@@ -1,0 +1,28 @@
+---
+year: 2011
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 3
+answer: E
+choices: ["I only", "II only", "III only", "I and III only", "II and III only"]
+---
+
+<Problem>
+Let $@$ denote the "averaged with" operation: $a @ b = (a+b)/2$. Which of the following distributive laws hold for all numbers $x, y,$ and $z$?
+$$\text{I. } x @ (y + z) = (x @ y) + (x @ z)$$
+$$\text{II. } x + (y @ z) = (x + y) @ (x + z)$$
+$$\text{III. } x @ (y @ z) = (x @ y) @ (x @ z)$$
+</Problem>
+
+<Solution>
+**Check I:** Left side: $x @ (y+z) = \frac{x + y + z}{2}$. Right side: $(x@y)+(x@z) = \frac{x+y}{2} + \frac{x+z}{2} = \frac{2x+y+z}{2}$. These are equal only when $x = 0$, so I does **not** hold in general.
+
+**Check II:** Left side: $x + (y@z) = x + \frac{y+z}{2} = \frac{2x+y+z}{2}$. Right side: $(x+y) @ (x+z) = \frac{(x+y)+(x+z)}{2} = \frac{2x+y+z}{2}$. These are always equal, so II **holds**.
+
+**Check III:** Left side: $x @ (y@z) = x @ \frac{y+z}{2} = \frac{x + \frac{y+z}{2}}{2} = \frac{2x+y+z}{4}$. Right side: $(x@y)@(x@z) = \frac{x+y}{2} @ \frac{x+z}{2} = \frac{\frac{x+y}{2}+\frac{x+z}{2}}{2} = \frac{2x+y+z}{4}$. These are always equal, so III **holds**.
+
+Only II and III hold.
+
+Answer: **E**.
+</Solution>

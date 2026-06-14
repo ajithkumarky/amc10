@@ -1,0 +1,46 @@
+---
+year: 2011
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: D
+choices: ["$\\dfrac{7}{11}$", "$\\dfrac{9}{13}$", "$\\dfrac{11}{15}$", "$\\dfrac{15}{19}$", "$\\dfrac{15}{16}$"]
+---
+
+<Problem>
+Two counterfeit coins of equal weight are mixed with $8$ identical genuine coins. The weight of each counterfeit coin is different from the weight of each genuine coin. A pair of coins is selected at random without replacement from the $10$ coins. A second pair is selected at random without replacement from the remaining $8$ coins. The combined weight of the first pair is equal to the combined weight of the second pair. What is the probability that all $4$ selected coins are genuine?
+</Problem>
+
+<Solution>
+Label the coins: $C_1, C_2$ (counterfeit) and $G_1,\ldots,G_8$ (genuine). Let $g$ = weight of a genuine coin and $c$ = weight of a counterfeit coin, with $c \neq g$.
+
+**The condition:** first pair and second pair have equal total weight.
+
+The possible compositions of a pair (genuine count, counterfeit count): (2,0), (1,1), or (0,2).
+
+Pair weights:
+- (2,0): weight $2g$
+- (1,1): weight $g + c$
+- (0,2): weight $2c$
+
+For equal weights, both pairs must have the same composition type (since $c \neq g$, the three weights are distinct).
+
+**Cases where equal weight occurs:**
+1. Both pairs are (2,0): both pairs are all-genuine.
+2. Both pairs are (1,1): each pair has one counterfeit.
+3. Both pairs are (0,2): impossible since there are only 2 counterfeits total — can't form two pairs each with 2 counterfeits.
+
+**Count outcomes for Case 1 (both all-genuine):**
+Choose 2 genuine from 8 for first pair: $\binom{8}{2} = 28$. Choose 2 genuine from remaining 6 for second pair: $\binom{6}{2} = 15$. Total: $28 \times 15 = 420$.
+
+**Count outcomes for Case 2 (each pair has one counterfeit):**
+Assign the 2 counterfeits: one to first pair and one to second pair. Choose which counterfeit goes to first pair: $2$ ways. Choose 1 genuine from 8 to pair with it: $8$ ways. Then choose 1 genuine from remaining 7 for the second pair (with the other counterfeit): $7$ ways. Total: $2 \times 8 \times 7 = 112$.
+
+**Total favorable (equal weight):** $420 + 112 = 532$.
+
+**Given equal weight, P(all genuine):**
+$$P = \frac{420}{532} = \frac{420}{532} = \frac{105}{133} = \frac{15}{19}.$$
+
+Answer: **D**.
+</Solution>

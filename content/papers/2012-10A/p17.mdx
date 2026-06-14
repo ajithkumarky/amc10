@@ -1,0 +1,39 @@
+---
+year: 2012
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 4
+answer: C
+choices: ["1", "2", "3", "4", "5"]
+---
+
+<Problem>
+Let $a$ and $b$ be relatively prime positive integers with $a>b>0$ and $\dfrac{a^3-b^3}{(a-b)^3} = \dfrac{73}{3}$. What is $a-b$?
+</Problem>
+
+<Solution>
+Let $d = a - b > 0$ and write $a = b + d$. Factor the numerator:
+$$a^3 - b^3 = (a-b)(a^2+ab+b^2) = d(a^2+ab+b^2).$$
+
+So the equation becomes:
+$$\frac{d(a^2+ab+b^2)}{d^3} = \frac{a^2+ab+b^2}{d^2} = \frac{73}{3}.$$
+
+Thus $3(a^2+ab+b^2) = 73d^2$.
+
+Write $a = b+d$, so:
+$$a^2+ab+b^2 = (b+d)^2 + (b+d)b + b^2 = b^2+2bd+d^2+b^2+bd+b^2 = 3b^2+3bd+d^2.$$
+
+Substituting: $3(3b^2+3bd+d^2) = 73d^2$, giving $9b^2+9bd+3d^2 = 73d^2$, so $9b^2+9bd = 70d^2$, i.e.:
+$$9b(b+d) = 70d^2 \implies 9ab = 70d^2.$$
+
+Since $d = a - b$, we need $9ab = 70(a-b)^2$. Try small values of $d$:
+
+$d = 3$: $9ab = 70 \times 9 = 630$, so $ab = 70$. Also $a - b = 3$, so $a = b+3$. Then $b(b+3) = 70 \Rightarrow b^2+3b-70=0 \Rightarrow b = \frac{-3+\sqrt{9+280}}{2} = \frac{-3+17}{2} = 7$. So $b=7$, $a=10$.
+
+Check: $\gcd(10,7)=1$ ✓, and $\frac{10^3-7^3}{3^3} = \frac{1000-343}{27} = \frac{657}{27} = \frac{73}{3}$ ✓.
+
+Therefore $a - b = 3$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,43 @@
+---
+year: 2012
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: B
+choices: ["108", "132", "671", "846", "1105"]
+---
+
+<Problem>
+Amy, Beth, and Jo listen to four different songs and discuss which ones they like. No song is liked by all three. Furthermore, for each of the three pairs of the girls, there is at least one song liked by those two girls but disliked by the third. In how many different ways is this possible?
+</Problem>
+
+<Solution>
+Each song can be liked or disliked by each of the three girls, giving $2^3 = 8$ possible "preference patterns" for a single song (subsets of $\{A, B, J\}$). The 8 patterns are:
+
+$\emptyset$, $\{A\}$, $\{B\}$, $\{J\}$, $\{A,B\}$, $\{A,J\}$, $\{B,J\}$, $\{A,B,J\}$.
+
+The constraint "no song is liked by all three" eliminates $\{A,B,J\}$, leaving 7 usable patterns.
+
+The constraint "for each pair, there is at least one song liked by exactly those two" means:
+- Pattern $\{A,B\}$ must appear at least once (liked by Amy and Beth, not Jo).
+- Pattern $\{A,J\}$ must appear at least once.
+- Pattern $\{B,J\}$ must appear at least once.
+
+We have 4 songs, each assigned one of the 7 patterns. We need at least one song assigned $\{A,B\}$, at least one assigned $\{A,J\}$, and at least one assigned $\{B,J\}$.
+
+Total assignments of 4 songs to 7 patterns: $7^4$.
+
+Use inclusion-exclusion. Let $X$ = missing pattern $\{A,B\}$, $Y$ = missing $\{A,J\}$, $Z$ = missing $\{B,J\}$.
+
+$|X|$ = assignments avoiding $\{A,B\}$: $6^4$.
+$|X \cap Y|$ = avoiding both $\{A,B\}$ and $\{A,J\}$: $5^4$.
+$|X \cap Y \cap Z|$ = avoiding all three pair-patterns: $4^4$.
+
+By inclusion-exclusion:
+$$|\text{valid}| = 7^4 - 3 \cdot 6^4 + 3 \cdot 5^4 - 4^4$$
+$$= 2401 - 3(1296) + 3(625) - 256$$
+$$= 2401 - 3888 + 1875 - 256 = 132.$$
+
+Answer: **B**.
+</Solution>

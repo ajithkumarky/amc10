@@ -1,0 +1,39 @@
+---
+year: 2011
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: D
+choices: ["$1$", "$4$", "$5$", "$6$", "$9$"]
+---
+
+<Problem>
+What is the hundreds digit of $2011^{2011}$?
+</Problem>
+
+<Solution>
+We need $2011^{2011} \pmod{1000}$.
+
+Write $2011 \equiv 11 \pmod{1000}$, so we need $11^{2011} \pmod{1000}$.
+
+Use the binomial theorem: $11^{2011} = (10+1)^{2011} = \sum_{k=0}^{2011}\binom{2011}{k}10^k$.
+
+For the value mod $1000$, we only need the $k=0,1,2$ terms (higher powers of $10$ contribute $0$ mod $1000$):
+$$11^{2011} \equiv \binom{2011}{0}1 + \binom{2011}{1}10 + \binom{2011}{2}100 \pmod{1000}.$$
+
+$$= 1 + 2011 \cdot 10 + \frac{2011 \cdot 2010}{2}\cdot 100.$$
+
+$$= 1 + 20110 + 2011 \cdot 1005 \cdot 100.$$
+
+Compute each term mod $1000$:
+- $1 \equiv 1$
+- $20110 \equiv 110$
+- $2011 \times 1005 \times 100$: first $2011 \times 1005 \pmod{10}$. We need $2011 \times 1005 \times 100 \pmod{1000}$, which equals $(2011 \times 1005 \pmod{10}) \times 100$. $2011 \times 1005 \equiv 1 \times 5 = 5 \pmod{10}$, so this term $\equiv 500 \pmod{1000}$.
+
+Thus $11^{2011} \equiv 1 + 110 + 500 = 611 \pmod{1000}$.
+
+The hundreds digit of $2011^{2011}$ is $\mathbf{6}$.
+
+Answer: **D**.
+</Solution>

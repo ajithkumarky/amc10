@@ -1,0 +1,35 @@
+---
+year: 2012
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: D
+choices: ["2", "3", "4", "5", "6"]
+---
+
+<Problem>
+In a round-robin tournament with 6 teams, each team plays one game against each other team, and each game results in one team winning and one team losing. At the end of the tournament, the teams are ranked by the number of games won. What is the maximum number of teams that could be tied for the most wins at the end of the tournament?
+</Problem>
+
+<Solution>
+There are $\binom{6}{2} = 15$ total games, so 15 total wins distributed among 6 teams.
+
+If $k$ teams are tied for the most wins with $w$ wins each, then these $k$ teams account for $kw$ wins. The remaining $6-k$ teams each have fewer than $w$ wins.
+
+For 5 teams to tie: if 5 teams each win $w$ games, they play $\binom{5}{2}=10$ games among themselves (giving 10 wins within the group) and 5 games against the 6th team (giving 5 wins to the group). So the 5 teams collectively win $10+5=15$ wins from among themselves plus wins over the 6th team. But the 6th team wins $5-j$ games against the group (where $j$ wins go to the group), so the 6th team's total wins include those against the group.
+
+More directly: if 5 teams each have $w$ wins, the 5 teams have $5w$ wins total. Games among the 5 teams produce 10 wins (all go to the 5 teams). Games between the 5 teams and the 6th team produce 5 wins; suppose the 6th team wins $j$ of those. Then the 6th team has $j$ wins total, and the 5 teams get $5-j$ wins from those games.
+
+Total wins for the 5 teams: $10 + (5-j) = 15-j = 5w$, so $w = \frac{15-j}{5} = 3 - \frac{j}{5}$.
+
+For $w$ to be an integer, $j$ must be a multiple of 5, so $j=0$ or $j=5$. If $j=0$: $w=3$ and the 6th team wins 0 games. If $j=5$: $w=2$ and the 6th team wins 5 games, but then the 6th team has more wins than the others — contradiction.
+
+So $j=0$: all 5 teams win exactly 3 games each, and the 6th team wins 0 games (loses all 5 games to the group). Check: the 5 teams play 10 games among themselves with 10 wins total, and $5 \times 3 = 15$ total wins needed, but they only get $10+5=15$... wait with $j=0$ they get $10+5=15$ wins, and $5w=5\times3=15$. ✓
+
+Can 6 teams all tie? That would require each team wins the same number of games. Total wins $=15$ and $6w=15$ gives $w=2.5$, which is not an integer. So all 6 cannot tie.
+
+Therefore, the maximum number of teams tied for the most wins is **5**.
+
+Answer: **D**.
+</Solution>

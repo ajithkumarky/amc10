@@ -1,0 +1,45 @@
+---
+year: 2011
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: D
+choices: ["$\\dfrac{1}{12}$", "$\\dfrac{\\sqrt{2}}{12}$", "$\\dfrac{\\sqrt{3}}{12}$", "$\\dfrac{1}{6}$", "$\\dfrac{\\sqrt{2}}{6}$"]
+---
+
+<Problem>
+Two distinct regular tetrahedra have all their vertices among the vertices of the same unit cube. What is the volume of the region formed by the intersection of the tetrahedra?
+</Problem>
+
+<Solution>
+A unit cube has $8$ vertices. It is well-known that one can inscribe two regular tetrahedra in a unit cube by selecting alternate vertices.
+
+**Tetrahedron 1** uses vertices: $(0,0,0)$, $(1,1,0)$, $(1,0,1)$, $(0,1,1)$.
+
+**Tetrahedron 2** uses the other four vertices: $(1,0,0)$, $(0,1,0)$, $(0,0,1)$, $(1,1,1)$.
+
+Each tetrahedron has edge length $\sqrt{2}$ (the face diagonal of the unit cube).
+
+**Volume of each tetrahedron:** For a regular tetrahedron with edge length $a = \sqrt{2}$:
+$$V_{\text{tet}} = \frac{a^3}{6\sqrt{2}} = \frac{(\sqrt{2})^3}{6\sqrt{2}} = \frac{2\sqrt{2}}{6\sqrt{2}} = \frac{1}{3}.$$
+
+The volume of the unit cube is $1$, and the two tetrahedra together cover all of it without overlap... actually the union of the two tetrahedra is the entire cube. The intersection is:
+
+$$V_{\text{intersection}} = V_{\text{tet 1}} + V_{\text{tet 2}} - V_{\text{cube}} = \frac{1}{3} + \frac{1}{3} - 1 = -\frac{1}{3}.$$
+
+That's negative, so that formula doesn't apply. The two tetrahedra together don't cover the whole cube — they actually overlap in the center.
+
+The intersection of the two tetrahedra is a regular octahedron centered at $(\frac{1}{2}, \frac{1}{2}, \frac{1}{2})$.
+
+**Volume of the regular octahedron:** The octahedron has vertices at the face centers of the unit cube: $(\frac{1}{2},\frac{1}{2},0)$, $(\frac{1}{2},\frac{1}{2},1)$, $(\frac{1}{2},0,\frac{1}{2})$, $(\frac{1}{2},1,\frac{1}{2})$, $(0,\frac{1}{2},\frac{1}{2})$, $(1,\frac{1}{2},\frac{1}{2})$.
+
+The edge length of this octahedron is the distance between adjacent face-centers, e.g., $(\frac{1}{2},\frac{1}{2},0)$ to $(\frac{1}{2},0,\frac{1}{2})$: distance $= \sqrt{0 + \frac{1}{4} + \frac{1}{4}} = \frac{\sqrt{2}}{2}$.
+
+Volume of a regular octahedron with edge length $s$: $V = \frac{\sqrt{2}}{3}s^3$.
+
+With $s = \frac{\sqrt{2}}{2}$:
+$$V = \frac{\sqrt{2}}{3} \cdot \left(\frac{\sqrt{2}}{2}\right)^3 = \frac{\sqrt{2}}{3} \cdot \frac{2\sqrt{2}}{8} = \frac{\sqrt{2}}{3} \cdot \frac{\sqrt{2}}{4} = \frac{2}{12} = \frac{1}{6}.$$
+
+Answer: **D**.
+</Solution>

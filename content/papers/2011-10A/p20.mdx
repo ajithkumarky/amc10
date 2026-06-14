@@ -1,0 +1,41 @@
+---
+year: 2011
+paper: "10A"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 4
+answer: D
+choices: ["$\\dfrac{1}{6}$", "$\\dfrac{1}{5}$", "$\\dfrac{1}{4}$", "$\\dfrac{1}{3}$", "$\\dfrac{1}{2}$"]
+---
+
+<Problem>
+Two points on the circumference of a circle of radius $r$ are selected independently and at random. From each point a chord of length $r$ is drawn in a clockwise direction. What is the probability that the two chords intersect?
+</Problem>
+
+<Solution>
+Each chord of length $r$ in a circle of radius $r$ subtends a central angle of $60°$ (since the chord length equals the radius, forming an equilateral triangle with the two radii).
+
+Label the two starting points $P_1$ and $P_2$, and their corresponding endpoints (after the clockwise chord) $Q_1$ and $Q_2$. Chord $P_1Q_1$ subtends arc $P_1Q_1$ of $60°$ (clockwise).
+
+By symmetry, fix $P_1$ at angle $0$. Then $Q_1$ is at angle $-60°$ (clockwise). Let $P_2$ be at angle $\theta$, uniform on $[0°, 360°)$.
+
+The two chords $P_1Q_1$ and $P_2Q_2$ intersect if and only if one endpoint of each chord separates the endpoints of the other chord around the circle. Specifically, chords $P_1Q_1$ and $P_2Q_2$ intersect iff the four points alternate around the circle: $P_1, P_2, Q_1, Q_2$ or $P_1, Q_2, Q_1, P_2$ in cyclic order.
+
+Place points on circle with $P_1 = 0°$, $Q_1 = 300°$ (i.e., $-60°$ clockwise $= 300°$). Then $P_2 = \theta$ and $Q_2 = \theta - 60°$ (mod $360°$).
+
+The chords intersect iff $P_2$ and $Q_2$ are on opposite arcs created by $P_1$ and $Q_1$.
+
+Arc from $P_1$ to $Q_1$ clockwise (the short arc): from $0°$ to $300°$ going clockwise, length $60°$.
+Arc from $Q_1$ to $P_1$ clockwise (the long arc): from $300°$ to $360°=0°$, length $300°$.
+
+The chords intersect iff exactly one of $P_2, Q_2$ lies in the $60°$ arc $(300°, 360°)$ (equivalently $(300°, 0°)$) going clockwise.
+
+Let $\theta \in [0°, 360°)$. $P_2 = \theta$, $Q_2 = \theta - 60° \pmod{360°}$.
+
+$P_2$ is in the arc $(300°, 360°)$ iff $\theta \in (300°, 360°)$: probability $60°/360° = 1/6$.
+$Q_2$ is in the arc $(300°, 360°)$ iff $\theta - 60° \in (300°, 360°)$ iff $\theta \in (360°, 420°) = (0°, 60°)$: probability $1/6$.
+
+These intervals don't overlap, so the events are mutually exclusive. Probability of intersection $= 1/6 + 1/6 = 1/3$.
+
+Answer: **D**.
+</Solution>

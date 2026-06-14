@@ -1,0 +1,51 @@
+---
+year: 2012
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: D
+choices: ["30", "36", "42", "48", "60"]
+---
+
+<Problem>
+Paula the painter and her two helpers each paint at constant, but different, rates. They always start at 8:00 AM, and all three always take the same amount of time to eat lunch. On Monday the three of them painted 50% of a house, quitting at 4:00 PM. On Tuesday, when Paula wasn't there, the two helpers painted only 24% of the house and quit at 2:12 PM. On Wednesday Paula worked by herself and finished the house by working until 7:12 PM. How long, in minutes, was each day's lunch break?
+</Problem>
+
+<Solution>
+Let $p$ = Paula's rate (fraction of house per minute), $h$ = combined rate of the two helpers, and $L$ = lunch break duration in minutes.
+
+**Monday:** Start 8:00 AM, end 4:00 PM = 480 minutes total. Work time $= 480 - L$ minutes. Three of them together paint at rate $p + h$:
+$$(p + h)(480 - L) = 0.50. \quad (1)$$
+
+**Tuesday:** Start 8:00 AM, end 2:12 PM = 372 minutes total. Work time $= 372 - L$ minutes. Only helpers:
+$$h(372 - L) = 0.24. \quad (2)$$
+
+**Wednesday:** Start 8:00 AM, end 7:12 PM = 672 minutes total. Work time $= 672 - L$ minutes. Paula alone must paint $1 - 0.50 - 0.24 = 0.26$ of the house (since M and T together covered $0.74$, and... wait — the house was not progressively painted across days. Each day they're painting the same house, which means across the three days combined they painted $0.50 + 0.24 + ?$ but that can't exceed $1.00$.
+
+Actually, across the three days they paint in sequence. Monday: 50%, Tuesday: 24%, Wednesday: Paula finishes the remaining $1 - 0.50 - 0.24 = 0.26$:
+$$p(672 - L) = 0.26. \quad (3)$$
+
+From (2): $h = \frac{0.24}{372 - L}$.
+
+From (1): $p + h = \frac{0.50}{480 - L}$, so $p = \frac{0.50}{480 - L} - \frac{0.24}{372 - L}$.
+
+From (3): $p = \frac{0.26}{672 - L}$.
+
+Setting the two expressions for $p$ equal:
+$$\frac{0.50}{480 - L} - \frac{0.24}{372 - L} = \frac{0.26}{672 - L}.$$
+
+Multiply through by $100$ (i.e., use 50, 24, 26 instead of 0.50, 0.24, 0.26):
+$$\frac{50}{480-L} - \frac{24}{372-L} = \frac{26}{672-L}.$$
+
+Let $x = 480 - L$. Then $372 - L = x - 108$ and $672 - L = x + 192$:
+$$\frac{50}{x} - \frac{24}{x-108} = \frac{26}{x+192}.$$
+
+Try $L = 48$: $x = 432$, $x-108 = 324$, $x+192 = 624$.
+$$\frac{50}{432} - \frac{24}{324} = \frac{25}{216} - \frac{2}{27} = \frac{25}{216} - \frac{16}{216} = \frac{9}{216} = \frac{1}{24}.$$
+$$\frac{26}{624} = \frac{1}{24}. \checkmark$$
+
+The lunch break is $\mathbf{48}$ minutes.
+
+Answer: **D**.
+</Solution>

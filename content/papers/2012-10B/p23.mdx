@@ -1,0 +1,57 @@
+---
+year: 2012
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: D
+choices: ['$\dfrac{\sqrt{3}}{3}$', '$\dfrac{2\sqrt{2}}{3}$', '$1$', '$\dfrac{2\sqrt{3}}{3}$', '$\sqrt{2}$']
+---
+
+<Problem>
+A solid tetrahedron is sliced off a wooden unit cube by a plane passing through two nonadjacent vertices on one face and one vertex on the opposite face not adjacent to either of the first two vertices. The tetrahedron is discarded and the remaining portion of the cube is placed on a table with the cut surface face down. What is the height of this object?
+</Problem>
+
+<Solution>
+Place the unit cube with vertices at coordinates from $\{0,1\}^3$. Choose:
+- Bottom face: $z=0$ with vertices $(0,0,0)$, $(1,0,0)$, $(1,1,0)$, $(0,1,0)$.
+- Top face: $z=1$.
+
+Take two nonadjacent vertices on the bottom face: $A=(0,0,0)$ and $C=(1,1,0)$ (diagonal of the bottom face). Take one vertex on the top face not adjacent to either: $B=(1,0,1)$ is adjacent to $A$ (share an edge)... Let's choose $G=(1,1,1)$, but that's adjacent to $C$. Choose $F=(0,1,1)$: adjacent to $C=(1,1,0)$? They share the edge through $(1,1,\cdot)$? No, $F=(0,1,1)$ and $C=(1,1,0)$ differ in both $x$ and $z$, so they are face-diagonal neighbors, not edge-adjacent. Check: two vertices are edge-adjacent iff they differ in exactly one coordinate. $F=(0,1,1)$ vs $C=(1,1,0)$: differ in $x$ and $z$ — not adjacent. $F$ vs $A=(0,0,0)$: differ in $y$ and $z$ — not adjacent. ✓
+
+So the tetrahedron has vertices $A=(0,0,0)$, $C=(1,1,0)$, $F=(0,1,1)$.
+
+The cutting plane through $A$, $C$, $F$: find its equation.
+
+Vectors in the plane: $AC = (1,1,0)$, $AF = (0,1,1)$.
+
+Normal: $AC \times AF = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 1&1&0 \\ 0&1&1 \end{vmatrix} = (1\cdot1-0\cdot1)\mathbf{i} - (1\cdot1-0\cdot0)\mathbf{j} + (1\cdot1-1\cdot0)\mathbf{k} = (1,-1,1)$.
+
+Plane equation through $A=(0,0,0)$: $x - y + z = 0$.
+
+The tetrahedron is the region inside the cube on one side of this plane with the fourth vertex. The fourth vertex of the tetrahedron must be a cube vertex on the same side as... actually the problem says "a tetrahedron sliced off." With three vertices $A$, $C$, $F$ on the plane and the tetrahedron being one of the pieces, the tetrahedron's fourth vertex is a cube vertex not on the plane.
+
+Check which cube vertices satisfy $x - y + z = 0$: $(0,0,0)$: $0$. $(1,1,0)$: $0$. $(0,1,1)$: $0$. $(1,0,1)$: $1+1=2 \neq 0$. Others: $(1,0,0)$: $1$, $(0,1,0)$: $-1$, $(1,1,1)$: $1$, $(0,0,1)$: $1$.
+
+Three vertices are on the plane; the remaining 5 have $x-y+z > 0$ or $< 0$:
+- $x-y+z > 0$: $(1,0,0)$, $(1,0,1)$, $(1,1,1)$, $(0,0,1)$.
+- $x-y+z < 0$: $(0,1,0)$.
+
+The tetrahedron cut off has 4 vertices: $A$, $C$, $F$, plus one more cube vertex. The piece with only one vertex on one side of the plane forms a tetrahedron. So the tetrahedron is $A$, $C$, $F$, $(0,1,0)$.
+
+**Cutting plane:** $x - y + z = 0$, with unit normal $\mathbf{n} = \frac{1}{\sqrt{3}}(1,-1,1)$.
+
+The remaining solid (cube minus tetrahedron) is placed with the cut face down. The cut face is a triangle (actually the cut surface is the triangle $ACF$, which is equilateral since $|AC|=\sqrt{2}$, $|AF|=\sqrt{2}$, $|CF|=\sqrt{(1-0)^2+(1-1)^2+(0-1)^2}=\sqrt{2}$).
+
+When placed cut-face down, the object rests on the plane $x - y + z = 0$. We need the height from this plane to the farthest point of the solid.
+
+The remaining solid consists of the cube minus the tetrahedron $\{A, C, F, (0,1,0)\}$. The farthest vertex from the plane $x-y+z=0$ is the one with largest $|x-y+z|$ (on the positive side). 
+
+Vertices remaining: $(1,0,0)$: $x-y+z=1$. $(1,0,1)$: $2$. $(1,1,1)$: $1$. $(0,0,1)$: $1$.
+
+The farthest vertex is $(1,0,1)$ with $x-y+z=2$.
+
+Distance from $(1,0,1)$ to plane $x-y+z=0$: $\frac{|2|}{\sqrt{3}} = \frac{2}{\sqrt{3}} = \frac{2\sqrt{3}}{3}$.
+
+Answer: **D**.
+</Solution>

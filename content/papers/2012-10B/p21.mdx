@@ -1,0 +1,42 @@
+---
+year: 2012
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: A
+choices: ['$\sqrt{3}$', '$2$', '$\sqrt{5}$', '$3$', '$\pi$']
+---
+
+<Problem>
+Four distinct points are arranged on a plane so that the segments connecting them have lengths $a$, $a$, $a$, $a$, $2a$, and $b$. What is the ratio of $b$ to $a$?
+</Problem>
+
+<Solution>
+Four points determine $\binom{4}{2} = 6$ pairwise distances. We have four distances equal to $a$, one equal to $2a$, and one equal to $b$.
+
+Consider what configuration produces four equal sides $a$ and one side $2a$ among four points. An isosceles trapezoid comes to mind: if two sides are $a$, two sides are $a$, the parallel sides are $a$ and $2a$... but that gives sides $a, a, a, 2a$ and two diagonals for the 6 distances.
+
+Try: three points forming an equilateral triangle with side $a$, plus a fourth point. The equilateral triangle contributes 3 distances of $a$. We need one more distance of $a$, one of $2a$, and one of $b$.
+
+Place the equilateral triangle at $A=(0,0)$, $B=(a,0)$, $C=(a/2, a\sqrt{3}/2)$. Add point $D$. The distances $AD$, $BD$, $CD$ account for three of the remaining distances ($a$, $2a$, $b$ in some order).
+
+If $AD = a$: $D$ lies on a circle of radius $a$ centered at $A$.
+If $BD = 2a$: $D$ lies on a circle of radius $2a$ centered at $B$.
+
+Intersection: $D$ satisfies $x^2 + y^2 = a^2$ and $(x-a)^2 + y^2 = 4a^2$.
+
+Subtracting: $(x-a)^2 - x^2 = 3a^2 \Rightarrow -2ax + a^2 = 3a^2 \Rightarrow x = -a$.
+
+Then $y^2 = a^2 - a^2 = 0$, so $D = (-a, 0)$.
+
+Distances: $AD = a$ ✓, $BD = 2a$ ✓, $CD = \sqrt{(-a-a/2)^2 + (a\sqrt{3}/2)^2} = \sqrt{9a^2/4 + 3a^2/4} = \sqrt{3a^2} = a\sqrt{3}$.
+
+So $b = a\sqrt{3}$ and $b/a = \sqrt{3}$.
+
+Verify all 6 distances: $AB=a$, $AC=a$, $BC=a$, $AD=a$, $BD=2a$, $CD=a\sqrt{3}$. That's four $a$'s, one $2a$, one $b=a\sqrt{3}$. ✓
+
+The four points are collinear? $A=(0,0)$, $B=(a,0)$, $D=(-a,0)$ are collinear; $C=(a/2, a\sqrt{3}/2)$ is not. So the four points are distinct and not all collinear. ✓
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,33 @@
+---
+year: 2012
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: B
+choices: ["$30$ and $31$", "$31$ and $32$", "$32$ and $33$", "$33$ and $34$", "$34$ and $35$"]
+---
+
+<Problem>
+Point $B$ is due east of point $A$. Point $C$ is due north of point $B$. The distance between points $A$ and $C$ is $10\sqrt{2}$, and $\angle BAC = 45^\circ$. Point $D$ is 20 meters due north of point $C$. The distance $AD$ is between which two integers?
+</Problem>
+
+<Solution>
+Set up coordinates with $A$ at the origin. Since $B$ is due east of $A$, place $B = (b, 0)$ for some $b > 0$. Since $C$ is due north of $B$, $C = (b, c)$ for some $c > 0$.
+
+**Find $b$ and $c$:** We have $\angle BAC = 45^\circ$ and $AC = 10\sqrt{2}$.
+
+In right triangle $ABC$ (right angle at $B$): $\tan(\angle BAC) = \frac{BC}{AB} = \frac{c}{b} = \tan 45^\circ = 1$, so $c = b$.
+
+Also $AC = \sqrt{b^2 + c^2} = b\sqrt{2} = 10\sqrt{2}$, giving $b = 10$.
+
+So $A = (0,0)$, $B = (10, 0)$, $C = (10, 10)$.
+
+**Point $D$:** $D$ is 20 meters due north of $C$, so $D = (10, 30)$.
+
+**Distance $AD$:** $AD = \sqrt{10^2 + 30^2} = \sqrt{100 + 900} = \sqrt{1000} = 10\sqrt{10}$.
+
+Since $\sqrt{10} \approx 3.162$, we get $AD \approx 31.62$, which is between 31 and 32.
+
+Answer: **B**.
+</Solution>

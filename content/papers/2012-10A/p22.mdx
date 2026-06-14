@@ -1,0 +1,47 @@
+---
+year: 2012
+paper: "10A"
+topic: number-theory
+subtopic: diophantine-equations
+difficulty: 5
+answer: A
+choices: ["255", "256", "257", "258", "259"]
+---
+
+<Problem>
+The sum of the first $m$ positive odd integers is $212$ more than the sum of the first $n$ positive even integers. What is the sum of all possible values of $n$?
+</Problem>
+
+<Solution>
+The sum of the first $m$ positive odd integers is $m^2$, and the sum of the first $n$ positive even integers is $n(n+1)$. The condition is:
+$$m^2 = n^2 + n + 212.$$
+
+Rearranging: $(m-n)(m+n) = n + 212$. Since $m^2 > n^2$, we have $m > n$, so let $a = m-n > 0$ and $b = m+n > 0$ with $ab = n + 212$ and $n = \frac{b-a}{2}$ (requiring $a \equiv b \pmod 2$).
+
+Substituting $n$: $ab = \frac{b-a}{2} + 212$, so $2ab - b + a = 424$, giving $b(2a-1) = 424 - a$.
+
+Write $k = 2a - 1$ (odd, positive). Then $a = \frac{k+1}{2}$ and:
+$$b = \frac{424 - \frac{k+1}{2}}{k} = \frac{847 - k}{2k}.$$
+
+For $b$ to be a positive integer, $k$ must be an odd positive divisor of $847$. Factor: $847 = 7 \times 11^2$, so its positive divisors are $1, 7, 11, 77, 121, 847$ — all odd.
+
+Compute $b$ and $n = \frac{b-a}{2}$ for each (also requiring $b > a$ and $a \equiv b \pmod 2$):
+
+| $k$ | $a$ | $b$ | valid? | $n$ |
+|-----|-----|-----|--------|-----|
+| 1 | 1 | 423 | $b>a$, both odd ✓ | 211 |
+| 7 | 4 | 60 | $b>a$, both even ✓ | 28 |
+| 11 | 6 | 38 | $b>a$, both even ✓ | 16 |
+| 77 | 39 | 5 | $b < a$ ✗ | — |
+| 121 | 61 | 3 | $b < a$ ✗ | — |
+| 847 | 424 | 0 | $b=0$ ✗ | — |
+
+The valid values of $n$ are $211, 28, 16$. Verify each:
+- $n=211, m=212$: $212^2 = 44944$; $211\cdot212 + 212 = 44732 + 212 = 44944$ ✓
+- $n=28, m=32$: $1024$; $28\cdot29 + 212 = 812 + 212 = 1024$ ✓
+- $n=16, m=22$: $484$; $16\cdot17 + 212 = 272 + 212 = 484$ ✓
+
+Sum of all possible values of $n$: $211 + 28 + 16 = 255$.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,25 @@
+---
+year: 2011
+paper: "10B"
+topic: counting-probability
+subtopic: pigeonhole
+difficulty: 3
+answer: D
+choices: ["$2$", "$3$", "$4$", "$5$", "$12$"]
+---
+
+<Problem>
+There are $52$ people in a room. What is the largest value of $n$ such that the statement "At least $n$ people in this room have birthdays falling in the same month" is always true?
+</Problem>
+
+<Solution>
+By the Pigeonhole Principle, when $52$ people are distributed among $12$ months, at least one month must contain $\left\lceil \frac{52}{12} \right\rceil$ people.
+
+$\frac{52}{12} = 4.33\ldots$, so $\left\lceil 4.33 \right\rceil = 5$.
+
+This means at least one month always has at least $5$ people. However, $n = 6$ is not guaranteed: for example, distribute the $52$ people as $5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4$ (eight months with 5, four months with 4, total $= 40 + 16 = 56$). Actually a tighter example: $5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4$ gives $20 + 32 = 52$ with no month exceeding 5.
+
+So the largest $n$ that is always guaranteed is $5$.
+
+Answer: **D**.
+</Solution>

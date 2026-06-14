@@ -1,0 +1,25 @@
+---
+year: 2011
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 2
+answer: B
+choices: ["$1$", "$9$", "$10$", "$11$", "$101$"]
+---
+
+<Problem>
+Consider the set of numbers $\{1, 10, 10^2, 10^3, \ldots, 10^{10}\}$. The ratio of the largest element of the set to the sum of the other ten elements of the set is closest to which integer?
+</Problem>
+
+<Solution>
+The largest element is $10^{10}$. The sum of the other ten elements is $1 + 10 + 10^2 + \cdots + 10^9$, which is a geometric series:
+$$S = \frac{10^{10} - 1}{10 - 1} = \frac{10^{10} - 1}{9}.$$
+
+The ratio is:
+$$\frac{10^{10}}{S} = \frac{10^{10}}{\dfrac{10^{10}-1}{9}} = \frac{9 \cdot 10^{10}}{10^{10} - 1} = \frac{9}{1 - 10^{-10}} \approx 9(1 + 10^{-10}) \approx 9.$$
+
+The ratio is just barely above $9$, so it is closest to the integer $9$.
+
+Answer: **B**.
+</Solution>

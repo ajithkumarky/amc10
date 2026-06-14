@@ -1,0 +1,59 @@
+---
+year: 2011
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: E
+choices: ["$15$", "$30$", "$45$", "$60$", "$75$"]
+---
+
+<Problem>
+Rectangle $ABCD$ has $AB = 6$ and $BC = 3$. Point $M$ is chosen on side $AB$ so that $\angle AMD = \angle CMD$. What is the degree measure of $\angle AMD$?
+</Problem>
+
+<Solution>
+Place the rectangle with $A = (0, 0)$, $B = (6, 0)$, $C = (6, 3)$, $D = (0, 3)$. Point $M = (m, 0)$ on $AB$.
+
+The condition $\angle AMD = \angle CMD$ means $MD$ bisects angle $\angle AMC$. By the angle bisector property, $DM$ bisects $\angle AMC$ if and only if $\frac{MA}{MC} = \frac{DA}{DC}$... Actually, let's use a cleaner approach.
+
+Since $\angle AMD = \angle CMD$, point $D$ lies on the angle bisector from $M$ in triangle... Rather, $MD$ bisects $\angle AMC$. Consider reflecting: $M$ sees $D$ as the bisector of the angle to $A$ and $C$.
+
+By the angle bisector theorem applied to triangle $AMC$ with cevian $MD$: $\frac{AD_{foot}}{D_{foot}C} = \frac{MA}{MC}$... but $D$ is not on $AC$.
+
+Instead, use the tangent approach. Let $\angle AMD = \alpha$. Then $\angle CMD = \alpha$ also, so $\angle AMC = 2\alpha$ and $\angle BMC = 180^\circ - 2\alpha$ (since $A$, $M$, $B$ are collinear).
+
+In right triangle $BMC$: $\tan(\angle BCM) = \frac{BM}{BC}$. Let $AM = a$, so $BM = 6 - a$. Then $\tan(\angle MCB) = \frac{6-a}{3}$.
+
+Also $\angle BMC = 90^\circ - \angle BCM$ in triangle $BCM$... actually $\angle MBC = 90^\circ$, so $\angle BMC = 90^\circ - \angle BCM$, and $\tan(\angle BMC) = \frac{BC}{BM} = \frac{3}{6-a}$.
+
+Using the condition that $DM$ bisects $\angle AMD = \angle CMD$: since $\angle AMD = \angle CMD$, consider point $D = (0,3)$. We need $\tan(\angle AMD)$.
+
+In triangle $AMD$: $AM = a$, $AD = 3$, $\angle MAD = 90^\circ$, so $\tan(\angle AMD) = \frac{AD}{AM} = \frac{3}{a}$.
+
+In triangle $CMD$: $CM = \sqrt{(6-a)^2 + 9}$... Actually let's use coordinates. $M = (m, 0)$, $D = (0, 3)$, $A = (0,0)$, $C = (6, 3)$.
+
+Vector $\overrightarrow{MD} = (-m, 3)$ and $\overrightarrow{MA} = (-m, 0)$ give $\angle AMD$:
+$$\tan(\angle AMD) = \frac{3}{m}$$
+(since in right triangle $AMD$, legs are $m$ and $3$).
+
+Vector $\overrightarrow{MD} = (-m, 3)$ and $\overrightarrow{MC} = (6-m, 3)$ give $\angle CMD$ via the formula:
+$$\tan(\angle CMD) = \frac{|(-m)(3) - (3)(6-m)|}{(-m)(6-m) + (3)(3)} = \frac{|-3m - 18 + 3m|}{-m(6-m)+9} = \frac{18}{-6m+m^2+9}.$$
+
+Setting $\tan(\angle AMD) = \tan(\angle CMD)$:
+$$\frac{3}{m} = \frac{18}{m^2 - 6m + 9} = \frac{18}{(m-3)^2}.$$
+
+Cross-multiplying: $3(m-3)^2 = 18m \implies (m-3)^2 = 6m \implies m^2 - 6m + 9 = 6m \implies m^2 - 12m + 9 = 0$.
+
+$$m = \frac{12 \pm \sqrt{144 - 36}}{2} = \frac{12 \pm \sqrt{108}}{2} = 6 \pm 3\sqrt{3}.$$
+
+Since $0 < m < 6$, we take $m = 6 - 3\sqrt{3}$.
+
+Then $\tan(\angle AMD) = \frac{3}{m} = \frac{3}{6 - 3\sqrt{3}} = \frac{1}{2 - \sqrt{3}}$.
+
+Rationalize: $\frac{1}{2-\sqrt{3}} \cdot \frac{2+\sqrt{3}}{2+\sqrt{3}} = \frac{2+\sqrt{3}}{4-3} = 2 + \sqrt{3}$.
+
+Since $\tan(75^\circ) = 2 + \sqrt{3}$, we get $\angle AMD = 75^\circ$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,43 @@
+---
+year: 2011
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: C
+choices: ["$3-\\dfrac{\\pi}{2}$", "$\\dfrac{\\pi}{2}$", "$2$", "$\\dfrac{3\\pi}{4}$", "$1+\\dfrac{\\pi}{2}$"]
+---
+
+<Problem>
+Circles $A$, $B$, and $C$ each have radius $1$. Circles $A$ and $B$ share one point of tangency. Circle $C$ has a point of tangency with the midpoint of $\overline{AB}$. What is the area inside circle $C$ but outside circles $A$ and $B$?
+</Problem>
+
+<Solution>
+Set up coordinates: place the tangency point of $A$ and $B$ at the origin. Then the center of $A$ is at $(-1, 0)$ and the center of $B$ is at $(1, 0)$.
+
+$\overline{AB}$ is the segment from $(-1,0)$ to $(1,0)$. Its midpoint is $(0,0)$, which is the tangency point of $A$ and $B$.
+
+Circle $C$ is tangent to this point and must be centered directly above or below (by symmetry). Since circle $C$ has radius $1$ and is tangent to the point $(0,0)$, its center is at $(0, 1)$ or $(0, -1)$. Take center of $C$ at $(0, 1)$.
+
+**Area of circle $C$:** $\pi(1)^2 = \pi$.
+
+**Overlap of $C$ with $A$:** Centers of $C = (0,1)$ and $A = (-1,0)$ are distance $\sqrt{1+1} = \sqrt{2}$ apart. Both have radius $1$. Since $\sqrt{2} > 1$ but $\sqrt{2} < 2$, the circles overlap.
+
+The area of intersection of two unit circles whose centers are $\sqrt{2}$ apart: using the formula for lens area with $d = \sqrt{2}$, $r = 1$:
+$$\cos\theta = \frac{d^2}{2r \cdot d} \cdot \frac{d}{2} \Rightarrow \text{each half-angle satisfies } \cos\alpha = \frac{d/2}{r} = \frac{\sqrt{2}/2}{1} = \frac{\sqrt{2}}{2}, \text{ so } \alpha = 45° = \frac{\pi}{4}.$$
+
+Intersection area $= 2r^2\left(\alpha - \frac{\sin 2\alpha}{2}\right) = 2\left(\frac{\pi}{4} - \frac{\sin 90°}{2}\right) = 2\left(\frac{\pi}{4} - \frac{1}{2}\right) = \frac{\pi}{2} - 1$.
+
+By symmetry, the overlap of $C$ with $B$ is the same: $\dfrac{\pi}{2} - 1$.
+
+**Do the overlaps themselves overlap?** The overlap region of $C$ with $A$ lies near the point $(0,0)$, as does the overlap with $B$. We must check if $A \cap C$ and $B \cap C$ share area (triple overlap $A \cap B \cap C$).
+
+Circle $A \cap B$: the two unit circles centered at $(\pm 1, 0)$ intersect at $(0, \sqrt{3}/2 \cdot 0)$... actually at distance $2$ apart they are just tangent at $(0,0)$ — but wait, centers $A = (-1,0)$ and $B = (1,0)$ are distance $2$ apart, so they are externally tangent (touching at exactly one point, the origin). So $A \cap B$ has zero area.
+
+Therefore $A \cap B \cap C$ has zero area.
+
+**Area inside $C$ but outside $A$ and $B$:**
+$$\text{Area}(C) - \text{Area}(C \cap A) - \text{Area}(C \cap B) = \pi - \left(\frac{\pi}{2}-1\right) - \left(\frac{\pi}{2}-1\right) = \pi - \pi + 2 = 2.$$
+
+Answer: **C**.
+</Solution>

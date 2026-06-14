@@ -1,0 +1,26 @@
+---
+year: 2012
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: B
+choices: ["480", "481", "482", "483", "484"]
+---
+
+<Problem>
+Chubby makes nonstandard checkerboards that have $31$ squares on each side. The checkerboards have a black square in every corner and alternate red and black squares along every row and column. How many black squares are there on such a checkerboard?
+</Problem>
+
+<Solution>
+On a standard checkerboard with an odd side length $n$, the coloring alternates with black in the corners. With $n = 31$ (odd):
+
+- In odd-numbered rows (1, 3, 5, …, 31): the row starts and ends with black, so it contains $\lceil 31/2 \rceil = 16$ black squares.
+- In even-numbered rows (2, 4, 6, …, 30): the row starts and ends with red, so it contains $\lfloor 31/2 \rfloor = 15$ black squares.
+
+There are $\lceil 31/2 \rceil = 16$ odd rows and $\lfloor 31/2 \rfloor = 15$ even rows.
+
+Total black squares $= 16 \times 16 + 15 \times 15 = 256 + 225 = 481$.
+
+Answer: **B**.
+</Solution>

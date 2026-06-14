@@ -1,0 +1,39 @@
+---
+year: 2012
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: B
+choices: ["60", "170", "290", "320", "660"]
+---
+
+<Problem>
+Adam, Benin, Chiang, DeShawn, Esther, and Fiona have internet accounts. Some, but not all, of them are internet friends with each other, and none of them has an internet friend outside this group. Each of them has the same number of internet friends. In how many different ways can this happen?
+</Problem>
+
+<Solution>
+We need to count $k$-regular graphs on $6$ labeled vertices where $1 \le k \le 4$ (since "some but not all" means at least 1 and at most $n-1 = 5$ friend, and $k$-regular on 6 vertices requires $6k$ even so $k$ is even or $6$ is even — $6$ is even so all $k$ work; but $k = 5$ means everyone friends with everyone, which is "all of them," excluded).
+
+Actually "not all" means the friendship graph is not complete ($k \neq 5$) and "some" means $k \geq 1$.
+
+Count $k$-regular graphs on 6 labeled vertices for $k = 1, 2, 3, 4$:
+
+**$k = 1$ (1-regular = perfect matching):** Number of perfect matchings on 6 vertices $= 5!! = 5 \times 3 \times 1 = 15$.
+
+**$k = 2$ (2-regular = union of cycles covering all 6 vertices):** Cycle structures:
+- One 6-cycle: $\frac{6!}{6 \times 2} = \frac{720}{12} = 60$.
+- One 3-cycle + one 3-cycle: $\frac{\binom{6}{3}}{2} \times (3-1)! \times (3-1)! = \frac{20}{2} \times 2 \times 2 = 10 \times 4 = 40$.
+- One 4-cycle + one 2-cycle: 2-cycles don't exist in simple graphs (no multi-edges). Excluded.
+- One 5-cycle + one fixed vertex: not possible (vertex must be in a cycle).
+
+Total: $60 + 40 = 70$.
+
+**$k = 4$ (4-regular):** The complement of a $4$-regular graph on 6 vertices is a $1$-regular graph (since $5 - 4 = 1$). So the count equals the number of 1-regular graphs $= 15$.
+
+**$k = 3$ (3-regular on 6 vertices):** Use the complement: complement of a 3-regular graph on 6 vertices is also 3-regular ($5-3=2$... no, $5-3=2$, so complement is 2-regular). Wait: complement of $k$-regular on $n$ vertices is $(n-1-k)$-regular. For $n=6, k=3$: complement is $2$-regular. So there's a bijection between 3-regular and 2-regular graphs on 6 labeled vertices, giving $70$ three-regular graphs.
+
+Total: $15 + 70 + 70 + 15 = 170$.
+
+Answer: **B**.
+</Solution>

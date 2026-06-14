@@ -1,0 +1,30 @@
+---
+year: 2012
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: B
+choices: ["120", "512", "1024", "181440", "362880"]
+---
+
+<Problem>
+Let $(a_1, a_2, \dots, a_{10})$ be a list of the first 10 positive integers such that for each $2 \leq i \leq 10$ either $a_i + 1$ or $a_i - 1$ or both appear somewhere before $a_i$ in the list. How many such lists are there?
+</Problem>
+
+<Solution>
+The condition says that each element (except the first) must have a neighbor (integer differing by 1) already placed earlier in the list. This means the set of integers placed so far always forms a contiguous block, and each new integer extends the block by one on either end.
+
+More precisely: after placing $k$ numbers, the set $\{a_1, \ldots, a_k\}$ must be a set of $k$ consecutive integers $\{m, m+1, \ldots, m+k-1\}$ for some $m$. (Proof by induction: the first number $a_1$ is a block of size 1. Each new number must be adjacent to some existing number, and since we're building from integers 1–10 in a contiguous block, the block grows by 1 at each step — extending either the left or right end.)
+
+So the list is completely determined by: (1) the choice of $a_1$ (the starting element), and (2) at each subsequent step, whether to extend the block left or right.
+
+Actually: the block starts as $\{a_1\}$. At each of the 9 subsequent steps, we either extend left or right. The block must eventually cover $\{1, 2, \ldots, 10\}$.
+
+If $a_1 = k$ (where $1 \leq k \leq 10$), the block needs to extend left $k-1$ times and right $10-k$ times over 9 steps. The number of ways to arrange these extensions is $\binom{9}{k-1}$.
+
+Total lists:
+$$\sum_{k=1}^{10} \binom{9}{k-1} = \sum_{j=0}^{9} \binom{9}{j} = 2^9 = 512.$$
+
+Answer: **B**.
+</Solution>

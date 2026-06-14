@@ -1,0 +1,10 @@
+{
+  "year": 2012,
+  "ab": "10B",
+  "title": "AMC 10B 2012",
+  "date": "2012-02-22",
+  "source": "https://artofproblemsolving.com/wiki/index.php/2012_AMC_10B_Problems",
+  "skipped": [
+    { "n": 25, "reason": "complex hexagonal lattice diagram with directional arrows that is unusable without the figure" }
+  ]
+}

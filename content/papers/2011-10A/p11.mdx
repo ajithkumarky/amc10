@@ -1,0 +1,28 @@
+---
+year: 2011
+paper: "10A"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 3
+answer: B
+choices: ["$\\dfrac{49}{64}$", "$\\dfrac{25}{32}$", "$\\dfrac{7}{8}$", "$\\dfrac{5\\sqrt{2}}{8}$", "$\\dfrac{\\sqrt{14}}{4}$"]
+---
+
+<Problem>
+Square $EFGH$ has one vertex on each side of square $ABCD$. Point $E$ is on $\overline{AB}$ with $AE = 7 \cdot EB$. What is the ratio of the area of $EFGH$ to the area of $ABCD$?
+</Problem>
+
+<Solution>
+Let the side length of $ABCD$ be $8$ (chosen so $AE$ and $EB$ are integers). Since $AE = 7 \cdot EB$ and $AE + EB = 8$, we get $EB = 1$ and $AE = 7$.
+
+By the symmetry of how $EFGH$ sits inside $ABCD$, each vertex of $EFGH$ cuts its side of $ABCD$ in the ratio $7:1$. So the small right triangle cut off at each corner has legs $7$ and $1$.
+
+The side length of $EFGH$ equals the hypotenuse of such a triangle:
+$$EF = \sqrt{7^2 + 1^2} = \sqrt{49 + 1} = \sqrt{50} = 5\sqrt{2}.$$
+
+The area of $ABCD$ is $8^2 = 64$, and the area of $EFGH$ is $(5\sqrt{2})^2 = 50$.
+
+$$\frac{\text{Area of }EFGH}{\text{Area of }ABCD} = \frac{50}{64} = \frac{25}{32}.$$
+
+Answer: **B**.
+</Solution>

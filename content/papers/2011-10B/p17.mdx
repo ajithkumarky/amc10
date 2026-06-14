@@ -1,0 +1,54 @@
+---
+year: 2011
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: C
+choices: ["$120$", "$125$", "$130$", "$135$", "$140$"]
+---
+
+<Problem>
+In the given circle, the diameter $\overline{EB}$ is parallel to $\overline{DC}$, and $\overline{AB}$ is parallel to $\overline{ED}$. The angles $AEB$ and $ABE$ are in the ratio $4:5$. What is the degree measure of angle $BCD$?
+
+Points $A$, $B$, $C$, $D$, $E$ all lie on the circle. $\overline{EB}$ is a diameter.
+</Problem>
+
+<Solution>
+Since $EB$ is a diameter, $\angle EAB = 90^\circ$ (angle in a semicircle). In $\triangle EAB$:
+$$\angle AEB + \angle ABE = 90^\circ.$$
+
+With $\angle AEB : \angle ABE = 4:5$, let $\angle AEB = 4k$ and $\angle ABE = 5k$. Then $9k = 90^\circ$, so $k = 10^\circ$. Thus $\angle AEB = 40^\circ$ and $\angle ABE = 50^\circ$.
+
+**Arc measures:** Inscribed angle $\angle AEB = 40^\circ$ subtends arc $AB$, so arc $AB = 80^\circ$. Inscribed angle $\angle ABE = 50^\circ$ subtends arc $AE$, so arc $AE = 100^\circ$.
+
+Since $EB$ is a diameter, arc $EAB = 180^\circ$ (the semicircle containing $A$). Check: arc $AE$ + arc $AB$ = $100^\circ + 80^\circ = 180^\circ$. Correct.
+
+**Using $AB \parallel ED$:** Since $AB \parallel ED$, arcs $AE$ and $BD$ (the arcs between the parallel chords on opposite sides) are equal. So arc $BD = $ arc $AE = 100^\circ$.
+
+Wait — for parallel chords $AB \parallel ED$, the arcs between them on either side are equal. The arcs "between" $AB$ and $ED$ are arc $AD$ and arc $BE$. Since $\overline{EB}$ is a diameter, arc $EB$ (not containing $A$) $= 180^\circ$. Let me re-approach using $EB \parallel DC$.
+
+Label arc $EA = 100^\circ$, arc $AB = 80^\circ$, so arc $EB$ (major, through $A$) = $180^\circ$.
+
+For $AB \parallel ED$: the arcs cut off between the parallels are equal, so arc $AE$ = arc $BD$? No — for two parallel chords, the two arcs between them (one on each side) are equal. Chords $AB$ and $ED$: the arcs "between" them are arc $AD$ (from $A$ to $D$ not through $B$ or $E$) and arc $BE$. Since $EB$ is a diameter, arc $BE$ (the short arc from $B$ to $E$ going directly, i.e., the semicircle on the other side from $A$) = $180^\circ$.
+
+So arc $AD$ = arc $BE = 180^\circ$. That means $D$ and $A$ are antipodal? That can't be right either.
+
+Let me use directed arcs going around the circle in order $E, A, B, C, D$ (based on the Asymptote code). Arc $EA = 100^\circ$, arc $AB = 80^\circ$, so arc from $E$ to $B$ (going through $A$) = $180^\circ$, confirming $EB$ is a diameter.
+
+For $AB \parallel ED$: inscribed angles from the same side are equal, so arc $AE$ = arc $BD$. Thus arc $BD = 100^\circ$.
+
+For $EB \parallel DC$: arc $BC$ = arc $ED$. Arc $ED = $ (arc from $E$ going away from $A$ to $D$). Going around the full circle: arc $EA$ + arc $AB$ + arc $BC$ + arc $CD$ + arc $DE$ = $360^\circ$. We have $100 + 80 + $ arc $BC$ + arc $CD$ + $ arc $DE = 360^\circ$, so arc $BC$ + arc $CD$ + arc $DE = 180^\circ$.
+
+Also arc $BD = $ arc $BC$ + arc $CD = 100^\circ$, so arc $DE = 80^\circ$.
+
+From $EB \parallel DC$: arc $BC$ = arc $ED = 80^\circ$.
+
+Then arc $CD = $ arc $BD - $ arc $BC = 100^\circ - 80^\circ = 20^\circ$.
+
+**Angle $BCD$** is an inscribed angle at $C$ subtending arc $BD$ (not containing $C$). Arc $BD$ (not through $C$) goes from $B$ backwards through $A$, $E$, $D$: arc $BA$ + arc $AE$ + arc $ED$ = $80 + 100 + 80 = 260^\circ$.
+
+Inscribed angle = half the intercepted arc: $\angle BCD = \frac{260^\circ}{2} = 130^\circ$.
+
+Answer: **C**.
+</Solution>

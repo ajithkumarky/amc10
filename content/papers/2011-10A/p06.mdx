@@ -1,0 +1,24 @@
+---
+year: 2011
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: C
+choices: ["5", "15", "20", "35", "300"]
+---
+
+<Problem>
+Set $A$ has $20$ elements, and set $B$ has $15$ elements. What is the smallest possible number of elements in $A \cup B$, the union of $A$ and $B$?
+</Problem>
+
+<Solution>
+By the inclusion-exclusion principle, $|A \cup B| = |A| + |B| - |A \cap B|$.
+
+To minimize $|A \cup B|$, we maximize $|A \cap B|$. The intersection can be at most as large as the smaller set, so $|A \cap B| \leq 15$.
+
+With $|A \cap B| = 15$ (i.e., $B \subseteq A$):
+$$|A \cup B| = 20 + 15 - 15 = 20.$$
+
+Answer: **C**.
+</Solution>

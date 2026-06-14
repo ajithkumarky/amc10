@@ -1,0 +1,32 @@
+---
+year: 2012
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: C
+choices: ['$\sqrt{2}$', '$\dfrac{2\sqrt{5}}{3}$', '$\dfrac{3\sqrt{5}}{4}$', '$\sqrt{3}$', '$\dfrac{2\sqrt{7}}{3}$']
+---
+
+<Problem>
+Let points $A = (0,0,0)$, $B = (1,0,0)$, $C = (0,2,0)$, and $D = (0,0,3)$. Points $E$, $F$, $G$, and $H$ are midpoints of line segments $\overline{BD}$, $\overline{AB}$, $\overline{AC}$, and $\overline{DC}$ respectively. What is the area of $EFGH$?
+</Problem>
+
+<Solution>
+Compute the coordinates of the four midpoints:
+$$E = \text{mid}(\overline{BD}) = \left(\frac{1}{2}, 0, \frac{3}{2}\right), \quad F = \text{mid}(\overline{AB}) = \left(\frac{1}{2}, 0, 0\right),$$
+$$G = \text{mid}(\overline{AC}) = \left(0, 1, 0\right), \quad H = \text{mid}(\overline{DC}) = \left(0, 1, \frac{3}{2}\right).$$
+
+**Check that $EFGH$ is a parallelogram.** The midpoint of diagonal $\overline{EG}$ is $\left(\frac{1}{4}, \frac{1}{2}, \frac{3}{4}\right)$ and the midpoint of diagonal $\overline{FH}$ is $\left(\frac{1}{4}, \frac{1}{2}, \frac{3}{4}\right)$. The diagonals bisect each other, confirming $EFGH$ is a parallelogram.
+
+**Side vectors:**
+$$\vec{FE} = E - F = \left(0, 0, \frac{3}{2}\right), \quad \vec{FG} = G - F = \left(-\frac{1}{2}, 1, 0\right).$$
+
+**Area** $= |\vec{FE} \times \vec{FG}|$:
+$$\vec{FE} \times \vec{FG} = \begin{vmatrix}\mathbf{i} & \mathbf{j} & \mathbf{k} \\ 0 & 0 & \frac{3}{2} \\ -\frac{1}{2} & 1 & 0\end{vmatrix} = \mathbf{i}(0\cdot0 - \frac{3}{2}\cdot1) - \mathbf{j}(0\cdot0 - \frac{3}{2}\cdot(-\frac{1}{2})) + \mathbf{k}(0\cdot1 - 0\cdot(-\frac{1}{2}))$$
+$$= \left(-\frac{3}{2}, -\frac{3}{4}, 0\right).$$
+
+$$|\vec{FE}\times\vec{FG}| = \sqrt{\frac{9}{4}+\frac{9}{16}} = \sqrt{\frac{36}{16}+\frac{9}{16}} = \sqrt{\frac{45}{16}} = \frac{3\sqrt{5}}{4}.$$
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,35 @@
+---
+year: 2011
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: A
+choices: ['$5\sqrt{2}-7$', '$7-4\sqrt{3}$', '$\dfrac{2\sqrt{2}}{27}$', '$\dfrac{\sqrt{2}}{9}$', '$\dfrac{\sqrt{3}}{9}$']
+---
+
+<Problem>
+A pyramid has a square base with sides of length $1$ and has lateral faces that are equilateral triangles. A cube is placed within the pyramid so that one face is on the base of the pyramid and its opposite face has all its edges on the lateral faces of the pyramid. What is the volume of this cube?
+</Problem>
+
+<Solution>
+The pyramid has a unit square base and four lateral faces that are equilateral triangles with side $1$. The apex is directly above the center of the base.
+
+The apex height: the center of the base is at distance $\frac{\sqrt{2}}{2} \cdot \frac{1}{2} \cdot 2 = \frac{1}{\sqrt{2}} \cdot \frac{1}{1}$... Let the base have vertices at $(\pm\frac{1}{2}, \pm\frac{1}{2}, 0)$. The midpoint of an edge (say the edge from $(\frac{1}{2},-\frac{1}{2},0)$ to $(\frac{1}{2},\frac{1}{2},0)$) is at $(\frac{1}{2},0,0)$, distance $\frac{1}{2}$ from the base center. The lateral face is an equilateral triangle with side $1$ and height $\frac{\sqrt{3}}{2}$. The slant height (from base edge midpoint to apex) is $\frac{\sqrt{3}}{2}$. So the pyramid height $h$ satisfies $h^2 + \left(\frac{1}{2}\right)^2 = \left(\frac{\sqrt{3}}{2}\right)^2$, giving $h^2 = \frac{3}{4} - \frac{1}{4} = \frac{1}{2}$, so $h = \frac{1}{\sqrt{2}}$.
+
+Let the cube have side length $s$. The top face of the cube sits at height $s$. At height $z$, a cross-section of the pyramid parallel to the base is a square. The pyramid's cross-section at height $z$ is a square of side $1 - \frac{z}{h} = 1 - z\sqrt{2}$ (since at $z=0$ the side is $1$ and at $z=h=\frac{1}{\sqrt{2}}$ the side is $0$).
+
+At height $s$ (the top face of the cube), the cross-section has side length $1 - s\sqrt{2}$.
+
+For the top four edges of the cube to lie on the lateral faces, the top face of the cube must be exactly the cross-sectional square at height $s$, so:
+$$s = 1 - s\sqrt{2} \implies s(1 + \sqrt{2}) = 1 \implies s = \frac{1}{1+\sqrt{2}} = \frac{1+\sqrt{2}-\sqrt{2}}{1+\sqrt{2}} = \sqrt{2}-1.$$
+
+Wait: $\frac{1}{1+\sqrt{2}} \cdot \frac{\sqrt{2}-1}{\sqrt{2}-1} = \frac{\sqrt{2}-1}{2-1} = \sqrt{2}-1$.
+
+The volume of the cube is:
+$$s^3 = (\sqrt{2}-1)^3.$$
+
+Expand: $(\sqrt{2}-1)^3 = (\sqrt{2})^3 - 3(\sqrt{2})^2(1) + 3(\sqrt{2})(1)^2 - 1^3 = 2\sqrt{2} - 6 + 3\sqrt{2} - 1 = 5\sqrt{2} - 7$.
+
+Answer: **A**.
+</Solution>

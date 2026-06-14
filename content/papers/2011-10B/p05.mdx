@@ -1,0 +1,23 @@
+---
+year: 2011
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 1
+answer: E
+choices: ["$116$", "$161$", "$204$", "$214$", "$224$"]
+---
+
+<Problem>
+In multiplying two positive integers $a$ and $b$, Ron reversed the digits of the two-digit number $a$. His erroneous product was $161$. What is the correct value of the product of $a$ and $b$?
+</Problem>
+
+<Solution>
+Factor $161 = 7 \times 23$. Since $a$ is a two-digit number whose digits were reversed, the reversed number (call it $a'$) times $b$ equals $161$. The factor pairs of $161$ are $1 \times 161$, $7 \times 23$, and $23 \times 7$.
+
+The only two-digit factor is $23$, so $a' = 23$ and $b = 7$. The original number $a$ has digits reversed from $23$, giving $a = 32$.
+
+The correct product is $32 \times 7 = 224$.
+
+Answer: **E**.
+</Solution>

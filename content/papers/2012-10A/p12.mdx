@@ -1,0 +1,35 @@
+---
+year: 2012
+paper: "10A"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 3
+answer: A
+choices: ["Friday", "Saturday", "Sunday", "Monday", "Tuesday"]
+---
+
+<Problem>
+A year is a leap year if and only if the year number is divisible by $400$ (such as $2000$) or is divisible by $4$ but not $100$ (such as $2012$). The $200$th anniversary of the birth of novelist Charles Dickens was celebrated on February $7$, $2012$, a Tuesday. On what day of the week was Dickens born?
+</Problem>
+
+<Solution>
+Dickens was born on February 7, 1812. We need to find how many days are in the 200-year span from February 7, 1812 to February 7, 2012.
+
+In 200 years, the number of leap years: from 1812 to 2011 (we count years that are leap years within the span). Leap years divisible by 4 but not 100, or by 400:
+- Divisible by 4: from 1812 to 2008, that's $(2008 - 1812)/4 + 1 = 50$ years.
+- Subtract those divisible by 100: 1900 and 2000, that's 2 years.
+- Add back those divisible by 400: 2000, that's 1 year.
+- Total leap years: $50 - 2 + 1 = 49$.
+
+Regular years: $200 - 49 = 151$.
+
+Total days: $49 \times 366 + 151 \times 365 = 17934 + 55115 = 73049$.
+
+Now find $73049 \pmod{7}$: $73049 = 7 \times 10435 + 4$, so $73049 \equiv 4 \pmod{7}$.
+
+Going back 4 days from Tuesday: Monday $(-1)$, Sunday $(-2)$, Saturday $(-3)$, Friday $(-4)$.
+
+Dickens was born on a Friday.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,40 @@
+---
+year: 2011
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: D
+choices: ['$\dfrac{4}{3}$', '$\sqrt{5}$', '$\dfrac{9}{4}$', '$\dfrac{4\sqrt{3}}{3}$', '$\dfrac{5}{2}$']
+---
+
+<Problem>
+The area of $\triangle EBD$ is one third of the area of $3$-$4$-$5$ $\triangle ABC$. Segment $DE$ is perpendicular to segment $AB$. What is $BD$?
+
+In $\triangle ABC$, vertex $A$ is at the lower-left, $B$ is at the lower-right, and $C$ is at the top. The sides are $AC = 3$, $CB = 4$, and $AB = 5$. Point $D$ is on $AB$ between $A$ and $B$, and point $E$ is directly above $D$ on segment $CB$, with $DE \perp AB$.
+</Problem>
+
+<Solution>
+The area of the $3$-$4$-$5$ right triangle $ABC$ is $\frac{1}{2}(3)(4) = 6$, so the area of $\triangle EBD$ must be $\frac{6}{3} = 2$.
+
+Since $DE \perp AB$, triangle $EBD$ is a right triangle with the right angle at $D$. Let $BD = x$ (the base along $AB$) and $DE = h$ (the height perpendicular to $AB$).
+
+Area of $\triangle EBD = \frac{1}{2} \cdot BD \cdot DE = \frac{1}{2} xh = 2$, so $xh = 4$.
+
+Now use the fact that $E$ lies on $CB$. In $\triangle ABC$, the altitude from $C$ to $AB$ has length $\frac{2 \cdot 6}{5} = \frac{12}{5}$, and its foot is at distance $\frac{AB^2 + BC^2 - AC^2}{2 \cdot AB} \cdot \ldots$. 
+
+A cleaner approach: place $A = (0,0)$, $B = (5,0)$, $C = (0,0) + \ldots$. Since $AC = 3$, $BC = 4$, $AB = 5$, the right angle is at $C$. Place $A = (0,0)$, $B = (5,0)$. Then $C$ satisfies $AC = 3$, $BC = 4$; solving gives $C = \left(\frac{9}{5}, \frac{12}{5}\right)$.
+
+Point $D = (5-x, 0)$ lies on $AB$ with $BD = x$. Point $E$ is directly above $D$ (same $x$-coordinate) on line $CB$.
+
+Line $CB$: from $C = \left(\frac{9}{5}, \frac{12}{5}\right)$ to $B = (5, 0)$. Its parametric form gives slope $= \frac{0 - \frac{12}{5}}{5 - \frac{9}{5}} = \frac{-\frac{12}{5}}{\frac{16}{5}} = -\frac{3}{4}$.
+
+Line $CB$ equation: $y - 0 = -\frac{3}{4}(x_{coord} - 5)$, so $y = -\frac{3}{4}(x_{coord} - 5)$.
+
+At $x_{coord} = 5 - x$: $h = DE = -\frac{3}{4}(5 - x - 5) = -\frac{3}{4}(-x) = \frac{3x}{4}$.
+
+Substituting into $xh = 4$:
+$$x \cdot \frac{3x}{4} = 4 \implies \frac{3x^2}{4} = 4 \implies x^2 = \frac{16}{3} \implies x = \frac{4}{\sqrt{3}} = \frac{4\sqrt{3}}{3}.$$
+
+Answer: **D**.
+</Solution>

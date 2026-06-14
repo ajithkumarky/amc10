@@ -1,0 +1,30 @@
+---
+year: 2011
+paper: "10A"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 3
+answer: B
+choices: ["$\\dfrac{1}{36}$", "$\\dfrac{1}{12}$", "$\\dfrac{1}{6}$", "$\\dfrac{1}{4}$", "$\\dfrac{5}{18}$"]
+---
+
+<Problem>
+A pair of standard 6-sided fair dice is rolled once. The sum of the numbers rolled determines the diameter of a circle. What is the probability that the numerical value of the area of the circle is less than the numerical value of the circle's circumference?
+</Problem>
+
+<Solution>
+Let $d$ be the diameter. The area is $\pi(d/2)^2 = \pi d^2/4$ and the circumference is $\pi d$.
+
+We need $\dfrac{\pi d^2}{4} < \pi d$, which simplifies to $\dfrac{d}{4} < 1$, so $d < 4$.
+
+The diameter $d$ is the sum of two dice, so $d \in \{2, 3, \ldots, 12\}$. We need $d < 4$, meaning $d = 2$ or $d = 3$.
+
+- Sum $= 2$: only $(1,1)$ — 1 outcome.
+- Sum $= 3$: $(1,2)$ and $(2,1)$ — 2 outcomes.
+
+Total favorable outcomes: $3$ out of $36$.
+
+$$P = \frac{3}{36} = \frac{1}{12}.$$
+
+Answer: **B**.
+</Solution>

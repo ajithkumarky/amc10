@@ -1,0 +1,23 @@
+---
+year: 2012
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: D
+choices: ["6", "7", "8", "9", "10"]
+---
+
+<Problem>
+How many ordered pairs of positive integers $(M, N)$ satisfy the equation $\dfrac{M}{6} = \dfrac{6}{N}$?
+</Problem>
+
+<Solution>
+The equation gives $MN = 36$. We need ordered pairs of positive integers $(M, N)$ with $MN = 36$.
+
+The number of such pairs equals the number of positive divisors of 36. Since $36 = 2^2 \cdot 3^2$, it has $(2+1)(2+1) = 9$ divisors.
+
+Each divisor $d$ of 36 gives the pair $(M, N) = (d, 36/d)$.
+
+Answer: **D**.
+</Solution>

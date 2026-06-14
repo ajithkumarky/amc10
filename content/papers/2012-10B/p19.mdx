@@ -1,0 +1,43 @@
+---
+year: 2012
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: C
+choices: ['$\dfrac{133}{2}$', '$67$', '$\dfrac{135}{2}$', '$68$', '$\dfrac{137}{2}$']
+---
+
+<Problem>
+In rectangle $ABCD$, $AB = 6$, $AD = 30$, and $G$ is the midpoint of $\overline{AD}$. Segment $AB$ is extended 2 units beyond $B$ to point $E$, and $F$ is the intersection of $\overline{ED}$ and $\overline{BC}$. What is the area of $BFDG$?
+</Problem>
+
+<Solution>
+Set up coordinates: $A = (0, 0)$, $B = (6, 0)$, $C = (6, 30)$, $D = (0, 30)$.
+
+$G$ is the midpoint of $\overline{AD}$: $G = (0, 15)$.
+
+$E$ is 2 units beyond $B$ from $A$: $E = (8, 0)$.
+
+**Find $F$, the intersection of $\overline{ED}$ and $\overline{BC}$:**
+
+Line $ED$: from $E = (8, 0)$ to $D = (0, 30)$.
+
+Direction: $(-8, 30)$. Parametric: $(8 - 8t, 30t)$.
+
+$\overline{BC}$ is the segment $x = 6$, $0 \leq y \leq 30$.
+
+Setting $8 - 8t = 6$: $t = \frac{1}{4}$, giving $y = 30 \cdot \frac{1}{4} = \frac{15}{2}$.
+
+So $F = \left(6, \frac{15}{2}\right)$.
+
+**Area of quadrilateral $BFDG$** with vertices $B = (6, 0)$, $F = (6, \frac{15}{2})$, $D = (0, 30)$, $G = (0, 15)$:
+
+Using the shoelace formula:
+$$\text{Area} = \frac{1}{2} |x_B(y_F - y_G) + x_F(y_D - y_B) + x_D(y_G - y_F) + x_G(y_B - y_D)|$$
+$$= \frac{1}{2} \left|6\!\left(\frac{15}{2} - 15\right) + 6(30 - 0) + 0\!\left(15 - \frac{15}{2}\right) + 0(0 - 30)\right|$$
+$$= \frac{1}{2} \left|6 \cdot \left(-\frac{15}{2}\right) + 6 \cdot 30\right|$$
+$$= \frac{1}{2} \left|-45 + 180\right| = \frac{135}{2}.$$
+
+Answer: **C**.
+</Solution>
