@@ -13,85 +13,23 @@ In regular hexagon $ABCDEF$, points $W$, $X$, $Y$, and $Z$ are chosen on sides $
 </Problem>
 
 <Solution>
-Place the regular hexagon with center at the origin, with vertices at angles $0°, 60°, 120°, \ldots$ Let the side length be $3$ (chosen for convenient arithmetic).
+Place the regular hexagon with side length $1$ so that $AB$ is the top edge and $ED$ is the bottom edge, both horizontal. Using standard coordinates:
+$$A = \!\left(-\tfrac{1}{2},\, \tfrac{\sqrt{3}}{2}\right),\; B = \!\left(\tfrac{1}{2},\, \tfrac{\sqrt{3}}{2}\right),\; C = (1, 0),\; D = \!\left(\tfrac{1}{2},\, -\tfrac{\sqrt{3}}{2}\right),\; E = \!\left(-\tfrac{1}{2},\, -\tfrac{\sqrt{3}}{2}\right),\; F = (-1, 0).$$
 
-Set up coordinates with $AB$ and $ED$ horizontal. Label:
-- $A = (-3, 3)$, $B = (0, 3)$, $C = (3/2 \cdot 2, \ldots)$ — let me use a simpler coordinate system.
+The four equally spaced parallel lines are at heights $y = \tfrac{\sqrt{3}}{2}$ (line $AB$), $y = \tfrac{\sqrt{3}}{6}$ (line $ZW$), $y = -\tfrac{\sqrt{3}}{6}$ (line $YX$), and $y = -\tfrac{\sqrt{3}}{2}$ (line $ED$), dividing the total height $\sqrt{3}$ into three equal strips.
 
-Let the hexagon have vertices at unit distances with $A$ at top-left. For a regular hexagon of side $s$, the distance between parallel sides is $s\sqrt{3}$.
+**Finding $W$:** $W$ lies on $BC$ from $B = (\tfrac{1}{2}, \tfrac{\sqrt{3}}{2})$ to $C = (1, 0)$. Parametrize: $y = \tfrac{\sqrt{3}}{2}(1-t)$. Setting $y = \tfrac{\sqrt{3}}{6}$ gives $t = \tfrac{2}{3}$, so $W = (\tfrac{5}{6}, \tfrac{\sqrt{3}}{6})$. By symmetry $Z = (-\tfrac{5}{6}, \tfrac{\sqrt{3}}{6})$, giving $ZW = \tfrac{5}{3}$.
 
-The four parallel lines $AB$, $ZW$, $YX$, $ED$ divide the hexagon into three equal strips (equally spaced). The total height (distance from $AB$ to $ED$) spans 3 units if we set the strip width to $1$ unit.
+**Area of trapezoid $ABWZ$** (the region cut off at the top):
+$$\text{Area} = \tfrac{1}{2}(AB + ZW) \cdot h = \tfrac{1}{2}\!\left(1 + \tfrac{5}{3}\right)\cdot\tfrac{\sqrt{3}}{3} = \tfrac{1}{2}\cdot\tfrac{8}{3}\cdot\tfrac{\sqrt{3}}{3} = \tfrac{4\sqrt{3}}{9}.$$
 
-Place the hexagon with $AB$ at height $y = 3$ and $ED$ at height $y = 0$. The four lines are at heights $y = 3, 2, 1, 0$.
+By symmetry, the bottom trapezoid $YEDX$ has the same area $\tfrac{4\sqrt{3}}{9}$.
 
-For a regular hexagon with $AB$ at top and $ED$ at bottom (both horizontal), the left and right sides slope. Using side length $s$, set the hexagon with $AB$ from $(-s/2, s\sqrt{3})$ to $(s/2, s\sqrt{3})$, with $E = (-s, 0)$, $D = (s, 0)$.
+The total hexagon area is $\tfrac{3\sqrt{3}}{2}$. The ratio of each trapezoid to the hexagon is:
+$$\frac{4\sqrt{3}/9}{3\sqrt{3}/2} = \frac{4}{9}\cdot\frac{2}{3} = \frac{8}{27}.$$
 
-Let $s = 1$. Total height $= \sqrt{3}$. Three equal strips of height $\sqrt{3}/3 = 1/\sqrt{3}$.
-
-At height $y$, the hexagon extends from $x = -(s/2 + (y/\sqrt{3}) \cdot s/2 \cdot (\ldots))$... this gets complicated. Instead use the fraction approach.
-
-Let's say $ZW$ is at fraction $t = 1/3$ of the way from $AB$ to $ED$, and $YX$ at fraction $t = 2/3$.
-
-By the properties of a regular hexagon, $W$ and $Z$ are at $1/3$ of the way along $BC$ and $FA$ from $B$ and $A$ respectively. Similarly $X$ and $Y$ at $2/3$.
-
-Actually since the lines are equally spaced and parallel to $AB$, point $W$ on $BC$ and $Z$ on $FA$ are each $1/3$ of the way from $B$ and $A$.
-
-Area computation: The hexagon $WCXYFZ$ is the original hexagon minus two congruent trapezoids (the strips containing $A$–$B$–$W$–$Z$ and $Y$–$E$–$D$–$X$... actually it's minus two triangular-ish corner pieces).
-
-Alternatively: the hexagon of area $H$ is divided into 3 strips by the 4 lines. Each strip is a trapezoid. Label areas from top:
-
-Strip 1 (between $AB$ and $ZW$): a trapezoid. Strip 2 (between $ZW$ and $YX$): another trapezoid. Strip 3 (between $YX$ and $ED$): symmetric to strip 1.
-
-By symmetry, strips 1 and 3 have equal area. The hexagon $WCXYFZ$ consists of strip 2 plus the parts of strips 1 and 3 that are "inside" the hexagon $WCXYFZ$.
-
-Actually, $WCXYFZ$ is the inner region bounded by $W$, $C$, $X$, $Y$, $F$, $Z$. It includes all of strip 2 and the right half of strip 1 (the part from $W$ to $C$) and the right part of strip 3 (from $X$ to $D$... wait, let me re-read.
-
-Vertices in order: $W$ (on $BC$), $C$, $X$ (on $CD$), $Y$ (on $EF$), $F$, $Z$ (on $FA$). This hexagon includes vertices $C$ and $F$ of the original, and cuts across $BC$, $CD$, $EF$, $FA$.
-
-For a regular hexagon of side $3$: $AB = 3$, and using the strip approach at $1/3$ positions, $BW = 1$ on $BC$, $DX = 1$ on $CD$, $EY = 1$ on $EF$, $AZ = 1$ on $FA$.
-
-Area of hexagon $WCXYFZ$: use coordinates. Side length $= 3$, area of regular hexagon $= \dfrac{3\sqrt{3}}{2}s^2 = \dfrac{27\sqrt{3}}{2}$.
-
-The hexagon $WCXYFZ$ with $W$ cutting $1/3$ from $B$, $Z$ cutting $1/3$ from $A$, etc.:
-
-Area of triangle $ABZ$: $AZ = 1$, $AB = 3$, height from $Z$ perpendicular to $AB$... Actually, the triangles cut off are: $\triangle ABW Z$ (a trapezoid $ABWZ$ since $ZW \parallel AB$), and symmetrically at the bottom.
-
-Trapezoid $ABWZ$: $AB = 3$, $ZW = ?$ At $1/3$ of the way from $AB$ to $ED$, the parallel strip width in a regular hexagon scales linearly: at fraction $t$ from the top, width $= 3 + 3t$ (for $t \in [0, 1/2]$, the hexagon widens from $3$ to $6$; for $t \in [1/2, 1]$ it narrows back). For $t = 1/3$: width $= 3 + 3 \cdot (1/3) = 4$. So $ZW = 4$.
-
-Trapezoid $ABWZ$ area $= \dfrac{1}{2}(AB + ZW) \cdot h$ where $h = \dfrac{1}{3} \cdot $ total height. Total height $= 3\sqrt{3}$ (for hexagon of side $3$). So $h = \sqrt{3}$. Area $= \dfrac{1}{2}(3+4)\sqrt{3} = \dfrac{7\sqrt{3}}{2}$.
-
-By symmetry, the bottom trapezoid $YEDX$ has the same area $\dfrac{7\sqrt{3}}{2}$.
-
-Area of $WCXYFZ = \dfrac{27\sqrt{3}}{2} - 2 \cdot \dfrac{7\sqrt{3}}{2} = \dfrac{27\sqrt{3} - 14\sqrt{3}}{2} = \dfrac{13\sqrt{3}}{2}$.
-
-Hmm, but that gives ratio $\dfrac{13\sqrt{3}/2}{27\sqrt{3}/2} = \dfrac{13}{27}$, which is choice (E). But the answer should be (C) $= \dfrac{11}{27}$.
-
-Let me recheck: the total height of a regular hexagon of side $s$ is $s\sqrt{3}$. Wait, actually for a regular hexagon of side $s$, the distance between two parallel sides is $s\sqrt{3}$, but there are 3 pairs of parallel sides. The "height" from $AB$ to $ED$ (opposite sides) is $s\sqrt{3}$.
-
-But actually for a regular hexagon of side $s$ with a flat top and bottom: height $= s\sqrt{3}$. At fraction $t = 1/3$ from the top, the cross-sectional width increases from $s$ to... the hexagon widens linearly from $s$ at the top corner to $2s$ at the midpoint? No.
-
-For a regular hexagon with flat top ($AB$) and flat bottom ($ED$) of side $s$: the top edge $AB$ has length $s$. Moving down, the hexagon widens along the slanted sides $AF$ and $BC$ until we reach the widest points $F$... actually $F$ and $C$ are the bottommost corners of the top half.
-
-At fraction $t \in [0,1/3]$ from the top, width $= s + 2 \cdot \dfrac{t}{1/3} \cdot \dfrac{s}{2} = s + 3ts \cdot 1 = s(1 + 3t)$... 
-
-Wait, let me use $s=1$. The hexagon vertices: $A = (-1/2, \sqrt{3}/2)$, $B = (1/2, \sqrt{3}/2)$, $C = (1, 0)$, $D = (1/2, -\sqrt{3}/2)$, $E = (-1/2, -\sqrt{3}/2)$, $F = (-1, 0)$.
-
-Height from top to bottom $= \sqrt{3}$. The equally spaced lines are at $y = \sqrt{3}/2$, $y = \sqrt{3}/6$, $y = -\sqrt{3}/6$, $y = -\sqrt{3}/2$.
-
-Line at $y = \sqrt{3}/6$ (which is $1/3$ of the way from top to bottom):
-On side $BC$: $B=(1/2, \sqrt{3}/2)$, $C=(1,0)$. Parametrize: $(1/2 + t/2, \sqrt{3}/2 - t\sqrt{3}/2)$. Set $y = \sqrt{3}/6$: $\sqrt{3}/2(1-t) = \sqrt{3}/6 \Rightarrow 1-t = 1/3 \Rightarrow t = 2/3$. So $W = (1/2 + 1/3, \sqrt{3}/6) = (5/6, \sqrt{3}/6)$.
-
-On side $FA$: $F=(-1,0)$, $A=(-1/2,\sqrt{3}/2)$. By symmetry, $Z = (-5/6, \sqrt{3}/6)$.
-
-Width $ZW = 5/6 - (-5/6) = 5/3$.
-
-Trapezoid $ABWZ$: $AB = 1$, $ZW = 5/3$, $h = \sqrt{3}/2 - \sqrt{3}/6 = \sqrt{3}/3$.
-
-Area $= \dfrac{1}{2}(1 + 5/3)\sqrt{3}/3 = \dfrac{1}{2} \cdot \dfrac{8}{3} \cdot \dfrac{\sqrt{3}}{3} = \dfrac{4\sqrt{3}}{9}$.
-
-Total hexagon area $= \dfrac{3\sqrt{3}}{2}$. Ratio of trapezoid to hexagon $= \dfrac{4\sqrt{3}/9}{3\sqrt{3}/2} = \dfrac{4}{9} \cdot \dfrac{2}{3} = \dfrac{8}{27}$.
-
-Two such trapezoids: $\dfrac{16}{27}$. Area of inner hexagon $= 1 - \dfrac{16}{27} = \dfrac{11}{27}$.
+The two trapezoids together account for $\tfrac{16}{27}$ of the hexagon, so:
+$$\frac{[WCXYFZ]}{[ABCDEF]} = 1 - \frac{16}{27} = \frac{11}{27}.$$
 
 Answer: **C**.
 </Solution>

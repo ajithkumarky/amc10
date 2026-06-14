@@ -13,60 +13,20 @@ Real numbers $x$ and $y$ are chosen independently and uniformly at random from t
 </Problem>
 
 <Solution>
-For $x$, $y$, $1$ to form a triangle at all, they must satisfy the triangle inequality. The key constraint is that the sum of any two sides exceeds the third. The binding constraint here is $x + y > 1$ (since $x \leq 1$ and $y \leq 1$, the other two inequalities $x + 1 > y$ and $y + 1 > x$ are automatically satisfied for $x, y \in [0,1]$).
+**Triangle inequality.** For $x$, $y$, $1$ to form a triangle, all three inequalities must hold. Since $x, y \in [0,1]$, the conditions $x + 1 > y$ and $y + 1 > x$ are automatic. The only binding constraint is $x + y > 1$.
 
-So we first need $x + y > 1$.
+**Obtuseness.** By the law of cosines, a triangle is obtuse when the square of its longest side exceeds the sum of squares of the other two. Since $x, y \leq 1$, neither $x$ nor $y$ can be the longest side in a way that makes obtuseness possible: $x^2 > y^2 + 1$ requires $x > 1$, and similarly for $y$. So the only way the triangle can be obtuse is if the angle opposite the side of length $1$ exceeds $90°$, which requires $1^2 > x^2 + y^2$, i.e., $x^2 + y^2 < 1$.
 
-For the triangle to be **obtuse**, one angle must exceed $90°$. By the law of cosines, the triangle is obtuse iff the square of one side exceeds the sum of squares of the other two. The three conditions for obtuseness are:
+**The target region** is therefore: $x + y > 1$ and $x^2 + y^2 < 1$, with $x, y \in [0,1]$.
 
-1. Angle opposite to side $1$ is obtuse: $1 > x^2 + y^2$, i.e., $x^2 + y^2 < 1$.
-2. Angle opposite to $x$ is obtuse: $x^2 > y^2 + 1$ — impossible since $x \leq 1$.
-3. Angle opposite to $y$ is obtuse: $y^2 > x^2 + 1$ — impossible since $y \leq 1$.
+This is the region inside the unit quarter-disk but above the chord $x + y = 1$. The chord connects $(1, 0)$ and $(0, 1)$, both on the unit circle, and the arc between them bulges outward (e.g., at $\theta = 45°$, $\cos 45° + \sin 45° = \sqrt{2} > 1$). So the chord cuts a circular segment off the arc side of the quarter-disk.
 
-So the triangle is obtuse iff $x^2 + y^2 < 1$ AND $x + y > 1$.
+- Area of the quarter-disk: $\dfrac{\pi}{4}$.
+- Area of the quarter-disk with $x + y \leq 1$: this is the triangle with vertices $(0,0)$, $(1,0)$, $(0,1)$, area $= \dfrac{1}{2}$ (the entire triangle lies inside the unit circle since all its points satisfy $x^2 + y^2 \leq \tfrac{1}{2} \cdot (x+y)^2 \leq \tfrac{1}{2}$... more simply, $x^2+y^2 \leq (x+y)^2/1$ is not needed — the triangle's farthest points from the origin are $(1,0)$ and $(0,1)$, both exactly on the circle, so the whole triangle is inside the disk).
 
-The region is: $x + y > 1$ and $x^2 + y^2 < 1$, with $x, y \in [0,1]$.
+Thus area of the target region $= \dfrac{\pi}{4} - \dfrac{1}{2} \approx 0.7854 - 0.5000 = 0.2854$.
 
-This is the region inside the unit circle but above the line $x + y = 1$, within the unit square.
-
-- Area inside the unit circle $x^2 + y^2 < 1$ within $[0,1]^2$: this is a quarter circle of radius $1$, area $= \frac{\pi}{4}$.
-- Area above $x + y = 1$ within $[0,1]^2$: this is a right triangle with legs $1$, area $= \frac{1}{2}$.
-- Area that is inside the circle AND above the line (our target region): quarter circle area minus area inside circle and below the line.
-
-Area of the circular segment below $x+y=1$ within the first quadrant:
-The chord $x + y = 1$ cuts the unit circle. The segment is bounded by the chord and the arc. The chord intersects the circle at $(1,0)$ and $(0,1)$. The area of the circular sector from $0°$ to $90°$ (the quarter circle) minus the triangle with vertices $(0,0)$, $(1,0)$, $(0,1)$:
-- Sector area: $\frac{\pi}{4}$
-- Triangle area: $\frac{1}{2}$
-- Segment area (between chord and arc): $\frac{\pi}{4} - \frac{1}{2}$
-
-Area inside circle and above the line $= \frac{\pi}{4} - \left(\frac{\pi}{4} - \frac{1}{2}\right) = \frac{1}{2}$. Wait, that's saying the segment below the chord has area $\frac{\pi}{4} - \frac{1}{2}$, so the region above the chord and inside the circle is $\frac{\pi}{4} - \left(\frac{\pi}{4} - \frac{1}{2}\right) = \frac{1}{2}$.
-
-That can't be right — the total quarter-circle area is $\frac{\pi}{4} \approx 0.785$, and we'd have the region above the line equal to $\frac{1}{2}$.
-
-Actually: the chord splits the quarter-circle into two parts. The part below the chord (small segment near the arc between $(1,0)$ and $(0,1)$, below the chord) has area = (sector from $0$ to $90°$) - (triangle $(0,0)(1,0)(0,1)$) = $\frac{\pi}{4} - \frac{1}{2}$.
-
-The part of the quarter-circle ABOVE the chord (between the chord and origin) has area = $\frac{\pi}{4} - \left(\frac{\pi}{4} - \frac{1}{2}\right) = \frac{1}{2}$.
-
-Hmm, but the region "above" $x+y=1$ within the quarter circle should be the small part near the arc, not the large triangular part near the origin.
-
-Let me reclarify: "above the line $x+y=1$" means $x+y > 1$. Points with $x + y > 1$ in the unit square form a triangle with vertices $(1,0)$, $(0,1)$, $(1,1)$, area $= \frac{1}{2}$.
-
-Points inside the unit circle AND with $x+y > 1$: these are points in the arc-triangle region. The area is (quarter circle) - (region in quarter circle with $x+y \leq 1$) = $\frac{\pi}{4} - \frac{1}{2}$.
-
-Wait: area in quarter circle with $x+y \leq 1$ is the triangle + the segment... no. Let's be direct.
-
-Region $R$: $x^2+y^2 < 1$ AND $x+y > 1$ AND $x,y > 0$.
-
-The quarter circle has area $\frac{\pi}{4}$. The region with $x+y \leq 1$ in the quarter circle is bounded by the arc and the chord $x+y=1$: this is the circular sector minus the triangle, which is $\frac{\pi}{4} - \frac{1}{2}$.
-
-Wait no: region with $x+y \leq 1$ within the quarter disk. This is a "pie slice" cut. The quarter disk has the region $x^2+y^2 \leq 1$, $x,y \geq 0$. The line $x+y=1$ passes through $(1,0)$ and $(0,1)$ — both on the unit circle. So the region inside the quarter disk with $x+y \leq 1$ is exactly the triangle with vertices $(0,0)$, $(1,0)$, $(0,1)$, area $\frac{1}{2}$... but that's not right either because the circular arc is inside the line $x+y=1$ for points between $(1,0)$ and $(0,1)$ on the arc — actually the arc $x^2+y^2=1$ lies OUTSIDE $x+y \leq 1$ between $(1,0)$ and $(0,1)$: a point on the arc is $(\cos\theta, \sin\theta)$, and $\cos\theta + \sin\theta = 1 + \sqrt{2}\sin(\theta - 45°) \cdot ...$; at $\theta=45°$, $\cos 45° + \sin 45° = \sqrt{2} > 1$. So the arc bulges outward beyond $x+y=1$.
-
-Therefore: the quarter disk contains both the triangle (below the line) and a circular segment (above the line, between the chord and arc).
-
-- Region in quarter disk with $x+y \leq 1$: the triangle $(0,0)(1,0)(0,1)$, area $= \frac{1}{2}$.
-- Region in quarter disk with $x+y > 1$: the circular segment between chord $x+y=1$ and the arc, area $= \frac{\pi}{4} - \frac{1}{2}$.
-
-So $P(\text{obtuse}) = P(x+y>1 \text{ and } x^2+y^2 < 1) = \frac{\pi}{4} - \frac{1}{2} \approx 0.7854 - 0.5 = 0.2854 \approx 0.29$.
+Since the sample space is the unit square with area $1$, the probability is $\dfrac{\pi}{4} - \dfrac{1}{2} \approx 0.285$, which is closest to $0.29$.
 
 Answer: **C**.
 </Solution>
