@@ -1,0 +1,57 @@
+---
+year: 2014
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: E
+choices: ['$\dfrac{3}{2}$', '$\dfrac{1+\sqrt{5}}{2}$', '$\sqrt{3}$', "2", '$\dfrac{3+\sqrt{5}}{2}$']
+---
+
+<Problem>
+A sphere is inscribed in a truncated right circular cone (a frustum). The volume of the truncated cone is twice that of the sphere. What is the ratio of the radius of the bottom base of the truncated cone to the radius of the top base?
+</Problem>
+
+<Solution>
+Let the top radius be $r$, bottom radius be $R$ (with $R > r$), and height be $h$. Let the inscribed sphere have radius $\rho$.
+
+**Inscribed sphere in a frustum:** The sphere touches both bases, so $h = 2\rho$. The sphere also touches the lateral surface. The slant height of the frustum makes an angle with the axis; for the sphere to be tangent to the lateral surface:
+
+Using the right triangle formed by the axis, a cross-sectional view: the sphere of radius $\rho$ is inscribed in the trapezoid with parallel sides $2r$ (top) and $2R$ (bottom) and height $h = 2\rho$. The slant side of the trapezoid is tangent to the circle of radius $\rho$.
+
+The distance from the center of the inscribed circle to the slant side equals $\rho$. The slant side goes from $(r, \rho)$ (top) to $(R, -\rho)$ (bottom) in a coordinate system with the sphere center at the origin. Actually, let center be at $(0, 0)$, top at $y = \rho$, bottom at $y = -\rho$.
+
+Top edge at $y = \rho$: $x = r$. Bottom edge at $y = -\rho$: $x = R$.
+
+Slant line through $(r, \rho)$ and $(R, -\rho)$: direction $(R-r, -2\rho)$. The distance from $(0,0)$ to this line must equal $\rho$.
+
+Line equation: through $(r, \rho)$ with direction $(R-r, -2\rho)$. Normal vector: $(2\rho, R-r)$.
+
+Line: $2\rho(x - r) + (R-r)(y - \rho) = 0 \Rightarrow 2\rho x + (R-r)y = 2\rho r + (R-r)\rho = \rho(R+r)$.
+
+Distance from origin: $\frac{\rho(R+r)}{\sqrt{4\rho^2 + (R-r)^2}} = \rho$.
+
+So $\frac{R+r}{\sqrt{4\rho^2+(R-r)^2}} = 1 \Rightarrow (R+r)^2 = 4\rho^2 + (R-r)^2$.
+
+$R^2 + 2Rr + r^2 = 4\rho^2 + R^2 - 2Rr + r^2 \Rightarrow 4Rr = 4\rho^2 \Rightarrow \rho^2 = Rr \Rightarrow \rho = \sqrt{Rr}$.
+
+Since $h = 2\rho = 2\sqrt{Rr}$.
+
+**Volume condition:** Volume of frustum $= \frac{\pi h}{3}(R^2 + Rr + r^2) = \frac{2\pi\sqrt{Rr}}{3}(R^2+Rr+r^2)$.
+
+Volume of sphere $= \frac{4\pi\rho^3}{3} = \frac{4\pi(Rr)^{3/2}}{3}$.
+
+Given: Volume of frustum $= 2 \times$ Volume of sphere:
+$$\frac{2\pi\sqrt{Rr}}{3}(R^2+Rr+r^2) = 2 \cdot \frac{4\pi(Rr)^{3/2}}{3}.$$
+
+Divide both sides by $\frac{2\pi\sqrt{Rr}}{3}$:
+$$R^2+Rr+r^2 = 4Rr.$$
+$$R^2 - 3Rr + r^2 = 0.$$
+
+Let $k = R/r$:
+$$k^2 - 3k + 1 = 0 \Rightarrow k = \frac{3 \pm \sqrt{5}}{2}.$$
+
+Since $R > r$, we have $k > 1$. $\frac{3-\sqrt{5}}{2} \approx \frac{3-2.236}{2} \approx 0.382 < 1$. So $k = \frac{3+\sqrt{5}}{2}$.
+
+Answer: **E**.
+</Solution>

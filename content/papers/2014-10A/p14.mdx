@@ -1,0 +1,40 @@
+---
+year: 2014
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 3
+answer: D
+choices: ["$45$", "$48$", "$54$", "$60$", "$72$"]
+---
+
+<Problem>
+The $y$-intercepts, $P$ and $Q$, of two perpendicular lines intersecting at the point $A(6,8)$ have a sum of zero. What is the area of $\triangle APQ$?
+</Problem>
+
+<Solution>
+Let the two lines have slopes $m$ and $-1/m$ (perpendicular). They both pass through $A(6,8)$.
+
+Line 1: $y - 8 = m(x - 6) \Rightarrow y = mx - 6m + 8$. Its $y$-intercept is $P = (0, 8-6m)$.
+
+Line 2: $y - 8 = -\frac{1}{m}(x-6) \Rightarrow y = -\frac{x}{m} + \frac{6}{m} + 8$. Its $y$-intercept is $Q = (0, 8 + 6/m)$.
+
+Sum of $y$-intercepts equals zero:
+$$(8 - 6m) + \left(8 + \frac{6}{m}\right) = 0$$
+$$16 - 6m + \frac{6}{m} = 0.$$
+Multiply by $m$: $16m - 6m^2 + 6 = 0 \Rightarrow 6m^2 - 16m - 6 = 0 \Rightarrow 3m^2 - 8m - 3 = 0$.
+
+$$m = \frac{8 \pm \sqrt{64+36}}{6} = \frac{8 \pm 10}{6}.$$
+
+So $m = 3$ or $m = -\frac{1}{3}$.
+
+Using $m = 3$: $P = (0, 8 - 18) = (0, -10)$ and $Q = (0, 8 + 2) = (0, 10)$.
+
+Check: $-10 + 10 = 0$. Good.
+
+Now $\triangle APQ$ has $P = (0,-10)$, $Q = (0,10)$, and $A = (6,8)$. Base $PQ$ lies on the $y$-axis with length $|(-10) - 10| = 20$. The height is the horizontal distance from $A$ to the $y$-axis, which is $6$.
+
+$$\text{Area} = \frac{1}{2} \times 20 \times 6 = 60.$$
+
+Answer: **D**.
+</Solution>

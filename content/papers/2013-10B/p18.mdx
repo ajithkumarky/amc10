@@ -1,0 +1,38 @@
+---
+year: 2013
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: D
+choices: ["$33$", "$34$", "$45$", "$46$", "$58$"]
+---
+
+<Problem>
+The number $2013$ has the property that its units digit is the sum of its other digits, that is $2+0+1=3$. How many integers less than $2013$ but greater than $1000$ share this property?
+</Problem>
+
+<Solution>
+We want four-digit integers $\overline{abcd}$ where $a + b + c = d$, with $1000 < \overline{abcd} < 2013$.
+
+**Case 1: $a = 1$.**
+
+The condition becomes $d = 1 + b + c$. Since $d \leq 9$, we need $b + c \leq 8$. For each sum $s = b + c$ with $0 \leq s \leq 8$, there are $s + 1$ choices for the pair $(b, c)$ (namely $b = 0, 1, \ldots, s$). The total count is
+
+$$\sum_{s=0}^{8}(s+1) = 1 + 2 + \cdots + 9 = 45.$$
+
+Every such number lies in $[1001, 1999]$, so all 45 are in range. (Note: $b = c = 0$ gives $d = 1$, producing $1001$, not $1000$, so no boundary exclusion is needed.)
+
+**Case 2: $a = 2$.**
+
+Numbers with $a = 2$ that are less than $2013$ are $2000$–$2012$, i.e., $b = 0$ with $c \in \{0, 1\}$.
+
+- $\overline{200d}$: condition $2 + 0 + 0 = d$ requires $d = 2$, giving $\mathbf{2002}$.
+- $\overline{201d}$: condition $2 + 0 + 1 = d$ requires $d = 3$, but the only valid values are $d \in \{0, 1, 2\}$. No solution.
+
+Case 2 contributes $1$ number.
+
+**Total:** $45 + 1 = \mathbf{46}$.
+
+Answer: **D**.
+</Solution>

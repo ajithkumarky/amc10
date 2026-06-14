@@ -1,0 +1,34 @@
+---
+year: 2014
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 5
+answer: E
+choices: ["$-20$", "$-18$", "$-15$", "$-12$", "$-8$"]
+---
+
+<Problem>
+Positive integers $a$ and $b$ are such that the graphs of $y=ax+5$ and $y=3x+b$ intersect the $x$-axis at the same point. What is the sum of all possible $x$-coordinates of these points of intersection?
+</Problem>
+
+<Solution>
+The $x$-intercept of $y = ax + 5$ is found by setting $y=0$: $x = -5/a$.
+
+The $x$-intercept of $y = 3x + b$ is found by setting $y=0$: $x = -b/3$.
+
+Setting them equal: $-\dfrac{5}{a} = -\dfrac{b}{3}$, so $\dfrac{5}{a} = \dfrac{b}{3}$, which gives $b = \dfrac{15}{a}$.
+
+Since $a$ and $b$ are positive integers, $a$ must be a positive divisor of 15. The divisors of 15 are: $1, 3, 5, 15$.
+
+For each:
+- $a=1$: $b=15$. $x$-intercept $= -5/1 = -5$.
+- $a=3$: $b=5$. $x$-intercept $= -5/3$.
+- $a=5$: $b=3$. $x$-intercept $= -5/5 = -1$.
+- $a=15$: $b=1$. $x$-intercept $= -5/15 = -1/3$.
+
+Sum of all possible $x$-coordinates:
+$$-5 + \left(-\frac{5}{3}\right) + (-1) + \left(-\frac{1}{3}\right) = -5 - \frac{5}{3} - 1 - \frac{1}{3} = -6 - \frac{6}{3} = -6 - 2 = -8.$$
+
+Answer: **E**.
+</Solution>

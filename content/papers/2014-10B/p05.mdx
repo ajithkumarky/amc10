@@ -1,0 +1,44 @@
+---
+year: 2014
+paper: "10B"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 1
+answer: A
+choices: ["26", "28", "30", "32", "34"]
+---
+
+<Problem>
+Camden constructs a square window using $8$ equal-size panes of glass, as shown. The ratio of the height to width for each pane is $5 : 2$, and the borders around and between the panes are $2$ inches wide. In inches, what is the side length of the square window?
+
+The $8$ panes are arranged in a $4 \times 2$ grid (4 columns, 2 rows). Each pane has height-to-width ratio $5:2$.
+
+<svg viewBox="0 0 130 130" width="260" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#00e5ff" strokeWidth="1.5">
+  <rect x="1" y="1" width="128" height="128" stroke="#00e5ff" fill="#334"/>
+  <rect x="9" y="9" width="24" height="52" fill="#adf" stroke="#00e5ff"/>
+  <rect x="37" y="9" width="24" height="52" fill="#adf" stroke="#00e5ff"/>
+  <rect x="65" y="9" width="24" height="52" fill="#adf" stroke="#00e5ff"/>
+  <rect x="93" y="9" width="24" height="52" fill="#adf" stroke="#00e5ff"/>
+  <rect x="9" y="67" width="24" height="52" fill="#adf" stroke="#00e5ff"/>
+  <rect x="37" y="67" width="24" height="52" fill="#adf" stroke="#00e5ff"/>
+  <rect x="65" y="67" width="24" height="52" fill="#adf" stroke="#00e5ff"/>
+  <rect x="93" y="67" width="24" height="52" fill="#adf" stroke="#00e5ff"/>
+</svg>
+</Problem>
+
+<Solution>
+Let the width of each pane be $w$ inches. Since the height-to-width ratio is $5:2$, the height of each pane is $\dfrac{5w}{2}$.
+
+The window has 4 panes across: 5 borders (left edge, 3 between panes, right edge) of 2 inches each, plus 4 pane widths:
+$$\text{Side} = 5 \cdot 2 + 4w = 10 + 4w.$$
+
+The window has 2 panes tall: 3 borders of 2 inches each, plus 2 pane heights:
+$$\text{Side} = 3 \cdot 2 + 2 \cdot \frac{5w}{2} = 6 + 5w.$$
+
+Since the window is square, set these equal:
+$$10 + 4w = 6 + 5w \implies w = 4.$$
+
+Side length $= 10 + 4(4) = 10 + 16 = 26$ inches.
+
+Answer: **A**.
+</Solution>

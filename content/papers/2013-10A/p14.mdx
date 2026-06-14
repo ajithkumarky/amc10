@@ -1,0 +1,153 @@
+---
+year: 2013
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 3
+answer: D
+choices: ["36", "60", "72", "84", "108"]
+---
+
+<Problem>
+A solid cube of side length $1$ is removed from each corner of a solid cube of side length $3$. How many edges does the remaining solid have?
+</Problem>
+
+<Solution>
+Start with a $3 \times 3 \times 3$ cube and remove a unit cube from each of its 8 corners.
+
+**Original cube:** 12 edges. Each edge of the big cube is length 3. When we remove a unit cube from each corner, the corner region is cut away. Each original edge of the $3\times3\times3$ cube is trimmed at both ends, leaving a middle segment of length 1. So each original edge becomes 1 edge segment. That gives $12$ edge segments from original edges.
+
+**New edges from removed corners:** Each unit cube removed creates a new triangular face at the corner (actually a new square-shaped notch meeting three faces). Each removed corner creates 3 new edges where the cut face meets each of the three original cube faces. With 8 corners removed, that's $8 \times 3 = 24$ new edges.
+
+**Edges on each original face:** After cutting all 4 corners of a face (each face of the big cube has 4 corners), the square face of the big cube becomes an octagon. But actually we need to count the modified face edges carefully.
+
+Let me count systematically. The remaining solid has:
+- **From original cube faces:** Each of the 6 faces becomes an octagon (the 4 corners are cut). An octagon has 8 sides. Of these 8 sides: 4 come from the original square's edges (the middle thirds), and 4 come from the cuts. But edges are shared between faces.
+- **From cut faces:** Each removed corner reveals a new equilateral triangular face (actually a right-triangle face at each corner).
+
+Total edge count: Each original edge gives 1 edge (the untrimmed middle). That's $12$. Each removed corner creates 3 new edges (where the cut meets the 3 adjacent faces). That's $8 \times 3 = 24$. Each original face also has 4 edges from the cuts, but those are shared with cut faces and already counted.
+
+Wait — let me recount. Each removed corner exposes a new triangular face with 3 edges. These 3 edges each lie on one of the 3 cube faces adjacent to that corner. Each such new edge is shared between the triangular cut face and one original cube face. No two corners on the same edge share the same new edges.
+
+Total edges $= 12$ (original, trimmed) $+ 24$ (from corner cuts) $= 36$? That seems too low. Let me reconsider.
+
+Actually, on each face of the big cube: the face becomes an octagon after removing 4 corners. An octagon has 8 edges. The 4 "original" edges of the octagon are the middle third of each side of the cube face (length 1 each). The 4 "cut" edges come from the corner removals. Each face contributes 4 original edges and 4 cut edges, but each original edge is shared between 2 faces, and cut edges are shared between the cut face and one cube face.
+
+Original edges from cube faces: $6 \times 4 / 2 = 12$. ✓
+
+Cut edges: each of 8 corners generates 3 cut edges. Each cut edge borders exactly one cube face and one cut face. So there are $8 \times 3 = 24$ cut edges.
+
+But we also need edges on the cut (triangular) faces. Each cut face is a triangle with 3 edges — and all 3 edges are already counted as cut edges.
+
+Total $= 12 + 24 = 36$? The answer choice 36 is option A, but the key says D = 84.
+
+Let me reconsider the geometry. The removed cube is at a corner of the $3\times3\times3$ cube. The cut creates a new triangular face. But the cut goes through a corner, and the unit cube removed has side 1. The remaining face where the small cube is removed shows 3 new edges on the face of the large cube too — but wait, those new edges on the cube's face ARE the cut edges (the octagon's new sides).
+
+The faces of each original cube face after 4 corner cuts: we get an octagon. But actually the cuts create small $1\times1$ square notches at each corner of a face — no, the corners of the large cube are at the corners of the face, and removing a $1\times1\times1$ cube from the corner cuts a $1\times1$ square from each corner of the face, giving an octagon indeed.
+
+Hmm, but that means each face's octagon has 8 sides: 4 length-1 original sides (the middle third of each original face edge) and 4 length-1 cut sides. That gives edges from 6 octagons: but each original edge is shared by 2 faces, and each cut edge is shared by the cube face and the triangular cut face.
+
+Original edges: $6 \times 4 \div 2 = 12$.
+Cut edges on cube faces: $6 \times 4 = 24$ edges, each shared between a cube face and a cut face — so 24 edges.
+Cut face (triangle) edges: these are the same 24 edges already counted.
+
+Plus each triangular face has edges only from the cube faces (no edges interior to the triangle — but wait, the triangular cut face has 3 edges, each shared with a cube face). So the 24 cut edges are exactly the edges of the triangular cut faces.
+
+Total edges $= 12 + 24 = 36$.
+
+But the answer is 84. I must be misidentifying the geometry. When a $1\times1\times1$ cube is removed from the corner of a $3\times3\times3$ cube, the cut face is NOT a triangle — it's a square (or more precisely, a $1\times1$ square face of the removed unit cube). The removed cube shares one vertex with the large cube corner, and the exposed face is the square face of the unit cube.
+
+Reconsidering: Removing a unit cube from a corner leaves a **square** hole (the face of the removed unit cube). The resulting solid at that corner has 3 new square notches cut out. Each removed unit cube contributes:
+- 3 new square faces (the 3 faces of the unit cube that were interior to the large cube)
+- 3 cut edges along each cube face (where the notch meets the face)
+- The original corner vertex is now gone
+
+Each removed corner exposes 3 new unit square faces, each with 4 edges, but edges are shared between these new faces. Each new face shares 2 edges with the 2 adjacent new faces, and 2 edges lie on the surface of the large cube.
+
+New faces per corner: 3 square faces. These 3 squares share edges in pairs: each pair of adjacent new squares shares 1 edge, and there are 3 pairs, so 3 internal new edges per corner. Also, each new face has 2 edges on the surface of the big cube and 2 edges shared with other new faces — actually 1 edge shared with one adjacent new face, 1 edge shared with the other, and 2 edges on the cube surface.
+
+Per removed corner:
+- 3 new edges entirely inside the notch (shared between two new square faces).
+- 3×2 = 6 new edges on cube surfaces... but each such edge is on one cube face and one new face.
+
+However, each cube-face edge borders one cube face and one new square face. With 8 corners and 3 such edges per corner that's $8\times3=24$. Plus 8×3=24 internal notch edges? No — each corner notch is 3 unit squares meeting at a single internal corner point, each pair sharing one edge: so 3 shared edges per corner, giving $8\times3=24$ internal edges.
+
+Original cube edges (trimmed): $12$ (each original edge has two end-unit-lengths removed, so a length-1 segment remains, = 1 edge per original cube edge). $12$ edges.
+
+Cut edges on cube surface: $8 \times 3 = 24$ edges (each corner contributes 3 edges on the cube's face).
+Internal notch edges: $8 \times 3 = 24$ edges (edges shared between two new square faces).
+
+But wait, each removed unit cube also creates a right-angle internal corner. The 3 internal edges meet at a new interior vertex. There are $8$ such new interior vertices (one per removed corner).
+
+Total: $12 + 24 + 24 = 60$? That gives option B.
+
+Hmm. The actual answer is D = 84. Let me think about what I might be missing.
+
+Actually, I was wrong about the original edges. On each original edge of the $3\times3\times3$ cube (length 3), removing a unit cube from each endpoint removes a length-1 segment from each end. The middle length-1 segment remains. So each of the 12 original edges becomes 1 edge of length 1. But — the 2 removed end segments also become edges! The cut at each end of each edge creates a new edge along the cube's face. Wait, these new edges are already counted as "cut edges on cube surface."
+
+Let me re-examine. When we remove a corner unit cube from the large cube, on each of the 3 faces adjacent to that corner, we remove a $1\times1$ square from the corner of that face. This exposes a new square face of the removed cube, and creates new edge segments on the face of the large cube.
+
+Each face of the large cube is a $3\times3$ square. After removing the 4 corner unit squares from the face (one per corner of the large cube's face), the face becomes a "+" shaped... no wait. We're removing just the $1\times1$ corner squares. The face boundary becomes a dodecagon (12-sided polygon)? Let me think again.
+
+The $3\times3$ face has corners at positions corresponding to the corners of the large cube. Removing a $1\times1$ corner square from each of the 4 corners of the face gives a face shaped like an octagon: 4 sides of length 1 (along the original sides, in the middle portions) and 4 sides of length 1 (across the cut corners). That's an octagon — 8 edges per face.
+
+Each face has 8 edges. Total edge-segments from 6 faces: $6\times8=48$, but each edge is shared by 2 faces, so $48/2=24$ edges? No — the new cut edges (across the corners) are NOT shared between 2 faces; they are shared between 1 original cube face and 1 new exposed square face.
+
+Original cube edges (trimmed middle segments): $12$, each of length 1.
+Cut edges on cube faces: Each cut corner on a face contributes 1 edge (across the corner) per face, and each corner is shared by 3 faces, so $8\times3=24$ cut-surface edges. Each such edge borders one cube face and one new exposed square face.
+Internal notch edges: Each removed unit cube has 3 new faces exposed, meeting at a new interior corner. The 3 new square faces share edges pairwise: each pair of adjacent new square faces shares an edge. There are 3 pairs, so 3 interior edges per corner. Total: $8\times3=24$ interior edges.
+
+Now, wait. The new exposed square face of the removed corner cube: it has 4 edges. Two of these are "cut-surface" edges (on the cube surface) and two are "interior notch" edges. Actually each new square face has: 2 edges shared with the cube face (the cut-surface edges) and 2 edges shared with the other 2 new square faces (interior notch edges). That's $2+2=4$ edges per new square face. But we have 3 new square faces per corner, each contributing 2 unique cut-surface edges and sharing 2 interior edges.
+
+Per corner: 3 new square faces × 2 cut-surface edges = 6 cut-surface edges, but these are shared with the cube face — not shared with other new square faces. And 3 interior edges shared between pairs of new square faces.
+
+But each cut-surface edge is the edge where one new square face meets one cube face. These edges also exist on the cube face boundary. Earlier I counted each corner contributing 1 cut-surface edge per adjacent face = 3 cut-surface edges per corner. But now I get 6?
+
+The discrepancy: each new square face has 2 edges on the cube surface. Cube face A gets 1 of these edges, cube face B gets 1, cube face C gets 1... but there are only 3 adjacent cube faces and 3 new square faces. Each new square face is parallel to one of the 3 cube faces, and its cut-surface edges are on the other 2 cube faces. So each of the 3 adjacent cube faces gets 2 cut-surface edges per removed corner? That would be $8\times3\times2=48$... that's way too many.
+
+I need to be much more careful. Let me use coordinates. Place the big cube with corners at $(0,0,0)$ to $(3,3,3)$. Remove unit cube at corner $(0,0,0)$: remove the region $[0,1]\times[0,1]\times[0,1]$.
+
+The new faces exposed:
+- Face on $x=1$ plane: $[0,1]\times[0,1]$ in $y,z$ — but this face is on the interior of the large cube, now exposed.
+
+Wait, that's a $1\times1$ square on $x=1$, $y\in[0,1]$, $z\in[0,1]$.
+
+The edges of this new face:
+- $(1,0,0)$ to $(1,1,0)$: this is on the face $z=0$ of the large cube. ✓
+- $(1,0,0)$ to $(1,0,1)$: this is on the face $y=0$ of the large cube. ✓
+- $(1,1,0)$ to $(1,1,1)$: this is interior (not on any face of the large cube).
+- $(1,0,1)$ to $(1,1,1)$: this is interior.
+
+Similarly for the new face on $y=1$: edges on $z=0$ face, on $x=0$ face, and two interior edges. And for new face on $z=1$: edges on $x=0$ face, on $y=0$ face, and two interior edges.
+
+So per removed corner (at $(0,0,0)$):
+Cut-surface edges (on the large cube's original face):
+- On $z=0$ face: $(1,0,0)$–$(1,1,0)$ and $(0,1,0)$–$(1,1,0)$ — 2 edges.
+- On $y=0$ face: $(1,0,0)$–$(1,0,1)$ and $(0,0,1)$–$(1,0,1)$ — 2 edges.
+- On $x=0$ face: $(0,1,0)$–$(0,1,1)$ and $(0,0,1)$–$(0,1,1)$ — 2 edges.
+
+That's 6 cut-surface edges per corner.
+
+Interior edges (shared between 2 new square faces):
+- $(1,1,0)$–$(1,1,1)$: shared between new $x=1$ face and new $y=1$ face.
+- $(1,0,1)$–$(1,1,1)$: shared between new $x=1$ face and new $z=1$ face.
+- $(0,1,1)$–$(1,1,1)$: shared between new $y=1$ face and new $z=1$ face.
+
+That's 3 interior edges per corner.
+
+With 8 corners: $8\times6=48$ cut-surface edges and $8\times3=24$ interior edges.
+
+Original cube edges: each of the 12 original edges had length 3. After removing unit cubes from both endpoints, the remaining middle segment has length 1. So 12 original edges become 12 segments (edges). But the portions removed from the ends are now replaced by cut-surface edges.
+
+Actually each original edge (say from $(0,0,0)$ to $(3,0,0)$) loses its segments $[0,1]$ and $[2,3]$ (the corners removed). What remains is $[1,2]$, which is an edge of the solid from $(1,0,0)$ to $(2,0,0)$. That's 1 edge per original cube edge = 12 edges.
+
+But the cut-surface edges I found: e.g., $(1,0,0)$–$(1,1,0)$ — that's NOT along the original cube edge; it goes in the $y$ direction. And $(0,1,0)$–$(1,1,0)$: this goes in the $x$ direction along the face $z=0$.
+
+Hmm, the edge $(0,1,0)$–$(1,1,0)$ — is this along an original cube edge or new? The original cube has edge from $(0,0,0)$ to $(3,0,0)$, from $(0,3,0)$ to $(3,3,0)$, etc. The segment $(0,1,0)$–$(1,1,0)$ is NOT along any original cube edge.
+
+So the 48 cut-surface edges are genuinely new edges, all on the faces of the large cube but not coinciding with the original cube edges.
+
+Total edges = 12 (original trimmed) + 48 (cut-surface) + 24 (interior) = 84.
+
+Answer: **D**.
+</Solution>

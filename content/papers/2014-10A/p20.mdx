@@ -1,0 +1,48 @@
+---
+year: 2014
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: D
+choices: ["$901$", "$911$", "$919$", "$991$", "$999$"]
+---
+
+<Problem>
+The product $(8)(888\dots8)$, where the second factor has $k$ digits, is an integer whose digits have a sum of $1000$. What is $k$?
+</Problem>
+
+<Solution>
+The second factor is the repunit-like number $\underbrace{88\cdots8}_{k} = 8 \cdot \underbrace{11\cdots1}_{k}$.
+
+So the product is $8 \times 8 \times \underbrace{11\cdots1}_{k} = 64 \times \underbrace{11\cdots1}_{k}$.
+
+Now, $64 \times \underbrace{11\cdots1}_{k}$. Let's compute $64 \times \underbrace{11\cdots1}_{k}$ directly.
+
+$\underbrace{11\cdots1}_{k} = \dfrac{10^k - 1}{9}$, so the product is $\dfrac{64(10^k-1)}{9}$.
+
+Alternatively, multiply directly: $64 \times \underbrace{11\cdots1}_{k}$.
+
+$$64 \times \underbrace{11\cdots1}_{k} = \underbrace{64646\cdots64}_{?}$$
+
+Actually, let's think about it as $64 \times (10^{k-1} + 10^{k-2} + \cdots + 1)$. This is the sum $64 + 640 + 6400 + \cdots + 64 \cdot 10^{k-1}$, which gives a number that looks like $\underbrace{6\cdots6}_{k}4\underbrace{6\cdots6}_{?}...$ — this approach is messy.
+
+Better: use $8 \times \underbrace{88\cdots8}_{k}$. 
+
+$\underbrace{88\cdots8}_{k} = \dfrac{8(10^k-1)}{9}$, so the product is $\dfrac{64(10^k-1)}{9}$.
+
+Let me compute $64 \times \underbrace{11\cdots1}_{k}$ for small $k$ to see the pattern of digit sums.
+
+$k=1$: $64 \times 1 = 64$. Digit sum $= 10$.
+$k=2$: $64 \times 11 = 704$. Digit sum $= 11$.
+$k=3$: $64 \times 111 = 7104$. Digit sum $= 12$.
+$k=4$: $64 \times 1111 = 71104$. Digit sum $= 13$.
+
+Pattern: for $k \ge 2$, digit sum $= k + 9$.
+
+Check $k=2$: $11, k+9=11$. $\checkmark$ $k=3$: $12$. $\checkmark$ $k=4$: $13$. $\checkmark$
+
+So digit sum $= k + 9 = 1000 \Rightarrow k = 991$.
+
+Answer: **D**.
+</Solution>

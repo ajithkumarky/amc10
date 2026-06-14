@@ -1,0 +1,34 @@
+---
+year: 2014
+paper: "10A"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: B
+choices: ["$16$", "$17$", "$25$", "$26$", "$27$"]
+---
+
+<Problem>
+A square in the coordinate plane has vertices whose $y$-coordinates are $0$, $1$, $4$, and $5$. What is the area of the square?
+</Problem>
+
+<Solution>
+The four vertices have $y$-coordinates $0, 1, 4, 5$ (not necessarily in order around the square). Since a square has equal sides and right angles, it may be tilted.
+
+Let one vertex be at $(x_0, 0)$ and an adjacent vertex at $(x_1, 1)$. The side vector is $(x_1 - x_0, 1)$. A $90°$ rotation of this vector gives the next side: $(-1, x_1 - x_0)$.
+
+So the four vertices are:
+$$A = (x_0,\, 0),\quad B = (x_0 + t,\, 1),\quad C = (x_0 + t - 1,\, 1 + t),\quad D = (x_0 - 1,\, t)$$
+where $t = x_1 - x_0$.
+
+The $y$-coordinates are $0, 1, 1+t, t$. We need these to be $\{0,1,4,5\}$ in some order.
+
+Since we have $0$ and $1$ already, we need $1+t$ and $t$ to be $4$ and $5$ (in some order).
+- $t = 4$ and $1+t = 5$: consistent! $\checkmark$
+
+So $t = 4$, and the side vector is $(4, 1)$.
+
+Area $=$ side length squared $= 4^2 + 1^2 = 16 + 1 = 17$.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,35 @@
+---
+year: 2014
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 1
+answer: B
+choices: ["$2$", "$3$", "$4$", "$5$", "$6$"]
+---
+
+<Problem>
+Walking down Jane Street, Ralph passed four houses in a row, each painted a different color. He passed the orange house before the red house, and he passed the blue house before the yellow house. The blue house was not next to the yellow house. How many orderings of the colored houses are possible?
+</Problem>
+
+<Solution>
+We have four positions (1, 2, 3, 4) for colors Orange (O), Red (R), Blue (B), Yellow (Y), with constraints:
+- O before R
+- B before Y
+- B and Y are **not** adjacent
+
+Without any constraints, there are $4! = 24$ arrangements. By symmetry, exactly half have O before R, and of those, half have B before Y, giving $24/4 = 6$ arrangements with both O before R and B before Y. Now we remove those where B and Y are adjacent.
+
+List all 6 arrangements with O before R and B before Y:
+
+1. B, O, Y, R — B at 1, Y at 3: not adjacent. Valid.
+2. B, O, R, Y — B at 1, Y at 4: not adjacent. Valid.
+3. O, B, R, Y — B at 2, Y at 4: not adjacent. Valid.
+4. B, Y, O, R — B at 1, Y at 2: **adjacent**. Invalid.
+5. O, B, Y, R — B at 2, Y at 3: **adjacent**. Invalid.
+6. O, R, B, Y — B at 3, Y at 4: **adjacent**. Invalid.
+
+Valid arrangements: 3.
+
+Answer: **B**.
+</Solution>

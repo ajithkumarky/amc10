@@ -1,0 +1,51 @@
+---
+year: 2014
+paper: "10B"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 4
+answer: D
+choices: ['$\dfrac{1}{6}$', '$\dfrac{1}{4}$', '$\dfrac{2-\sqrt{2}}{2}$', '$\dfrac{1}{3}$', '$\dfrac{1}{2}$']
+---
+
+<Problem>
+Two concentric circles have radii $1$ and $2$. Two points on the outer circle are chosen independently and uniformly at random. What is the probability that the chord joining the two points intersects the inner circle?
+</Problem>
+
+<Solution>
+Fix the first point $P$ on the outer circle (radius 2) at angle $0$ by symmetry. The second point $Q$ is chosen uniformly on the outer circle.
+
+The chord $PQ$ intersects the inner circle (radius 1) if and only if the distance from the center to the chord is less than $1$.
+
+The chord subtends a central angle of $2\theta$ where $\theta$ is the half-angle (so $Q$ is at angle $2\theta$ from $P$, with $\theta \in [0°, 90°]$ by symmetry of the chord).
+
+The distance from the center to chord $PQ$: if the chord subtends angle $2\theta$ at the center and the circle has radius $R = 2$, the distance from the center to the chord is $R\cos\theta = 2\cos\theta$.
+
+The chord intersects the inner circle when $2\cos\theta < 1$, i.e., $\cos\theta < \frac{1}{2}$, i.e., $\theta > 60°$.
+
+Since $Q$ is uniform on the circle, the angle from $P$ to $Q$ is uniform on $[0°, 360°)$. By symmetry, the half-angle $\theta$ is uniform on $[0°, 180°]$. The chord intersects the inner circle when $\theta \in (60°, 180°]$, which has length $120°$ out of $180°$.
+
+Probability $= \dfrac{120}{180} = \dfrac{2}{3}$?
+
+Wait — let me redo. The angle from $P$ to $Q$ measured around the circle is uniform on $[0, 2\pi)$. The chord $PQ$ with $P$ fixed at $(2, 0)$ and $Q = (2\cos\phi, 2\sin\phi)$ for $\phi \in [0, 2\pi)$.
+
+Distance from origin to chord $PQ$: with $P = (2,0)$ and $Q = (2\cos\phi, 2\sin\phi)$,
+$$d = \frac{|P \times Q|}{|PQ|} = \frac{|2 \cdot 2\sin\phi - 0|}{|PQ|}.$$
+Actually: the area of triangle $OPQ = \frac{1}{2}|PQ| \cdot d$, and also $= \frac{1}{2}|OP||OQ|\sin\phi = \frac{1}{2}\cdot 2 \cdot 2 \cdot |\sin\phi| = 2|\sin\phi|$.
+
+$|PQ|^2 = (2-2\cos\phi)^2 + (2\sin\phi)^2 = 4(1-2\cos\phi+\cos^2\phi+\sin^2\phi) = 4(2-2\cos\phi) = 8(1-\cos\phi)$.
+
+So $d = \frac{2 \cdot 2|\sin\phi|}{|PQ|} = \frac{4|\sin\phi|}{\sqrt{8(1-\cos\phi)}}$.
+
+Using $1 - \cos\phi = 2\sin^2(\phi/2)$ and $|\sin\phi| = 2|\sin(\phi/2)||\cos(\phi/2)|$:
+
+$$d = \frac{4 \cdot 2|\sin(\phi/2)||\cos(\phi/2)|}{\sqrt{8 \cdot 2\sin^2(\phi/2)}} = \frac{8|\sin(\phi/2)||\cos(\phi/2)|}{4|\sin(\phi/2)|} = 2|\cos(\phi/2)|.$$
+
+The chord intersects the inner circle when $d < 1$: $2|\cos(\phi/2)| < 1$, so $|\cos(\phi/2)| < \frac{1}{2}$.
+
+With $\phi \in [0, 2\pi)$, we have $\phi/2 \in [0, \pi)$. $|\cos(\phi/2)| < \frac{1}{2}$ when $\phi/2 \in (\pi/3, 2\pi/3)$, i.e., $\phi \in (2\pi/3, 4\pi/3)$.
+
+The probability is $\dfrac{4\pi/3 - 2\pi/3}{2\pi} = \dfrac{2\pi/3}{2\pi} = \dfrac{1}{3}$.
+
+Answer: **D**.
+</Solution>

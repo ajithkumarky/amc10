@@ -1,0 +1,47 @@
+---
+year: 2013
+paper: "10B"
+topic: number-theory
+subtopic: number-bases
+difficulty: 5
+answer: E
+choices: ["$5$", "$10$", "$15$", "$20$", "$25$"]
+---
+
+<Problem>
+Bernardo chooses a three-digit positive integer $N$ and writes both its base-5 and base-6 representations on a blackboard. Later LeRoy sees the two numbers Bernardo has written. Treating the two numbers as base-10 integers, he adds them to obtain an integer $S$. For example, if $N = 749$, Bernardo writes the numbers $10444$ and $3245$, and LeRoy obtains the sum $S = 13689$. For how many choices of $N$ are the two rightmost digits of $S$, in order, the same as those of $2N$?
+</Problem>
+
+<Solution>
+**Setting up the condition.** Write $N = 25q + 5a + b$ and $N = 36r + 6c + d$ where $0 \le a,b < 5$ and $0 \le c,d < 6$. The last two digits of the base-5 representation read as base-10 contribute $10a+b$; the last two digits of the base-6 representation contribute $10c+d$. The condition "$S$ and $2N$ agree in their last two digits" is:
+
+$$(10a+b)+(10c+d) \equiv 2N \pmod{100}.$$
+
+**Simplifying.** Substitute $N = 25q+5a+b$:
+$$(10a+b)+(10c+d) - 2(25q+5a+b) = 10c+d-b-50q.$$
+
+So the condition is $10c+d-b \equiv 50q \pmod{100}$, where $q = \lfloor N/25\rfloor$. Since only $q \bmod 2$ matters, and $\lfloor N/25\rfloor$ is even iff $\lfloor(N\bmod 50)/25\rfloor = 0$ (i.e., $N\bmod 50 < 25$), we get two cases.
+
+Note that $10c+d \in [0,55]$ and $b \in [0,4]$, so $10c+d-b \in [-4, 55]$. The only multiples of 50 in this range are $0$ and $50$, giving exactly:
+
+- **Case 1** ($q$ even): $10c+d = b$, which forces $c=0$ and $d=b$.
+- **Case 2** ($q$ odd): $10c+d = 50+b$, which forces $c=5$ and $d=b$.
+
+**Counting solutions. Period = 900.** Each case depends on $N\bmod 5$ (for $b$), $N\bmod 36$ (for $c,d$), and $N\bmod 50$ (for $q\bmod 2$). The joint period is $\operatorname{lcm}(5,36,50)=900$. The three-digit integers $\{100,\ldots,999\}$ number exactly $900$, one per residue class mod $900$.
+
+**Case 1** requires $c=0$, $d=b$, i.e., $N\bmod 36 = b \in\{0,1,2,3,4\}$ and $N\bmod 5 = b$. By CRT ($\gcd(36,5)=1$) this gives $N\equiv b\pmod{180}$. Writing $N=180m+b$ for $m\in\{0,1,2,3,4\}$ (five values span one period of 900), additionally $q$ even means $N\bmod 50 < 25$, i.e., $(30m+b)\bmod 50 < 25$:
+
+$$m=0:\;b<25\;\checkmark,\quad m=1:\;30{+}b\geq 25\;\times,\quad m=2:\;10{+}b<25\;\checkmark,\quad m=3:\;40{+}b\geq 25\;\times,\quad m=4:\;20{+}b<25\;\checkmark.$$
+
+So $m\in\{0,2,4\}$ work for all five values of $b$: $3\times 5=15$ solutions.
+
+**Case 2** requires $c=5$, $d=b$, i.e., $N\bmod 36 = 30+b$ and $N\bmod 5 = b$. By CRT this gives $N\equiv b+30\pmod{180}$. Writing $N=180m+(b+30)$, we need $q$ odd, i.e., $(30m+b+30)\bmod 50 \ge 25$:
+
+$$m=0:\;30{+}b\geq 25\;\checkmark,\quad m=1:\;10{+}b<25\;\times,\quad m=2:\;40{+}b\geq 25\;\checkmark,\quad m=3:\;20{+}b<25\;\times,\quad m=4:\;b<25\;\times.$$
+
+So $m\in\{0,2\}$ work for all five values of $b$: $2\times 5=10$ solutions.
+
+**Total:** $15+10=\mathbf{25}$ valid values of $N$.
+
+Answer: **E**.
+</Solution>

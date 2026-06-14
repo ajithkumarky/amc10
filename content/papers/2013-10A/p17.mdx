@@ -1,0 +1,45 @@
+---
+year: 2013
+paper: "10A"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 4
+answer: B
+choices: ["48", "54", "60", "66", "72"]
+---
+
+<Problem>
+Daphnia is visited periodically by her three best friends: Alice, Beatrix, and Claire. Alice visits every third day, Beatrix visits every fourth day, and Claire visits every fifth day. All three friends visited Daphnia yesterday. How many days of the next 365-day period will exactly two friends visit her?
+</Problem>
+
+<Solution>
+Since all three visited yesterday (day 0), in the next 365 days (days 1 through 365):
+- Alice visits on days $3, 6, 9, \ldots$
+- Beatrix visits on days $4, 8, 12, \ldots$
+- Claire visits on days $5, 10, 15, \ldots$
+
+We want days when exactly 2 of the 3 friends visit — meaning the day is in exactly two of the three arithmetic progressions above.
+
+We use inclusion-exclusion. Let $A$, $B$, $C$ be the sets of visit days for Alice, Beatrix, Claire.
+
+**Days exactly 2 visit** = $|A \cap B| + |A \cap C| + |B \cap C| - 3|A \cap B \cap C|$.
+
+$A \cap B$: multiples of $\text{lcm}(3,4)=12$. Count in $\{1,...,365\}$: $\lfloor 365/12 \rfloor = 30$.
+$A \cap C$: multiples of $\text{lcm}(3,5)=15$. Count: $\lfloor 365/15 \rfloor = 24$.
+$B \cap C$: multiples of $\text{lcm}(4,5)=20$. Count: $\lfloor 365/20 \rfloor = 18$.
+$A \cap B \cap C$: multiples of $\text{lcm}(3,4,5)=60$. Count: $\lfloor 365/60 \rfloor = 6$.
+
+Days all 3 visit: $6$.
+Days at least 2 visit: $30 + 24 + 18 - 2\cdot6 = 72 - 12 = 60$.
+Days exactly 2 visit: $60 - 3 \cdot 6 = 60 - 18 = 42$? 
+
+Wait, let me use the correct formula. Let $f_k$ = days with exactly $k$ visitors.
+
+$|A \cap B| + |A \cap C| + |B \cap C| = f_2 + 3f_3$ (each day with exactly 2 is counted $\binom{2}{2}=1$ times; each day with exactly 3 is counted $\binom{3}{2}=3$ times).
+
+$|A \cap B \cap C| = f_3$.
+
+So $f_2 = (|A \cap B| + |A \cap C| + |B \cap C|) - 3|A \cap B \cap C| = (30+24+18) - 3\cdot6 = 72 - 18 = 54$.
+
+Answer: **B**.
+</Solution>

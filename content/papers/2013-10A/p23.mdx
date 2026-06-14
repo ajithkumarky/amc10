@@ -1,0 +1,56 @@
+---
+year: 2013
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: D
+choices: ["11", "28", "33", "61", "72"]
+---
+
+<Problem>
+In $\triangle ABC$, $AB = 86$, and $AC = 97$. A circle with center $A$ and radius $AB$ intersects $\overline{BC}$ at points $B$ and $X$. Moreover $\overline{BX}$ and $\overline{CX}$ have integer lengths. What is $BC$?
+</Problem>
+
+<Solution>
+Since the circle has center $A$ and radius $AB = 86$, point $X$ on $\overline{BC}$ satisfies $AX = AB = 86$.
+
+Let $BX = m$ and $XC = n$ (positive integers). Then $BC = m + n$.
+
+**Use the Power of a Point.** The power of $C$ with respect to the circle (center $A$, radius $86$) is:
+$$CA^2 - 86^2 = 97^2 - 86^2.$$
+
+But the power of $C$ also equals $CB \cdot CX$ (since line $BC$ intersects the circle at $B$ and $X$, and $C$ is outside):
+$$CB \cdot CX = (m+n)\cdot n.$$
+
+Compute:
+$$97^2 - 86^2 = (97-86)(97+86) = 11 \cdot 183 = 2013.$$
+
+So $(m+n)\cdot n = 2013$.
+
+**Factor 2013:** $2013 = 3 \times 11 \times 61$.
+
+We need $(m+n)\cdot n = 2013$ with $m, n$ positive integers and $m + n > n$ (so $m > 0$). Also $BC = m + n > BX = m$ and we need the triangle inequality to hold.
+
+Factor pairs of $2013$ with $m + n > n$ (i.e., $m+n > n$, always true since $m > 0$), and $m + n > n$:
+
+The factor pairs $(m+n, n)$ where $(m+n)\cdot n = 2013$:
+- $(2013, 1)$: $n=1$, $m+n=2013$, $m=2012$, $BC=2013$.
+- $(671, 3)$: $n=3$, $m=668$, $BC=671$.
+- $(183, 11)$: $n=11$, $m=172$, $BC=183$.
+- $(61, 33)$: $n=33$, $m=28$, $BC=61$.
+- $(33, 61)$: $n=61 > m+n=33$? No, this requires $n < m+n$, so $n < 61$... $n=61$ and $m+n=33$ gives $m=-28 < 0$. Invalid.
+
+So valid solutions: $BC \in \{2013, 671, 183, 61\}$.
+
+**Apply the triangle inequality** to $\triangle ABC$ with $AB = 86$, $AC = 97$, $BC = m+n$:
+- $BC < AB + AC = 183$: eliminates $BC = 2013$ and $BC = 671$ and $BC = 183$ (not strict).
+- $BC > |AC - AB| = 11$: all remaining satisfy this.
+- $BC = 183$: need $183 < 183$? No — fails strict inequality.
+
+So $BC = 61$.
+
+Check: does $BC = 61$ satisfy all triangle inequalities? $61 < 86 + 97 = 183$ ✓, $61 > 97 - 86 = 11$ ✓, $86 < 97 + 61$ ✓, $97 < 86 + 61$ ✓. All good.
+
+Answer: **D**.
+</Solution>

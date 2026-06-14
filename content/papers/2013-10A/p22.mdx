@@ -1,0 +1,42 @@
+---
+year: 2013
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: B
+choices: ['$\sqrt{2}$', '$\dfrac{3}{2}$', '$\dfrac{5}{3}$', '$\sqrt{3}$', '$2$']
+---
+
+<Problem>
+Six spheres of radius $1$ are positioned so that their centers are at the vertices of a regular hexagon of side length $2$. The six spheres are internally tangent to a larger sphere whose center is the center of the hexagon. An eighth sphere is externally tangent to the six smaller spheres and internally tangent to the larger sphere. What is the radius of this eighth sphere?
+</Problem>
+
+<Solution>
+**Set up coordinates.** Place the hexagon in the $xy$-plane centered at the origin. The six small spheres have centers at the hexagon vertices, each at distance $2$ from the center (since side length $= 2$ implies circumradius $= 2$). Each small sphere has radius $1$.
+
+**Radius of the large sphere.** The large sphere is internally tangent to each small sphere. For internal tangency (the small sphere inside the large one), the distance between centers equals $R - r$ where $R$ is the large radius and $r = 1$ is the small radius. Distance from origin to each small-sphere center $= 2$, so:
+$$R - 1 = 2 \implies R = 3.$$
+
+**Find the eighth sphere's radius $\rho$.** The eighth sphere sits above (or below) the hexagonal plane. Let its center be at $(0, 0, h)$ for some height $h > 0$.
+
+*External tangency with each small sphere:*
+Distance from $(0,0,h)$ to a small sphere center (at distance $2$ in the $xy$-plane) $= \sqrt{4 + h^2}$.
+$$\sqrt{4+h^2} = 1 + \rho.$$
+
+*Internal tangency with the large sphere:*
+Distance from $(0,0,h)$ to origin $= h$.
+$$h = R - \rho = 3 - \rho.$$
+
+From the second equation: $h = 3 - \rho$. Substitute into the first:
+$$\sqrt{4+(3-\rho)^2} = 1+\rho.$$
+
+Square both sides:
+$$4 + (3-\rho)^2 = (1+\rho)^2.$$
+$$4 + 9 - 6\rho + \rho^2 = 1 + 2\rho + \rho^2.$$
+$$13 - 6\rho = 1 + 2\rho.$$
+$$12 = 8\rho.$$
+$$\rho = \frac{3}{2}.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,50 @@
+---
+year: 2013
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: C
+choices: ["$384$", "$576$", "$1152$", "$1680$", "$3456$"]
+---
+
+<Problem>
+The regular octagon $ABCDEFGH$ has its center at $J$. Each of the vertices and the center are to be associated with one of the digits $1$ through $9$, with each digit used once, in such a way that the sums of the numbers on the lines $AJE$, $BJF$, $CJG$, and $DJH$ are all equal. In how many ways can this be done?
+
+The octagon has vertices $A, B, C, D, E, F, G, H$ in order, with $J$ at the center. The four lines each pass through $J$ and two opposite vertices.
+</Problem>
+
+<Solution>
+Each line passes through $J$ and two opposite vertices. The four lines are $\{A,J,E\}$, $\{B,J,F\}$, $\{C,J,G\}$, $\{D,J,H\}$.
+
+Let $j$ be the digit assigned to center $J$. Each line sum equals $j$ plus two vertex values. If all four sums are equal to $S$, then the sum of all four line-sums is $4S = 4j + (A+B+C+D+E+F+G+H)$.
+
+The sum $1+2+\cdots+9 = 45$, so $A+B+\cdots+H = 45 - j$.
+
+Thus $4S = 4j + (45-j) = 3j + 45$, giving $S = \dfrac{3j+45}{4}$.
+
+For $S$ to be a positive integer, $3j + 45 \equiv 0 \pmod{4}$. Since $45 \equiv 1 \pmod{4}$, we need $3j \equiv 3 \pmod{4}$, i.e., $j \equiv 1 \pmod{4}$.
+
+So $j \in \{1, 5, 9\}$.
+
+For each valid $j$, we need to pair the remaining 8 digits into 4 pairs, where each pair sums to $S - j$. Then assign these pairs to the 4 lines, and within each pair, assign the two values to the two endpoints.
+
+**Case $j = 1$:** $S = (3+45)/4 = 12$. Each pair sums to $11$. Remaining digits: $\{2,3,4,5,6,7,8,9\}$. Pairs summing to $11$: $(2,9),(3,8),(4,7),(5,6)$. Exactly $4$ pairs — perfect.
+
+**Case $j = 5$:** $S = (15+45)/4 = 15$. Each pair sums to $10$. Remaining digits: $\{1,2,3,4,6,7,8,9\}$. Pairs summing to $10$: $(1,9),(2,8),(3,7),(4,6)$. Exactly $4$ pairs — perfect.
+
+**Case $j = 9$:** $S = (27+45)/4 = 18$. Each pair sums to $9$. Remaining digits: $\{1,2,3,4,5,6,7,8\}$. Pairs summing to $9$: $(1,8),(2,7),(3,6),(4,5)$. Exactly $4$ pairs — perfect.
+
+**Counting arrangements for each case:**
+
+- Choose which pair goes on which line: $4!$ ways.
+- For each pair on a line, choose which endpoint (of the two diametrically opposite vertices) gets which digit: $2^4$ ways.
+
+Wait — the lines are labeled ($AJE$, $BJF$, etc.), so assigning pairs to lines is $4!$ ordered assignments. Within each line, we choose which of the two endpoints gets the larger value: $2$ choices per line.
+
+Total per case: $4! \times 2^4 = 24 \times 16 = 384$.
+
+With $3$ valid values of $j$: $3 \times 384 = 1152$.
+
+Answer: **C**.
+</Solution>

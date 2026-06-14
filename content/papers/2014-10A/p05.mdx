@@ -1,0 +1,32 @@
+---
+year: 2014
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 1
+answer: C
+choices: ["$1$", "$2$", "$3$", "$4$", "$5$"]
+---
+
+<Problem>
+On an algebra quiz, $10\%$ of the students scored $70$ points, $35\%$ scored $80$ points, $30\%$ scored $90$ points, and the rest scored $100$ points. What is the difference between the mean and median score of the students' scores on this quiz?
+</Problem>
+
+<Solution>
+The remaining percentage is $100\% - 10\% - 35\% - 30\% = 25\%$ scored 100 points.
+
+**Mean:** Use the percentages as weights.
+$$\text{Mean} = 0.10(70) + 0.35(80) + 0.30(90) + 0.25(100)$$
+$$= 7 + 28 + 27 + 25 = 87.$$
+
+**Median:** Order all students from lowest to highest score. The 50th percentile falls in the range of scores. The cumulative percentages are:
+- Up to 70: 10%
+- Up to 80: 10% + 35% = 45%
+- Up to 90: 45% + 30% = 75%
+
+The 50th percentile lands in the 90-point group (between 45% and 75%), so the **median is 90**.
+
+**Difference:** $|90 - 87| = 3$.
+
+Answer: **C**.
+</Solution>

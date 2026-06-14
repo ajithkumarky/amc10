@@ -1,0 +1,32 @@
+---
+year: 2014
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: B
+choices: ['$\dfrac{1+\sqrt{2}}{4}$', '$\dfrac{\sqrt{5}-1}{2}$', '$\dfrac{\sqrt{3}+1}{4}$', '$\dfrac{2\sqrt{3}}{5}$', '$\dfrac{\sqrt{5}}{3}$']
+---
+
+<Problem>
+Eight semicircles line the inside of a square with side length $2$ as shown. What is the radius of the circle tangent to all of these semicircles?
+
+The square has side length $2$. On each side of the square, two semicircles of equal radius are placed with their diameters along that side, fitting together to tile the side. Each side has two semicircles side by side; the flat edge of each semicircle lies on the square's side and the curved part faces inward. A circle in the center is tangent to all eight semicircles.
+</Problem>
+
+<Solution>
+Place the square with center at the origin, vertices at $(\pm 1, \pm 1)$. Each side has length $2$ and is divided into two semicircles. On the bottom side from $(-1,-1)$ to $(1,-1)$, the two semicircles have diameters from $(-1,-1)$ to $(0,-1)$ and from $(0,-1)$ to $(1,-1)$, each with radius $\frac{1}{2}$ and centers at $(-\frac{1}{2},-1)$ and $(\frac{1}{2},-1)$. The curved parts face inward (upward).
+
+By symmetry, the inscribed circle has center at the origin $(0,0)$ and some radius $r$.
+
+The inscribed circle is internally tangent to each semicircle (it lies inside them) or externally tangent (the semicircles curve away). Since the semicircle curves inward and the circle is in the center, the inscribed circle is externally tangent to the semicircle — the two centers are $r + \frac{1}{2}$ apart.
+
+Center of one semicircle (bottom-left): $\left(-\frac{1}{2}, -1\right)$.
+
+Distance from origin to this center: $\sqrt{\left(\frac{1}{2}\right)^2 + 1^2} = \sqrt{\frac{1}{4}+1} = \sqrt{\frac{5}{4}} = \frac{\sqrt{5}}{2}$.
+
+For external tangency: distance between centers $= r + \frac{1}{2}$:
+$$\frac{\sqrt{5}}{2} = r + \frac{1}{2} \implies r = \frac{\sqrt{5}}{2} - \frac{1}{2} = \frac{\sqrt{5}-1}{2}.$$
+
+Answer: **B**.
+</Solution>

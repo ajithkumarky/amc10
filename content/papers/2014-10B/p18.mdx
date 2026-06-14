@@ -1,0 +1,31 @@
+---
+year: 2014
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: E
+choices: ["24", "30", "31", "33", "35"]
+---
+
+<Problem>
+A list of $11$ positive integers has a mean of $10$, a median of $9$, and a unique mode of $8$. What is the largest possible value of an integer in the list?
+</Problem>
+
+<Solution>
+The eleven numbers sum to $11 \times 10 = 110$. Writing them in increasing order $x_1 \le x_2 \le \cdots \le x_{11}$, the median is the 6th value, so $x_6 = 9$. To make one value $M = x_{11}$ as large as possible, we make every other value as small as possible while keeping $8$ the **unique** mode (it must occur strictly more often than any other value).
+
+**Key idea: let $8$ occur three times.** If $8$ occurred only twice, every other value could occur at most once, forcing all the rest to be distinct — that turns out to cap $M$ at $33$. Letting $8$ occur three times relaxes the rest: now any other value may occur up to **twice**, so we can repeat small numbers and shrink the total.
+
+Take the list
+
+$$1,\ 1,\ 8,\ 8,\ 8,\ 9,\ 9,\ 10,\ 10,\ 11,\ M.$$
+
+Check the conditions: the 6th value is $9$ (median ✓); $8$ appears three times while every other value appears at most twice (unique mode ✓). The ten fixed values sum to
+
+$$1+1+8+8+8+9+9+10+10+11 = 75,$$
+
+so $M = 110 - 75 = 35$. Since $35$ is the largest option, this is the maximum.
+
+Answer: **E**.
+</Solution>

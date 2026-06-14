@@ -1,0 +1,57 @@
+---
+year: 2014
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: C
+choices: ["125,875,000", "201,400,000", "251,750,000", "402,800,000", "503,500,000"]
+---
+
+<Problem>
+The largest divisor of $2{,}014{,}000{,}000$ is itself. What is its fifth largest divisor?
+</Problem>
+
+<Solution>
+First factorize $2{,}014{,}000{,}000$.
+
+$2{,}014{,}000{,}000 = 2014 \times 10^6 = 2014 \times 2^6 \times 5^6$.
+
+$2014 = 2 \times 1007 = 2 \times 19 \times 53$.
+
+So $2{,}014{,}000{,}000 = 2^7 \times 5^6 \times 19 \times 53$.
+
+To find the largest divisors, we remove one prime factor at a time from the full number. The divisors just below the number itself are obtained by dividing by the smallest prime factors:
+
+- Divide by $2$: $\frac{2014000000}{2} = 1{,}007{,}000{,}000$
+- Divide by $5$: $\frac{2014000000}{5} = 402{,}800{,}000$
+- Divide by $19$: $\frac{2014000000}{19} = 106{,}000{,}000$
+- Divide by $53$: $\frac{2014000000}{53} = 38{,}000{,}000$
+
+Ordering these: $1{,}007{,}000{,}000 > 402{,}800{,}000 > 106{,}000{,}000 > 38{,}000{,}000$.
+
+The 1st largest divisor is $2{,}014{,}000{,}000$ itself.
+The 2nd largest is $1{,}007{,}000{,}000$ (divide by $2$).
+The 3rd largest is $402{,}800{,}000$ (divide by $5$).
+The 4th largest: the next candidates come from dividing by $2 \times 5 = 10$ or $2^2 = 4$:
+- Divide by $4$: $\frac{2014000000}{4} = 503{,}500{,}000$
+- Divide by $10$: $\frac{2014000000}{10} = 201{,}400{,}000$
+
+$503{,}500{,}000 > 402{,}800{,}000$? No, $503{,}500{,}000 > 402{,}800{,}000$, so this is actually larger than our 3rd. Let me redo in order.
+
+All divisors of the form $N/d$ for small $d$:
+- $d = 1$: $2{,}014{,}000{,}000$
+- $d = 2$: $1{,}007{,}000{,}000$
+- $d = 4$: $503{,}500{,}000$
+- $d = 5$: $402{,}800{,}000$
+- $d = 8$: $251{,}750{,}000$
+- $d = 10$: $201{,}400{,}000$
+- $d = 16$: $125{,}875{,}000$
+- $d = 19$: $106{,}000{,}000$
+
+Ordering: $2{,}014{,}000{,}000 > 1{,}007{,}000{,}000 > 503{,}500{,}000 > 402{,}800{,}000 > 251{,}750{,}000 > \ldots$
+
+The 5th largest divisor is $\dfrac{2{,}014{,}000{,}000}{8} = 251{,}750{,}000$.
+
+Answer: **C**.
+</Solution>

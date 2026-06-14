@@ -1,0 +1,39 @@
+---
+year: 2014
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: D
+choices: ['$\dfrac{1}{6}$', '$\dfrac{13}{72}$', '$\dfrac{7}{36}$', '$\dfrac{5}{24}$', '$\dfrac{2}{9}$']
+---
+
+<Problem>
+Three fair six-sided dice are rolled. What is the probability that the values shown on two of the dice sum to the value shown on the remaining die?
+</Problem>
+
+<Solution>
+Total outcomes: $6^3 = 216$.
+
+We need to count ordered triples $(a,b,c)$ where one of the three values equals the sum of the other two — i.e., $a+b=c$, or $a+c=b$, or $b+c=a$ — with each die showing values 1–6.
+
+**Count triples with $a + b = c$** (c is the largest):
+We need $1 \le a, b \le 6$, $1 \le c \le 6$, and $a + b = c$.
+
+Since $a,b \ge 1$, we need $c = a+b \ge 2$. Also $c \le 6$.
+
+For each value of $c$:
+- $c=2$: $(a,b)=(1,1)$ — 1 pair
+- $c=3$: $(1,2),(2,1)$ — 2 pairs
+- $c=4$: $(1,3),(2,2),(3,1)$ — 3 pairs
+- $c=5$: $(1,4),(2,3),(3,2),(4,1)$ — 4 pairs
+- $c=6$: $(1,5),(2,4),(3,3),(4,2),(5,1)$ — 5 pairs
+
+Total: $1+2+3+4+5 = 15$ ordered triples with $a+b=c$.
+
+By symmetry (any of the three dice can be the "sum" die), total favorable = $3 \times 15 = 45$.
+
+Probability: $\dfrac{45}{216} = \dfrac{5}{24}$.
+
+Answer: **D**.
+</Solution>

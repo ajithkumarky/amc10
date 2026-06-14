@@ -1,0 +1,58 @@
+---
+year: 2013
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: C
+choices: ["$55$", "$89$", "$104$", "$144$", "$273$"]
+---
+
+<Problem>
+Two non-decreasing sequences of nonnegative integers have different first terms. Each sequence has the property that each term, beginning with the third, is the sum of the previous two terms, and the seventh term of each sequence is $N$. What is the smallest possible value of $N$?
+</Problem>
+
+<Solution>
+Let the two sequences start with $(a, b)$ and $(c, d)$ where $a \le b$ and $c \le d$ (non-decreasing), $a \ne c$, and both have seventh term $N$.
+
+For a Fibonacci-like sequence starting $(x, y)$ with $x \le y$, the terms are:
+$$x,\; y,\; x+y,\; x+2y,\; 2x+3y,\; 3x+5y,\; 5x+8y.$$
+
+So the seventh term is $5x + 8y = N$.
+
+We need two pairs $(a,b)$ and $(c,d)$ with $a \le b$, $c \le d$, $a \ne c$, and:
+$$5a + 8b = 5c + 8d = N.$$
+
+Also, for non-decreasing: $a \le b$ and each subsequent term is $\ge$ the previous. Since $b \ge a \ge 0$, the sequence is non-decreasing automatically (each term is the sum of two previous positive terms).
+
+From $5a+8b = 5c+8d$: $5(a-c) = 8(d-b)$. Since $\gcd(5,8)=1$, we need $a - c \equiv 0 \pmod{8}$ and $d - b \equiv 0 \pmod 5$.
+
+Let $a - c = 8k$ and $d - b = 5k$ for some nonzero integer $k$ (they must have the same sign for the equation to balance; $k \ne 0$ since $a \ne c$).
+
+Take $k = 1$: $a = c + 8$ and $d = b + 5$.
+
+To minimize $N = 5a + 8b = 5(c+8) + 8b = 5c + 40 + 8b$.
+
+We also need $N = 5c + 8d = 5c + 8(b+5) = 5c + 8b + 40$. Consistent.
+
+Minimize $N = 5c + 8b + 40$ with constraints:
+- $c \ge 0$, $b \ge 0$
+- $a = c+8 \le b$ (non-decreasing: first sequence needs $a \le b$)
+- $c \le d = b+5$ (non-decreasing: second sequence needs $c \le d$)
+- All sequences non-decreasing throughout.
+
+From $c+8 \le b$: $b \ge c+8$.
+
+Minimize $5c + 8b + 40$ with $b \ge c+8$ and $c \ge 0$:
+
+Set $c = 0$, $b = 8$: $N = 0 + 64 + 40 = 104$.
+
+Check: Sequence 1 starts $(a,b) = (8, 8)$: $8, 8, 16, 24, 40, 64, 104$. Non-decreasing. Seventh term: $104$.  
+Sequence 2 starts $(c,d) = (0, 13)$: $0, 13, 13, 26, 39, 65, 104$. Non-decreasing. Seventh term: $104$.
+
+Both have $N = 104$, different first terms ($8 \ne 0$). 
+
+Can we get $N < 104$? Take $k = -1$: $c = a+8$, $b = d+5$, which by symmetry gives the same minimum. So $N_{\min} = 104$.
+
+Answer: **C**.
+</Solution>

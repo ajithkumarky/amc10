@@ -1,0 +1,118 @@
+---
+year: 2014
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: C
+choices: ["2", "4", "7", "8", "9"]
+---
+
+<Problem>
+In the addition shown below, $A$, $B$, $C$, and $D$ are distinct digits. How many different values are possible for $D$?
+
+$$\begin{array}{r} ABBCB \\ +\ BCADA \\ \hline DBDDD \end{array}$$
+</Problem>
+
+<Solution>
+Look at the units column: $B + A$ ends in $D$ (possibly with a carry of 0 or 1 into the tens place).
+
+Look at the tens column: $B + D + \text{carry}_1$ ends in $D$. This means $B + \text{carry}_1$ is divisible by 10, so either $B = 0$ (carry = 0) or $B = 9$ (carry = 1). But since $A, B, C, D$ are distinct digits and we need $B + A \geq 0$, consider both cases.
+
+**Case 1: $B = 0$.** Then the tens column gives carry$_1 = 0$ into hundreds. Units: $0 + A = D$ (no carry, since $B = 0$ and $A \leq 9$, giving $A = D$, but they must be distinct). Actually with carry from units: if $A + B < 10$, carry$_1 = 0$, so $D = A$, contradiction since $A \neq D$. If $A + B \geq 10$ with $B = 0$: impossible since $A \leq 9$.
+
+So $B = 0$ gives no valid solution.
+
+**Case 2: $B = 9$.** Then the tens column: $9 + D + \text{carry}_1 \equiv D \pmod{10}$, so $9 + \text{carry}_1 \equiv 0 \pmod{10}$, meaning carry$_1 = 1$. So units column $A + 9 \geq 10$, giving $D = A + 9 - 10 = A - 1$ and carry$_1 = 1$.
+
+Hundreds column: $B + C + \text{carry}_2 \equiv D \pmod{10}$: $9 + C + \text{carry}_2 \equiv D \pmod{10}$.
+
+Thousands column: $B + C + \text{carry}_3 \equiv B \pmod{10}$: $9 + C + \text{carry}_3 \equiv 9 \pmod{10}$, so $C + \text{carry}_3 \equiv 0 \pmod{10}$.
+
+Ten-thousands column: $A + B + \text{carry}_4 = D$: $A + 9 + \text{carry}_4 = D$ or $D + 10$ if there's a leading carry producing $D$. Since $D$ is a single digit and the sum is a 5-digit number $DBDDD$, the carry out of ten-thousands must give $D$ as the leading digit.
+
+Let me work more carefully with $B = 9$. We have $D = A - 1$ (from units column, since $A + 9 - 10 = A - 1$, requiring $A \geq 1$).
+
+Thousands column: $B + C + \text{carry}_3 \equiv 0 \pmod{10}$ (since the result digit is $B = 9$ ... wait, thousands digit of result is $B = 9$). So $9 + C + \text{carry}_3 \equiv 9 \pmod{10}$, giving $C + \text{carry}_3 \equiv 0 \pmod{10}$. So either $C = 0, \text{carry}_3 = 0$ or $C = 9, \text{carry}_3 = 1$ (but $B = 9$ already, so $C \neq 9$). Thus $C = 0$ and carry$_3 = 0$.
+
+Hundreds column: $B + C + \text{carry}_2 \equiv D \pmod{10}$: $9 + 0 + \text{carry}_2 \equiv A - 1 \pmod{10}$: $9 + \text{carry}_2 \equiv A - 1 \pmod{10}$.
+
+- If carry$_2 = 0$: $9 \equiv A - 1 \pmod{10}$, so $A \equiv 10 \equiv 0 \pmod{10}$, meaning $A = 0$. But $A \geq 0$; however $A = 0$ means $D = -1$, invalid.
+- If carry$_2 = 1$: $10 \equiv A - 1 \pmod{10}$, so $A - 1 \equiv 0 \pmod{10}$, meaning $A = 1$ or $A = 11$ (invalid). So $A = 1$, $D = 0$, carry out of hundreds = 1.
+
+This gives a unique solution $A = 1, B = 9, C = 0, D = 0$ — but $C = D = 0$, so they are not distinct. So this approach shows $B = 9$ with the constraints is also very restrictive.
+
+Let me restart more systematically. Let carry out of column $k$ be $c_k$ where $k = 1$ is units.
+
+Units: $B + A = D + 10c_1$
+Tens: $B + D + c_1 = D + 10c_2 \Rightarrow B + c_1 = 10c_2$
+Hundreds: $C + A + c_2 = D + 10c_3$
+Thousands: $B + C + c_3 = B + 10c_4 \Rightarrow C + c_3 = 10c_4$
+Ten-thousands: $A + B + c_4 = D + 10c_5$ (result digit $D$ in position 5, so $c_5 = 1$)
+
+From tens: $B + c_1 = 10c_2$. Since $B \leq 9$ and $c_1 \in \{0,1\}$, we need $B + c_1 = 10$, so $c_2 = 1$. This means $B = 10 - c_1$: either $B = 9, c_1 = 1$ or $B = 10, c_1 = 0$ (invalid). So $B = 9$ and $c_1 = 1$, meaning $A + B \geq 10$, i.e., $A + 9 \geq 10$, i.e., $A \geq 1$. And $D = A + 9 - 10 = A - 1$.
+
+From thousands: $C + c_3 = 10c_4$. Since $C \leq 9$: either $C = 0, c_3 = 0, c_4 = 0$ or $C + c_3 = 10, c_4 = 1$.
+
+From ten-thousands: $A + 9 + c_4 = D + 10 \cdot 1 = (A-1) + 10$. So $A + 9 + c_4 = A + 9$, giving $c_4 = 0$.
+
+So from thousands: $C + c_3 = 0$, meaning $C = 0$ and $c_3 = 0$.
+
+From hundreds: $C + A + c_2 = D + 10c_3$: $0 + A + 1 = (A - 1) + 0$: $A + 1 = A - 1$. This is impossible!
+
+So there is no valid solution? That can't be right. Let me recheck the problem layout.
+
+Looking again: $ABBCB + BCADA = DBDDD$.
+
+Units: $B + A$; Tens: $B + D$; Hundreds: $C + A$; Thousands: $B + C$; Ten-thousands: $A + B$.
+
+Wait — I need to re-read column by column from right to left. The numbers are:
+- $ABBCB$: digits (left to right) $A, B, B, C, B$ — so units digit is $B$, tens is $C$, hundreds is $B$, thousands is $B$, ten-thousands is $A$.
+- $BCADA$: digits $B, C, A, D, A$ — so units is $A$, tens is $D$, hundreds is $A$, thousands is $C$, ten-thousands is $B$.
+- Sum $DBDDD$: units is $D$, tens is $D$, hundreds is $D$, thousands is $B$, ten-thousands is $D$.
+
+So columns (right to left):
+- Units: $B + A = D + 10c_1$
+- Tens: $C + D + c_1 = D + 10c_2 \Rightarrow C + c_1 = 10c_2$
+- Hundreds: $B + A + c_2 = D + 10c_3$
+- Thousands: $B + C + c_3 = B + 10c_4 \Rightarrow C + c_3 = 10c_4$
+- Ten-thousands: $A + B + c_4 = D + 10c_5$ (and $c_5 = 1$ since result is 5-digit starting with $D$, meaning $c_5 = 0$ if $D$ comes from this column normally, but $D$ is the leading digit so no further carry — meaning $A + B + c_4$ gives leading digit $D$ and $c_5 = 0$... but $6 + 9 = 15$ could give $c_5 = 1$. Actually since both numbers are 5-digit, the sum could be 5-digit with leading digit $D$, so $c_5 = 0$.)
+
+From tens: $C + c_1 = 10c_2$. Since $C \leq 9$ and $c_1 \leq 1$: either $C + c_1 = 0$ (both zero, giving $C = 0, c_1 = 0$) or $C + c_1 = 10$ giving $c_2 = 1$.
+
+**Sub-case A: $C = 0, c_1 = 0, c_2 = 0$.**
+
+From units ($c_1 = 0$): $B + A = D$ (no carry, so $B + A < 10$).
+
+From hundreds: $B + A + 0 = D + 10c_3$, so $D = D + 10c_3$, giving $c_3 = 0$.
+
+From thousands ($c_3 = 0$): $C + c_3 = 0 = 10c_4$, so $c_4 = 0$.
+
+From ten-thousands: $A + B + 0 = D$. This matches units column, consistent. So $D = A + B < 10$.
+
+Constraint: $A, B, C = 0, D$ distinct. $D = A + B$. We need $A \geq 1$ (leading digit), $B \geq 0$, $D \neq A$, $D \neq B$, $D \neq 0$, $A \neq B$, $A \neq 0$, $B \neq 0$ (since $B = 0 = C$ would violate distinctness). So $B \geq 1$ as well.
+
+$D = A + B$, $D \neq 0$ (already satisfied since $A \geq 1, B \geq 1$). $D \neq A$: $A + B \neq A \Rightarrow B \neq 0$ ✓. $D \neq B$: $A + B \neq B \Rightarrow A \neq 0$ ✓. $D \neq C = 0$: $A + B \neq 0$ ✓. Also $A \neq B$ (all distinct, and $A \neq C = 0$ so $A \geq 1$, $B \neq C = 0$ so $B \geq 1$). We need $D = A + B \leq 9$.
+
+Count pairs $(A, B)$ with $A \geq 1$, $B \geq 1$, $A \neq B$, $A + B \leq 9$, $A + B \neq A$, $A + B \neq B$ (both already guaranteed).
+
+The possible values of $D = A + B$ range from $1+2 = 3$ (minimum with $A \neq B$, both $\geq 1$) up to $9$. But $D = 2$: needs $A = B = 1$, but $A = B$, invalid. $D = 3$: $(A,B) \in \{(1,2),(2,1)\}$, both valid. $D = 4$: $(1,3),(3,1),(2,2)$ — only first two valid. Etc.
+
+Values of $D$ possible in this sub-case: $D \in \{3, 4, 5, 6, 7, 8, 9\}$ — that's 7 values.
+
+**Sub-case B: $C + c_1 = 10, c_2 = 1$.**
+
+From units: $B + A = D + 10c_1$. From tens: $C = 10 - c_1$.
+
+If $c_1 = 1$: $C = 9$, and $B + A = D + 10$, so $D = B + A - 10$ (requiring $B + A \geq 10$).
+
+From hundreds: $B + A + 1 = D + 10c_3 = (B + A - 10) + 10c_3$, so $B + A + 1 = B + A - 10 + 10c_3$, giving $10c_3 = 11$. Impossible.
+
+If $c_1 = 0$: $C = 10$, impossible.
+
+So Sub-case B yields nothing.
+
+Therefore the only possible values of $D$ are $D \in \{3, 4, 5, 6, 7, 8, 9\}$: **7 values**.
+
+Answer: **C**.
+</Solution>

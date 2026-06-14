@@ -1,0 +1,80 @@
+---
+year: 2013
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: B
+choices: ["$18$", "$21$", "$24$", "$27$", "$30$"]
+---
+
+<Problem>
+In triangle $ABC$, $AB = 13$, $BC = 14$, and $CA = 15$. Distinct points $D$, $E$, and $F$ lie on segments $\overline{BC}$, $\overline{CA}$, and $\overline{DE}$, respectively, such that $\overline{AD} \perp \overline{BC}$, $\overline{DE} \perp \overline{AC}$, and $\overline{AF} \perp \overline{BF}$. The length of segment $\overline{DF}$ can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. What is $m + n$?
+</Problem>
+
+<Solution>
+**Set up coordinates.** Place $B = (0,0)$, $C = (14,0)$.
+
+Find $A$: $AB = 13$, $AC = 15$. So $A = (x,y)$ with $x^2+y^2 = 169$ and $(x-14)^2+y^2=225$.
+
+Expanding: $x^2 - 28x + 196 + y^2 = 225 \implies 169 - 28x + 196 = 225 \implies 28x = 140 \implies x=5$.
+
+$y^2 = 169 - 25 = 144 \implies y = 12$. So $A = (5, 12)$.
+
+**Find $D$ (foot of altitude from $A$ to $BC$).** Since $BC$ is along the $x$-axis, $D = (5, 0)$.
+
+**Find $E$ (foot of altitude from $D$ to $CA$).** 
+
+Line $CA$: from $C=(14,0)$ to $A=(5,12)$. Direction vector: $(-9,12)$. Slope: $12/(-9) = -4/3$. Equation: $y - 0 = -\frac{4}{3}(x-14)$, i.e., $y = -\frac{4}{3}x + \frac{56}{3}$, or $4x + 3y = 56$.
+
+$E$ is the foot of perpendicular from $D=(5,0)$ to line $4x+3y=56$.
+
+Distance formula gives foot: 
+$$E = D + \frac{56 - 4(5) - 3(0)}{4^2+3^2} \cdot (4,3) = (5,0) + \frac{36}{25}(4,3) = \left(5 + \frac{144}{25},\; \frac{108}{25}\right) = \left(\frac{269}{25},\; \frac{108}{25}\right).$$
+
+**Find $F$ on segment $DE$ such that $AF \perp BF$.**
+
+$F$ lies on $DE$ and $\angle AFB = 90°$. By Thales' theorem, $F$ lies on the circle with diameter $AB$.
+
+Circle with diameter $AB$: center is midpoint of $AB = \left(\frac{5}{2}, 6\right)$, radius $= \frac{13}{2}$.
+
+Equation: $\left(x - \frac{5}{2}\right)^2 + (y-6)^2 = \frac{169}{4}$.
+
+**Parametrize segment $DE$:** from $D=(5,0)$ to $E=\left(\frac{269}{25}, \frac{108}{25}\right)$.
+
+Direction: $E - D = \left(\frac{144}{25}, \frac{108}{25}\right) = \frac{36}{25}(4,3)$. Unit direction: $(\frac{4}{5}, \frac{3}{5})$.
+
+Point on line $DE$: $(5 + \frac{4}{5}t,\; \frac{3}{5}t)$ for $t \ge 0$.
+
+Substitute into circle equation:
+$$\left(5 + \frac{4t}{5} - \frac{5}{2}\right)^2 + \left(\frac{3t}{5} - 6\right)^2 = \frac{169}{4}.$$
+
+$$\left(\frac{5}{2} + \frac{4t}{5}\right)^2 + \left(\frac{3t}{5} - 6\right)^2 = \frac{169}{4}.$$
+
+Expand:
+$$\frac{25}{4} + 2 \cdot \frac{5}{2} \cdot \frac{4t}{5} + \frac{16t^2}{25} + \frac{9t^2}{25} - \frac{36t}{5} + 36 = \frac{169}{4}.$$
+
+$$\frac{25}{4} + 4t + t^2 - \frac{36t}{5} + 36 = \frac{169}{4}.$$
+
+$$t^2 + t\left(4 - \frac{36}{5}\right) + \frac{25}{4} + 36 - \frac{169}{4} = 0.$$
+
+$$t^2 + t \cdot \frac{20-36}{5} + \frac{25 - 169}{4} + 36 = 0.$$
+
+$$t^2 - \frac{16t}{5} - \frac{144}{4} + 36 = 0.$$
+
+$$t^2 - \frac{16t}{5} - 36 + 36 = 0.$$
+
+$$t^2 - \frac{16t}{5} = 0.$$
+
+$$t\left(t - \frac{16}{5}\right) = 0.$$
+
+So $t = 0$ (point $D$ itself, which gives $A$, $D$, $B$ — but $AD \perp BC$ not $AD \perp BD$... actually $t=0$ is $D$, and checking: $\angle ADB = 90°$ since $D$ is the foot of the altitude, so $D$ is on the circle with diameter $AB$!) and $t = \frac{16}{5}$.
+
+Since $F$ is distinct from $D$, $t = \frac{16}{5}$.
+
+$DF = t = \dfrac{16}{5}$.
+
+So $m = 16$, $n = 5$, $\gcd(16,5) = 1$, and $m+n = 21$.
+
+Answer: **B**.
+</Solution>

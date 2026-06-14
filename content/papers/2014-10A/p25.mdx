@@ -1,0 +1,42 @@
+---
+year: 2014
+paper: "10A"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: B
+choices: ["$278$", "$279$", "$280$", "$281$", "$282$"]
+---
+
+<Problem>
+The number $5^{867}$ is between $2^{2013}$ and $2^{2014}$. How many pairs of integers $(m,n)$ are there such that $1\leq m\leq 2012$ and
+$$5^n < 2^m < 2^{m+2} < 5^{n+1}?$$
+</Problem>
+
+<Solution>
+The condition $5^n < 2^m < 2^{m+2} < 5^{n+1}$ means that both $2^m$ and $2^{m+2}$ lie strictly between consecutive powers of 5.
+
+Since $2^{m+2} = 4 \cdot 2^m$, we need $2^m$ and $4 \cdot 2^m$ to both lie in the interval $(5^n, 5^{n+1})$.
+
+Taking $\log_5$: we need $n < m\log_5 2 < (m+2)\log_5 2 < n+1$.
+
+Let $\alpha = \log_5 2$. We know $5^{867} \approx 2^{2013}$ (given), so $\alpha \approx \dfrac{2013}{867}$.
+
+The condition becomes: $\lfloor m\alpha \rfloor = \lfloor (m+2)\alpha \rfloor$ — i.e., $m\alpha$ and $(m+2)\alpha$ have the same integer part.
+
+More precisely: $n < m\alpha$ and $(m+2)\alpha < n+1$, so the fractional part $\{m\alpha\}$ satisfies $\{m\alpha\} + 2\alpha < 1$, i.e., $\{m\alpha\} < 1 - 2\alpha$.
+
+Since $\alpha = \log_5 2 \approx 2013/2867$... wait: from $5^{867} \approx 2^{2013}$, we get $867\log 5 \approx 2013\log 2$, so $\log_5 2 = \dfrac{1}{\log_2 5} = \dfrac{\log 2}{\log 5} \approx \dfrac{867}{2013}$ — no: $5^{867} \approx 2^{2013}$ means $867\log_2 5 \approx 2013$, so $\log_2 5 \approx 2013/867$ and $\alpha = \log_5 2 = 1/\log_2 5 \approx 867/2013$.
+
+So $2\alpha \approx 1734/2013$. Then $1 - 2\alpha \approx (2013-1734)/2013 = 279/2013$.
+
+The number of valid $m \in [1,2012]$ is the number of integers $m$ where $\{m\alpha\} < 1 - 2\alpha$.
+
+By the three-distance theorem, the fractional parts $\{m\alpha\}$ for $m=1,\ldots,2013$ are equidistributed. The fraction of $m$ values satisfying $\{m\alpha\} < 1-2\alpha$ is approximately $(1-2\alpha) \times 2012$.
+
+$(1-2\alpha) \times 2013 = 2013 - 2\times 867 = 2013 - 1734 = 279$.
+
+So among $m = 1, \ldots, 2013$, exactly 279 values satisfy the condition (by the three-distance theorem applied to the Beatty-sequence-like structure). Since $m=2013$ would give $(m+2)\alpha \approx 2013 \cdot \alpha + 2\alpha$, and we restrict $m \le 2012$, we get exactly $\boxed{279}$.
+
+Answer: **B**.
+</Solution>

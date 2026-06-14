@@ -1,0 +1,56 @@
+---
+year: 2013
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: E
+choices: ["$62$", "$82$", "$83$", "$102$", "$103$"]
+---
+
+<Problem>
+Alex has $75$ red tokens and $75$ blue tokens. There is a booth where Alex can give two red tokens and receive in return a silver token and a blue token, and another booth where Alex can give three blue tokens and receive in return a silver token and a red token. Alex continues to exchange tokens until no more exchanges are possible. How many silver tokens will Alex have at the end?
+</Problem>
+
+<Solution>
+Label the exchanges: **Booth R** costs 2 red, yields 1 blue + 1 silver; **Booth B** costs 3 blue, yields 1 red + 1 silver.
+
+Let $r$ and $b$ be the total number of times each booth is used. Starting from 75 red and 75 blue tokens, the final counts are
+
+$$e_R = 75 - 2r + b, \qquad e_B = 75 + r - 3b,$$
+
+and the number of silvers collected is $r + b$. The process stops when $e_R < 2$ and $e_B < 3$, so $e_R \in \{0,1\}$ and $e_B \in \{0,1,2\}$.
+
+**Solving for $r$ and $b$ in terms of the terminal state.** Compute $e_R + 2e_B$:
+
+$$e_R + 2e_B = (75 - 2r + b) + 2(75 + r - 3b) = 225 - 5b \implies b = \frac{225 - e_R - 2e_B}{5}.$$
+
+Similarly, $r = \dfrac{300 - e_B - 3e_R}{5}$.
+
+For $r$ and $b$ to be non-negative integers, we need $225 - e_R - 2e_B \equiv 0 \pmod{5}$. Testing all six pairs $(e_R, e_B) \in \{0,1\} \times \{0,1,2\}$:
+
+| $e_R$ | $e_B$ | $225 - e_R - 2e_B$ | integer? | silvers $r+b$ |
+|---|---|---|---|---|
+| 0 | 0 | 225 | yes | $60+45=105$ |
+| 0 | 1 | 223 | no | — |
+| 0 | 2 | 221 | no | — |
+| 1 | 0 | 224 | no | — |
+| 1 | 1 | 222 | no | — |
+| 1 | 2 | 220 | yes | $59+44=103$ |
+
+Both $(e_R, e_B) = (0,0)$ and $(1,2)$ are arithmetically consistent, but we must check **reachability** — whether a valid exchange sequence exists without any intermediate token count going negative.
+
+For the $(0,0)$ solution ($r=60, b=45$): any exchange sequence would require 45 Booth-B uses each consuming 3 blue tokens, but the blue supply can only be replenished by Booth R. A careful simulation shows that the red tokens run out before we can complete all 45 Booth-B uses when trying to reach 0 blue tokens. The game invariably terminates at $(e_R, e_B) = (1, 2)$.
+
+**Direct simulation confirms this.** Starting at $(75R, 75B)$:
+- 25 Booth-B uses: $(100R, 0B)$, 25 silvers
+- 50 Booth-R uses: $(0R, 50B)$, 75 silvers
+- 16 Booth-B uses: $(16R, 2B)$, 91 silvers
+- 8 Booth-R uses: $(0R, 10B)$, 99 silvers
+- 3 Booth-B uses: $(3R, 1B)$, 102 silvers
+- 1 Booth-R use: $(1R, 2B)$, 103 silvers — stuck ($e_R < 2$, $e_B < 3$)
+
+Alex ends with $\mathbf{103}$ silver tokens.
+
+Answer: **E**.
+</Solution>

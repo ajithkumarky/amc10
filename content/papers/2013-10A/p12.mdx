@@ -1,0 +1,38 @@
+---
+year: 2013
+paper: "10A"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 3
+answer: C
+choices: ["48", "52", "56", "60", "72"]
+---
+
+<Problem>
+In $\triangle ABC$, $AB = AC = 28$ and $BC = 20$. Points $D$, $E$, and $F$ are on sides $\overline{AB}$, $\overline{BC}$, and $\overline{AC}$, respectively, such that $\overline{DE}$ and $\overline{EF}$ are parallel to $\overline{AC}$ and $\overline{AB}$, respectively. What is the perimeter of parallelogram $ADEF$?
+</Problem>
+
+<Solution>
+Since $DE \parallel AC$ and $EF \parallel AB$, the quadrilateral $ADEF$ is indeed a parallelogram.
+
+**Key insight:** $DE \parallel AC$ means $\triangle BDE \sim \triangle BAC$. Let $BD = k \cdot AB$ for some ratio $k$, so $DE = k \cdot AC = 28k$.
+
+Similarly, $EF \parallel AB$ means $\triangle CEF \sim \triangle CAB$. If $CF = m \cdot AC$, then $EF = m \cdot AB = 28m$.
+
+In parallelogram $ADEF$:
+- $AD = AB - BD = 28 - 28k = 28(1-k)$ and $AD \parallel EF$ so $EF = 28(1-k)$.
+- $AF = AC - CF = 28 - 28m = 28(1-m)$ and $AF \parallel DE$ so $DE = 28(1-m)$.
+
+Also $DE = 28k$ from the similarity, so $28k = 28(1-m)$, giving $k + m = 1$.
+
+The perimeter of $ADEF$ is:
+$$AD + DE + EF + FA = 28(1-k) + 28k + 28(1-k) + 28(1-m).$$
+
+Wait — in a parallelogram, opposite sides are equal: $AD = EF$ and $DE = AF$.
+
+So perimeter $= 2 \cdot AD + 2 \cdot DE = 2 \cdot 28(1-k) + 2 \cdot 28k = 2 \cdot 28 = 56$.
+
+The perimeter equals $2 \cdot AB = 2 \cdot 28 = 56$, regardless of where $E$ lies on $BC$!
+
+Answer: **C**.
+</Solution>

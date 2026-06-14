@@ -1,0 +1,40 @@
+---
+year: 2013
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 1
+answer: E
+choices: ["4", "5", "6", "7", "8"]
+---
+
+<Problem>
+Square $ABCD$ has side length $10$. Point $E$ is on $\overline{BC}$, and the area of $\triangle ABE$ is $40$. What is $BE$?
+
+Square $ABCD$ with $A$ at lower-left, $B$ at upper-left, $C$ at upper-right, $D$ at lower-right. Point $E$ is on $\overline{BC}$ between $B$ and $C$.
+
+<svg viewBox="0 0 110 110" width="220" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#00e5ff" strokeWidth="1.5">
+  <polygon points="10,100 10,10 100,10 100,100" stroke="#00e5ff" fill="none"/>
+  <line x1="10" y1="100" x2="58" y2="10" stroke="#00e5ff" strokeWidth="1.5"/>
+  <circle cx="10" cy="100" r="2" fill="#00e5ff" stroke="none"/>
+  <circle cx="10" cy="10" r="2" fill="#00e5ff" stroke="none"/>
+  <circle cx="100" cy="10" r="2" fill="#00e5ff" stroke="none"/>
+  <circle cx="100" cy="100" r="2" fill="#00e5ff" stroke="none"/>
+  <circle cx="58" cy="10" r="2" fill="#00e5ff" stroke="none"/>
+  <text x="2" y="106" fontSize="11" fill="#00e5ff" stroke="none">A</text>
+  <text x="2" y="10" fontSize="11" fill="#00e5ff" stroke="none">B</text>
+  <text x="102" y="10" fontSize="11" fill="#00e5ff" stroke="none">C</text>
+  <text x="102" y="106" fontSize="11" fill="#00e5ff" stroke="none">D</text>
+  <text x="56" y="8" fontSize="11" fill="#00e5ff" stroke="none">E</text>
+</svg>
+</Problem>
+
+<Solution>
+Triangle $ABE$ has base $AB = 10$ (one side of the square) and height $BE$ (the horizontal distance from $B$ to $E$ along $\overline{BC}$).
+
+Area $= \dfrac{1}{2} \cdot AB \cdot BE = \dfrac{1}{2} \cdot 10 \cdot BE = 5 \cdot BE$.
+
+Setting this equal to $40$: $5 \cdot BE = 40$, so $BE = 8$.
+
+Answer: **E**.
+</Solution>

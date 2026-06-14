@@ -1,0 +1,37 @@
+---
+year: 2013
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: B
+choices: ["52", "60", "66", "68", "70"]
+---
+
+<Problem>
+How many three-digit numbers are not divisible by $5$, have digits that sum to less than $20$, and have the first digit equal to the third digit?
+</Problem>
+
+<Solution>
+A three-digit number with first digit equal to third digit has the form $\overline{aba}$, where $a \in \{1,\ldots,9\}$ (can't be 0 since it's the leading digit) and $b \in \{0,\ldots,9\}$.
+
+**Not divisible by 5:** The last digit $a \neq 0$ and $a \neq 5$. Since $a \geq 1$, we need $a \neq 5$, so $a \in \{1,2,3,4,6,7,8,9\}$ — that's 8 choices.
+
+**Digit sum less than 20:** The digit sum is $a + b + a = 2a + b < 20$, so $b < 20 - 2a$.
+
+For each valid $a$, we count $b \in \{0,1,\ldots,9\}$ with $b < 20 - 2a$:
+
+- $a = 1$: $b < 18$, all 10 values $b \in \{0,...,9\}$ work. Count: 10.
+- $a = 2$: $b < 16$, all 10 values work. Count: 10.
+- $a = 3$: $b < 14$, all 10 values work. Count: 10.
+- $a = 4$: $b < 12$, all 10 values work. Count: 10.
+- $a = 5$: excluded (divisible by 5).
+- $a = 6$: $b < 8$, so $b \in \{0,...,7\}$. Count: 8.
+- $a = 7$: $b < 6$, so $b \in \{0,...,5\}$. Count: 6.
+- $a = 8$: $b < 4$, so $b \in \{0,1,2,3\}$. Count: 4.
+- $a = 9$: $b < 2$, so $b \in \{0,1\}$. Count: 2.
+
+Total $= 10 + 10 + 10 + 10 + 8 + 6 + 4 + 2 = 60$.
+
+Answer: **B**.
+</Solution>

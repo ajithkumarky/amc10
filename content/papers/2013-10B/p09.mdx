@@ -1,0 +1,31 @@
+---
+year: 2013
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: D
+choices: ["$100$", "$137$", "$156$", "$160$", "$165$"]
+---
+
+<Problem>
+Three positive integers are each greater than $1$, have a product of $27000$, and are pairwise relatively prime. What is their sum?
+</Problem>
+
+<Solution>
+First factor $27000$: 
+$$27000 = 27 \times 1000 = 3^3 \times 10^3 = 3^3 \times 2^3 \times 5^3.$$
+
+Since the three numbers are pairwise relatively prime (no two share a common factor), each prime must go entirely to one number. The primes are $2$, $3$, and $5$.
+
+The only way to split $2^3 \cdot 3^3 \cdot 5^3$ into three pairwise coprime factors all greater than $1$ is to give all of one prime's power to each number:
+- First number: $2^3 = 8$
+- Second number: $3^3 = 27$
+- Third number: $5^3 = 125$
+
+Check: $8 \times 27 \times 125 = 27000$. Check. Each pair shares no common prime factor. Check.
+
+Sum: $8 + 27 + 125 = 160$.
+
+Answer: **D**.
+</Solution>

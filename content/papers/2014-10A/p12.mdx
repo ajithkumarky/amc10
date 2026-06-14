@@ -1,0 +1,31 @@
+---
+year: 2014
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: C
+choices: ['$27\sqrt{3}-9\pi$', '$27\sqrt{3}-6\pi$', '$54\sqrt{3}-18\pi$', '$54\sqrt{3}-12\pi$', '$108\sqrt{3}-9\pi$']
+---
+
+<Problem>
+A regular hexagon has side length 6. Congruent arcs with radius 3 are drawn with the center at each of the vertices, creating circular sectors inside the hexagon. The region inside the hexagon but outside the sectors is shaded. What is the area of the shaded region?
+
+The hexagon has a circular arc of radius 3 centered at each vertex; the arc sweeps the interior angle at that vertex.
+</Problem>
+
+<Solution>
+**Area of the hexagon:** A regular hexagon with side length $s$ has area $\dfrac{3\sqrt{3}}{2}s^2$. With $s = 6$:
+$$\text{Area}_{\text{hex}} = \frac{3\sqrt{3}}{2} \cdot 36 = 54\sqrt{3}.$$
+
+**Area of the sectors:** Each interior angle of a regular hexagon is $120°$. Each sector has radius 3 and central angle $120° = \dfrac{2\pi}{3}$ radians. Area of one sector:
+$$\frac{1}{2}r^2\theta = \frac{1}{2}(3)^2 \cdot \frac{2\pi}{3} = \frac{9\pi}{3} = 3\pi.$$
+
+There are 6 vertices, so total sector area:
+$$6 \times 3\pi = 18\pi.$$
+
+**Shaded area:**
+$$54\sqrt{3} - 18\pi.$$
+
+Answer: **C**.
+</Solution>

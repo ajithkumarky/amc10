@@ -1,0 +1,37 @@
+---
+year: 2014
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: B
+choices: ['$\dfrac{1}{36}$', '$\dfrac{7}{72}$', '$\dfrac{1}{9}$', '$\dfrac{5}{36}$', '$\dfrac{1}{6}$']
+---
+
+<Problem>
+Four fair six-sided dice are rolled. What is the probability that at least three of the four dice show the same value?
+</Problem>
+
+<Solution>
+We count two cases: exactly three dice match, or all four dice match.
+
+**Case 1: All four dice show the same value.**
+
+Choose the value: 6 ways. All four dice show it: $\frac{6}{6^4} = \frac{6}{1296}$.
+
+**Case 2: Exactly three dice show the same value (and the fourth is different).**
+
+Choose which value appears three times: 6 ways.
+Choose which 3 of the 4 dice show that value: $\binom{4}{3} = 4$ ways.
+The remaining die shows a different value: $5$ choices.
+
+Count: $6 \times 4 \times 5 = 120$.
+
+Total favorable outcomes: $6 + 120 = 126$.
+
+Total outcomes: $6^4 = 1296$.
+
+Probability: $\dfrac{126}{1296} = \dfrac{7}{72}$.
+
+Answer: **B**.
+</Solution>

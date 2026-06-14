@@ -1,0 +1,27 @@
+---
+year: 2013
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: E
+choices: ["$2$", "$3$", "$5$", "$6$", "$8$"]
+---
+
+<Problem>
+Jo and Blair take turns counting from $1$ to one more than the last number said by the other person. Jo starts by saying "$1$", so Blair follows by saying "$1, 2$". Jo then says "$1, 2, 3$", and so on. What is the $53$rd number said?
+</Problem>
+
+<Solution>
+Each round, the speaker counts from $1$ to one more than the previous round's ending number. Round $1$ (Jo): says $1$ number ($1$). Round $2$ (Blair): says $2$ numbers ($1,2$). Round $3$ (Jo): says $3$ numbers ($1,2,3$). Round $k$: says $k$ numbers.
+
+The total numbers said after $k$ complete rounds is $1 + 2 + 3 + \cdots + k = \dfrac{k(k+1)}{2}$.
+
+Find which round contains the 53rd number:
+- After round $9$: $\frac{9 \cdot 10}{2} = 45$ numbers said.
+- After round $10$: $\frac{10 \cdot 11}{2} = 55$ numbers said.
+
+So the 53rd number falls in round $10$. Round $10$ begins at position $46$ and counts $1, 2, 3, \ldots, 10$. The 53rd number overall is the $(53 - 45) = 8$th number in round $10$, which is $8$.
+
+Answer: **E**.
+</Solution>

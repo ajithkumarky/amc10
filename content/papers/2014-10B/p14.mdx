@@ -1,0 +1,39 @@
+---
+year: 2014
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: D
+choices: ["26", "27", "36", "37", "41"]
+---
+
+<Problem>
+Danica drove her new car on a trip for a whole number of hours, averaging $55$ miles per hour. At the beginning of the trip, $abc$ miles was displayed on the odometer, where $abc$ is a 3-digit number with $a \ge 1$ and $a + b + c \le 7$. At the end of the trip, the odometer showed $cba$ miles. What is $a^2 + b^2 + c^2$?
+</Problem>
+
+<Solution>
+The odometer went from $\overline{abc} = 100a + 10b + c$ to $\overline{cba} = 100c + 10b + a$.
+
+Distance traveled: $(100c + 10b + a) - (100a + 10b + c) = 99c - 99a = 99(c - a)$.
+
+This distance equals $55t$ for some positive integer $t$:
+$$99(c - a) = 55t.$$
+
+Since $\gcd(99, 55) = 11$: $9(c-a) = 5t$. Since $\gcd(9, 5) = 1$, we need $5 \mid (c - a)$.
+
+Since $c$ and $a$ are digits with $a \geq 1$ and $c - a$ must be positive (the odometer increased), we need $c > a$. The only multiple of 5 for $c - a$ with $1 \leq a < c \leq 9$ is $c - a = 5$.
+
+So $c - a = 5$ and $t = \frac{9 \cdot 5}{5} = 9$ hours.
+
+Now use $a + b + c \leq 7$. Since $c = a + 5$:
+$$a + b + (a + 5) \leq 7 \implies 2a + b \leq 2.$$
+
+With $a \geq 1$: $2(1) + b \leq 2 \implies b \leq 0$, so $b = 0$ and $a = 1$, giving $c = 6$.
+
+Check: start odometer $= 106$, end $= 601$, distance $= 495 = 55 \times 9$ ✓. And $1 + 0 + 6 = 7 \leq 7$ ✓.
+
+Therefore $a^2 + b^2 + c^2 = 1 + 0 + 36 = 37$.
+
+Answer: **D**.
+</Solution>

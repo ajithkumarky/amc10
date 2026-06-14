@@ -1,0 +1,33 @@
+---
+year: 2014
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: C
+choices: ["$140$", "$175$", "$210$", "$245$", "$280$"]
+---
+
+<Problem>
+David drives from his home to the airport to catch a flight. He drives $35$ miles in the first hour, but realizes that he will be $1$ hour late if he continues at this speed. He increases his speed by $15$ miles per hour for the rest of the way to the airport and arrives $30$ minutes early. How many miles is the airport from his home?
+</Problem>
+
+<Solution>
+Let $d$ be the total distance in miles. After the first hour, David has driven 35 miles and has $d - 35$ miles remaining.
+
+**At 35 mph for the rest:** He'd take $\dfrac{d-35}{35}$ more hours, arriving 1 hour late.
+
+**At 50 mph for the rest:** He takes $\dfrac{d-35}{50}$ more hours, arriving 30 minutes ($\frac{1}{2}$ hour) early.
+
+The difference between the two arrival times is $1 + \frac{1}{2} = \frac{3}{2}$ hours:
+$$\frac{d-35}{35} - \frac{d-35}{50} = \frac{3}{2}.$$
+
+Factor out $(d-35)$:
+$$(d-35)\left(\frac{1}{35} - \frac{1}{50}\right) = \frac{3}{2}.$$
+
+$$\frac{1}{35} - \frac{1}{50} = \frac{10 - 7}{350} = \frac{3}{350}.$$
+
+$$(d-35) \cdot \frac{3}{350} = \frac{3}{2} \implies d - 35 = \frac{350}{2} = 175 \implies d = 210.$$
+
+Answer: **C**.
+</Solution>

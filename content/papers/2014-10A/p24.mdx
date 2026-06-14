@@ -1,0 +1,45 @@
+---
+year: 2014
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: A
+choices: ["$996{,}506$", "$996{,}507$", "$996{,}508$", "$996{,}509$", "$996{,}510$"]
+---
+
+<Problem>
+A sequence of natural numbers is constructed by listing the first $4$, then skipping one, listing the next $5$, skipping $2$, listing $6$, skipping $3$, and, on the $n$th iteration, listing $n+3$ and skipping $n$. The sequence begins $1,2,3,4,6,7,8,9,10,13,\ldots$ What is the $500{,}000$th number in the sequence?
+</Problem>
+
+<Solution>
+In iteration $n$ (starting from $n=1$), we list $n+3$ consecutive natural numbers, then skip $n$.
+
+**Numbers listed through iteration $n$:** $\sum_{k=1}^{n}(k+3) = \dfrac{n(n+1)}{2} + 3n = \dfrac{n^2+7n}{2}$.
+
+**Natural numbers consumed through iteration $n$** (listed + skipped): $\sum_{k=1}^{n}(k+3+k) = \sum_{k=1}^{n}(2k+3) = n(n+1) + 3n = n^2 + 4n$.
+
+We want to find which iteration contains the 500,000th listed number.
+
+Solve $\dfrac{n^2+7n}{2} \approx 500{,}000 \Rightarrow n^2 + 7n \approx 1{,}000{,}000 \Rightarrow n \approx 1000$.
+
+At $n=997$: $\dfrac{997^2 + 7\cdot997}{2} = \dfrac{994009 + 6979}{2} = \dfrac{1000988}{2} = 500494$. Too many.
+
+At $n=994$: $\dfrac{994^2 + 7\cdot994}{2} = \dfrac{988036+6958}{2} = \dfrac{994994}{2} = 497497$.
+
+At $n=995$: $\dfrac{995^2+7\cdot995}{2} = \dfrac{990025+6965}{2} = \dfrac{996990}{2} = 498495$.
+
+At $n=996$: $\dfrac{996^2+7\cdot996}{2} = \dfrac{992016+6972}{2} = \dfrac{998988}{2} = 499494$.
+
+At $n=997$: $499494 + (997+3) = 499494 + 1000 = 500494$.
+
+So at the end of iteration 996, we have listed $499{,}494$ numbers. Iteration 997 lists $997+3=1000$ more numbers. We need the $(500000-499494)$th $= 506$th number listed in iteration 997.
+
+**First natural number in iteration 997:** After iterations 1 through 996, the total natural numbers consumed (listed + skipped) is $n^2 + 4n = 996^2 + 4\cdot996 = 992016 + 3984 = 996000$.
+
+So iteration 997 starts at natural number $996001$.
+
+The 506th number listed in iteration 997 is $996001 + (506-1) = 996001 + 505 = 996506$.
+
+Answer: **A**.
+</Solution>

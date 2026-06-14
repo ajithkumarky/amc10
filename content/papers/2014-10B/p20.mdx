@@ -1,0 +1,31 @@
+---
+year: 2014
+paper: "10B"
+topic: algebra
+subtopic: quadratics
+difficulty: 4
+answer: C
+choices: ["8", "10", "12", "14", "16"]
+---
+
+<Problem>
+For how many integers $x$ is the number $x^4 - 51x^2 + 50$ negative?
+</Problem>
+
+<Solution>
+Let $u = x^2$ (so $u \geq 0$). We want $u^2 - 51u + 50 < 0$.
+
+Factor: $u^2 - 51u + 50 = (u - 1)(u - 50)$.
+
+This product is negative when exactly one factor is negative: $1 < u < 50$.
+
+So we need $1 < x^2 < 50$, meaning $x^2 \in \{2, 3, \ldots, 49\}$ but $x$ must be an integer, so $x^2$ must be a perfect square. Since $x^2$ is always a perfect square, we need $1 < x^2 < 50$.
+
+The perfect squares strictly between $1$ and $50$ are $4, 9, 16, 25, 36, 49$ (i.e., $x^2 = 2^2, 3^2, 4^2, 5^2, 6^2, 7^2$).
+
+Each value of $x^2$ corresponds to two integer values: $x = \pm 2, \pm 3, \pm 4, \pm 5, \pm 6, \pm 7$.
+
+That gives $6 \times 2 = 12$ integers.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,36 @@
+---
+year: 2013
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: B
+choices: ['$\frac{\sqrt{3}}{3}$', '$\frac{\sqrt{3}}{2}$', '$1$', '$\sqrt{2}$', '$2$']
+---
+
+<Problem>
+Six points are equally spaced around a circle of radius $1$. Three of these points are the vertices of a triangle that is neither equilateral nor isosceles. What is the area of this triangle?
+
+The six points divide the circle into six equal arcs of $60°$ each. Label the points $A, B, C, D, E, F$ in order. The only scalene triangle uses three non-equally-spaced points, e.g., consecutive arc-gaps of $1, 2, 3$ (summing to $6$).
+</Problem>
+
+<Solution>
+Label the six equally-spaced points $P_1, P_2, P_3, P_4, P_5, P_6$ around a unit circle. The arc gaps between any three chosen points must sum to $6$ arcs total (full circle). For the triangle to be scalene (neither equilateral nor isosceles), the three arc gaps must all differ. The only way to partition $6$ into three distinct positive integers is $1+2+3=6$.
+
+So we choose points $P_1, P_2, P_4$ (gaps of $1$, $2$, $3$ arcs).
+
+Place the circle at the origin with $P_k = (\cos(60(k-1)°), \sin(60(k-1)°))$.
+
+- $P_1 = (1, 0)$
+- $P_2 = (\cos 60°, \sin 60°) = \left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$
+- $P_4 = (\cos 180°, \sin 180°) = (-1, 0)$
+
+Using the shoelace formula for the area with vertices $(x_1,y_1), (x_2,y_2), (x_3,y_3)$:
+$$\text{Area} = \frac{1}{2}|x_1(y_2-y_3) + x_2(y_3-y_1) + x_3(y_1-y_2)|$$
+
+$$= \frac{1}{2}\left|1\!\left(\frac{\sqrt{3}}{2}-0\right) + \frac{1}{2}(0-0) + (-1)\!\left(0-\frac{\sqrt{3}}{2}\right)\right|$$
+
+$$= \frac{1}{2}\left|\frac{\sqrt{3}}{2} + 0 + \frac{\sqrt{3}}{2}\right| = \frac{1}{2} \cdot \sqrt{3} = \frac{\sqrt{3}}{2}.$$
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,49 @@
+---
+year: 2013
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: B
+choices: ["$13$", "$13.5$", "$14$", "$14.5$", "$15$"]
+---
+
+<Problem>
+In triangle $ABC$, medians $AD$ and $CE$ intersect at $P$, $PE = 1.5$, $PD = 2$, and $DE = 2.5$. What is the area of $AEDC$?
+</Problem>
+
+<Solution>
+**Key fact about medians:** The centroid $P$ divides each median in ratio $2:1$ from vertex to midpoint. So $CP = 2 \cdot PE = 3$ and $AP = 2 \cdot PD = 4$.
+
+**Check triangle $\triangle PED$:** $PE = 1.5$, $PD = 2$, $DE = 2.5$. Note $1.5^2 + 2^2 = 2.25 + 4 = 6.25 = 2.5^2$. So $\triangle PED$ is a right triangle with the right angle at $P$!
+
+**Area of $\triangle PED$:** $\dfrac{1}{2} \cdot 1.5 \cdot 2 = 1.5$.
+
+**Area relationships:** Quadrilateral $AEDC$ consists of triangles $\triangle APE$, $\triangle EPD$, and... wait, let's think carefully. $E$ is the midpoint of $AB$, $D$ is the midpoint of $BC$.
+
+The centroid divides the triangle into $6$ smaller triangles of equal area. Triangles $\triangle APE$ and $\triangle CPD$ each have area equal to $\triangle PED$ scaled by the ratio $AP/PD = 2$ and $CP/PE = 2$ respectively.
+
+Since $\triangle PED$ has legs $PE = 1.5$ and $PD = 2$ with right angle at $P$:
+- $\triangle APE$: shares leg $PE = 1.5$, and $AP = 4$, right angle at $P$, area $= \frac{1}{2}(1.5)(4) = 3$.
+- $\triangle CPD$: shares leg $PD = 2$, and $CP = 3$, right angle at $P$, area $= \frac{1}{2}(2)(3) = 3$.
+- $\triangle APC$: The remaining triangle has $AP = 4$, $CP = 3$, and right angle at $P$, area $= \frac{1}{2}(4)(3) = 6$.
+
+Wait — the right angle at $P$ between $AD$ and $CE$ holds because $\triangle PED$ is right-angled at $P$ (and $AD$ passes through $P$ along $PD$, $CE$ passes through $P$ along $PE$).
+
+Area of quadrilateral $AEDC$ = area of $\triangle AEC$ + area of $\triangle ECD$. Alternatively, $AEDC$ = $\triangle ABC$ minus $\triangle ABD$... Let me use the six small triangles.
+
+The six equal-area triangles of a triangle's centroid subdivision all have area $= \frac{1}{6}[\triangle ABC]$.
+
+Total area $[\triangle ABC] = [\triangle APE] + [\triangle EPD] + [\triangle DPB] + [\triangle BPE'] \ldots$
+
+Actually, let's directly compute. The medians $AD$ and $CE$ create $4$ triangles inside quadrilateral $AEDC$: namely $\triangle APE$, $\triangle EPD$, $\triangle DPC$, and ... no, $AEDC$ has vertices $A$, $E$, $D$, $C$, and diagonal $AC$ and $ED$ cross at ... Let me use the direct approach.
+
+Quadrilateral $AEDC$ is divided by segment $PD$ and $PE$ into triangles $\triangle APE$, $\triangle EPD$, $\triangle DPC$, and $\triangle APC$. But $P$ is inside $AEDC$.
+
+Actually $AEDC$ = $\triangle AED + \triangle ADC$ or $= \triangle AEC + \triangle EDC$. Using diagonals $AD$ and $CE$ of the quadrilateral crossing at $P$:
+
+$$[AEDC] = [\triangle APE] + [\triangle EPD] + [\triangle DPC] + [\triangle CPA]$$
+$= 3 + 1.5 + 3 + 6 = 13.5$.
+
+Answer: **B**.
+</Solution>

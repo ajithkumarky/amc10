@@ -1,0 +1,42 @@
+---
+year: 2014
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 3
+answer: C
+choices: ["$179.95", "$199.95", "$219.95", "$239.95", "$259.95"]
+---
+
+<Problem>
+A customer who intends to purchase an appliance has three coupons, only one of which may be used:
+
+Coupon 1: $10\%$ off the listed price if the listed price is at least $\textdollar 50$
+
+Coupon 2: $\textdollar 20$ off the listed price if the listed price is at least $\textdollar 100$
+
+Coupon 3: $18\%$ off the amount by which the listed price exceeds $\textdollar 100$
+
+For which of the following listed prices will coupon $1$ offer a greater price reduction than either coupon $2$ or coupon $3$?
+</Problem>
+
+<Solution>
+Let $p$ be the listed price. We want Coupon 1 better than both others.
+
+**Coupon 1 vs. Coupon 2:** $0.10p > 20 \implies p > 200$.
+
+**Coupon 1 vs. Coupon 3:** $0.10p > 0.18(p - 100) \implies 0.10p > 0.18p - 18 \implies 18 > 0.08p \implies p < 225$.
+
+So Coupon 1 beats both when $200 < p < 225$.
+
+Check the answer choices: $\textdollar 219.95$ is the only value in $(200, 225)$.
+
+Verification at $p = 219.95$:
+- Coupon 1: $0.10 \times 219.95 = \textdollar 21.995$
+- Coupon 2: $\textdollar 20$
+- Coupon 3: $0.18 \times (219.95 - 100) = 0.18 \times 119.95 \approx \textdollar 21.591$
+
+Coupon 1 gives the largest reduction.
+
+Answer: **C**.
+</Solution>

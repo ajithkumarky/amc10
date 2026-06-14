@@ -1,0 +1,37 @@
+---
+year: 2013
+paper: "10B"
+topic: algebra
+subtopic: quadratics
+difficulty: 4
+answer: D
+choices: ['$-7-4\sqrt{3}$', '$-2-\sqrt{3}$', '$-1$', '$-2+\sqrt{3}$', '$-7+4\sqrt{3}$']
+---
+
+<Problem>
+The real numbers $c, b, a$ form an arithmetic sequence with $a \ge b \ge c \ge 0$. The quadratic $ax^2 + bx + c$ has exactly one root. What is this root?
+</Problem>
+
+<Solution>
+Since $c, b, a$ form an arithmetic sequence (in that order), the common difference is constant: $b - c = a - b$, so $2b = a + c$.
+
+The quadratic $ax^2 + bx + c$ has exactly one root, meaning its discriminant is zero: $b^2 - 4ac = 0$, so $b^2 = 4ac$.
+
+From $2b = a+c$ and $b^2 = 4ac$: notice $b^2 = 4ac$ and $(a+c)^2 = 4b^2 = 16ac$, so $(a+c)^2 = 16ac$.
+
+Let $t = a/c$ (assuming $c > 0$). Then $(t+1)^2 = 16t$, giving $t^2 + 2t + 1 = 16t$, so $t^2 - 14t + 1 = 0$.
+
+$$t = \frac{14 \pm \sqrt{196-4}}{2} = \frac{14 \pm \sqrt{192}}{2} = 7 \pm 4\sqrt{3}.$$
+
+Since $a \ge c > 0$, we have $t = a/c \ge 1$. Both values $7+4\sqrt{3} \approx 13.9$ and $7-4\sqrt{3} \approx 0.07$ are positive. Since $t \ge 1$, we need $t = 7+4\sqrt{3}$.
+
+So $a = (7+4\sqrt{3})c$ and $b = \frac{a+c}{2} = \frac{(8+4\sqrt{3})c}{2} = (4+2\sqrt{3})c$.
+
+The (double) root of the quadratic is:
+$$x = \frac{-b}{2a} = \frac{-(4+2\sqrt{3})c}{2(7+4\sqrt{3})c} = \frac{-(4+2\sqrt{3})}{2(7+4\sqrt{3})} = \frac{-(2+\sqrt{3})}{7+4\sqrt{3}}.$$
+
+Rationalize by multiplying by $\dfrac{7-4\sqrt{3}}{7-4\sqrt{3}}$:
+$$= \frac{-(2+\sqrt{3})(7-4\sqrt{3})}{(7+4\sqrt{3})(7-4\sqrt{3})} = \frac{-(14-8\sqrt{3}+7\sqrt{3}-12)}{49-48} = \frac{-(2-\sqrt{3})}{1} = -2+\sqrt{3}.$$
+
+Answer: **D**.
+</Solution>

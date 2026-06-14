@@ -1,0 +1,29 @@
+---
+year: 2013
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 3
+answer: B
+choices: ['$\frac{2}{5}$', '$\frac{4}{9}$', '$\frac{1}{2}$', '$\frac{5}{9}$', '$\frac{4}{5}$']
+---
+
+<Problem>
+Let $S$ be the set of sides and diagonals of a regular pentagon. A pair of elements of $S$ are selected at random without replacement. What is the probability that the two chosen segments have the same length?
+</Problem>
+
+<Solution>
+A regular pentagon has $5$ sides and $5$ diagonals, for a total of $\lvert S \rvert = 10$ segments. All sides have the same length, and all diagonals have the same (different) length.
+
+Total ways to choose a pair from 10: $\dbinom{10}{2} = 45$.
+
+Favorable pairs (both sides or both diagonals):
+- Both sides: $\dbinom{5}{2} = 10$
+- Both diagonals: $\dbinom{5}{2} = 10$
+
+Total favorable: $10 + 10 = 20$.
+
+Probability: $\dfrac{20}{45} = \dfrac{4}{9}$.
+
+Answer: **B**.
+</Solution>

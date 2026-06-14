@@ -1,0 +1,29 @@
+---
+year: 2014
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: A
+choices: ['$\dfrac{3\sqrt{33}}{5}$', '$2\sqrt{3}$', '$\dfrac{2\sqrt{33}}{3}$', '$4$', '$3\sqrt{2}$']
+---
+
+<Problem>
+Four cubes with edge lengths $1$, $2$, $3$, and $4$ are stacked as shown, with the largest on the bottom and each cube centered on top of the one below. $X$ is the top corner of the smallest cube and $Y$ is the opposite bottom corner of the largest cube, so that $\overline{XY}$ runs down through all four cubes. What is the length of the portion of $\overline{XY}$ contained in the cube with edge length $3$?
+
+Set up coordinates with the bottom corner $Y$ of the largest cube and read from the figure that $X = (0, 10, 0)$ and $Y = (4, 0, 4)$: the stack is $1+2+3+4 = 10$ units tall, and $X$ sits diagonally offset by $4$ units in each horizontal direction from $Y$.
+</Problem>
+
+<Solution>
+**Length of the whole segment.** Using the 3-D distance formula between $X=(0,10,0)$ and $Y=(4,0,4)$,
+
+$$XY = \sqrt{(4-0)^2 + (0-10)^2 + (4-0)^2} = \sqrt{16 + 100 + 16} = \sqrt{132} = 2\sqrt{33}.$$
+
+**The slice inside the edge-$3$ cube.** As $\overline{XY}$ descends, its vertical coordinate falls steadily from $10$ down to $0$. The four cubes occupy consecutive vertical bands of heights $1, 2, 3, 4$, so the edge-$3$ cube occupies a band of height $3$ out of the total $10$.
+
+Because the segment is straight, the length of $XY$ inside any horizontal band is proportional to that band's height. The portion inside the edge-$3$ cube is therefore
+
+$$\frac{3}{10}\cdot XY = \frac{3}{10}\cdot 2\sqrt{33} = \frac{3\sqrt{33}}{5}.$$
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,25 @@
+---
+year: 2013
+paper: "10A"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 3
+answer: A
+choices: ["10", "12", "15", "18", "25"]
+---
+
+<Problem>
+A student council must select a two-person welcoming committee and a three-person planning committee from among its members. There are exactly 10 ways to select a two-person team for the welcoming committee. It is possible for students to serve on both committees. In how many different ways can a three-person planning committee be selected?
+</Problem>
+
+<Solution>
+First, find the size of the student council. We know $\binom{n}{2} = 10$.
+
+$$\frac{n(n-1)}{2} = 10 \implies n(n-1) = 20 \implies n = 5.$$
+
+So there are $5$ council members. The three-person planning committee is chosen from all $5$ members (students can serve on both committees), so:
+
+$$\binom{5}{3} = \frac{5 \cdot 4 \cdot 3}{3 \cdot 2 \cdot 1} = 10.$$
+
+Answer: **A**.
+</Solution>

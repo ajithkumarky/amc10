@@ -1,0 +1,29 @@
+---
+year: 2013
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: B
+choices: ["$1$", "$2$", "$3$", "$4$", "$5$"]
+---
+
+<Problem>
+The number $2013$ is expressed in the form
+$$2013 = \frac{a_1!\, a_2!\cdots a_m!}{b_1!\, b_2!\cdots b_n!},$$
+where $a_1 \ge a_2 \ge \cdots \ge a_m$ and $b_1 \ge b_2 \ge \cdots \ge b_n$ are positive integers and $a_1 + b_1$ is as small as possible. What is $\lvert a_1 - b_1 \rvert$?
+</Problem>
+
+<Solution>
+Factor $2013 = 3 \times 11 \times 61$.
+
+**Pinning down $a_1$.** The prime $61$ divides $2013$, so $61$ must appear somewhere in the numerator. A prime $61$ first shows up inside $61!$, so the largest numerator factorial satisfies $a_1 \ge 61$. To keep $a_1$ small, take $a_1 = 61$.
+
+**Pinning down $b_1$.** Once $61!$ sits in the numerator, it brings along every prime below $61$ as a factor — including primes that do **not** divide $2013$. Any such prime must be cancelled by a factorial in the denominator. The largest prime less than $61$ is $59$, and $59 \nmid 2013$, so the factor of $59$ from $61!$ has to be cancelled. That forces a $59!$ into the denominator, i.e. $b_1 \ge 59$; taking $b_1 = 59$ is enough (the remaining factors can be balanced with smaller factorials).
+
+Both choices minimize $a_1 + b_1$, giving
+
+$$\lvert a_1 - b_1 \rvert = \lvert 61 - 59 \rvert = 2.$$
+
+Answer: **B**.
+</Solution>

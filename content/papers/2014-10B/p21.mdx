@@ -1,0 +1,60 @@
+---
+year: 2014
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: B
+choices: ['$10\sqrt{6}$', "25", '$8\sqrt{10}$', '$18\sqrt{2}$', "26"]
+---
+
+<Problem>
+Trapezoid $ABCD$ has parallel sides $\overline{AB}$ of length $33$ and $\overline{CD}$ of length $21$. The other two sides are of lengths $10$ and $14$. The angles at $A$ and $B$ are acute. What is the length of the shorter diagonal of $ABCD$?
+</Problem>
+
+<Solution>
+Place $A = (0,0)$ and $B = (33, 0)$. The parallel sides $AB \parallel CD$ with $|CD| = 21$, so $D = (x, h)$ and $C = (x + 21, h)$ for some height $h > 0$.
+
+The legs are $AD$ and $BC$. Assign $AD = 14$ and $BC = 10$ (or swap — we'll check both).
+
+**Case 1: $AD = 14$, $BC = 10$.**
+
+$AD^2 = x^2 + h^2 = 196$ and $BC^2 = (x+21-33)^2 + h^2 = (x-12)^2+h^2 = 100$.
+
+Subtract: $x^2 - (x-12)^2 = 96 \Rightarrow 24x - 144 = 96 \Rightarrow 24x = 240 \Rightarrow x = 10$.
+
+Then $h^2 = 196 - 100 = 96 \Rightarrow h = 4\sqrt{6}$.
+
+$D = (10, 4\sqrt{6})$, $C = (31, 4\sqrt{6})$.
+
+Check angles at $A$ and $B$ are acute:
+- Angle at $A$: vector $AB = (33,0)$, vector $AD = (10, 4\sqrt{6})$. Dot product $= 330 > 0$. ✓
+- Angle at $B$: vector $BA = (-33,0)$, vector $BC = (31-33, 4\sqrt{6}) = (-2, 4\sqrt{6})$. Dot product $= 66 > 0$. ✓
+
+Diagonals:
+- $AC = \sqrt{31^2 + (4\sqrt{6})^2} = \sqrt{961 + 96} = \sqrt{1057}$.
+- $BD = \sqrt{(10-33)^2 + 96} = \sqrt{529 + 96} = \sqrt{625} = 25$.
+
+The shorter diagonal is $BD = 25$.
+
+**Case 2: $AD = 10$, $BC = 14$.** (Check if angles are acute.)
+
+$AD^2 = x^2+h^2=100$, $BC^2=(x-12)^2+h^2=196$.
+
+$(x-12)^2 - x^2 = 96 \Rightarrow -24x+144=96 \Rightarrow x=2$.
+
+$h^2 = 100-4=96 \Rightarrow h=4\sqrt{6}$.
+
+Angle at $A$: vectors $AB=(33,0)$, $AD=(2,4\sqrt{6})$. Dot product $= 66>0$. ✓
+Angle at $B$: vectors $BA=(-33,0)$, $BC=(-10,4\sqrt{6})$. Dot product $= 330>0$. ✓
+
+Diagonals:
+- $AC=\sqrt{(2+21-33)^2+(4\sqrt{6})^2}=\sqrt{(-10)^2+96}=\sqrt{196}=14$.
+
+Wait, $C=(2+21,4\sqrt{6})=(23,4\sqrt{6})$. $AC=\sqrt{23^2+96}=\sqrt{529+96}=\sqrt{625}=25$.
+$BD=\sqrt{(2-33)^2+96}=\sqrt{961+96}=\sqrt{1057}$.
+
+Both cases give shorter diagonal $= 25$.
+
+Answer: **B**.
+</Solution>

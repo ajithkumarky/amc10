@@ -1,0 +1,39 @@
+---
+year: 2014
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: E
+choices: ['$\dfrac{20\sqrt{3}}{3}$', '$10\sqrt{3}$', '$18$', '$11\sqrt{3}$', '$20$']
+---
+
+<Problem>
+In rectangle $ABCD$, $AB=20$ and $BC=10$. Let $E$ be a point on $\overline{CD}$ such that $\angle CBE=15^\circ$. What is $AE$?
+</Problem>
+
+<Solution>
+Place $B$ at the origin, $C=(10,0)$, $D=(10,20)$, $A=(0,20)$ — wait, $AB=20$ is the longer side and $BC=10$.
+
+Actually: $AB$ and $CD$ are the longer sides (length 20), $BC$ and $AD$ are the shorter sides (length 10).
+
+Place $B=(0,0)$, $C=(10,0)$, $D=(10,20)$, $A=(0,20)$.
+
+$E$ is on $\overline{CD}$, so $E = (10, e)$ for some $0 \le e \le 20$.
+
+$\angle CBE = 15°$. $\overrightarrow{BC} = (10,0)$ (pointing right). $\overrightarrow{BE} = (10, e)$.
+
+$$\tan(\angle CBE) = \frac{e}{10} = \tan 15°.$$
+
+$\tan 15° = \tan(45° - 30°) = \dfrac{1 - 1/\sqrt{3}}{1 + 1/\sqrt{3}} = \dfrac{\sqrt{3}-1}{\sqrt{3}+1} = \dfrac{(\sqrt{3}-1)^2}{2} = \dfrac{4-2\sqrt{3}}{2} = 2 - \sqrt{3}.$
+
+So $e = 10\tan 15° = 10(2-\sqrt{3}) = 20 - 10\sqrt{3}$.
+
+Thus $E = (10,\, 20-10\sqrt{3})$.
+
+$A = (0, 20)$.
+
+$$AE = \sqrt{(10-0)^2 + (20-10\sqrt{3}-20)^2} = \sqrt{100 + (10\sqrt{3})^2} = \sqrt{100 + 300} = \sqrt{400} = 20.$$
+
+Answer: **E**.
+</Solution>

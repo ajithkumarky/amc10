@@ -1,0 +1,41 @@
+---
+year: 2014
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 2
+answer: B
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+Nonzero real numbers $x$, $y$, $a$, and $b$ satisfy $x < a$ and $y < b$. How many of the following inequalities must be true?
+
+**(I)** $x + y < a + b$
+
+**(II)** $x - y < a - b$
+
+**(III)** $xy < ab$
+
+**(IV)** $\dfrac{x}{y} < \dfrac{a}{b}$
+</Problem>
+
+<Solution>
+We check each inequality by trying counterexamples (when possible).
+
+**Statement (I): $x + y < a + b$.**
+Adding $x < a$ and $y < b$ gives $x + y < a + b$. This **always holds**.
+
+**Statement (II): $x - y < a - b$.**
+This rearranges to $x - a < y - b$, i.e., $b - a < y - x$. Try $x = 1, a = 2, y = -10, b = -1$: then $x < a$ and $y < b$ hold, but $x - y = 11$ and $a - b = 3$, so $11 < 3$ is **false**. Statement II need not hold.
+
+**Statement (III): $xy < ab$.**
+Try $x = -3, a = -1, y = -3, b = -1$: $x < a$ and $y < b$ hold, but $xy = 9$ and $ab = 1$, so $9 < 1$ is **false**. Statement III need not hold.
+
+**Statement (IV): $x/y < a/b$.**
+Try $x = 1, a = 2, y = -2, b = -1$: $x < a$ and $y < b$ hold ($-2 < -1$), but $x/y = -1/2$ and $a/b = -2$, so $-1/2 < -2$ is **false**. Statement IV need not hold.
+
+Only statement (I) must always be true.
+
+Answer: **B**.
+</Solution>

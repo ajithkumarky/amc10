@@ -1,0 +1,32 @@
+---
+year: 2013
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 3
+answer: E
+choices: ["a finite set of points", "one line", "two parallel lines", "two intersecting lines", "three lines"]
+---
+
+<Problem>
+Define $a \clubsuit b = a^2b - ab^2$. Which of the following describes the set of points $(x, y)$ for which $x \clubsuit y = y \clubsuit x$?
+</Problem>
+
+<Solution>
+Compute each side:
+$$x \clubsuit y = x^2 y - xy^2 = xy(x-y)$$
+$$y \clubsuit x = y^2 x - yx^2 = xy(y-x) = -xy(x-y)$$
+
+Set them equal:
+$$xy(x-y) = -xy(x-y)$$
+$$2xy(x-y) = 0$$
+
+This product equals zero when any factor is zero:
+- $x = 0$ (the $y$-axis)
+- $y = 0$ (the $x$-axis)
+- $x - y = 0$, i.e., $y = x$ (the diagonal line)
+
+These are three distinct lines (the $x$-axis, the $y$-axis, and the line $y=x$), which all pass through the origin — so they are three intersecting lines (not parallel).
+
+Answer: **E**.
+</Solution>

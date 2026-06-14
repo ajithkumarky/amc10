@@ -1,0 +1,67 @@
+---
+year: 2014
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: C
+choices: ['$\dfrac{32}{79}$', '$\dfrac{161}{384}$', '$\dfrac{63}{146}$', '$\dfrac{7}{16}$', '$\dfrac{1}{2}$']
+---
+
+<Problem>
+In a small pond there are eleven lily pads in a row labeled $0$ through $10$. A frog is sitting on pad $1$. When the frog is on pad $N$, $0 < N < 10$, it will jump to pad $N-1$ with probability $\dfrac{N}{10}$ and to pad $N+1$ with probability $1 - \dfrac{N}{10}$. Each jump is independent of the previous jumps. If the frog reaches pad $0$ it will be eaten by a patiently waiting snake. If the frog reaches pad $10$ it will exit the pond, never to return. What is the probability that the frog will escape without being eaten by the snake?
+</Problem>
+
+<Solution>
+Let $p_N$ be the probability of the frog escaping (reaching pad 10) when starting at pad $N$.
+
+Boundary conditions: $p_0 = 0$, $p_{10} = 1$.
+
+Recurrence for $1 \leq N \leq 9$:
+$$p_N = \frac{N}{10} p_{N-1} + \left(1 - \frac{N}{10}\right) p_{N+1} = \frac{N}{10} p_{N-1} + \frac{10-N}{10} p_{N+1}.$$
+
+Rearranging: $10 p_N = N p_{N-1} + (10-N) p_{N+1}$, so:
+$$(10-N)(p_{N+1} - p_N) = N(p_N - p_{N-1}).$$
+
+Let $d_N = p_N - p_{N-1}$ for $N = 1, \ldots, 10$. Then:
+$$(10-N) d_{N+1} = N d_N \implies d_{N+1} = \frac{N}{10-N} d_N.$$
+
+So:
+$$d_2 = \frac{1}{9}d_1, \quad d_3 = \frac{2}{8}d_2 = \frac{2}{8}\cdot\frac{1}{9}d_1 = \frac{2}{72}d_1,$$
+$$d_N = d_1 \cdot \frac{1 \cdot 2 \cdots (N-1)}{9 \cdot 8 \cdots (11-N)} = d_1 \cdot \frac{(N-1)!}{\frac{9!}{(10-N)!}}.$$
+
+More precisely: $d_{N+1} = \frac{N}{10-N} d_N$, so by telescoping:
+$$d_{N+1} = d_1 \cdot \prod_{k=1}^{N} \frac{k}{10-k} = d_1 \cdot \frac{N!}{\prod_{k=1}^{N}(10-k)} = d_1 \cdot \frac{N!}{\frac{9!}{(9-N)!}} = d_1 \cdot \frac{N! (9-N)!}{9!} = d_1 \cdot \frac{1}{\binom{9}{N}}.$$
+
+So $d_{N+1} = \dfrac{d_1}{\binom{9}{N}}$.
+
+Since $p_{10} = p_0 + \sum_{N=1}^{10} d_N = 0 + d_1 + \sum_{N=2}^{10} d_N = d_1 + \sum_{N=1}^{9} d_{N+1}$:
+
+$$1 = d_1\left(1 + \sum_{N=1}^{9} \frac{1}{\binom{9}{N}}\right) = d_1 \sum_{N=0}^{9} \frac{1}{\binom{9}{N}}.$$
+
+(Note: $d_1$ corresponds to $N=0$ giving $\binom{9}{0} = 1$, and $d_{N+1}$ gives $\binom{9}{N}$ for $N=0,\ldots,9$.)
+
+Compute $S = \sum_{N=0}^{9} \frac{1}{\binom{9}{N}}$. Using symmetry $\binom{9}{N} = \binom{9}{9-N}$:
+
+$$S = 2\left(\frac{1}{\binom{9}{0}} + \frac{1}{\binom{9}{1}} + \frac{1}{\binom{9}{2}} + \frac{1}{\binom{9}{3}} + \frac{1}{\binom{9}{4}}\right) - \frac{1}{\binom{9}{9}} \cdot 0.$$
+
+Wait, the sum is over $N = 0$ to $9$ (10 terms). Since $\binom{9}{0} = \binom{9}{9}$, etc., and we have 10 terms total:
+
+$$S = \frac{1}{1} + \frac{1}{9} + \frac{1}{36} + \frac{1}{84} + \frac{1}{126} + \frac{1}{126} + \frac{1}{84} + \frac{1}{36} + \frac{1}{9} + \frac{1}{1}.$$
+
+$$= 2\left(1 + \frac{1}{9} + \frac{1}{36} + \frac{1}{84} + \frac{1}{126}\right).$$
+
+Finding LCM of $1, 9, 36, 84, 126$: $\text{lcm}(9,36)=36$, $\text{lcm}(36,84)=252$, $\text{lcm}(252,126)=252$. So LCM $= 252$.
+
+$$1 = \frac{252}{252}, \quad \frac{1}{9} = \frac{28}{252}, \quad \frac{1}{36} = \frac{7}{252}, \quad \frac{1}{84} = \frac{3}{252}, \quad \frac{1}{126} = \frac{2}{252}.$$
+
+Sum inside: $\frac{252+28+7+3+2}{252} = \frac{292}{252} = \frac{73}{63}$.
+
+$S = 2 \cdot \frac{73}{63} = \frac{146}{63}$.
+
+Therefore $d_1 = \dfrac{1}{S} = \dfrac{63}{146}$.
+
+Finally, $p_1 = p_0 + d_1 = 0 + \dfrac{63}{146} = \dfrac{63}{146}$.
+
+Answer: **C**.
+</Solution>

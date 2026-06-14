@@ -1,0 +1,29 @@
+---
+year: 2013
+paper: "10A"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 2
+answer: C
+choices: ["6", "8", "9", "12", "16"]
+---
+
+<Problem>
+A student must choose a program of four courses from a menu of courses consisting of English, Algebra, Geometry, History, Art, and Latin. This program must contain English and at least one mathematics course. In how many ways can this program be chosen?
+</Problem>
+
+<Solution>
+The courses are: English (E), Algebra (A), Geometry (G), History (H), Art (Ar), Latin (L).
+
+The math courses are Algebra and Geometry. The non-math, non-English courses are History, Art, and Latin.
+
+Since English is required, we need to choose 3 more courses from the remaining 5: Algebra, Geometry, History, Art, Latin. The constraint is that at least one of those 3 must be a math course (Algebra or Geometry).
+
+**Total ways to choose 3 from the 5:** $\binom{5}{3} = 10$.
+
+**Ways with NO math course** (all 3 from History, Art, Latin): $\binom{3}{3} = 1$.
+
+**Ways with at least one math course:** $10 - 1 = 9$.
+
+Answer: **C**.
+</Solution>

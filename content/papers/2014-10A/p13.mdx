@@ -1,0 +1,37 @@
+---
+year: 2014
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: C
+choices: ['$\dfrac{12+3\sqrt{3}}{4}$', '$\dfrac{9}{2}$', '$3+\sqrt{3}$', '$\dfrac{6+3\sqrt{3}}{2}$', '$6$']
+---
+
+<Problem>
+Equilateral triangle $ABC$ has side length $1$, and squares $ABDE$, $BCHI$, $CAFG$ lie outside the triangle. What is the area of hexagon $DEFGHI$?
+
+The three squares are attached to the three sides of equilateral triangle $ABC$, each lying outside the triangle. The hexagon $DEFGHI$ is formed by the outer vertices of the three squares.
+</Problem>
+
+<Solution>
+The hexagon $DEFGHI$ consists of the equilateral triangle $ABC$ plus the three squares plus three additional triangles formed at the corners between adjacent squares.
+
+**Area of the equilateral triangle $ABC$** (side 1):
+$$\frac{\sqrt{3}}{4}(1)^2 = \frac{\sqrt{3}}{4}.$$
+
+**Area of the three squares** (side 1 each):
+$$3 \times 1 = 3.$$
+
+**The three corner triangles:** Between each pair of adjacent squares, there is an isosceles triangle. The angle between two adjacent squares at a shared vertex of the original triangle: the interior angle of the equilateral triangle is $60°$, and each square takes up $90°$, so the remaining angle at the corner is $360° - 60° - 90° - 90° = 120°$.
+
+Each corner triangle has two sides of length 1 (sides of the adjacent squares) and the included angle $120°$. Area of one such triangle:
+$$\frac{1}{2}(1)(1)\sin(120°) = \frac{\sqrt{3}}{4}.$$
+
+Total area of three corner triangles: $3 \times \dfrac{\sqrt{3}}{4} = \dfrac{3\sqrt{3}}{4}$.
+
+**Total area of hexagon:**
+$$\frac{\sqrt{3}}{4} + 3 + \frac{3\sqrt{3}}{4} = \frac{4\sqrt{3}}{4} + 3 = \sqrt{3} + 3 = 3 + \sqrt{3}.$$
+
+Answer: **C**.
+</Solution>

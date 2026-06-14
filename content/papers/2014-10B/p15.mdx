@@ -1,0 +1,36 @@
+---
+year: 2014
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: A
+choices: ['$\dfrac{\sqrt{3}}{6}$', '$\dfrac{\sqrt{6}}{8}$', '$\dfrac{3\sqrt{3}}{16}$', '$\dfrac{1}{3}$', '$\dfrac{\sqrt{2}}{4}$']
+---
+
+<Problem>
+In rectangle $ABCD$, $DC = 2 \cdot CB$ and points $E$ and $F$ lie on $\overline{AB}$ so that $\overline{ED}$ and $\overline{FD}$ trisect $\angle ADC$ as shown. What is the ratio of the area of $\triangle DEF$ to the area of rectangle $ABCD$?
+
+The rectangle has $D$ at the lower-left, $C$ at the lower-right, $B$ at the upper-right, $A$ at the upper-left. $DC = 2 \cdot CB$, so if $CB = 1$ then $DC = 2$. Lines $DE$ and $DF$ divide the right angle $\angle ADC$ (which is $90°$) into three equal parts of $30°$ each. $E$ is closer to $A$ and $F$ is closer to $B$ on $\overline{AB}$.
+</Problem>
+
+<Solution>
+Set $CB = 1$, so $DC = 2$. Place $D = (0,0)$, $C = (2,0)$, $B = (2,1)$, $A = (0,1)$.
+
+$\angle ADC = 90°$, trisected into three $30°$ angles. $DE$ makes $60°$ with $DC$ (measured from $D$), and $DF$ makes $30°$ with $DC$.
+
+Line $DE$ at angle $60°$ from the positive $x$-axis: $y = x\tan 60° = x\sqrt{3}$. On $AB$ (line $y = 1$): $x = \frac{1}{\sqrt{3}}$. So $E = \left(\frac{1}{\sqrt{3}}, 1\right)$.
+
+Line $DF$ at angle $30°$: $y = x\tan 30° = \frac{x}{\sqrt{3}}$. On $y = 1$: $x = \sqrt{3}$. So $F = (\sqrt{3}, 1)$.
+
+Area of $\triangle DEF$ with $D = (0,0)$, $E = \left(\frac{1}{\sqrt{3}}, 1\right)$, $F = \left(\sqrt{3}, 1\right)$:
+$$\text{Area} = \frac{1}{2} |x_D(y_E - y_F) + x_E(y_F - y_D) + x_F(y_D - y_E)|$$
+$$= \frac{1}{2} \left|0 + \frac{1}{\sqrt{3}}(1 - 0) + \sqrt{3}(0 - 1)\right|$$
+$$= \frac{1}{2}\left|\frac{1}{\sqrt{3}} - \sqrt{3}\right| = \frac{1}{2} \cdot \frac{|1 - 3|}{\sqrt{3}} = \frac{1}{2} \cdot \frac{2}{\sqrt{3}} = \frac{1}{\sqrt{3}} = \frac{\sqrt{3}}{3}.$$
+
+Area of rectangle $ABCD = DC \cdot CB = 2 \cdot 1 = 2$.
+
+Ratio $= \dfrac{\frac{\sqrt{3}}{3}}{2} = \dfrac{\sqrt{3}}{6}$.
+
+Answer: **A**.
+</Solution>

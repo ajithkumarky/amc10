@@ -1,0 +1,33 @@
+---
+year: 2013
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: D
+choices: ["6", "8", "9", "12", "18"]
+---
+
+<Problem>
+Two sides of a triangle have lengths $10$ and $15$. The length of the altitude to the third side is the average of the lengths of the altitudes to the two given sides. How long is the third side?
+</Problem>
+
+<Solution>
+Let the triangle have area $K$ and sides $a$, $b = 10$, $c = 15$.
+
+The altitude to side $b$ has length $h_b = \dfrac{2K}{b} = \dfrac{2K}{10}$.
+
+The altitude to side $c$ has length $h_c = \dfrac{2K}{c} = \dfrac{2K}{15}$.
+
+The altitude to side $a$ has length $h_a = \dfrac{2K}{a}$.
+
+We're told $h_a = \dfrac{h_b + h_c}{2}$:
+
+$$\frac{2K}{a} = \frac{1}{2}\left(\frac{2K}{10} + \frac{2K}{15}\right) = K\left(\frac{1}{10} + \frac{1}{15}\right) = K \cdot \frac{3+2}{30} = \frac{K}{6}.$$
+
+Dividing both sides by $K$:
+
+$$\frac{2}{a} = \frac{1}{6} \implies a = 12.$$
+
+Answer: **D**.
+</Solution>
