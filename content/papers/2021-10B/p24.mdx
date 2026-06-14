@@ -1,0 +1,63 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: B
+choices: ['$(6,1,1)$', '$(6,2,1)$', '$(6,2,2)$', '$(6,3,1)$', '$(6,3,2)$']
+---
+
+<Problem>
+Arjun and Beth play a game in which they take turns removing one brick or two adjacent bricks from one "wall" among a set of several walls of bricks, with gaps possibly creating new walls. The walls are one brick tall. Arjun plays first, and the player who removes the last brick wins. For which starting configuration is there a strategy that guarantees a win for Beth?
+
+$\textbf{(A)}\ (6,1,1) \qquad \textbf{(B)}\ (6,2,1) \qquad \textbf{(C)}\ (6,2,2) \qquad \textbf{(D)}\ (6,3,1) \qquad \textbf{(E)}\ (6,3,2)$
+</Problem>
+
+<Solution>
+This is a combinatorial game (normal play: last to move wins). By the Sprague-Grundy theorem, a multi-wall position has Grundy value equal to the XOR (nim-sum) of the Grundy values of the individual walls. Beth wins from the starting position if and only if the Grundy value of the whole position is $0$ (a $P$-position), since Arjun moves first.
+
+**Compute Grundy values $g(n)$ for a single wall of size $n$.**
+
+From a wall of $n$ bricks, legal moves create a multiset of walls as follows:
+- Remove 1 brick at position $i$: leaves walls of sizes $i$ and $n-i-1$ (either may be zero).
+- Remove 2 adjacent bricks at positions $i, i+1$: leaves walls of sizes $i$ and $n-i-2$ (either may be zero).
+
+The Grundy value of a resulting multi-wall position is the XOR of the individual values.
+
+We compute $g(n) = \text{mex}\{$values reachable from $n\}$:
+
+| $n$ | Reachable values | $g(n)$ |
+|-----|-----------------|--------|
+| $0$ | $\emptyset$ | $0$ |
+| $1$ | $\{0\}$ | $1$ |
+| $2$ | $\{0, 1, g(0)\oplus g(0)\} = \{0,1\}$... | $2$ |
+| $3$ | (via computation) | $3$ |
+| $4$ | (via computation) | $1$ |
+| $5$ | | $4$ |
+| $6$ | | $3$ |
+
+Let us verify $g(6) = 3$:
+
+From wall $6$, removing $1$ brick at position $i$ gives walls $(i, 5-i)$:
+$(0,5): g(5)=4$; $(1,4): 1\oplus 1=0$; $(2,3): 2\oplus 3=1$; $(3,2): 3\oplus 2=1$; $(4,1): 1\oplus 1=0$; $(5,0): 4$.
+
+Removing $2$ adjacent at position $i$ gives $(i, 4-i)$:
+$(0,4): g(4)=1$; $(1,3): 1\oplus 3=2$; $(2,2): 2\oplus 2=0$; $(3,1): 3\oplus 1=2$; $(4,0): 1$.
+
+Reachable values: $\{4, 0, 1, 2\}$. $\text{mex} = 3$. So $g(6) = 3$ ✓.
+
+**Evaluate each answer choice:**
+
+| Config | Wall Grundy values | XOR | Winner |
+|--------|-------------------|-----|--------|
+| $(6,1,1)$ | $3,1,1$ | $3\oplus 1\oplus 1 = 3$ | Arjun |
+| $(6,2,1)$ | $3,2,1$ | $3\oplus 2\oplus 1 = 0$ | **Beth** |
+| $(6,2,2)$ | $3,2,2$ | $3\oplus 2\oplus 2 = 3$ | Arjun |
+| $(6,3,1)$ | $3,3,1$ | $3\oplus 3\oplus 1 = 1$ | Arjun |
+| $(6,3,2)$ | $3,3,2$ | $3\oplus 3\oplus 2 = 2$ | Arjun |
+
+Only $(6,2,1)$ gives a $P$-position (XOR $= 0$), guaranteeing Beth's win.
+
+Answer: **B**.
+</Solution>

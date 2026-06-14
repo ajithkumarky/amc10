@@ -1,0 +1,50 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: number-bases
+difficulty: 3
+answer: B
+choices: ["10", "11", "13", "15", "16"]
+---
+
+<Problem>
+Let $n$ be a positive integer and $d$ be a digit such that the value of the numeral $\underline{32d}$ in base $n$ equals $263$, and the value of the numeral $\underline{324}$ in base $n$ equals the value of the numeral $\underline{11d1}$ in base six. What is $n + d$?
+</Problem>
+
+<Solution>
+**Translating the conditions into equations.**
+
+The numeral $\underline{32d}$ in base $n$ equals $3n^2 + 2n + d$:
+$$3n^2 + 2n + d = 263. \tag{1}$$
+
+The numeral $\underline{324}$ in base $n$ equals $3n^2 + 2n + 4$.
+
+The numeral $\underline{11d1}$ in base six equals $1 \cdot 6^3 + 1 \cdot 6^2 + d \cdot 6 + 1 = 216 + 36 + 6d + 1 = 253 + 6d$:
+$$3n^2 + 2n + 4 = 253 + 6d. \tag{2}$$
+
+**Solving for $d$.**
+
+From $(1)$: $3n^2 + 2n = 263 - d$.
+
+Substitute into $(2)$:
+$$(263 - d) + 4 = 253 + 6d$$
+$$267 - d = 253 + 6d$$
+$$14 = 7d \implies d = 2.$$
+
+**Solving for $n$.**
+
+From $(1)$ with $d = 2$:
+$$3n^2 + 2n + 2 = 263 \implies 3n^2 + 2n - 261 = 0.$$
+
+Using the quadratic formula:
+$$n = \frac{-2 \pm \sqrt{4 + 4 \cdot 3 \cdot 261}}{6} = \frac{-2 \pm \sqrt{3136}}{6} = \frac{-2 \pm 56}{6}.$$
+
+The positive solution is $n = \dfrac{54}{6} = 9$.
+
+**Verification:** $\underline{322}_9 = 3(81)+2(9)+2 = 263$. ✓ $\quad$ $\underline{324}_9 = 265$ and $\underline{1121}_6 = 216+36+12+1 = 265$. ✓
+
+Therefore $n + d = 9 + 2 = 11$.
+
+Answer: **B**.
+</Solution>

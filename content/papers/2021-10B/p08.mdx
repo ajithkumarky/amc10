@@ -1,0 +1,54 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 2
+answer: A
+choices: ["367", "368", "369", "379", "380"]
+---
+
+<Problem>
+Mr. Zhou places all the integers from $1$ to $225$ into a $15$ by $15$ grid. He places $1$ in the middle square (eighth row and eighth column) and places other numbers one by one clockwise in a spiral pattern outward from the center. What is the sum of the greatest number and the least number that appear in the second row from the top?
+
+(The diagram in the original problem shows a partial $7 \times 7$ view of the spiral: starting at the center, the spiral first steps right, then proceeds clockwise — down, left, up, right, and so on, in increasing segment lengths.)
+</Problem>
+
+<Solution>
+**Setting up coordinates.** Place the center cell at $(7, 7)$ using $(x, y)$ where $x$ is the column (0–14, left to right) and $y$ is the row (0–14, bottom to top). The second row from the top is $y = 13$.
+
+**Ring structure.** The spiral fills the grid in concentric square rings. Ring $k$ ($k \ge 1$) is the perimeter of the $(2k+1) \times (2k+1)$ square centered at $(7,7)$, containing $8k$ cells. Ring $k$ holds the numbers from $(2k-1)^2 + 1$ to $(2k+1)^2$.
+
+- Ring 6: numbers 122–169 (48 cells).
+- Ring 7: numbers 170–225 (56 cells).
+
+**Tracing the spiral.** Ring $k$ starts one step to the right of its top-right corner, at position $(7+k,\; 7+k-1)$.
+
+*Ring 6* starts at $(13, 12) = 122$ and proceeds:
+- Down 11 steps: $(13, 1) = 133$.
+- Left 12 steps: $(1, 1) = 145$.
+- Up 12 steps: $(1, 13) = 157$.
+- Right 12 steps: $(13, 13) = 169$.
+
+So cells $(1,13)$ through $(13,13)$ hold values $157$ through $169$.
+
+*Ring 7* starts at $(14, 13) = 170$ and proceeds:
+- Down 13 steps: $(14, 0) = 183$.
+- Left 14 steps: $(0, 0) = 197$.
+- Up 14 steps: $(0, 13) = 210$, and one more up to $(0, 14) = 211$.
+- Right 14 steps: $(14, 14) = 225$.
+
+So cell $(14, 13) = 170$ and cell $(0, 13) = 210$.
+
+**Values in row $y = 13$ (second from top):**
+
+| $x$ | 0 | 1 | 2 | $\cdots$ | 13 | 14 |
+|---|---|---|---|---|---|---|
+| value | 210 | 157 | 158 | $\cdots$ | 169 | 170 |
+
+The **least** value in this row is $157$ (at $x=1$) and the **greatest** is $210$ (at $x=0$).
+
+$$157 + 210 = 367.$$
+
+Answer: **A**.
+</Solution>

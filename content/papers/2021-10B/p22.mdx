@@ -1,0 +1,68 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: D
+choices: ['$47$', '$94$', '$227$', '$471$', '$542$']
+---
+
+<Problem>
+Ang, Ben, and Jasmin each have $5$ blocks, colored red, blue, yellow, white, and green; and there are $5$ empty boxes. Each of the people randomly and independently of the other two people places one of their blocks into each box. The probability that at least one box receives $3$ blocks all of the same color is $\dfrac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. What is $m + n$?
+</Problem>
+
+<Solution>
+Each person independently assigns their 5 differently-colored blocks to the 5 boxes — effectively, each person chooses a random permutation of $\{R, B, Y, W, G\}$ to assign to boxes $1,\ldots,5$. The total sample space has $(5!)^3 = 120^3 = 1{,}728{,}000$ equally likely outcomes.
+
+We use inclusion-exclusion. Let $A_i$ be the event that box $i$ receives three blocks of the same color, for $i = 1, \ldots, 5$.
+
+**$|A_i|$:** Box $i$ gets the same color from all three people. There are $5$ colors to choose for box $i$. Given the color is fixed for box $i$ (each person puts that color in box $i$), each person's remaining 4 blocks fill the other 4 boxes in $4!$ ways. So:
+
+$$|A_i| = 5 \cdot (4!)^3 = 5 \cdot 24^3 = 5 \cdot 13{,}824 = 69{,}120.$$
+
+Since there are 5 boxes: $\sum|A_i| = 5 \cdot 69{,}120 = 345{,}600$.
+
+**$|A_i \cap A_j|$ for $i \neq j$:** Boxes $i$ and $j$ each receive 3 same-colored blocks. Choose the color for box $i$: 5 choices. Choose the color for box $j$: 4 remaining choices. Each person then places the fixed colors in boxes $i$ and $j$ and permutes the remaining 3 colors in the other 3 boxes ($3!$ ways each):
+
+$$|A_i \cap A_j| = 5 \cdot 4 \cdot (3!)^3 = 20 \cdot 216 = 4{,}320.$$
+
+Number of pairs: $\binom{5}{2} = 10$. Sum: $10 \cdot 4{,}320 = 43{,}200$.
+
+**$|A_i \cap A_j \cap A_k|$:** Choose colors for 3 designated boxes: $5 \cdot 4 \cdot 3$ ways; each person permutes remaining 2 blocks in 2! ways:
+
+$$|A_i \cap A_j \cap A_k| = 60 \cdot (2!)^3 = 60 \cdot 8 = 480.$$
+
+Number of triples: $\binom{5}{3} = 10$. Sum: $10 \cdot 480 = 4{,}800$.
+
+**$|A_i \cap A_j \cap A_k \cap A_l|$:** Colors for 4 boxes: $5 \cdot 4 \cdot 3 \cdot 2 = 120$ ways; 1 block left per person, forced:
+
+$$|A_i \cap A_j \cap A_k \cap A_l| = 120 \cdot (1!)^3 = 120.$$
+
+Number of quadruples: $\binom{5}{4} = 5$. Sum: $5 \cdot 120 = 600$.
+
+**$|A_1 \cap \cdots \cap A_5|$:** All 5 boxes get same-color triples; all 5 colors used once each, so only 1 way per person (the assignment is forced up to which color goes to which box; each person must use the same permutation): $5!$ total color assignments, but then all three people must use the same permutation — actually each person assigns a permutation, and all five colors must be consistently placed so box $i$ gets color $\sigma(i)$ from everyone. The number of outcomes: $5!$ (for $\sigma$) and each person uses that exact permutation, so each person's assignment is forced:
+
+$$|A_1 \cap \cdots \cap A_5| = 5! = 120.$$
+
+**Inclusion-exclusion:**
+
+$$|A_1 \cup \cdots \cup A_5| = 345{,}600 - 43{,}200 + 4{,}800 - 600 + 120$$
+$$= 345{,}600 - 43{,}200 + 4{,}800 - 600 + 120 = 306{,}720.$$
+
+**Probability:**
+
+$$P = \frac{306{,}720}{1{,}728{,}000}.$$
+
+Simplify: $\gcd(306720, 1728000)$. Both divisible by $960$: $306720 / 960 = 319.5$... let me try GCD directly.
+
+$306720 = 2^5 \cdot 3 \cdot 5 \cdot 7^2 \cdot ...$
+
+$306720 / 120 = 2556$; $1728000 / 120 = 14400$. $\gcd(2556, 14400)$: $2556 = 4 \cdot 639 = 4 \cdot 3 \cdot 213 = 12 \cdot 213 = 12 \cdot 3 \cdot 71 = 36 \cdot 71$. $14400 = 144 \cdot 100 = 2^5 \cdot 3^2 \cdot 5^2$. $\gcd(36 \cdot 71, 2^5 \cdot 3^2 \cdot 5^2) = 36$ (since 71 is prime and doesn't divide 14400). So $\gcd(306720, 1728000) = 120 \cdot 36 = 4320$.
+
+$m = 306720 / 4320 = 71$; $n = 1728000 / 4320 = 400$.
+
+$\gcd(71, 400) = 1$ (71 is prime). So $\dfrac{m}{n} = \dfrac{71}{400}$ and $m + n = 471$.
+
+Answer: **D**.
+</Solution>

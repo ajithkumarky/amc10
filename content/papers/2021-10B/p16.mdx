@@ -1,0 +1,58 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: C
+choices: ['$4$', '$5$', '$6$', '$7$', '$8$']
+---
+
+<Problem>
+Call a positive integer an uphill integer if every digit is strictly greater than the previous digit. For example, $1357$, $89$, and $5$ are all uphill integers, but $32$, $1240$, and $466$ are not. How many uphill integers are divisible by $15$?
+</Problem>
+
+<Solution>
+An uphill integer has strictly increasing digits, so each uphill integer corresponds to a unique subset of $\{1, 2, \ldots, 9\}$ (we cannot use $0$ since $0$ must come first and leading zeros are not allowed — and a digit smaller than $0$ cannot precede it in a strictly increasing sequence, but $0$ could be a first digit; however a number starting with $0$ is not a positive integer, so $0$ cannot appear).
+
+Wait — can $0$ appear? If $0$ is a digit of an uphill integer, it must be the first digit (since all digits are strictly increasing and $0$ is the smallest), but then the number starts with $0$, which is not allowed. So uphill integers use digits from $\{1, 2, \ldots, 9\}$ only.
+
+**Divisibility by 15 = 3 × 5.**
+
+Divisibility by 5: the last digit must be $0$ or $5$. Since $0$ is excluded, the last digit must be $5$. So every uphill integer divisible by 15 ends in $5$.
+
+Divisibility by 3: the digit sum must be divisible by 3.
+
+So we need subsets of $\{1, 2, 3, 4, 5, 6, 7, 8, 9\}$ that include $5$ as the largest element (so all other digits are from $\{1, 2, 3, 4\}$), and whose digit sum is divisible by 3.
+
+The digit sum of the subset must include $5$ plus some subset of $\{1, 2, 3, 4\}$. Let $T$ be the sum of the chosen elements from $\{1,2,3,4\}$. We need $5 + T \equiv 0 \pmod{3}$, i.e., $T \equiv 1 \pmod{3}$ (since $5 \equiv 2$, need $2 + T \equiv 0$, so $T \equiv 1 \pmod 3$).
+
+We enumerate subsets of $\{1, 2, 3, 4\}$ (including the empty set) with sum $\equiv 1 \pmod{3}$:
+
+- $\emptyset$: sum $= 0 \equiv 0$. No.
+- $\{1\}$: sum $= 1 \equiv 1$. Yes.
+- $\{2\}$: sum $= 2 \equiv 2$. No.
+- $\{3\}$: sum $= 3 \equiv 0$. No.
+- $\{4\}$: sum $= 4 \equiv 1$. Yes.
+- $\{1,2\}$: sum $= 3 \equiv 0$. No.
+- $\{1,3\}$: sum $= 4 \equiv 1$. Yes.
+- $\{1,4\}$: sum $= 5 \equiv 2$. No.
+- $\{2,3\}$: sum $= 5 \equiv 2$. No.
+- $\{2,4\}$: sum $= 6 \equiv 0$. No.
+- $\{3,4\}$: sum $= 7 \equiv 1$. Yes.
+- $\{1,2,3\}$: sum $= 6 \equiv 0$. No.
+- $\{1,2,4\}$: sum $= 7 \equiv 1$. Yes.
+- $\{1,3,4\}$: sum $= 8 \equiv 2$. No.
+- $\{2,3,4\}$: sum $= 9 \equiv 0$. No.
+- $\{1,2,3,4\}$: sum $= 10 \equiv 1$. Yes.
+
+Subsets with $T \equiv 1 \pmod 3$: $\{1\}$, $\{4\}$, $\{1,3\}$, $\{3,4\}$, $\{1,2,4\}$, $\{1,2,3,4\}$ — that is **6** subsets.
+
+Each gives an uphill integer: $15$, $45$, $135$, $345$, $1245$, $12345$.
+
+Quick check: $15 \div 15 = 1$ ✓; $45 \div 15 = 3$ ✓; $135 \div 15 = 9$ ✓; $345 \div 15 = 23$ ✓; $1245 \div 15 = 83$ ✓; $12345 \div 15 = 823$ ✓.
+
+The answer is $\boxed{6}$.
+
+Answer: **C**.
+</Solution>

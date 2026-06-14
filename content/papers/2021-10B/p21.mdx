@@ -1,0 +1,119 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 5
+answer: A
+choices: ['$2$', '$1+\dfrac{2}{3}\sqrt{3}$', '$\dfrac{13}{6}$', '$1+\dfrac{3}{4}\sqrt{3}$', '$\dfrac{7}{3}$']
+---
+
+<Problem>
+A square piece of paper has side length $1$ and vertices $A, B, C,$ and $D$ in that order. As shown in the figure, the paper is folded so that vertex $C$ meets edge $\overline{AD}$ at point $C'$, and edge $\overline{BC}$ intersects edge $\overline{AB}$ at point $E$. Suppose that $C'D = \dfrac{1}{3}$. What is the perimeter of triangle $\triangle AEC'$?
+
+(The square has $A$ at upper-left, $B$ at lower-left, $C$ at lower-right, $D$ at upper-right. After folding, $C$ lands on $AD$ at $C'$ with $C'D = 1/3$, so $AC' = 2/3$. The fold brings edge $BC$ to a new position; the image of $B$ under the fold is $E$ on edge $AB$.)
+</Problem>
+
+<Solution>
+Set up coordinates: $A = (0,1)$, $B = (0,0)$, $C = (1,0)$, $D = (1,1)$.
+
+Since $C'D = \tfrac{1}{3}$ and $C'$ is on $\overline{AD}$: $C' = (1 - \tfrac{1}{3}, 1) $... wait, $\overline{AD}$ goes from $A=(0,1)$ to $D=(1,1)$, and $C'D = 1/3$, so $C' = (1 - 1/3, 1) = (2/3, 1)$. Then $AC' = 2/3$.
+
+The fold is a reflection that sends $C = (1,0)$ to $C' = (2/3, 1)$. The fold line is the perpendicular bisector of segment $CC'$.
+
+**Midpoint of $CC'$:** $M = \left(\dfrac{1+2/3}{2}, \dfrac{0+1}{2}\right) = \left(\dfrac{5}{6}, \dfrac{1}{2}\right)$.
+
+**Direction of $CC'$:** $(2/3 - 1, 1 - 0) = (-1/3, 1)$. The fold line is perpendicular to this, with direction $(1, 1/3)$ (or equivalently $(3,1)$).
+
+**Find $E$:** $E$ is the image of $B = (0,0)$ under the fold. $E$ lies on edge $\overline{AB}$ (the segment from $A=(0,1)$ to $B=(0,0)$, which is the left edge $x=0$).
+
+To find $E$, reflect $B$ across the fold line:
+
+The fold line passes through $M = (5/6, 1/2)$ with direction vector $\mathbf{d} = (3, 1)/\sqrt{10}$.
+
+For any point $P$, its reflection $P'$ satisfies: $P' = 2\text{proj}_{\text{line}}(P) - P$, where projection is onto the fold line.
+
+Reflect $B = (0,0)$:
+
+$\overrightarrow{MB} = B - M = (0 - 5/6, 0 - 1/2) = (-5/6, -1/2)$.
+
+Project onto $\mathbf{d} = (3,1)$:
+
+$$\text{proj} = \frac{(-5/6)(3) + (-1/2)(1)}{9 + 1} = \frac{-5/2 - 1/2}{10} = \frac{-3}{10}.$$
+
+The component of $\overrightarrow{MB}$ along $\mathbf{d}$: $(-3/10)(3,1) = (-9/10, -3/10)$.
+
+The reflection of $B$ across the line:
+
+$$B' = M + 2\cdot (-9/10, -3/10) - \overrightarrow{MB}\cdot ... $$
+
+Let me use the formula directly: $B' = B + 2((\text{foot of perpendicular from }B) - B)$.
+
+Foot of perpendicular from $B=(0,0)$ to the fold line:
+
+$$\text{foot} = M + \text{proj}_{\mathbf{d}}(\overrightarrow{MB}) = (5/6, 1/2) + (-3/10)(3/\sqrt{10}, 1/\sqrt{10}) \cdot \sqrt{10}$$
+
+Wait, let me use the projection formula cleanly.
+
+Parameterize the fold line as $(5/6 + 3t, 1/2 + t)$. The foot from $B=(0,0)$:
+
+$$(5/6 + 3t - 0)\cdot 3 + (1/2 + t - 0)\cdot 1 = 0$$
+$$3(5/6 + 3t) + (1/2 + t) = 0$$
+$$5/2 + 9t + 1/2 + t = 0$$
+$$3 + 10t = 0 \implies t = -3/10.$$
+
+Foot $= (5/6 + 3(-3/10),\; 1/2 + (-3/10)) = (5/6 - 9/10,\; 1/2 - 3/10)$.
+
+$5/6 - 9/10 = 25/30 - 27/30 = -2/30 = -1/15$.
+
+$1/2 - 3/10 = 5/10 - 3/10 = 2/10 = 1/5$.
+
+Foot $= (-1/15, 1/5)$.
+
+$E = 2\cdot\text{foot} - B = (-2/15, 2/5)$.
+
+But $E$ should be on $\overline{AB}$ (the segment $x=0$ from $y=0$ to $y=1$). We got $E = (-2/15, 2/5)$, which has $x = -2/15 \neq 0$. Something's off.
+
+Let me reconsider the problem setup. In the standard square $ABCD$:
+- $A$ = upper-left, $B$ = lower-left, $C$ = lower-right, $D$ = upper-right (going around).
+- Edge $\overline{AD}$ is the top edge.
+- $C'$ lands on $\overline{AD}$ with $C'D = 1/3$: so $C' = (1 - 1/3, 1) = (2/3, 1)$... actually $D=(1,1)$ and $A=(0,1)$, and $C'D = 1/3$ means $C'$ is $1/3$ from $D$, so $C' = D + (1/3)(A-D)/|A-D| \cdot 1/3 = (1 - 1/3, 1) = (2/3, 1)$. But this assumes $A=(0,1)$ and $D=(1,1)$, measuring from $D$.
+
+Actually: $C'D = 1/3$ and $|AD| = 1$, so $AC' = 1 - 1/3 = 2/3$.
+
+With $A=(0,1)$, $D=(1,1)$: $C' = (2/3, 1)$. ✓
+
+The fold sends $C=(1,0)$ to $C'=(2/3,1)$. It also sends $B=(0,0)$ to some point $E$ on $\overline{AB}$. Since $\overline{BC}$ has image $\overline{EC'}$ under the fold, and $E$ is the image of $B$, $E$ must be on $\overline{AB}$. But we computed $E=(-2/15,2/5)$ which is outside the square.
+
+**Alternative:** $E$ is where the FOLDED edge $\overline{BC}$ crosses the original edge $\overline{AB}$, not the image of $B$ itself.
+
+The fold takes $\overline{BC}$ (from $(0,0)$ to $(1,0)$) to a new segment. The fold preserves distances, so the image of $\overline{BC}$ under the fold is $\overline{B'C'} = \overline{B'C'}$ where $B' = (-2/15, 2/5)$ and $C' = (2/3, 1)$. The image segment $B'C'$ crosses $\overline{AB}$ (the left edge $x=0$) at point $E$.
+
+Line through $B'=(-2/15, 2/5)$ and $C'=(2/3,1)$:
+
+Direction: $(2/3 - (-2/15), 1 - 2/5) = (2/3 + 2/15, 3/5) = (10/15 + 2/15, 3/5) = (12/15, 3/5) = (4/5, 3/5)$.
+
+Parameterize: $(x,y) = (-2/15 + 4t/5,\; 2/5 + 3t/5)$.
+
+At $x = 0$: $-2/15 + 4t/5 = 0 \implies t = 2/(15 \cdot 4/5) = 2\cdot 5/(15\cdot 4) = 10/60 = 1/6$.
+
+$y = 2/5 + 3(1/6)/5 = 2/5 + 3/30 = 2/5 + 1/10 = 4/10 + 1/10 = 1/2$.
+
+So $E = (0, 1/2)$.
+
+**Check $E$ is on $\overline{AB}$:** $\overline{AB}$ goes from $A=(0,1)$ to $B=(0,0)$, so $E=(0,1/2)$ is indeed on $\overline{AB}$. ✓
+
+**Compute the perimeter of $\triangle AEC'$:**
+
+- $A = (0,1)$, $E = (0, 1/2)$, $C' = (2/3, 1)$.
+
+$$AE = |1 - 1/2| = 1/2.$$
+
+$$AC' = 2/3 - 0 = 2/3.$$
+
+$$EC' = \sqrt{(2/3)^2 + (1-1/2)^2} = \sqrt{4/9 + 1/4} = \sqrt{16/36 + 9/36} = \sqrt{25/36} = 5/6.$$
+
+$$\text{Perimeter} = \frac{1}{2} + \frac{2}{3} + \frac{5}{6} = \frac{3}{6} + \frac{4}{6} + \frac{5}{6} = \frac{12}{6} = 2.$$
+
+Answer: **A**.
+</Solution>

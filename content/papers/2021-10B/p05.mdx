@@ -1,0 +1,33 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: B
+choices: ["21", "22", "23", "24", "25"]
+---
+
+<Problem>
+The ages of Jonie's four cousins are distinct single-digit positive integers. Two of the cousins' ages multiplied together give $24$, while the other two multiply to $30$. What is the sum of the ages of Jonie's four cousins?
+</Problem>
+
+<Solution>
+We need two pairs of distinct single-digit positive integers, one pair with product $24$ and the other with product $30$, with all four values distinct.
+
+Pairs of distinct single-digit positive integers with product $24$:
+- $3 \times 8 = 24$
+- $4 \times 6 = 24$
+
+Pairs of distinct single-digit positive integers with product $30$:
+- $5 \times 6 = 30$
+
+Now we need all four ages to be distinct:
+
+- $\{3, 8\}$ and $\{5, 6\}$: all four values $3, 8, 5, 6$ are distinct. Sum $= 22$.
+- $\{4, 6\}$ and $\{5, 6\}$: the value $6$ repeats, so this is invalid.
+
+The only valid combination is $\{3, 8, 5, 6\}$, with sum $3 + 5 + 6 + 8 = 22$.
+
+Answer: **B**.
+</Solution>

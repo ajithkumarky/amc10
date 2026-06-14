@@ -1,0 +1,44 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 2
+answer: D
+choices: ['$24\pi$', '$32\pi$', '$64\pi$', '$65\pi$', '$84\pi$']
+---
+
+<Problem>
+In a plane, four circles with radii $1, 3, 5,$ and $7$ are tangent to line $\ell$ at the same point $A,$ but they may be on either side of $\ell$. Region $S$ consists of all the points that lie inside exactly one of the four circles. What is the maximum possible area of region $S$?
+</Problem>
+
+<Solution>
+Place the tangent point $A$ at the origin. Each circle of radius $r$ tangent to $\ell$ at $A$ is centered at $(0, r)$ (above $\ell$) or $(0, -r)$ (below $\ell$). Two circles on the **same** side nest: the smaller is entirely inside the larger (both are tangent to $\ell$ at $A$, so their centers are collinear with $A$, and the smaller one fits inside the larger).
+
+Two circles on **opposite** sides share only the single point $A$, so their interiors do not overlap.
+
+**Key observations.**
+
+For circles on the **same** side with radii $r_1 < r_2 < \cdots < r_k$:
+- Every point inside circle $r_i$ is also inside every larger circle on the same side.
+- The region inside exactly one of these $k$ circles is the thin annular ring between the two largest radii: $r_{k-1}$ and $r_k$. Its area is $\pi(r_k^2 - r_{k-1}^2)$.
+
+For circles on **opposite** sides, they contribute independently to the "exactly one" count.
+
+**Optimizing the assignment.** Assign each circle to a side (top or bottom). The total area of $S$ equals:
+$$\text{(exactly one of the top circles)} + \text{(exactly one of the bottom circles)}.$$
+
+If a side holds a single circle of radius $r$, it contributes $\pi r^2$. If a side holds circles with largest two radii $R > r'$, it contributes $\pi(R^2 - r'^2)$ (the outermost ring). Inner circles do not add to region $S$.
+
+**Best assignment: $\{7\}$ on top and $\{1, 3, 5\}$ on bottom.**
+
+- Top (just the circle of radius $7$): contributes $\pi \cdot 7^2 = 49\pi$.
+- Bottom (circles $1, 3, 5$, where the two largest are $5$ and $3$): contributes $\pi(5^2 - 3^2) = 16\pi$.
+- Total: $49\pi + 16\pi = 65\pi$.
+
+No other assignment gives a larger total. (For example, $\{1,7\}$ vs $\{3,5\}$ gives $\pi(49-1)+\pi(25-9) = 48\pi + 16\pi = 64\pi$.)
+
+The maximum possible area of region $S$ is $\boxed{65\pi}$.
+
+Answer: **D**.
+</Solution>

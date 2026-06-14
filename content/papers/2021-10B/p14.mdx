@@ -1,0 +1,136 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: B
+choices: ['$5\tfrac{1}{2}$', '$6$', '$6\tfrac{1}{2}$', '$7$', '$7\tfrac{1}{2}$']
+---
+
+<Problem>
+Three equally spaced parallel lines intersect a circle, creating three chords of lengths $38, 38,$ and $34$. What is the distance between two adjacent parallel lines?
+</Problem>
+
+<Solution>
+Let the three parallel lines be at heights $-d$, $0$, and $d$ (equally spaced distance $d$ apart), and let the circle have center $(0, k)$ and radius $r$.
+
+The chord length at perpendicular distance $t$ from the center satisfies $\ell = 2\sqrt{r^2 - t^2}$.
+
+The two outer chords have length 38 and the middle chord has length 34. By symmetry the two outer lines are at equal distances from the center, which means the center is on the middle line or equidistant from the outer two. Since the outer chords are equal (both 38), the center is equidistant from both outer lines, so the center lies on the middle line (height 0). Thus $k = 0$.
+
+Middle chord (line $y = 0$, distance 0 from center):
+$$34 = 2\sqrt{r^2 - 0^2} \implies r^2 = 17^2 = 289.$$
+
+Outer chords (line $y = d$, distance $d$ from center):
+$$38 = 2\sqrt{r^2 - d^2} \implies r^2 - d^2 = 19^2 = 361.$$
+
+But $r^2 = 289 < 361$, which gives a negative value — contradiction. So the center is NOT on the middle line.
+
+Instead, the center is at height $k$ where the middle line gives a longer chord (38) and the two outer lines give shorter chords. Wait — the outer chords are 38 and the middle is 34, so the outer lines are closer to the center than the middle line. This means the center is between (or past) the outer lines.
+
+Let the three lines be at heights $0$, $d$, $2d$. Let the center be at height $h$. The chords are:
+- Line $y=0$: length $2\sqrt{r^2 - h^2}$
+- Line $y=d$: length $2\sqrt{r^2 - (h-d)^2}$
+- Line $y=2d$: length $2\sqrt{r^2 - (h-2d)^2}$
+
+The two length-38 chords must be the outer ones (lines $y=0$ and $y=2d$) with the length-34 chord in the middle, since equal outer chords imply the center is equidistant from the outer lines, i.e., $h = d$.
+
+With $h = d$:
+- Outer lines at distance $d$ from center: $2\sqrt{r^2 - d^2} = 38 \implies r^2 - d^2 = 361$.
+- Middle line at distance $0$ from center: $2\sqrt{r^2} = 34 \implies r = 17$, so $r^2 = 289$.
+
+Again $r^2 - d^2 = 361 > 289 = r^2$ is impossible.
+
+So the 34-chord must be one of the outer chords and the 38-chords are the middle and one outer. Let the lines be at $-d$, $0$, $d$. Assign: middle chord = 38 (center on middle line would give middle the longest), but then outer equal shorter — so outer = 34 each. But that contradicts the problem (38, 38, 34 — two 38s and one 34). So the two equal chords of length 38 are the outer ones.
+
+We must have $r < 19$, which is impossible with the arithmetic above. Let me reconsider: maybe the center is NOT equidistant from the outer lines.
+
+Let lines be at $y = 0, d, 2d$. With chords 38, 38, 34 in that order, the equal chords are lines $y=0$ and $y=d$ both giving 38, and $y=2d$ giving 34. OR the outer lines 0 and 2d give 38 and 38.
+
+**Case: lines $y=0$ and $y=d$ give 38, line $y=2d$ gives 34.**
+
+$$r^2 - h^2 = 361, \quad r^2 - (h-d)^2 = 361, \quad r^2 - (h-2d)^2 = 289.$$
+
+From the first two: $h^2 = (h-d)^2 \implies h = d/2$.
+
+From first and third:
+$$(h-2d)^2 - h^2 = 289 - 361 = -72.$$
+$$(h-2d)^2 = h^2 - 72.$$
+With $h = d/2$: $(d/2 - 2d)^2 = (d/2)^2 - 72$.
+$$(-3d/2)^2 = d^2/4 - 72.$$
+$$9d^2/4 = d^2/4 - 72.$$
+$$8d^2/4 = -72 \implies 2d^2 = -72.$$
+
+Negative — impossible.
+
+**Case: outer lines $y=0$ and $y=2d$ give 38, middle $y=d$ gives 34.** (center equidistant from outer lines ⇒ $h = d$, already shown impossible.) 
+
+Hmm. The issue is that the longer chords are farther from center than shorter. Let me try:
+
+**Case: outer lines give 34 (shorter), middle gives 38 (longer).** But the problem says the three chords are 38, 38, 34 — two equal ones.
+
+So the setup must be: two of the three are 38 and one is 34. If the middle is 38, the two outer ones could be either both 38 or both 34.
+
+**Case: middle = 38, two outer = 34 each.**
+
+Wait, the problem says "38, 38, and 34" — two of one and one of other. The two equal chords are 38. 
+
+**Case: two equal chords of 38 are symmetric (outer) and middle = 34 — but we showed this is impossible with center on the middle line AND impossible with center off middle line (gave $2d^2 = -72$).** 
+
+Let me try center NOT at midpoint between the two 38-chord lines.
+
+Actually, there's another arrangement: the 38, 38 pair could be the middle chord and ONE outer chord (the two 38s need not be symmetric). Let lines be $y=0, d, 2d$ with chords: $y=0$ gives 38, $y=d$ gives 34, $y=2d$ gives 38.
+
+Then:
+$$r^2 - h^2 = 361, \quad r^2 - (h-d)^2 = 289, \quad r^2 - (h-2d)^2 = 361.$$
+
+From first and third: $h^2 = (h-2d)^2 \implies h = d$ (taking the symmetric solution).
+
+From first and second with $h = d$:
+$$r^2 - d^2 = 361, \quad r^2 - 0 = 289.$$
+$$r^2 = 289, \quad 289 - d^2 = 361 \implies d^2 = -72.$$
+
+Still impossible.
+
+There must be a sign issue. The chords must be: the two with length 38 are farther from center, and 34 is the closest. But closer to center → longer chord. So 38 > 34 means the 38-chord lines are CLOSER to the center. 
+
+This means the configuration must have the center outside the strip between the outer lines, OR — more likely — I'm misreading the problem. Let me re-read:
+
+"Three equally spaced parallel lines intersect a circle, creating three chords of lengths 38, 38, and 34."
+
+So all three lines intersect the circle; they all create chords. The two outer lines create 38-chords and the middle creates a 34-chord.
+
+For the middle chord to be shorter than the outer chords, the middle line must be farther from the center than the outer lines. This means the center is outside the middle strip, closer to the outer lines. Actually the center must be on one side.
+
+Let the three lines be at $y = 0, d, 2d$ and the center at $(0, h)$ with $h$ possibly outside $[0, 2d]$.
+
+Lines $y=0$ and $y=2d$ give 38 each:
+$$r^2 - h^2 = 361 \quad \text{and} \quad r^2-(h-2d)^2 = 361.$$
+From these: $h^2 = (h-2d)^2 \implies h = d$.
+
+But $h=d$ means center is at the middle line, giving middle chord = $2r$ — the longest possible, not the shortest. Contradiction.
+
+The only remaining possibility: the two equal chords of 38 are NOT the outer pair but are adjacent (lines $y=0$ and $y=d$ give 38, line $y=2d$ gives 34).
+
+We showed this requires $2d^2 = -72$, impossible.
+
+So perhaps the circle center is such that the distances don't follow the assumption $h > 0$. Let me set it up without assuming the center is between the lines.
+
+Let $a = |h|$, $b = |h - d|$, $c = |h - 2d|$ (perpendicular distances from center to each line). With $h = d/2$ (from equal first and second chords):
+$a = d/2$, $b = d/2$, $c = 3d/2$.
+
+$r^2 - (d/2)^2 = 361$, $r^2 - (3d/2)^2 = 289$:
+$$r^2 - d^2/4 = 361$$
+$$r^2 - 9d^2/4 = 289$$
+
+Subtract: $8d^2/4 = 72 \implies 2d^2 = 72 \implies d^2 = 36 \implies d = 6$.
+
+**This works!** The equal 38-chords are from lines 1 and 2 (at $y=0$ and $y=d$), the 34-chord is from line 3 (at $y=2d$), and the center is at $h = d/2$ (between lines 1 and 2).
+
+Checking: $r^2 = 361 + d^2/4 = 361 + 9 = 370$, $r^2 - 9d^2/4 = 370 - 81 = 289$ ✓.
+
+The distance between adjacent parallel lines is $d = 6$.
+
+Answer: **B**.
+</Solution>

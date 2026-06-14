@@ -1,0 +1,39 @@
+---
+year: 2021
+paper: "10B"
+topic: algebra
+subtopic: polynomials
+difficulty: 3
+answer: B
+choices: ['$-1$', '$0$', '$1$', '$2$', '$\sqrt{5}$']
+---
+
+<Problem>
+The real number $x$ satisfies the equation $x + \dfrac{1}{x} = \sqrt{5}$. What is the value of $x^{11} - 7x^7 + x^3$?
+</Problem>
+
+<Solution>
+Let $s = x + \dfrac{1}{x} = \sqrt{5}$. We want to evaluate $x^{11} - 7x^7 + x^3$.
+
+**Factor out $x^3$.**
+
+$$x^{11} - 7x^7 + x^3 = x^3(x^8 - 7x^4 + 1).$$
+
+Now evaluate $x^8 - 7x^4 + 1$. Divide through by $x^4$:
+
+$$x^4 - 7 + x^{-4}.$$
+
+We know $x + x^{-1} = \sqrt{5}$, so:
+
+$$x^2 + x^{-2} = \left(x + x^{-1}\right)^2 - 2 = 5 - 2 = 3.$$
+
+$$x^4 + x^{-4} = \left(x^2 + x^{-2}\right)^2 - 2 = 9 - 2 = 7.$$
+
+Therefore $x^4 - 7 + x^{-4} = 7 - 7 = 0$.
+
+So $x^8 - 7x^4 + 1 = x^4 \cdot 0 = 0$ (multiplying back by $x^4$), giving:
+
+$$x^{11} - 7x^7 + x^3 = x^3 \cdot 0 = 0.$$
+
+Answer: **B**.
+</Solution>

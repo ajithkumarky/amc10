@@ -1,0 +1,44 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: C
+choices: ['$\dfrac{1}{120}$', '$\dfrac{1}{32}$', '$\dfrac{1}{20}$', '$\dfrac{3}{20}$', '$\dfrac{1}{6}$']
+---
+
+<Problem>
+A fair $6$-sided die is repeatedly rolled until an odd number appears. What is the probability that every even number appears at least once before the first occurrence of an odd number?
+</Problem>
+
+<Solution>
+The even faces are $2, 4, 6$ and the odd faces are $1, 3, 5$. We keep rolling until we get an odd number; we want all three even numbers to have appeared at least once before that first odd.
+
+**Set up.** Each roll is even with probability $\frac{1}{2}$ and odd with probability $\frac{1}{2}$. Given we roll an even number, it is equally likely to be $2$, $4$, or $6$ (each with probability $\frac{1}{3}$ conditional on even, i.e., $\frac{1}{6}$ unconditional).
+
+The sequence of rolls looks like: some even numbers (all from $\{2, 4, 6\}$, each chosen uniformly at random among the $3$ even values), then one odd number terminates the game. We want the event that the sequence of even rolls (before the first odd) is a permutation covering all three even values.
+
+**Condition on the length.** We need at least 3 even rolls before the first odd. Given that there are exactly $k$ even rolls before the first odd (for $k \geq 3$), each roll is independently and uniformly one of $\{2, 4, 6\}$. The probability that all three evens appear in $k$ rolls (from $\{2,4,6\}$, each uniform) is $\frac{3!}{3^k} \cdot \binom{k}{...}$ — use inclusion-exclusion:
+
+$$P(\text{all 3 covered in } k \text{ rolls of } \{2,4,6\}) = \frac{1}{3^k}\sum_{j=0}^{3}(-1)^j\binom{3}{j}(3-j)^k = \frac{3^k - 3\cdot 2^k + 3\cdot 1^k}{3^k}.$$
+
+The probability that the game lasts exactly $k$ even rolls then ends is $\left(\frac{1}{2}\right)^k \cdot \frac{1}{2} = \frac{1}{2^{k+1}}$.
+
+We want:
+$$P = \sum_{k=3}^{\infty} \frac{1}{2^{k+1}} \cdot \frac{3^k - 3\cdot 2^k + 3}{3^k} = \sum_{k=3}^{\infty} \frac{1}{2^{k+1}}\left(1 - \frac{3 \cdot 2^k}{3^k} + \frac{3}{3^k}\right).$$
+
+$$= \sum_{k=3}^{\infty}\frac{1}{2^{k+1}} - 3\sum_{k=3}^{\infty}\frac{1}{2^{k+1}}\cdot\frac{2^k}{3^k} + 3\sum_{k=3}^{\infty}\frac{1}{2^{k+1}\cdot 3^k}.$$
+
+**First sum:** $\sum_{k=3}^{\infty}\frac{1}{2^{k+1}} = \frac{1}{2}\cdot\frac{(1/2)^3}{1-1/2} = \frac{1}{2}\cdot\frac{1/8}{1/2} = \frac{1}{8}$.
+
+**Second sum:** $3\sum_{k=3}^{\infty}\frac{1}{2\cdot 3^k} = \frac{3}{2}\cdot\frac{(1/3)^3}{1-1/3} = \frac{3}{2}\cdot\frac{1/27}{2/3} = \frac{3}{2}\cdot\frac{1}{18} = \frac{1}{12}$.
+
+**Third sum:** $3\sum_{k=3}^{\infty}\frac{1}{2^{k+1}\cdot 3^k} = \frac{3}{2}\sum_{k=3}^{\infty}\left(\frac{1}{6}\right)^k = \frac{3}{2}\cdot\frac{(1/6)^3}{1-1/6} = \frac{3}{2}\cdot\frac{1/216}{5/6} = \frac{3}{2}\cdot\frac{1}{180} = \frac{1}{120}$.
+
+$$P = \frac{1}{8} - \frac{1}{12} + \frac{1}{120}.$$
+
+Common denominator 120: $\frac{15}{120} - \frac{10}{120} + \frac{1}{120} = \frac{6}{120} = \frac{1}{20}$.
+
+Answer: **C**.
+</Solution>

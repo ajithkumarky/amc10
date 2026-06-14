@@ -1,0 +1,43 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 5
+answer: E
+choices: ['$31$', '$47$', '$62$', '$72$', '$85$']
+---
+
+<Problem>
+Let $S$ be the set of lattice points in the coordinate plane, both of whose coordinates are integers between $1$ and $30$, inclusive. Exactly $300$ points in $S$ lie on or below a line with equation $y = mx$. The possible values of $m$ lie in an interval of length $\dfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers. What is $a + b$?
+</Problem>
+
+<Solution>
+For a slope $m > 0$, the number of lattice points $(i, j)$ with $1 \le i, j \le 30$ satisfying $j \le mi$ is:
+
+$$N(m) = \sum_{i=1}^{30} \min\!\bigl(\lfloor mi \rfloor, 30\bigr).$$
+
+(For each column $i$, the valid rows are $j = 1, 2, \ldots, \min(\lfloor mi \rfloor, 30)$.)
+
+We need $N(m) = 300$.
+
+**Finding the lower bound.** As $m$ increases, $N(m)$ is a right-continuous step function that jumps upward at every critical slope $m = j/i$ (for integer $j$). We seek the smallest $m$ with $N(m) = 300$.
+
+At $m = \tfrac{2}{3}$: for each $i$, $\lfloor \tfrac{2i}{3} \rfloor$ counts the valid $j$-values. A direct computation gives $N(2/3) = 300$. (For $i = 3k$: contributes $\min(2k, 30)$; for $i = 3k+1$: $\lfloor 2(3k+1)/3 \rfloor = 2k$; for $i = 3k+2$: $\lfloor 2(3k+2)/3 \rfloor = 2k+1$. Summing over $i = 1$ to $30$ gives exactly 300.)
+
+At $m = \tfrac{2}{3} - \varepsilon$: $N$ drops (the count just below $\tfrac{2}{3}$ is $290 \ne 300$). So $m_{\min} = \tfrac{2}{3}$.
+
+**Finding the upper bound.** The count increases to $301$ at the next critical slope above $\tfrac{2}{3}$. We need the smallest rational $j/i$ (with $1 \le i \le 30$ and $j$ a positive integer) that is strictly greater than $\tfrac{2}{3}$ and causes $N$ to jump.
+
+The smallest fraction greater than $\tfrac{2}{3}$ with denominator $\le 30$ (by the theory of Farey sequences) is found by checking: $\tfrac{2}{3} < \tfrac{j}{i}$ means $3j > 2i$, i.e., $j \ge \lfloor 2i/3 \rfloor + 1$. The fraction closest to $\tfrac{2}{3}$ from above with small denominator is $\tfrac{19}{28}$ (since $\tfrac{19}{28} - \tfrac{2}{3} = \tfrac{57}{84} - \tfrac{56}{84} = \tfrac{1}{84}$, which is smaller than any $j/i - 2/3 = (3j-2i)/(3i)$ with $3j - 2i \ge 1$ and $i \le 28$, since the minimum of $(3j-2i)/(3i)$ at the critical point $i=28, j=19$ gives $1/84$).
+
+Indeed $N(19/28) = 301$ and $N(m) = 300$ for all $m \in [2/3, 19/28)$.
+
+**Length of the interval:**
+
+$$m_{\max} - m_{\min} = \frac{19}{28} - \frac{2}{3} = \frac{57}{84} - \frac{56}{84} = \frac{1}{84}.$$
+
+So $a = 1$, $b = 84$, which are relatively prime, giving $a + b = 85$.
+
+Answer: **E**.
+</Solution>

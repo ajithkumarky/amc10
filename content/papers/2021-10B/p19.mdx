@@ -1,0 +1,46 @@
+---
+year: 2021
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: D
+choices: ['$36.2$', '$36.4$', '$36.6$', '$36.8$', '$37$']
+---
+
+<Problem>
+Suppose that $S$ is a finite set of positive integers. If the greatest integer in $S$ is removed from $S$, then the average value (arithmetic mean) of the integers remaining is $32$. If the least integer in $S$ is also removed, then the average value of the integers remaining is $35$. If the greatest integer is then returned to the set, the average value of the integers rises to $40$. The greatest integer in the original set $S$ is $72$ greater than the least integer in $S$. What is the average value of all the integers in the set $S$?
+</Problem>
+
+<Solution>
+Let $S$ have $n$ elements with sum $\Sigma$. Let $M$ = greatest element and $m$ = least element, with $M - m = 72$.
+
+**Equation 1:** Remove $M$: remaining $n-1$ elements have average 32.
+$$\Sigma - M = 32(n-1).$$
+
+**Equation 2:** Also remove $m$: remaining $n-2$ elements have average 35.
+$$\Sigma - M - m = 35(n-2).$$
+
+**Equation 3:** Return $M$ (so set is $\Sigma - m$ restored with $M$): $n-1$ elements with average 40.
+$$\Sigma - m = 40(n-1).$$
+
+From Eq 1: $\Sigma - M = 32n - 32$.
+From Eq 3: $\Sigma - m = 40n - 40$.
+
+Subtract Eq 1 from Eq 3:
+$$M - m = (40n - 40) - (32n - 32) = 8n - 8.$$
+
+But $M - m = 72$, so $8n - 8 = 72 \implies 8n = 80 \implies n = 10$.
+
+From Eq 1: $\Sigma - M = 32(9) = 288$, so $\Sigma = M + 288$.
+From Eq 2: $\Sigma - M - m = 35(8) = 280$, so $m = \Sigma - M - 280 = 288 - 280 = 8$.
+
+Then $M = m + 72 = 80$.
+
+Check Eq 3: $\Sigma - m = 40(9) = 360 \implies \Sigma = 360 + m = 368$. Also $\Sigma = M + 288 = 80 + 288 = 368$ ✓.
+
+The average of all $n = 10$ elements is:
+$$\frac{\Sigma}{n} = \frac{368}{10} = 36.8.$$
+
+Answer: **D**.
+</Solution>

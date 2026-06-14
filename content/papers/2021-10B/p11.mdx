@@ -1,0 +1,42 @@
+---
+year: 2021
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: D
+choices: ["24", "30", "48", "60", "64"]
+---
+
+<Problem>
+Grandma has just finished baking a large rectangular pan of brownies. She is planning to make rectangular pieces of equal size and shape, with straight cuts parallel to the sides of the pan. Each cut must be made entirely across the pan. Grandma wants to make the same number of interior pieces as pieces along the perimeter of the pan. What is the greatest possible number of brownies she can produce?
+</Problem>
+
+<Solution>
+Suppose Grandma makes $m$ columns and $n$ rows of brownies (so $m \ge 2$ and $n \ge 2$).
+
+- **Perimeter pieces:** the pieces on the edge of the pan. There are $2m + 2n - 4 = 2(m+n-2)$ of them.
+- **Interior pieces:** the pieces not on the edge. There are $(m-2)(n-2)$ of them.
+
+Setting these equal:
+$$(m-2)(n-2) = 2(m+n-2).$$
+
+Let $a = m - 2$ and $b = n - 2$ (both at least $0$; we need $a,b \ge 1$ to have interior pieces). Then:
+$$ab = 2(a + 2 + b + 2 - 2) = 2(a+b+2) = 2a + 2b + 4.$$
+
+Rearranging and factoring:
+$$ab - 2a - 2b + 4 = 8 \implies (a-2)(b-2) = 8.$$
+
+The positive integer factor pairs of $8$ are $(1, 8)$, $(2, 4)$, $(4, 2)$, $(8, 1)$:
+
+| $a-2$ | $b-2$ | $a$ | $b$ | $m$ | $n$ | Total $mn$ |
+|--------|--------|-----|-----|-----|-----|-----------|
+| 1 | 8 | 3 | 10 | 5 | 12 | **60** |
+| 2 | 4 | 4 | 6 | 6 | 8 | 48 |
+| 4 | 2 | 6 | 4 | 8 | 6 | 48 |
+| 8 | 1 | 10 | 3 | 12 | 5 | **60** |
+
+The greatest total is $60$. (Check: $5 \times 12$ gives $30$ interior pieces and $2(5)+2(12)-4 = 30$ perimeter pieces. ✓)
+
+Answer: **D**.
+</Solution>

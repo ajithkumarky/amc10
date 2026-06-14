@@ -1,0 +1,25 @@
+---
+year: 2021
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 1
+answer: B
+choices: ["23", "32", "37", "41", "64"]
+---
+
+<Problem>
+At a math contest, $57$ students are wearing blue shirts, and another $75$ students are wearing yellow shirts. The $132$ students are assigned into $66$ pairs. In exactly $23$ of these pairs, both students are wearing blue shirts. In how many pairs are both students wearing yellow shirts?
+</Problem>
+
+<Solution>
+The $23$ blue-blue (BB) pairs use $2 \times 23 = 46$ blue-shirted students. The remaining $57 - 46 = 11$ blue-shirted students must be paired with yellow-shirted students, giving $11$ blue-yellow (BY) pairs.
+
+The total number of pairs is $66$. So the number of yellow-yellow (YY) pairs is:
+
+$$66 - 23 - 11 = 32.$$
+
+We can verify: the $11$ BY pairs use $11$ yellow-shirted students, and the $32$ YY pairs use $64$ yellow-shirted students, for a total of $11 + 64 = 75$. This matches.
+
+Answer: **B**.
+</Solution>

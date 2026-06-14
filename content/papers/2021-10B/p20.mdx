@@ -1,0 +1,58 @@
+---
+year: 2021
+paper: "10B"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: D
+choices: ['$20$', '$21$', '$22$', '$23$', '$24$']
+---
+
+<Problem>
+The figure is constructed from $11$ line segments, each of which has length $2$. The area of pentagon $ABCDE$ can be written as $\sqrt{m} + \sqrt{n}$, where $m$ and $n$ are positive integers. What is $m + n$?
+
+The figure shows pentagon $ABCDE$ (vertices labeled A at top, B upper-left, C lower-left, D lower-right, E upper-right) with interior points $F$ (connected to $A$, $B$, $C$) and $G$ (connected to $A$, $D$, $E$). All $11$ segments — the five sides of the pentagon, plus $AF$, $AG$, $BF$, $FC$, $EG$, $GD$ — have length $2$.
+</Problem>
+
+<Solution>
+**Identify the triangles.** Since $AB = BF = AF = 2$, triangle $ABF$ is equilateral. Similarly:
+- $BC = CF = BF = 2$: triangle $BCF$ is equilateral.
+- $AE = EG = AG = 2$: triangle $AEG$ is equilateral.
+- $DE = EG = GD = 2$: triangle $DEG$ is equilateral.
+
+Each equilateral triangle with side $2$ has area $\dfrac{\sqrt{3}}{4} \cdot 4 = \sqrt{3}$.
+
+**Set up coordinates.** Place the figure symmetrically about the $y$-axis with $A$ at the origin. Let $\theta$ be the angle that $AB$ makes from the downward vertical. Then:
+
+$$A = (0,0),\quad B = (-2\sin\theta,\, -2\cos\theta),\quad E = (2\sin\theta,\, -2\cos\theta).$$
+
+Since $ABF$ is equilateral with $F$ interior to the pentagon (obtained by rotating $\overrightarrow{AB}$ clockwise by $60°$):
+
+$$F = (-\sin\theta - \sqrt{3}\cos\theta,\; \sqrt{3}\sin\theta - \cos\theta).$$
+
+By symmetry $G$ is the mirror image of $F$ across the $y$-axis.
+
+For the equilateral triangle $BCF$, rotating $\overrightarrow{BF}$ by $60°$ gives $C$:
+
+$$C = (-3\sin\theta - \sqrt{3}\cos\theta,\; \sqrt{3}\sin\theta - 3\cos\theta), \quad D = (3\sin\theta + \sqrt{3}\cos\theta,\; \sqrt{3}\sin\theta - 3\cos\theta).$$
+
+**Apply $CD = 2$.** The segment $CD$ is horizontal with length $2(3\sin\theta + \sqrt{3}\cos\theta) = 2$, giving:
+
+$$3\sin\theta + \sqrt{3}\cos\theta = 1 \implies 2\sqrt{3}\sin\!\left(\theta + \tfrac{\pi}{6}\right) = 1 \implies \sin\!\left(\theta + \tfrac{\pi}{6}\right) = \frac{1}{2\sqrt{3}}.$$
+
+Taking the solution in $[0°, 180°]$ (pentagon opens upward from $A$): $\theta \approx 133.2°$, so $\sin\theta = \dfrac{\sqrt{3}+1}{2\sqrt{3+\text{...}}}$, but we only need numerical values.
+
+**Compute the area by decomposition.** The pentagon $ABCDE$ equals the sum of all equilateral triangles plus the central quadrilateral $FGCD$... or more cleanly, by the shoelace formula on the five vertices. The area is:
+
+$$[\text{pentagon}] = [\triangle ABF] + [\triangle BCF] + [\triangle AEG] + [\triangle DEG] + [\text{quad }FCGD] - \text{overlaps}.$$
+
+A cleaner approach: use shoelace directly. With $s = \sin\theta$ and $c = \cos\theta$ satisfying $3s + \sqrt{3}c = 1$, the shoelace formula for pentagon $ABCDE$ gives:
+
+$$\text{Area} = \sqrt{11} + \sqrt{12}.$$
+
+To verify: numerically $\theta \approx 133.22°$ gives coordinates and shoelace area $\approx 6.781$, while $\sqrt{11} + \sqrt{12} = \sqrt{11} + 2\sqrt{3} \approx 3.317 + 3.464 = 6.781$ ✓.
+
+Therefore $m = 11$, $n = 12$ (or vice versa), and $m + n = \boxed{23}$.
+
+Answer: **D**.
+</Solution>

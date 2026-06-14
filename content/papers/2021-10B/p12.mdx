@@ -1,0 +1,36 @@
+---
+year: 2021
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: C
+choices: ['$1:16$', '$1:15$', '$1:14$', '$1:8$', '$1:3$']
+---
+
+<Problem>
+Let $N = 34 \cdot 34 \cdot 63 \cdot 270$. What is the ratio of the sum of the odd divisors of $N$ to the sum of the even divisors of $N$?
+</Problem>
+
+<Solution>
+**Prime factorization of $N$:**
+$$34 = 2 \cdot 17, \quad 34^2 = 2^2 \cdot 17^2,$$
+$$63 = 3^2 \cdot 7, \quad 270 = 2 \cdot 3^3 \cdot 5.$$
+$$N = 2^2 \cdot 17^2 \cdot 3^2 \cdot 7 \cdot 2 \cdot 3^3 \cdot 5 = 2^3 \cdot 3^5 \cdot 5 \cdot 7 \cdot 17^2.$$
+
+**Key observation.** Every divisor of $N$ is either odd (contains no factor of $2$) or even (contains at least one factor of $2$). The odd divisors are exactly the divisors of the odd part $M = 3^5 \cdot 5 \cdot 7 \cdot 17^2$.
+
+Let $\sigma_{\text{odd}}$ denote the sum of the odd divisors and $\sigma_{\text{all}}$ the sum of all divisors of $N$.
+
+$$\sigma_{\text{odd}} = \sigma(M), \qquad \sigma_{\text{all}} = \sigma(2^3) \cdot \sigma(M) = 15\,\sigma(M).$$
+
+The sum of the even divisors is:
+$$\sigma_{\text{even}} = \sigma_{\text{all}} - \sigma_{\text{odd}} = 15\,\sigma(M) - \sigma(M) = 14\,\sigma(M).$$
+
+Therefore:
+$$\frac{\sigma_{\text{odd}}}{\sigma_{\text{even}}} = \frac{\sigma(M)}{14\,\sigma(M)} = \frac{1}{14}.$$
+
+The ratio is $1 : 14$.
+
+Answer: **C**.
+</Solution>
