@@ -1,0 +1,29 @@
+---
+year: 2009
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: B
+choices: ["12", "17", "20", "25", "35"]
+---
+
+<Problem>
+In a certain year the price of gasoline rose by $20\%$ during January, fell by $20\%$ during February, rose by $25\%$ during March, and fell by $x\%$ during April. The price of gasoline at the end of April was the same as it had been at the beginning of January. To the nearest integer, what is $x$?
+</Problem>
+
+<Solution>
+Let the starting price be $1$. After the four months:
+$$1 \times 1.20 \times 0.80 \times 1.25 \times \left(1 - \frac{x}{100}\right) = 1.$$
+
+Compute the product of the first three factors:
+$$1.20 \times 0.80 = 0.96, \quad 0.96 \times 1.25 = 1.20.$$
+
+So $1.20 \times \left(1 - \dfrac{x}{100}\right) = 1$, giving $1 - \dfrac{x}{100} = \dfrac{1}{1.20} = \dfrac{5}{6}$.
+
+Thus $\dfrac{x}{100} = 1 - \dfrac{5}{6} = \dfrac{1}{6}$, so $x = \dfrac{100}{6} \approx 16.7$.
+
+To the nearest integer, $x = 17$.
+
+Answer: **B**.
+</Solution>

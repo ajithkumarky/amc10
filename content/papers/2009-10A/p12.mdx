@@ -1,0 +1,27 @@
+---
+year: 2009
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: C
+choices: ["11", "12", "13", "14", "15"]
+---
+
+<Problem>
+In quadrilateral $ABCD$, $AB = 5$, $BC = 17$, $CD = 5$, $DA = 9$, and $BD$ is an integer. What is $BD$?
+</Problem>
+
+<Solution>
+Diagonal $BD$ splits the quadrilateral into $\triangle ABD$ and $\triangle BCD$.
+
+**Triangle inequality in $\triangle ABD$** (sides 5, 9, $BD$):
+$$|9-5| < BD < 9+5 \implies 4 < BD < 14.$$
+
+**Triangle inequality in $\triangle BCD$** (sides 17, 5, $BD$):
+$$|17-5| < BD < 17+5 \implies 12 < BD < 22.$$
+
+The intersection of $4 < BD < 14$ and $12 < BD < 22$ gives $12 < BD < 14$. The only integer in this range is $BD = 13$.
+
+Answer: **C**.
+</Solution>

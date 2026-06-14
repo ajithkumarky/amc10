@@ -1,0 +1,28 @@
+---
+year: 2009
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: B
+choices: ['$\dfrac{\sqrt{2}}{3}$', '$\dfrac{1}{2}$', '$\dfrac{\sqrt{3}}{3}$', '$\dfrac{\sqrt{2}}{2}$', '$\dfrac{\sqrt{3}}{2}$']
+---
+
+<Problem>
+Points $A$ and $C$ lie on a circle centered at $O$, each of $\overline{BA}$ and $\overline{BC}$ are tangent to the circle, and $\triangle ABC$ is equilateral. The circle intersects $\overline{BO}$ at $D$. What is $\dfrac{BD}{BO}$?
+</Problem>
+
+<Solution>
+Since $\triangle ABC$ is equilateral and $BA$, $BC$ are tangents from $B$ to the circle, angle $\angle ABC = 60°$ and $\angle OBC = 30°$ (by symmetry, $BO$ bisects $\angle ABC$).
+
+Let $r$ be the radius of the circle. In right triangle $OAB$ (right angle at $A$, since the tangent is perpendicular to the radius):
+$$\sin(\angle OBA) = \frac{OA}{OB} = \frac{r}{OB}.$$
+
+Since $\angle OBA = 30°$, we get $\sin 30° = \dfrac{r}{OB}$, so $\dfrac{1}{2} = \dfrac{r}{OB}$, giving $OB = 2r$.
+
+Point $D$ lies on the circle on segment $\overline{BO}$, so $OD = r$ (it's on the circle). Therefore $BD = BO - OD = 2r - r = r$.
+
+$$\frac{BD}{BO} = \frac{r}{2r} = \frac{1}{2}.$$
+
+Answer: **B**.
+</Solution>

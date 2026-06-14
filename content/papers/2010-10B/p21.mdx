@@ -1,0 +1,29 @@
+---
+year: 2010
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 5
+answer: E
+choices: ['$\dfrac{1}{10}$', '$\dfrac{1}{9}$', '$\dfrac{1}{7}$', '$\dfrac{1}{6}$', '$\dfrac{1}{5}$']
+---
+
+<Problem>
+A palindrome between $1000$ and $10{,}000$ is chosen at random. What is the probability that it is divisible by $7$?
+</Problem>
+
+<Solution>
+A 4-digit palindrome has the form $\overline{abba}$ where $a \in \{1,\dots,9\}$ and $b \in \{0,\dots,9\}$.
+
+Its value is $1001a + 110b$.
+
+Since $1001 = 7 \times 143$, we have $7 \mid 1001a$ for all $a$. So the palindrome is divisible by $7$ if and only if $7 \mid 110b$.
+
+Since $\gcd(110, 7) = 1$, we need $7 \mid b$. Thus $b \in \{0, 7\}$.
+
+There are $9 \times 10 = 90$ total palindromes (9 choices for $a$, 10 for $b$). Those divisible by 7 have $b = 0$ or $b = 7$: that's $9 \times 2 = 18$ palindromes.
+
+$$P = \frac{18}{90} = \frac{1}{5}.$$
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,54 @@
+---
+year: 2009
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 5
+answer: B
+choices: ['$\dfrac{24}{5}$', '$\dfrac{32}{5}$', '$8+\sqrt{5}$', '$5+\dfrac{16\sqrt{5}}{5}$', '$10+5\sqrt{5}$']
+---
+
+<Problem>
+A cubical cake with edge length $2$ inches is iced on the sides and the top. It is cut vertically into three pieces as shown in this top view, where $M$ is the midpoint of a top edge. The piece whose top is triangle $B$ contains $c$ cubic inches of cake and $s$ square inches of icing. What is $c+s$?
+
+In the top view, the $2\times 2$ square has corners at $(\pm1,\pm1)$. $M = (-1,0)$ is the midpoint of the left edge. One cut goes from $(1,1)$ to $M$; another cut goes from $(1,-1)$ perpendicular to the first cut, meeting it at point $P$ (the foot of the perpendicular from $(1,-1)$ to segment $\overline{(1,1)M}$). Triangle $B$ has vertices $(1,1)$, $(1,-1)$, and $P$. Triangle $A$ contains the upper-left region and triangle $C$ the lower-left region.
+</Problem>
+
+<Solution>
+**Setting up coordinates:** In the top view, the square has corners $(-1,-1),(1,-1),(1,1),(-1,1)$. $M = (-1,0)$.
+
+**Line from $(1,1)$ to $M=(-1,0)$:** Direction vector $(−2,−1)$; slope $\tfrac{0-1}{-1-1} = \tfrac{1}{2}$. Line equation: $y - 1 = \tfrac{1}{2}(x-1)$, i.e., $y = \tfrac{x+1}{2}$.
+
+**Foot of perpendicular from $(1,-1)$ to this line:** The perpendicular from $(1,-1)$ has slope $-2$: $y+1 = -2(x-1)$, i.e., $y = -2x+1$.
+
+Intersection with $y = \tfrac{x+1}{2}$:
+$$\frac{x+1}{2} = -2x + 1 \implies x + 1 = -4x + 2 \implies 5x = 1 \implies x = \frac{1}{5},\; y = \frac{3}{5}.$$
+
+So $P = \left(\tfrac{1}{5}, \tfrac{3}{5}\right)$.
+
+**Triangle $B$ in top view:** Vertices $(1,1)$, $(1,-1)$, $P = \left(\tfrac{1}{5},\tfrac{3}{5}\right)$.
+
+Area of triangle $B$ (top view):
+$$\text{Area} = \frac{1}{2}\left|det\begin{pmatrix}1-\tfrac{1}{5} & 1-\tfrac{3}{5}\\ 1-\tfrac{1}{5} & -1-\tfrac{3}{5}\end{pmatrix}\right| = \frac{1}{2}\left|\frac{4}{5}\cdot\left(-\frac{8}{5}\right) - \frac{2}{5}\cdot\frac{4}{5}\right| = \frac{1}{2}\left|-\frac{32}{25} - \frac{8}{25}\right| = \frac{1}{2}\cdot\frac{40}{25} = \frac{4}{5}.$$
+
+**Volume $c$:** Since cuts are vertical and the cake has height 2:
+$$c = \text{(top area)} \times 2 = \frac{4}{5} \times 2 = \frac{8}{5}.$$
+
+**Icing $s$:** The cake is iced on the sides and top. For piece $B$:
+- Top face (triangle $B$): area $= \tfrac{4}{5}$.
+- Right side face ($x = 1$, from $y = -1$ to $y = 1$, height $2$): this is a rectangle of width $2$ and height $2$, area $= 4$.
+- The two cut faces are interior (uniced).
+- Left/other outer side faces: the outer boundary of triangle $B$ that lies on the square perimeter. The right edge $x=1$ from $y=-1$ to $y=1$ is an outer side (length $2$, height $2$, area $4$). No other outer edges for triangle $B$ (vertices $(1,1)$, $(1,-1)$, $P$ — the only boundary on the outer square is the right edge).
+
+Wait — actually the top of the cube's sides are iced. The icing is only on the actual outer surfaces. Triangle $B$'s outer boundary on the perimeter of the square is just the segment from $(1,-1)$ to $(1,1)$ (the right edge, length $2$). The other two sides of triangle $B$ are interior cuts.
+
+So:
+- Top icing: $\tfrac{4}{5}$
+- Right side icing (outer rectangle $2 \times 2$): $4$
+
+$$s = \frac{4}{5} + 4 = \frac{4}{5} + \frac{20}{5} = \frac{24}{5}.$$
+
+$$c + s = \frac{8}{5} + \frac{24}{5} = \frac{32}{5}.$$
+
+Answer: **B**.
+</Solution>

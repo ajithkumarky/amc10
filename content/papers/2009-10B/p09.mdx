@@ -1,0 +1,35 @@
+---
+year: 2009
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: A
+choices: ["$52.5$", "$55$", "$57.5$", "$60$", "$62.5$"]
+---
+
+<Problem>
+Segment $BD$ and $AE$ intersect at $C$, as shown, $AB=BC=CD=CE$, and $\angle A = \frac{5}{2} \angle B$. What is the degree measure of $\angle D$?
+
+The figure shows two triangles sharing vertex $C$: triangle $ABC$ (with $A$ at lower-left, $B$ at upper-left, $C$ in the middle) and triangle $DCE$ (with $D$ at lower-right, $E$ at upper-right). We have $AB = BC = CD = CE$.
+</Problem>
+
+<Solution>
+Since $AB = BC$, triangle $ABC$ is isosceles with $\angle BAC = \angle BCA$... wait, $AB = BC$ means the angles opposite them are equal: $\angle BCA = \angle BAC$. Let $\angle B = \beta$, so $\angle A = \frac{5}{2}\beta$.
+
+In triangle $ABC$: $\angle A + \angle B + \angle ACB = 180°$.
+
+Since $AB = BC$, we have $\angle BAC = \angle BCA$, but $\angle BAC = \angle A = \frac{5}{2}\beta$.
+
+So $\frac{5}{2}\beta + \beta + \frac{5}{2}\beta = 180°$, giving $6\beta = 180°$, so $\beta = 30°$.
+
+Thus $\angle A = \frac{5}{2}(30°) = 75°$ and $\angle ACB = 75°$.
+
+Since $BD$ and $AE$ are straight lines intersecting at $C$, $\angle DCE$ is the vertical angle to $\angle ACB$:
+$$\angle DCE = \angle ACB = 75°.$$
+
+Since $CD = CE$, triangle $DCE$ is isosceles with $\angle CDE = \angle CED$.
+$$\angle D = \frac{180° - 75°}{2} = \frac{105°}{2} = 52.5°.$$
+
+Answer: **A**.
+</Solution>

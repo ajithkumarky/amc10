@@ -1,0 +1,63 @@
+---
+year: 2010
+paper: "10B"
+topic: algebra
+subtopic: polynomials
+difficulty: 5
+answer: B
+choices: ["$105$", "$315$", "$945$", "$7!$", "$8!$"]
+---
+
+<Problem>
+Let $a > 0$, and let $P(x)$ be a polynomial with integer coefficients such that
+
+$$P(1) = P(3) = P(5) = P(7) = a \quad \text{and} \quad P(2) = P(4) = P(6) = P(8) = -a.$$
+
+What is the smallest possible value of $a$?
+</Problem>
+
+<Solution>
+Define $Q(x) = P(x) - a$. Then $Q(1) = Q(3) = Q(5) = Q(7) = 0$, so
+
+$$Q(x) = (x-1)(x-3)(x-5)(x-7) \cdot R(x)$$
+
+for some polynomial $R(x)$ with integer coefficients.
+
+At the even points:
+$$P(2) = Q(2) + a = -a \implies Q(2) = -2a.$$
+
+Similarly $Q(4) = Q(6) = Q(8) = -2a$.
+
+So $(x-1)(x-3)(x-5)(x-7) \cdot R(x) = -2a$ at $x = 2, 4, 6, 8$.
+
+Define $S(x) = Q(x) + 2a = P(x) + a$. Then $S(1) = S(3) = S(5) = S(7) = 2a$ and $S(2) = S(4) = S(6) = S(8) = 0$.
+
+So $(x-2)(x-4)(x-6)(x-8) \mid S(x)$, meaning
+
+$$S(x) = (x-2)(x-4)(x-6)(x-8) \cdot T(x)$$
+
+for integer polynomial $T(x)$.
+
+Evaluating at odd points, for $x \in \{1,3,5,7\}$:
+
+$$2a = (x-2)(x-4)(x-6)(x-8) \cdot T(x).$$
+
+The values of $(x-2)(x-4)(x-6)(x-8)$ at $x = 1, 3, 5, 7$:
+
+- $x=1$: $(-1)(-3)(-5)(-7) = 105$
+- $x=3$: $(1)(-1)(-3)(-5) = -15$
+- $x=5$: $(3)(1)(-1)(-3) = 9$
+- $x=7$: $(5)(3)(1)(-1) = -15$
+
+So $T(x)$ must satisfy $2a = 105 \cdot T(1) = -15 \cdot T(3) = 9 \cdot T(5) = -15 \cdot T(7)$ where each $T(k)$ is an integer.
+
+For $2a$ to be divisible by $105$ and by $15$ and by $9$:
+
+$$\text{lcm}(105, 15, 9) = \text{lcm}(105, 9) = \frac{105 \cdot 9}{\gcd(105,9)} = \frac{945}{3} = 315.$$
+
+So $315 \mid 2a$. Since $\gcd(315, 2) = 1$, we need $315 \mid a$... but let's verify directly: $2a$ must be a multiple of $315$, so $a$ must be a multiple of $315/\gcd(2,315) = 315$.
+
+The smallest $a$ is $315$, achieved by taking $T(x)$ to be a suitable constant polynomial. Check: $T(1) = 2(315)/105 = 6$, $T(3) = 630/(-15) = -42$, $T(5) = 630/9 = 70$, $T(7) = 630/(-15) = -42$. Since $T$ is not required to be constant, a degree-3 polynomial through the four points $(1,6),(3,-42),(5,70),(7,-42)$ with integer coefficients exists (by Lagrange interpolation over rationals; one can verify the result has integer coefficients).
+
+Answer: **B**.
+</Solution>

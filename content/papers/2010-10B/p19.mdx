@@ -1,0 +1,43 @@
+---
+year: 2010
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: B
+choices: ['$2\sqrt{3}$', '$6$', '$4\sqrt{3}$', '$12$', '$18$']
+---
+
+<Problem>
+A circle with center $O$ has area $156\pi$. Triangle $ABC$ is equilateral, $\overline{BC}$ is a chord on the circle, $OA = 4\sqrt{3}$, and point $O$ is outside $\triangle ABC$. What is the side length of $\triangle ABC$?
+</Problem>
+
+<Solution>
+The circle has radius $r$ with $\pi r^2 = 156\pi$, so $r^2 = 156$.
+
+Let the side length of equilateral $\triangle ABC$ be $s$. Let $M$ be the midpoint of $BC$. By symmetry of the equilateral triangle, $A$, $M$, and the apex of the perpendicular bisector of $BC$ are all collinear. The height from $A$ to $BC$ is $AM = \dfrac{s\sqrt{3}}{2}$.
+
+Since $O$ is outside $\triangle ABC$ and $BC$ is a chord, $O$ lies on the perpendicular bisector of $BC$. The problem statement indicates $O$ is on the far side from $A$ (beyond $A$, i.e., on the same side as $A$ but farther from $BC$). So:
+
+$$OA = OM - AM = d - \frac{s\sqrt{3}}{2} = 4\sqrt{3},$$
+
+where $d = OM$ is the distance from $O$ to $BC$. This gives $d = \dfrac{s\sqrt{3}}{2} + 4\sqrt{3}$.
+
+Using the chord-distance relation:
+$$d^2 + \left(\frac{s}{2}\right)^2 = r^2 = 156.$$
+
+Substituting:
+$$\left(\frac{s\sqrt{3}}{2} + 4\sqrt{3}\right)^2 + \frac{s^2}{4} = 156$$
+$$3\left(\frac{s}{2} + 4\right)^2 + \frac{s^2}{4} = 156$$
+$$\frac{3(s+8)^2 + s^2}{4} = 156$$
+$$3s^2 + 48s + 192 + s^2 = 624$$
+$$4s^2 + 48s - 432 = 0$$
+$$s^2 + 12s - 108 = 0$$
+$$(s-6)(s+18) = 0.$$
+
+Since $s > 0$, we get $s = 6$.
+
+**Verification:** $d = 3\sqrt{3} + 4\sqrt{3} = 7\sqrt{3}$; $d^2 + (s/2)^2 = 147 + 9 = 156 = r^2$. ✓
+
+Answer: **B**.
+</Solution>

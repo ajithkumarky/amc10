@@ -1,0 +1,52 @@
+---
+year: 2010
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: D
+choices: ["$18$", "$27$", "$36$", "$81$", "$108$"]
+---
+
+<Problem>
+Two circles lie outside regular hexagon $ABCDEF$. The first is tangent to $\overline{AB}$, and the second is tangent to $\overline{DE}$. Both are tangent to lines $BC$ and $FA$. What is the ratio of the area of the second circle to that of the first circle?
+</Problem>
+
+<Solution>
+Set the hexagon to have side length $1$ with center at the origin. Label vertices $A, B, C, D, E, F$ consecutively.
+
+Place $A$ and $B$ on the top, with $\overline{AB}$ horizontal at the top of the hexagon. Lines $FA$ and $BC$ are the sides adjacent to $A$ and $B$, which extend outward.
+
+For a regular hexagon with side $1$, the interior angle is $120°$. Sides $FA$ and $BC$ meet line $AB$ at $120°$ interior angles (so $60°$ exterior). The two lines $FA$ and $BC$, when extended, converge to a point above the hexagon.
+
+The first circle (tangent to $\overline{AB}$ and to lines $BC$ and $FA$) sits in the "pocket" above side $AB$. The lines $BC$ and $FA$ extended form a $60°$ angle (since they meet at a point, each making $60°$ with $AB$). A circle tangent to $AB$ and to both of these lines is inscribed in an angle of $60°$. The radius satisfies $r_1 = d \sin(30°) = d/2$ where $d$ is the distance from the apex to the center. Since the circle is also tangent to $AB$: $r_1 = h_1$ (height above $AB$). For the $60°$ apex angle, the incircle in that angle has $r = h \tan(30°) = h/\sqrt{3}$.
+
+With the hexagon having side $1$: the distance from $AB$ to the apex of the angle formed by lines $FA$ and $BC$ extended. By symmetry, lines $FA$ and $BC$ extended meet at the point directly above the midpoint of $AB$ at height $\dfrac{1}{\sqrt{3}} \cdot \dfrac{1}{2} \cdot 2 = \dfrac{1}{\sqrt{3}}$... let me use coordinates.
+
+Place hexagon center at origin, $A = (-\frac{1}{2}, \frac{\sqrt{3}}{2})$, $B = (\frac{1}{2}, \frac{\sqrt{3}}{2})$, $C = (1, 0)$, $F = (-1, 0)$, $D = (\frac{1}{2}, -\frac{\sqrt{3}}{2})$, $E = (-\frac{1}{2}, -\frac{\sqrt{3}}{2})$.
+
+Line $BC$: from $B = (\frac{1}{2}, \frac{\sqrt{3}}{2})$ to $C = (1, 0)$. Direction: $(\frac{1}{2}, -\frac{\sqrt{3}}{2})$, slope $= -\sqrt{3}$. Equation: $y - 0 = -\sqrt{3}(x - 1)$, i.e., $y = -\sqrt{3}x + \sqrt{3}$, or $\sqrt{3}x + y = \sqrt{3}$.
+
+Line $FA$: from $F = (-1, 0)$ to $A = (-\frac{1}{2}, \frac{\sqrt{3}}{2})$. Slope $= \sqrt{3}$. Equation: $y = \sqrt{3}(x+1)$, i.e., $\sqrt{3}x - y + \sqrt{3} = 0$, or $-\sqrt{3}x + y = \sqrt{3}$.
+
+These two lines meet when $\sqrt{3}x + y = \sqrt{3}$ and $-\sqrt{3}x + y = \sqrt{3}$: adding, $2y = 2\sqrt{3}$, $y = \sqrt{3}$, $x = 0$. Apex at $(0, \sqrt{3})$.
+
+**First circle** (tangent to $AB$, line $y = \frac{\sqrt{3}}{2}$, from above): center at $(0, \frac{\sqrt{3}}{2} + r_1)$. Distance from center to line $\sqrt{3}x + y = \sqrt{3}$:
+$$\frac{|\sqrt{3}(0) + (\frac{\sqrt{3}}{2}+r_1) - \sqrt{3}|}{2} = \frac{|r_1 - \frac{\sqrt{3}}{2}|}{2} = r_1.$$
+
+Since the circle is above $AB$ and below the apex, $r_1 < \dfrac{\sqrt{3}}{2}$:
+$$\frac{\frac{\sqrt{3}}{2} - r_1}{2} = r_1 \implies \frac{\sqrt{3}}{2} - r_1 = 2r_1 \implies r_1 = \frac{\sqrt{3}}{6}.$$
+
+**Second circle** (tangent to $\overline{DE}$, and also tangent to lines $BC$ and $FA$):
+
+$DE$ is the bottom side from $D = (\frac{1}{2}, -\frac{\sqrt{3}}{2})$ to $E = (-\frac{1}{2}, -\frac{\sqrt{3}}{2})$, so line $y = -\dfrac{\sqrt{3}}{2}$. The circle is outside the hexagon, below $DE$, and tangent to lines $BC$ and $FA$ extended (which meet at $(0, \sqrt{3})$ above, far away). Center at $(0, -\frac{\sqrt{3}}{2} - r_2)$.
+
+Distance from center to line $\sqrt{3}x + y = \sqrt{3}$:
+$$\frac{|\sqrt{3}(0) + (-\frac{\sqrt{3}}{2} - r_2) - \sqrt{3}|}{2} = \frac{\frac{3\sqrt{3}}{2} + r_2}{2} = r_2.$$
+$$\frac{3\sqrt{3}}{2} + r_2 = 2r_2 \implies r_2 = \frac{3\sqrt{3}}{2}.$$
+
+The ratio of areas:
+$$\frac{\pi r_2^2}{\pi r_1^2} = \left(\frac{r_2}{r_1}\right)^2 = \left(\frac{3\sqrt{3}/2}{\sqrt{3}/6}\right)^2 = \left(\frac{3\sqrt{3}}{2} \cdot \frac{6}{\sqrt{3}}\right)^2 = (9)^2 = 81.$$
+
+Answer: **D**.
+</Solution>

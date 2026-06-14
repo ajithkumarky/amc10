@@ -1,0 +1,32 @@
+---
+year: 2010
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 4
+answer: B
+choices: ["$22$", "$23$", "$24$", "$25$", "$26$"]
+---
+
+<Problem>
+Every high school in the city of Euclid sent a team of $3$ students to a math contest. Each participant in the contest received a different score. Andrea's score was the median among all students, and hers was the highest score on her team. Andrea's teammates Beth and Carla placed $37$th and $64$th, respectively. How many schools are in the city?
+</Problem>
+
+<Solution>
+Let $n$ be the number of schools, so there are $3n$ students total. Andrea's score is the median, meaning she placed $\dfrac{3n+1}{2}$th overall (for this to be an integer, $3n$ must be odd, so $n$ is odd).
+
+Andrea placed $\dfrac{3n+1}{2}$th. There are $\dfrac{3n-1}{2}$ students who scored lower than Andrea.
+
+Andrea had the highest score on her team, so both Beth and Carla scored lower than Andrea. Beth placed 37th and Carla placed 64th — both below Andrea — so their placements are worse (higher numbers) than Andrea's:
+$$\frac{3n+1}{2} < 37.$$
+This gives $3n + 1 < 74$, so $n < \dfrac{73}{3} \approx 24.3$, meaning $n \le 24$. But $n$ must be odd, so $n \le 23$.
+
+Also, Andrea is the median, meaning exactly $\dfrac{3n-1}{2}$ students placed below her. Carla placed 64th (i.e., scored lower than 63 students). For Carla to have placed below Andrea, Andrea's place must be better than 64th:
+$$\frac{3n+1}{2} < 64 \implies 3n < 127 \implies n < 42.3.$$
+
+The binding constraint is $n \le 23$ (odd). Now check that enough students exist: $3n \ge 64$ (Carla must be among the $3n$ students), so $n \ge \lceil 64/3 \rceil = 22$. The only odd value with $22 \le n \le 23$ is $n = 23$.
+
+Verify: $3(23) = 69$ students, median is the $\dfrac{69+1}{2} = 35$th place. Andrea is 35th. Beth is 37th and Carla is 64th, both below Andrea. Andrea is highest on her team since 37 > 35. Everything checks out.
+
+Answer: **B**.
+</Solution>

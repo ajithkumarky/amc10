@@ -1,0 +1,27 @@
+---
+year: 2009
+paper: "10B"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 3
+answer: A
+choices: ["3", "4", "5", "6", "7"]
+---
+
+<Problem>
+Distinct points $A$, $B$, $C$, and $D$ lie on a line, with $AB=BC=CD=1$. Points $E$ and $F$ lie on a second line, parallel to the first, with $EF=1$. A triangle with positive area has three of the six points as its vertices. How many possible values are there for the area of the triangle?
+</Problem>
+
+<Solution>
+Let the distance between the two parallel lines be $h$. Every triangle must have one side on one line and one vertex on the other (to have positive area), so the base lies on one of the two lines.
+
+**Triangles with base on the $ABCD$ line:** The base connects two of $A, B, C, D$ (with the third vertex being $E$ or $F$). Possible base lengths among $A,B,C,D$: $AB=BC=CD=1$, $AC=BD=2$, $AD=3$. Area $= \tfrac{1}{2} \cdot \text{base} \cdot h$, giving areas $\tfrac{h}{2}$, $h$, $\tfrac{3h}{2}$.
+
+**Triangles with base on the $EF$ line:** Base $= EF = 1$. Third vertex is one of $A, B, C, D$. Since all four points project onto the same base line, the area is $\tfrac{1}{2} \cdot 1 \cdot h = \tfrac{h}{2}$ regardless of which of $A, B, C, D$ is chosen.
+
+So the only new area from this case is $\tfrac{h}{2}$, already counted.
+
+The distinct areas are $\dfrac{h}{2},\ h,\ \dfrac{3h}{2}$ — that is, $\boxed{3}$ distinct values.
+
+Answer: **A**.
+</Solution>

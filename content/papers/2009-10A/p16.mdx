@@ -1,0 +1,31 @@
+---
+year: 2009
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 4
+answer: D
+choices: ["9", "12", "15", "18", "24"]
+---
+
+<Problem>
+Let $a$, $b$, $c$, and $d$ be real numbers with $|a-b|=2$, $|b-c|=3$, and $|c-d|=4$. What is the sum of all possible values of $|a-d|$?
+</Problem>
+
+<Solution>
+We have $a - d = (a-b) + (b-c) + (c-d)$, where each term equals $\pm$ its magnitude.
+
+Let $x = a - b \in \{+2, -2\}$, $y = b - c \in \{+3, -3\}$, $z = c - d \in \{+4, -4\}$.
+
+Then $a - d = x + y + z$, and we want all possible values of $|x + y + z|$.
+
+The possible values of $x + y + z$:
+- All same sign: $+(2+3+4) = 9$ or $-(2+3+4) = -9$, giving $|a-d| = 9$.
+- One term flipped: $\pm(2+3-4)=\pm 1$, $\pm(2-3+4)=\pm 3$, $\pm(-2+3+4)=\pm 5$.
+
+So the possible values of $|a-d|$ are: $1, 3, 5, 9$.
+
+The sum of all possible values is $1 + 3 + 5 + 9 = 18$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,100 @@
+---
+year: 2010
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 4
+answer: E
+choices: ['$\dfrac{4\sqrt{3}}{3}$', '$\dfrac{10}{3}$', '$4$', '$\dfrac{17}{4}$', '$6$']
+---
+
+<Problem>
+Equiangular hexagon $ABCDEF$ has side lengths $AB = CD = EF = 1$ and $BC = DE = FA = r$. The area of $\triangle ACE$ is $70\%$ of the area of the hexagon. What is the sum of all possible values of $r$?
+</Problem>
+
+<Solution>
+An equiangular hexagon has all interior angles equal to $120°$. With alternating side lengths $1$ and $r$, it can be constructed by taking an equilateral triangle of side $1 + r$ and cutting off three equilateral triangles of side $\frac{r}{1}$... let me set it up precisely.
+
+Place the hexagon so that the equilateral triangle $ACE$ has side length $s$. By the geometry of equiangular hexagons, $\triangle ACE$ is equilateral with side $AC = 1 + r$ (each side of $\triangle ACE$ skips one side of the hexagon: $AB + BC = 1 + r$).
+
+Area of $\triangle ACE = \dfrac{\sqrt{3}}{4}(1+r)^2$.
+
+The hexagon can be seen as equilateral triangle $ACE$ (side $1+r$) with three small equilateral triangles of side $1$ cut from the corners... no, the three corners are equilateral triangles with sides determined by the cut sides.
+
+At corner $B$ between sides $AB=1$ and $BC=r$, the cut-off triangle $\triangle AB'C'$ has sides... actually the three equilateral triangles cut are $\triangle ABF'$, etc. The hexagon = big equilateral triangle of side $1+r$ minus three corner triangles. The corner triangle at $B$ (between $AB=1$ and $BC=r$) is equilateral with side... by geometry the corner triangles have sides $1$, $r$, and ... wait, since all angles are $120°$, at each corner vertex the two adjacent sides meet at $120°$, so the corner triangle is equilateral.
+
+The big equilateral triangle has side $1 + r$. The three equilateral triangles cut from corners have sides such that the remaining sides match: specifically, corner triangles have side ... at vertex $B$: the triangle cut has base on the diagonal $AC$. We need the triangle cut at $B$ to have the two sides along $AB$ and $BC$ equal to $1$ and $r$. But an equilateral triangle has all sides equal, so this picture needs adjustment.
+
+Better approach: the area of an equiangular hexagon with alternating sides $a, b, a, b, a, b$ (here $a=1, b=r$) is:
+$$\text{Area} = \dfrac{\sqrt{3}}{2}(a^2 + ab + b^2) \cdot \text{(something)}.$$
+
+Using the formula for such a hexagon: area $= \dfrac{3\sqrt{3}}{2}(1 + r + r^2) \cdot \ldots$
+
+The direct formula: the equiangular hexagon with sides $p, q, p, q, p, q$ has area $\dfrac{\sqrt{3}}{2}(p^2 + 4pq + q^2)$... 
+
+Let me use coordinates. Place the hexagon with $A$ at origin, and go around at $120°$ angles. Set $\angle$ at each vertex $= 120°$ (interior). The exterior angle is $60°$, so direction changes by $60°$ at each turn.
+
+Starting direction: $0°$ (east). Sides in order: $AB=1$, $BC=r$, $CD=1$, $DE=r$, $EF=1$, $FA=r$.
+
+Using the Shoelace formula after computing coordinates:
+
+$A = (0, 0)$
+$B = A + 1 \cdot (\cos 0°, \sin 0°) = (1, 0)$
+Direction turns left $60°$ at $B$: new direction $= 60°$.
+$C = B + r \cdot (\cos 60°, \sin 60°) = (1 + r/2,\ r\sqrt{3}/2)$
+Direction turns left $60°$: new direction $= 120°$.
+$D = C + 1 \cdot (\cos 120°, \sin 120°) = (1 + r/2 - 1/2,\ r\sqrt{3}/2 + \sqrt{3}/2) = (1/2 + r/2,\ (r+1)\sqrt{3}/2)$
+Direction: $180°$.
+$E = D + r \cdot (-1, 0) = (1/2 + r/2 - r,\ (r+1)\sqrt{3}/2) = (1/2 - r/2,\ (r+1)\sqrt{3}/2)$
+Direction: $240°$.
+$F = E + 1 \cdot (\cos 240°, \sin 240°) = (1/2 - r/2 - 1/2,\ (r+1)\sqrt{3}/2 - \sqrt{3}/2) = (-r/2,\ r\sqrt{3}/2)$
+Direction: $300°$.
+$A' = F + r \cdot (\cos 300°, \sin 300°) = (-r/2 + r/2,\ r\sqrt{3}/2 - r\sqrt{3}/2) = (0, 0)$ $\checkmark$
+
+Hexagon area by Shoelace (vertices $A, B, C, D, E, F$):
+
+$$\text{Area} = \dfrac{1}{2}|x_A(y_B - y_F) + x_B(y_C - y_A) + x_C(y_D - y_B) + x_D(y_E - y_C) + x_E(y_F - y_D) + x_F(y_A - y_E)|$$
+
+Substituting:
+- $A=(0,0)$, $B=(1,0)$, $C=(1+r/2, r\sqrt3/2)$, $D=(1/2+r/2, (r+1)\sqrt3/2)$, $E=(1/2-r/2, (r+1)\sqrt3/2)$, $F=(-r/2, r\sqrt3/2)$.
+
+$$2\cdot\text{Area} = x_A(y_B-y_F)+x_B(y_C-y_A)+x_C(y_D-y_B)+x_D(y_E-y_C)+x_E(y_F-y_D)+x_F(y_A-y_E)$$
+$$= 0 \cdot (0 - r\sqrt3/2) + 1\cdot(r\sqrt3/2 - 0) + (1+r/2)\cdot((r+1)\sqrt3/2 - 0)$$
+$$\quad + (1/2+r/2)\cdot((r+1)\sqrt3/2 - r\sqrt3/2) + (1/2-r/2)\cdot(r\sqrt3/2 - (r+1)\sqrt3/2) + (-r/2)\cdot(0-(r+1)\sqrt3/2)$$
+
+$$= 0 + r\sqrt3/2 + (1+r/2)\cdot(r+1)\sqrt3/2 + (1+r)/2\cdot\sqrt3/2 + (1/2-r/2)\cdot(-\sqrt3/2) + (r/2)\cdot(r+1)\sqrt3/2$$
+
+$$= \dfrac{\sqrt3}{2}\left[r + (1+r/2)(r+1) + \dfrac{1+r}{2} - \dfrac{1-r}{2} + \dfrac{r(r+1)}{2}\right]$$
+
+$$= \dfrac{\sqrt3}{2}\left[r + (r+1)\left(1 + \dfrac{r}{2} + \dfrac{r}{2}\right) + \dfrac{1+r - 1 + r}{2}\right]$$
+
+$$= \dfrac{\sqrt3}{2}\left[r + (r+1)(1+r) + r\right]$$
+
+$$= \dfrac{\sqrt3}{2}\left[2r + (r+1)^2\right]$$
+
+$$= \dfrac{\sqrt3}{2}(r^2 + 4r + 1).$$
+
+So the hexagon area $= \dfrac{\sqrt3}{4}(r^2 + 4r + 1)$.
+
+Area of $\triangle ACE$: vertices $A=(0,0)$, $C=(1+r/2, r\sqrt3/2)$, $E=(1/2-r/2, (r+1)\sqrt3/2)$.
+
+$$2\cdot[\triangle ACE] = |x_A(y_C - y_E) + x_C(y_E - y_A) + x_E(y_A - y_C)|$$
+$$= |0 + (1+r/2)\cdot(r+1)\sqrt3/2 + (1/2-r/2)\cdot(-r\sqrt3/2)|$$
+$$= \dfrac{\sqrt3}{2}\left|(1+r/2)(r+1) - (1/2-r/2)\cdot r\right|$$
+$$= \dfrac{\sqrt3}{2}\left|(r+1+r^2/2+r/2) - (r/2 - r^2/2)\right|$$
+$$= \dfrac{\sqrt3}{2}\left|r + 1 + r^2/2 + r/2 - r/2 + r^2/2\right|$$
+$$= \dfrac{\sqrt3}{2}(r^2 + r + 1).$$
+
+So area of $\triangle ACE = \dfrac{\sqrt3}{4}(r^2 + r + 1)$.
+
+Setting this equal to $70\%$ of the hexagon area:
+$$\dfrac{\sqrt3}{4}(r^2 + r + 1) = 0.7 \cdot \dfrac{\sqrt3}{4}(r^2 + 4r + 1).$$
+$$r^2 + r + 1 = \dfrac{7}{10}(r^2 + 4r + 1).$$
+$$10r^2 + 10r + 10 = 7r^2 + 28r + 7.$$
+$$3r^2 - 18r + 3 = 0.$$
+$$r^2 - 6r + 1 = 0.$$
+
+By Vieta's formulas, the sum of all possible values of $r$ is $6$.
+
+Answer: **E**.
+</Solution>

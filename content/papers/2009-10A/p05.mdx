@@ -1,0 +1,27 @@
+---
+year: 2009
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 1
+answer: E
+choices: ["18", "27", "45", "63", "81"]
+---
+
+<Problem>
+What is the sum of the digits of the square of $111{,}111{,}111$?
+</Problem>
+
+<Solution>
+The number $111{,}111{,}111$ has 9 ones. Squaring repunit numbers follows a pattern:
+
+$$11^2 = 121, \quad 111^2 = 12321, \quad 1111^2 = 1234321, \ldots$$
+
+The square of the $n$-digit repunit (all 1s) is the palindrome $123\ldots n\ldots321$. For $n=9$:
+
+$$111{,}111{,}111^2 = 12{,}345{,}678{,}987{,}654{,}321.$$
+
+The digit sum is $1+2+3+4+5+6+7+8+9+8+7+6+5+4+3+2+1 = 2(1+2+\cdots+8)+9 = 2(36)+9 = 81$.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,37 @@
+---
+year: 2010
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 3
+answer: C
+choices: ["$32$", "$60$", "$92$", "$120$", "$124$"]
+---
+
+<Problem>
+What is the sum of all the solutions of $x = \left|2x-|60-2x|\right|$?
+</Problem>
+
+<Solution>
+**Case 1: $x \ge 30$**, so $60 - 2x \le 0$ and $|60 - 2x| = 2x - 60$.
+
+The equation becomes $x = |2x - (2x-60)| = |60| = 60$.
+
+Check: $x = 60 \ge 30$. Valid. Solution: $x = 60$.
+
+**Case 2: $x < 30$**, so $|60 - 2x| = 60 - 2x$.
+
+The equation becomes $x = |2x - (60-2x)| = |4x - 60|$.
+
+**Sub-case 2a: $x \ge 15$** (so $4x - 60 \ge 0$):
+$$x = 4x - 60 \implies 60 = 3x \implies x = 20.$$
+Check: $15 \le 20 < 30$. Valid. Solution: $x = 20$.
+
+**Sub-case 2b: $x < 15$** (so $4x - 60 < 0$):
+$$x = -(4x - 60) = 60 - 4x \implies 5x = 60 \implies x = 12.$$
+Check: $12 < 15$. Valid. Solution: $x = 12$.
+
+The three solutions are $60, 20, 12$, with sum $60 + 20 + 12 = 92$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,49 @@
+---
+year: 2009
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: B
+choices: ["6", "7", "8", "9", "10"]
+---
+
+<Problem>
+For $k > 0$, let $I_k = 10\underbrace{0\cdots0}_{k}64$, where there are $k$ zeros between the $1$ and the $6$. Let $N(k)$ be the number of factors of $2$ in the prime factorization of $I_k$. What is the maximum value of $N(k)$?
+</Problem>
+
+<Solution>
+Write $I_k$ explicitly. With $k$ zeros between the 1 and 64:
+
+$$I_k = 10^{k+2} + 64 = 10^{k+2} + 2^6.$$
+
+Factor out powers of 2. Since $10^{k+2} = 2^{k+2} \cdot 5^{k+2}$:
+
+$$I_k = 2^{k+2} \cdot 5^{k+2} + 2^6.$$
+
+**Case 1: $k + 2 < 6$, i.e., $k \leq 3$.**
+
+$I_k = 2^{k+2}(5^{k+2} + 2^{6-(k+2)}) = 2^{k+2}(5^{k+2} + 2^{4-k})$.
+
+The term $5^{k+2} + 2^{4-k}$ is odd when $4-k > 0$ only if $5^{k+2}$ is odd (always) and $2^{4-k}$ is even, so the sum is odd $+$ even $=$ odd. Thus $N(k) = k+2$ for $k \leq 3$.
+
+- $k=1$: $N=3$; $k=2$: $N=4$; $k=3$: $N=5$.
+
+**Case 2: $k + 2 \geq 6$, i.e., $k \geq 4$.**
+
+$I_k = 2^6(2^{k-4} \cdot 5^{k+2} + 1)$.
+
+The term $2^{k-4} \cdot 5^{k+2} + 1$ is even $+$ odd $=$ odd. Thus $N(k) = 6$ for $k \geq 4$.
+
+**Case 3: $k + 2 = 6$, i.e., $k = 4$.**
+
+This falls under Case 2 (consistent): $I_4 = 2^6(5^6 + 1)$. Check: $5^6 = 15625$, $5^6+1 = 15626 = 2 \times 7813$. So $I_4 = 2^7 \times 7813$, giving $N(4) = 7$.
+
+Let me recheck Case 2 at $k=4$: $I_4 = 2^6(2^{0} \cdot 5^{6} + 1) = 2^6(5^6 + 1)$. And $5^6 + 1 = 15626 = 2 \times 7813$, so $N(4) = 7$.
+
+For $k=5$: $I_5 = 2^6(2^1 \cdot 5^7 + 1) = 2^6(2\cdot 78125 + 1) = 2^6 \times 156251$. Is 156251 odd? $2 \times 78125 = 156250$, so $156251$ is odd. $N(5) = 6$.
+
+So the maximum is $N(4) = 7$.
+
+Answer: **B**.
+</Solution>

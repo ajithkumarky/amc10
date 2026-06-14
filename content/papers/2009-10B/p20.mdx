@@ -1,0 +1,26 @@
+---
+year: 2009
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: B
+choices: ['$\dfrac{\sqrt{3}-1}{2}$', '$\dfrac{\sqrt{5}-1}{2}$', '$\dfrac{\sqrt{5}+1}{2}$', '$\dfrac{\sqrt{6}+\sqrt{2}}{2}$', '$2\sqrt{3}-1$']
+---
+
+<Problem>
+Triangle $ABC$ has a right angle at $B$, $AB=1$, and $BC=2$. The angle bisector of $\angle A$ intersects side $\overline{BC}$ at $D$. What is $BD$?
+</Problem>
+
+<Solution>
+By the Angle Bisector Theorem, $D$ divides $\overline{BC}$ in the ratio $BD:DC = AB:AC$.
+
+We have $AB = 1$ and $BC = 2$, so $AC = \sqrt{AB^2 + BC^2} = \sqrt{1 + 4} = \sqrt{5}$.
+
+Thus $BD:DC = AB:AC = 1:\sqrt{5}$.
+
+Since $BD + DC = BC = 2$:
+$$BD = \frac{1}{1 + \sqrt{5}} \cdot 2 = \frac{2}{1+\sqrt{5}} = \frac{2({\sqrt{5}-1})}{(\sqrt{5}+1)(\sqrt{5}-1)} = \frac{2(\sqrt{5}-1)}{4} = \frac{\sqrt{5}-1}{2}.$$
+
+Answer: **B**.
+</Solution>

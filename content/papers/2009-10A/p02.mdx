@@ -1,0 +1,24 @@
+---
+year: 2009
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 1
+answer: A
+choices: ["15", "25", "35", "45", "55"]
+---
+
+<Problem>
+Four coins are picked out of a piggy bank that contains a collection of pennies, nickels, dimes, and quarters. Which of the following could *not* be the total value of the four coins, in cents?
+</Problem>
+
+<Solution>
+The coins available have values 1, 5, 10, 25 cents. We check each option:
+
+- **25**: One quarter and three pennies: $25+1+1+1=28$. Try four nickels: $5+5+5+5=20$. Try one quarter, no — let's check systematically. Can we get 25 from 4 coins? Options with a quarter: $25 + \text{three coins from } \{1,5,10,25\}$. Three pennies give 28, not 25. Without a quarter: four coins from $\{1,5,10\}$ summing to 25. With three dimes: $30>25$. With two dimes: $20+$ two coins $\leq 20+10+10=40$, need the remaining two to sum to 5, so two coins summing to 5: one nickel and no — one nickel is 5 but that's one coin. A nickel + zero doesn't work. A penny + (4 cents)? 4 cents not possible. With one dime: $10+$ three coins from $\{1,5,10\}$ summing to $15$: three nickels give 15. So $10+5+5+5=25$. That works!
+- **15**: Four pennies give 4; one nickel + three pennies = 8; two nickels + two pennies = 12; three nickels + one penny = 16; four nickels = 20. One dime + one nickel = 15 but that's only 2 coins; need 4 coins. One dime + one nickel + two pennies = 17. One dime + five pennies requires 6 coins. One dime + zero nickels + four pennies = 14. One dime + one penny + ? = need two more coins summing to 4: four pennies but we only have two slots. Can't get exactly 15 with 4 coins. So **15** is not achievable.
+
+To confirm: four coins from $\{1,5,10,25\}$ summing to 15. The minimum with a dime: $10+1+1+1=13$, $10+5+1+?$ — we already used 3 coins summing to 16, too big without a 4th. Without a dime, max with all nickels is $5\times4=20$, try three nickels + one penny $=16$, two nickels + two pennies $=12$, two nickels + one penny $= ?$ that's only 3 coins. No combination of four coins from $\{1,5\}$ reaches 15 (all give even or combinations: $4\times1=4$, $3\times1+1\times5=8$, $2\times1+2\times5=12$, $1\times1+3\times5=16$, $4\times5=20$). Adding a dime jumps past 15. So 15 cannot be formed.
+
+Answer: **A**.
+</Solution>

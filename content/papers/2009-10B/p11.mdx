@@ -1,0 +1,27 @@
+---
+year: 2009
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 3
+answer: A
+choices: ["6", "12", "24", "36", "48"]
+---
+
+<Problem>
+How many $7$-digit palindromes (numbers that read the same backward as forward) can be formed using the digits $2$, $2$, $3$, $3$, $5$, $5$, $5$?
+</Problem>
+
+<Solution>
+A 7-digit palindrome has the form $d_1 d_2 d_3 d_4 d_3 d_2 d_1$. So the first three digits and the middle digit completely determine the number.
+
+We need to place the digits 2, 2, 3, 3, 5, 5, 5 into positions $(d_1, d_2, d_3, d_4, d_3, d_2, d_1)$. The digit in position $d_1$ appears twice (positions 1 and 7), $d_2$ appears twice (positions 2 and 6), $d_3$ appears twice (positions 3 and 5), and $d_4$ appears once (position 4, the middle).
+
+The middle digit $d_4$ must appear an odd number of times overall. Among our digits, $5$ appears three times (odd) and $2, 3$ each appear twice (even). So $d_4 = 5$.
+
+After placing $5$ in the middle, the remaining digits are $2, 2, 3, 3, 5, 5$ — three pairs. Each pair fills one of the three position-pairs $(d_1, d_2, d_3)$.
+
+We assign the three pairs $\{2,2\}$, $\{3,3\}$, $\{5,5\}$ to the three positions $d_1, d_2, d_3$. That's $3! = 6$ arrangements.
+
+Answer: **A**.
+</Solution>

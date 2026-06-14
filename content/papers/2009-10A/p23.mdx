@@ -1,0 +1,47 @@
+---
+year: 2009
+paper: "10A"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 5
+answer: E
+choices: ['$\dfrac{9}{2}$', '$\dfrac{50}{11}$', '$\dfrac{21}{4}$', '$\dfrac{17}{3}$', "$6$"]
+---
+
+<Problem>
+Convex quadrilateral $ABCD$ has $AB = 9$ and $CD = 12$. Diagonals $AC$ and $BD$ intersect at $E$, $AC = 14$, and $\triangle AED$ and $\triangle BEC$ have equal areas. What is $AE$?
+</Problem>
+
+<Solution>
+Let $AE = x$, so $CE = 14 - x$.
+
+Since $\triangle AED$ and $\triangle BEC$ share the angle at $E$ (vertical angles), their areas depend on the sides from $E$:
+
+$$[\triangle AED] = \frac{1}{2} \cdot AE \cdot DE \cdot \sin\theta, \quad [\triangle BEC] = \frac{1}{2} \cdot CE \cdot BE \cdot \sin\theta,$$
+
+where $\theta$ is the angle at $E$. Setting these equal:
+
+$$AE \cdot DE = CE \cdot BE \implies \frac{AE}{CE} = \frac{BE}{DE}.$$
+
+Also note $[\triangle ABE]$ and $[\triangle CDE]$ share the same angle at $E$:
+
+$$[\triangle ABE] = \frac{1}{2} \cdot AE \cdot BE \cdot \sin\theta, \quad [\triangle CDE] = \frac{1}{2} \cdot CE \cdot DE \cdot \sin\theta.$$
+
+From $AE \cdot DE = CE \cdot BE$, triangles $AED$ and $BEC$ are similar (by SAS similarity with the equal angle at $E$):
+
+$$\frac{AE}{BE} = \frac{DE}{CE} = \frac{AD}{BC}.$$
+
+Wait, let me use the equal-area condition more directly. Equal areas of $\triangle AED$ and $\triangle BEC$ means:
+
+$$[\triangle ABD] = [\triangle AED] + [\triangle ABE] = [\triangle BEC] + [\triangle ABE] = [\triangle ABC].$$
+
+Triangles $ABD$ and $ABC$ share base $AB$, so they have equal areas, meaning $D$ and $C$ are equidistant from line $AB$. This means $DC \parallel AB$.
+
+With $DC \parallel AB$, triangles $AEB$ and $DEC$ are similar (AA: vertical angles at $E$, and alternate interior angles). So:
+
+$$\frac{AE}{CE} = \frac{BE}{DE} = \frac{AB}{DC} = \frac{9}{12} = \frac{3}{4}.$$
+
+Therefore $AE = \frac{3}{7} \cdot AC = \frac{3}{7} \cdot 14 = 6$.
+
+Answer: **E**.
+</Solution>

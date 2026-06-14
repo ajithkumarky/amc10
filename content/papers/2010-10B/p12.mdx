@@ -1,0 +1,32 @@
+---
+year: 2010
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: D
+choices: ["$0$", "$20$", "$40$", "$60$", "$80$"]
+---
+
+<Problem>
+At the beginning of the school year, $50\%$ of all students in Mr. Wells' math class answered "Yes" to the question "Do you love math", and $50\%$ answered "No." At the end of the school year, $70\%$ answered "Yes" and $30\%$ answered "No." Altogether, $x\%$ of the students gave a different answer at the beginning and end of the school year. What is the difference between the maximum and the minimum possible values of $x$?
+</Problem>
+
+<Solution>
+Let the class have 100 students (WLOG). At the start: 50 Yes, 50 No. At the end: 70 Yes, 30 No.
+
+Let $a$ = number who switched from No to Yes, $b$ = number who switched from Yes to No.
+
+The net change in Yes-voters is $a - b = 70 - 50 = 20$, so $a = b + 20$.
+
+The total who changed is $x = a + b = 2b + 20$.
+
+**Constraints:** $a \le 50$ (can't switch more No-to-Yes than there were No's), $b \le 50$ (similarly), and $a, b \ge 0$.
+
+- Minimum of $x$: minimize $b$. Taking $b = 0$ gives $a = 20$, $x = 20$.
+- Maximum of $x$: maximize $b$. Since $a = b + 20 \le 50$, we get $b \le 30$. Taking $b = 30$ gives $a = 50$, $x = 80$.
+
+The difference is $80 - 20 = 60$.
+
+Answer: **D**.
+</Solution>

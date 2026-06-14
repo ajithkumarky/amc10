@@ -1,0 +1,30 @@
+---
+year: 2009
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 5
+answer: C
+choices: ['$3-2\sqrt{2}$', '$2-\sqrt{2}$', '$4(3-2\sqrt{2})$', '$\dfrac{1}{2}(3-\sqrt{2})$', '$2\sqrt{2}-2$']
+---
+
+<Problem>
+Many Gothic cathedrals have windows with portions containing a ring of congruent circles that are circumscribed by a larger circle. In the figure shown, the number of smaller circles is four. What is the ratio of the sum of the areas of the four smaller circles to the area of the larger circle?
+
+Four congruent small circles of radius $r$ are arranged symmetrically inside a larger circle of radius $R$, each small circle tangent to the large circle and to its two neighbors. The centers of the four small circles lie at distance $R - r$ from the center and are located at the four compass directions.
+</Problem>
+
+<Solution>
+Place the large circle at the origin with radius $R$. The four small circles have centers at $(\pm(R-r), 0)$ and $(0, \pm(R-r))$, each with radius $r$.
+
+Adjacent small circles (e.g., centers at $(R-r, 0)$ and $(0, R-r)$) are tangent to each other, so the distance between their centers equals $2r$:
+$$(R-r)\sqrt{2} = 2r \implies R\sqrt{2} - r\sqrt{2} = 2r \implies R\sqrt{2} = r(2 + \sqrt{2}).$$
+
+Therefore:
+$$\frac{r}{R} = \frac{\sqrt{2}}{2+\sqrt{2}} = \frac{\sqrt{2}(2-\sqrt{2})}{(2+\sqrt{2})(2-\sqrt{2})} = \frac{2\sqrt{2}-2}{2} = \sqrt{2}-1.$$
+
+The ratio of the total area of the four small circles to the area of the large circle:
+$$\frac{4\pi r^2}{\pi R^2} = 4\left(\frac{r}{R}\right)^2 = 4(\sqrt{2}-1)^2 = 4(2 - 2\sqrt{2} + 1) = 4(3-2\sqrt{2}).$$
+
+Answer: **C**.
+</Solution>

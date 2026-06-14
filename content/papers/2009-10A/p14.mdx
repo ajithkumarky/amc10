@@ -1,0 +1,41 @@
+---
+year: 2009
+paper: "10A"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 3
+answer: A
+choices: ["$3$", '$\sqrt{10}$', '$2+\sqrt{2}$', '$2\sqrt{3}$', "$4$"]
+---
+
+<Problem>
+Four congruent rectangles are placed as shown. The area of the outer square is $4$ times that of the inner square. What is the ratio of the length of the longer side of each rectangle to the length of its shorter side?
+
+The four rectangles are arranged around a central square, each aligned with one side of the outer square, forming a pinwheel pattern.
+</Problem>
+
+<Solution>
+Let the shorter side of each rectangle be $a$ and the longer side be $b$.
+
+From the Asymptote code, the rectangles span from $(1,1)$ to $(-2,1)$ to $(-2,2)$ to $(1,2)$ in one orientation, so the shorter side is $1$ and longer side is $3$, giving ratio $3$. Let's verify with the area condition.
+
+The outer square has side length $a + b$ (the rectangle's longer side plus the inner square's side, where the inner square's side is $b - a$):
+
+Actually, set up variables: the inner square has side $s$. Each rectangle has shorter side $a$ and longer side wrapping to form the outer square. The outer square's side $= a + s + a$? No — the four rectangles each occupy one "arm."
+
+From the symmetric arrangement, the outer square's side $= b$ and the inner square's side $= b - 2a$. Then:
+
+$$\text{outer area} = b^2, \quad \text{inner area} = (b-2a)^2.$$
+
+Condition: $b^2 = 4(b-2a)^2$, so $b = 2(b-2a)$ (taking the positive root since $b > 2a$):
+
+$$b = 2b - 4a \implies b = 4a \implies \frac{b}{a} = 4.$$
+
+Hmm, but the Asymptote coordinates give ratio 3. Let me re-examine. From the code, one rectangle goes from $(1,1)$ to $(-2,2)$: width $= 3$, height $= 1$. The outer square formed by all four (rotated 0°, 90°, 180°, 270°) has vertices at $(\pm 2, \pm 2)$... actually the outer boundary forms a square of side $3$ (from $-2$ to $1$ is $3$ units), and the inner square has side $1$ (from $-1$ to $1$? Let's check: the inner square corner is at $(1,1)$, so inner square has side $= 2$).
+
+Actually from the Asymptote path, the inner square corners are at $(\pm 1, \pm 1)$, side $= 2$; outer square side $= 3$ (from $-2$ to $1$... that's $3$, but then the other direction goes $-1$ to $2$ giving $3$). So outer side $= 3$, inner side $= 2$, outer area $= 9$, inner area $= 4$. But $9 \neq 4 \times 4$. So the areas: outer/inner $= 9/4$, not $4$.
+
+Using the area ratio condition properly with longer side $b$ and shorter side $a$: the outer square has side $= a + b$ and inner square has side $= b - a$. Area condition: $(a+b)^2 = 4(b-a)^2$. Taking positive square root: $a+b = 2(b-a) = 2b - 2a$, so $3a = b$, giving ratio $b/a = 3$.
+
+Answer: **A**.
+</Solution>

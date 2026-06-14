@@ -1,0 +1,39 @@
+---
+year: 2009
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 3
+answer: D
+choices: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+---
+
+<Problem>
+On Monday, Millie puts a quart of seeds, $25\%$ of which are millet, into a bird feeder. On each successive day she adds another quart of the same mix of seeds without removing any seeds that are left. Each day the birds eat only $25\%$ of the millet in the feeder, but they eat all of the other seeds. On which day, just after Millie has placed the seeds, will the birds find that more than half the seeds in the feeder are millet?
+</Problem>
+
+<Solution>
+Each quart of seeds contains $0.25$ quarts of millet and $0.75$ quarts of other seeds. The other seeds are entirely eaten each day, so after Millie adds seeds, the non-millet amount is always exactly $0.75$ quarts.
+
+Let $m_n$ be the millet in the feeder just after Millie adds seeds on day $n$ (Monday $= n=1$).
+
+- Day 1 (Monday): $m_1 = 0.25$.
+- Each day, the birds eat $25\%$ of the millet, leaving $75\%$. Then Millie adds $0.25$ more quarts of millet.
+
+So $m_{n+1} = 0.75 \cdot m_n + 0.25$.
+
+The total seeds after adding on day $n$ is $m_n + 0.75$ (millet plus the fresh non-millet). We want $m_n > 0.75 \cdot (m_n + 0.75)/1$... actually we want millet to exceed half the total, so $m_n > m_n + 0.75 - m_n$... Let's be precise: total seeds $= m_n + 0.75$, and we want $m_n > \tfrac{1}{2}(m_n + 0.75)$, i.e., $m_n > 0.75$.
+
+Compute the sequence:
+- $m_1 = 0.25$
+- $m_2 = 0.75(0.25) + 0.25 = 0.1875 + 0.25 = 0.4375$
+- $m_3 = 0.75(0.4375) + 0.25 = 0.328125 + 0.25 = 0.578125$
+- $m_4 = 0.75(0.578125) + 0.25 = 0.43359375 + 0.25 = 0.68359375$
+- $m_5 = 0.75(0.68359375) + 0.25 = 0.5126953125 + 0.25 = 0.7626953125$
+
+On day $5$ (Friday), $m_5 \approx 0.763 > 0.75$. ✓
+
+Day 1 = Monday, so day 5 = Friday.
+
+Answer: **D**.
+</Solution>

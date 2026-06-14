@@ -1,0 +1,36 @@
+---
+year: 2009
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: D
+choices: ['$\dfrac{65}{8}$', '$\dfrac{25}{3}$', '$9$', '$\dfrac{75}{8}$', '$\dfrac{85}{8}$']
+---
+
+<Problem>
+Rectangle $ABCD$ has $AB=8$ and $BC=6$. Point $M$ is the midpoint of diagonal $\overline{AC}$, and $E$ is on $AB$ with $\overline{ME}\perp\overline{AC}$. What is the area of $\triangle AME$?
+</Problem>
+
+<Solution>
+Place $A = (0,0)$, $B = (8,0)$, $C = (8,6)$, $D = (0,6)$.
+
+Diagonal $\overline{AC}$ goes from $(0,0)$ to $(8,6)$, so $M = (4, 3)$.
+
+Slope of $\overline{AC} = \dfrac{6}{8} = \dfrac{3}{4}$, so slope of $\overline{ME} \perp \overline{AC}$ is $-\dfrac{4}{3}$.
+
+Line through $M = (4,3)$ with slope $-\dfrac{4}{3}$:
+$$y - 3 = -\frac{4}{3}(x - 4) \implies y = -\frac{4}{3}x + \frac{16}{3} + 3 = -\frac{4}{3}x + \frac{25}{3}.$$
+
+$E$ is on $AB$, which is the segment from $(0,0)$ to $(8,0)$ along $y = 0$:
+$$0 = -\frac{4}{3}x + \frac{25}{3} \implies x = \frac{25}{4}.$$
+
+So $E = \left(\dfrac{25}{4}, 0\right)$.
+
+Now find the area of $\triangle AME$ with $A = (0,0)$, $M = (4,3)$, $E = \left(\dfrac{25}{4},0\right)$.
+
+Using the formula $\text{Area} = \tfrac{1}{2}|x_A(y_M - y_E) + x_M(y_E - y_A) + x_E(y_A - y_M)|$:
+$$= \frac{1}{2}\left|0(3-0) + 4(0-0) + \frac{25}{4}(0-3)\right| = \frac{1}{2}\left|\frac{25}{4}\cdot(-3)\right| = \frac{1}{2}\cdot\frac{75}{4} = \frac{75}{8}.$$
+
+Answer: **D**.
+</Solution>

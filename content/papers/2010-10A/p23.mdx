@@ -1,0 +1,29 @@
+---
+year: 2010
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: A
+choices: ["$45$", "$63$", "$64$", "$201$", "$1005$"]
+---
+
+<Problem>
+Each of $2010$ boxes in a line contains a single red marble, and for $1 \le k \le 2010$, the box in the $k$th position also contains $k$ white marbles. Isabella begins at the first box and successively draws a single marble at random from each box, in order. She stops when she first draws a red marble. Let $P(n)$ be the probability that Isabella stops after drawing exactly $n$ marbles. What is the smallest value of $n$ for which $P(n) < \dfrac{1}{2010}$?
+</Problem>
+
+<Solution>
+At box $k$, there is $1$ red and $k$ white marble, so $k+1$ total. The probability of drawing white from box $k$ is $\dfrac{k}{k+1}$, and drawing red is $\dfrac{1}{k+1}$.
+
+Isabella stops at exactly box $n$ when she draws white from boxes $1, 2, \ldots, n-1$ and red from box $n$:
+$$P(n) = \left(\prod_{k=1}^{n-1} \dfrac{k}{k+1}\right) \cdot \dfrac{1}{n+1} = \dfrac{1}{n} \cdot \dfrac{1}{n+1} = \dfrac{1}{n(n+1)}.$$
+
+The product telescopes: $\prod_{k=1}^{n-1}\dfrac{k}{k+1} = \dfrac{1}{n}$.
+
+We need $P(n) < \dfrac{1}{2010}$:
+$$\dfrac{1}{n(n+1)} < \dfrac{1}{2010} \iff n(n+1) > 2010.$$
+
+Find the smallest $n$ with $n(n+1) > 2010$. Since $44 \times 45 = 1980 < 2010$ and $45 \times 46 = 2070 > 2010$, the smallest such $n$ is $45$.
+
+Answer: **A**.
+</Solution>

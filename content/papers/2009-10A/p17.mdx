@@ -1,0 +1,33 @@
+---
+year: 2009
+paper: "10A"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 4
+answer: C
+choices: ["$9$", "$10$", '$\dfrac{125}{12}$', '$\dfrac{103}{9}$', "$12$"]
+---
+
+<Problem>
+Rectangle $ABCD$ has $AB = 4$ and $BC = 3$. Segment $EF$ is constructed through $B$ so that $EF \perp DB$, and $A$ and $C$ lie on $DE$ and $DF$, respectively. What is $EF$?
+</Problem>
+
+<Solution>
+Place coordinates with $B$ at the origin, $A = (0, 3)$, $C = (4, 0)$, $D = (4, 3)$.
+
+The diagonal $DB$ goes from $(4,3)$ to $(0,0)$, with slope $\frac{3}{4}$. The line $EF$ through $B = (0,0)$ perpendicular to $DB$ has slope $-\frac{4}{3}$, so its equation is $y = -\frac{4}{3}x$.
+
+Line $DE$ passes through $D = (4,3)$ and $A = (0,3)$: this is the horizontal line $y = 3$.
+
+Intersection $E$: $3 = -\frac{4}{3}x \Rightarrow x = -\frac{9}{4}$, so $E = \left(-\frac{9}{4}, 3\right)$.
+
+Line $DF$ passes through $D = (4,3)$ and $C = (4,0)$: this is the vertical line $x = 4$.
+
+Intersection $F$: $y = -\frac{4}{3}(4) = -\frac{16}{3}$, so $F = \left(4, -\frac{16}{3}\right)$.
+
+Now compute $EF$:
+$$EF = \sqrt{\left(4 - \left(-\frac{9}{4}\right)\right)^2 + \left(-\frac{16}{3} - 3\right)^2} = \sqrt{\left(\frac{25}{4}\right)^2 + \left(-\frac{25}{3}\right)^2}$$
+$$= 25\sqrt{\frac{1}{16} + \frac{1}{9}} = 25\sqrt{\frac{9+16}{144}} = 25 \cdot \frac{5}{12} = \frac{125}{12}.$$
+
+Answer: **C**.
+</Solution>

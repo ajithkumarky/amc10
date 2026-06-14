@@ -1,0 +1,26 @@
+---
+year: 2009
+paper: "10A"
+topic: algebra
+subtopic: sequences-series
+difficulty: 2
+answer: B
+choices: ["7", "41", "49", "289", "2009"]
+---
+
+<Problem>
+Positive integers $a$, $b$, and $2009$, with $a < b < 2009$, form a geometric sequence with an integer ratio. What is $a$?
+</Problem>
+
+<Solution>
+Let the common ratio be the integer $r \geq 2$. Then $b = ar$ and $2009 = ar^2$, so $a = 2009/r^2$.
+
+Factor $2009$: $2009 = 7 \times 287 = 7 \times 7 \times 41 = 7^2 \times 41$.
+
+For $a$ to be a positive integer, $r^2$ must divide $2009 = 7^2 \times 41$. The perfect square divisors of $2009$ are $1$ and $49$.
+
+- $r^2 = 1$: $r = 1$, but then $a = b = 2009$, violating $a < b < 2009$.
+- $r^2 = 49$: $r = 7$, giving $a = 2009/49 = 41$, $b = 41 \times 7 = 287$, and $287 \times 7 = 2009$. Check: $41 < 287 < 2009$. $\checkmark$
+
+Answer: **B**.
+</Solution>

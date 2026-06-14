@@ -1,0 +1,27 @@
+---
+year: 2010
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 1
+answer: B
+choices: ["$2$", "$3$", "$4$", "$5$", "$6$"]
+---
+
+<Problem>
+A month with $31$ days has the same number of Mondays and Wednesdays. How many of the seven days of the week could be the first day of this month?
+</Problem>
+
+<Solution>
+A month with 31 days spans $31 = 4 \times 7 + 3$ days, so it contains four complete weeks plus 3 extra days. Every day of the week appears at least 4 times; the first day of the month plus the next two days each appear 5 times.
+
+We need the number of Mondays to equal the number of Wednesdays. Each appears either 4 or 5 times. For both to appear the same number of times, either both appear 4 times (i.e., neither is among the 3 "extra" days) or both appear 5 times (i.e., both are among the 3 extra days).
+
+The 3 extra days are the first, second, and third days of the week of the month. For both Monday and Wednesday to appear 5 times, they must both be among the first 3 days of the month — but Monday and Wednesday are 2 days apart, and no window of 3 consecutive days can contain both (they'd need positions 1 and 3 in the extra-day window). The window of 3 consecutive days that includes both Monday and Wednesday must start on Monday, Tuesday, or Wednesday relative to the calendar. Specifically, if Monday is day $k$ among the 3 extras, Wednesday is day $k+2$; for $k+2 \le 3$ we need $k=1$, so the month starts on Monday. That is 1 starting day.
+
+For both to appear 4 times, neither is among the 3 extras — the 3 extra days must avoid both Monday and Wednesday. The 3 consecutive days must avoid Monday and Wednesday. The pairs of days that are 2 apart we must avoid as a window: if the extra days are positions starting on day $d$, we need $d \ne \text{Mon}$, $d \ne \text{Tue}$, $d \ne \text{Wed}$ (since starting Tue gives Wed as day 3), and $d \ne \text{Mon}$. Systematically: the extra-day window covers days $d$, $d+1$, $d+2$ (mod 7). We need neither Monday nor Wednesday in this window. Testing all 7 start days: Mon (contains Mon — no), Tue (contains Wed — no), Wed (contains Wed — no), Thu (Thu, Fri, Sat — yes), Fri (Fri, Sat, Sun — yes), Sat (Sat, Sun, Mon — no), Sun (Sun, Mon, Tue — no). So 2 start days give neither Monday nor Wednesday among the extras.
+
+Total: $1 + 2 = 3$ possible first days.
+
+Answer: **B**.
+</Solution>

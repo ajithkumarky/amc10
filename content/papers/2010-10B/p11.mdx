@@ -1,0 +1,34 @@
+---
+year: 2010
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 3
+answer: A
+choices: ["$50$", "$60$", "$75$", "$80$", "$100$"]
+---
+
+<Problem>
+A shopper plans to purchase an item that has a listed price greater than $\textdollar 100$ and can use any one of the three coupons. Coupon A gives $15\%$ off the listed price, Coupon B gives $\textdollar 30$ off the listed price, and Coupon C gives $25\%$ off the amount by which the listed price exceeds $\textdollar 100$.
+
+Let $x$ and $y$ be the smallest and largest prices, respectively, for which Coupon A saves at least as many dollars as Coupon B or Coupon C. What is $y - x$?
+</Problem>
+
+<Solution>
+Let $p$ be the listed price ($p > 100$). The savings from each coupon:
+- Coupon A: $0.15p$
+- Coupon B: $30$
+- Coupon C: $0.25(p - 100)$
+
+**Coupon A vs. Coupon B:** A saves at least as much as B when
+$$0.15p \ge 30 \implies p \ge 200.$$
+
+**Coupon A vs. Coupon C:** A saves at least as much as C when
+$$0.15p \ge 0.25(p-100) \implies 0.15p \ge 0.25p - 25 \implies 25 \ge 0.10p \implies p \le 250.$$
+
+So Coupon A saves at least as much as **both** B and C when $200 \le p \le 250$.
+
+Thus $x = 200$ and $y = 250$, giving $y - x = 50$.
+
+Answer: **A**.
+</Solution>

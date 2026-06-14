@@ -1,0 +1,49 @@
+---
+year: 2010
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: E
+choices: ['$\dfrac{1}{3}$', '$\dfrac{29}{81}$', '$\dfrac{31}{81}$', '$\dfrac{11}{27}$', '$\dfrac{13}{27}$']
+---
+
+<Problem>
+Positive integers $a$, $b$, and $c$ are randomly and independently selected with replacement from the set $\{1, 2, 3,\dots, 2010\}$. What is the probability that $abc + ab + a$ is divisible by $3$?
+</Problem>
+
+<Solution>
+Factor: $abc + ab + a = a(bc + b + 1)$.
+
+For $3 \mid a(bc+b+1)$, either $3 \mid a$ or $3 \mid (bc+b+1)$ (or both).
+
+Since $2010 = 3 \times 670$, exactly $\dfrac{1}{3}$ of $\{1,\dots,2010\}$ are divisible by 3. Each of $a, b, c$ is $\equiv 0, 1, 2 \pmod{3}$ with equal probability $\dfrac{1}{3}$.
+
+**$P(3 \mid a) = \dfrac{1}{3}$.**
+
+**$P(3 \nmid a) = \dfrac{2}{3}$.** In this case we need $3 \mid (bc + b + 1) = b(c+1)+1$.
+
+Compute $b(c+1)+1 \pmod 3$ for all pairs $(b \bmod 3, c \bmod 3)$:
+
+| $b$ | $c$ | $b(c+1)+1 \pmod 3$ |
+|-----|-----|-----|
+| 0 | 0 | $0(1)+1=1$ |
+| 0 | 1 | $0(2)+1=1$ |
+| 0 | 2 | $0(3)+1=1$ |
+| 1 | 0 | $1(1)+1=2$ |
+| 1 | 1 | $1(2)+1=3\equiv 0$ |
+| 1 | 2 | $1(3)+1=4\equiv 1$ |
+| 2 | 0 | $2(1)+1=3\equiv 0$ |
+| 2 | 1 | $2(2)+1=5\equiv 2$ |
+| 2 | 2 | $2(3)+1=7\equiv 1$ |
+
+Out of 9 equally likely $(b,c)$ residue pairs, exactly 2 give $b(c+1)+1 \equiv 0 \pmod 3$: the pairs $(1,1)$ and $(2,0)$.
+
+So $P(3 \mid (bc+b+1)) = \dfrac{2}{9}$.
+
+By inclusion-exclusion:
+$$P = P(3\mid a) + P(3\nmid a)\cdot P(3\mid bc+b+1)$$
+$$= \frac{1}{3} + \frac{2}{3} \cdot \frac{2}{9} = \frac{1}{3} + \frac{4}{27} = \frac{9}{27} + \frac{4}{27} = \frac{13}{27}.$$
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,35 @@
+---
+year: 2010
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: E
+choices: ["$30$", "$31$", "$32$", "$33$", "$34$"]
+---
+
+<Problem>
+A high school basketball game between the Raiders and Wildcats was tied at the end of the first quarter. The number of points scored by the Raiders in each of the four quarters formed an increasing geometric sequence, and the number of points scored by the Wildcats in each of the four quarters formed an increasing arithmetic sequence. At the end of the fourth quarter, the Raiders had won by one point. Neither team scored more than $100$ points. What was the total number of points scored by the two teams in the first half?
+</Problem>
+
+<Solution>
+Since the game was tied after Q1, both teams scored the same amount $a$ in Q1. Let the Raiders' quarterly scores be $a, ar, ar^2, ar^3$ (geometric, $r > 1$) and the Wildcats' scores be $a, a+d, a+2d, a+3d$ (arithmetic, $d > 0$).
+
+**Raiders won by 1:** $a(1 + r + r^2 + r^3) = 4a + 6d + 1$.
+
+**Trying $r = 2$** (the simplest integer ratio $> 1$): Raiders total $= 15a$, so $11a - 1 = 6d$, giving $d = \dfrac{11a-1}{6}$.
+
+For $d$ to be a positive integer, $11a \equiv 1 \pmod{6}$, so $5a \equiv 1 \pmod{6}$, meaning $a \equiv 5 \pmod{6}$.
+
+The smallest value is $a = 5$: $d = \dfrac{54}{6} = 9$.
+
+- Raiders: $5, 10, 20, 40$ — total $75 < 100$. ✓
+- Wildcats: $5, 14, 23, 32$ — total $74 < 100$. ✓
+- Difference: $75 - 74 = 1$. ✓
+
+The next candidate $a = 11$ gives Raiders total $165 > 100$, so this is the unique valid solution.
+
+**First half total:** $(5 + 10) + (5 + 14) = 15 + 19 = 34.$
+
+Answer: **E**.
+</Solution>

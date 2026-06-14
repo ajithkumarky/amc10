@@ -1,0 +1,56 @@
+---
+year: 2009
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: D
+choices: ['$\dfrac{1}{9}$', '$\dfrac{1}{8}$', '$\dfrac{1}{6}$', '$\dfrac{2}{11}$', '$\dfrac{1}{5}$']
+---
+
+<Problem>
+Two cubical dice each have removable numbers $1$ through $6$. The twelve numbers on the two dice are removed, put into a bag, then drawn one at a time and randomly reattached to the faces of the cubes, one number to each face. The dice are then rolled and the numbers on the two top faces are added. What is the probability that the sum is $7$?
+</Problem>
+
+<Solution>
+After redistribution, we have two dice with faces labeled by some permutation of $\{1,1,2,2,3,3,4,4,5,5,6,6\}$ (two copies of each number across both dice).
+
+When we roll both dice, the top face of die 1 shows some value $a$ and die 2 shows some value $b$. We want $P(a + b = 7)$.
+
+**Fix the top face of die 1 = $k$.** The 12 numbers were distributed randomly, so the top face of die 1 is equally likely to be any of the 12 labels. However, what matters is the joint distribution.
+
+Think of it this way: randomly assign the 12 numbers (two each of 1–6) to 12 face slots (6 per die). Roll both dice — equivalently, pick one random face from each die. This is the same as choosing 2 faces at random from the 12, one from each die.
+
+Actually, since the dice are rolled independently after labeling, we can think of selecting one face from die 1 uniformly at random (prob $1/6$ each face) and one face from die 2 uniformly (prob $1/6$ each face), then reading their labels.
+
+Let $f_1, f_2, \ldots, f_6$ be the labels on die 1 and $g_1, \ldots, g_6$ be the labels on die 2. The rolled sum is $f_I + g_J$ where $I, J$ are uniform on $\{1,\ldots,6\}$, independent of the labeling.
+
+$$P(\text{sum} = 7) = \frac{1}{36}\sum_{i=1}^{6}\sum_{j=1}^{6} \mathbf{1}[f_i + g_j = 7].$$
+
+We want the expected value of this over all random assignments.
+
+$$E[P(\text{sum}=7)] = \frac{1}{36}\sum_{i,j} P(f_i + g_j = 7).$$
+
+By symmetry, $P(f_1 + g_1 = 7) = P(\text{first face of die 1} + \text{first face of die 2} = 7)$.
+
+The first face of die 1 is a uniformly random one of the 12 numbers (each equally likely to land in any slot). Given the first face of die 1 is $k$ (probability $\frac{2}{12} = \frac{1}{6}$ for each $k \in \{1,\ldots,6\}$), the remaining 11 numbers go to the remaining slots. Die 2 has 6 slots, so the first face of die 2 gets one of the remaining 11 numbers uniformly.
+
+$P(f_1 + g_1 = 7 \mid f_1 = k) = P(g_1 = 7-k \mid f_1 = k)$.
+
+Given $f_1 = k$, the 11 remaining numbers include: if $k \neq 7-k$ (i.e., $k \neq 3.5$, always true for integers), the remaining pool has both copies of each number except one copy of $k$ is used, so it has 1 copy of $k$ and 2 copies of every other number. The 6 slots of die 2 receive 6 of these 11 numbers uniformly at random. The probability that $g_1 = 7-k$ is:
+
+$$\frac{\text{(copies of } 7{-}k \text{ remaining)} \times 6}{11 \times 6} \cdot \frac{1}{6}$$
+
+Wait, more carefully: the first slot of die 2 receives one of the 11 remaining numbers, each equally likely. The number of copies of $7-k$ in the remaining 11 is $2$ (since $k \neq 7-k$ for integer $k$). So:
+
+$$P(g_1 = 7-k \mid f_1 = k) = \frac{2}{11}.$$
+
+Therefore:
+$$P(f_1 + g_1 = 7) = \sum_{k=1}^{6} P(f_1=k) \cdot \frac{2}{11} = 1 \cdot \frac{2}{11} = \frac{2}{11}.$$
+
+By symmetry all 36 pairs $(i,j)$ have the same probability, so:
+
+$$P(\text{sum} = 7) = \frac{2}{11}.$$
+
+Answer: **D**.
+</Solution>

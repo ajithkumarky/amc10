@@ -1,0 +1,52 @@
+---
+year: 2010
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: A
+choices: ["$78$", "$88$", "$98$", "$108$", "$118$"]
+---
+
+<Problem>
+The polynomial $x^3 - ax^2 + bx - 2010$ has three positive integer roots. What is the smallest possible value of $a$?
+</Problem>
+
+<Solution>
+By Vieta's formulas, if the three positive integer roots are $p$, $q$, $r$, then:
+- $p + q + r = a$
+- $pqr = 2010$
+
+We need to minimize $p + q + r$ subject to $pqr = 2010$.
+
+Factor $2010 = 2 \times 3 \times 5 \times 67$.
+
+By AM-GM, the sum $p + q + r$ is minimized when the three factors are as equal as possible. With four prime factors, we must combine some into one of the three roots.
+
+The factor $67$ is large and must appear in one root. The remaining factors are $2 \times 3 \times 5 = 30$, which we split between the other two roots.
+
+Possible factorizations of $2010$ into three positive integers (unordered):
+- $1 \times 1 \times 2010$: sum $= 2012$
+- $1 \times 2 \times 1005$: sum $= 1008$
+- $1 \times 3 \times 670$: sum $= 674$
+- $1 \times 5 \times 402$: sum $= 408$
+- $1 \times 6 \times 335$: sum $= 342$
+- $1 \times 10 \times 201$: sum $= 212$
+- $1 \times 15 \times 134$: sum $= 150$
+- $1 \times 30 \times 67$: sum $= 98$
+- $2 \times 3 \times 335$: sum $= 340$
+- $2 \times 5 \times 201$: sum $= 208$
+- $2 \times 15 \times 67$: sum $= 84$
+- $3 \times 10 \times 67$: sum $= 80$
+- $5 \times 6 \times 67$: sum $= 78$
+- $2 \times 3 \times 335$: already listed
+- $6 \times 5 \times 67 = 2010$: sum $= 78$
+- $3 \times 5 \times 134$: sum $= 142$
+- $6 \times 10 \times ...$: $6 \times 10 = 60$, $2010/60 = 33.5$, not integer
+- $2 \times 67 \times 15 = 2010$: sum $= 84$
+- $10 \times 3 \times 67$: sum $= 80$
+
+The minimum sum is $78$, achieved by $5 \times 6 \times 67$ (since $5 + 6 + 67 = 78$), and no other factorization achieves less.
+
+Answer: **A**.
+</Solution>

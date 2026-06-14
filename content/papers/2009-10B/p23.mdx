@@ -1,0 +1,63 @@
+---
+year: 2009
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: C
+choices: ['$\dfrac{1}{16}$', '$\dfrac{1}{8}$', '$\dfrac{3}{16}$', '$\dfrac{1}{4}$', '$\dfrac{5}{16}$']
+---
+
+<Problem>
+Rachel and Robert run on a circular track. Rachel runs counterclockwise and completes a lap every $90$ seconds, and Robert runs clockwise and completes a lap every $80$ seconds. Both start from the same line at the same time. At some random time between $10$ minutes and $11$ minutes after they begin to run, a photographer standing inside the track takes a picture that shows one-fourth of the track, centered on the starting line. What is the probability that both Rachel and Robert are in the picture?
+</Problem>
+
+<Solution>
+The picture shows $\tfrac{1}{4}$ of the track centered on the starting line, so each runner must be within $\tfrac{1}{8}$ of the track on either side of the start.
+
+**Rachel's position:** She completes a lap every $90$ s, so her angular position (as a fraction of the track) at time $t$ seconds is $\tfrac{t}{90} \pmod{1}$. She's in the picture if her position (mod 1) is within $\tfrac{1}{8}$ of $0$ (i.e., in $[0, \tfrac{1}{8}]$ or $[\tfrac{7}{8}, 1)$). The fraction of each lap she's in frame is $\tfrac{1}{4}$.
+
+**Robert's position:** His lap time is $80$ s. Similarly, $\tfrac{1}{4}$ of each lap he's in frame.
+
+**In the 10–11 minute window:** $t \in [600, 660]$ seconds.
+
+Rachel's fractional position: $\tfrac{t}{90} \pmod{1}$. She's in frame when $\{t/90\} \in [0, 1/8] \cup [7/8, 1)$.
+
+Robert's fractional position: $\{t/80\} \in [0, 1/8] \cup [7/8, 1)$.
+
+Over the $60$-second window, Rachel's position completes $60/90 = 2/3$ of a lap. Since $\tfrac{1}{4}$ of each lap she's visible, she's visible for $\tfrac{1}{4}$ of the time (by uniform distribution over her laps — but we need to check the window size vs. lap sizes).
+
+Rachel's period is $90$ s; in the $60$-s window she completes $2/3$ of a lap, which is more than $1/4$, so the fraction of the 60-s window where she's in frame is $1/4$.
+
+Robert's period is $80$ s; in $60$ s he does $3/4$ of a lap, and fraction in frame is $1/4$.
+
+Since their positions are independent and the window is large compared to the periods for uniform distribution purposes, and their lap times are coprime (gcd(80,90)=10, lcm=720), their positions within their respective cycles are approximately independent over $[600,660]$.
+
+The probability that both are in the picture is $\tfrac{1}{4} \times \tfrac{1}{4} = \tfrac{1}{16}$ only if independent... but the answer is $\tfrac{3}{16}$.
+
+Let me reconsider. The key is that their relative positions are not independent — they started together. Let $r(t) = \{t/90\}$ and $b(t) = \{t/80\}$.
+
+Rachel is visible when $r(t) \in [0, 1/8) \cup (7/8, 1)$, i.e., within $1/8$ of start.
+Robert is visible when $b(t) \in [0, 1/8) \cup (7/8, 1)$.
+
+$t \in [600, 660]$. Rachel's visibility intervals within this window:
+$t/90 \pmod{1} \in [0,1/8] \cup [7/8,1]$: i.e., $t \equiv 0 \pmod{90}$ within $\pm 90/8 = 11.25$ s. At $t=600$: $600/90 = 6.667$, so fractional part $= 0.667$. Rachel's next visit to the starting zone: she needs fractional part near 0 or 1.
+
+Fractional part $= 0$ at $t = 630$ ($630/90 = 7$). So Rachel is in frame for $[630 - 11.25, 630 + 11.25] = [618.75, 641.25]$ within $[600, 660]$.
+
+Fractional part $= 1$ same as $0$.
+
+Robert's visibility: $t/80 \pmod 1 \in [0,1/8]\cup[7/8,1]$: within $\pm 10$ s of multiples of $80$. At $t=600$: $600/80=7.5$, fractional part $=0.5$. Multiples of $80$ near our window: $640$ ($640/80=8$). Robert is in frame for $[640-10, 640+10]=[630,650]$. Also check $t=560$ gives $[550,570]$ (outside window) and the window ends at $660$: next would be $720$, giving $[710,730]$ (outside).
+
+Also Robert at fractional part $= 7/8$: $80 \times 7.875 = 630$, so $[630-10,630+10]=[620,640]$... wait. Let me redo: Robert is in frame when $\{t/80\} \in [0,1/8]\cup[7/8,1]$, meaning $t/80$ is within $1/8$ of an integer, i.e., $t$ is within $80/8 = 10$ s of a multiple of $80$.
+
+Multiples of $80$: ..., $560$, $640$, $720$, ... Robert in frame: $[630,650]\cup[710,730]...$ Only $[630,650]$ intersects $[600,660]$.
+
+Rachel in frame: $[618.75, 641.25]$ (the interval around $t=630$, which is a multiple of $90$).
+
+**Overlap (both in frame):** $[630, 641.25]$, length $= 11.25$ s.
+
+Probability $= \dfrac{11.25}{60} = \dfrac{11.25}{60} = \dfrac{3}{16}$.
+
+Answer: **C**.
+</Solution>

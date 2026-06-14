@@ -1,0 +1,25 @@
+---
+year: 2010
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 3
+answer: C
+choices: ["$25$", "$27$", "$29$", "$31$", "$33$"]
+---
+
+<Problem>
+On a $50$-question multiple choice math contest, students receive $4$ points for a correct answer, $0$ points for an answer left blank, and $-1$ point for an incorrect answer. Jesse's total score on the contest was $99$. What is the maximum number of questions that Jesse could have answered correctly?
+</Problem>
+
+<Solution>
+Let $c$ = correct, $w$ = wrong, $b$ = blank, with $c + w + b = 50$ and $4c - w = 99$.
+
+From the score equation: $w = 4c - 99$. Since $w \ge 0$, we need $c \ge 25$ (actually $c \ge 24.75$, so $c \ge 25$).
+
+Also $c + w \le 50$, so $c + (4c - 99) \le 50 \implies 5c \le 149 \implies c \le 29$.
+
+The maximum is $c = 29$: then $w = 4(29) - 99 = 17$, $b = 50 - 29 - 17 = 4 \ge 0$. Valid.
+
+Answer: **C**.
+</Solution>

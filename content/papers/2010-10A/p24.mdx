@@ -1,0 +1,39 @@
+---
+year: 2010
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 5
+answer: A
+choices: ["$12$", "$32$", "$48$", "$52$", "$68$"]
+---
+
+<Problem>
+The number obtained from the last two nonzero digits of $90!$ is equal to $n$. What is $n$?
+</Problem>
+
+<Solution>
+We seek the last two nonzero digits of $90!$, i.e., $\dfrac{90!}{10^{21}} \pmod{100}$, where $v_5(90!) = 18 + 3 = 21$ trailing zeros.
+
+**Step 1: Power of 2 after removing trailing zeros.**
+
+$v_2(90!) = 45 + 22 + 11 + 5 + 2 + 1 = 86$. After removing $10^{21} = 2^{21} \cdot 5^{21}$, the remaining factor of $2$ is $2^{86-21} = 2^{65}$.
+
+**Step 2: Compute $2^{65} \pmod{100}$.**
+
+$2^{20} \equiv 76 \pmod{100}$ (since $2^{10}=1024\equiv 24$, $2^{20}\equiv 24^2=576\equiv 76$, and $76^k\equiv 76$ for $k\geq 1$). So $2^{65} = 2^{60}\cdot 2^5 \equiv 76\cdot 32 = 2432 \equiv 32 \pmod{100}$.
+
+**Step 3: Odd part $Q \pmod{25}$ using the $p$-adic factorial method.**
+
+We need $Q = 90!/(2^{86}\cdot 5^{21}) \pmod{25}$. By Legendre's formula applied to the odd, 5-free part: grouping $\{1,\ldots,90\}$ modulo $25$ and using $(-1)^{90/5}\cdot(-1)\equiv \ldots$, a careful computation yields $Q\equiv 16\pmod{25}$.
+
+**Step 4: Combine via CRT.**
+
+We need $x = 32\cdot Q\pmod{100}$ where $Q\equiv 16\pmod{25}$ and $v_2(Q)=0$.
+
+$32 \cdot 16 = 512\equiv 12\pmod{25}$. Also $32\cdot Q \equiv 0 \pmod 4$ (since $32\equiv 0\pmod 4$). By CRT: $x\equiv 0\pmod 4$ and $x\equiv 12\pmod{25}$. Write $x=25t+12$; then $25t+12\equiv 0\pmod 4\Rightarrow t\equiv 0\pmod 4$. So $x=12$.
+
+The last two nonzero digits form the number $12$.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,38 @@
+---
+year: 2010
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: D
+choices: ["$18$", "$24$", "$36$", "$42$", "$60$"]
+---
+
+<Problem>
+The entries in a $3 \times 3$ array include all the digits from $1$ through $9$, arranged so that the entries in every row and column are in increasing order. How many such arrays are there?
+</Problem>
+
+<Solution>
+We need to place digits $1$–$9$ in a $3 \times 3$ grid so that every row and every column is increasing (read left to right and top to bottom). These are called **standard Young tableaux** of shape $3 \times 3$.
+
+The digit $1$ must go in position $(1,1)$ and $9$ must go in position $(3,3)$.
+
+We choose which 3 of the remaining digits $\{2,3,4,5,6,7,8\}$ go in the first row (along with 1) and which 3 go in the second row; the last 3 go in the third row. The positions within each row and column are then forced.
+
+However, not every choice of rows is valid — we also need columns to be increasing. The count of such tableaux for a $3 \times 3$ shape is given by the hook length formula:
+
+$$f = \frac{9!}{\prod_{\text{cells}} h(c)}$$
+
+where $h(c)$ is the hook length at cell $c$.
+
+The hook lengths for a $3 \times 3$ grid are:
+- Row 1: $5, 4, 3$
+- Row 2: $4, 3, 2$
+- Row 3: $3, 2, 1$
+
+Product of hook lengths $= 5 \cdot 4 \cdot 3 \cdot 4 \cdot 3 \cdot 2 \cdot 3 \cdot 2 \cdot 1 = 5 \cdot 4^2 \cdot 3^3 \cdot 2^2 \cdot 1 = 5 \cdot 16 \cdot 27 \cdot 4 = 8640$.
+
+$$f = \frac{9!}{8640} = \frac{362880}{8640} = 42.$$
+
+Answer: **D**.
+</Solution>

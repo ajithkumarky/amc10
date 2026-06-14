@@ -1,0 +1,29 @@
+---
+year: 2010
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: B
+choices: ["$30$", "$33$", "$35$", "$36$", "$37$"]
+---
+
+<Problem>
+Nondegenerate $\triangle ABC$ has integer side lengths, $\overline{BD}$ is an angle bisector, $AD = 3$, and $DC = 8$. What is the smallest possible value of the perimeter?
+</Problem>
+
+<Solution>
+By the Angle Bisector Theorem, $\dfrac{AD}{DC} = \dfrac{AB}{BC}$, so $\dfrac{AB}{BC} = \dfrac{3}{8}$. Let $AB = 3k$ and $BC = 8k$ for some positive rational $k$.
+
+Since side lengths are integers, $k$ must make both $3k$ and $8k$ integers. The smallest such positive $k$ with integer results is $k = 1$, giving $AB = 3$, $BC = 8$, and $AC = AD + DC = 11$.
+
+Check the triangle inequality:
+- $AB + AC > BC$: $3 + 11 = 14 > 8$. $\checkmark$
+- $AB + BC > AC$: $3 + 8 = 11 \not> 11$. This is degenerate (equality), so $k = 1$ fails.
+
+Try $k = 2$: $AB = 6$, $BC = 16$, $AC = 11$. Check: $6 + 11 = 17 > 16$ $\checkmark$; $6 + 16 = 22 > 11$ $\checkmark$; $11 + 16 = 27 > 6$ $\checkmark$. Perimeter $= 33$.
+
+We need $k$ such that $3k + 11 > 8k$, i.e., $11 > 5k$, so $k < 2.2$. For integer side lengths $k$ must be a positive integer, so $k \in \{1, 2\}$ (and $k=1$ is degenerate). The smallest valid perimeter is $33$.
+
+Answer: **B**.
+</Solution>

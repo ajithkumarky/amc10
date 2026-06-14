@@ -1,0 +1,36 @@
+---
+year: 2009
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: C
+choices: ["2", "3", "4", "5", "6"]
+---
+
+<Problem>
+By inserting parentheses, it is possible to give the expression $2\times3 + 4\times5$ several values. How many different values can be obtained?
+</Problem>
+
+<Solution>
+The expression has three operations: two multiplications and one addition. By inserting parentheses, we change the order of operations. Let's systematically list all possible parenthesizations and their values:
+
+1. $2 \times 3 + 4 \times 5 = 6 + 20 = 26$ (standard order)
+2. $(2 \times 3 + 4) \times 5 = 10 \times 5 = 50$
+3. $2 \times (3 + 4 \times 5) = 2 \times 23 = 46$
+4. $2 \times (3 + 4) \times 5 = 2 \times 7 \times 5 = 70$
+5. $(2 \times 3 + 4 \times 5)$ is just the original $= 26$, same as (1)
+6. $2 \times (3 + 4) \times 5 = 70$, already counted
+
+Let me be more careful. The four numbers 2, 3, 4, 5 with operations $\times, +, \times$ are fixed in that order. Possible groupings:
+
+- $((2 \times 3) + 4) \times 5 = 10 \times 5 = 50$
+- $(2 \times (3 + 4)) \times 5 = 14 \times 5 = 70$
+- $(2 \times 3) + (4 \times 5) = 6 + 20 = 26$
+- $2 \times ((3 + 4) \times 5) = 2 \times 35 = 70$ (duplicate)
+- $2 \times (3 + (4 \times 5)) = 2 \times 23 = 46$
+
+The distinct values are $26, 46, 50, 70$ — that's $4$ values.
+
+Answer: **C**.
+</Solution>

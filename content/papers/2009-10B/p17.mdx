@@ -1,0 +1,71 @@
+---
+year: 2009
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 4
+answer: C
+choices: ['$\dfrac{1}{2}$', '$\dfrac{3}{5}$', '$\dfrac{2}{3}$', '$\dfrac{3}{4}$', '$\dfrac{4}{5}$']
+---
+
+<Problem>
+Five unit squares are arranged in the coordinate plane, with the lower left corner at the origin. The slanted line, extending from $(c,0)$ to $(3,3)$, divides the entire region into two regions of equal area. What is $c$?
+
+The five unit squares form an L-shaped (staircase) region: the bottom row has squares with $x \in [0,1]$, $[1,2]$, $[2,3]$ at $y \in [0,1]$; above that at $y \in [1,2]$ are squares at $x \in [0,1]$ and $[1,2]$ (wait — let me describe from the Asymptote code). The region consists of: a $3\times1$ strip at $y\in[0,1]$ for $x\in[0,3]$, plus a $2\times1$ strip at $y\in[1,2]$ for $x\in[0,2]$ (via $(0,1)$-$(3,1)$-$(3,3)$-$(2,3)$-$(2,0)$ boundary and $(1,0)$-$(1,2)$-$(3,2)$). Actually from the Asymptote: drawing $(0,1)$-$(3,1)$-$(3,3)$-$(2,3)$-$(2,0)$ and $(1,0)$-$(1,2)$-$(3,2)$. So the staircase region is: $[0,2]\times[0,1]$, $[2,3]\times[0,3]$, $[0,2]\times... actually the region is bounded by the outer boundary. Five unit squares means total area $= 5$.
+</Problem>
+
+<Solution>
+From the Asymptote code, the five unit squares form a staircase region. The boundary goes: the region consists of the rectangle $[0,3]\times[0,1]$ (3 squares) plus the rectangle $[0,2]\times[1,2]$ (2 squares), but that's only right if the Asymptote draws those. Actually from the code: draw $(0,1)$--$(3,1)$--$(3,3)$--$(2,3)$--$(2,0)$ and $(1,0)$--$(1,2)$--$(3,2)$, suggesting the region is an "L"-shape with total area 5.
+
+Looking at the Asymptote more carefully: the outer boundary is $(2,0)\to(0,...$ — the region is: $[0,2]\times[0,1]$ plus $[2,3]\times[0,3]$ plus $[0,2]\times[1,2]$... Let me just use total area $= 5$ and set up the line.
+
+The line goes from $(c, 0)$ to $(3,3)$. It divides the region into two equal parts of area $5/2 = 2.5$ each.
+
+The shaded region in the Asymptote is to the right of the line (containing $(3,3)$). The region to the right of the line, within the staircase, is a triangle/trapezoid region.
+
+The staircase region (from Asymptote): bottom part is $[0,3]\times[0,1]$, middle part $[0,2]\times[1,2]$... but $3\times1 + 2\times1 = 5$ unit squares total. Wait that's only if the top part has no extra column. Let me accept: total area $= 5$.
+
+The slanted line from $(c,0)$ to $(3,3)$ has slope $\dfrac{3-0}{3-c} = \dfrac{3}{3-c}$ and equation $y = \dfrac{3}{3-c}(x - c)$.
+
+The region to the right of (above) the line within the staircase has the shaded area shown. From the Asymptote fill: $(2/3, 0)\to(3,3)\to(3,1)\to(2,1)\to(2,0)$. This suggests the right portion is bounded by the line, the right edge $x=3$, and two unit-square edges at $y=1$, $x=2$.
+
+Area of shaded region (to the right of line):
+- It's the trapezoid/polygon with vertices $(c,0),(3,3),(3,1),(2,1),(2,0)$.
+
+Area of polygon $(c,0),(3,3),(3,1),(2,1),(2,0)$ using the shoelace formula (with $c = 2/3$ as shown in Asymptote, but we find the general $c$):
+
+The region to the right of the line within the staircase has area $5/2 = 2.5$.
+
+Shoelace with vertices $(c,0),(3,3),(3,1),(2,1),(2,0)$ in order:
+
+$$\text{Area} = \frac{1}{2}|x_1(y_2-y_5) + x_2(y_3-y_1) + x_3(y_4-y_2) + x_4(y_5-y_3) + x_5(y_1-y_4)|$$
+
+Using shoelace directly:
+$$2A = |(c\cdot3 - 3\cdot0) + (3\cdot1 - 3\cdot3) + (3\cdot1 - 2\cdot1) + (2\cdot0 - 2\cdot1) + (2\cdot0 - c\cdot0)|$$
+
+Let me use the standard shoelace:
+$$2A = |(c)(3) - (3)(0)| + |(3)(1) - (3)(3)| + \ldots$$
+
+Shoelace: $2A = |(x_1 y_2 - x_2 y_1) + (x_2 y_3 - x_3 y_2) + (x_3 y_4 - x_4 y_3) + (x_4 y_5 - x_5 y_4) + (x_5 y_1 - x_1 y_5)|$
+
+With $(x_1,y_1)=(c,0)$, $(x_2,y_2)=(3,3)$, $(x_3,y_3)=(3,1)$, $(x_4,y_4)=(2,1)$, $(x_5,y_5)=(2,0)$:
+
+$$2A = (3c - 0) + (9 - 9) + (3 - 2) + (0 - 2) + (0 - 0)$$
+Wait, let me be careful:
+- $(x_1 y_2 - x_2 y_1) = 3c - 0 = 3c$
+- $(x_2 y_3 - x_3 y_2) = 3\cdot1 - 3\cdot3 = 3 - 9 = -6$
+- $(x_3 y_4 - x_4 y_3) = 3\cdot1 - 2\cdot1 = 3 - 2 = 1$
+- $(x_4 y_5 - x_5 y_4) = 2\cdot0 - 2\cdot1 = 0 - 2 = -2$
+- $(x_5 y_1 - x_1 y_5) = 2\cdot0 - c\cdot0 = 0$
+
+Sum $= 3c - 6 + 1 - 2 + 0 = 3c - 7$. Taking absolute value and dividing by 2:
+
+$$A = \frac{|3c - 7|}{2}.$$
+
+Since $c < 3$, we have $3c < 9$, and with $c < 7/3 \approx 2.33$, we'd get $3c - 7 < 0$, so $A = \dfrac{7 - 3c}{2}$.
+
+Set equal to $5/2$:
+$$\frac{7 - 3c}{2} = \frac{5}{2} \implies 7 - 3c = 5 \implies c = \frac{2}{3}.$$
+
+Answer: **C**.
+</Solution>

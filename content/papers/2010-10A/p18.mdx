@@ -1,0 +1,36 @@
+---
+year: 2010
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: B
+choices: ['$\dfrac{47}{72}$', '$\dfrac{37}{56}$', '$\dfrac{2}{3}$', '$\dfrac{49}{72}$', '$\dfrac{39}{56}$']
+---
+
+<Problem>
+Bernardo randomly picks $3$ distinct numbers from the set $\{1,2,3,4,5,6,7,8,9\}$ and arranges them in descending order to form a 3-digit number. Silvia randomly picks $3$ distinct numbers from the set $\{1,2,3,4,5,6,7,8\}$ and also arranges them in descending order to form a 3-digit number. What is the probability that Bernardo's number is larger than Silvia's number?
+</Problem>
+
+<Solution>
+There are $\binom{9}{3} = 84$ equally likely choices for Bernardo and $\binom{8}{3} = 56$ for Silvia. Since their choices are independent, there are $84 \times 56$ equally likely pairs.
+
+**Key observation:** If Bernardo does not pick $9$, both players draw from $\{1,\ldots,8\}$ and by symmetry each is equally likely to have the larger number. The probability is $\frac{1}{2}$ (ties are impossible since different orderings of different sets can only tie if they pick the same 3 numbers — which can happen).
+
+Actually, let's split on whether Bernardo picks $9$:
+
+**Case 1: Bernardo picks $9$** (probability $\frac{\binom{8}{2}}{\binom{9}{3}} = \frac{28}{84} = \frac{1}{3}$). Then Bernardo's number starts with $9$, which is always larger than Silvia's (whose numbers are from $\{1,\ldots,8\}$, so her number is at most $876$, while Bernardo's is at least $921$). Bernardo wins with probability $1$.
+
+**Case 2: Bernardo does not pick $9$** (probability $\frac{2}{3}$). Both pick from $\{1,\ldots,8\}$. Bernardo picks a random 3-element subset of $\{1,\ldots,8\}$, as does Silvia. If they pick the same subset, they form the same number (a tie — counted as Bernardo not winning). If different subsets, exactly one is larger.
+
+In this case, the probability that Bernardo's number $>$ Silvia's: let $p$ be the probability. By symmetry, $P(\text{B wins}) = P(\text{S wins})$, so $P(\text{B wins}) + P(\text{tie}) + P(\text{S wins}) = 1$ gives $2p + P(\text{tie}) = 1$.
+
+$P(\text{tie}) = \frac{56}{56 \times 56}$ ... no. Given Bernardo doesn't pick 9, he picks one of $\binom{8}{3} = 56$ subsets uniformly. Silvia also picks one of $56$ subsets uniformly. $P(\text{tie}) = \frac{56}{56^2}$... no, $P(\text{same subset}) = \frac{1}{56}$.
+
+By symmetry $P(\text{B wins} \mid \text{Case 2}) = P(\text{S wins} \mid \text{Case 2}) = \frac{1 - 1/56}{2} = \frac{55}{112}$.
+
+**Total probability Bernardo wins:**
+$$\frac{1}{3} \cdot 1 + \frac{2}{3} \cdot \frac{55}{112} = \frac{1}{3} + \frac{110}{336} = \frac{112}{336} + \frac{110}{336} = \frac{222}{336} = \frac{37}{56}.$$
+
+Answer: **B**.
+</Solution>

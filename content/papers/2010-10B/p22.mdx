@@ -1,0 +1,32 @@
+---
+year: 2010
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 5
+answer: C
+choices: ["$1930$", "$1931$", "$1932$", "$1933$", "$1934$"]
+---
+
+<Problem>
+Seven distinct pieces of candy are to be distributed among three bags. The red bag and the blue bag must each receive at least one piece of candy; the white bag may remain empty. How many arrangements are possible?
+</Problem>
+
+<Solution>
+Each piece of candy can go into any of the 3 bags, giving $3^7 = 2187$ total distributions without restriction.
+
+Use inclusion-exclusion to subtract distributions where the red bag is empty or the blue bag is empty.
+
+Let $R$ = "red bag empty," $B$ = "blue bag empty."
+
+$|R|$: all 7 candies in blue or white $= 2^7 = 128$.
+$|B|$: all 7 candies in red or white $= 2^7 = 128$.
+$|R \cap B|$: all 7 candies in white only $= 1^7 = 1$.
+
+By inclusion-exclusion:
+$$|R \cup B| = 128 + 128 - 1 = 255.$$
+
+Valid arrangements $= 2187 - 255 = 1932$.
+
+Answer: **C**.
+</Solution>

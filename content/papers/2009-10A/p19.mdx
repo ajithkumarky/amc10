@@ -1,0 +1,27 @@
+---
+year: 2009
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: B
+choices: ["4", "8", "9", "50", "90"]
+---
+
+<Problem>
+Circle $A$ has radius $100$. Circle $B$ has an integer radius $r < 100$ and remains internally tangent to circle $A$ as it rolls once around the circumference of circle $A$. The two circles have the same points of tangency at the beginning and end of circle $B$'s trip. How many possible values can $r$ have?
+</Problem>
+
+<Solution>
+When circle $B$ (radius $r$) rolls inside circle $A$ (radius $100$), the center of $B$ traces a circle of radius $100 - r$. As $B$ completes one full trip around the interior, it rotates about its own center.
+
+For the same point of tangency to appear at start and end, circle $B$ must complete a whole number of rotations. The number of rotations $B$ makes about its own center as it travels once around is $\dfrac{100}{r}$ (this comes from the arc length $2\pi(100-r)$ traveled by $B$'s center, giving $\dfrac{2\pi(100-r)}{2\pi r} = \dfrac{100-r}{r}$ rotations relative to a fixed direction, plus 1 for the revolution itself, totaling $\dfrac{100}{r}$).
+
+For the same tangency point: $\dfrac{100}{r}$ must be a positive integer, meaning $r$ must divide $100$.
+
+The divisors of $100 = 2^2 \times 5^2$ are: $1, 2, 4, 5, 10, 20, 25, 50, 100$. Since $r < 100$, we exclude $100$.
+
+That gives $8$ possible values.
+
+Answer: **B**.
+</Solution>

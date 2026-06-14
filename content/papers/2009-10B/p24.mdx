@@ -1,0 +1,37 @@
+---
+year: 2009
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 5
+answer: A
+choices: ["100", "102", "104", "106", "108"]
+---
+
+<Problem>
+The keystone arch is an ancient architectural feature. It is composed of congruent isosceles trapezoids fitted together along the non-parallel sides, as shown. The bottom sides of the two end trapezoids are horizontal. In an arch made with $9$ trapezoids, let $x$ be the angle measure in degrees of the larger interior angle of the trapezoid. What is $x$?
+</Problem>
+
+<Solution>
+The arch is formed by $9$ congruent isosceles trapezoids arranged in a semicircle (like slices of an annulus). The trapezoids are joined along their non-parallel (leg) sides.
+
+Since the two end trapezoids have horizontal bottom sides, the arch spans $180°$ total. With $9$ trapezoids, the arch turns through $180°$, so each trapezoid contributes a turn of $180°/9 = 20°$.
+
+Each trapezoid is an isosceles trapezoid. The non-parallel sides (legs) are the sides shared between adjacent trapezoids. As we go around the arch, adjacent trapezoids meet at an angle: the outer angle between consecutive legs is $20°$.
+
+At the joint between two trapezoids, the two legs form an angle. Since the trapezoid is isosceles, the leg of one trapezoid and the leg of the adjacent trapezoid together must account for the $20°$ turn. Each leg makes an angle of $10°$ from the radial direction (by symmetry).
+
+The larger interior angle $x$ of the trapezoid is the angle at the bottom of each trapezoid (at the outer arc). 
+
+Think of the trapezoid as having the shorter parallel side (inner arc) at top and longer parallel side (outer arc) at bottom. The legs are the non-parallel sides. The angle between consecutive bottom sides (outer arc) is $20°$.
+
+At the outer corners of each trapezoid, the interior angle equals $x$. The two legs of a trapezoid meet the bottom base, and the sum of interior angles is $360°$ (wait, for a trapezoid the sum is $360°$... no, it's $(4-2)\times180°=360°$). For an isosceles trapezoid: two large angles $x$ (at the bottom) and two small angles $180°-x$ (at the top), summing to $360°$. ✓
+
+As we tile the arch, at each outer-corner junction between adjacent trapezoids, the two base-angles $x$ from adjacent trapezoids must leave a gap of $20°$ for the arch to close (so the exterior angle is $20°$). Actually, the two adjacent trapezoids share a leg, and the outer bottom corners of successive trapezoids make an angle: $2x - 180° = 20°$ ... let me think differently.
+
+The bottom sides of the end trapezoids are horizontal, meaning they are parallel. The angle from one end to the other is $180°$. Each trapezoid's bottom makes a $20°$ angle with the next trapezoid's bottom.
+
+At each junction along the outer arc, two bottom-angles $x$ meet. The exterior of the arch means the angle "outside" between successive bottoms is $20°$, so on the interior side: $x + x - 180° = 20°$, giving $2x = 200°$, so $x = 100°$.
+
+Answer: **A**.
+</Solution>

@@ -1,0 +1,34 @@
+---
+year: 2009
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 5
+answer: D
+choices: ["0", "1", "2", "4", "6"]
+---
+
+<Problem>
+What is the remainder when $3^0 + 3^1 + 3^2 + \cdots + 3^{2009}$ is divided by $8$?
+</Problem>
+
+<Solution>
+First, find $3^k \pmod{8}$ for small $k$:
+- $3^0 = 1$
+- $3^1 = 3$
+- $3^2 = 9 \equiv 1 \pmod{8}$
+- $3^3 \equiv 3 \pmod{8}$
+
+The pattern repeats with period $2$: odd powers of $3$ are $\equiv 3 \pmod 8$, even powers are $\equiv 1 \pmod 8$.
+
+The sum $S = 3^0 + 3^1 + \cdots + 3^{2009}$ has $2010$ terms. Group them in pairs:
+$$(3^0 + 3^1) + (3^2 + 3^3) + \cdots + (3^{2008} + 3^{2009}).$$
+
+There are $1005$ pairs, each congruent to $1 + 3 = 4 \pmod{8}$.
+
+$$S \equiv 1005 \times 4 \pmod{8}.$$
+
+Since $1005 = 125 \times 8 + 5$, we have $1005 \equiv 5 \pmod{8}$, so $1005 \times 4 \equiv 5 \times 4 = 20 \equiv 4 \pmod{8}$.
+
+Answer: **D**.
+</Solution>

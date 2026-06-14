@@ -1,0 +1,26 @@
+---
+year: 2009
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: D
+choices: ["10", "12", "16", "18", "24"]
+---
+
+<Problem>
+Kiana has two older twin brothers. The product of their three ages is $128$. What is the sum of their three ages?
+</Problem>
+
+<Solution>
+Since $128 = 2^7$, all three ages must be powers of $2$. Let the twins' age be $t$ and Kiana's age be $k$, with $t > k$ (the brothers are older). We need $t^2 \cdot k = 128$.
+
+Testing powers of 2:
+- $t = 8, k = 2$: $64 \cdot 2 = 128$. ✓ Sum $= 8 + 8 + 2 = 18$.
+- $t = 4, k = 8$: gives $k > t$, so Kiana would be older — not valid.
+- $t = 16, k = \tfrac{1}{2}$: not a positive integer age.
+
+The only valid factoring is $t = 8, k = 2$, giving a sum of $18$.
+
+Answer: **D**.
+</Solution>

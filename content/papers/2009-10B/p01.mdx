@@ -1,0 +1,24 @@
+---
+year: 2009
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 1
+answer: B
+choices: ["1", "2", "3", "4", "5"]
+---
+
+<Problem>
+Each morning of her five-day workweek, Jane bought either a $50$-cent muffin or a $75$-cent bagel. Her total cost for the week was a whole number of dollars. How many bagels did she buy?
+</Problem>
+
+<Solution>
+Let $b$ be the number of bagels. Then she bought $5 - b$ muffins. Total cost in cents:
+$$75b + 50(5 - b) = 25b + 250.$$
+
+For the total to be a whole number of dollars, it must be divisible by $100$. So we need $25b + 250 \equiv 0 \pmod{100}$, i.e., $25b \equiv -250 \equiv 50 \pmod{100}$, i.e., $b \equiv 2 \pmod{4}$.
+
+With $0 \le b \le 5$, the only solution is $b = 2$. Check: $25(2) + 250 = 300$ cents $= \$3.00$. ✓
+
+Answer: **B**.
+</Solution>

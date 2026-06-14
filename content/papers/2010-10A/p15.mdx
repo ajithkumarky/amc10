@@ -1,0 +1,43 @@
+---
+year: 2010
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: D
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+In a magical swamp there are two species of talking amphibians: toads, whose statements are always true, and frogs, whose statements are always false. Four amphibians, Brian, Chris, LeRoy, and Mike live together in this swamp, and they make the following statements.
+
+Brian: "Mike and I are different species."
+
+Chris: "LeRoy is a frog."
+
+LeRoy: "Chris is a frog."
+
+Mike: "Of the four of us, at least two are toads."
+
+How many of these amphibians are frogs?
+</Problem>
+
+<Solution>
+Chris and LeRoy accuse each other of being frogs. If Chris is a toad, his statement is true, so LeRoy is a frog; then LeRoy's statement "Chris is a frog" is false, consistent with LeRoy being a frog. If Chris is a frog, his statement is false, so LeRoy is a toad; then LeRoy says "Chris is a frog," which is true, consistent with LeRoy being a toad. Either way, exactly one of Chris/LeRoy is a toad and the other is a frog.
+
+**Case 1: Chris = toad, LeRoy = frog.**
+
+Brian says "Mike and I are different species." If Brian is a toad, this is true, so Mike is a frog. Mike then says "at least two are toads," but we'd have only Brian and Chris as toads (two toads), so Mike's statement would be true — but Mike is supposed to be a frog (false statements only). Contradiction.
+
+If Brian is a frog, his statement is false, so Mike and Brian are the same species: both frogs. Then the toads are only Chris (one toad). Mike says "at least two are toads" — false, which is consistent with Mike being a frog. This works: toads = Chris; frogs = Brian, LeRoy, Mike. That's 3 frogs.
+
+**Case 2: Chris = frog, LeRoy = toad.**
+
+If Brian is a toad, his statement is true, so Mike is a frog. Then toads = Brian, LeRoy (two toads). Mike says "at least two are toads" — true, but Mike is a frog (must say false things). Contradiction.
+
+If Brian is a frog, his statement is false, so Mike is a frog too. Toads = LeRoy only (one toad). Mike says "at least two are toads" — false, consistent with Mike being a frog. This gives 3 frogs (Brian, Chris, Mike). But this has only 1 toad, not 2+, so let me verify: LeRoy (toad) says "Chris is a frog" — true, consistent.
+
+Both cases give 3 frogs. There are $\boxed{3}$ frogs.
+
+Answer: **D**.
+</Solution>

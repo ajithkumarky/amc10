@@ -1,0 +1,45 @@
+---
+year: 2010
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: C
+choices: ["$60^\\circ$", "$75^\\circ$", "$90^\\circ$", "$105^\\circ$", "$120^\\circ$"]
+---
+
+<Problem>
+Triangle $ABC$ has $AB = 2 \cdot AC$. Let $D$ and $E$ be on $\overline{AB}$ and $\overline{BC}$, respectively, such that $\angle BAE = \angle ACD$. Let $F$ be the intersection of segments $AE$ and $CD$, and suppose that $\triangle CFE$ is equilateral. What is $\angle ACB$?
+</Problem>
+
+<Solution>
+Since $\triangle CFE$ is equilateral, all its angles are $60°$. Let $\angle ACB = \gamma$ and $\angle BAE = \angle ACD = \alpha$.
+
+In $\triangle ACF$: $\angle AFC = 180° - \angle CFE = 120°$ (since $F$ lies on $AE$ and $CD$, and $\angle CFE = 60°$). So $\angle FAC + \angle ACF = 60°$, meaning $\angle BAE + \angle ACD = \alpha + \alpha = 60°$, giving $\alpha = 30°$.
+
+Now in $\triangle ACD$: $\angle ADC = 180° - \angle ACD - \angle CAD = 180° - 30° - \angle CAD$. But $\angle CAD = \angle CAB - \angle BAE$... 
+
+Let $\angle CAB = \beta$. Then $\angle BAE = \alpha = 30°$ so $\angle CAE = \beta - 30°$.
+
+In $\triangle AEF$ (part of $\triangle AEB$): $\angle AFE = 180° - 60° = 120°$ (exterior to the equilateral triangle at $F$), so $\angle FAE + \angle AEF = 60°$. Here $\angle FAE = \angle BAE = 30°$... That gives $\angle AEF = 30°$.
+
+Since $\angle AEF = 30°$ is an angle at $E$ in $\triangle BCE$, and $\angle BEA = 180° - 30° = 150°$ ... so $\angle BEA = 150°$.
+
+In $\triangle ABE$: $\angle ABE + \angle BAE + \angle AEB = 180°$, so $\angle ABE + 30° + 150° = 180°$... that gives $\angle ABE = 0°$, which is impossible.
+
+The correct angle: $\angle CEF = 60°$ (interior angle of equilateral $\triangle CFE$), so $\angle AEF = 180° - 60° = 120°$... no, $E$ lies on $BC$, so $\angle AEF$ and $\angle AEB$ are supplementary to $\angle AEC$.
+
+In $\triangle BCE$: at vertex $E$, $\angle FEC = 60°$ and $\angle AEB = 180° - \angle AEC$. Since $\angle AEC + \angle CEF + \angle FEB... $ Let me use a clean angle-chase.
+
+In $\triangle ACF$: angles sum to $180°$. $\angle CAF = \beta - 30°$, $\angle ACF = 30°$, $\angle AFC = 180° - (\beta - 30°) - 30° = 180° - \beta$.
+
+At $F$, $\angle AFC + \angle CFE = 180° - \beta + 60°$ must account for the straight line through $A$, $F$, $E$: $\angle AFE = 180°$ ... no, $\angle AFC$ and $\angle CFE$ are on the same side. Since $F$ is on segment $AE$, $\angle AFC + \angle CFE = 180°$ (they're supplementary on line $AE$). So $180° - \beta + 60° = 180°$, giving $\beta = 60°$.
+
+In triangle $ABC$: $\angle A + \angle B + \angle C = 180°$, i.e. $\beta + \angle B + \gamma = 180°$, so $60° + \angle B + \gamma = 180°$, thus $\angle B = 120° - \gamma$.
+
+Using $AB = 2 \cdot AC$: by the Law of Sines, $\dfrac{AB}{\sin\gamma} = \dfrac{AC}{\sin\angle B}$, so $\dfrac{2AC}{\sin\gamma} = \dfrac{AC}{\sin(120° - \gamma)}$, giving $2\sin(120° - \gamma) = \sin\gamma$.
+
+Expanding: $2(\sin120°\cos\gamma - \cos120°\sin\gamma) = \sin\gamma$, so $2\left(\dfrac{\sqrt{3}}{2}\cos\gamma + \dfrac{1}{2}\sin\gamma\right) = \sin\gamma$, which gives $\sqrt{3}\cos\gamma + \sin\gamma = \sin\gamma$, so $\sqrt{3}\cos\gamma = 0$, meaning $\cos\gamma = 0$ and $\gamma = 90°$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,32 @@
+---
+year: 2010
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 4
+answer: A
+choices: ["$7$", "$8$", "$10$", "$12$", "$15$"]
+---
+
+<Problem>
+A solid cube has side length $3$ inches. A $2$-inch by $2$-inch square hole is cut into the center of each face. The edges of each cut are parallel to the edges of the cube, and each hole goes all the way through the cube. What is the volume, in cubic inches, of the remaining solid?
+</Problem>
+
+<Solution>
+The cube has volume $3^3 = 27$ cubic inches. Three square tunnels of cross-section $2 \times 2$ pass through the cube along each pair of parallel faces (one tunnel along each axis).
+
+Each tunnel has volume $2 \times 2 \times 3 = 12$ cubic inches.
+
+Three tunnels together: $3 \times 12 = 36$ cubic inches removed, but the central $2 \times 2 \times 2 = 8$ cubic inch cube is subtracted three times and must be added back twice (by inclusion-exclusion, the three tunnels overlap only in the central $2\times2\times2$ block, and each pair of tunnels intersects in that same block):
+
+By inclusion-exclusion:
+- Remove $3 \times 12 = 36$.
+- Add back pairwise intersections: each pair of tunnels shares the central $2\times2\times2$ cube, so $3 \times 8 = 24$.
+- Subtract the triple intersection: $1 \times 8 = 8$.
+
+Total removed $= 36 - 24 + 8 = 20$.
+
+Remaining volume $= 27 - 20 = 7$.
+
+Answer: **A**.
+</Solution>

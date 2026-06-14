@@ -1,0 +1,35 @@
+---
+year: 2010
+paper: "10A"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 2
+answer: E
+choices: ["$2011$", "$2012$", "$2013$", "$2015$", "$2017$"]
+---
+
+<Problem>
+Marvin had a birthday on Tuesday, May 27 in the leap year $2008$. In what year will his birthday next fall on a Saturday?
+</Problem>
+
+<Solution>
+The day of the week for May 27 advances by 1 in a normal year and by 2 in a leap year (when Feb 29 of that year falls between the two May 27 dates, which happens when the destination year is a leap year).
+
+Starting from Tuesday in 2008:
+
+| Year | Shift | Day |
+|------|-------|-----|
+| 2009 | +1 (not leap) | Wednesday |
+| 2010 | +1 | Thursday |
+| 2011 | +1 | Friday |
+| 2012 | +2 (2012 is leap) | Sunday |
+| 2013 | +1 | Monday |
+| 2014 | +1 | Tuesday |
+| 2015 | +1 | Wednesday |
+| 2016 | +2 (2016 is leap) | Friday |
+| 2017 | +1 | **Saturday** |
+
+May 27, 2017 falls on a Saturday.
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,27 @@
+---
+year: 2009
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: A
+choices: ['$\dfrac{1}{2}$', '$\dfrac{5}{8}$', '$\dfrac{3}{4}$', '$\dfrac{5}{6}$', '$\dfrac{9}{10}$']
+---
+
+<Problem>
+A particular $12$-hour digital clock displays the hour and minute of a day. Unfortunately, whenever it is supposed to display a $1$, it mistakenly displays a $9$. For example, when it is 1:16 PM the clock incorrectly shows 9:96 PM. What fraction of the day will the clock show the correct time?
+</Problem>
+
+<Solution>
+The clock is correct only during times that contain no digit $1$. We work in the 12-hour format (then double for AM/PM).
+
+**Hours:** The hour can be $1$ through $12$. Hours containing the digit $1$ are: $1, 10, 11, 12$. So the hours with no digit $1$ are: $2, 3, 4, 5, 6, 7, 8, 9$ — that's $8$ out of $12$ hours.
+
+**Minutes:** Minutes run from $00$ to $59$. A minute contains a $1$ if the tens digit is $1$ (minutes $10$–$19$, giving $10$ values) or the units digit is $1$ (minutes $01, 11, 21, 31, 41, 51$, giving $6$ values) minus the overlap ($11$, counted in both): $10 + 6 - 1 = 15$ minutes contain a $1$.
+
+So minutes with no digit $1$: $60 - 15 = 45$ out of $60$.
+
+**Fraction of correct times:** $\dfrac{8}{12} \times \dfrac{45}{60} = \dfrac{2}{3} \times \dfrac{3}{4} = \dfrac{1}{2}$.
+
+Answer: **A**.
+</Solution>
