@@ -1,9 +1,22 @@
 'use client';
 
+import katex from 'katex';
 import { cn } from '@/lib/cn';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'] as const;
 export type ChoiceLetter = (typeof LETTERS)[number];
+
+// Choices are stored as strings that may contain inline KaTeX math ($...$).
+// Render those segments to HTML so the dollar delimiters don't show literally.
+function renderChoiceHtml(raw: string): string {
+  return raw.replace(/\$([^$]+)\$/g, (_match, math: string) => {
+    try {
+      return katex.renderToString(math, { throwOnError: false });
+    } catch {
+      return math;
+    }
+  });
+}
 
 export interface ChoiceRowProps {
   choices: string[];
@@ -56,7 +69,10 @@ export function ChoiceRow({
             >
               {ltr}
             </span>
-            <span className="font-mono text-sm text-cyber-ink">{choices[i] ?? ''}</span>
+            <span
+              className="font-mono text-sm text-cyber-ink"
+              dangerouslySetInnerHTML={{ __html: renderChoiceHtml(choices[i] ?? '') }}
+            />
           </button>
         );
       })}
