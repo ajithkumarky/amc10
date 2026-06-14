@@ -1,0 +1,34 @@
+---
+year: 2018
+paper: "10B"
+topic: number-theory
+subtopic: modular-arithmetic
+difficulty: 4
+answer: E
+choices: ["0", "1", "2", "3", "4"]
+---
+
+<Problem>
+Let $a_1, a_2, \dots, a_{2018}$ be a strictly increasing sequence of positive integers such that $$a_1 + a_2 + \cdots + a_{2018} = 2018^{2018}.$$
+What is the remainder when $a_1^3 + a_2^3 + \cdots + a_{2018}^3$ is divided by $6$?
+</Problem>
+
+<Solution>
+**Key identity:** For any integer $n$, we have $n^3 - n = n(n-1)(n+1)$, the product of three consecutive integers, which is always divisible by $6$. Therefore $n^3 \equiv n \pmod{6}$ for every integer $n$.
+
+This means:
+$$\sum_{i=1}^{2018} a_i^3 \equiv \sum_{i=1}^{2018} a_i = 2018^{2018} \pmod{6}.$$
+
+Now compute $2018^{2018} \pmod{6}$:
+$$2018 = 2018 \div 6 = 336\text{ r }2, \quad \text{so } 2018 \equiv 2 \pmod{6}.$$
+
+Therefore $2018^{2018} \equiv 2^{2018} \pmod{6}$.
+
+Powers of $2$ modulo $6$: $2^1 \equiv 2$, $2^2 \equiv 4$, $2^3 \equiv 8 \equiv 2$, $2^4 \equiv 4$, $\ldots$ The pattern is $2, 4, 2, 4, \ldots$ with period $2$.
+
+Since $2018$ is even, $2^{2018} \equiv 4 \pmod{6}$.
+
+Therefore the remainder when $\sum a_i^3$ is divided by $6$ is $\mathbf{4}$.
+
+Answer: **E**.
+</Solution>

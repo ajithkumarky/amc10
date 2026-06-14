@@ -1,0 +1,29 @@
+---
+year: 2017
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: B
+choices: ["240", "245", "290", "480", "490"]
+---
+
+<Problem>
+At a gathering of $30$ people, there are $20$ people who all know each other and $10$ people who know no one. People who know each other hug, and people who do not know each other shake hands. How many handshakes occur?
+</Problem>
+
+<Solution>
+Handshakes happen between any two people who do NOT know each other.
+
+The $20$ mutual-acquaintances know each other — no handshakes among them.
+The $10$ strangers know no one — they shake hands with everyone they don't know.
+
+Count pairs that shake hands:
+- A stranger with another stranger: $\dbinom{10}{2} = 45$ handshakes.
+- A stranger with one of the $20$ acquaintances: $10 \times 20 = 200$ handshakes.
+- Two acquaintances: $0$ (they hug instead).
+
+Total: $45 + 200 = 245$ handshakes.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,32 @@
+---
+year: 2018
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 2
+answer: D
+choices: ["16", "17", "18", "19", "36"]
+---
+
+<Problem>
+$N$ congruent semicircles are drawn along a diameter of a large semicircle, with their diameters covering the diameter of the large semicircle with no overlap. Let $A$ be the combined area of the small semicircles and $B$ be the area of the region inside the large semicircle but outside the small semicircles. The ratio $A:B$ is $1:18$. What is $N$?
+
+The figure shows a large semicircle of radius $9$ with several small congruent semicircles (each of radius $1$) arranged along its diameter, alternately filled and unfilled.
+</Problem>
+
+<Solution>
+Let the large semicircle have radius $R$. Since $N$ small semicircles cover the diameter $2R$ with no overlap, each small semicircle has diameter $\frac{2R}{N}$, so radius $r = \frac{R}{N}$.
+
+The area of the large semicircle is $\frac{1}{2}\pi R^2$.
+
+The combined area of all $N$ small semicircles is $N \cdot \frac{1}{2}\pi r^2 = \frac{N}{2}\pi \cdot \frac{R^2}{N^2} = \frac{\pi R^2}{2N}$.
+
+So $A = \frac{\pi R^2}{2N}$ and the total area is $\frac{\pi R^2}{2}$, which means $B = \frac{\pi R^2}{2} - \frac{\pi R^2}{2N} = \frac{\pi R^2}{2}\left(1 - \frac{1}{N}\right)$.
+
+Setting $A:B = 1:18$:
+$$\frac{A}{B} = \frac{\frac{1}{N}}{1 - \frac{1}{N}} = \frac{1}{N-1} = \frac{1}{18}.$$
+
+Therefore $N - 1 = 18$, so $N = 19$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,41 @@
+---
+year: 2017
+paper: "10A"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 4
+answer: B
+choices: ["2", "3", "4", "5", "6"]
+---
+
+<Problem>
+There are 10 horses, named Horse 1, Horse 2, $\ldots$, Horse 10. They get their names from how many minutes it takes them to run one lap around a circular race track: Horse $k$ runs one lap in exactly $k$ minutes. At time 0 all the horses are together at the starting point on the track. The horses start running in the same direction, and they keep running around the circular track at their constant speeds. The least time $S>0$, in minutes, at which all 10 horses will again simultaneously be at the starting point is $S=2520$. Let $T>0$ be the least time, in minutes, such that at least 5 of the horses are again at the starting point. What is the sum of the digits of $T$?
+</Problem>
+
+<Solution>
+Horse $k$ is at the starting point at times that are multiples of $k$. So a set of horses $\{k_1, k_2, \ldots\}$ are all simultaneously at the start at the multiples of $\text{lcm}(k_1, k_2, \ldots)$.
+
+We need the smallest $T$ such that $\text{lcm}$ of some 5 horses divides $T$ — i.e., find the minimum LCM over all 5-element subsets of $\{1, 2, \ldots, 10\}$.
+
+Key insight: any subset containing $1$ has the same LCM as without it, so we can ignore Horse 1. To minimize the LCM, choose numbers whose prime factors are already covered.
+
+Try $\{1, 2, 3, 4, 6\}$: $\text{lcm}(1,2,3,4,6) = 12$.
+
+Try $\{1, 2, 4, 6, 8\}$: $\text{lcm} = 24$.
+
+Try $\{1, 2, 3, 6, 9\}$: $\text{lcm} = 18$.
+
+Try $\{1, 2, 3, 4, 6\}$: $\text{lcm} = 12$.
+
+Try $\{2, 4, 6, 8, 10\}$: $\text{lcm} = 120$.
+
+Try $\{1, 2, 3, 4, 6\}$ gives $T = 12$. Digits: $1 + 2 = 3$.
+
+Can we get LCM smaller than 12? We need at least 5 numbers from 1–10. The LCM of any 5 distinct positive integers all at most 10 must be at least... Check if $T=6$ works: multiples of 6 among 1–10 that divide 6 are $\{1, 2, 3, 6\}$ — only 4 horses. Not enough.
+
+Check $T = 12$: horses at start are those $k$ dividing 12: $k \in \{1, 2, 3, 4, 6\}$ — exactly 5 horses. So $T = 12$.
+
+Sum of digits of $12$: $1 + 2 = 3$.
+
+Answer: **B**.
+</Solution>

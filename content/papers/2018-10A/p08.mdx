@@ -1,0 +1,32 @@
+---
+year: 2018
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 2
+answer: C
+choices: ["$0$", "$1$", "$2$", "$3$", "$4$"]
+---
+
+<Problem>
+Joe has a collection of $23$ coins, consisting of $5$-cent coins, $10$-cent coins, and $25$-cent coins. He has $3$ more $10$-cent coins than $5$-cent coins, and the total value of his collection is $320$ cents. How many more $25$-cent coins does Joe have than $5$-cent coins?
+</Problem>
+
+<Solution>
+Let $f$ = number of 5-cent coins. Then the number of 10-cent coins is $f + 3$.
+
+Let $q$ = number of 25-cent coins.
+
+**Total count:** $f + (f+3) + q = 23$, so $2f + q = 20$.
+
+**Total value:** $5f + 10(f+3) + 25q = 320$, so $15f + 25q = 290$, which simplifies to $3f + 5q = 58$.
+
+From the count equation: $q = 20 - 2f$. Substituting:
+$$3f + 5(20 - 2f) = 58 \implies 3f + 100 - 10f = 58 \implies -7f = -42 \implies f = 6$$
+
+So $q = 20 - 2(6) = 8$.
+
+Joe has $q - f = 8 - 6 = 2$ more 25-cent coins than 5-cent coins.
+
+Answer: **C**.
+</Solution>

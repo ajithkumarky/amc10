@@ -1,0 +1,37 @@
+---
+year: 2019
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 2
+answer: E
+choices: ["Triangle $A'B'C'$ lies in the first quadrant.", "Triangles $ABC$ and $A'B'C'$ have the same area.", "The slope of line $AA'$ is $-1$.", "The slopes of lines $AA'$ and $CC'$ are the same.", "Lines $AB$ and $A'B'$ are perpendicular to each other."]
+---
+
+<Problem>
+Triangle $ABC$ lies in the first quadrant. Points $A$, $B$, and $C$ are reflected across the line $y=x$ to points $A'$, $B'$, and $C'$, respectively. Assume that none of the vertices of the triangle lie on the line $y=x$. Which of the following statements is *not* always true?
+
+(A) Triangle $A'B'C'$ lies in the first quadrant.
+
+(B) Triangles $ABC$ and $A'B'C'$ have the same area.
+
+(C) The slope of line $AA'$ is $-1$.
+
+(D) The slopes of lines $AA'$ and $CC'$ are the same.
+
+(E) Lines $AB$ and $A'B'$ are perpendicular to each other.
+</Problem>
+
+<Solution>
+Reflecting across $y = x$ sends a point $(p,q)$ to $(q,p)$.
+
+- (A) True: if $(p,q)$ has $p,q>0$ then $(q,p)$ also has both coordinates positive, so $A'B'C'$ stays in the first quadrant.
+- (B) True: reflection is an isometry, so area is preserved.
+- (C) The segment from $(p,q)$ to $(q,p)$ has slope $\frac{p-q}{q-p} = -1$ (whenever $p \neq q$). True.
+- (D) Both $AA'$ and $CC'$ have slope $-1$ by the same reasoning, so they are equal. True.
+- (E) This is false in general. The image segment $A'B'$ is the reflection of $AB$, which need not be perpendicular to $AB$. For example, a horizontal segment reflects to a vertical one (those *are* perpendicular), but a segment of slope $2$ reflects to one of slope $\tfrac12$, and slopes $2$ and $\tfrac12$ are not perpendicular.
+
+So the statement that is not always true is (E).
+
+Answer: **E**.
+</Solution>

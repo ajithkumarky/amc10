@@ -1,0 +1,44 @@
+---
+year: 2018
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: B
+choices: ["2016", "2017", "2018", "2019", "2020"]
+---
+
+<Problem>
+A function $f$ is defined recursively by $f(1) = f(2) = 1$ and $$f(n) = f(n-1) - f(n-2) + n$$ for all integers $n \geq 3$. What is $f(2018)$?
+</Problem>
+
+<Solution>
+Compute the first several values to find a pattern:
+
+$$f(1) = 1, \quad f(2) = 1$$
+$$f(3) = f(2) - f(1) + 3 = 1 - 1 + 3 = 3$$
+$$f(4) = f(3) - f(2) + 4 = 3 - 1 + 4 = 6$$
+$$f(5) = f(4) - f(3) + 5 = 6 - 3 + 5 = 8$$
+$$f(6) = f(5) - f(4) + 6 = 8 - 6 + 6 = 8$$
+$$f(7) = f(6) - f(5) + 7 = 8 - 8 + 7 = 7$$
+$$f(8) = f(7) - f(6) + 8 = 7 - 8 + 8 = 7$$
+$$f(9) = f(8) - f(7) + 9 = 7 - 7 + 9 = 9$$
+$$f(10) = f(9) - f(8) + 10 = 9 - 7 + 10 = 12$$
+$$f(11) = f(10) - f(9) + 11 = 12 - 9 + 11 = 14$$
+$$f(12) = f(11) - f(10) + 12 = 14 - 12 + 12 = 14$$
+$$f(13) = f(12) - f(11) + 13 = 14 - 14 + 13 = 13$$
+$$f(14) = f(13) - f(12) + 14 = 13 - 14 + 14 = 13$$
+
+Noticing the pattern, let's check values at $n = 6k+2$:
+- $f(2) = 1 = 2 - 1$
+- $f(8) = 7 = 8 - 1$
+- $f(14) = 13 = 14 - 1$
+
+The pattern at $n \equiv 2 \pmod{6}$: $f(n) = n - 1$.
+
+Now $2018 = 6 \times 336 + 2$, so $2018 \equiv 2 \pmod{6}$.
+
+Therefore $f(2018) = 2018 - 1 = 2017$.
+
+Answer: **B**.
+</Solution>

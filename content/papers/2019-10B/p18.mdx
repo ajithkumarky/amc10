@@ -1,0 +1,31 @@
+---
+year: 2019
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 4
+answer: C
+choices: ['$\frac{2}{3}$', '$1$', '$1\frac{1}{5}$', '$1\frac{1}{4}$', '$1\frac{1}{2}$']
+---
+
+<Problem>
+Henry decides one morning to do a workout, and he walks $\tfrac{3}{4}$ of the way from his home to his gym. The gym is $2$ kilometers away from Henry's home. At that point, he changes his mind and walks $\tfrac{3}{4}$ of the way from where he is back toward home. When he reaches that point, he changes his mind again and walks $\tfrac{3}{4}$ of the distance from there back toward the gym. If Henry keeps changing his mind when he has walked $\tfrac{3}{4}$ of the distance toward either the gym or home from the point where he last changed his mind, he will get very close to walking back and forth between a point $A$ kilometers from home and a point $B$ kilometers from home. What is $|A-B|$?
+</Problem>
+
+<Solution>
+Place home at $0$ and gym at $2$. In the limit, Henry oscillates between two fixed points $A$ (a turning point closer to the gym, reached on a walk toward the gym) and $B$ (a turning point closer to home, reached on a walk toward home).
+
+The limiting behavior: from $B$, he walks $\tfrac34$ of the way toward the gym ($2$) to reach $A$; from $A$, he walks $\tfrac34$ of the way toward home ($0$) to reach $B$. This gives a self-consistent pair of equations:
+
+$$A = B + \tfrac34(2 - B), \qquad B = A - \tfrac34 A = \tfrac14 A.$$
+
+Substitute $B = \tfrac14 A$ into the first:
+
+$$A = \tfrac14 A + \tfrac34\left(2 - \tfrac14 A\right) = \tfrac14 A + \tfrac32 - \tfrac{3}{16}A.$$
+
+So $A - \tfrac14 A + \tfrac{3}{16}A = \tfrac32$, i.e. $\tfrac{16 - 4 + 3}{16}A = \tfrac{15}{16}A = \tfrac32$, giving $A = \tfrac{8}{5}$. Then $B = \tfrac14\cdot\tfrac85 = \tfrac25$.
+
+$$|A - B| = \frac85 - \frac25 = \frac65 = 1\tfrac15.$$
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,54 @@
+---
+year: 2018
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 5
+answer: C
+choices: ["324", "330", "340", "361", "646"]
+---
+
+<Problem>
+Mary chose an even $4$-digit number $n$. She wrote down all the divisors of $n$ in increasing order from left to right: $1, 2, \ldots, \dfrac{n}{2}, n$. At some moment Mary wrote $323$ as a divisor of $n$. What is the smallest possible value of the next divisor written to the right of $323$?
+</Problem>
+
+<Solution>
+First, factor $323 = 17 \times 19$.
+
+Since $323 \mid n$ and $n$ is an even 4-digit number, we need the smallest divisor of $n$ that is greater than $323$.
+
+We want to minimize the divisor of $n$ just above $323$. Call this divisor $d > 323$. We need:
+- $n$ is even (so $2 \mid n$)
+- $323 \mid n$ (so $17 \times 19 \mid n$)
+- $d \mid n$ with $d > 323$ as small as possible
+- $n$ is a 4-digit number (so $1000 \leq n \leq 9999$)
+- There is no divisor of $n$ between $323$ and $d$
+
+Since $323 \mid n$ and $2 \mid n$, we have $2 \times 323 = 646 \mid n$. So $646$ is always a divisor of $n$.
+
+Can we do better than $646$? We need a divisor $d$ with $323 < d < 646$ and $d \mid n$.
+
+For $d$ to be a divisor of $n$, and $n$ to have $323$ as a divisor, $n$ must be a multiple of $\text{lcm}(323, d)$.
+
+We want $\text{lcm}(323, d) = \text{lcm}(17 \cdot 19, d) \leq 9999$.
+
+Possible values of $d$ in $(323, 646)$: we check if $\text{lcm}(323, d)$ can be a 4-digit even number.
+
+Try $d = 340 = 4 \times 5 \times 17$: $\text{lcm}(17 \times 19, 4 \times 5 \times 17) = 17 \times 19 \times 4 \times 5 = 6460$. Check: $6460$ is even ✓, 4-digit ✓. Is $323 \mid 6460$? $6460 / 323 = 20$ ✓. Is $340 \mid 6460$? $6460 / 340 = 19$ ✓. Are there any divisors of $6460$ between $323$ and $340$? Divisors of $6460 = 2^2 \times 5 \times 17 \times 19$: let's check divisors in $(323, 340)$: $324 = 4 \times 81$ — does $81 \mid 6460$? No ($6460 / 81$ is not integer). $325 = 5^2 \times 13$: $13 \nmid 6460$. $326 = 2 \times 163$: $163 \nmid 6460$. $327 = 3 \times 109$: no. $328 = 8 \times 41$: no. $329 = 7 \times 47$: no. $330 = 2 \times 3 \times 5 \times 11$: does $11 \mid 6460$? $6460/11 = 587.27...$, no. $331$ prime: no. $332 = 4 \times 83$: no. $333 = 3^2 \times 37$: no. $334 = 2 \times 167$: no. $335 = 5 \times 67$: no. $336 = 2^4 \times 3 \times 7$: no. $337$ prime: no. $338 = 2 \times 169 = 2 \times 13^2$: no. $339 = 3 \times 113$: no. So no divisors of $6460$ in $(323, 340)$. The next divisor after $323$ is $340$ ✓.
+
+Can we find $d < 340$? We'd need $323 < d < 340$ and $d \mid n$ for some valid $n$. From the check above, no such $d$ divides $6460$. But there might be other valid $n$.
+
+Try $d = 324 = 4 \times 81 = 2^2 \times 3^4$: $\text{lcm}(17 \times 19, 2^2 \times 3^4) = 2^2 \times 3^4 \times 17 \times 19 = 4 \times 81 \times 323 = 104652$. Too large (5 digits). Rejected.
+
+Try $d = 330 = 2 \times 3 \times 5 \times 11$: $\text{lcm}(17 \times 19, 330) = 17 \times 19 \times 2 \times 3 \times 5 \times 11 = 323 \times 330 = 106590$. Too large. Rejected.
+
+Try any $d$ in $(323, 340)$: since $\gcd(d, 323) = 1$ for most such $d$ (as $323 = 17 \times 19$ and values in $(323,340)$ not divisible by $17$ or $19$), $\text{lcm}(323, d) = 323d > 323^2 > 100000$, which is 6 digits. Too large.
+
+The only exceptions would be $d$ divisible by $17$: $17 \times 20 = 340$ (the first one $> 323$), or divisible by $19$: $19 \times 18 = 342$ (too large? Let's check: $\text{lcm}(17 \times 19, 19 \times 18) = 17 \times 19 \times 18 = 5814$. Is $5814$ even? $5814 = 2 \times 2907$ ✓. 4-digit ✓. Divisors of $5814 = 2 \times 3^3 \times 19 \times 17 \times ...$: wait $5814 / (17 \times 19) = 18 = 2 \times 3^2$. So $5814 = 2 \times 3^2 \times 17 \times 19$. Next divisor after $323 = 17 \times 19$ would be $342 = 2 \times 3^2 \times 19$ — but is there anything between $323$ and $342$ dividing $5814$? Divisors of $5814$: $1, 2, 3, 6, 9, 17, 18, 19, 34, 38, 51, 57, 102, 114, 171, 306, 323, 342, \ldots$. The divisor after $323$ is $342 > 340$.
+
+So $d = 340$ from $n = 6460$ gives a smaller next divisor than $d = 342$.
+
+Therefore the smallest possible next divisor after $323$ is $\mathbf{340}$.
+
+Answer: **C**.
+</Solution>

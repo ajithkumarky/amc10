@@ -1,0 +1,27 @@
+---
+year: 2019
+paper: "10B"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 2
+answer: B
+choices: ['$18$', '$21$', '$24$', '$25$', '$28$']
+---
+
+<Problem>
+Each piece of candy in a store costs a whole number of cents. Casper has exactly enough money to buy either $12$ pieces of red candy, $14$ pieces of green candy, $15$ pieces of blue candy, or $n$ pieces of purple candy. A piece of purple candy costs $20$ cents. What is the smallest possible value of $n$?
+</Problem>
+
+<Solution>
+Let $M$ be Casper's amount of money in cents. Since he can buy exactly $12$ red, $14$ green, $15$ blue, and $n$ purple pieces (each candy costing a whole number of cents), $M$ must be divisible by $12$, $14$, and $15$, and also by $20$ (since $20n = M$).
+
+The smallest $M$ divisible by all of these is $\text{lcm}(12, 14, 15, 20)$. Factoring:
+
+$$12 = 2^2\cdot 3,\quad 14 = 2\cdot 7,\quad 15 = 3\cdot 5,\quad 20 = 2^2\cdot 5.$$
+
+Taking the highest power of each prime: $2^2 \cdot 3 \cdot 5 \cdot 7 = 420$.
+
+Then $n = \dfrac{M}{20} = \dfrac{420}{20} = 21$. To make $n$ as small as possible we take the smallest valid $M = 420$, so $n = 21$.
+
+Answer: **B**.
+</Solution>

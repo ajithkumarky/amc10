@@ -1,0 +1,41 @@
+---
+year: 2019
+paper: "10B"
+topic: algebra
+subtopic: sequences-series
+difficulty: 5
+answer: C
+choices: ['$[9,26]$', '$[27,80]$', '$[81,242]$', '$[243,728]$', '$[729,\infty)$']
+---
+
+<Problem>
+Define a sequence recursively by $x_0=5$ and
+$$x_{n+1}=\frac{x_n^2+5x_n+4}{x_n+6}$$
+for all nonnegative integers $n$. Let $m$ be the least positive integer such that
+$$x_m\leq 4+\frac{1}{2^{20}}.$$
+In which of the following intervals does $m$ lie?
+</Problem>
+
+<Solution>
+Let $y_n = x_n - 4$, so we track how fast $x_n$ approaches $4$. Substitute $x_n = y_n + 4$:
+
+$$x_{n+1} = \frac{(y_n+4)^2 + 5(y_n+4) + 4}{(y_n+4) + 6} = \frac{y_n^2 + 8y_n + 16 + 5y_n + 20 + 4}{y_n + 10} = \frac{y_n^2 + 13y_n + 40}{y_n + 10}.$$
+
+Then
+
+$$y_{n+1} = x_{n+1} - 4 = \frac{y_n^2 + 13y_n + 40 - 4(y_n + 10)}{y_n + 10} = \frac{y_n^2 + 9y_n}{y_n + 10} = \frac{y_n(y_n + 9)}{y_n + 10}.$$
+
+We have $y_0 = 1$. Since $y_n > 0$ and decreasing toward $0$, observe the ratio:
+
+$$\frac{y_{n+1}}{y_n} = \frac{y_n + 9}{y_n + 10}.$$
+
+When $y_n$ is small, $\frac{y_n+9}{y_n+10} \approx \frac{9}{10}$. So far from the fixed point the decay is slow. We need $y_m \le 2^{-20}$.
+
+For an estimate, while $y_n$ is small the recursion is approximately $y_{n+1} \approx \frac{9}{10}y_n$, giving geometric decay with ratio $\approx 0.9$. To go from $y_0 = 1$ down to $2^{-20} \approx 9.5\times 10^{-7}$ with ratio near $0.9$ requires about
+
+$$n \approx \frac{\ln(2^{-20})}{\ln(0.9)} = \frac{-20\ln 2}{\ln 0.9} \approx \frac{-13.86}{-0.105} \approx 131.$$
+
+Early steps (while $y_n$ is order $1$) decay a bit faster, trimming the count, landing $m$ around the low-to-mid 100s. This sits inside the interval $[81, 242]$.
+
+Answer: **C**.
+</Solution>

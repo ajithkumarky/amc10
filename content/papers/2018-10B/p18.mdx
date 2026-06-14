@@ -1,0 +1,63 @@
+---
+year: 2018
+paper: "10B"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: D
+choices: ["60", "72", "92", "96", "120"]
+---
+
+<Problem>
+Three young brother-sister pairs from different families need to take a trip in a van. These six children will occupy the second and third rows in the van, each of which has three seats. To avoid disruptions, siblings may not sit right next to each other in the same row, and no child may sit directly in front of his or her sibling. How many seating arrangements are possible for this trip?
+</Problem>
+
+<Solution>
+Label the three sibling pairs $(B_1, S_1)$, $(B_2, S_2)$, $(B_3, S_3)$ (brother and sister from family $i$). The two rows each have seats in positions L, M, R (left, middle, right). The constraints are:
+1. No sibling pair sits adjacent in the same row (L-M or M-R adjacent; L-R are not adjacent).
+2. No sibling pair sits directly in front/behind each other (same column, different rows).
+
+**Step 1: Assign sibling pairs to column pairs.**
+
+Each sibling pair must avoid being in the same row adjacent or same column. This means in each row of 3 seats, no two siblings from the same family sit in adjacent seats (L-M or M-R), and across rows, no sibling pair occupies the same column.
+
+Think of the $3 \times 2$ grid (3 columns, 2 rows). We must place one member of each pair in each row. The column constraint forbids a pair from sharing a column; the row constraint (for the same row) forbids adjacent columns for a pair within a row — but actually within a row, any two distinct seats include possibly adjacent ones.
+
+Wait: the rows are 3-seater rows, and within a row two people are "right next to each other" if they're in adjacent seats. So L-M are adjacent, M-R are adjacent, but L-R are NOT adjacent.
+
+**Step 2: Approach by permutations.**
+
+First, assign one member from each pair to row 2 and the other to row 3. Since each pair has 2 members (B and S), there are $2^3 = 8$ ways to decide which member of each pair goes to which row.
+
+Next, arrange the 3 chosen members in row 2 (3! = 6 ways) and the other 3 in row 3 (3! = 6 ways). But we must subtract invalid arrangements.
+
+Let the row 2 assignment be a permutation $\pi$ of the three "row-2 members" in columns 1, 2, 3. Row 3 has the remaining members. We need:
+- No pair in the same column (column constraint).
+- Within each row, no pair in adjacent columns (row constraint).
+
+Let me label the pair members: pair $i$ has member $a_i$ (in row 2) and $b_i$ (in row 3), for each assignment of members to rows.
+
+The column constraint says $a_i$ and $b_i$ are NOT in the same column.
+
+The row constraint says in row 2, pairs $a_i$ and $a_j$ from the same sibling pair — but wait, $a_i$ and $a_j$ are from DIFFERENT families, so they can sit anywhere relative to each other. The restriction is only within the same sibling pair.
+
+So the row constraint says: $a_i$ and $b_i$ (sibling pair $i$) cannot sit adjacently in the same row. Since they're in different rows (by our Step 2 assignment), this constraint is about rows — but they're already in different rows! So siblings in different rows can't violate the same-row adjacency rule.
+
+Wait, I need to re-read. The constraint is:
+1. Siblings may not sit right next to each other **in the same row**.
+2. No child may sit directly in front of his/her sibling (same column, different row).
+
+Since we already assigned one sibling to each row, constraint 1 is automatically satisfied (they're in different rows). Constraint 2 says they can't be in the same column.
+
+So the total valid arrangements, given an assignment of members to rows:
+
+For each of the $2^3 = 8$ assignments:
+- Arrange 3 members in row 2: $3! = 6$ ways.
+- For each row 2 arrangement, the 3 row-3 members must go into columns such that no sibling pair shares a column. This is a derangement: the row-3 arrangement must be a derangement of the pairing (where pair $i$'s row-3 member must avoid the column of pair $i$'s row-2 member).
+
+The number of derangements of 3 elements is $D_3 = 2$.
+
+So for each of the $2^3 \times 3! \times D_3 = 8 \times 6 \times 2 = 96$ combinations, we get valid arrangements.
+
+Answer: **D**.
+</Solution>

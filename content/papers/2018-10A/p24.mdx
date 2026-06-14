@@ -1,0 +1,81 @@
+---
+year: 2018
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 5
+answer: D
+choices: ["$60$", "$65$", "$70$", "$75$", "$80$"]
+---
+
+<Problem>
+Triangle $ABC$ with $AB = 50$ and $AC = 10$ has area $120$. Let $D$ be the midpoint of $\overline{AB}$, and let $E$ be the midpoint of $\overline{AC}$. The angle bisector of $\angle BAC$ intersects $\overline{DE}$ and $\overline{BC}$ at $F$ and $G$, respectively. What is the area of quadrilateral $FDBG$?
+</Problem>
+
+<Solution>
+**Setup:**
+
+$D$ is the midpoint of $AB$, $E$ is the midpoint of $AC$, so $DE$ is the midsegment parallel to $BC$ with $DE = \frac{1}{2} BC$.
+
+The angle bisector of $\angle A$ goes from $A$ to $G$ on $BC$. By the angle bisector theorem:
+$$\frac{BG}{GC} = \frac{AB}{AC} = \frac{50}{10} = 5.$$
+
+So $BG = \frac{5}{6} BC$ and $GC = \frac{1}{6} BC$.
+
+**Key areas:**
+
+Area of $\triangle ABC = 120$.
+
+Since $D$ and $E$ are midpoints, $\triangle ADE \sim \triangle ABC$ with ratio $\frac{1}{2}$, so:
+$$\text{area}(\triangle ADE) = \frac{1}{4} \cdot 120 = 30.$$
+
+The trapezoid $DBCE$ (which is $\triangle ABC$ minus $\triangle ADE$) has area $120 - 30 = 90$.
+
+**Locating $F$:**
+
+$F$ is on $\overline{DE}$ where the angle bisector from $A$ meets $DE$. Since $DE \parallel BC$ and $DE$ is the midsegment, the angle bisector from $A$ hits $DE$ at the midpoint of the angle bisector's path from $A$... actually, $F$ divides $DE$ in the ratio $DF : FE = AB : AC = 50 : 10 = 5 : 1$ (since $\overline{DE}$ is parallel to $\overline{BC}$ and the angle bisector divides any parallel transversal in the same ratio as it divides $BC$).
+
+Wait, let's be careful. The angle bisector $AG$ with $\frac{BG}{GC} = \frac{5}{1}$ divides $BC$. The line $AG$ extended back intersects $DE$ at $F$. Since $DE \parallel BC$, the line $AG$ intersects $DE$ at $F$ where $\frac{DF}{FE} = \frac{BG}{GC} = \frac{5}{1}$... 
+
+Actually, since $D$ is the midpoint of $AB$ and $E$ is the midpoint of $AC$, the segment $DE$ connects midpoints. The angle bisector from $A$ through $F$ on $DE$: by similar triangles (since $DE \parallel BC$), $\frac{AF}{FG} = \frac{ADE \text{ height}}{DBCE \text{ height}} = \frac{1}{1}$ (since $DE$ is at half-height). Wait, $F$ is on $DE$ and $G$ is on $BC$; the angle bisector goes $A \to F \to G$.
+
+By similar triangles, $\frac{AF}{AG} = \frac{1}{2}$ (since $DE$ is the midsegment at half the distance from $A$ to $BC$). So $F$ is the midpoint of $AG$.
+
+For the position of $F$ along $DE$: since $AG$ intersects $BC$ at $G$ with $BG : GC = 5:1$, and $AG$ intersects $DE$ at $F$, by the proportionality (parallel lines), $DF : FE = BG : GC = 5 : 1$.
+
+So $DF = \frac{5}{6} DE$ and $FE = \frac{1}{6} DE$.
+
+**Area of $\triangle ADF$:**
+
+$\triangle ADF$ has base $DF = \frac{5}{6} DE = \frac{5}{12} BC$ and height from $A$ to $DE$ (which is half the height from $A$ to $BC$).
+
+Let $h$ = height from $A$ to $BC$. Then area($\triangle ABC$) $= \frac{1}{2} \cdot BC \cdot h = 120$.
+
+Area($\triangle ADF$) $= \frac{1}{2} \cdot DF \cdot \frac{h}{2} = \frac{1}{2} \cdot \frac{5}{12} BC \cdot \frac{h}{2} = \frac{5}{48} \cdot BC \cdot h = \frac{5}{48} \cdot 240 = 25$.
+
+Area($\triangle AEF$) similarly: base $FE = \frac{1}{6} DE = \frac{1}{12} BC$, same height $\frac{h}{2}$:
+Area($\triangle AEF$) $= \frac{1}{2} \cdot \frac{1}{12} BC \cdot \frac{h}{2} = \frac{1}{48} \cdot 240 = 5$.
+
+Check: area($\triangle ADE$) $= 25 + 5 = 30$. $\checkmark$
+
+**Area of $\triangle AGD$** (triangle with $A$, $G$, $D$):
+
+Actually, we want quadrilateral $FDBG$. Let's compute the areas of the relevant triangles.
+
+Area of $\triangle ABG$: $G$ divides $BC$ with $BG = \frac{5}{6} BC$, so:
+$$\text{area}(\triangle ABG) = \frac{BG}{BC} \cdot \text{area}(\triangle ABC) = \frac{5}{6} \cdot 120 = 100.$$
+
+Area of $\triangle ADF$ (computed above) $= 25$.
+
+Area of $\triangle DBF$: $\triangle DBF$ shares base $DF$ with $\triangle ADF$, and $D$ is the midpoint of $AB$, so the height from $B$ to line $DF$ equals... Let me use a different approach.
+
+Quadrilateral $FDBG$ = area($\triangle ABG$) $-$ area($\triangle ADF$)
+
+Wait: $\triangle ABG$ has vertices $A$, $B$, $G$. The quadrilateral $FDBG$ has vertices $F$ (on $DE$), $D$ (midpoint of $AB$), $B$, $G$ (on $BC$).
+
+Region of $\triangle ABG$ = $\triangle ADF$ + quadrilateral $FDBG$.
+
+So: area(quadrilateral $FDBG$) = area($\triangle ABG$) $-$ area($\triangle ADF$) $= 100 - 25 = 75$.
+
+Answer: **D**.
+</Solution>

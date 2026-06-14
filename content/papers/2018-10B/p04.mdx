@@ -1,0 +1,31 @@
+---
+year: 2018
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 1
+answer: B
+choices: ["18", "22", "24", "30", "36"]
+---
+
+<Problem>
+A three-dimensional rectangular box with dimensions $X$, $Y$, and $Z$ has faces whose surface areas are $24, 24, 48, 48, 72,$ and $72$ square units. What is $X+Y+Z$?
+</Problem>
+
+<Solution>
+A rectangular box has three pairs of congruent faces. The face areas are:
+$$XY = 24, \quad XZ = 48, \quad YZ = 72.$$
+
+To find $X$, $Y$, $Z$, multiply all three equations:
+$$(XY)(XZ)(YZ) = 24 \cdot 48 \cdot 72 = 82944$$
+$$(XYZ)^2 = 82944 \implies XYZ = 288.$$
+
+Then:
+$$X = \frac{XYZ}{YZ} = \frac{288}{72} = 4, \quad Y = \frac{XYZ}{XZ} = \frac{288}{48} = 6, \quad Z = \frac{XYZ}{XY} = \frac{288}{24} = 12.$$
+
+Check: $XY = 24$ ✓, $XZ = 48$ ✓, $YZ = 72$ ✓.
+
+Therefore $X + Y + Z = 4 + 6 + 12 = 22$.
+
+Answer: **B**.
+</Solution>

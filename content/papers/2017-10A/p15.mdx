@@ -1,0 +1,36 @@
+---
+year: 2017
+paper: "10A"
+topic: counting-probability
+subtopic: geometric-probability
+difficulty: 3
+answer: C
+choices: ['$\dfrac{1}{2}$', '$\dfrac{2}{3}$', '$\dfrac{3}{4}$', '$\dfrac{5}{6}$', '$\dfrac{7}{8}$']
+---
+
+<Problem>
+Chloé chooses a real number uniformly at random from the interval $[0, 2017]$. Independently, Laurent chooses a real number uniformly at random from the interval $[0, 4034]$. What is the probability that Laurent's number is greater than Chloé's number?
+</Problem>
+
+<Solution>
+Let $c$ be Chloé's number (uniform on $[0, 2017]$) and $\ell$ be Laurent's number (uniform on $[0, 4034]$). Note that $4034 = 2 \times 2017$.
+
+We want $P(\ell > c)$.
+
+The sample space is the rectangle $[0, 2017] \times [0, 4034]$ with area $2017 \times 4034$.
+
+The favorable region is where $\ell > c$, i.e., the part of the rectangle above the line $\ell = c$.
+
+Since $\ell$ goes up to $4034$ and $c$ goes up to $2017$, for $c \in [0, 2017]$:
+- When $\ell > c$: the favorable length of $\ell$ is $4034 - c$.
+
+$$P(\ell > c) = \frac{\displaystyle\int_0^{2017}(4034 - c)\,dc}{2017 \times 4034}.$$
+
+Numerator: $\displaystyle\int_0^{2017}(4034-c)\,dc = \left[4034c - \frac{c^2}{2}\right]_0^{2017} = 4034 \cdot 2017 - \frac{2017^2}{2} = 2017\!\left(4034 - \frac{2017}{2}\right) = 2017 \cdot \frac{6051}{2}$.
+
+Denominator: $2017 \times 4034$.
+
+$$P = \frac{2017 \cdot \dfrac{6051}{2}}{2017 \cdot 4034} = \frac{6051}{2 \cdot 4034} = \frac{6051}{8068} = \frac{3 \cdot 2017}{4 \cdot 2017} = \frac{3}{4}.$$
+
+Answer: **C**.
+</Solution>

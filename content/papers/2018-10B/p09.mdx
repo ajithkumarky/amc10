@@ -1,0 +1,25 @@
+---
+year: 2018
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 2
+answer: D
+choices: ["13", "26", "32", "39", "42"]
+---
+
+<Problem>
+The faces of each of $7$ standard dice are labeled with the integers from $1$ to $6$. Let $p$ be the probability that when all $7$ dice are rolled, the sum of the numbers on the top faces is $10$. What other sum occurs with the same probability $p$?
+</Problem>
+
+<Solution>
+When rolling $n$ dice each with faces $1$ through $6$, the distribution of sums is symmetric around the mean $\frac{n(1+6)}{2} = \frac{7n}{2}$.
+
+For $n = 7$ dice, the mean is $\frac{7 \cdot 7}{2} = \frac{49}{2} = 24.5$.
+
+The distribution is symmetric about $24.5$, meaning the sum $s$ and the sum $49 - s$ have the same probability.
+
+For $s = 10$: the symmetric partner is $49 - 10 = 39$.
+
+Answer: **D**.
+</Solution>

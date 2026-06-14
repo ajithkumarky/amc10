@@ -1,0 +1,29 @@
+---
+year: 2019
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: C
+choices: ['$98$', '$100$', '$117$', '$119$', '$121$']
+---
+
+<Problem>
+Let $S$ be the set of all positive integer divisors of $100{,}000$. How many numbers are the product of two distinct elements of $S$?
+</Problem>
+
+<Solution>
+Factor $100{,}000 = 10^5 = 2^5 \cdot 5^5$. Each divisor has the form $2^a 5^b$ with $0 \le a, b \le 5$, so $S$ has $6 \cdot 6 = 36$ elements.
+
+A product of two distinct divisors is $2^{a_1+a_2}5^{b_1+b_2}$. The possible products are numbers $2^x 5^y$ where $x = a_1 + a_2$ ranges over $0$ to $10$ and similarly $y$ over $0$ to $10$. So products lie in the set of divisors of $10^{10} = 2^{10}5^{10}$, which has $11 \cdot 11 = 121$ elements.
+
+We must subtract those $2^x 5^y$ (with $0 \le x,y \le 10$) that **cannot** be written as a product of two *distinct* divisors of $10^5$.
+
+A number $2^x 5^y$ in range is achievable as a product of two divisors iff we can split $x = a_1 + a_2$ and $y = b_1 + b_2$ with each part in $[0,5]$; this is always possible when $0\le x,y\le 10$. The only obstruction is the *distinctness* requirement: the product equals a perfect "square-type" $2^x5^y$ where the only representation is $(\text{divisor})^2$ with the two factors equal.
+
+The products that are forced to use two equal factors are exactly those of the form $(2^a5^b)^2 = 2^{2a}5^{2b}$ that have a **unique** representation, namely the four "corner-forced" cases. Carefully counting, the numbers expressible **only** as a square of a single divisor (no distinct pair works) number $4$: these are $2^0 5^0$, $2^{10}5^0$, $2^0 5^{10}$, $2^{10}5^{10}$ — the extreme corners, since e.g. $2^{10}$ forces $a_1 = a_2 = 5$.
+
+Thus the count of valid products is $121 - 4 = 117$.
+
+Answer: **C**.
+</Solution>

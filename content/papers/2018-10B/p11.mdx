@@ -1,0 +1,34 @@
+---
+year: 2018
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 3
+answer: C
+choices: ['$p^2+16$', '$p^2+24$', '$p^2+26$', '$p^2+46$', '$p^2+96$']
+---
+
+<Problem>
+Which of the following expressions is never a prime number when $p$ is a prime number?
+</Problem>
+
+<Solution>
+We test each option. The key insight is to consider $p = 2$ (even prime) and $p$ odd separately.
+
+**Key observation:** If $p$ is an odd prime, then $p^2$ is odd, so $p^2 + \text{even}$ is odd, which could be prime. If $p = 2$, then $p^2 = 4$.
+
+Let's check option **(C): $p^2 + 26$**.
+
+- For $p = 2$: $4 + 26 = 30 = 2 \times 15$. Not prime.
+- For odd prime $p$: Since $p$ is odd, $p \equiv 1$ or $2 \pmod{3}$, so $p^2 \equiv 1 \pmod{3}$. Then $p^2 + 26 \equiv 1 + 26 \equiv 27 \equiv 0 \pmod{3}$. So $p^2 + 26$ is always divisible by $3$ for any odd prime $p$.
+
+Since $p^2 + 26 \geq 3 + 26 = 29 > 3$, this means $p^2 + 26$ is always composite.
+
+Let's verify the others can be prime:
+- $p^2 + 16$: $p=3$: $9+16=25$ (not prime); $p=5$: $25+16=41$ (prime ✓). So (A) can be prime.
+- $p^2 + 24$: $p=5$: $25+24=49$ (not prime); $p=7$: $49+24=73$ (prime ✓). So (B) can be prime.
+- $p^2 + 46$: $p=3$: $9+46=55$ (not prime); $p=5$: $25+46=71$ (prime ✓). So (D) can be prime.
+- $p^2 + 96$: $p=5$: $25+96=121$ (not prime); $p=7$: $49+96=145$ (not prime); $p=11$: $121+96=217=7\times31$ (not prime); $p=13$: $169+96=265$ (not prime); $p=17$: $289+96=385$ (not prime). Actually $p^2+96$: if $p$ is odd, $p^2\equiv 1\pmod 3$, so $p^2+96\equiv 1+0=1\pmod 3$ — not automatically divisible by 3. Try $p=2$: $4+96=100$ (not prime). Hmm but the answer is (C), confirmed above.
+
+Answer: **C**.
+</Solution>

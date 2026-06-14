@@ -1,0 +1,59 @@
+---
+year: 2018
+paper: "10A"
+topic: number-theory
+subtopic: gcd-lcm
+difficulty: 5
+answer: D
+choices: ["$5$", "$7$", "$11$", "$13$", "$17$"]
+---
+
+<Problem>
+Let $a$, $b$, $c$, and $d$ be positive integers such that $\gcd(a, b) = 24$, $\gcd(b, c) = 36$, $\gcd(c, d) = 54$, and $70 < \gcd(d, a) < 100$. Which of the following must be a divisor of $a$?
+</Problem>
+
+<Solution>
+We analyze the prime factorizations step by step.
+
+$24 = 2^3 \cdot 3$, $36 = 2^2 \cdot 3^2$, $54 = 2 \cdot 3^3$.
+
+**From $\gcd(a,b) = 24 = 2^3 \cdot 3$:**
+- $v_2(a) \geq 3$, $v_2(b) \geq 3$, $\min(v_2(a), v_2(b)) = 3$. So exactly one of $v_2(a), v_2(b)$ equals $3$ (or both do).
+- $\min(v_3(a), v_3(b)) = 1$.
+
+**From $\gcd(b,c) = 36 = 2^2 \cdot 3^2$:**
+- $\min(v_2(b), v_2(c)) = 2$.
+- $\min(v_3(b), v_3(c)) = 2$.
+
+Since $v_2(b) \geq 3$ (from above) and $\min(v_2(b), v_2(c)) = 2$, we need $v_2(c) = 2$ (and $v_2(b)$ can be anything $\geq 3$, but $\min$ is $2$, so $v_2(c) = 2$).
+
+**From $\gcd(c,d) = 54 = 2 \cdot 3^3$:**
+- $\min(v_2(c), v_2(d)) = 1$. Since $v_2(c) = 2$, we need $v_2(d) = 1$.
+- $\min(v_3(c), v_3(d)) = 3$.
+
+**From $\gcd(a,b) = 24$:** $\min(v_2(a), v_2(b)) = 3$ and $v_2(b) \geq 3$. Since $\min = 3$, at least one of $v_2(a)$ or $v_2(b)$ is exactly $3$. We know $v_2(b) \geq 3$.
+
+**Key: finding $\gcd(d,a)$:**
+- $v_2(d) = 1$ (established above).
+- $v_2(a) \geq 3$, so $\min(v_2(d), v_2(a)) = 1$.
+
+- For $v_3$: from $\gcd(a,b)$, $\min(v_3(a), v_3(b)) = 1$.
+  From $\gcd(b,c) = 36$, $\min(v_3(b), v_3(c)) = 2$, so $v_3(b) \geq 2$.
+  Since $\min(v_3(a), v_3(b)) = 1$ and $v_3(b) \geq 2$, we get $v_3(a) = 1$.
+  
+  From $\gcd(c,d) = 54$: $\min(v_3(c), v_3(d)) = 3$, so $v_3(c) \geq 3$ and $v_3(d) \geq 3$.
+  
+  So $\min(v_3(d), v_3(a)) = \min(\geq 3, 1) = 1$.
+
+Therefore $\gcd(d, a) = 2^1 \cdot 3^1 \cdot (\text{other prime factors}) = 6 \cdot k$ where $k$ comes from primes other than $2$ and $3$.
+
+We need $70 < 6k < 100$, so $11.\overline{6} < k < 16.\overline{6}$, meaning $k \in \{12, 13, 14, 15, 16\}$. But $k$ must be coprime to $6$ (i.e., not divisible by $2$ or $3$) since those contributions are already accounted for.
+
+Values of $k$ coprime to $6$ in $\{12, 13, 14, 15, 16\}$: $13$.
+
+So $k = 13$ is the only possibility, giving $\gcd(d, a) = 6 \cdot 13 = 78$.
+
+Since $13 | \gcd(d, a)$, we have $13 | a$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,54 @@
+---
+year: 2018
+paper: "10A"
+topic: geometry
+subtopic: area-perimeter
+difficulty: 5
+answer: D
+choices: ['$\dfrac{25}{27}$', '$\dfrac{26}{27}$', '$\dfrac{73}{75}$', '$\dfrac{145}{147}$', '$\dfrac{74}{75}$']
+---
+
+<Problem>
+Farmer Pythagoras has a field in the shape of a right triangle. The right triangle's legs have lengths $3$ and $4$ units. In the corner where those sides meet at a right angle, he leaves a small unplanted square $S$ so that from the air it looks like the right angle symbol. The rest of the field is planted. The shortest distance from $S$ to the hypotenuse is $2$ units. What fraction of the field is planted?
+
+<svg viewBox="-5 -5 115 95" width="300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#00e5ff" strokeWidth="1.5">
+  <polygon points="0,80 80,80 0,20" stroke="#00e5ff" fill="none"/>
+  <rect x="0" y="60" width="20" height="20" stroke="#00e5ff" fill="none"/>
+  <line x1="0" y1="60" x2="20" y2="60" stroke="#00e5ff" strokeWidth="1.5"/>
+  <line x1="20" y1="60" x2="20" y2="80" stroke="#00e5ff" strokeWidth="1.5"/>
+  <text x="-4" y="14" fontSize="11" fill="#00e5ff" stroke="none">A</text>
+  <text x="83" y="84" fontSize="11" fill="#00e5ff" stroke="none">B</text>
+  <text x="-14" y="84" fontSize="11" fill="#00e5ff" stroke="none">C</text>
+  <text x="38" y="97" fontSize="10" fill="#00e5ff" stroke="none">4</text>
+  <text x="-14" y="52" fontSize="10" fill="#00e5ff" stroke="none">3</text>
+  <text x="5" y="72" fontSize="9" fill="#00e5ff" stroke="none">S</text>
+</svg>
+</Problem>
+
+<Solution>
+Place the right angle at the origin, with legs along the positive $x$-axis (length $4$) and positive $y$-axis (length $3$). So the vertices are $C = (0,0)$, $B = (4, 0)$, and $A = (0, 3)$.
+
+**The hypotenuse line $AB$:**
+
+The line through $A = (0,3)$ and $B = (4,0)$: $\frac{x}{4} + \frac{y}{3} = 1$, or $3x + 4y = 12$.
+
+**Finding the side length $s$ of square $S$:**
+
+The square $S$ has one corner at the origin, sides along the positive $x$- and $y$-axes, and the opposite corner at $(s, s)$.
+
+The shortest distance from $S$ to the hypotenuse equals the distance from the corner $(s, s)$ to the line $3x + 4y = 12$:
+$$\text{distance} = \frac{|3s + 4s - 12|}{5} = \frac{|7s - 12|}{5} = \frac{12 - 7s}{5}$$
+(since $s$ is small, $7s < 12$).
+
+Set this equal to $2$:
+$$\frac{12 - 7s}{5} = 2 \implies 12 - 7s = 10 \implies s = \frac{2}{7}.$$
+
+**Areas:**
+
+- Total field area: $\frac{1}{2} \cdot 3 \cdot 4 = 6$.
+- Area of square $S$: $s^2 = \left(\frac{2}{7}\right)^2 = \frac{4}{49}$.
+- Planted area: $6 - \frac{4}{49} = \frac{294 - 4}{49} = \frac{290}{49}$.
+- Fraction planted: $\dfrac{290/49}{6} = \dfrac{290}{294} = \dfrac{145}{147}$.
+
+Answer: **D**.
+</Solution>

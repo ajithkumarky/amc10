@@ -1,0 +1,27 @@
+---
+year: 2019
+paper: "10B"
+topic: number-theory
+subtopic: number-bases
+difficulty: 3
+answer: C
+choices: ['$11$', '$14$', '$22$', '$23$', '$27$']
+---
+
+<Problem>
+What is the greatest possible sum of the digits in the base-seven representation of a positive integer less than $2019$?
+</Problem>
+
+<Solution>
+First find how many base-seven digits a number under $2019$ can have. Powers of $7$: $7^3 = 343$ and $7^4 = 2401$. Since $2019 < 2401$, every positive integer less than $2019$ has at most four base-seven digits.
+
+A four-digit base-seven number has the form $\overline{d_3 d_2 d_1 d_0}_7$ with each digit in $\{0,\dots,6\}$. The digit sum is maximized by making digits as large as possible. The largest four-digit base-seven number with all digits $6$ is $6666_7 = 6\cdot(343+49+7+1) = 6\cdot 400 = 2400$, which is too big.
+
+So we look for the largest digit sum among numbers below $2019$. Try the number $6\cdot 343 + 6\cdot 49 + 6\cdot 7 + 4 = 2058 + 4$? That exceeds 2019. Instead consider $1\cdot343$-class numbers. The number $1665_7$? Let's just maximize directly: try $\overline{5\,6\,6\,6}_7 = 5\cdot343 + 6\cdot49 + 6\cdot7 + 6 = 1715 + 294 + 42 + 6 = 2057$ — too big.
+
+Try $\overline{4\,6\,6\,6}_7 = 4\cdot 343 + 6\cdot49 + 6\cdot7 + 6 = 1372 + 294 + 42 + 6 = 1714 < 2019$. Its digit sum is $4 + 6 + 6 + 6 = 22$.
+
+Can we beat $22$? A digit sum of $23$ would need, for instance, leading digit $5$ with the rest summing to $18$ (all sixes), but $5666_7 = 2057 > 2019$. Lowering any later digit to fit under $2019$ drops the sum below $23$. So $22$ is the maximum.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,46 @@
+---
+year: 2018
+paper: "10B"
+topic: geometry
+subtopic: solids-3d
+difficulty: 2
+answer: E
+choices: ["$1$", '$\frac{4}{3}$', '$\frac{3}{2}$', '$\frac{5}{3}$', "$2$"]
+---
+
+<Problem>
+In the rectangular parallelepiped shown, $AB=3$, $BC=1$, and $CG=2$. Point $M$ is the midpoint of $\overline{FG}$. What is the volume of the rectangular pyramid with base $BCHE$ and apex $M$?
+
+The vertices are labeled so that $ABFE$ is one face (with $AB$ along the bottom), $BCGF$ is the right face, and $ABCD$ is the bottom face. $E$, $F$, $G$, $H$ are the top counterparts of $A$, $B$, $C$, $D$ respectively. $M$ is the midpoint of $FG$.
+</Problem>
+
+<Solution>
+Set up coordinates. Place the box with:
+- $B = (0, 0, 0)$
+- $A = (-3, 0, 0)$ (since $AB = 3$)
+- $C = (0, 1, 0)$ (since $BC = 1$)
+- $E = (-3, 0, 2)$, $F = (0, 0, 2)$, $G = (0, 1, 2)$, $H = (-3, 1, 2)$ (height $CG = 2$)
+- $D = (-3, 1, 0)$
+
+$M$ is the midpoint of $\overline{FG}$: $M = \left(0, \frac{1}{2}, 2\right)$.
+
+The base of the pyramid is rectangle $BCHE$:
+- $B = (0,0,0)$, $C = (0,1,0)$, $H = (-3,1,2)$, $E = (-3,0,2)$
+
+The area of rectangle $BCHE$: it has side $BC = 1$ and diagonal... wait, $BCHE$ is a rectangle. The side $BE$ has length $\sqrt{(-3)^2 + 0 + 2^2} = \sqrt{13}$, and side $BC = 1$. So area $= 1 \cdot \sqrt{13} = \sqrt{13}$.
+
+For the volume, we need the perpendicular distance from $M$ to the plane containing $BCHE$.
+
+The plane of $BCHE$: Find two vectors in the plane:
+$$\vec{BC} = (0,1,0), \quad \vec{BE} = (-3,0,2).$$
+Normal vector: $\vec{BC} \times \vec{BE} = \begin{vmatrix}\mathbf{i}&\mathbf{j}&\mathbf{k}\\0&1&0\\-3&0&2\end{vmatrix} = (2-0)\mathbf{i} - (0-0)\mathbf{j} + (0+3)\mathbf{k} = (2, 0, 3)$.
+
+Plane equation through $B=(0,0,0)$: $2x + 0y + 3z = 0$.
+
+Distance from $M = (0, \frac{1}{2}, 2)$ to this plane:
+$$d = \frac{|2(0) + 0\left(\frac{1}{2}\right) + 3(2)|}{\sqrt{4+0+9}} = \frac{6}{\sqrt{13}}.$$
+
+Volume of pyramid $= \frac{1}{3} \times \text{base area} \times \text{height} = \frac{1}{3} \times \sqrt{13} \times \frac{6}{\sqrt{13}} = \frac{1}{3} \times 6 = 2$.
+
+Answer: **E**.
+</Solution>

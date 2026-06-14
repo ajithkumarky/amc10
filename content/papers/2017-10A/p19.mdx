@@ -1,0 +1,58 @@
+---
+year: 2017
+paper: "10A"
+topic: counting-probability
+subtopic: permutations-combinations
+difficulty: 4
+answer: C
+choices: ["12", "16", "28", "32", "40"]
+---
+
+<Problem>
+Alice refuses to sit next to either Bob or Carla. Derek refuses to sit next to Eric. How many ways are there for the five of them to sit in a row of 5 chairs under these conditions?
+</Problem>
+
+<Solution>
+Use complementary counting. Total arrangements: $5! = 120$.
+
+Let $X$ = Alice sits next to Bob, $Y$ = Alice sits next to Carla, $Z$ = Derek sits next to Eric.
+
+We want: arrangements where (not $X$) and (not $Y$) and (not $Z$).
+
+By inclusion-exclusion on the complement:
+
+$|X|$: Treat Alice-Bob as a block. $4! = 24$ arrangements, $\times 2$ for AB or BA order $= 48$. Similarly $|Y| = 48$.
+
+$|Z|$: Treat Derek-Eric as a block. $4! \times 2 = 48$.
+
+$|X \cap Y|$: Alice between Bob and Carla (or Bob-Alice-Carla / Carla-Alice-Bob). Treat BAC or CAB as a 3-person block: $3! \times 2 = 12$. Wait — Alice next to both Bob and Carla means Bob-Alice-Carla or Carla-Alice-Bob (Alice in middle). This block of 3 can be placed: $3! \times 2 = 12$.
+
+$|X \cap Z|$: Alice next to Bob AND Derek next to Eric. Two separate blocks: $(AB)$ and $(DE)$: $3! \times 2 \times 2 = 24$.
+
+$|Y \cap Z|$: Similarly $= 24$.
+
+$|X \cap Y \cap Z|$: Alice next to Bob, next to Carla, and Derek next to Eric. Alice-block of 3 (2 orders) and DE-block (2 orders): $1! \times 2 \times 2 = 4$. (Only one arrangement of the two blocks and Carla or Bob.)
+
+Actually with 5 seats: BAC block (3 seats) + DE block (2 seats) = 5 seats total, exactly fitting. So arrangements = $2 \times 2 \times 1 = 4$.
+
+By inclusion-exclusion, bad arrangements:
+$$|X \cup Y \cup Z| = 48 + 48 + 48 - 12 - 24 - 24 + 4 = 144 - 60 + 4 = 88.$$
+
+Valid arrangements: $120 - 88 = 32$.
+
+Hmm, but the answer should be C = 28. Let me recount.
+
+$|X \cap Y|$: Alice next to both Bob and Carla. Alice must have Bob on one side and Carla on the other. Arrangements of the block (BAC or CAB): 2 ways. Position the block of 3 in 5 seats: positions (1,2,3), (2,3,4), (3,4,5) = 3. Remaining 2 people in $2! = 2$ ways. Total: $2 \times 3 \times 2 = 12$. ✓
+
+$|X|$: Alice-Bob adjacent. Treat as block (2 orders), 4 items total in $4! = 24$ arrangements. Total $= 48$. ✓
+
+$|X \cap Z|$: AB-block and DE-block. Place 2 blocks + Carla (3 items) in $3! = 6$ ways, each block has 2 internal orders: $6 \times 2 \times 2 = 24$. ✓
+
+$|X \cap Y \cap Z|$: BAC-block (or CAB, so 2 orders) + DE-block (2 orders). Just these two items: $2! \times 2 \times 2 = 8$.
+
+Redo: $|X \cup Y \cup Z| = 48+48+48 - 12 - 24 - 24 + 8 = 144 - 60 + 8 = 92$.
+
+Valid: $120 - 92 = 28$.
+
+Answer: **C**.
+</Solution>

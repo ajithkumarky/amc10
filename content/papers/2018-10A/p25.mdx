@@ -1,0 +1,69 @@
+---
+year: 2018
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 5
+answer: D
+choices: ["$12$", "$14$", "$16$", "$18$", "$20$"]
+---
+
+<Problem>
+For a positive integer $n$ and nonzero digits $a$, $b$, and $c$, let $A_n$ be the $n$-digit integer each of whose digits is equal to $a$; let $B_n$ be the $n$-digit integer each of whose digits is equal to $b$, and let $C_n$ be the $2n$-digit integer each of whose digits is equal to $c$. What is the greatest possible value of $a + b + c$ for which there are at least two values of $n$ such that $C_n - B_n = A_n^2$?
+</Problem>
+
+<Solution>
+**Express $A_n$, $B_n$, $C_n$ in closed form:**
+
+$$A_n = a \cdot \underbrace{11\ldots1}_{n} = a \cdot \frac{10^n - 1}{9}, \quad B_n = b \cdot \frac{10^n - 1}{9}, \quad C_n = c \cdot \frac{10^{2n} - 1}{9}.$$
+
+**The equation $C_n - B_n = A_n^2$:**
+
+$$c \cdot \frac{10^{2n} - 1}{9} - b \cdot \frac{10^n - 1}{9} = a^2 \cdot \left(\frac{10^n - 1}{9}\right)^2.$$
+
+Let $R = \frac{10^n - 1}{9} = \underbrace{11\ldots1}_{n}$ (the repunit). Then $\frac{10^{2n}-1}{9} = R \cdot (10^n + 1)$. So:
+
+$$c \cdot R(10^n + 1) - b \cdot R = a^2 \cdot R^2.$$
+
+Divide both sides by $R$ (since $R > 0$):
+
+$$c(10^n + 1) - b = a^2 \cdot R = a^2 \cdot \frac{10^n - 1}{9}.$$
+
+$$c \cdot 10^n + c - b = \frac{a^2}{9}(10^n - 1).$$
+
+$$c \cdot 10^n + c - b = \frac{a^2}{9} \cdot 10^n - \frac{a^2}{9}.$$
+
+Collecting terms with $10^n$ and constants:
+
+$$\left(c - \frac{a^2}{9}\right) 10^n = -\frac{a^2}{9} - c + b.$$
+
+For this to hold for at least two values of $n$, the coefficient of $10^n$ on the left must be $0$ (otherwise it's a polynomial in $10^n$ that can have at most one root), AND the constant on the right must also be $0$.
+
+**Conditions:**
+
+1. $c - \frac{a^2}{9} = 0 \implies c = \frac{a^2}{9}$.
+2. $-\frac{a^2}{9} - c + b = 0 \implies b = \frac{a^2}{9} + c = 2c$.
+
+From condition 1: $a^2 = 9c$, so $a^2$ is divisible by $9$, meaning $a$ is divisible by $3$.
+
+So $a \in \{3, 6, 9\}$ (nonzero single digit):
+- $a = 3$: $c = \frac{9}{9} = 1$, $b = 2$.
+  Check: $a, b, c$ are nonzero digits $\checkmark$. $a + b + c = 3 + 2 + 1 = 6$.
+- $a = 6$: $c = \frac{36}{9} = 4$, $b = 8$.
+  Check: $\checkmark$. $a + b + c = 6 + 8 + 4 = 18$.
+- $a = 9$: $c = \frac{81}{9} = 9$, $b = 18$.
+  But $b = 18$ is not a single digit. $\times$
+
+**Verification for $a = 6$, $b = 8$, $c = 4$:**
+
+$C_n - B_n = A_n^2$ becomes:
+$$4 \cdot \underbrace{11\ldots1}_{2n} - 8 \cdot \underbrace{11\ldots1}_{n} = 36 \cdot \left(\underbrace{11\ldots1}_{n}\right)^2.$$
+
+For $n = 1$: $C_1 = 44$, $B_1 = 8$, $A_1 = 6$. Check: $44 - 8 = 36 = 6^2$. $\checkmark$
+
+For $n = 2$: $C_2 = 4444$, $B_2 = 88$, $A_2 = 66$. Check: $4444 - 88 = 4356 = 66^2$. $\checkmark$
+
+The greatest possible value is $a + b + c = 6 + 8 + 4 = 18$.
+
+Answer: **D**.
+</Solution>

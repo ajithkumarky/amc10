@@ -1,0 +1,29 @@
+---
+year: 2019
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 5
+answer: B
+choices: ['$\frac{1}{7}$', '$\frac{1}{4}$', '$\frac{1}{3}$', '$\frac{1}{2}$', '$\frac{2}{3}$']
+---
+
+<Problem>
+Raashan, Sylvia, and Ted play the following game. Each starts with $\$1$. A bell rings every $15$ seconds, at which time each of the players who currently have money simultaneously chooses one of the other two players independently and at random and gives $\$1$ to that player. What is the probability that after the bell has rung $2019$ times, each player will have $\$1$? (For example, Raashan and Ted may each decide to give $\$1$ to Sylvia, and Sylvia may decide to give her dollar to Ted, at which point Raashan will have $\$0$, Sylvia will have $\$2$, and Ted will have $\$1$, and that is the end of the first round of play. In the second round Raashan has no money to give, but Sylvia and Ted might choose each other to give their $\$1$ to, and the holdings will be the same at the end of the second round.)
+</Problem>
+
+<Solution>
+The total money is always $\$3$. The possible states (up to who is who) are:
+- **Balanced:** everyone has $\$1$ — distribution $(1,1,1)$.
+- **Unbalanced:** one player has $\$0$, one has $\$1$, one has $\$2$ — distribution like $(2,1,0)$.
+
+**From the balanced state $(1,1,1)$:** all three players give. Each independently gives to one of the other two, so there are $2^3 = 8$ equally likely outcomes. Count how many return to $(1,1,1)$: this happens exactly when the giving forms a "cycle" — either all give clockwise or all give counterclockwise. That's $2$ of the $8$ outcomes. So from balanced, probability of staying balanced is $\frac{2}{8} = \frac14$, and probability of going to an unbalanced state is $\frac34$.
+
+**Key symmetry:** From **any** unbalanced state, the probability of reaching $(1,1,1)$ on the next ring is also exactly $\frac14$. (Only the two players with money give; checking the $2\times 2 = 4$ outcomes, exactly one leads to all-equal.) 
+
+So regardless of the current state — balanced or unbalanced — the probability that the **next** state is balanced is always $\frac14$.
+
+Therefore after any number of rings (in particular $2019$), the probability of being in the balanced state is $\frac14$.
+
+Answer: **B**.
+</Solution>

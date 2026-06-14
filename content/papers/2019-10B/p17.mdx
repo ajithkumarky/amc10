@@ -1,0 +1,29 @@
+---
+year: 2019
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: C
+choices: ['$\frac{1}{4}$', '$\frac{2}{7}$', '$\frac{1}{3}$', '$\frac{3}{8}$', '$\frac{3}{7}$']
+---
+
+<Problem>
+A red ball and a green ball are randomly and independently tossed into bins numbered with positive integers so that for each ball, the probability that it is tossed into bin $k$ is $2^{-k}$ for $k=1,2,3,\ldots$. What is the probability that the red ball is tossed into a higher-numbered bin than the green ball?
+</Problem>
+
+<Solution>
+By symmetry, the events "red higher than green" and "green higher than red" have equal probability. Call this common value $p$. Let $q$ be the probability they land in the **same** bin. Then
+
+$$2p + q = 1.$$
+
+Compute $q$, the probability of a tie:
+
+$$q = \sum_{k=1}^\infty \big(2^{-k}\big)^2 = \sum_{k=1}^\infty 4^{-k} = \frac{1/4}{1 - 1/4} = \frac13.$$
+
+Therefore
+
+$$p = \frac{1 - q}{2} = \frac{1 - \tfrac13}{2} = \frac{2/3}{2} = \frac13.$$
+
+Answer: **C**.
+</Solution>

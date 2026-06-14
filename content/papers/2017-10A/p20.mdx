@@ -1,0 +1,32 @@
+---
+year: 2017
+paper: "10A"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 4
+answer: D
+choices: ["1", "3", "12", "1239", "1265"]
+---
+
+<Problem>
+Let $S(n)$ equal the sum of the digits of positive integer $n$. For example, $S(1507) = 13$. For a particular positive integer $n$, $S(n) = 1274$. Which of the following could be the value of $S(n+1)$?
+</Problem>
+
+<Solution>
+Key fact: $n \equiv S(n) \pmod{9}$. So $n \equiv 1274 \pmod{9}$.
+
+$1274 = 141 \times 9 + 5$, so $n \equiv 5 \pmod{9}$, meaning $n+1 \equiv 6 \pmod{9}$.
+
+Since $S(n+1) \equiv n+1 \equiv 6 \pmod{9}$, the answer must be $\equiv 6 \pmod 9$.
+
+Check the choices:
+- $1$: $1 \mod 9 = 1$. No.
+- $3$: $3 \mod 9 = 3$. No.
+- $12$: $12 \mod 9 = 3$. No.
+- $1239$: $1+2+3+9 = 15$, $15 \mod 9 = 6$. **Yes!**
+- $1265$: $1+2+6+5 = 14$, $14 \mod 9 = 5$. No.
+
+Also check feasibility: if $S(n) = 1274$, then $n$ has at least $\lceil 1274/9 \rceil = 142$ digits. Adding 1 might cause carries that greatly reduce the digit sum. If $n$ ends in $...999...$ (many 9s), each carry turns a 9 into 0 and reduces digit sum by 9, then adds 1 to the next digit. So $S(n+1)$ could be much smaller. However, it could also decrease by just a little. $S(n+1) = 1239$ means the digit sum decreased by $1274 - 1239 + 9k$ for some $k \ge 0$. With $k=0$: decrease of 35 — achievable if there are 4 trailing 9s (each 9→0 reduces by 9, the carry adds 1, net reduction: $4\times9 - 1 = 35$). This is perfectly valid.
+
+Answer: **D**.
+</Solution>

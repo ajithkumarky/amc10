@@ -1,0 +1,40 @@
+---
+year: 2017
+paper: "10A"
+topic: algebra
+subtopic: polynomials
+difficulty: 5
+answer: C
+choices: ["$-9009$", "$-8008$", "$-7007$", "$-6006$", "$-5005$"]
+---
+
+<Problem>
+For certain real numbers $a$, $b$, and $c$, the polynomial
+$$g(x) = x^3 + ax^2 + x + 10$$
+has three distinct roots, and each root of $g(x)$ is also a root of the polynomial
+$$f(x) = x^4 + x^3 + bx^2 + 100x + c.$$
+What is $f(1)$?
+</Problem>
+
+<Solution>
+Since $g(x)$ has degree 3 and all three roots of $g$ are roots of $f$ (degree 4), we can write:
+$$f(x) = g(x) \cdot (x - r)$$
+for some fourth root $r$.
+
+Expanding: $f(x) = (x^3 + ax^2 + x + 10)(x-r)$.
+
+$$= x^4 + ax^3 + x^2 + 10x - rx^3 - arx^2 - rx - 10r$$
+$$= x^4 + (a-r)x^3 + (1-ar)x^2 + (10-r)x - 10r.$$
+
+Match with $f(x) = x^4 + x^3 + bx^2 + 100x + c$:
+- Coefficient of $x^3$: $a - r = 1$, so $a = r + 1$.
+- Coefficient of $x$: $10 - r = 100$, so $r = -90$.
+- Constant: $-10r = c$, so $c = 900$.
+- Then $a = -90 + 1 = -89$.
+- Coefficient of $x^2$: $b = 1 - ar = 1 - (-89)(-90) = 1 - 8010 = -8009$.
+
+Now compute $f(1)$:
+$$f(1) = 1 + 1 + b + 100 + c = 102 + (-8009) + 900 = 102 - 8009 + 900 = -7007.$$
+
+Answer: **C**.
+</Solution>

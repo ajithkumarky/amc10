@@ -1,0 +1,41 @@
+---
+year: 2017
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 2
+answer: B
+choices: ["16", "17", "18", "19", "20"]
+---
+
+<Problem>
+Joy has $30$ thin rods, one each of every integer length from $1$ cm through $30$ cm. She places the rods with lengths $3$ cm, $7$ cm, and $15$ cm on a table. She then wants to choose a fourth rod that she can put with these three to form a quadrilateral with positive area. How many of the remaining rods can she choose as the fourth rod?
+</Problem>
+
+<Solution>
+For four lengths to form a quadrilateral with positive area, the necessary and sufficient condition is that each side is strictly less than the sum of the other three sides.
+
+Since we want the quadrilateral condition, the binding constraint is: each side $< $ sum of the other three. The hardest constraint to satisfy is for the longest side.
+
+Let the fourth rod have length $d$ with $d \notin \{3, 7, 15\}$ and $1 \le d \le 30$.
+
+The four lengths are $3, 7, 15, d$.
+
+**Case 1: $d < 15$** (so 15 is the longest).
+Need $15 < 3 + 7 + d = 10 + d$, i.e., $d > 5$.
+So $d \in \{6, 8, 9, 10, 11, 12, 13, 14\}$ — that's $8$ values (excluding $7$ from $\{6,7,...,14\}$, but $d \neq 7$ since she already used it). So $d \in \{6, 8, 9, 10, 11, 12, 13, 14\}$: $8$ values.
+
+**Case 2: $d = 15$** — already used, not available.
+
+**Case 3: $d > 15$** (so $d$ is the longest).
+Need $d < 3 + 7 + 15 = 25$, i.e., $d \le 24$.
+So $d \in \{16, 17, 18, 19, 20, 21, 22, 23, 24\}$: $9$ values.
+
+**Case 4: $d \le 5$** — fails the condition (e.g., $d=5$: need $15 < 10+5=15$, which is not strict). All of $\{1,2,4,5\}$ (excluding $3$) fail.
+
+Also need $d \neq 3$ (already used). $d=3$ would make 15 the longest: $15 < 3+7+3=13$? No, fails.
+
+Total valid rods: $8 + 9 = 17$.
+
+Answer: **B**.
+</Solution>

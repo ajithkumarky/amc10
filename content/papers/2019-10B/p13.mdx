@@ -1,0 +1,31 @@
+---
+year: 2019
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 3
+answer: A
+choices: ['$-5$', '$0$', '$5$', '$\frac{15}{4}$', '$\frac{35}{4}$']
+---
+
+<Problem>
+What is the sum of all real numbers $x$ for which the median of the numbers $4,6,8,17,$ and $x$ is equal to the mean of those five numbers?
+</Problem>
+
+<Solution>
+The mean of the five numbers is
+
+$$\frac{4 + 6 + 8 + 17 + x}{5} = \frac{35 + x}{5}.$$
+
+The median depends on where $x$ falls relative to the fixed numbers $4, 6, 8, 17$. We consider the possible medians: $6$, $8$, or $x$ itself.
+
+**Median $= 8$:** This happens when $x \ge 8$. Set $\frac{35+x}{5} = 8 \implies 35 + x = 40 \implies x = 5$. But $5 < 8$ contradicts $x \ge 8$. Reject.
+
+**Median $= 6$:** This happens when $x \le 6$. Set $\frac{35+x}{5} = 6 \implies x = -5$. Since $-5 \le 6$, this is valid. ✓
+
+**Median $= x$:** This happens when $6 \le x \le 8$. Set $\frac{35+x}{5} = x \implies 35 + x = 5x \implies x = \frac{35}{4} = 8.75$. But $8.75$ is not in $[6,8]$. Reject.
+
+The only valid solution is $x = -5$, so the sum of all valid $x$ is $-5$.
+
+Answer: **A**.
+</Solution>

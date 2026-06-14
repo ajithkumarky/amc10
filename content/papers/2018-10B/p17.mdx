@@ -1,0 +1,59 @@
+---
+year: 2018
+paper: "10B"
+topic: geometry
+subtopic: quadrilaterals-polygons
+difficulty: 4
+answer: B
+choices: ["1", "7", "21", "92", "106"]
+---
+
+<Problem>
+In rectangle $PQRS$, $PQ=8$ and $QR=6$. Points $A$ and $B$ lie on $\overline{PQ}$, points $C$ and $D$ lie on $\overline{QR}$, points $E$ and $F$ lie on $\overline{RS}$, and points $G$ and $H$ lie on $\overline{SP}$ so that $AP=BQ < 4$ and the convex octagon $ABCDEFGH$ is equilateral. The length of a side of this octagon can be expressed in the form $k + m\sqrt{n}$, where $k$, $m$, and $n$ are integers and $n$ is not divisible by the square of any prime. What is $k+m+n$?
+</Problem>
+
+<Solution>
+Let $AP = BQ = x$ (so $0 < x < 4$). Then $AB = PQ - AP - BQ = 8 - 2x$.
+
+The octagon $ABCDEFGH$ is equilateral, so all sides have the same length. Since $AB$ lies along side $PQ$ of the rectangle, $AB = 8 - 2x$.
+
+Each vertex of the octagon lies on a side of the rectangle with the two vertices on each side equally spaced from the corners. The cut-off triangle at each corner is an isosceles right triangle with legs $x$, so the hypotenuse (the octagon side at the corner) has length $x\sqrt{2}$.
+
+But the sides along the rectangle's edges have a different length. We need all sides equal:
+$$8 - 2x = x\sqrt{2} \implies 8 = 2x + x\sqrt{2} = x(2 + \sqrt{2}).$$
+
+$$x = \frac{8}{2 + \sqrt{2}} = \frac{8(2 - \sqrt{2})}{(2+\sqrt{2})(2-\sqrt{2})} = \frac{8(2-\sqrt{2})}{4-2} = \frac{8(2-\sqrt{2})}{2} = 4(2-\sqrt{2}) = 8 - 4\sqrt{2}.$$
+
+But wait — the rectangle is $8 \times 6$, not a square, so the cuts on the shorter sides ($QR = 6$) may be different. Let's call $QC = RD = y$ (the cut distance along the shorter sides). Then $CD = 6 - 2y$.
+
+For the octagon to be equilateral, all sides equal $s$:
+- Sides along the long edges ($PQ$ and $RS$): $s = 8 - 2x$
+- Sides along the short edges ($QR$ and $SP$): $s = 6 - 2y$
+- Corner sides (diagonal cuts): $s = \sqrt{x^2 + y^2}$
+
+From the first two: $8 - 2x = 6 - 2y \Rightarrow y = x - 1$.
+
+From the third: $s = \sqrt{x^2 + y^2} = \sqrt{x^2 + (x-1)^2}$.
+
+Setting $s = 8 - 2x$:
+$$(8-2x)^2 = x^2 + (x-1)^2$$
+$$64 - 32x + 4x^2 = x^2 + x^2 - 2x + 1$$
+$$64 - 32x + 4x^2 = 2x^2 - 2x + 1$$
+$$2x^2 - 30x + 63 = 0.$$
+
+Using the quadratic formula:
+$$x = \frac{30 \pm \sqrt{900 - 504}}{4} = \frac{30 \pm \sqrt{396}}{4} = \frac{30 \pm 6\sqrt{11}}{4} = \frac{15 \pm 3\sqrt{11}}{2}.$$
+
+Since $AP = x < 4$: $\frac{15 - 3\sqrt{11}}{2} \approx \frac{15 - 9.95}{2} \approx \frac{5.05}{2} \approx 2.5 < 4$ ✓.
+
+The other root $\frac{15 + 3\sqrt{11}}{2} \approx \frac{24.95}{2} \approx 12.5 > 4$, rejected.
+
+So $x = \frac{15 - 3\sqrt{11}}{2}$, and the side length is:
+$$s = 8 - 2x = 8 - (15 - 3\sqrt{11}) = -7 + 3\sqrt{11}.$$
+
+In the form $k + m\sqrt{n}$: $k = -7$, $m = 3$, $n = 11$ (which is square-free).
+
+$$k + m + n = -7 + 3 + 11 = 7.$$
+
+Answer: **B**.
+</Solution>

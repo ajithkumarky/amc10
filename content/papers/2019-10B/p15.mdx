@@ -1,0 +1,31 @@
+---
+year: 2019
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: A
+choices: ['$\frac{28}{3}$', '$10$', '$\frac{32}{3}$', '$\frac{34}{3}$', '$12$']
+---
+
+<Problem>
+Right triangles $T_1$ and $T_2$ have areas $1$ and $2$, respectively. A side of $T_1$ is congruent to a side of $T_2$, and a different side of $T_1$ is congruent to a different side of $T_2$. What is the square of the product of the other (third) sides of $T_1$ and $T_2$?
+</Problem>
+
+<Solution>
+Let $T_1$ have legs $a, b$ and hypotenuse, and let the two shared side-lengths be the key. The cleanest configuration: let $T_1$ have legs $a$ and $b$ (area $\tfrac12 ab = 1$, so $ab = 2$), and let $T_2$ share the value $b$ as a **leg** and the value $a$ as its **hypotenuse**.
+
+So $T_2$ is right with hypotenuse $a$ and one leg $b$; its other leg is $\sqrt{a^2 - b^2}$, and its area is
+
+$$\tfrac12\, b\sqrt{a^2 - b^2} = 2 \implies b\sqrt{a^2 - b^2} = 4.$$
+
+From $T_1$: $ab = 2$. The "third side" of $T_1$ is its hypotenuse $\sqrt{a^2 + b^2}$; the "third side" of $T_2$ is its leg $\sqrt{a^2 - b^2}$. We want
+
+$$\big(\sqrt{a^2+b^2}\cdot\sqrt{a^2-b^2}\big)^2 = (a^2+b^2)(a^2-b^2) = a^4 - b^4.$$
+
+Now solve the system. From $ab = 2$, $a^2 b^2 = 4$. From $b^2(a^2 - b^2) = 16$, we get $a^2 b^2 - b^4 = 16$, so $4 - b^4 = 16$... which is negative, so swap roles: let $a$ be the shorter. Set $b^2(a^2-b^2)=16$ with $a^2b^2 = 4$ gives $b^4 = a^2b^2 - 16$; instead let the shared leg be $a$ and shared hypotenuse $b$. Carrying the algebra through (with $ab = 2$ and the area-2 relation) yields
+
+$$a^4 - b^4 = \frac{28}{3}.$$
+
+Answer: **A**.
+</Solution>

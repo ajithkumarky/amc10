@@ -1,0 +1,34 @@
+---
+year: 2017
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: B
+choices: [
+  "If Lewis did not receive an A, then he got all of the multiple choice questions wrong.",
+  "If Lewis did not receive an A, then he got at least one of the multiple choice questions wrong.",
+  "If Lewis got at least one of the multiple choice questions wrong, then he did not receive an A.",
+  "If Lewis received an A, then he got all of the multiple choice questions right.",
+  "If Lewis received an A, then he got at least one of the multiple choice questions right."
+]
+---
+
+<Problem>
+Ms. Carroll promised that anyone who got all the multiple choice questions right on the upcoming exam would receive an A on the exam. Which of these statements necessarily follows logically?
+</Problem>
+
+<Solution>
+The original statement is: "If [all multiple choice right] then [receives an A]." In logic: $P \Rightarrow Q$.
+
+The only statement that follows logically from $P \Rightarrow Q$ is its **contrapositive**: $\neg Q \Rightarrow \neg P$, i.e., "If [does not receive an A] then [did not get all multiple choice right]," which means he got at least one wrong.
+
+Check the choices:
+- **(A)** says "got all wrong" — too strong; the contrapositive only says at least one wrong.
+- **(B)** says "at least one multiple choice wrong" — this is exactly $\neg P$, the contrapositive. **Correct.**
+- **(C)** says "at least one wrong → no A" — this is the inverse of the inverse, not guaranteed (Ms. Carroll might give A for other reasons).
+- **(D)** says "A → all right" — the converse; not necessarily true.
+- **(E)** says "A → at least one right" — true but trivially implied by (B) and not really what the contrapositive gives directly.
+
+Answer: **B**.
+</Solution>

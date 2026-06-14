@@ -1,0 +1,51 @@
+---
+year: 2019
+paper: "10B"
+topic: geometry
+subtopic: coordinate-geometry
+difficulty: 5
+answer: C
+choices: ['$\frac{83\pi}{8}$', '$\frac{21\pi}{2}$', '$\frac{85\pi}{8}$', '$\frac{43\pi}{4}$', '$\frac{87\pi}{8}$']
+---
+
+<Problem>
+Points $A(6,13)$ and $B(12,11)$ lie on circle $\omega$ in the plane. Suppose that the tangent lines to $\omega$ at $A$ and $B$ intersect at a point on the $x$-axis. What is the area of $\omega$?
+</Problem>
+
+<Solution>
+Let the tangents meet at point $P = (p, 0)$ on the $x$-axis. By the equal-tangent-lengths property, $PA = PB$. So $P$ is equidistant from $A$ and $B$:
+
+$$(p-6)^2 + 13^2 = (p-12)^2 + 11^2.$$
+
+Expand:
+
+$$p^2 - 12p + 36 + 169 = p^2 - 24p + 144 + 121.$$
+
+$$-12p + 205 = -24p + 265 \implies 12p = 60 \implies p = 5.$$
+
+So $P = (5, 0)$, and the tangent length is
+
+$$PA^2 = (5-6)^2 + (0-13)^2 = 1 + 169 = 170.$$
+
+Let the center be $O$ with radius $r$. The power of point $P$ equals the squared tangent length: $PO^2 - r^2 = 170$.
+
+The center $O$ lies on the perpendicular bisector of $AB$ and also on line $OP$ such that $OA \perp PA$. Using the right angle at $A$ in triangle $OAP$:
+
+$$PA^2 = PO^2 - r^2 = 170.$$
+
+The center lies on the perpendicular bisector of $AB$. Midpoint of $AB$ is $(9,12)$, and $AB$ has slope $\frac{11-13}{12-6} = -\frac13$, so the perpendicular bisector has slope $3$: $y - 12 = 3(x - 9)$.
+
+Also $OA \perp$ tangent at $A$, and the tangent at $A$ passes through $P=(5,0)$. Line $PA$ has slope $\frac{13-0}{6-5} = 13$, so $OA$ has slope $-\frac{1}{13}$: line through $A(6,13)$ is $y - 13 = -\frac1{13}(x-6)$.
+
+Solve with the perpendicular bisector $y = 3x - 15$:
+
+$$3x - 15 - 13 = -\tfrac1{13}(x - 6) \implies 3x - 28 = -\tfrac1{13}(x-6).$$
+
+Multiply by $13$: $39x - 364 = -(x - 6) = -x + 6$, so $40x = 370$, $x = 9.25$. Then $y = 3(9.25) - 15 = 12.75$. Center $O = (9.25, 12.75)$.
+
+$$r^2 = OA^2 = (9.25 - 6)^2 + (12.75 - 13)^2 = (3.25)^2 + (-0.25)^2 = 10.5625 + 0.0625 = 10.625 = \frac{85}{8}.$$
+
+Area $= \pi r^2 = \dfrac{85\pi}{8}$.
+
+Answer: **C**.
+</Solution>

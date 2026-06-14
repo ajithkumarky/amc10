@@ -1,0 +1,37 @@
+---
+year: 2017
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 4
+answer: D
+choices: ["3", "5", '$3\sqrt{5}$', "7", '$5\sqrt{2}$']
+---
+
+<Problem>
+Distinct points $P$, $Q$, $R$, $S$ lie on the circle $x^2+y^2=25$ and have integer coordinates. The distances $PQ$ and $RS$ are irrational numbers. What is the greatest possible value of the ratio $\dfrac{PQ}{RS}$?
+</Problem>
+
+<Solution>
+Integer-coordinate points on $x^2 + y^2 = 25$ are: $(\pm 5, 0)$, $(0, \pm 5)$, $(\pm 3, \pm 4)$, $(\pm 4, \pm 3)$ — that's $12$ points total.
+
+To make $PQ$ irrational, the distance formula $\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$ must be irrational, meaning $(x_1-x_2)^2+(y_1-y_2)^2$ is not a perfect square.
+
+To maximize $PQ/RS$, we want $PQ$ as large as possible and $RS$ as small as possible.
+
+**Maximize $PQ$:** The diameter is $10$ (a rational integer), so we need the next-largest irrational distance. Try $(3,4)$ to $(-4,-3)$: $(3-(-4))^2+(4-(-3))^2 = 49 + 49 = 98$, giving $PQ = 7\sqrt{2}$ (irrational). That's large.
+
+Try $(-5,0)$ to $(4,-3)$: $81 + 9 = 90$, giving $\sqrt{90} = 3\sqrt{10}$.
+
+Try $(5,0)$ to $(-3,4)$: $64+16=80$, giving $4\sqrt{5}$.
+
+So $PQ = 7\sqrt{2}$ seems large.
+
+**Minimize $RS$ (irrational, using points distinct from $P,Q$):** The smallest possible distance between two lattice points on the circle is $\sqrt{2}$, between adjacent points such as $(-3,4)$ and $(-4,3)$: $(-3-(-4))^2+(4-3)^2 = 1+1 = 2$, giving $RS = \sqrt{2}$ (irrational).
+
+These are distinct from $P=(3,4)$ and $Q=(-4,-3)$, so $P,Q,R,S$ are four distinct points. Then
+
+$$\dfrac{PQ}{RS} = \dfrac{7\sqrt{2}}{\sqrt{2}} = 7.$$
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,27 @@
+---
+year: 2019
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: E
+choices: ['$11$', '$15$', '$19$', '$21$', '$27$']
+---
+
+<Problem>
+Consider the statement, "If $n$ is not prime, then $n-2$ is prime." Which of the following values of $n$ is a counterexample to this statement?
+</Problem>
+
+<Solution>
+A counterexample needs $n$ to be **not prime** (so the hypothesis holds) while $n-2$ is **also not prime** (so the conclusion fails). We just check each choice.
+
+- $n=11$: prime, so the hypothesis fails — not a counterexample.
+- $n=15$: not prime, and $15-2=13$ is prime — statement holds here.
+- $n=19$: prime — hypothesis fails.
+- $n=21$: not prime, and $21-2=19$ is prime — statement holds.
+- $n=27$: not prime, and $27-2=25=5^2$ is not prime — hypothesis holds but conclusion fails.
+
+So $n=27$ is the counterexample.
+
+Answer: **E**.
+</Solution>

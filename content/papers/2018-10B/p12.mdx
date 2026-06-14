@@ -1,0 +1,32 @@
+---
+year: 2018
+paper: "10B"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: C
+choices: ["25", "38", "50", "63", "75"]
+---
+
+<Problem>
+Line segment $\overline{AB}$ is a diameter of a circle with $AB=24$. Point $C$, not equal to $A$ or $B$, lies on the circle. As point $C$ moves around the circle, the centroid (center of mass) of $\triangle{ABC}$ traces out a closed curve missing two points. To the nearest positive integer, what is the area of the region bounded by this curve?
+</Problem>
+
+<Solution>
+Place the circle with center $O$ at the origin, so $A = (-12, 0)$ and $B = (12, 0)$. Since $C$ lies on the circle of radius $12$, write $C = (12\cos\theta, 12\sin\theta)$.
+
+The centroid $G$ of $\triangle ABC$ is:
+$$G = \frac{A + B + C}{3} = \frac{(-12,0) + (12,0) + (12\cos\theta, 12\sin\theta)}{3} = \left(\frac{12\cos\theta}{3}, \frac{12\sin\theta}{3}\right) = (4\cos\theta, 4\sin\theta).$$
+
+So as $C$ moves around the original circle, $G$ traces a circle centered at the origin with radius $4$.
+
+The two missing points correspond to $C = A$ or $C = B$ (the problem says $C \neq A, B$). When $\theta = \pi$, $C = A$; when $\theta = 0$, $C = B$.
+
+The curve traced is a circle of radius $4$ (missing two points, but the bounded region is the same disk).
+
+Area $= \pi \cdot 4^2 = 16\pi \approx 16 \times 3.14159 \approx 50.27$.
+
+To the nearest positive integer, the area is $\mathbf{50}$.
+
+Answer: **C**.
+</Solution>

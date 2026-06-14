@@ -1,0 +1,28 @@
+---
+year: 2018
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 2
+answer: E
+choices: ["$3$", "$4$", "$6$", "$8$", "$9$"]
+---
+
+<Problem>
+For how many (not necessarily positive) integer values of $n$ is the value of $4000 \cdot \left(\tfrac{2}{5}\right)^n$ an integer?
+</Problem>
+
+<Solution>
+Write $4000 = 2^5 \cdot 5^3$.
+
+Then:
+$$4000 \cdot \left(\frac{2}{5}\right)^n = 2^5 \cdot 5^3 \cdot \frac{2^n}{5^n} = 2^{5+n} \cdot 5^{3-n}$$
+
+For this to be an integer, we need both exponents to be non-negative:
+$$5 + n \geq 0 \implies n \geq -5$$
+$$3 - n \geq 0 \implies n \leq 3$$
+
+So $n$ can be any integer from $-5$ to $3$, inclusive. That gives $3 - (-5) + 1 = 9$ values.
+
+Answer: **E**.
+</Solution>

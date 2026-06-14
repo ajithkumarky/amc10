@@ -1,0 +1,43 @@
+---
+year: 2019
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 5
+answer: C
+choices: ['$55$', '$60$', '$65$', '$70$', '$75$']
+---
+
+<Problem>
+How many sequences of $0$s and $1$s of length $19$ are there that begin with a $0$, end with a $0$, contain no two consecutive $0$s, and contain no three consecutive $1$s?
+</Problem>
+
+<Solution>
+Since no two $0$s are adjacent, every $0$ (except possibly at the ends) is separated by a block of $1$s. Because there are no three consecutive $1$s, each block of $1$s between two $0$s has length $1$ or $2$.
+
+The sequence starts and ends with $0$. So the structure is
+
+$$0\,\underbrace{1\cdots1}_{a_1}\,0\,\underbrace{1\cdots1}_{a_2}\,0\,\cdots\,0,$$
+
+with some number $k$ of zeros and $k-1$ gaps between them, each gap a block of $1$s of length $1$ or $2$ (gaps cannot be $0$, else two zeros would be adjacent).
+
+If there are $k$ zeros, the gaps use $k-1$ blocks. Total length:
+
+$$k + \sum_{i=1}^{k-1} a_i = 19, \quad \text{where each } a_i \in \{1, 2\}.$$
+
+So $\sum a_i = 19 - k$, with $k-1$ terms each $1$ or $2$. The number of ways to write $19 - k$ as an ordered sum of $k-1$ terms from $\{1,2\}$ is $\binom{k-1}{j}$ where $j$ = number of $2$'s, and $j = (19-k) - (k-1) = 20 - 2k$ (since base sum if all $1$'s is $k-1$, and each $2$ adds $1$).
+
+We need $0 \le j \le k-1$:
+
+$$0 \le 20 - 2k \le k - 1 \implies 7 \le k \le 10.$$
+
+Count $\binom{k-1}{20-2k}$ for each valid $k$:
+- $k=7$: $\binom{6}{6} = 1$.
+- $k=8$: $\binom{7}{4} = 35$.
+- $k=9$: $\binom{8}{2} = 28$.
+- $k=10$: $\binom{9}{0} = 1$.
+
+Total: $1 + 35 + 28 + 1 = 65$.
+
+Answer: **C**.
+</Solution>

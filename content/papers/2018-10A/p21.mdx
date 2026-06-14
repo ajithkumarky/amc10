@@ -1,0 +1,61 @@
+---
+year: 2018
+paper: "10A"
+topic: algebra
+subtopic: quadratics
+difficulty: 5
+answer: E
+choices: ['$a=\dfrac{1}{4}$', '$\dfrac{1}{4}<a<\dfrac{1}{2}$', '$a>\dfrac{1}{4}$', '$a=\dfrac{1}{2}$', '$a>\dfrac{1}{2}$']
+---
+
+<Problem>
+Which of the following describes the set of values of $a$ for which the curves $x^2 + y^2 = a^2$ and $y = x^2 - a$ in the real $xy$-plane intersect at exactly $3$ points?
+</Problem>
+
+<Solution>
+We need to find $a$ such that the circle $x^2 + y^2 = a^2$ and the parabola $y = x^2 - a$ intersect at exactly $3$ points.
+
+**Substituting the parabola into the circle:**
+
+Replace $x^2 = y + a$ in the circle equation:
+$$(y + a) + y^2 = a^2$$
+$$y^2 + y + a - a^2 = 0$$
+$$y^2 + y + a(1 - a) = 0.$$
+
+This is a quadratic in $y$. Let the roots be $y_1$ and $y_2$ (by Vieta's: $y_1 + y_2 = -1$, $y_1 y_2 = a(1-a)$).
+
+For each root $y_k$, we get $x^2 = y_k + a$:
+- If $y_k + a > 0$: two $x$-values ($x = \pm\sqrt{y_k + a}$), giving $2$ intersection points.
+- If $y_k + a = 0$: one $x$-value ($x = 0$), giving $1$ intersection point.
+- If $y_k + a < 0$: no real $x$-values.
+
+**For exactly $3$ intersection points**, we need one root to give $2$ points and the other to give $1$ point. The "one point" case requires $y_k + a = 0$, i.e., $y_k = -a$.
+
+**Condition $y = -a$ is a root of $y^2 + y + a(1-a) = 0$:**
+$$a^2 - a + a(1-a) = 0$$
+$$a^2 - a + a - a^2 = 0$$
+$$0 = 0.$$
+
+This is always true! So $y = -a$ is always a root of the quadratic in $y$.
+
+The other root: by Vieta's, $y_1 + y_2 = -1$, so if $y_1 = -a$, then $y_2 = -1 + a$.
+
+**Conditions for exactly 3 points:**
+
+1. The root $y_1 = -a$ gives exactly $1$ point (need $y_1 + a = 0$ $\checkmark$, already satisfied).
+2. The root $y_2 = a - 1$ gives $2$ points (need $y_2 + a > 0$):
+$$y_2 + a = (a-1) + a = 2a - 1 > 0 \implies a > \frac{1}{2}.$$
+3. The two roots must be distinct (otherwise the "one point" root is a double root, giving either $1$ or $0$ points total, not $3$). The discriminant of $y^2 + y + a(1-a)$:
+$$\Delta = 1 - 4a(1-a) = 1 - 4a + 4a^2 = (2a-1)^2.$$
+$\Delta = 0$ when $a = \frac{1}{2}$, meaning the roots coincide when $a = \frac{1}{2}$.
+
+For $a = \frac{1}{2}$: double root $y = -\frac{1}{2}$, which gives $y + a = 0$, so only $1$ intersection point. Not $3$.
+
+**Conclusion:**
+
+For exactly $3$ intersection points: $a > \frac{1}{2}$.
+
+(We also need $a > 0$ for the circle to be nontrivial, which is implied by $a > \frac{1}{2}$.)
+
+Answer: **E**.
+</Solution>

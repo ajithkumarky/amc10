@@ -1,0 +1,36 @@
+---
+year: 2018
+paper: "10B"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 2
+answer: D
+choices: ['$\frac{1}{15}$', '$\frac{1}{10}$', '$\frac{1}{6}$', '$\frac{1}{5}$', '$\frac{1}{4}$']
+---
+
+<Problem>
+A box contains $5$ chips, numbered $1, 2, 3, 4,$ and $5$. Chips are drawn randomly one at a time without replacement until the sum of the values drawn exceeds $4$. What is the probability that $3$ draws are required?
+</Problem>
+
+<Solution>
+Exactly 3 draws are required means: the sum after 2 draws is $\leq 4$, and the sum after 3 draws exceeds $4$.
+
+**Two-draw sums that are $\leq 4$:** We need two distinct chips from $\{1,2,3,4,5\}$ whose sum is at most $4$:
+- $\{1,2\}$: sum $= 3$
+- $\{1,3\}$: sum $= 4$
+
+These are the only pairs. (Check: $\{1,4\}=5>4$, $\{2,3\}=5>4$, all others larger.)
+
+**Check that a 3rd draw is needed:** After drawing $\{1,2\}$ (sum 3) or $\{1,3\}$ (sum 4), any third chip will push the sum above 4. (The smallest remaining chip after $\{1,2\}$ is $3$, giving sum $6 > 4$; after $\{1,3\}$ the smallest remaining is $2$, giving sum $6 > 4$.) So both pairs always require exactly 3 draws.
+
+**Probability:** The total number of ordered 3-draw sequences is $5 \times 4 \times 3 = 60$. But we want sequences where the first two (in any order) form one of the two pairs above.
+
+- From pair $\{1,2\}$: $2 \times 3 = 6$ ordered sequences (2 orders for the pair, 3 remaining chips).
+- From pair $\{1,3\}$: $2 \times 3 = 6$ ordered sequences.
+
+Total favorable: $12$. Total ordered draws of 3 chips from 5: $60$.
+
+Probability $= \frac{12}{60} = \frac{1}{5}$.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,27 @@
+---
+year: 2018
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 3
+answer: E
+choices: ["$42$", "$49$", "$56$", "$63$", "$84$"]
+---
+
+<Problem>
+When $7$ fair standard $6$-sided dice are thrown, the probability that the sum of the numbers on the top faces is $10$ can be written as $$\frac{n}{6^{7}},$$ where $n$ is a positive integer. What is $n$?
+</Problem>
+
+<Solution>
+We need to count the number of ways to roll $7$ dice (each showing $1$ through $6$) with sum $10$.
+
+**Substitution:** Let $d_i' = d_i - 1$ for each die, so each $d_i' \in \{0, 1, 2, 3, 4, 5\}$ and we need $d_1' + d_2' + \cdots + d_7' = 10 - 7 = 3$.
+
+Since we need the sum of $7$ non-negative integers to equal $3$, and each is at most $5$ (but the constraint $\leq 5$ is automatically satisfied when the sum is only $3$), we can ignore the upper bound. The number of solutions is:
+
+$$\binom{3 + 7 - 1}{7 - 1} = \binom{9}{6} = \binom{9}{3} = 84.$$
+
+So $n = 84$.
+
+Answer: **E**.
+</Solution>

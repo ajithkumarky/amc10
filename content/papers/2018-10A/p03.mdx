@@ -1,0 +1,28 @@
+---
+year: 2018
+paper: "10A"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 1
+answer: E
+choices: ["January 2", "January 12", "January 22", "February 11", "February 12"]
+---
+
+<Problem>
+A unit of blood expires after $10! = 10 \cdot 9 \cdot 8 \cdots 1$ seconds. Yasin donates a unit of blood at noon of January 1. On what day does his unit of blood expire?
+</Problem>
+
+<Solution>
+First compute $10!$:
+$$10! = 3{,}628{,}800 \text{ seconds}$$
+
+Convert to days. There are $60 \times 60 \times 24 = 86{,}400$ seconds per day.
+
+$$\frac{3{,}628{,}800}{86{,}400} = 42 \text{ days}$$
+
+Starting from noon on January 1 and adding exactly 42 days brings us to noon on February 12 (January has 31 days, so $31 - 1 = 30$ days remain in January after January 1, and we need $42 - 30 = 12$ more days into February).
+
+The blood expires on February 12.
+
+Answer: **E**.
+</Solution>

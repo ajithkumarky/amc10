@@ -1,0 +1,86 @@
+---
+year: 2018
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 5
+answer: C
+choices: ["197", "198", "199", "200", "201"]
+---
+
+<Problem>
+Let $\lfloor x \rfloor$ denote the greatest integer less than or equal to $x$. How many real numbers $x$ satisfy the equation $x^2 + 10{,}000\lfloor x \rfloor = 10{,}000x$?
+</Problem>
+
+<Solution>
+Write $x = n + f$ where $n = \lfloor x \rfloor$ is an integer and $0 \leq f < 1$ is the fractional part.
+
+Then $\lfloor x \rfloor = n$, and the equation becomes:
+$$(n+f)^2 + 10000n = 10000(n+f)$$
+$$n^2 + 2nf + f^2 + 10000n = 10000n + 10000f$$
+$$n^2 + 2nf + f^2 = 10000f$$
+$$f^2 + (2n - 10000)f + n^2 = 0.$$
+
+This is a quadratic in $f$:
+$$f = \frac{(10000 - 2n) \pm \sqrt{(10000-2n)^2 - 4n^2}}{2} = \frac{(10000-2n) \pm \sqrt{4(5000-n)^2 - 4n^2}}{2}$$
+$$= (5000-n) \pm \sqrt{(5000-n)^2 - n^2}.$$
+
+Let $m = 5000 - n$. Then:
+$$f = m \pm \sqrt{m^2 - n^2}.$$
+
+We need $f$ to be real and satisfy $0 \leq f < 1$.
+
+**Condition for real solutions:** $m^2 - n^2 \geq 0$, i.e., $(m-n)(m+n) \geq 0$.
+
+Since $m = 5000 - n$: $m - n = 5000 - 2n$ and $m + n = 5000$.
+
+$m + n = 5000 > 0$ always. So we need $m - n = 5000 - 2n \geq 0$, i.e., $n \leq 2500$.
+
+**Case $f = m - \sqrt{m^2 - n^2}$ (taking the minus sign):**
+
+We need $0 \leq m - \sqrt{m^2 - n^2} < 1$.
+
+Lower bound: $m - \sqrt{m^2 - n^2} \geq 0 \Leftrightarrow m \geq \sqrt{m^2-n^2}$, which holds iff $m \geq 0$ (since squaring: $m^2 \geq m^2 - n^2 \Leftrightarrow n^2 \geq 0$ ✓). So $m \geq 0$, i.e., $n \leq 5000$ — automatically satisfied with $n \leq 2500$.
+
+Upper bound: $m - \sqrt{m^2-n^2} < 1$. Since $\sqrt{m^2-n^2} > m - 1$ (i.e., $m^2-n^2 > m^2-2m+1$, i.e., $2m - 1 > n^2$, i.e., $2(5000-n) > n^2 + 1$, i.e., $n^2 + 2n - 9999 < 0$). This holds for $n < \frac{-2 + \sqrt{4 + 39996}}{2} = \frac{-2 + \sqrt{40000}}{2} = \frac{-2 + 200}{2} = 99$.
+
+So this branch gives $f < 1$ when $n \leq 98$, and $f \geq 1$ when $n \geq 99$... actually let me re-examine. At $n = 99$: $2m - 1 = 2(4901) - 1 = 9801 = n^2 = 9801$. So $n^2 = 2m-1$, meaning $m - \sqrt{m^2-n^2} = m - \sqrt{m^2 - (2m-1)} = m - \sqrt{(m-1)^2} = m - (m-1) = 1$ (not strictly $< 1$). So at $n = 99$, $f = 1$, which is invalid ($f$ must be strictly $< 1$).
+
+For $n < 99$: $f = m - \sqrt{m^2-n^2} < 1$ ✓. For $n \leq 2500$ and real $f$: $n \in \{0, 1, \ldots, 98\}$ gives $99$ valid solutions from this branch.
+
+But wait, we also need $n \leq 2500$ (for real $f$), and $n$ can be negative. Let me reconsider.
+
+For negative $n$: $n \leq 0$. Then $m = 5000 - n \geq 5000 > 0$, and $m^2 - n^2 = (5000-n)^2 - n^2 = 5000(5000-2n) > 0$ for $n < 2500$ ✓. 
+
+For $n \leq -1$: $f = m - \sqrt{m^2-n^2}$. At $n = -1$: $m = 5001$, $f = 5001 - \sqrt{5001^2 - 1} \approx 5001 - 5001 + \frac{1}{10002} \approx 0$ (very small positive). This is valid ($0 \leq f < 1$) ✓.
+
+For large negative $n$: as $n \to -\infty$, $f = m - \sqrt{m^2-n^2} = (5000-n) - \sqrt{(5000-n)^2-n^2}$. For large $|n|$, $\sqrt{(5000-n)^2 - n^2} \approx |5000-2n| = |n|+... \approx |n|$ for large negative $n$... Let me be more careful.
+
+For $n = -k$ with $k > 0$ large: $m = 5000+k$, $m^2 - n^2 = (5000+k)^2 - k^2 = 5000^2 + 10000k + k^2 - k^2 = 25000000 + 10000k$.
+
+$f = (5000+k) - \sqrt{25000000 + 10000k}$.
+
+For large $k$: $\sqrt{25000000+10000k} \approx \sqrt{10000k} = 100\sqrt{k}$, and $f \approx k - 100\sqrt{k} \to \infty$. So for large negative $n$, $f \geq 1$ (invalid).
+
+The upper bound: $f < 1$ requires $(5000-n) - \sqrt{(5000-n)^2 - n^2} < 1$, i.e., $\sqrt{(5000-n)^2 - n^2} > (5000-n) - 1$. Squaring (both sides positive for reasonable $n$): $(5000-n)^2 - n^2 > (5000-n-1)^2 = (5000-n)^2 - 2(5000-n) + 1$. Simplifying: $-n^2 > -2(5000-n) + 1$, i.e., $2(5000-n) - 1 > n^2$, i.e., $10000 - 2n - 1 > n^2$, i.e., $n^2 + 2n - 9999 < 0$.
+
+Roots of $n^2 + 2n - 9999 = 0$: $n = \frac{-2 \pm \sqrt{4 + 39996}}{2} = \frac{-2 \pm 200}{2}$. So $n = 99$ or $n = -101$.
+
+Thus $n^2 + 2n - 9999 < 0$ iff $-101 < n < 99$, i.e., $n \in \{-100, -99, \ldots, 98\}$.
+
+That's $98 - (-100) + 1 = 199$ values for this branch.
+
+**Case $f = m + \sqrt{m^2 - n^2}$ (taking the plus sign):**
+
+$f = (5000-n) + \sqrt{(5000-n)^2 - n^2}$.
+
+For $n \geq 0$: $f \geq 5000 - n \geq 1$ (for $n \leq 4999$). So $f \geq 1$, which means no valid solution from this branch for $n \geq 0$.
+
+For $n < 0$, say $n = -k$ ($k > 0$): $f = (5000+k) + \sqrt{(5000+k)^2 - k^2}$. This is even larger, so $f \geq 1$ always.
+
+Therefore this branch gives no valid solutions.
+
+**Total solutions:** $199$ (one for each integer $n \in \{-100, -99, \ldots, 98\}$).
+
+Answer: **C**.
+</Solution>

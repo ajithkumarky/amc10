@@ -1,0 +1,38 @@
+---
+year: 2017
+paper: "10A"
+topic: geometry
+subtopic: similarity-congruence
+difficulty: 5
+answer: D
+choices: ['$\dfrac{12}{13}$', '$\dfrac{35}{37}$', '$1$', '$\dfrac{37}{35}$', '$\dfrac{13}{12}$']
+---
+
+<Problem>
+A square with side length $x$ is inscribed in a right triangle with sides of length $3$, $4$, and $5$ so that one vertex of the square coincides with the right-angle vertex of the triangle. A square with side length $y$ is inscribed in another right triangle with sides of length $3$, $4$, and $5$ so that one side of the square lies on the hypotenuse of the triangle. What is $\tfrac{x}{y}$?
+</Problem>
+
+<Solution>
+**Finding $x$:** Place the right angle at the origin, with legs along the axes (leg 3 along the $y$-axis, leg 4 along the $x$-axis). The square has one vertex at the origin with vertices at $(0,0)$, $(x,0)$, $(x,x)$, $(0,x)$.
+
+The hypotenuse goes from $(4,0)$ to $(0,3)$, with equation $\dfrac{X}{4}+\dfrac{Y}{3}=1$, or $3X+4Y=12$.
+
+The corner $(x,x)$ must lie on or inside the triangle, and the square's two far vertices must lie on the two legs and hypotenuse. Actually, the two sides of the square along the legs have endpoints $(x,0)$ on the $x$-axis leg and $(0,x)$ on the $y$-axis leg, and the corner $(x,x)$ lies on the hypotenuse.
+
+Substituting $(x,x)$ into $3X + 4Y = 12$:
+$$3x + 4x = 12 \implies 7x = 12 \implies x = \frac{12}{7}.$$
+
+**Finding $y$:** The hypotenuse has length 5. The square of side $y$ has one side on the hypotenuse. The altitude from the right angle to the hypotenuse has length $h = \dfrac{3 \cdot 4}{5} = \dfrac{12}{5}$.
+
+The square of side $y$ sits on the hypotenuse; its opposite side is parallel to the hypotenuse at height $y$ (measured perpendicularly). The cross-section of the triangle at perpendicular height $y$ from the hypotenuse has length $5 \cdot \dfrac{h-y}{h} = 5 \cdot \dfrac{\frac{12}{5} - y}{\frac{12}{5}}$.
+
+For the square to fit: this cross-section length equals $y$:
+$$y = 5 \cdot \frac{\frac{12}{5} - y}{\frac{12}{5}} = \frac{5}{\frac{12}{5}}\!\left(\frac{12}{5}-y\right) = \frac{25}{12}\!\left(\frac{12}{5}-y\right) = 5 - \frac{25y}{12}.$$
+
+$$y + \frac{25y}{12} = 5 \implies \frac{37y}{12} = 5 \implies y = \frac{60}{37}.$$
+
+**Ratio:**
+$$\frac{x}{y} = \frac{\frac{12}{7}}{\frac{60}{37}} = \frac{12}{7} \cdot \frac{37}{60} = \frac{12 \cdot 37}{7 \cdot 60} = \frac{444}{420} = \frac{37}{35}.$$
+
+Answer: **D**.
+</Solution>

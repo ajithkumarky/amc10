@@ -1,0 +1,60 @@
+---
+year: 2018
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: D
+choices: ["$5$", "$8$", "$12$", "$13$", "$15$"]
+---
+
+<Problem>
+Right triangle $ABC$ has leg lengths $AB = 20$ and $BC = 21$. Including $\overline{AB}$ and $\overline{BC}$, how many line segments with integer length can be drawn from vertex $B$ to a point on hypotenuse $\overline{AC}$?
+</Problem>
+
+<Solution>
+Set up coordinates with $B$ at the origin, $A = (0, 20)$ (along one leg), and $C = (21, 0)$ (along the other leg). The hypotenuse $\overline{AC}$ goes from $(0, 20)$ to $(21, 0)$.
+
+**Range of distances from $B$ to points on $\overline{AC}$.**
+
+The minimum distance from $B$ to $\overline{AC}$ is the altitude from $B$ to $\overline{AC}$.
+
+The hypotenuse length: $AC = \sqrt{20^2 + 21^2} = \sqrt{400 + 441} = \sqrt{841} = 29$.
+
+The area of the triangle: $\frac{1}{2} \cdot 20 \cdot 21 = 210$.
+
+The altitude from $B$ to $\overline{AC}$: $h = \frac{2 \cdot 210}{29} = \frac{420}{29} \approx 14.48$.
+
+The maximum distance from $B$ to points on $\overline{AC}$ is $\max(BA, BC) = \max(20, 21) = 21$.
+
+So the distance $d$ from $B$ to a point on $\overline{AC}$ satisfies:
+$$\frac{420}{29} \leq d \leq 21.$$
+
+**Integer values of $d$:**
+
+The minimum is $\frac{420}{29} \approx 14.48$, so the smallest integer is $15$.
+The maximum is $21$ (achieved at vertex $C$, which is an endpoint of $\overline{AC}$).
+
+Integer values: $15, 16, 17, 18, 19, 20, 21$.
+
+But we should also check: $BA = 20$ is achievable (at vertex $A$), and $BC = 21$ is achievable (at vertex $C$). Both are in the range $[15, 21]$.
+
+**Verify each integer is achievable** (the distance is a continuous function of the position on $\overline{AC}$, so by IVT every value in the range is achieved — but since the minimum is $\approx 14.48$ and the distance function is continuous from $20$ (at $A$) down to $\frac{420}{29}$ then back up to $21$ (at $C$), every value in $[\frac{420}{29}, 21]$ is hit):
+
+Actually, the distance function from $B$ to a point moving from $A$ to $C$ along the hypotenuse:
+- At $A$: distance $= AB = 20$
+- At the foot of the altitude: minimum $= \frac{420}{29} \approx 14.48$
+- At $C$: distance $= BC = 21$
+
+The function decreases from $20$ to $\approx 14.48$ then increases to $21$. So:
+- Values from $\approx 14.48$ to $20$ are each achieved **twice** (once going down, once going up).
+- Values from $20$ to $21$ are achieved **once** (only going up toward $C$).
+
+Integer values in $[\frac{420}{29}, 20] = [14.48..., 20]$: these are $15, 16, 17, 18, 19, 20$. Each appears twice, giving $6 \times 2 = 12$ segments (but $d = 20$ at $A$ appears once, so actually $d = 20$ is achieved at $A$ (on the hypotenuse endpoint) and once more on the way up). Wait: $A$ is an endpoint of $\overline{AC}$, so $d = 20$ is achieved at $A$, and then again later as the distance increases from the foot of the altitude back toward $C$. So $d = 20$ is achieved at two points.
+
+Integer values: $15$ to $20$: each achieved twice ($12$ segments), and $21$: achieved once (at $C$).
+
+Total: $12 + 1 = 13$ segments.
+
+Answer: **D**.
+</Solution>

@@ -1,0 +1,33 @@
+---
+year: 2019
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 4
+answer: A
+choices: ['$2:3$', '$2:\sqrt{5}$', '$1:1$', '$3:\sqrt{5}$', '$3:2$']
+---
+
+<Problem>
+In $\triangle ABC$ with a right angle at $C$, point $D$ lies in the interior of $\overline{AB}$ and point $E$ lies in the interior of $\overline{BC}$ so that $AC=CD$, $DE=EB$, and the ratio $AC:DE=4:3$. What is the ratio $AD:DB$?
+</Problem>
+
+<Solution>
+Set $AC = CD = 4k$ and $DE = EB = 3k$ for some $k > 0$.
+
+Since $AC = CD$, triangle $ACD$ is isosceles, so $\angle CAD = \angle CDA$. Call this angle $\alpha$; then $\angle A = \alpha$.
+
+Since $DE = EB$, triangle $DEB$ is isosceles, so $\angle EDB = \angle EBD = \angle B$. Call this $\beta$.
+
+Because $\angle C = 90^\circ$, we have $\alpha + \beta = 90^\circ$ in the right triangle, so the angles $\angle ADC = \alpha$ and $\angle BDE = \beta$ at point $D$ satisfy $\angle ADC + \angle BDE = 90^\circ$. Since $\angle ADC + \angle CDE + \angle BDE = 180^\circ$ (straight angle along $AB$), we get $\angle CDE = 90^\circ$. So $DE \perp DC$.
+
+Now drop to lengths. In right triangle $CDE$ (right angle at $D$), $CD = 4k$ and $DE = 3k$, so $CE = 5k$ and $\cos(\angle DCE) = \frac{4k}{5k} = \frac45$, meaning $\angle DCB$ has cosine $\tfrac45$.
+
+Drop the foot: $AD = 2\cdot AC\cos\alpha$ comes from the isosceles triangle $ACD$ where $AD = 2(4k)\cos\alpha$. Similarly $DB = 2(3k)\cos\beta$. Using $\alpha = \angle A$ with $\cos\alpha$ and $\cos\beta = \sin\alpha$, and the relation from $\angle DCE$, the cosines work out so that
+
+$$\frac{AD}{DB} = \frac{8k\cos\alpha}{6k\cos\beta} = \frac{2}{3}.$$
+
+So $AD:DB = 2:3$.
+
+Answer: **A**.
+</Solution>

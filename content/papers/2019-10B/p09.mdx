@@ -1,0 +1,29 @@
+---
+year: 2019
+paper: "10B"
+topic: algebra
+subtopic: functions
+difficulty: 2
+answer: A
+choices: ['$\{-1, 0\}$', 'The set of nonpositive integers', '$\{-1, 0, 1\}$', '$\{0\}$', 'The set of nonnegative integers']
+---
+
+<Problem>
+The function $f$ is defined by $f(x) = \lfloor|x|\rfloor - |\lfloor x \rfloor|$ for all real numbers $x$, where $\lfloor r \rfloor$ denotes the greatest integer less than or equal to the real number $r$. What is the range of $f$?
+</Problem>
+
+<Solution>
+Consider cases based on the sign of $x$.
+
+**Case $x \ge 0$:** Then $|x| = x$, so $\lfloor |x| \rfloor = \lfloor x \rfloor$, which is a nonnegative integer, so $|\lfloor x\rfloor| = \lfloor x\rfloor$. Thus $f(x) = \lfloor x\rfloor - \lfloor x\rfloor = 0$.
+
+**Case $x < 0$:** Write $x = -t$ with $t > 0$.
+- If $x$ is a negative integer, then $\lfloor |x| \rfloor = t$ and $\lfloor x\rfloor = x = -t$, so $|\lfloor x\rfloor| = t$ and $f(x) = t - t = 0$.
+- If $x$ is negative and **not** an integer, then $\lfloor |x|\rfloor = \lfloor t\rfloor$, while $\lfloor x\rfloor = -\lceil t\rceil = -(\lfloor t\rfloor + 1)$, so $|\lfloor x\rfloor| = \lfloor t\rfloor + 1$. Then
+
+$$f(x) = \lfloor t\rfloor - (\lfloor t\rfloor + 1) = -1.$$
+
+So $f$ takes only the values $0$ and $-1$. The range is $\{-1, 0\}$.
+
+Answer: **A**.
+</Solution>

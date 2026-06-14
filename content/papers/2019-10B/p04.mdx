@@ -1,0 +1,31 @@
+---
+year: 2019
+paper: "10B"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 2
+answer: A
+choices: ['$(-1,2)$', '$(0,1)$', '$(1,-2)$', '$(1,0)$', '$(1,2)$']
+---
+
+<Problem>
+All lines with equation $ax+by=c$ such that $a,b,c$ form an arithmetic progression pass through a common point. What are the coordinates of that point?
+</Problem>
+
+<Solution>
+If $a, b, c$ are in arithmetic progression, then the middle term is the average of the outer two:
+
+$$b = \frac{a+c}{2}, \quad \text{i.e.} \quad 2b = a + c.$$
+
+We want a point $(x,y)$ that satisfies $ax + by = c$ for **every** such triple. Rewrite the line equation and use $c = 2b - a$:
+
+$$ax + by = 2b - a \implies a(x+1) + b(y-2) = 0.$$
+
+For this to hold for all valid $a$ and $b$, both coefficients must vanish:
+
+$$x + 1 = 0 \quad\text{and}\quad y - 2 = 0,$$
+
+giving $x = -1$, $y = 2$. The common point is $(-1, 2)$.
+
+Answer: **A**.
+</Solution>

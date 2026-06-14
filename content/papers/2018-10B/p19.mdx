@@ -1,0 +1,56 @@
+---
+year: 2018
+paper: "10B"
+topic: number-theory
+subtopic: divisibility-primes
+difficulty: 4
+answer: E
+choices: ["7", "8", "9", "10", "11"]
+---
+
+<Problem>
+Joey and Chloe and their daughter Zoe all have the same birthday. Joey is $1$ year older than Chloe, and Zoe is exactly $1$ year old today. Today is the first of the $9$ birthdays on which Chloe's age will be an integral multiple of Zoe's age. What will be the sum of the two digits of Joey's age the next time his age is a multiple of Zoe's age?
+</Problem>
+
+<Solution>
+Let Chloe's current age be $c$ and Zoe's age be $1$ (today). Joey's age is $c + 1$.
+
+In $k$ years from now (on their shared birthday), their ages will be:
+- Zoe: $1 + k$
+- Chloe: $c + k$
+- Joey: $c + 1 + k$
+
+Chloe's age is a multiple of Zoe's age when $(1+k) \mid (c+k)$.
+
+Note: $(1+k) \mid (c+k)$ iff $(1+k) \mid (c+k) - (1+k) = c - 1$. So $(1+k) \mid (c-1)$.
+
+Today ($k=0$): $(1+0) = 1$ divides $c-1$ always. This is the first such birthday (today), consistent with the problem.
+
+The condition $(1+k) \mid (c-1)$ holds for $k = 0, 1, \ldots$ when $1+k$ is a positive divisor of $c-1$.
+
+The number of valid $k$-values equals the number of divisors of $c-1$ that are at least $1$, i.e., $d(c-1)$ (the number of divisors of $c-1$).
+
+We're told there are exactly $9$ such birthdays, so $d(c-1) = 9$.
+
+The smallest number with exactly $9$ divisors: $9 = 9$ (one prime to the 8th power) or $9 = 3 \times 3$ ($p^2 q^2$ form). The smallest is $2^2 \times 3^2 = 36$ (with divisors $1,2,3,4,6,9,12,18,36$, but that's $9$ divisors ✓), or $p^8$ (too large). So $c - 1 = 36$, giving $c = 37$.
+
+Check: divisors of $36$ are $1, 2, 3, 4, 6, 9, 12, 18, 36$ — exactly $9$ divisors ✓. The birthdays occur when $1+k \in \{1,2,3,4,6,9,12,18,36\}$, i.e., $k \in \{0,1,2,3,5,8,11,17,35\}$. Today ($k=0$) is the first ✓.
+
+Joey's current age: $c + 1 = 38$.
+
+Joey's age is a multiple of Zoe's age when $(1+k) \mid (c+1+k)$. Since $(1+k) \mid (c-1) + 2 = (1+k) \mid (c+1+k) - (1+k) = c$, we need $(1+k) \mid c = 38 = 2 \times 19$.
+
+Divisors of $38$: $1, 2, 19, 38$. Corresponding $k$ values: $0, 1, 18, 37$.
+
+But we want the NEXT time (after today, $k=0$), so $k = 1$ (next birthday), giving Joey's age $= 38 + 1 = 39$... wait, but $k=1$: Zoe is $2$, Joey is $39$; $39/2$ is not an integer. Let me recheck.
+
+$(1+k) \mid c$: $c = 37$. So $(1+k) \mid 37$.
+
+Divisors of $37$: just $1$ and $37$ (since $37$ is prime). So $k = 0$ or $k = 36$.
+
+At $k = 36$: Zoe is $37$, Joey is $c + 1 + 36 = 37 + 37 = 74$. $74 / 37 = 2$ ✓.
+
+Joey's age is $74$, digit sum $= 7 + 4 = 11$.
+
+Answer: **E**.
+</Solution>

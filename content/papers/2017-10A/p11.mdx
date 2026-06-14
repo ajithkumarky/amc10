@@ -1,0 +1,28 @@
+---
+year: 2017
+paper: "10A"
+topic: geometry
+subtopic: solids-3d
+difficulty: 3
+answer: D
+choices: ["6", "12", "18", "20", "24"]
+---
+
+<Problem>
+The region consisting of all points in three-dimensional space within $3$ units of line segment $\overline{AB}$ has volume $216\pi$. What is the length $AB$?
+</Problem>
+
+<Solution>
+The region within distance $r = 3$ of a line segment of length $L$ is a "capsule": a cylinder of radius $3$ and length $L$, capped on each end by a hemisphere of radius $3$.
+
+Volume of the capsule:
+$$V = \pi r^2 L + \frac{4}{3}\pi r^3 = \pi (3)^2 L + \frac{4}{3}\pi (3)^3 = 9\pi L + 36\pi.$$
+
+Set equal to $216\pi$:
+$$9\pi L + 36\pi = 216\pi$$
+$$9L + 36 = 216$$
+$$9L = 180$$
+$$L = 20.$$
+
+Answer: **D**.
+</Solution>

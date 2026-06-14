@@ -1,0 +1,30 @@
+---
+year: 2017
+paper: "10A"
+topic: algebra
+subtopic: word-problems
+difficulty: 1
+answer: B
+choices: ["13.5", "14", "14.5", "15", "15.5"]
+---
+
+<Problem>
+Mia is "helping" her mom pick up $30$ toys that are strewn on the floor. Mia's mom manages to put $3$ toys into the toy box every $30$ seconds, but each time immediately after those $30$ seconds have elapsed, Mia takes $2$ toys out of the box. How much time, in minutes, will it take Mia and her mom to put all $30$ toys into the box for the first time?
+</Problem>
+
+<Solution>
+Every full cycle (30 seconds of Mom adding, then Mia subtracting) results in a net gain of $3 - 2 = 1$ toy in the box. The key is that "all 30 toys in the box for the first time" can happen at the end of Mom's adding phase, before Mia removes any.
+
+After each 30-second adding phase, the box contains: after cycle $k$, before Mia takes toys out, the box has (toys at start of adding) + 3 toys.
+
+Let's track the count in the box after each removal:
+- After cycle 1: Mom adds 3 → 3 in box, Mia takes 2 → 1 in box.
+- After cycle 2: Mom adds 3 → 4 in box, Mia takes 2 → 2 in box.
+- After cycle $k$: box has $k$ toys after Mia acts.
+
+At the start of Mom's $(k+1)$-th adding phase, the box has $k$ toys. After she adds 3, the box has $k + 3$ toys. This equals 30 when $k + 3 = 30$, i.e., $k = 27$.
+
+So after 27 full cycles and then Mom's 28th adding phase: $27 \times 30 + 30 = 28 \times 30 = 840$ seconds $= 14$ minutes.
+
+Answer: **B**.
+</Solution>

@@ -1,0 +1,62 @@
+---
+year: 2018
+paper: "10A"
+topic: geometry
+subtopic: circles
+difficulty: 3
+answer: D
+choices: ["$21$", "$29$", "$58$", "$69$", "$93$"]
+---
+
+<Problem>
+Two circles of radius $5$ are externally tangent to each other and are internally tangent to a circle of radius $13$ at points $A$ and $B$, as shown. The distance $AB$ can be written in the form $\tfrac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. What is $m + n$?
+
+<svg viewBox="-14 -14 28 28" width="280" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#00e5ff" strokeWidth="0.4">
+  <circle cx="0" cy="0" r="13"/>
+  <circle cx="-4" cy="-4.5" r="5"/>
+  <circle cx="4" cy="-4.5" r="5"/>
+  <line x1="-11" y1="-9" x2="11" y2="-9" stroke="#00e5ff" strokeWidth="0.3" strokeDasharray="0.5,0.5"/>
+  <circle cx="-9.8" cy="-9.2" r="0.4" fill="#00e5ff" stroke="none"/>
+  <circle cx="9.8" cy="-9.2" r="0.4" fill="#00e5ff" stroke="none"/>
+  <text x="-12" y="-9.5" fontSize="1.8" fill="#00e5ff" stroke="none">A</text>
+  <text x="10.2" y="-9.5" fontSize="1.8" fill="#00e5ff" stroke="none">B</text>
+</svg>
+</Problem>
+
+<Solution>
+Let the large circle have center $O$ at the origin with radius $13$. Let the two small circles have centers $O_1$ and $O_2$, each with radius $5$.
+
+**Locating the centers:**
+
+Since each small circle is internally tangent to the large circle, the distance from $O$ to each small center is $13 - 5 = 8$.
+
+Since the two small circles are externally tangent to each other, the distance between their centers is $5 + 5 = 10$.
+
+By symmetry, place $O_1 = (-d, h)$ and $O_2 = (d, h)$ for some $d, h$ with:
+- $d^2 + h^2 = 64$ (distance from $O$ to each center is $8$)
+- $2d = 10$, so $d = 5$
+
+Then $h^2 = 64 - 25 = 39$, so $h = -\sqrt{39}$ (centers are below the $x$-axis by symmetry with the tangent points $A$ and $B$ further below).
+
+Actually, let's place the centers symmetrically: $O_1 = (-5, -\sqrt{39})$ and $O_2 = (5, -\sqrt{39})$.
+
+**Finding points $A$ and $B$:**
+
+Each small circle is internally tangent to the large circle. The tangent point lies on the line from $O$ through the small circle's center, on the far side from $O$.
+
+For $O_1 = (-5, -\sqrt{39})$: The unit vector from $O$ to $O_1$ is $\frac{1}{8}(-5, -\sqrt{39})$.
+Point $A$ is at distance $13$ from $O$ in this direction:
+$$A = \frac{13}{8}(-5, -\sqrt{39}) = \left(-\frac{65}{8}, -\frac{13\sqrt{39}}{8}\right).$$
+
+By symmetry, $B = \left(\frac{65}{8}, -\frac{13\sqrt{39}}{8}\right)$.
+
+**Distance $AB$:**
+
+$$AB = \left|\frac{65}{8} - \left(-\frac{65}{8}\right)\right| = \frac{130}{8} = \frac{65}{4}.$$
+
+So $m = 65$, $n = 4$, $\gcd(65, 4) = 1$.
+
+$$m + n = 65 + 4 = 69.$$
+
+Answer: **D**.
+</Solution>

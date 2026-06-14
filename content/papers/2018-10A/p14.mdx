@@ -1,0 +1,37 @@
+---
+year: 2018
+paper: "10A"
+topic: algebra
+subtopic: exponents-logarithms
+difficulty: 3
+answer: A
+choices: ["$80$", "$81$", "$96$", "$97$", "$625$"]
+---
+
+<Problem>
+What is the greatest integer less than or equal to $$\frac{3^{100}+2^{100}}{3^{96}+2^{96}}?$$
+</Problem>
+
+<Solution>
+Divide numerator and denominator by $3^{96}$:
+
+$$\frac{3^{100}+2^{100}}{3^{96}+2^{96}} = \frac{3^4 + 2^{100}/3^{96}}{1 + 2^{96}/3^{96}} = \frac{81 + (2/3)^{96} \cdot 2^4}{1 + (2/3)^{96}}.$$
+
+Let $t = \left(\frac{2}{3}\right)^{96}$. Since $\frac{2}{3} < 1$, we have $0 < t \ll 1$ (extremely small).
+
+$$\frac{81 + 16t}{1 + t}.$$
+
+Since $t$ is positive and tiny:
+$$\frac{81 + 16t}{1 + t} = 81 \cdot \frac{1 + \frac{16t}{81}}{1 + t}.$$
+
+Since $\frac{16}{81} < 1$, we have $\frac{16t}{81} < t$, so the numerator grows slower than the denominator as $t$ increases, meaning the fraction is $< 81$.
+
+More precisely:
+$$\frac{81 + 16t}{1 + t} = 81 - \frac{65t}{1 + t}.$$
+
+Since $t > 0$, the expression is strictly less than $81$ but very close to $81$.
+
+Therefore $\left\lfloor \frac{81 + 16t}{1 + t} \right\rfloor = 80$.
+
+Answer: **A**.
+</Solution>

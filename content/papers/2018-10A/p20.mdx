@@ -1,0 +1,50 @@
+---
+year: 2018
+paper: "10A"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 4
+answer: B
+choices: ["$510$", "$1022$", "$8190$", "$8192$", "$65{,}534$"]
+---
+
+<Problem>
+A scanning code consists of a $7 \times 7$ grid of squares, with some of its squares colored black and the rest colored white. There must be at least one square of each color in this grid of $49$ squares. A scanning code is called $\textit{symmetric}$ if its look does not change when the entire square is rotated by a multiple of $90^\circ$ counterclockwise around its center, nor when it is reflected across a line joining opposite corners or a line joining midpoints of opposite sides. What is the total number of possible symmetric scanning codes?
+</Problem>
+
+<Solution>
+A scanning code is symmetric under the full dihedral group $D_4$ (all symmetries of the square: $4$ rotations and $4$ reflections). Under this group, the $49$ squares are partitioned into orbits (groups of squares that must all have the same color).
+
+**Finding the orbits:**
+
+For a $7 \times 7$ grid with $D_4$ symmetry:
+- The center square forms an orbit of size $1$.
+- Squares on the axes of symmetry (but not the center) form orbits. For a $7 \times 7$ grid (odd dimensions), the middle row, middle column, and diagonals have special behavior.
+- Other squares form orbits of size $8$.
+
+Label positions $(i, j)$ with $i, j \in \{-3, -2, -1, 0, 1, 2, 3\}$ (so the center is $(0,0)$).
+
+**Orbit types:**
+1. **Center $(0,0)$**: orbit of size $1$. (1 orbit)
+2. **Axis squares (on the 4 axes of symmetry but not center)**: The 4 axes are the two diagonals and the horizontal/vertical through the center.
+   - Horizontal axis: $(0, \pm 1), (0, \pm 2), (0, \pm 3)$ — but under $D_4$, $(0, k)$ maps to $(k, 0)$ (rotation by $90^\circ$). So $\{(0,k), (k,0), (0,-k), (-k,0)\}$ are in one orbit of size $4$ for $k = 1, 2, 3$. (3 orbits of size 4)
+   - Diagonal axis: $(k, k)$ maps to $(-k, k)$ (reflection), then to $(-k, -k)$, then $(k, -k)$. So $\{(k,k), (-k,k), (-k,-k), (k,-k)\}$ form orbits of size $4$ for $k = 1, 2, 3$. (3 orbits of size 4)
+3. **Off-axis squares**: All other $(i, j)$ with $i \neq 0$, $j \neq 0$, $|i| \neq |j|$ form orbits of size $8$. 
+
+**Counting orbits of size 8:**
+
+Total squares $= 49$.
+Squares in size-1 orbits: $1$ (the center).
+Squares in size-4 orbits: $6 \times 4 = 24$ (from the 6 orbits above).
+Squares in size-8 orbits: $49 - 1 - 24 = 24$, giving $24/8 = 3$ orbits of size $8$.
+
+Total orbits $= 1 + 6 + 3 = 10$.
+
+**Counting symmetric codes:**
+
+Each orbit can independently be colored black or white, giving $2^{10} = 1024$ colorings. But we exclude the $2$ all-same-color cases (all black or all white) since we need at least one of each color.
+
+$$1024 - 2 = 1022.$$
+
+Answer: **B**.
+</Solution>

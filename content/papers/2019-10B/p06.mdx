@@ -1,0 +1,29 @@
+---
+year: 2019
+paper: "10B"
+topic: algebra
+subtopic: word-problems
+difficulty: 2
+answer: C
+choices: ['$3$', '$8$', '$10$', '$11$', '$12$']
+---
+
+<Problem>
+There is a real $n$ such that $(n+1)! + (n+2)! = n! \cdot 440$. What is the sum of the digits of $n$?
+</Problem>
+
+<Solution>
+Factor $n!$ out of the left side. Since $(n+1)! = (n+1)\cdot n!$ and $(n+2)! = (n+2)(n+1)\cdot n!$,
+
+$$(n+1)! + (n+2)! = n!\big[(n+1) + (n+2)(n+1)\big] = n!\,(n+1)\big[1 + (n+2)\big] = n!\,(n+1)(n+3).$$
+
+Setting this equal to $n! \cdot 440$ and dividing by $n!$,
+
+$$(n+1)(n+3) = 440.$$
+
+We need two factors of $440$ differing by $2$. Since $440 = 20 \cdot 22$, take $n+1 = 20$ and $n+3 = 22$, giving $n = 19$.
+
+The sum of the digits of $19$ is $1 + 9 = 10$.
+
+Answer: **C**.
+</Solution>

@@ -1,0 +1,27 @@
+---
+year: 2018
+paper: "10A"
+topic: algebra
+subtopic: linear-equations-inequalities
+difficulty: 1
+answer: D
+choices: ["$(0,4)$", "$(4,5)$", "$(4,6)$", "$(5,6)$", "$(5,\\infty)$"]
+---
+
+<Problem>
+Alice, Bob, and Charlie were on a hike and were wondering how far away the nearest town was. When Alice said, "We are at least $6$ miles away," Bob replied, "We are at most $5$ miles away." Charlie then remarked, "Actually the nearest town is at most $4$ miles away." It turned out that none of the three statements were true. Let $d$ be the distance in miles to the nearest town. Which of the following intervals is the set of all possible values of $d$?
+</Problem>
+
+<Solution>
+Each statement was false, so we take the negation of each:
+
+- Alice said $d \geq 6$ (false), so actually $d < 6$.
+- Bob said $d \leq 5$ (false), so actually $d > 5$.
+- Charlie said $d \leq 4$ (false), so actually $d > 4$.
+
+The third constraint ($d > 4$) is already implied by the second ($d > 5$), so the binding constraints are $d > 5$ and $d < 6$.
+
+Therefore $d \in (5, 6)$.
+
+Answer: **D**.
+</Solution>

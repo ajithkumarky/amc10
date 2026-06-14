@@ -1,0 +1,31 @@
+---
+year: 2019
+paper: "10B"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: A
+choices: ['$0$', '$2$', '$4$', '$8$', 'infinitely many']
+---
+
+<Problem>
+In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units?
+</Problem>
+
+<Solution>
+Take base $AB = 10$. The area condition fixes the height from $C$ to line $AB$:
+
+$$\frac{1}{2}\cdot 10 \cdot h = 100 \implies h = 20.$$
+
+So $C$ must lie on one of the two lines parallel to $AB$ at distance $20$.
+
+Now use the perimeter condition: $AC + BC = 50 - 10 = 40$. This says $C$ lies on an **ellipse** with foci $A$ and $B$, where the sum of distances is $40$. The semi-major axis is $a = 20$, and with $c = 5$ (half of $AB$), the semi-minor axis is
+
+$$b = \sqrt{a^2 - c^2} = \sqrt{400 - 25} = \sqrt{375} \approx 19.36.$$
+
+The maximum distance from line $AB$ to a point on this ellipse is exactly $b \approx 19.36$, which is **less than** the required height $20$. So no point on the ellipse is far enough from $AB$ to give area $100$.
+
+There are no such points $C$.
+
+Answer: **A**.
+</Solution>

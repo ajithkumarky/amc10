@@ -1,0 +1,27 @@
+---
+year: 2018
+paper: "10B"
+topic: counting-probability
+subtopic: counting-principles
+difficulty: 2
+answer: D
+choices: ["128", "192", "224", "240", "256"]
+---
+
+<Problem>
+How many subsets of $\{2,3,4,5,6,7,8,9\}$ contain at least one prime number?
+</Problem>
+
+<Solution>
+It's easier to count the complement: subsets containing NO prime number.
+
+The primes in $\{2,3,4,5,6,7,8,9\}$ are $2, 3, 5, 7$. The non-primes (composites and 1, but here just composites) are $4, 6, 8, 9$.
+
+So the subsets with no prime are exactly the subsets of $\{4, 6, 8, 9\}$. There are $2^4 = 16$ such subsets.
+
+The total number of subsets of an 8-element set is $2^8 = 256$.
+
+Subsets containing at least one prime $= 256 - 16 = 240$.
+
+Answer: **D**.
+</Solution>

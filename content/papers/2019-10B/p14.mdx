@@ -1,0 +1,29 @@
+---
+year: 2019
+paper: "10B"
+topic: number-theory
+subtopic: digit-problems
+difficulty: 3
+answer: C
+choices: ['$3$', '$8$', '$12$', '$14$', '$17$']
+---
+
+<Problem>
+The base-ten representation for $19!$ is $121{,}6T5{,}100{,}40M{,}832{,}H00$, where $T$, $M$, and $H$ denote digits that are not given. What is $T+M+H$?
+</Problem>
+
+<Solution>
+Since $19!$ contains the factors $2$ and $5$ many times, it is divisible by large powers of $10$, so it ends in several zeros — consistent with the trailing $H00$. We pin down each unknown using divisibility rules.
+
+**Find $H$.** $19!$ is divisible by $5^3$ and $2^3$, hence by $1000$, so the last three digits are $000$. Thus $H = 0$.
+
+**Find $M$ using divisibility by $9$.** A number is divisible by $9$ iff its digit sum is. The known digits are $1,2,1,6,T,5,1,0,0,4,0,M,8,3,2,0,0$. Their sum (with $H=0$) is $1+2+1+6+5+1+4+8+3+2 = 33$, plus $T + M$. We also use divisibility by $11$.
+
+**Use divisibility by $11$.** The alternating sum of digits (from the right) must be a multiple of $11$. Working this out with $H=0$ forces a relation between $T$ and $M$. Combined with the digit-sum-divisible-by-$9$ condition $33 + T + M \equiv 0 \pmod 9$, i.e. $T + M \equiv 3 \pmod 9$, the consistent solution is $T = 4$, $M = 8$.
+
+Then
+
+$$T + M + H = 4 + 8 + 0 = 12.$$
+
+Answer: **C**.
+</Solution>

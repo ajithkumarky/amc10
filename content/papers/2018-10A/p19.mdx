@@ -1,0 +1,39 @@
+---
+year: 2018
+paper: "10A"
+topic: counting-probability
+subtopic: probability-basics
+difficulty: 4
+answer: E
+choices: ['$\dfrac{1}{5}$', '$\dfrac{1}{4}$', '$\dfrac{3}{10}$', '$\dfrac{7}{20}$', '$\dfrac{2}{5}$']
+---
+
+<Problem>
+A number $m$ is randomly selected from the set $\{11, 13, 15, 17, 19\}$, and a number $n$ is randomly selected from $\{1999, 2000, 2001, \ldots, 2018\}$. What is the probability that $m^n$ has a units digit of $1$?
+</Problem>
+
+<Solution>
+We need $m^n$ to have units digit $1$. The units digit of $m^n$ depends only on the units digit of $m$ and the value of $n$.
+
+The units digits of the elements of $\{11, 13, 15, 17, 19\}$ are $\{1, 3, 5, 7, 9\}$.
+
+**Units digit cycles:**
+- $m$ ends in $1$: $m^n$ always ends in $1$. All $n$ work.
+- $m$ ends in $3$: cycle of length $4$ (ends $3, 9, 7, 1, 3, 9, 7, 1, \ldots$). $m^n$ ends in $1$ when $n \equiv 0 \pmod{4}$.
+- $m$ ends in $5$: $m^n$ always ends in $5$. No $n$ works.
+- $m$ ends in $7$: cycle of length $4$ (ends $7, 9, 3, 1, 7, 9, 3, 1, \ldots$). $m^n$ ends in $1$ when $n \equiv 0 \pmod{4}$.
+- $m$ ends in $9$: cycle of length $2$ (ends $9, 1, 9, 1, \ldots$). $m^n$ ends in $1$ when $n$ is even.
+
+**Count favorable $n$ from $\{1999, 2000, \ldots, 2018\}$ ($20$ values):**
+
+- $n \equiv 0 \pmod 4$: from $1999$ to $2018$, the multiples of $4$ are $2000, 2004, 2008, 2012, 2016$. That's $5$ values.
+- $n$ even: from $1999$ to $2018$, even values are $2000, 2002, 2004, \ldots, 2018$. That's $10$ values.
+
+**Probability calculation (each of $5$ values of $m$ is equally likely, each of $20$ values of $n$ is equally likely):**
+
+$$P = \frac{1}{5} \cdot \left[ P(\text{ends in 1}) \cdot 1 + P(\text{ends in 3}) \cdot \frac{5}{20} + P(\text{ends in 5}) \cdot 0 + P(\text{ends in 7}) \cdot \frac{5}{20} + P(\text{ends in 9}) \cdot \frac{10}{20} \right]$$
+
+$$= \frac{1}{5}\left[1 + \frac{1}{4} + 0 + \frac{1}{4} + \frac{1}{2}\right] = \frac{1}{5} \cdot 2 = \frac{2}{5}.$$
+
+Answer: **E**.
+</Solution>

@@ -1,0 +1,69 @@
+---
+year: 2018
+paper: "10A"
+topic: geometry
+subtopic: triangles
+difficulty: 3
+answer: D
+choices: ['$1+\dfrac{1}{2}\sqrt{2}$', '$\sqrt{3}$', '$\dfrac{7}{4}$', '$\dfrac{15}{8}$', '$2$']
+---
+
+<Problem>
+A paper triangle with sides of lengths $3$, $4$, and $5$ inches is folded so that point $A$ falls on point $B$. What is the length in inches of the crease?
+
+The triangle has $A$ at the lower-left (the right angle is at $C$, lower-right), $B$ at the upper-right, $C$ at the lower-right, with $BC = 3$, $AC = 4$, and $AB = 5$.
+
+<svg viewBox="0 0 120 100" width="240" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#00e5ff" strokeWidth="1.5">
+  <polygon points="10,90 90,90 90,30" stroke="#00e5ff" fill="none"/>
+  <text x="4" y="94" fontSize="11" fill="#00e5ff" stroke="none">A</text>
+  <text x="93" y="26" fontSize="11" fill="#00e5ff" stroke="none">B</text>
+  <text x="93" y="94" fontSize="11" fill="#00e5ff" stroke="none">C</text>
+  <text x="48" y="98" fontSize="10" fill="#00e5ff" stroke="none">4</text>
+  <text x="95" y="63" fontSize="10" fill="#00e5ff" stroke="none">3</text>
+  <text x="44" y="55" fontSize="10" fill="#00e5ff" stroke="none">5</text>
+</svg>
+</Problem>
+
+<Solution>
+When we fold $A$ onto $B$, the crease is the perpendicular bisector of segment $\overline{AB}$ restricted to the triangle.
+
+**Setup coordinates:** Place $C = (0, 0)$, $A = (-4, 0)$, $B = (0, 3)$.
+
+**Midpoint of $AB$:** $M = \left(-2, \frac{3}{2}\right)$.
+
+**Slope of $AB$:** $\frac{3 - 0}{0 - (-4)} = \frac{3}{4}$.
+
+**Slope of crease (perpendicular to $AB$):** $-\frac{4}{3}$.
+
+**Equation of crease:** Through $M = \left(-2, \frac{3}{2}\right)$ with slope $-\frac{4}{3}$:
+$$y - \frac{3}{2} = -\frac{4}{3}(x + 2) \implies y = -\frac{4}{3}x - \frac{8}{3} + \frac{3}{2} = -\frac{4}{3}x - \frac{7}{6}.$$
+
+**Find where the crease intersects the triangle's sides.**
+
+The crease must intersect two sides of $\triangle ABC$.
+
+*Intersection with $\overline{AC}$ (the segment from $A = (-4, 0)$ to $C = (0, 0)$, along $y = 0$):*
+$$0 = -\frac{4}{3}x - \frac{7}{6} \implies x = -\frac{7}{8}.$$
+Point $P = \left(-\frac{7}{8}, 0\right)$. Check: $-4 \leq -\frac{7}{8} \leq 0$. $\checkmark$
+
+*Intersection with $\overline{BC}$ (from $B = (0, 3)$ to $C = (0, 0)$, along $x = 0$):*
+$$y = -\frac{4}{3}(0) - \frac{7}{6} = -\frac{7}{6} < 0.$$
+Not on $\overline{BC}$ (which has $y \geq 0$). 
+
+*Intersection with $\overline{AB}$ (from $A = (-4, 0)$ to $B = (0, 3)$):*
+Line $AB$: $y = \frac{3}{4}(x + 4)$. Set equal to crease:
+$$\frac{3}{4}(x+4) = -\frac{4}{3}x - \frac{7}{6}.$$
+$$\frac{3x}{4} + 3 = -\frac{4x}{3} - \frac{7}{6}.$$
+Multiply through by $12$:
+$$9x + 36 = -16x - 14 \implies 25x = -50 \implies x = -2.$$
+$$y = \frac{3}{4}(-2 + 4) = \frac{3}{2}.$$
+Point $Q = \left(-2, \frac{3}{2}\right) = M$. This is the midpoint of $AB$, which makes sense.
+
+So the crease runs from $P = \left(-\frac{7}{8}, 0\right)$ on $\overline{AC}$ to $Q = \left(-2, \frac{3}{2}\right)$ on $\overline{AB}$.
+
+**Length of crease $PQ$:**
+$$PQ = \sqrt{\left(-2 - \left(-\frac{7}{8}\right)\right)^2 + \left(\frac{3}{2} - 0\right)^2} = \sqrt{\left(-\frac{9}{8}\right)^2 + \left(\frac{3}{2}\right)^2}$$
+$$= \sqrt{\frac{81}{64} + \frac{9}{4}} = \sqrt{\frac{81}{64} + \frac{144}{64}} = \sqrt{\frac{225}{64}} = \frac{15}{8}.$$
+
+Answer: **D**.
+</Solution>
